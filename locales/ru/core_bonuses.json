@@ -2,39 +2,39 @@
  "cb_auto_stabilizing_hardpoints": {
   "name": {
    "en": "Auto-Stabilizing Hardpoints",
-   "ru": ""
+   "ru": "Автостабилизирующиеся крепления"
   },
   "effect": {
    "en": "Choose one mount. Weapons attached to this mount gain +1 Accuracy.",
-   "ru": ""
+   "ru": "Выберите одно крепление. Оружие, установленное на это крепление, получает +1 к Точности."
   },
   "mounted_effect": {
    "en": "Attacks made with weapons from this mount gain +1 Accuracy.",
-   "ru": ""
+   "ru": "Атаки оружием из этого крепления получают +1 к Точности."
   }
  },
  "cb_overpower_caliber": {
   "name": {
    "en": "Overpower Caliber",
-   "ru": ""
+   "ru": "Сверхмощный калибр"
   },
   "effect": {
    "en": "Choose one weapon. 1/round, when you hit with an attack, you can cause it to deal +1d6 bonus damage.",
-   "ru": ""
+   "ru": "Выберите одно оружие. 1/раунд, при попадании атакой, вы можете заставить её нанести +1d6 бонусного урона."
   },
   "mounted_effect": {
    "en": "One weapon equipped to this mount deals +1d6 bonus damage 1/round on hit.",
-   "ru": ""
+   "ru": "Одно оружие, установленное на это крепление, наносит +1d6 бонусного урона 1/раунд при попадании."
   }
  },
  "cb_improved_armament": {
   "name": {
    "en": "Improved Armament",
-   "ru": ""
+   "ru": "Улучшенное вооружение"
   },
   "effect": {
    "en": "If your mech has fewer than three mounts (excluding integrated mounts), it gains an additional Flex mount.",
-   "ru": ""
+   "ru": "Если у вашего меха меньше трёх креплений (не считая интегрированных), он получает дополнительное Гибкое крепление."
   },
   "mounted_effect": {
    "en": "",
@@ -44,11 +44,11 @@
  "cb_integrated_weapon": {
   "name": {
    "en": "Integrated Weapon",
-   "ru": ""
+   "ru": "Интегрированное оружие"
   },
   "effect": {
    "en": "Your mech gains a new integrated mount with capacity for one Auxiliary weapon. This weapon can be fired 1/round as a free action when you fire any other weapon on your mech. It can’t be modified.",
-   "ru": ""
+   "ru": "Ваш мех получает новое интегрированное крепление вместимостью для одного Вспомогательного оружия. Это оружие можно выстрелить 1/раунд как свободное действие, когда вы стреляете из любого другого оружия на своём мехе. Оно не может быть модифицировано."
   },
   "mounted_effect": {
    "en": "",
@@ -58,25 +58,25 @@
  "cb_mount_retrofitting": {
   "name": {
    "en": "Mount Retrofitting",
-   "ru": ""
+   "ru": "Переоснащение крепления"
   },
   "effect": {
    "en": "Replace one mount with a Main/Aux mount.",
-   "ru": ""
+   "ru": "Замените одно крепление на крепление Основной/Вспомогательный."
   },
   "mounted_effect": {
    "en": "This mount has been replaced with a Main/Aux Mount.",
-   "ru": ""
+   "ru": "Это крепление было заменено на крепление Основной/Вспомогательный."
   }
  },
  "cb_universal_compatibility": {
   "name": {
    "en": "Universal Compatibility",
-   "ru": ""
+   "ru": "Универсальная совместимость"
   },
   "effect": {
    "en": "Any time you spend CP to activate a Core System, you may also take a free action to restore all HP, cool all Heat, and roll 1d20: on 20, regain 1 CP.",
-   "ru": ""
+   "ru": "Каждый раз, когда вы тратите CP на активацию CORE-системы, вы можете также совершить свободное действие, чтобы восстановить все ОЗ, охладить всё Тепло и бросить 1d20: при 20 вы восстанавливаете 1 CP."
   },
   "mounted_effect": {
    "en": "",
@@ -86,11 +86,11 @@
  "cb_briareos_frame": {
   "name": {
    "en": "Briareos Frame",
-   "ru": ""
+   "ru": "Каркас «Бриарей»"
   },
   "effect": {
    "en": "As long as your mech has no more than 1 Structure, you gain Resistance to all damage. When it’s reduced to 0 HP and 0 Structure, it is not destroyed: instead, you must make a structure damage check each time it takes damage. While in this state, your mech cannot regain HP until you rest or perform a Full Repair, at which point your mech can be repaired normally.",
-   "ru": ""
+   "ru": "Пока у вашего меха не более 1 Структуры, вы получаете Сопротивление ко всему урону. Когда он снижается до 0 ОЗ и 0 Структуры, он не уничтожается: вместо этого вы должны совершать проверку структурного урона каждый раз, когда он получает урон. В этом состоянии ваш мех не может восстанавливать ОЗ, пока вы не отдохнёте или не проведёте Полный ремонт, после чего мех можно отремонтировать как обычно."
   },
   "mounted_effect": {
    "en": "",
@@ -100,11 +100,11 @@
  "cb_fomorian_frame": {
   "name": {
    "en": "Fomorian Frame",
-   "ru": ""
+   "ru": "Каркас «Фомор»"
   },
   "effect": {
    "en": "Increase your mech’s Size by one increment (e.g., from 1/2 to 1, 1 to 2, or 2 to 3) up to a maximum of 3 Size. You can’t be knocked Prone, pulled, or knocked back by smaller characters, regardless of what system or weapon causes the effect.",
-   "ru": ""
+   "ru": "Увеличьте Размер вашего меха на одну ступень (например, с 1/2 до 1, с 1 до 2 или с 2 до 3), максимум до Размера 3. Вас нельзя сбить с ног, притянуть или отбросить персонажам меньшего размера, независимо от того, какая система или оружие вызывает этот эффект."
   },
   "mounted_effect": {
    "en": "",
@@ -114,11 +114,11 @@
  "cb_gyges_frame": {
   "name": {
    "en": "Gyges Frame",
-   "ru": ""
+   "ru": "Каркас «Гиес»"
   },
   "effect": {
    "en": "You gain +1 Accuracy on all Hull checks and saves and +1 Threat with all melee weapons.",
-   "ru": ""
+   "ru": "Вы получаете +1 к Точности на все проверки и спасброски Корпуса и +1 к Угрозе со всем оружием ближнего боя."
   },
   "mounted_effect": {
    "en": "",
@@ -128,11 +128,11 @@
  "cb_reinforced_frame": {
   "name": {
    "en": "Reinforced Frame",
-   "ru": ""
+   "ru": "Усиленный каркас"
   },
   "effect": {
    "en": "You gain +5 HP.",
-   "ru": ""
+   "ru": "Вы получаете +5 ОЗ."
   },
   "mounted_effect": {
    "en": "",
@@ -142,11 +142,11 @@
  "cb_sloped_plating": {
   "name": {
    "en": "Sloped Plating",
-   "ru": ""
+   "ru": "Скошенная плитная броня"
   },
   "effect": {
    "en": "You gain +1 Armor, up to the maximum (+4).",
-   "ru": ""
+   "ru": "Вы получаете +1 к Броне, до максимума (+4)."
   },
   "mounted_effect": {
    "en": "",
@@ -156,11 +156,11 @@
  "cb_titanomachy_mesh": {
   "name": {
    "en": "Titanomachy Mesh",
-   "ru": ""
+   "ru": "Сеть «Титаномахия»"
   },
   "effect": {
    "en": "1/round, when you successfully Ram or Grapple a mech, you can Ram or Grapple again as a free action. Additionally, when you knock targets back with melee attacks, you knock them back 1 additional space.",
-   "ru": ""
+   "ru": "1/раунд, когда вы успешно Таранните или Захватите мех, вы можете Таранить или Захватить снова как свободное действие. Дополнительно, когда вы отбрасываете цели атаками ближнего боя, вы отбрасываете их на 1 дополнительную клетку."
   },
   "mounted_effect": {
    "en": "",
@@ -170,11 +170,11 @@
  "cb_all_theater_movement_suite": {
   "name": {
    "en": "All-Theater Movement Suite",
-   "ru": ""
+   "ru": "Всесредный двигательный комплекс"
   },
   "effect": {
    "en": "You may choose to count any and all of your movement as flying; however, you take 1 Heat at the end of each of your turns in which you fly this way.",
-   "ru": ""
+   "ru": "Вы можете считать любое и всё своё движение полётом; однако вы получаете 1 Тепла в конце каждого хода, в котором вы летите таким образом."
   },
   "mounted_effect": {
    "en": "",
@@ -184,11 +184,11 @@
  "cb_full_subjectivity_sync": {
   "name": {
    "en": "Full Subjectivity Sync",
-   "ru": ""
+   "ru": "Полная синхронизация субъектности"
   },
   "effect": {
    "en": "You gain +2 Evasion.",
-   "ru": ""
+   "ru": "Вы получаете +2 к Уклонению."
   },
   "mounted_effect": {
    "en": "",
@@ -198,11 +198,11 @@
  "cb_ghostweave": {
   "name": {
    "en": "Ghostweave",
-   "ru": ""
+   "ru": "Призрачное плетение"
   },
   "effect": {
    "en": "During your turn, you are Invisible. If you take no actions on your turn other than your standard move, Hide, and Boost, you remain Invisible until the start of your next turn. You immediately cease to be Invisible when you take a reaction.",
-   "ru": ""
+   "ru": "В свой ход вы Невидимы. Если в свой ход вы не совершаете никаких действий, кроме стандартного перемещения, Прятаться и Ускориться, вы остаётесь Невидимы до начала своего следующего хода. Вы немедленно теряете Невидимость, совершая реакцию."
   },
   "mounted_effect": {
    "en": "",
@@ -212,11 +212,11 @@
  "cb_integrated_nerveweave": {
   "name": {
    "en": "Integrated Nerveweave",
-   "ru": ""
+   "ru": "Интегрированное нервное плетение"
   },
   "effect": {
    "en": "You may move an additional 2 spaces when you Boost.",
-   "ru": ""
+   "ru": "Вы можете перемещаться на дополнительные 2 клетки, когда Ускоряетесь."
   },
   "mounted_effect": {
    "en": "",
@@ -226,11 +226,11 @@
  "cb_kai_bioplating": {
   "name": {
    "en": "Kai Bioplating",
-   "ru": ""
+   "ru": "Биопокрытие «Кай»"
   },
   "effect": {
    "en": "You gain +1 Accuracy on all Agility checks and saves; additionally, you climb and swim at normal speed, ignore difficult terrain, and when making a standard move, can jump horizontally up to your full Speed and upwards up to half your Speed (in any combination).",
-   "ru": ""
+   "ru": "Вы получаете +1 к Точности на все проверки и спасброски Ловкости; дополнительно, вы взбираетесь и плаваете с нормальной скоростью, игнорируете сложную местность и, совершая стандартное перемещение, можете прыгать горизонтально на расстояние до полной Скорости и вверх на расстояние до половины Скорости (в любой комбинации)."
   },
   "mounted_effect": {
    "en": "",
@@ -240,11 +240,11 @@
  "cb_neurolink_targeting": {
   "name": {
    "en": "Neurolink Targeting",
-   "ru": ""
+   "ru": "Нейросвязанное прицеливание"
   },
   "effect": {
    "en": "Your ranged weapons gain +3 Range.",
-   "ru": ""
+   "ru": "Ваше дальнее оружие получает +3 к Дальности."
   },
   "mounted_effect": {
    "en": "",
@@ -254,11 +254,11 @@
  "cb_the_lesson_of_disbelief": {
   "name": {
    "en": "The Lesson of Disbelief",
-   "ru": ""
+   "ru": "Урок неверия"
   },
   "effect": {
    "en": "You gain +1 accuracy on Systems checks and saves, and +2 E-Defense.",
-   "ru": ""
+   "ru": "Вы получаете +1 к Точности на проверки и спасброски Систем, и +2 к Э-Защите."
   },
   "mounted_effect": {
    "en": "",
@@ -268,11 +268,11 @@
  "cb_the_lesson_of_the_open_door": {
   "name": {
    "en": "The Lesson of the Open Door",
-   "ru": ""
+   "ru": "Урок открытой двери"
   },
   "effect": {
    "en": "Your Save Target increases by +2; additionally, 1/round, when a character fails a save against you, they take 2 heat.",
-   "ru": ""
+   "ru": "Ваша Цель спасброска увеличивается на +2; дополнительно, 1/раунд, когда персонаж проваливает спасбросок против вас, он получает 2 Тепла."
   },
   "mounted_effect": {
    "en": "",
@@ -282,11 +282,11 @@
  "cb_the_lesson_of_the_held_image": {
   "name": {
    "en": "The Lesson of the Held Image",
-   "ru": ""
+   "ru": "Урок удержанного образа"
   },
   "effect": {
    "en": "1/round, as a reaction at the start of any allied character’s turn, you may make a Lock On tech action against any character within line of sight and Sensors.",
-   "ru": ""
+   "ru": "1/раунд, как реакцию в начале хода любого союзного персонажа, вы можете совершить тех-действие Захват цели против любого персонажа в пределах видимости и Сенсоров."
   },
   "mounted_effect": {
    "en": "",
@@ -296,11 +296,11 @@
  "cb_the_lesson_of_thinking_tomorrows_thought": {
   "name": {
    "en": "The Lesson of Thinking-Tomorrow’s-Thought",
-   "ru": ""
+   "ru": "Урок мысли о завтрашнем дне"
   },
   "effect": {
    "en": "When you hit with a tech attack, your next melee attack against the same target gains +1 accuracy, and its damage can’t be reduced in any way.",
-   "ru": ""
+   "ru": "Когда вы попадаете тех-атакой, ваша следующая атака ближнего боя по той же цели получает +1 к Точности, и её урон не может быть уменьшен никаким образом."
   },
   "mounted_effect": {
    "en": "",
@@ -310,11 +310,11 @@
  "cb_the_lesson_of_transubstantiation": {
   "name": {
    "en": "The Lesson of Transubstantiation",
-   "ru": ""
+   "ru": "Урок пресуществления"
   },
   "effect": {
    "en": "Any time you take structure damage, you disappear into a non-space and cease to be a valid target. You reappear in the same space at the start of your next turn. If that space is occupied, you reappear in the nearest available free space (chosen by you).",
-   "ru": ""
+   "ru": "Каждый раз, когда вы получаете структурный урон, вы исчезаете в не-пространстве и перестаёте быть допустимой целью. Вы появляетесь обратно в той же клетке в начале своего следующего хода. Если эта клетка занята, вы появляетесь в ближайшей свободной клетке (по вашему выбору)."
   },
   "mounted_effect": {
    "en": "",
@@ -324,11 +324,11 @@
  "cb_the_lesson_of_shaping": {
   "name": {
    "en": "The Lesson of Shaping",
-   "ru": ""
+   "ru": "Урок формирования"
   },
   "effect": {
    "en": "You may install an additional AI in your mech. If one enters cascade (or becomes unshackled narratively), the other prevents it from taking control of your mech. You only lose control of your mech if both AI-tagged systems or equipment enter cascade.",
-   "ru": ""
+   "ru": "Вы можете установить дополнительный ИИ в своём мехе. Если один из них входит в каскад (или сюжетно освобождается), другой предотвращает захват контроля над вашим мехом. Вы теряете контроль над мехом только если обе системы или оборудование с тегом ИИ входят в каскад."
   },
   "mounted_effect": {
    "en": "",
@@ -338,11 +338,11 @@
  "cb_adaptive_reactor": {
   "name": {
    "en": "Adaptive Reactor",
-   "ru": ""
+   "ru": "Адаптивный реактор"
   },
   "effect": {
    "en": "When you Stabilize and choose to cool your mech, you may spend 2 Repairs to clear 1 stress damage.",
-   "ru": ""
+   "ru": "Когда вы Стабилизируетесь и выбираете охладить свой мех, вы можете потратить 2 Ремонта, чтобы снять 1 стрессовый урон."
   },
   "mounted_effect": {
    "en": "",
@@ -352,11 +352,11 @@
  "cb_armory_sculpted_chassis": {
   "name": {
    "en": "Armory-Sculpted Chassis",
-   "ru": ""
+   "ru": "Шасси авторской работы Арсенала"
   },
   "effect": {
    "en": "You gain +1 accuracy on all Engineering checks and saves. When you Overcharge, you gain soft cover until the start of your next turn.",
-   "ru": ""
+   "ru": "Вы получаете +1 к Точности на все проверки и спасброски Инженерии. Когда вы Форсируете, вы получаете мягкое укрытие до начала своего следующего хода."
   },
   "mounted_effect": {
    "en": "",
@@ -366,11 +366,11 @@
  "cb_heatfall_coolant_system": {
   "name": {
    "en": "Heatfall Coolant System",
-   "ru": ""
+   "ru": "Система охлаждения «Тепловой обвал»"
   },
   "effect": {
    "en": "Your cost for Overcharge never goes past 1d6 heat.",
-   "ru": ""
+   "ru": "Ваша плата за Форсирование никогда не превышает 1d6 Тепла."
   },
   "mounted_effect": {
    "en": "",
@@ -380,11 +380,11 @@
  "cb_integrated_ammo_feeds": {
   "name": {
    "en": "Integrated Ammo Feeds",
-   "ru": ""
+   "ru": "Интегрированная подача боеприпасов"
   },
   "effect": {
    "en": "All Limited systems and weapons gain an additional two charges.",
-   "ru": ""
+   "ru": "Все Лимитированные системы и оружие получают дополнительные два заряда."
   },
   "mounted_effect": {
    "en": "",
@@ -394,11 +394,11 @@
  "cb_stasis_shielding": {
   "name": {
    "en": "Stasis Shielding",
-   "ru": ""
+   "ru": "Стазисное экранирование"
   },
   "effect": {
    "en": "Whenever you take stress damage, you gain Resistance to all damage until the start of your next turn.",
-   "ru": ""
+   "ru": "Каждый раз, когда вы получаете стрессовый урон, вы получаете Сопротивление ко всему урону до начала своего следующего хода."
   },
   "mounted_effect": {
    "en": "",
@@ -408,11 +408,11 @@
  "cb_superior_by_design": {
   "name": {
    "en": "Superior by Design",
-   "ru": ""
+   "ru": "Превосходство по замыслу"
   },
   "effect": {
    "en": "You gain Immunity to Impaired and gain +2 Heat Cap.",
-   "ru": ""
+   "ru": "Вы получаете Иммунитет к Ослаблению и +2 к Пределу тепла."
   },
   "mounted_effect": {
    "en": "",
