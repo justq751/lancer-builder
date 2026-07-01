@@ -2,7 +2,7 @@
  "mw_anti_materiel_rifle": {
   "name": {
    "en": "Anti-Materiel Rifle",
-   "ru": ""
+   "ru": "Противоматериальная винтовка"
   },
   "effect": {
    "en": "",
@@ -12,7 +12,7 @@
  "mw_assault_rifle": {
   "name": {
    "en": "Assault Rifle",
-   "ru": ""
+   "ru": "Штурмовая винтовка"
   },
   "effect": {
    "en": "",
@@ -22,7 +22,7 @@
  "mw_charged_blade": {
   "name": {
    "en": "Charged Blade",
-   "ru": ""
+   "ru": "Заряженный клинок"
   },
   "effect": {
    "en": "",
@@ -32,7 +32,7 @@
  "mw_cyclone_pulse_rifle": {
   "name": {
    "en": "Cyclone Pulse Rifle",
-   "ru": ""
+   "ru": "Импульсная винтовка «Циклон»"
   },
   "effect": {
    "en": "",
@@ -42,7 +42,7 @@
  "mw_heavy_charged_blade": {
   "name": {
    "en": "Heavy Charged Blade",
-   "ru": ""
+   "ru": "Тяжёлый заряженный клинок"
   },
   "effect": {
    "en": "",
@@ -52,7 +52,7 @@
  "mw_heavy_machine_gun": {
   "name": {
    "en": "Heavy Machine Gun",
-   "ru": ""
+   "ru": "Тяжёлый пулемёт"
   },
   "effect": {
    "en": "",
@@ -62,7 +62,7 @@
  "mw_heavy_melee_weapon": {
   "name": {
    "en": "Heavy Melee Weapon",
-   "ru": ""
+   "ru": "Тяжёлое оружие ближнего боя"
   },
   "effect": {
    "en": "",
@@ -72,7 +72,7 @@
  "mw_howitzer": {
   "name": {
    "en": "Howitzer",
-   "ru": ""
+   "ru": "Гаубица"
   },
   "effect": {
    "en": "",
@@ -82,7 +82,7 @@
  "mw_missile_rack": {
   "name": {
    "en": "Missile Rack",
-   "ru": ""
+   "ru": "Ракетная стойка"
   },
   "effect": {
    "en": "",
@@ -92,7 +92,7 @@
  "mw_mortar": {
   "name": {
    "en": "Mortar",
-   "ru": ""
+   "ru": "Мортира"
   },
   "effect": {
    "en": "",
@@ -102,7 +102,7 @@
  "mw_nexus_hunter_killer": {
   "name": {
    "en": "Nexus (Hunter-Killer)",
-   "ru": ""
+   "ru": "Nexus (Охотник-убийца)"
   },
   "effect": {
    "en": "",
@@ -112,7 +112,7 @@
  "mw_nexus_light": {
   "name": {
    "en": "Nexus (Light)",
-   "ru": ""
+   "ru": "Nexus (Лёгкий)"
   },
   "effect": {
    "en": "",
@@ -122,7 +122,7 @@
  "mw_pistol": {
   "name": {
    "en": "Pistol",
-   "ru": ""
+   "ru": "Пистолет"
   },
   "effect": {
    "en": "",
@@ -132,7 +132,7 @@
  "mw_segment_knife": {
   "name": {
    "en": "Segment Knife",
-   "ru": ""
+   "ru": "Секционный нож"
   },
   "effect": {
    "en": "",
@@ -142,7 +142,7 @@
  "mw_rocket_propelled_grenade": {
   "name": {
    "en": "Rocket-Propelled Grenade",
-   "ru": ""
+   "ru": "Реактивная граната"
   },
   "effect": {
    "en": "",
@@ -152,7 +152,7 @@
  "mw_shotgun": {
   "name": {
    "en": "Shotgun",
-   "ru": ""
+   "ru": "Дробовик"
   },
   "effect": {
    "en": "",
@@ -162,7 +162,7 @@
  "mw_tactical_knife": {
   "name": {
    "en": "Tactical Knife",
-   "ru": ""
+   "ru": "Тактический нож"
   },
   "effect": {
    "en": "",
@@ -172,7 +172,7 @@
  "mw_tactical_melee_weapon": {
   "name": {
    "en": "Tactical Melee Weapon",
-   "ru": ""
+   "ru": "Тактическое оружие ближнего боя"
   },
   "effect": {
    "en": "",
@@ -182,7 +182,7 @@
  "mw_thermal_lance": {
   "name": {
    "en": "Thermal Lance",
-   "ru": ""
+   "ru": "Термическое копьё"
   },
   "effect": {
    "en": "",
@@ -192,7 +192,7 @@
  "mw_thermal_pistol": {
   "name": {
    "en": "Thermal Pistol",
-   "ru": ""
+   "ru": "Термический пистолет"
   },
   "effect": {
    "en": "",
@@ -202,7 +202,7 @@
  "mw_thermal_rifle": {
   "name": {
    "en": "Thermal Rifle",
-   "ru": ""
+   "ru": "Термическая винтовка"
   },
   "effect": {
    "en": "",
@@ -212,7 +212,7 @@
  "mw_chain_axe": {
   "name": {
    "en": "Chain Axe",
-   "ru": ""
+   "ru": "Цепной топор"
   },
   "effect": {
    "en": "",
@@ -220,23 +220,23 @@
   },
   "on_crit": {
    "en": "Your target becomes Shredded until the end of the current turn.",
-   "ru": ""
+   "ru": "Ваша цель становится Истрёпанной до конца текущего хода."
   }
  },
  "mw_bristlecrown_flechette_launcher": {
   "name": {
    "en": "Bristlecrown Flechette Launcher",
-   "ru": ""
+   "ru": "Пускатель стрел «Терновый венец»"
   },
   "effect": {
    "en": "This weapon ignores ranged penalties from Engaged, and deals 3 Kinetic damage to Grappled or Biological targets, instead of 1.",
-   "ru": ""
+   "ru": "Это оружие игнорирует штрафы дальности от Вовлечённости и наносит 3 кинетического урона по Захваченным или Биологическим целям вместо 1."
   }
  },
  "mw_nanocarbon_sword": {
   "name": {
    "en": "Nanocarbon Sword",
-   "ru": ""
+   "ru": "Нанокарбоновый меч"
   },
   "effect": {
    "en": "",
@@ -246,7 +246,7 @@
  "mw_assault_cannon": {
   "name": {
    "en": "Assault Cannon",
-   "ru": ""
+   "ru": "Штурмовая пушка"
   },
   "effect": {
    "en": "",
@@ -256,7 +256,7 @@
  "mw_concussion_missiles": {
   "name": {
    "en": "Concussion Missiles",
-   "ru": ""
+   "ru": "Осколочно-контузионные ракеты"
   },
   "effect": {
    "en": "",
@@ -264,13 +264,13 @@
   },
   "on_hit": {
    "en": "The target must succeed on a Hull save or become Impaired until the end of their next turn.",
-   "ru": ""
+   "ru": "Цель должна пройти спасбросок Корпуса, иначе становится Ослаблена до конца своего следующего хода."
   }
  },
  "mw_leviathan_heavy_assault_cannon": {
   "name": {
    "en": "Leviathan Heavy Assault Cannon",
-   "ru": ""
+   "ru": "Тяжёлая штурмовая пушка «Левиафан»"
   },
   "effect": {
    "en": "",
@@ -280,17 +280,17 @@
  "mw_cutter_mkii_plasma_torch": {
   "name": {
    "en": "Cutter MkII Plasma Torch",
-   "ru": ""
+   "ru": "Плазменный резак «Каттер» Mk II"
   },
   "effect": {
    "en": "This weapon deals 10AP energy to objects, cover, terrain, and the environment.",
-   "ru": ""
+   "ru": "Это оружие наносит 10 бронебойного энергетического урона объектам, укрытиям, местности и окружению."
   }
  },
  "mw_war_pike": {
   "name": {
    "en": "War Pike",
-   "ru": ""
+   "ru": "Боевая пика"
   },
   "effect": {
    "en": "",
@@ -300,7 +300,7 @@
  "mw_power_knuckles": {
   "name": {
    "en": "Power Knuckles",
-   "ru": ""
+   "ru": "Силовые кастеты"
   },
   "effect": {
    "en": "",
@@ -308,13 +308,13 @@
   },
   "on_crit": {
    "en": "Your target must succeed on a Hull save or be knocked Prone.",
-   "ru": ""
+   "ru": "Ваша цель должна пройти спасбросок Корпуса, иначе сбивается с ног."
   }
  },
  "mw_hand_cannon": {
   "name": {
    "en": "Hand Cannon",
-   "ru": ""
+   "ru": "Ручная пушка"
   },
   "effect": {
    "en": "",
@@ -324,7 +324,7 @@
  "mw_bolt_thrower": {
   "name": {
    "en": "Bolt Thrower",
-   "ru": ""
+   "ru": "Болтомёт"
   },
   "effect": {
    "en": "",
@@ -334,7 +334,7 @@
  "mw_kinetic_hammer": {
   "name": {
    "en": "Kinetic Hammer",
-   "ru": ""
+   "ru": "Кинетический молот"
   },
   "effect": {
    "en": "",
@@ -344,7 +344,7 @@
  "mw_deck_sweeper_automatic_shotgun": {
   "name": {
    "en": "Deck-Sweeper Automatic Shotgun",
-   "ru": ""
+   "ru": "Автоматический дробовик «Метельщик палубы»"
   },
   "effect": {
    "en": "",
@@ -354,7 +354,7 @@
  "mw_daisy_cutter": {
   "name": {
    "en": "Daisy Cutter",
-   "ru": ""
+   "ru": "«Косильщик»"
   },
   "effect": {
    "en": "",
@@ -362,13 +362,13 @@
   },
   "on_attack": {
    "en": "Creates a cloud of smoke and detritus in the attack cone, providing soft cover in the affected area that lasts until the end of your next turn.",
-   "ru": ""
+   "ru": "Создаёт облако дыма и обломков в конусе атаки, дающее мягкое укрытие в поражённой области до конца вашего следующего хода."
   }
  },
  "mw_catalytic_hammer": {
   "name": {
    "en": "Catalytic Hammer",
-   "ru": ""
+   "ru": "Катализирующий молот"
   },
   "effect": {
    "en": "",
@@ -376,13 +376,13 @@
   },
   "on_crit": {
    "en": "Your target must succeed on a Hull save or become Stunned until the end of their next turn.",
-   "ru": ""
+   "ru": "Ваша цель должна пройти спасбросок Корпуса, иначе становится Ошеломлена до конца своего следующего хода."
   }
  },
  "mw_impact_lance": {
   "name": {
    "en": "Impact Lance",
-   "ru": ""
+   "ru": "Ударное копьё"
   },
   "effect": {
    "en": "",
@@ -390,13 +390,13 @@
   },
   "on_attack": {
    "en": "You also attack all characters in a Line between you and your target. You take 1 heat for each target past the first.",
-   "ru": ""
+   "ru": "Вы также атакуете всех персонажей на Линии между вами и целью. Вы получаете 1 Тепла за каждую цель после первой."
   }
  },
  "mw_impaler_nailgun": {
   "name": {
    "en": "Impaler Nailgun",
-   "ru": ""
+   "ru": "Гвоздомёт «Пронзатель»"
   },
   "effect": {
    "en": "",
@@ -404,23 +404,23 @@
   },
   "on_hit": {
    "en": "Targets must succeed on a Hull save or become Immobilized until the end of their next turn.",
-   "ru": ""
+   "ru": "Цели должны пройти спасбросок Корпуса, иначе становятся Обездвижены до конца своего следующего хода."
   }
  },
  "mw_combat_drill": {
   "name": {
    "en": "Combat Drill",
-   "ru": ""
+   "ru": "Боевой бур"
   },
   "effect": {
    "en": "When attacking a character that is Prone, Immobilized, or Stunned, this weapon’s Overkill tag does an extra +1d6 bonus damage each time it activates. This can activate indefinitely if the new bonus die result is a 1, triggering Overkill again.",
-   "ru": ""
+   "ru": "Атакуя персонажа, который сбит с ног, Обездвижен или Ошеломлён, свойство Сверхурон этого оружия наносит дополнительные +1d6 бонусного урона каждый раз, когда срабатывает. Это может срабатывать бесконечно, если новый результат кости бонуса — 1, повторно вызывая Сверхурон."
   }
  },
  "mw_magnetic_cannon": {
   "name": {
    "en": "Magnetic Cannon",
-   "ru": ""
+   "ru": "Магнитная пушка"
   },
   "effect": {
    "en": "",
@@ -428,13 +428,13 @@
   },
   "on_hit": {
    "en": "All characters within the affected area must succeed on a Hull save or be pulled 1d3+1 spaces toward you, or as close as possible.",
-   "ru": ""
+   "ru": "Все персонажи в поражённой области должны пройти спасбросок Корпуса, иначе притягиваются на 1d3+1 клетки к вам или как можно ближе."
   }
  },
  "mw_vulture_dmr": {
   "name": {
    "en": "Vulture DMR",
-   "ru": ""
+   "ru": "Снайперская винтовка «Гриф»"
   },
   "effect": {
    "en": "",
@@ -444,7 +444,7 @@
  "mw_railgun": {
   "name": {
    "en": "Railgun",
-   "ru": ""
+   "ru": "Рельсотрон"
   },
   "effect": {
    "en": "",
@@ -454,17 +454,17 @@
  "mw_veil_rifle": {
   "name": {
    "en": "Veil Rifle",
-   "ru": ""
+   "ru": "Винтовка «Завеса»"
   },
   "effect": {
    "en": "This weapon does not attack allied characters caught in its area of effect; instead, it shrouds them in a field of coruscating energy that throws off targeting systems, giving them soft cover until the end of their next turn.",
-   "ru": ""
+   "ru": "Это оружие не атакует союзных персонажей в области поражения; вместо этого оно окутывает их полем искрящейся энергии, сбивающим системы прицеливания и дающим мягкое укрытие до конца их следующего хода."
   }
  },
  "mw_burst_launcher": {
   "name": {
    "en": "Burst Launcher",
-   "ru": ""
+   "ru": "Пускатель залпов"
   },
   "effect": {
    "en": "",
@@ -472,13 +472,13 @@
   },
   "on_crit": {
    "en": "Target becomes Impaired until the end of their next turn.",
-   "ru": ""
+   "ru": "Цель становится Ослаблена до конца своего следующего хода."
   }
  },
  "mw_rail_rifle": {
   "name": {
    "en": "Rail Rifle",
-   "ru": ""
+   "ru": "Рельсовая винтовка"
   },
   "effect": {
    "en": "",
@@ -488,7 +488,7 @@
  "mw_shock_knife": {
   "name": {
    "en": "Shock Knife",
-   "ru": ""
+   "ru": "Шоковый нож"
   },
   "effect": {
    "en": "",
@@ -498,17 +498,17 @@
  "mw_sharanga_missiles": {
   "name": {
    "en": "Sharanga Missiles",
-   "ru": ""
+   "ru": "Ракеты «Шаранга»"
   },
   "effect": {
    "en": "This weapon can attack two targets at a time.",
-   "ru": ""
+   "ru": "Это оружие может атаковать две цели одновременно."
   }
  },
  "mw_gandiva_missiles": {
   "name": {
    "en": "Gandiva Missiles",
-   "ru": ""
+   "ru": "Ракеты «Гандива»"
   },
   "effect": {
    "en": "",
@@ -518,17 +518,17 @@
  "mw_pinaka_missiles": {
   "name": {
    "en": "Pinaka Missiles",
-   "ru": ""
+   "ru": "Ракеты «Пинака»"
   },
   "effect": {
    "en": "Attacks with this weapon create up to two blast 1 areas, which cannot overlap.<br>You may also delay the impact of attacks made with this weapon. Choose the target area(s), which become visible to all characters: the missiles land at the end of the next round, after all characters have acted, and deal 3d6 explosive damage instead of 2d6, but you become Slowed until the end of your next turn.",
-   "ru": ""
+   "ru": "Атаки этим оружием создают до двух областей взрыва 1, которые не могут перекрываться.<br>Вы также можете отложить попадание атак, совершённых этим оружием. Выберите область(и) цели, которые становятся видимыми всем персонажам: ракеты приземляются в конце следующего раунда, после того как все персонажи совершат действия, и наносят 3d6 взрывного урона вместо 2d6, но вы становитесь Замедлены до конца своего следующего хода."
   }
  },
  "mw_fold_knife": {
   "name": {
    "en": "Fold Knife",
-   "ru": ""
+   "ru": "Складной нож"
   },
   "effect": {
    "en": "",
@@ -536,13 +536,13 @@
   },
   "on_crit": {
    "en": "You may teleport 2 spaces in any direction after the attack resolves.",
-   "ru": ""
+   "ru": "Вы можете телепортироваться на 2 клетки в любом направлении после разрешения атаки."
   }
  },
  "mw_vijaya_rockets": {
   "name": {
    "en": "Vijaya Rockets",
-   "ru": ""
+   "ru": "Ракеты «Виджая»"
   },
   "effect": {
    "en": "",
@@ -552,7 +552,7 @@
  "mw_variable_sword": {
   "name": {
    "en": "Variable Sword",
-   "ru": ""
+   "ru": "Вариативный меч"
   },
   "effect": {
    "en": "",
@@ -560,13 +560,13 @@
   },
   "on_crit": {
    "en": "Deal +1d6 bonus damage.",
-   "ru": ""
+   "ru": "Нанесите +1d6 бонусного урона."
   }
  },
  "mw_oracle_lmg_i": {
   "name": {
    "en": "Oracle LMG-I",
-   "ru": ""
+   "ru": "Ручной пулемёт «Оракул»-I"
   },
   "effect": {
    "en": "",
@@ -576,7 +576,7 @@
  "mw_nanobot_whip": {
   "name": {
    "en": "Nanobot Whip",
-   "ru": ""
+   "ru": "Нанобот-плеть"
   },
   "effect": {
    "en": "",
@@ -584,13 +584,13 @@
   },
   "on_crit": {
    "en": "Pull your target to a free space adjacent to you, or as close as possible.",
-   "ru": ""
+   "ru": "Притяните цель на свободную клетку рядом с собой или как можно ближе."
   }
  },
  "mw_swarm_hive_nanites": {
   "name": {
    "en": "Swarm/Hive Nanites",
-   "ru": ""
+   "ru": "Нанороботы улья/роя"
   },
   "effect": {
    "en": "",
@@ -600,27 +600,27 @@
  "mw_autopod": {
   "name": {
    "en": "Autopod",
-   "ru": ""
+   "ru": "Автомодуль"
   },
   "effect": {
    "en": "Instead of using any kind of trigger mechanism, this weapon automatically scans for target locks, firing spinning, razor-sharp disks upon successful IDs. Gain the Autonomous Assault reaction, which is the only way you can attack with the Autopod",
-   "ru": ""
+   "ru": "Вместо использования какого-либо спускового механизма, это оружие автоматически сканирует захваты цели, открывая огонь вращающимися остро отточенными дисками при успешном опознавании. Получите реакцию «Автономная атака» — единственный способ атаковать этим Автомодулем."
   }
  },
  "mw_vorpal_gun": {
   "name": {
    "en": "Vorpal Gun",
-   "ru": ""
+   "ru": "Смертоносное орудие"
   },
   "effect": {
    "en": "Gain the Snicker-Snack reaction, which is the only way you can attack with this weapon.",
-   "ru": ""
+   "ru": "Получите реакцию «Хрясь-и-щёлк» — единственный способ атаковать этим оружием."
   }
  },
  "mw_ghoul_nexus": {
   "name": {
    "en": "Ghoul Nexus",
-   "ru": ""
+   "ru": "Nexus «Гуль»"
   },
   "effect": {
    "en": "",
@@ -628,23 +628,23 @@
   },
   "on_attack": {
    "en": "Choose this weapon’s damage type.",
-   "ru": ""
+   "ru": "Выберите тип урона этого оружия."
   }
  },
  "mw_ghast_nexus": {
   "name": {
    "en": "Ghast Nexus",
-   "ru": ""
+   "ru": "Nexus «Упырь»"
   },
   "effect": {
    "en": "This weapon may be used to attack as normal, or deployed as a Drone",
-   "ru": ""
+   "ru": "Это оружие можно использовать для атаки как обычно, либо развернуть как Дрон."
   }
  },
  "mw_annihilation_nexus": {
   "name": {
    "en": "Annihilation Nexus",
-   "ru": ""
+   "ru": "Nexus «Аннигиляция»"
   },
   "effect": {
    "en": "",
@@ -652,13 +652,13 @@
   },
   "on_attack": {
    "en": "You can make a second attack with this weapon at the start of your next turn as a protocol. This secondary attack can’t deal bonus damage, and doesn't trigger additional secondary attacks.<br>You may center this weapon’s attack on either yourself or any of your Drones within Sensors.",
-   "ru": ""
+   "ru": "Вы можете совершить вторую атаку этим оружием в начале своего следующего хода как протокол. Эта вторичная атака не может наносить бонусный урон и не провоцирует дополнительные вторичные атаки.<br>Вы можете центрировать атаку этим оружием либо на себе, либо на любом из своих Дронов в пределах Сенсоров."
   }
  },
  "mw_catalyst_pistol": {
   "name": {
    "en": "Catalyst Pistol",
-   "ru": ""
+   "ru": "Пистолет-катализатор"
   },
   "effect": {
    "en": "",
@@ -668,7 +668,7 @@
  "mw_arc_projector": {
   "name": {
    "en": "Arc Projector",
-   "ru": ""
+   "ru": "Дугопроектор"
   },
   "effect": {
    "en": "",
@@ -676,13 +676,13 @@
   },
   "on_hit": {
    "en": "You may also make a secondary attack against a different character within range 3 of the first target. You can continue making secondary attacks on hits, as long as there are new, valid targets within range; however, each attack generates 1 heat, and secondary attacks can’t deal bonus damage. Characters can’t be hit more than once with the same firing of this weapon.",
-   "ru": ""
+   "ru": "Вы также можете совершить вторичную атаку по другому персонажу в пределах Дальности 3 от первой цели. Вы можете продолжать совершать вторичные атаки при попаданиях, пока есть новые допустимые цели в пределах дальности; однако каждая атака создаёт 1 Тепла, и вторичные атаки не могут наносить бонусный урон. Персонаж не может быть поражён более одного раза за один выстрел этого оружия."
   }
  },
  "mw_smartgun": {
   "name": {
    "en": "Smartgun",
-   "ru": ""
+   "ru": "Умное оружие"
   },
   "effect": {
    "en": "",
@@ -692,27 +692,27 @@
  "mw_mimic_gun": {
   "name": {
    "en": "Mimic Gun",
-   "ru": ""
+   "ru": "Оружие-мимик"
   },
   "effect": {
    "en": "This horrifying weapon has no basic form; it constantly contorts itself into different shapes, mimicking the weapons of other combatants. It counts as all ranged weapon types simultaneously (e.g., CQB, Rifle, etc.), but it can’t take Mods or benefit from core bonuses, although it still benefits from talents as normal.<br>At the start of combat, roll 3d20 and note the results in order: X, Y, and Z. X is its starting base Range (before modifications from talents). At the start of each of your turns after the first, the mimic gun cycles to the next result, taking that as its base Range. After Z, it cycles back to X.<br>The mimic gun does kinetic equal to 1 + half of its current base Range.<br>You may provoke the mimic gun as a full action, rolling a new set of 3d20.",
-   "ru": ""
+   "ru": "У этого жуткого оружия нет базовой формы; оно постоянно принимает разные очертания, подражая оружию других бойцов. Оно считается всеми типами дального оружия одновременно (например, Ближний огневой контакт, Винтовка и т.д.), но не может получать Моды или бонусы CORE, хотя всё равно получает выгоду от талантов как обычно.<br>В начале боя бросьте 3d20 и запишите результаты по порядку: X, Y и Z. X — стартовая базовая Дальность (до модификаций от талантов). В начале каждого своего хода после первого, оружие-мимик переключается на следующий результат, принимая его как базовую Дальность. После Z оно возвращается к X.<br>Оружие-мимик наносит кинетический урон, равный 1 плюс половина его текущей базовой Дальности.<br>Вы можете спровоцировать оружие-мимик как полное действие, бросив новый набор 3d20."
   }
  },
  "mw_autogun": {
   "name": {
    "en": "Autogun",
-   "ru": ""
+   "ru": "Автопушка"
   },
   "effect": {
    "en": "This weapon can’t make normal attacks. Instead, you can attack with it as a free action at the end of your turn. It doesn’t benefit from or trigger your talents.",
-   "ru": ""
+   "ru": "Это оружие не может совершать обычные атаки. Вместо этого вы можете атаковать им как свободное действие в конце своего хода. Оно не получает выгоду от ваших талантов и не провоцирует их."
   }
  },
  "mw_siege_cannon": {
   "name": {
    "en": "Siege Cannon",
-   "ru": ""
+   "ru": "Осадная пушка"
   },
   "effect": {
    "en": "",
@@ -722,7 +722,7 @@
  "mw_krakatoa_thermobaric_flamethrower": {
   "name": {
    "en": "Krakatoa Thermobaric Flamethrower",
-   "ru": ""
+   "ru": "Термобарический огнемёт «Кракатау»"
   },
   "effect": {
    "en": "",
@@ -732,21 +732,21 @@
  "mw_plasma_thrower": {
   "name": {
    "en": "Plasma Thrower",
-   "ru": ""
+   "ru": "Плазменный излучатель"
   },
   "effect": {
    "en": "Can be fired as Cone 7 <i>or</i> Line 10",
-   "ru": ""
+   "ru": "Может быть выпущено как Конус 7 <i>либо</i> Линия 10"
   },
   "on_attack": {
    "en": "White-hot flames continue to burn in 3 free spaces of your choice within the affected area, lasting for the rest of the scene. When characters start their turn in one of these spaces or enter one for the first time in a round, they take 1d6 energy damage.",
-   "ru": ""
+   "ru": "В 3 свободных клетках по вашему выбору в поражённой области продолжает гореть раскалённое пламя до конца текущей сцены. Когда персонажи начинают ход в одной из этих клеток или впервые входят в неё за раунд, они получают 1d6 энергетического урона."
   }
  },
  "mw_stub_cannon": {
   "name": {
    "en": "Stub Cannon",
-   "ru": ""
+   "ru": "Короткоствольная пушка"
   },
   "effect": {
    "en": "",
@@ -756,7 +756,7 @@
  "mw_gravity_gun": {
   "name": {
    "en": "Gravity Gun",
-   "ru": ""
+   "ru": "Гравитационное орудие"
   },
   "effect": {
    "en": "",
@@ -764,13 +764,13 @@
   },
   "on_attack": {
    "en": "Characters within the affected area must succeed on a Hull save or take 1d6 energy damage and be pulled as close to the center of the blast possible. This weapon cannot be modified or benefit from core bonuses.",
-   "ru": ""
+   "ru": "Персонажи в поражённой области должны пройти спасбросок Корпуса, иначе получают 1d6 энергетического урона и притягиваются как можно ближе к центру взрыва. Это оружие не может быть модифицировано и не получает бонусы CORE."
   }
  },
  "mw_displacer": {
   "name": {
    "en": "Displacer",
-   "ru": ""
+   "ru": "Дисплейсер"
   },
   "effect": {
    "en": "",
@@ -780,17 +780,17 @@
  "mw_shatterhead_colony_missiles": {
   "name": {
    "en": "Shatterhead Colony Missiles",
-   "ru": ""
+   "ru": "Колониальные ракеты «Осколочная голова»"
   },
   "effect": {
    "en": "The final attack roll for this weapon can never be affected by difficulty.",
-   "ru": ""
+   "ru": "Итоговый бросок атаки этим оружием никогда не может быть затронут Сложностью."
   }
  },
  "mw_sol_pattern_laser_rifle": {
   "name": {
    "en": "SOL-Pattern Laser Rifle",
-   "ru": ""
+   "ru": "Лазерная винтовка образца SOL"
   },
   "effect": {
    "en": "",
@@ -800,7 +800,7 @@
  "mw_andromeda_pattern_heavy_laser_rifle": {
   "name": {
    "en": "ANDROMEDA-Pattern Heavy Laser Rifle",
-   "ru": ""
+   "ru": "Тяжёлая лазерная винтовка образца ANDROMEDA"
   },
   "effect": {
    "en": "",
@@ -810,7 +810,7 @@
  "mw_tachyon_lance": {
   "name": {
    "en": "Tachyon Lance",
-   "ru": ""
+   "ru": "Тахионное копьё"
   },
   "effect": {
    "en": "",
@@ -818,13 +818,13 @@
   },
   "on_attack": {
    "en": "If you’re in the Danger Zone, create a cone 3 backblast of burning plasma in the opposite direction to the attack. Characters within the affected area must succeed on an Engineering save or take 4 burn and 2 heat. Until the start of your next turn, the affected area provides soft cover.",
-   "ru": ""
+   "ru": "Если вы в Опасной зоне, создайте обратный выброс горящей плазмы конусом 3 в направлении, противоположном атаке. Персонажи в поражённой области должны пройти спасбросок Инженерии, иначе получают 4 огня и 2 Тепла. До начала вашего следующего хода поражённая область даёт мягкое укрытие."
   }
  },
  "mw_annihilator": {
   "name": {
    "en": "Annihilator",
-   "ru": ""
+   "ru": "Аннигилятор"
   },
   "effect": {
    "en": "",
@@ -832,13 +832,13 @@
   },
   "on_hit": {
    "en": "Make a secondary attack against all characters within burst 1 of the target. These attacks can’t deal bonus damage, and don’t trigger the Annihilator’s heat cost or secondary attacks.",
-   "ru": ""
+   "ru": "Совершите вторичную атаку по всем персонажам в пределах вспышки 1 от цели. Эти атаки не могут наносить бонусный урон и не провоцируют затраты Тепла или вторичные атаки Аннигилятора."
   }
  },
  "mw_torch": {
   "name": {
    "en": "Torch",
-   "ru": ""
+   "ru": "Факел"
   },
   "effect": {
    "en": "",
@@ -848,7 +848,7 @@
  "mw_fuel_rod_gun": {
   "name": {
    "en": "Fuel Rod Gun",
-   "ru": ""
+   "ru": "Пушка топливных стержней"
   },
   "effect": {
    "en": "",
@@ -856,73 +856,73 @@
   },
   "on_attack": {
    "en": "Clear 4 heat.",
-   "ru": ""
+   "ru": "Сбросьте 4 Тепла."
   }
  },
  "mw_prototype_1": {
   "name": {
    "en": "Prototype Weapon I",
-   "ru": ""
+   "ru": "Прототипное оружие I"
   },
   "effect": {
    "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 1d6+2 to determine this weapon’s Limited uses.",
-   "ru": ""
+   "ru": "Это оружие — экспериментальный прототип, созданный под ваши конкретные требования.<br>Когда вы устанавливаете его или проводите Полный ремонт, вы можете выбрать новый тип оружия, тип урона и либо Угрозу 1 (ближнее), либо Дальность 10 (все остальные типы). Дополнительно, каждый раз при Полном ремонте, перебрасывайте 1d6+2 для определения количества использований этого оружия по Лимиту."
   }
  },
  "mw_prototype_2": {
   "name": {
    "en": "Prototype Weapon II",
-   "ru": ""
+   "ru": "Прототипное оружие II"
   },
   "effect": {
    "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 1d6+2 to determine this weapon’s Limited uses and choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></li></ul></ul>",
-   "ru": ""
+   "ru": "Это оружие — экспериментальный прототип, созданный под ваши конкретные требования.<br>Когда вы устанавливаете его или проводите Полный ремонт, вы можете выбрать новый тип оружия, тип урона и либо Угрозу 1 (ближнее), либо Дальность 10 (все остальные типы). Дополнительно, каждый раз при Полном ремонте, перебрасывайте 1d6+2 для определения количества использований этого оружия по Лимиту и выбирайте два:<ul><li><b>Доработанная оптика:</b> Ваше прототипное оружие всегда получает +1 к Точности атак.</li><li><b>Доработанный компьютер:</b> Ваше прототипное оружие становится Умным.</li><li><b>Снятая защита реактора:</b> Каждый раз, когда вы атакуете своим прототипным оружием, вы можете выбрать — за 2 Тепла — атаковать одним из следующих вариантов, зависящих от типа оружия:<ul><li><b>Дальнее оружие:</b> Конус 3, Линия 5 или [Взрыв 1, Дальность 10].</li><li><b>Оружие ближнего боя:</b> Вспышка 1.</li></li></ul></ul>"
   }
  },
  "mw_prototype_3": {
   "name": {
    "en": "Prototype Weapon III",
-   "ru": ""
+   "ru": "Прототипное оружие III"
   },
   "effect": {
    "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 2d6 to determine this weapon’s Limited uses and choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></li></ul></ul>",
-   "ru": ""
+   "ru": "Это оружие — экспериментальный прототип, созданный под ваши конкретные требования.<br>Когда вы устанавливаете его или проводите Полный ремонт, вы можете выбрать новый тип оружия, тип урона и либо Угрозу 1 (ближнее), либо Дальность 10 (все остальные типы). Дополнительно, каждый раз при Полном ремонте, перебрасывайте 2d6 для определения количества использований этого оружия по Лимиту и выбирайте два:<ul><li><b>Доработанная оптика:</b> Ваше прототипное оружие всегда получает +1 к Точности атак.</li><li><b>Доработанный компьютер:</b> Ваше прототипное оружие становится Умным.</li><li><b>Снятая защита реактора:</b> Каждый раз, когда вы атакуете своим прототипным оружием, вы можете выбрать — за 2 Тепла — атаковать одним из следующих вариантов, зависящих от типа оружия:<ul><li><b>Дальнее оружие:</b> Конус 3, Линия 5 или [Взрыв 1, Дальность 10].</li><li><b>Оружие ближнего боя:</b> Вспышка 1.</li></li></ul></ul>"
   }
  },
  "mw_lancaster_integrated": {
   "name": {
    "en": "Latch Drone",
-   "ru": ""
+   "ru": "Латч-дрон"
   },
   "effect": {
    "en": "This weapon can’t make normal attacks. Instead, choose an allied mech within Range and line of sight and make a ranged attack against Evasion 8. On a hit, either you or your target may spend 1 Repair to restore half your target’s HP.",
-   "ru": ""
+   "ru": "Это оружие не может совершать обычные атаки. Вместо этого выберите союзный мех в пределах Дальности и видимости и совершите дальнюю атаку против Уклонения 8. При попадании либо вы, либо ваша цель можете потратить 1 Ремонт, чтобы восстановить половину ОЗ цели."
   }
  },
  "mw_raleigh_integrated": {
   "name": {
    "en": "M35 Mjolnir",
-   "ru": ""
+   "ru": "M35 «Мьёльнир»"
   },
   "effect": {
    "en": "1/round, when you reload any weapon, this weapon can be fired as a free action.",
-   "ru": ""
+   "ru": "1/раунд, когда вы перезаряжаете любое оружие, это оружие можно выстрелить как свободное действие."
   }
  },
  "mw_barbarossa_integrated": {
   "name": {
    "en": "Apocalypse Rail",
-   "ru": ""
+   "ru": "«Рельса Апокалипсиса»"
   },
   "effect": {
    "en": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power.<br>This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5.<br> After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
-   "ru": ""
+   "ru": "«Рельса Апокалипсиса» должна быть заряжена перед выстрелом, с помощью CORE-способности «Зарядить рельсу».<br>У этого оружия разные профили, определяемые текущим значением КОСТИ АПОКАЛИПСИСА в момент выстрела. Каждый профиль заменяет предыдущий. «Рельса Апокалипсиса» не может стрелять по целям в пределах Дальности 5.<br>После атаки «Рельсой Апокалипсиса» Кость Апокалипсиса сбрасывается на 4."
   }
  },
  "mw_sherman_integrated": {
   "name": {
    "en": "ZF4 SOLIDCORE",
-   "ru": ""
+   "ru": "ZF4 SOLIDCORE"
   },
   "effect": {
    "en": "",
