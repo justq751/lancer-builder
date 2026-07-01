@@ -1,0 +1,117 @@
+{
+  "_comment": "Shared vocabulary used all over the data (mount/weapon/system types, tags, damage types, activation, mech roles). Translate the 'ru' value. This file is read by the app's t() helper and used to translate short recurring words instead of duplicating the translation in every single item.",
+
+  "mount_types": {
+    "Main": {"en": "Main", "ru": "Основной"},
+    "Heavy": {"en": "Heavy", "ru": "Тяжёлый"},
+    "Auxiliary": {"en": "Auxiliary", "ru": "Вспомогательный"},
+    "Superheavy": {"en": "Superheavy", "ru": "Сверхтяжёлый"},
+    "Flex": {"en": "Flex", "ru": "Гибкий"},
+    "Main/Aux": {"en": "Main/Aux", "ru": "Основной/Вспом."},
+    "Aux/Aux": {"en": "Aux/Aux", "ru": "Вспом./Вспом."},
+    "Ship-class": {"en": "Ship-class", "ru": "Корабельный"}
+  },
+
+  "weapon_types": {
+    "Rifle": {"en": "Rifle", "ru": "Винтовка"},
+    "Cannon": {"en": "Cannon", "ru": "Пушка"},
+    "Melee": {"en": "Melee", "ru": "Ближний бой"},
+    "CQB": {"en": "CQB", "ru": "Ближний огневой контакт"},
+    "Launcher": {"en": "Launcher", "ru": "Пусковая установка"},
+    "Nexus": {"en": "Nexus", "ru": "Нексус"},
+    "Special": {"en": "Special", "ru": "Особое"},
+    "Spool Weapon": {"en": "Spool Weapon", "ru": "Раскручиваемое оружие"},
+    "???": {"en": "???", "ru": "???"}
+  },
+
+  "system_types": {
+    "System": {"en": "System", "ru": "Система"},
+    "AI": {"en": "AI", "ru": "ИИ"},
+    "Tech": {"en": "Tech", "ru": "Тех"},
+    "Shield": {"en": "Shield", "ru": "Щит"},
+    "Drone": {"en": "Drone", "ru": "Дрон"},
+    "Deployable": {"en": "Deployable", "ru": "Разворачиваемое"},
+    "Flight System": {"en": "Flight System", "ru": "Система полёта"}
+  },
+
+  "mech_roles": {
+    "Balanced": {"en": "Balanced", "ru": "Универсал"},
+    "Striker": {"en": "Striker", "ru": "Штурмовик"},
+    "Defender": {"en": "Defender", "ru": "Защитник"},
+    "Support": {"en": "Support", "ru": "Поддержка"},
+    "Controller": {"en": "Controller", "ru": "Контроллер"},
+    "Artillery": {"en": "Artillery", "ru": "Артиллерия"}
+  },
+
+  "damage_types": {
+    "Kinetic": {"en": "Kinetic", "ru": "Кинетический"},
+    "Explosive": {"en": "Explosive", "ru": "Взрывной"},
+    "Energy": {"en": "Energy", "ru": "Энергетический"},
+    "Burn": {"en": "Burn", "ru": "Огонь"},
+    "Heat": {"en": "Heat", "ru": "Тепло"},
+    "Variable": {"en": "Variable", "ru": "Переменный"},
+    "variable": {"en": "variable", "ru": "переменный"}
+  },
+
+  "range_types": {
+    "Range": {"en": "Range", "ru": "Дальность"},
+    "Threat": {"en": "Threat", "ru": "Угроза"},
+    "Blast": {"en": "Blast", "ru": "Взрыв"},
+    "Burst": {"en": "Burst", "ru": "Вспышка"},
+    "Line": {"en": "Line", "ru": "Линия"},
+    "Cone": {"en": "Cone", "ru": "Конус"}
+  },
+
+  "activation": {
+    "Quick": {"en": "Quick", "ru": "Быстрое"},
+    "Protocol": {"en": "Protocol", "ru": "Протокол"},
+    "Full": {"en": "Full", "ru": "Полное"},
+    "Reaction": {"en": "Reaction", "ru": "Реакция"},
+    "Free": {"en": "Free", "ru": "Свободное"}
+  },
+
+  "source_names": {
+    "GMS": {"en": "GENERAL MASSIVE SYSTEMS", "ru": "ДЖЕНЕРАЛ МЭССИВ СИСТЕМС"},
+    "IPS-N": {"en": "IPS-NORTHSTAR", "ru": "АЙПИЭС-НОРТСТАР"},
+    "SSC": {"en": "SMITH-SHIMANO CORPRO", "ru": "СМИТ-ШИМАНО КОРПРО"},
+    "HORUS": {"en": "HORUS", "ru": "ХОРУС"},
+    "HA": {"en": "HARRISON ARMORY", "ru": "АРСЕНАЛ ХАРРИСОНА"}
+  },
+
+  "tag_words": {
+    "_comment": "Base word for tags that carry a trailing number or parenthetical, e.g. 'Reliable 2', 'Heat 2 (Self)', 'Limited 3'. The app strips the number/parenthetical, looks up the base word here, then re-appends the number.",
+    "Accurate": {"en": "Accurate", "ru": "Точное"},
+    "Inaccurate": {"en": "Inaccurate", "ru": "Неточное"},
+    "Loading": {"en": "Loading", "ru": "Перезаряжаемое"},
+    "Arcing": {"en": "Arcing", "ru": "Навесное"},
+    "Ordnance": {"en": "Ordnance", "ru": "Боеприпас"},
+    "Smart": {"en": "Smart", "ru": "Умное"},
+    "Seeking": {"en": "Seeking", "ru": "Самонаводящееся"},
+    "Overkill": {"en": "Overkill", "ru": "Сверхурон"},
+    "Thrown": {"en": "Thrown", "ru": "Бросковое"},
+    "Reliable": {"en": "Reliable", "ru": "Надёжное"},
+    "Knockback": {"en": "Knockback", "ru": "Отбрасывание"},
+    "Limited": {"en": "Limited", "ru": "Лимит"},
+    "Unique": {"en": "Unique", "ru": "Уникальное"},
+    "Heat": {"en": "Heat", "ru": "Тепло"},
+    "Armor-Piercing (AP)": {"en": "Armor-Piercing (AP)", "ru": "Бронебойное (AP)"},
+    "Set Damage Type": {"en": "Set Damage Type", "ru": "Выбор типа урона"},
+    "Set Max Uses": {"en": "Set Max Uses", "ru": "Выбор макс. использований"},
+    "Personal Armor": {"en": "Personal Armor", "ru": "Личная броня"},
+    "Pilot Weapon": {"en": "Pilot Weapon", "ru": "Оружие пилота"},
+    "Sidearm": {"en": "Sidearm", "ru": "Личное оружие"},
+    "Archaic": {"en": "Archaic", "ru": "Архаичное"},
+    "Grenade": {"en": "Grenade", "ru": "Граната"},
+    "Gear": {"en": "Gear", "ru": "Снаряжение"},
+    "Shield": {"en": "Shield", "ru": "Щит"},
+    "Invisible": {"en": "Invisible", "ru": "Невидимость"},
+    "Danger Zone": {"en": "Danger Zone", "ru": "Опасная зона"},
+    "Resistance (All)": {"en": "Resistance (All)", "ru": "Сопротивление (всё)"},
+    "Indestructible": {"en": "Indestructible", "ru": "Неразрушимое"},
+    "Overshield": {"en": "Overshield", "ru": "Сверхщит"},
+    "Invulnerable": {"en": "Invulnerable", "ru": "Неуязвимое"},
+    "AI": {"en": "AI", "ru": "ИИ"},
+    "Prevent Cascade": {"en": "Prevent Cascade", "ru": "Без каскада"},
+    "(Self)": {"en": "(Self)", "ru": "(себе)"}
+  }
+}

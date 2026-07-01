@@ -1,0 +1,932 @@
+{
+ "mw_anti_materiel_rifle": {
+  "name": {
+   "en": "Anti-Materiel Rifle",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_assault_rifle": {
+  "name": {
+   "en": "Assault Rifle",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_charged_blade": {
+  "name": {
+   "en": "Charged Blade",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_cyclone_pulse_rifle": {
+  "name": {
+   "en": "Cyclone Pulse Rifle",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_heavy_charged_blade": {
+  "name": {
+   "en": "Heavy Charged Blade",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_heavy_machine_gun": {
+  "name": {
+   "en": "Heavy Machine Gun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_heavy_melee_weapon": {
+  "name": {
+   "en": "Heavy Melee Weapon",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_howitzer": {
+  "name": {
+   "en": "Howitzer",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_missile_rack": {
+  "name": {
+   "en": "Missile Rack",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_mortar": {
+  "name": {
+   "en": "Mortar",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_nexus_hunter_killer": {
+  "name": {
+   "en": "Nexus (Hunter-Killer)",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_nexus_light": {
+  "name": {
+   "en": "Nexus (Light)",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_pistol": {
+  "name": {
+   "en": "Pistol",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_segment_knife": {
+  "name": {
+   "en": "Segment Knife",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_rocket_propelled_grenade": {
+  "name": {
+   "en": "Rocket-Propelled Grenade",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_shotgun": {
+  "name": {
+   "en": "Shotgun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_tactical_knife": {
+  "name": {
+   "en": "Tactical Knife",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_tactical_melee_weapon": {
+  "name": {
+   "en": "Tactical Melee Weapon",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_thermal_lance": {
+  "name": {
+   "en": "Thermal Lance",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_thermal_pistol": {
+  "name": {
+   "en": "Thermal Pistol",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_thermal_rifle": {
+  "name": {
+   "en": "Thermal Rifle",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_chain_axe": {
+  "name": {
+   "en": "Chain Axe",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "Your target becomes Shredded until the end of the current turn.",
+   "ru": ""
+  }
+ },
+ "mw_bristlecrown_flechette_launcher": {
+  "name": {
+   "en": "Bristlecrown Flechette Launcher",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon ignores ranged penalties from Engaged, and deals 3 Kinetic damage to Grappled or Biological targets, instead of 1.",
+   "ru": ""
+  }
+ },
+ "mw_nanocarbon_sword": {
+  "name": {
+   "en": "Nanocarbon Sword",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_assault_cannon": {
+  "name": {
+   "en": "Assault Cannon",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_concussion_missiles": {
+  "name": {
+   "en": "Concussion Missiles",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "The target must succeed on a Hull save or become Impaired until the end of their next turn.",
+   "ru": ""
+  }
+ },
+ "mw_leviathan_heavy_assault_cannon": {
+  "name": {
+   "en": "Leviathan Heavy Assault Cannon",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_cutter_mkii_plasma_torch": {
+  "name": {
+   "en": "Cutter MkII Plasma Torch",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon deals 10AP energy to objects, cover, terrain, and the environment.",
+   "ru": ""
+  }
+ },
+ "mw_war_pike": {
+  "name": {
+   "en": "War Pike",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_power_knuckles": {
+  "name": {
+   "en": "Power Knuckles",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "Your target must succeed on a Hull save or be knocked Prone.",
+   "ru": ""
+  }
+ },
+ "mw_hand_cannon": {
+  "name": {
+   "en": "Hand Cannon",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_bolt_thrower": {
+  "name": {
+   "en": "Bolt Thrower",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_kinetic_hammer": {
+  "name": {
+   "en": "Kinetic Hammer",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_deck_sweeper_automatic_shotgun": {
+  "name": {
+   "en": "Deck-Sweeper Automatic Shotgun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_daisy_cutter": {
+  "name": {
+   "en": "Daisy Cutter",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "Creates a cloud of smoke and detritus in the attack cone, providing soft cover in the affected area that lasts until the end of your next turn.",
+   "ru": ""
+  }
+ },
+ "mw_catalytic_hammer": {
+  "name": {
+   "en": "Catalytic Hammer",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "Your target must succeed on a Hull save or become Stunned until the end of their next turn.",
+   "ru": ""
+  }
+ },
+ "mw_impact_lance": {
+  "name": {
+   "en": "Impact Lance",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "You also attack all characters in a Line between you and your target. You take 1 heat for each target past the first.",
+   "ru": ""
+  }
+ },
+ "mw_impaler_nailgun": {
+  "name": {
+   "en": "Impaler Nailgun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "Targets must succeed on a Hull save or become Immobilized until the end of their next turn.",
+   "ru": ""
+  }
+ },
+ "mw_combat_drill": {
+  "name": {
+   "en": "Combat Drill",
+   "ru": ""
+  },
+  "effect": {
+   "en": "When attacking a character that is Prone, Immobilized, or Stunned, this weapon’s Overkill tag does an extra +1d6 bonus damage each time it activates. This can activate indefinitely if the new bonus die result is a 1, triggering Overkill again.",
+   "ru": ""
+  }
+ },
+ "mw_magnetic_cannon": {
+  "name": {
+   "en": "Magnetic Cannon",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "All characters within the affected area must succeed on a Hull save or be pulled 1d3+1 spaces toward you, or as close as possible.",
+   "ru": ""
+  }
+ },
+ "mw_vulture_dmr": {
+  "name": {
+   "en": "Vulture DMR",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_railgun": {
+  "name": {
+   "en": "Railgun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_veil_rifle": {
+  "name": {
+   "en": "Veil Rifle",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon does not attack allied characters caught in its area of effect; instead, it shrouds them in a field of coruscating energy that throws off targeting systems, giving them soft cover until the end of their next turn.",
+   "ru": ""
+  }
+ },
+ "mw_burst_launcher": {
+  "name": {
+   "en": "Burst Launcher",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "Target becomes Impaired until the end of their next turn.",
+   "ru": ""
+  }
+ },
+ "mw_rail_rifle": {
+  "name": {
+   "en": "Rail Rifle",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_shock_knife": {
+  "name": {
+   "en": "Shock Knife",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_sharanga_missiles": {
+  "name": {
+   "en": "Sharanga Missiles",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon can attack two targets at a time.",
+   "ru": ""
+  }
+ },
+ "mw_gandiva_missiles": {
+  "name": {
+   "en": "Gandiva Missiles",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_pinaka_missiles": {
+  "name": {
+   "en": "Pinaka Missiles",
+   "ru": ""
+  },
+  "effect": {
+   "en": "Attacks with this weapon create up to two blast 1 areas, which cannot overlap.<br>You may also delay the impact of attacks made with this weapon. Choose the target area(s), which become visible to all characters: the missiles land at the end of the next round, after all characters have acted, and deal 3d6 explosive damage instead of 2d6, but you become Slowed until the end of your next turn.",
+   "ru": ""
+  }
+ },
+ "mw_fold_knife": {
+  "name": {
+   "en": "Fold Knife",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "You may teleport 2 spaces in any direction after the attack resolves.",
+   "ru": ""
+  }
+ },
+ "mw_vijaya_rockets": {
+  "name": {
+   "en": "Vijaya Rockets",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_variable_sword": {
+  "name": {
+   "en": "Variable Sword",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "Deal +1d6 bonus damage.",
+   "ru": ""
+  }
+ },
+ "mw_oracle_lmg_i": {
+  "name": {
+   "en": "Oracle LMG-I",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_nanobot_whip": {
+  "name": {
+   "en": "Nanobot Whip",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "Pull your target to a free space adjacent to you, or as close as possible.",
+   "ru": ""
+  }
+ },
+ "mw_swarm_hive_nanites": {
+  "name": {
+   "en": "Swarm/Hive Nanites",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_autopod": {
+  "name": {
+   "en": "Autopod",
+   "ru": ""
+  },
+  "effect": {
+   "en": "Instead of using any kind of trigger mechanism, this weapon automatically scans for target locks, firing spinning, razor-sharp disks upon successful IDs. Gain the Autonomous Assault reaction, which is the only way you can attack with the Autopod",
+   "ru": ""
+  }
+ },
+ "mw_vorpal_gun": {
+  "name": {
+   "en": "Vorpal Gun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "Gain the Snicker-Snack reaction, which is the only way you can attack with this weapon.",
+   "ru": ""
+  }
+ },
+ "mw_ghoul_nexus": {
+  "name": {
+   "en": "Ghoul Nexus",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "Choose this weapon’s damage type.",
+   "ru": ""
+  }
+ },
+ "mw_ghast_nexus": {
+  "name": {
+   "en": "Ghast Nexus",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon may be used to attack as normal, or deployed as a Drone",
+   "ru": ""
+  }
+ },
+ "mw_annihilation_nexus": {
+  "name": {
+   "en": "Annihilation Nexus",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "You can make a second attack with this weapon at the start of your next turn as a protocol. This secondary attack can’t deal bonus damage, and doesn't trigger additional secondary attacks.<br>You may center this weapon’s attack on either yourself or any of your Drones within Sensors.",
+   "ru": ""
+  }
+ },
+ "mw_catalyst_pistol": {
+  "name": {
+   "en": "Catalyst Pistol",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_arc_projector": {
+  "name": {
+   "en": "Arc Projector",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "You may also make a secondary attack against a different character within range 3 of the first target. You can continue making secondary attacks on hits, as long as there are new, valid targets within range; however, each attack generates 1 heat, and secondary attacks can’t deal bonus damage. Characters can’t be hit more than once with the same firing of this weapon.",
+   "ru": ""
+  }
+ },
+ "mw_smartgun": {
+  "name": {
+   "en": "Smartgun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_mimic_gun": {
+  "name": {
+   "en": "Mimic Gun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This horrifying weapon has no basic form; it constantly contorts itself into different shapes, mimicking the weapons of other combatants. It counts as all ranged weapon types simultaneously (e.g., CQB, Rifle, etc.), but it can’t take Mods or benefit from core bonuses, although it still benefits from talents as normal.<br>At the start of combat, roll 3d20 and note the results in order: X, Y, and Z. X is its starting base Range (before modifications from talents). At the start of each of your turns after the first, the mimic gun cycles to the next result, taking that as its base Range. After Z, it cycles back to X.<br>The mimic gun does kinetic equal to 1 + half of its current base Range.<br>You may provoke the mimic gun as a full action, rolling a new set of 3d20.",
+   "ru": ""
+  }
+ },
+ "mw_autogun": {
+  "name": {
+   "en": "Autogun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon can’t make normal attacks. Instead, you can attack with it as a free action at the end of your turn. It doesn’t benefit from or trigger your talents.",
+   "ru": ""
+  }
+ },
+ "mw_siege_cannon": {
+  "name": {
+   "en": "Siege Cannon",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_krakatoa_thermobaric_flamethrower": {
+  "name": {
+   "en": "Krakatoa Thermobaric Flamethrower",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_plasma_thrower": {
+  "name": {
+   "en": "Plasma Thrower",
+   "ru": ""
+  },
+  "effect": {
+   "en": "Can be fired as Cone 7 <i>or</i> Line 10",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "White-hot flames continue to burn in 3 free spaces of your choice within the affected area, lasting for the rest of the scene. When characters start their turn in one of these spaces or enter one for the first time in a round, they take 1d6 energy damage.",
+   "ru": ""
+  }
+ },
+ "mw_stub_cannon": {
+  "name": {
+   "en": "Stub Cannon",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_gravity_gun": {
+  "name": {
+   "en": "Gravity Gun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "Characters within the affected area must succeed on a Hull save or take 1d6 energy damage and be pulled as close to the center of the blast possible. This weapon cannot be modified or benefit from core bonuses.",
+   "ru": ""
+  }
+ },
+ "mw_displacer": {
+  "name": {
+   "en": "Displacer",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_shatterhead_colony_missiles": {
+  "name": {
+   "en": "Shatterhead Colony Missiles",
+   "ru": ""
+  },
+  "effect": {
+   "en": "The final attack roll for this weapon can never be affected by difficulty.",
+   "ru": ""
+  }
+ },
+ "mw_sol_pattern_laser_rifle": {
+  "name": {
+   "en": "SOL-Pattern Laser Rifle",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_andromeda_pattern_heavy_laser_rifle": {
+  "name": {
+   "en": "ANDROMEDA-Pattern Heavy Laser Rifle",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_tachyon_lance": {
+  "name": {
+   "en": "Tachyon Lance",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "If you’re in the Danger Zone, create a cone 3 backblast of burning plasma in the opposite direction to the attack. Characters within the affected area must succeed on an Engineering save or take 4 burn and 2 heat. Until the start of your next turn, the affected area provides soft cover.",
+   "ru": ""
+  }
+ },
+ "mw_annihilator": {
+  "name": {
+   "en": "Annihilator",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "Make a secondary attack against all characters within burst 1 of the target. These attacks can’t deal bonus damage, and don’t trigger the Annihilator’s heat cost or secondary attacks.",
+   "ru": ""
+  }
+ },
+ "mw_torch": {
+  "name": {
+   "en": "Torch",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_fuel_rod_gun": {
+  "name": {
+   "en": "Fuel Rod Gun",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "Clear 4 heat.",
+   "ru": ""
+  }
+ },
+ "mw_prototype_1": {
+  "name": {
+   "en": "Prototype Weapon I",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 1d6+2 to determine this weapon’s Limited uses.",
+   "ru": ""
+  }
+ },
+ "mw_prototype_2": {
+  "name": {
+   "en": "Prototype Weapon II",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 1d6+2 to determine this weapon’s Limited uses and choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></li></ul></ul>",
+   "ru": ""
+  }
+ },
+ "mw_prototype_3": {
+  "name": {
+   "en": "Prototype Weapon III",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 2d6 to determine this weapon’s Limited uses and choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></li></ul></ul>",
+   "ru": ""
+  }
+ },
+ "mw_lancaster_integrated": {
+  "name": {
+   "en": "Latch Drone",
+   "ru": ""
+  },
+  "effect": {
+   "en": "This weapon can’t make normal attacks. Instead, choose an allied mech within Range and line of sight and make a ranged attack against Evasion 8. On a hit, either you or your target may spend 1 Repair to restore half your target’s HP.",
+   "ru": ""
+  }
+ },
+ "mw_raleigh_integrated": {
+  "name": {
+   "en": "M35 Mjolnir",
+   "ru": ""
+  },
+  "effect": {
+   "en": "1/round, when you reload any weapon, this weapon can be fired as a free action.",
+   "ru": ""
+  }
+ },
+ "mw_barbarossa_integrated": {
+  "name": {
+   "en": "Apocalypse Rail",
+   "ru": ""
+  },
+  "effect": {
+   "en": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power.<br>This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5.<br> After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
+   "ru": ""
+  }
+ },
+ "mw_sherman_integrated": {
+  "name": {
+   "en": "ZF4 SOLIDCORE",
+   "ru": ""
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ }
+}

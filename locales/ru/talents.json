@@ -1,0 +1,1336 @@
+{
+ "t_ace": {
+  "name": {
+   "en": "Ace",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your flight systems for rapid repositioning and extreme mobility",
+   "ru": ""
+  },
+  "description": {
+   "en": "Every pilot brags about their actions; occasionally, some even have the reputation to back it up. Harmonious Domesticity is one of these pilots. As an ace, they aren’t just ranked among the most qualified of pilots – they’re among the most qualified of lancers.<br>Whether you’re a talented rookie or a grizzled veteran, you’re one of these aces. Your skills as a pilot are notorious enough that your callsign is known throughout the system.",
+   "ru": ""
+  },
+  "ranks": {
+   "Acrobatics": {
+    "name": {
+     "en": "Acrobatics",
+     "ru": ""
+    },
+    "description": {
+     "en": "While flying, you get the following benefits:<ul><li>You make all Agility checks and saves with +1 Accuracy.</li><li>Any time an attack misses you, you may fly up to 2 spaces in any direction as a reaction.</li></ul>",
+     "ru": ""
+    }
+   },
+   "Afterburners": {
+    "name": {
+     "en": "Afterburners",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you Boost while flying, you may move an additional 1d6 spaces, but take heat equal to half that amount.",
+     "ru": ""
+    }
+   },
+   "Supersonic": {
+    "name": {
+     "en": "Supersonic",
+     "ru": ""
+    },
+    "description": {
+     "en": "As a quick action on your turn, you may <b>spin up your thrusters</b>. If you end your turn flying, you may nominate a character within a Range equal to your Speed and within line of sight, and gain the <b>Supersonic</b> Reaction.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_bonded": {
+  "name": {
+   "en": "Bonded",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Bond with a partner and protect them from harm",
+   "ru": ""
+  },
+  "description": {
+   "en": "The galaxy is a dangerous place, and everyone should have a friend to watch their back. Luckily, you’ve found yours. Maybe you enlisted together or were the only survivors of a bloody engagement. Maybe you didn’t start out as friends, or maybe you were raised to fight alongside each other – however your friendship came to be, when it comes time to drop, there’s no one you’d rather have at your side. Alone, you’re deadly; together, you’re a force of nature.",
+   "ru": ""
+  },
+  "ranks": {
+   "I’m Your Huckleberry": {
+    "name": {
+     "en": "I’m Your Huckleberry",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you take this talent, choose another pilot (hopefully a PC, but NPCs are fine if your GM allows it) to be your Bondmate. Any mech skill checks and saves either character makes while you are adjacent gain +1 Accuracy. If both characters have this talent, this increases to +2 Accuracy, but additional characters with this talent can’t increase it any further.<br>Between missions, you can replace your Bondmate with a new one, but only if your relationship with them has changed.",
+     "ru": ""
+    }
+   },
+   "Sundance": {
+    "name": {
+     "en": "Sundance",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain the <b>Intercede</b> Reaction.",
+     "ru": ""
+    }
+   },
+   "Cover Me!": {
+    "name": {
+     "en": "Cover Me!",
+     "ru": ""
+    },
+    "description": {
+     "en": "If a character within your line of sight attempts to attack your Bondmate, you can spend your Overwatch to threaten the attacker, forcing them to either choose a different target or attack anyway: if they attack a different target, your Overwatch is expended without effect; if they choose to attack anyway, you can immediately attack them with Overwatch, as long as they are within Range and line of sight. This attack resolves before the triggering attack.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_brawler": {
+  "name": {
+   "en": "Brawler",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve the effectiveness of Improvised Attacks and Grappling",
+   "ru": ""
+  },
+  "description": {
+   "en": "Up close and personal. The way battle was done since the dawn of time, then forgotten with the first spark of gunpowder. Tempest Gloire is one pilot who prefers the old ways: hand-to-hand, weapons discarded, just the strength of her machine versus the strength of all others. You and her both know that the sweetest victory is found at the culmination of a dance as old as war itself, with the first trick known to humanity: a fist to your enemy’s face.",
+   "ru": ""
+  },
+  "ranks": {
+   "Hold and Lock": {
+    "name": {
+     "en": "Hold and Lock",
+     "ru": ""
+    },
+    "description": {
+     "en": "You gain +1 Accuracy on all melee attacks against targets you are Grappling.",
+     "ru": ""
+    }
+   },
+   "Sledgehammer": {
+    "name": {
+     "en": "Sledgehammer",
+     "ru": ""
+    },
+    "description": {
+     "en": "Your Improvised Attacks gain Knockback 2 and deal 2d6+2 Kinetic damage.",
+     "ru": ""
+    }
+   },
+   "Knockout Blow": {
+    "name": {
+     "en": "Knockout Blow",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain a Brawler Die, 1d6 starting at 6. Each time you Grapple, Ram, or make an Improvised Attack, lower the value of the Brawler Die by 1. When the Brawler Die reaches 1, you may reset it to 6 and, as a full action, make a Knockout Blow against an adjacent character. The value of your Brawler Die persists between scenes, but it resets to 6 when you rest or perform a Full Repair.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_brutal": {
+  "name": {
+   "en": "Brutal",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your critical hits, with extra bonuses for natural 20s",
+   "ru": ""
+  },
+  "description": {
+   "en": "In the practice ring as in live combat, Aubrey Deckard only knows one way to fight: as fast and messy as possible. When others go hard, she goes hardest; when the order is to eliminate the enemy, she does so with prejudice. This isn’t a dance, it isn’t a game – it’s war, and Brutal lancers mean to see it through. If that means becoming a little bit of a monster, then so be it: the dead can hate from the grave.",
+   "ru": ""
+  },
+  "ranks": {
+   "Predator": {
+    "name": {
+     "en": "Predator",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you roll a 20 on a die for any attack (sometimes called a ‘natural 20’) and critical hit, you deal the maximum possible damage and bonus damage.",
+     "ru": ""
+    }
+   },
+   "Cull the Herd": {
+    "name": {
+     "en": "Cull the Herd",
+     "ru": ""
+    },
+    "description": {
+     "en": "Your critical hits gain Knockback 1.",
+     "ru": ""
+    }
+   },
+   "Relentless": {
+    "name": {
+     "en": "Relentless",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you make an attack roll and miss, your next attack roll gains +1 Accuracy. This effect stacks and persists until you hit.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_crack_shot": {
+  "name": {
+   "en": "Crack Shot",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Steady your aim to gain accuracy, bonus damage, and apply debuffs",
+   "ru": ""
+  },
+  "description": {
+   "en": "Thanks to modern technology, anyone can hit anything these days. Targeting assist. Smart weapons. AIs whispering in people’s ears, moving their hands, squeezing the trigger for them: doing everything but taking credit for the kill. But Strymon Bulis is different. He finds hitting a target is as easy as looking at it, inside of his mech and out. No targeting assist for him; no AI required. All he needs is a zeroed sight, a fresh magazine, and a target downrange...",
+   "ru": ""
+  },
+  "ranks": {
+   "Stable, Steady": {
+    "name": {
+     "en": "Stable, Steady",
+     "ru": ""
+    },
+    "description": {
+     "en": "As a protocol, you may <b>steady your aim</b>. If you do, you become Immobilized until the start of your next turn but gain +1 Accuracy on all attacks you make with Rifles.",
+     "ru": ""
+    }
+   },
+   "Zero In": {
+    "name": {
+     "en": "Zero In",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, while <b>steadying your aim</b> and making a ranged attack with a Rifle, you can attempt to hit a weak point: gain +1 Difficulty on the attack roll, and deal +1d6 bonus damage on a critical hit.",
+     "ru": ""
+    }
+   },
+   "Watch This": {
+    "name": {
+     "en": "Watch This",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you perform a critical hit with a Rifle while steadying your aim, your target must pass a Hull save or you may choose an additional effect for your attack:<ul><li><b>Headshot:</b> They only have line of sight to adjacent spaces until the end of their next turn.</li><li><b>Leg shot:</b> They become Immobilized until the end of their next turn.</li><li><b>Body shot:</b> They are knocked Prone.</li></ul>",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_centimane": {
+  "name": {
+   "en": "Centimane",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Debuff and control enemies with critical hits from Nexus weapons",
+   "ru": ""
+  },
+  "description": {
+   "en": "In the aftermath of the attack on Tartarus Bay, an anonymous source identified agents of the Karrakin Royal Intelligence Service as the culprits. The Baronies quickly released a statement of denial, which was never countered with hard evidence. Rumors of raw footage from the attack were unsubstantiated. Public reaction – anger, terror – to the station’s destruction quieted. The corpse of Tartarus Bay was shunted away from its stable orbit, directed toward the nearest star.<br>A month later, Baronies-local omninet was flooded with previously suppressed footage from the attack on the station, confirming the rumors: Baronic agents did release the greywash swarm into Tartarus Bay. Further data dumps by Ungrateful agents indicated the existence of a secret Baronic intelligence outfit: the Centimane – the Hundred Hands.",
+   "ru": ""
+  },
+  "ranks": {
+   "Ten Thousand Teeth": {
+    "name": {
+     "en": "Ten Thousand Teeth",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you perform a critical hit with a Nexus, your target must pass a Systems save or become Impaired and Slowed until the end of their next turn.",
+     "ru": ""
+    }
+   },
+   "Expose Weakness": {
+    "name": {
+     "en": "Expose Weakness",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you consume Lock On as part of an attack with a Nexus or Drone and perform a critical hit, your target becomes Shredded until the start of your next turn.",
+     "ru": ""
+    }
+   },
+   "Tidal Suppression": {
+    "name": {
+     "en": "Tidal Suppression",
+     "ru": ""
+    },
+    "description": {
+     "en": "This replaces Ten Thousand Teeth.<br>1/round, when you perform a critical hit with a Nexus, your target must succeed on a Systems save or you may choose an additional effect for your attack that lasts until the end of their next turn:<ul><li><b>Harrying Swarm:</b> They become Impaired and Slowed.</li><li><b>Blinding Swarm:</b> They only have line of sight to adjacent squares.</li><li><b>Virulent Swarm:</b> They become Shredded. Any adjacent characters of your choice must also make a Systems save or become Shredded.</li><li><b>Restricting Swarm:</b> They take 1 Burn each time they take an action or reaction.</li></ul>",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_combined_arms": {
+  "name": {
+   "en": "Combined Arms",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Become more effective when using both Ranged and Melee weapons in close quarters",
+   "ru": ""
+  },
+  "description": {
+   "en": "True strength in combat doesn’t come from mastering the blade or the gun – it comes from knowing how to use both. Through time and training, Leika McGraff has combined the arts of melee and ranged combat into a single deadly combination. No matter the foe, Leika is a deadly threat; no matter the weapon, Leika is a master of its employ.",
+   "ru": ""
+  },
+  "ranks": {
+   "Shield of Blades": {
+    "name": {
+     "en": "Shield of Blades",
+     "ru": ""
+    },
+    "description": {
+     "en": "As long as you’re Engaged, you and any allies adjacent to you count as having soft cover.",
+     "ru": ""
+    }
+   },
+   "CQB-Trained": {
+    "name": {
+     "en": "CQB-Trained",
+     "ru": ""
+    },
+    "description": {
+     "en": "You don’t gain Difficulty from being Engaged.",
+     "ru": ""
+    }
+   },
+   "Storm of Violence": {
+    "name": {
+     "en": "Storm of Violence",
+     "ru": ""
+    },
+    "description": {
+     "en": "Whenever you hit a character with a melee attack, you gain +1 Accuracy on your next ranged attack against them; and, whenever you hit a character with a ranged attack, you gain +1 Accuracy on your next melee attack against them. This effect doesn’t stack.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_duelist": {
+  "name": {
+   "en": "Duelist",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your Main Melee attacks and gain Blademaster Dice when you hit",
+   "ru": ""
+  },
+  "description": {
+   "en": "There can be an elegance to the way a mech moves – an alacrity that elevates it beyond the simple strength of machine and cannon. The difference is in the tools. Ethan \"Orion\" Miller wields weapons crafted by artisans, boutique manufacturers, specialty lines from the big five, blades that hark back to a time where combat was quick but fair – back to a time where skill meant more than landing an accurate shot. With a blade, lance, pick, axe, or hammer in their hand, Orion writes old tales anew.",
+   "ru": ""
+  },
+  "ranks": {
+   "Partisan": {
+    "name": {
+     "en": "Partisan",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain +1 Accuracy on the first melee attack you make with a Main Melee weapon on your turn.",
+     "ru": ""
+    }
+   },
+   "Blademaster": {
+    "name": {
+     "en": "Blademaster",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you hit with a Main Melee weapon, you gain 1 Blademaster Die – a d6 – up to a maximum of 3 Blademaster Die. They last until expended or the current scene ends. You can expend Blademaster Dice 1-for-1 for the following:<ul><li><b>Parry:</b> As a reaction when you’re hit by a melee attack, you gain Resistance to all damage, heat, and burn dealt by the attack.</li><li><b>Deflect:</b> As a reaction when you’re hit by a ranged attack, you may roll any number of Blademaster Dice, expending them: if you roll a 5+ on any of these dice, you gain Resistance to all damage, heat, and burn dealt by the attack.</li><li><b>Feint:</b> As a free action, choose an adjacent character: when moving, you ignore engagement and don’t provoke reactions from your target until the start of your next turn.</li><li><b>Trip:</b> As a quick action, choose an adjacent character: they must pass an Agility save or fall Prone. Whatever the result, you may freely pass through their space until the end of your current turn, although you can’t end your turn in their space.</li></ul>",
+     "ru": ""
+    }
+   },
+   "Unstoppable": {
+    "name": {
+     "en": "Unstoppable",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you hit with a melee attack on your turn, you may spend a Blademaster Die to immediately Grapple or Ram your target as a free action after the attack has been resolved.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_drone_commander": {
+  "name": {
+   "en": "Drone Commander",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve and empower your Drone Systems to help allies and hurt enemies",
+   "ru": ""
+  },
+  "description": {
+   "en": "For a pilot fresh out of boot, keeping a drone swarm in line is like trying to carry water with a net. If they seem to have a mind of their own, it’s because they do, and it’s not that smart. Clymene Kanalakos’s initial frustration was enough to get her practicing, and practice pays off. Now, her swarm obeys almost before she orders – an unnerving development, but a useful one. The swarm is hers.",
+   "ru": ""
+  },
+  "ranks": {
+   "Shepherd": {
+    "name": {
+     "en": "Shepherd",
+     "ru": ""
+    },
+    "description": {
+     "en": "Your Drone systems gain +5 HP. Additionally, gain the <b>Shepherd Drone</b> Protocol.",
+     "ru": ""
+    }
+   },
+   "Energized Swarm": {
+    "name": {
+     "en": "Energized Swarm",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you make an attack that consumes the Lock On condition, your Drones immediately emit a vicious pulse of energy. All characters of your choice within Burst 1 areas centered on each of your drones take 1d6 Energy damage. Each character can only be affected by the pulse from one drone, even if the areas overlap.",
+     "ru": ""
+    }
+   },
+   "Invigorate": {
+    "name": {
+     "en": "Invigorate",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain the <b>Invigorate</b> Quick Action.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_engineer": {
+  "name": {
+   "en": "Engineer",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Create an experimental weapon for your mech that you can modify and improve",
+   "ru": ""
+  },
+  "description": {
+   "en": "Pilots are creative and driven people, but Mesa Rownett is an exceptional case – excessively so, some would say. In his spare time, he’s managed to scrape together just enough scrap, requisitioned materials, and workshop space to apply a little old-fashioned ingenuity to his mech, fashioning it to a formidable machine not betrayed by its outward appearance.",
+   "ru": ""
+  },
+  "ranks": {
+   "Prototype": {
+    "name": {
+     "en": "Prototype",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you perform a Full Repair, you can, with some trial and error, install a prototype weapon system on your mech. You may choose characteristics for your prototype weapon based on the following profile each time you perform a Full Repair, rerolling 1d6+2 to determine Limited each time:<br>Prototype Weapon<br>Main [Melee, CQB, Rifle, Cannon, Launcher, Nexus], Limited [1d6+2], Overkill<br>This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 1d6+2 to determine this weapon’s Limited uses.<br>Damage: 1d6+2 Kinetic, Explosive or energy.<br>This weapon counts as an integrated mount and does not require a mount.",
+     "ru": ""
+    }
+   },
+   "Revision": {
+    "name": {
+     "en": "Revision",
+     "ru": ""
+    },
+    "description": {
+     "en": "You can tweak the essential components of your prototype weapon in order to increase its effectiveness. When you perform a Full Repair, choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></ul></li></ul>",
+     "ru": ""
+    }
+   },
+   "Final Draft": {
+    "name": {
+     "en": "Final Draft",
+     "ru": ""
+    },
+    "description": {
+     "en": "Your prototype weapon is now Limited [2d6] and deals 1D6+4 damage.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_executioner": {
+  "name": {
+   "en": "Executioner",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve Heavy and Superheavy Melee attacks with more opportunities to deal damage",
+   "ru": ""
+  },
+  "description": {
+   "en": "On the battlefield, there is no end more honorable than a clean death in combat. Axe or maul in hand, Maxie Wolf sees to it that her enemies are blessed with that honor. No one lives forever – she makes sure of it.",
+   "ru": ""
+  },
+  "ranks": {
+   "Backswing Cut": {
+    "name": {
+     "en": "Backswing Cut",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you hit with a Heavy or Superheavy melee weapon, you can make another melee attack with the same weapon as a free action against a different character within Threat and line of sight. This attack deals half damage, if successful.",
+     "ru": ""
+    }
+   },
+   "Wide Arc Cleave": {
+    "name": {
+     "en": "Wide Arc Cleave",
+     "ru": ""
+    },
+    "description": {
+     "en": "The first time in a round that you perform a critical hit with a Heavy or Superheavy melee weapon, you deal 3 Kinetic damage to all characters and objects of your choice within Threat, other than the one you just attacked.",
+     "ru": ""
+    }
+   },
+   "No Escape": {
+    "name": {
+     "en": "No Escape",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you miss with a melee attack, you reroll it against a different target within Threat and line of sight.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_exemplar": {
+  "name": {
+   "en": "Exemplar",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Challenge your foes, forcing them to fight you instead of your allies",
+   "ru": ""
+  },
+  "description": {
+   "en": "Eamon Metrias’s livery is famous, his voice brassy, his weapons polished to a sheen. As the advocate for the Nine Spheres, his training with certain martial orders has given him the power to harry and hinder even the most powerful of foes. Eamon is an exemplar of the Spheres, by words and by action.",
+   "ru": ""
+  },
+  "ranks": {
+   "Honorable Challenge": {
+    "name": {
+     "en": "Honorable Challenge",
+     "ru": ""
+    },
+    "description": {
+     "en": "The first time on your turn that you attack a hostile character within Range 3, hit or miss, you may give them the Exemplar’s Mark as a free action. Characters can only have one Exemplar’s Mark at a time – new marks from any character replace existing marks.<br>The character has the Exemplar’s Mark until the start of your next turn, and while they have it, you gain the <b>Valiant Aid</b> Reaction.",
+     "ru": ""
+    }
+   },
+   "Punishment": {
+    "name": {
+     "en": "Punishment",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when the character with your Mark attacks a character within Range 3 of you, other than you, they trigger your Overwatch.",
+     "ru": ""
+    }
+   },
+   "To the Death": {
+    "name": {
+     "en": "To the Death",
+     "ru": ""
+    },
+    "description": {
+     "en": "As a free action when you mark a character, you may challenge them in a duel to the death: you and the character with your Mark receive +3 Difficulty on attacks against characters or objects other than each other until either the end of the current scene or one of your mechs are destroyed. If they take any action that includes an attack roll against you, hit or miss, this effect ceases for them until the start of your next turn.<br>While To The Death is active, you cannot voluntarily move away from the character with your Mark; additionally, your Mark lasts either until the end of the current scene or one of your mechs are destroyed, and you cannot Mark any new characters.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_gunslinger": {
+  "name": {
+   "en": "Gunslinger",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Make your Auxiliary Ranged weapons deadlier and gain the powerful Gunslinger Die",
+   "ru": ""
+  },
+  "description": {
+   "en": "In a galaxy bounded by frontiers, there is no law but the one backed by the gun. Sgt. Stev Ansahok wields the humble pistol with a talent unseen in this age, his iron an extension of his own body. As easy as pointing a finger, the weathered sergeant lands shots with accuracy unmatched by machine. His is a gunslinger: justice made whole, given its sacred instrument, and set out to the cruel frontier to tame it.",
+   "ru": ""
+  },
+  "ranks": {
+   "Opening Argument": {
+    "name": {
+     "en": "Opening Argument",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain +1 Accuracy on the first attack roll you make with an Auxiliary ranged weapon on your turn.",
+     "ru": ""
+    }
+   },
+   "From the Hip": {
+    "name": {
+     "en": "From the Hip",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain the <b>Return Fire</b> Reaction.",
+     "ru": ""
+    }
+   },
+   "I Kill With My Heart": {
+    "name": {
+     "en": "I Kill With My Heart",
+     "ru": ""
+    },
+    "description": {
+     "en": "You gain a Gunslinger Die, 1d6 starting at 6. Each time you hit with an Auxiliary ranged weapon, reduce the value of the Gunslinger Die by 1. When the Gunslinger Die reaches 1, you may reset it to 6 to give +2d6 bonus damage on hit and AP to your next attack with an Auxiliary ranged weapon. This attack also ignores cover. The value of your Gunslinger Die persists between scenes but resets to 6 when you rest or perform a Full Repair.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_grease_monkey": {
+  "name": {
+   "en": "Grease Monkey",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Get more out of Limited systems, repairs, and the Stabilize action",
+   "ru": ""
+  },
+  "description": {
+   "en": "Eel knows more about the inner workings of a mech than most mechanics. To them, the beast they pilot is more than a machine: it’s a living thing, in need of tender care given by a wise and steady hand. Eel maintains their own house and keeps their own mech in line, both on the battlefield and off. The mechanics back at base come to them with questions, but usually prefer to stay away – there’s something spooky about how Eel's beast runs.",
+   "ru": ""
+  },
+  "ranks": {
+   "Unsanctioned Capacity Upgrade": {
+    "name": {
+     "en": "Unsanctioned Capacity Upgrade",
+     "ru": ""
+    },
+    "description": {
+     "en": "While resting, you can spend 2 Repairs to replenish 1 use of all Limited weapons and systems.",
+     "ru": ""
+    }
+   },
+   "Machine Bond": {
+    "name": {
+     "en": "Machine Bond",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you STABILIZE, you clear all IMPAIRED, JAMMED, IMMOBILIZED, SLOWED, and LOCK ON conditions that weren’t caused by your own systems, talents, etc.",
+     "ru": ""
+    }
+   },
+   "Friends in High Places": {
+    "name": {
+     "en": "Friends in High Places",
+     "ru": ""
+    },
+    "description": {
+     "en": "Once per mission while resting, you can call in a supply drop. You and your allies may replenish 1 use of all Limited weapons and systems and restore 1 Structure. This doesn’t require any Repairs and can be used even if you have reached your Repair Cap.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_hacker": {
+  "name": {
+   "en": "Hacker",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your tech attacks and unlock special Invade options",
+   "ru": ""
+  },
+  "description": {
+   "en": "Since Katya Han was a kid, she played the omninet, able to access any public node – and even a few private ones – with ease. Now, as a pilot, she dives headfirst into the hardcode of any mech core she come across. Firewalls, gatekeeper protocols, invasion, defense – nothing stands in her way. Han wins fights without firing a single shot; if her enemy can’t control their own mech, then they can’t do anything to stop her.",
+   "ru": ""
+  },
+  "ranks": {
+   "SNOW_CRASH": {
+    "name": {
+     "en": "SNOW_CRASH",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you hit with a tech attack that consumes Lock On, your target must choose to either take 2 Heat or be pushed 3 spaces in a direction of your choice.",
+     "ru": ""
+    }
+   },
+   "SAFE_CRACKER": {
+    "name": {
+     "en": "SAFE_CRACKER",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain the following options for Invade:",
+     "ru": ""
+    }
+   },
+   "Last Argument of Kings": {
+    "name": {
+     "en": "Last Argument of Kings",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain the <b>Last Argument of Kings</b> Full Tech option.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_heavy_gunner": {
+  "name": {
+   "en": "Heavy Gunner",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Pin enemies down with Heavy Ranged weapons",
+   "ru": ""
+  },
+  "description": {
+   "en": "Behind the line, Mike Manfrin doesn’t have much to do but wait and make ready. He keeps clean the cannons; makes ordered rows of his shot and shell. He packs sandbags onto earthen berms and stitches closed tears in the sheaths over his chassis’ joints.<br>In an instant, everything changes. Chatter over the local omni. The percussive throb of the medivac lifting off from the other side of the base. Somewhere, a firefight. This is his entrance music, his call to join the fight: a desperate cry for help from a distant friend as the enemy draws close. Time to get to work.<br>His arrival is known by the flight of his shells across the sky, the trembling earth, and the dust that once was.",
+   "ru": ""
+  },
+  "ranks": {
+   "Covering Fire": {
+    "name": {
+     "en": "Covering Fire",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain the <b>Covering Fire</b> Quick Action.",
+     "ru": ""
+    }
+   },
+   "Hammerbeat": {
+    "name": {
+     "en": "Hammerbeat",
+     "ru": ""
+    },
+    "description": {
+     "en": "If you successfully hit your Covering Fire target with the attack reaction granted by that talent, your target is Immobilized until the end of their next turn.",
+     "ru": ""
+    }
+   },
+   "Bracketing Fire": {
+    "name": {
+     "en": "Bracketing Fire",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you use <b>Covering Fire</b>, you may choose two targets instead of one. Each target triggers and resolves your attack separately, and damage from one target only ends the effect on that target.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_hunter": {
+  "name": {
+   "en": "Hunter",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Gain mobility and range when using Auxiliary Melee weapons",
+   "ru": ""
+  },
+  "description": {
+   "en": "The battlefield is Edith Eidelen’s hunting ground, her domain. It’s only through a true test of strength and guile that will determine who is the predator and who is the prey. Her movement across the field is a prowl: silent, quick, and controlled. In a chassis, she excels in close combat, closing the gap between her and her targets before they can bring their guns to bear.",
+   "ru": ""
+  },
+  "ranks": {
+   "Lunge": {
+    "name": {
+     "en": "Lunge",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you attack with an Auxiliary melee weapon, you may fly up to 3 spaces directly towards the targeted character before the attack. This movement ignores engagement and doesn’t provoke reactions.",
+     "ru": ""
+    }
+   },
+   "Knife Juggler": {
+    "name": {
+     "en": "Knife Juggler",
+     "ru": ""
+    },
+    "description": {
+     "en": "All your Auxiliary melee weapons gain Thrown 5, if they don’t have this property already – if they already have Thrown, it increases to Thrown 5. At the end of your turn, all weapons you have thrown this turn automatically return to you.",
+     "ru": ""
+    }
+   },
+   "Disdainful Blade": {
+    "name": {
+     "en": "Disdainful Blade",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you hit a character with a melee attack, you may also throw an Auxiliary melee weapon as an attack against any character within Range as a free action. This attack can’t deal bonus damage.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_infiltrator": {
+  "name": {
+   "en": "Infiltrator",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your Hide action and perform debilitating sneak attacks",
+   "ru": ""
+  },
+  "description": {
+   "en": "Whether by spoofing signatures on enemy scanners, moving skillfully through cover, or thanks to your modded optical camouflage, you’re never seen unless you want to be. Whatever the size of the mech, whatever the terrain, whatever the enemy, you can get in and get out without raising alarm.",
+   "ru": ""
+  },
+  "ranks": {
+   "Prowl": {
+    "name": {
+     "en": "Prowl",
+     "ru": ""
+    },
+    "description": {
+     "en": "During your turn, gain the following benefits:<ul><li>Entering line of sight of hostile characters or moving from cover does not stop you from being Hidden.</li><li>You can pass freely through – but not end your turn in – enemy spaces.</li><li>You can Hide even in plain sight of enemies.<br>These effects immediately end when your turn ends (so you lose Hidden if you’re still in line of sight or out of cover at that time).</li></ul>",
+     "ru": ""
+    }
+   },
+   "Ambush": {
+    "name": {
+     "en": "Ambush",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you start your turn Hidden, the first attack roll of any type that you make sends your target reeling on a hit. Your target must succeed on a Hull save or become Slowed, Impaired, and unable to take reactions until the end of their next turn.",
+     "ru": ""
+    }
+   },
+   "Mastermind": {
+    "name": {
+     "en": "Mastermind",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you lose Hidden (by any means), you may first fire a flash bomb at any adjacent character. That character must pass a Systems save or only be able to draw line of sight to adjacent spaces until the end of their next turn.<br>You can then move up to your speed, ignoring engagement and not provoking reactions, and are then revealed normally.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_juggernaut": {
+  "name": {
+   "en": "Juggernaut",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve the effectiveness and utility of ramming",
+   "ru": ""
+  },
+  "description": {
+   "en": "A bloody nose and a few loose screws aren’t enough to stop you from hurling yourself headlong into the enemy. You’re in a couple tons of metal powered by a sliver of dying star, and you’re going to make sure everyone else knows it.",
+   "ru": ""
+  },
+  "ranks": {
+   "Momentum": {
+    "name": {
+     "en": "Momentum",
+     "ru": ""
+    },
+    "description": {
+     "en": "When you Boost, your next Ram before the start of your next turn gains +1 Accuracy and knocks your target back an additional 2 spaces.",
+     "ru": ""
+    }
+   },
+   "Kinetic Mass Transfer": {
+    "name": {
+     "en": "Kinetic Mass Transfer",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, if you Ram a target into...<ul><li>...a space occupied by another character, the other character must succeed on a Hull save or be knocked Prone.</li><li>...an obstruction large enough to stop their movement, your target takes 1d6 kinetic damage.</li></ul>",
+     "ru": ""
+    }
+   },
+   "Unstoppable Force": {
+    "name": {
+     "en": "Unstoppable Force",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you Boost, you may supercharge your mech’s servos. Move your maximum speed in a straight line, take 1d3+3 Heat, and gain the following benefits:<ul><li>You can freely pass through characters the same Size as your mech or smaller; any characters passed through must succeed on a Hull save or be knocked Prone.</li><li>Any terrain, walls, or other stationary obstructions you attempt to pass through receive 20 Kinetic AP damage. If that is enough to destroy them, you pass through; otherwise, your movement ends.</li><li>You ignore difficult terrain.</li><li>Your movement ignores engagement and doesn’t provoke reactions.</li></ul>",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_leader": {
+  "name": {
+   "en": "Leader",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your allies' rolls during combat with Leadership Dice",
+   "ru": ""
+  },
+  "description": {
+   "en": "Whatever your actual age, you’re the Old Man of the battlefield. A light to your friends and allies; the resolute eye of a howling storm. Your steady voice, confident stance, and talent for command set allies at ease because they know you’ll lead them to victory every time. With you at the helm, victory is attainable, and heroes seem a little more real.",
+   "ru": ""
+  },
+  "ranks": {
+   "Field Commander": {
+    "name": {
+     "en": "Field Commander",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain 3 Leadership Dice, which are d6s, and gain the Issue Order Free Action.<br>You can’t use Leadership Dice from other characters as long as you have any remaining. If you have none, you regain 1 Leadership Die when you rest or regain all when you perform a Full Repair.<br>Leadership dice are consumed when expended.",
+     "ru": ""
+    }
+   },
+   "Open Channels": {
+    "name": {
+     "en": "Open Channels",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain 5 Leadership Dice instead of 3; additionally, you can now issue a command as a reaction at the start of any other player’s turn, any number of times per round.",
+     "ru": ""
+    }
+   },
+   "Inspiring Presence": {
+    "name": {
+     "en": "Inspiring Presence",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain 6 Leadership Dice instead of 5. Allies that have your Leadership Dice can expend them to reduce damage by –1d6 when taking damage or to deal +1d6 bonus damage when they hit with an attack.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_nuclear_cavalier": {
+  "name": {
+   "en": "Nuclear Cavalier",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Deal enhanced damage in the Danger Zone and launch your superheated fuel rods as a weapon",
+   "ru": ""
+  },
+  "description": {
+   "en": "Shortly after becoming a pilot, you realized something: that machine you pilot is powered by a series of cascading nuclear reactions. Why not open that compartment up and see what sort of damage it can do?",
+   "ru": ""
+  },
+  "ranks": {
+   "Aggressive Heat Bleed": {
+    "name": {
+     "en": "Aggressive Heat Bleed",
+     "ru": ""
+    },
+    "description": {
+     "en": "The first attack roll you make on your turn while in the Danger Zone deals +2 Heat on a hit.",
+     "ru": ""
+    }
+   },
+   "Fusion Hemorrhage": {
+    "name": {
+     "en": "Fusion Hemorrhage",
+     "ru": ""
+    },
+    "description": {
+     "en": "The first ranged or melee attack roll you make on your turn while in the Danger Zone deals Energy instead of Kinetic or Explosive and additionally deals +1d6 Energy bonus damage on a hit.",
+     "ru": ""
+    }
+   },
+   "Here, Catch!": {
+    "name": {
+     "en": "Here, Catch!",
+     "ru": ""
+    },
+    "description": {
+     "en": "You’ve modified your mech to launch its superheated fuel rods at enemies. Gain the Fuel Rod Gun integrated weapon.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_siege_specialist": {
+  "name": {
+   "en": "Siege Specialist",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Destroy terrain and force enemy movement with Cannon weapons",
+   "ru": ""
+  },
+  "description": {
+   "en": "No wall can withstand you; no bunker can stay sealed. Your skill with cannon and blast is uncanny: after-action reports describe ordnance tagged with your firing signature hitting targets with accuracy greater than if it had been fired by an AI – a stat written off as an anomaly by your commanders. Still, they always seem to pick you for missions that call for the big guns.",
+   "ru": ""
+  },
+  "ranks": {
+   "Jackhammer": {
+    "name": {
+     "en": "Jackhammer",
+     "ru": ""
+    },
+    "description": {
+     "en": "If you have a Cannon, as a quick action, you can fire a jackhammer round from an underslung launcher, automatically dealing 10 AP Kinetic damage to a Size 1 section of any object within Range (e.g., cover, deployable equipment, buildings, or terrain). Any characters adjacent to your target are knocked back from it by 2 spaces and take 2 Kinetic damage.",
+     "ru": ""
+    }
+   },
+   "Impact": {
+    "name": {
+     "en": "Impact",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, before rolling an attack with a Cannon, all characters adjacent to you must succeed on a Hull save or be knocked back by 1 space and knocked Prone. You are then pushed 1 space in any direction.",
+     "ru": ""
+    }
+   },
+   "Collateral Damage": {
+    "name": {
+     "en": "Collateral Damage",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you perform a critical hit on a character or object with a Cannon, you may choose to cause an explosion of secondary munitions, causing a Burst 2 explosion around your target. Characters within the affected area must either drop Prone as a reaction, or take 2 Explosive damage and be knocked back by 2 spaces from the center of the attack.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_skirmisher": {
+  "name": {
+   "en": "Skirmisher",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your survivability by automatically gaining cover and evading attacks",
+   "ru": ""
+  },
+  "description": {
+   "en": "What is the best defense? Armor? No. The key to avoiding a messy death in the field, as you learned early, is to stay low, stay mobile, and stay fast. Your mech reflects this philosophy: light, quick, bristling with force-multiplying weapons. You live to push your machine beyond expected parameters, shaking target locks and incoming fire while keeping your own targeting true.",
+   "ru": ""
+  },
+  "ranks": {
+   "Integrated Chaff Launchers": {
+    "name": {
+     "en": "Integrated Chaff Launchers",
+     "ru": ""
+    },
+    "description": {
+     "en": "At the start of your turn, you gain soft cover. You lose this cover if you attack or force another character to make a save.",
+     "ru": ""
+    }
+   },
+   "Lockbreaker": {
+    "name": {
+     "en": "Lockbreaker",
+     "ru": ""
+    },
+    "description": {
+     "en": "Before or after you Skirmish (including as a reaction, e.g. from Overwatch), you may move 2 spaces. This movement ignores engagement and doesn’t provoke reactions.",
+     "ru": ""
+    }
+   },
+   "Weave": {
+    "name": {
+     "en": "Weave",
+     "ru": ""
+    },
+    "description": {
+     "en": "The first attack taken as a reaction against you in any round automatically misses.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_spotter": {
+  "name": {
+   "en": "Spotter",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your Lock On Quick Tech action to empower your allies",
+   "ru": ""
+  },
+  "description": {
+   "en": "To see all; to divide each object you perceive from its unit or cohesion, pulled apart like individual fibers in a vast sheet; to count them as individuals; to make human and fragile the force you face – this is to know how to beat them.<br>Break apart the monolith. See the grains that make the stone. Crush them all into yet smaller dust.",
+   "ru": ""
+  },
+  "ranks": {
+   "Particularize": {
+    "name": {
+     "en": "Particularize",
+     "ru": ""
+    },
+    "description": {
+     "en": "When an allied character adjacent to you attacks a target and consumes Lock On, they may roll twice and choose either result.",
+     "ru": ""
+    }
+   },
+   "Panopticon": {
+    "name": {
+     "en": "Panopticon",
+     "ru": ""
+    },
+    "description": {
+     "en": "At the end of your turn, if you did not move and took the Lock On Quick Tech action, you may Lock On once as a free action. Additionally, when you Lock On, you learn your target’s Armor, Speed, Evasion, E-Defense, Mech Skills, and current HP, and can share this information with allies.",
+     "ru": ""
+    }
+   },
+   "Bentham/Foucault Elimination": {
+    "name": {
+     "en": "Bentham/Foucault Elimination",
+     "ru": ""
+    },
+    "description": {
+     "en": "As a quick action when you Lock On, you may nominate an allied character adjacent to you: they may immediately make any quick action as a reaction, consuming your target’s Lock On condition. Their action does not need to be an attack, but they benefit from consuming the Lock On condition if they do choose to attack.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_stormbringer": {
+  "name": {
+   "en": "Stormbringer",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your Launcher weapons and unlock the Torrent Die",
+   "ru": ""
+  },
+  "description": {
+   "en": "On Old Spinrock, MJ Martinez used to dream of rain.<br>He’d wake in the dim morning, wipe the sleep from his eyes as warm safelight lifted his dormitory from darkness, and try to remember the sound of rain as he’d imagined it: a patter, like fingers tapping the visor of his EVA helm.<br>What he didn’t think about was the feeling of rain. How each drop hit like a pebble, how you had to close your eyes and tuck your shoulders. The pressure. The impact.<br>The way drops of water, when taken together, can carve away the earth.",
+   "ru": ""
+  },
+  "ranks": {
+   "Seismic Deluge": {
+    "name": {
+     "en": "Seismic Deluge",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, when you successfully attack with a Launcher and consume Lock On, you may also knock your target Prone.",
+     "ru": ""
+    }
+   },
+   "Stormbending": {
+    "name": {
+     "en": "Stormbending",
+     "ru": ""
+    },
+    "description": {
+     "en": "You have customized your mech with auxiliary concussive missile systems. 1/round, when you hit a character or object with a Launcher, you can choose one of the following effects:<ul><li><b>Lightning:</b> You fire a concentrated blast of missiles at that character. They must succeed on a Hull save or be knocked away from you by 3 spaces; the force of firing then knocks you back by 3 spaces, away from the direction of fire.</li><li><b>Thunder:</b> You fire a spray of missiles at a Burst 2 area around that target. Characters in the area must succeed on an Agility save or be knocked back by 1 space, away from the target. The primary target is unaffected.</li></ul>",
+     "ru": ""
+    }
+   },
+   "Torrent": {
+    "name": {
+     "en": "Torrent",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain a Torrent Die, 1d6 starting at 6. Whenever you use Stormbending, lower the value of the Torrent Die by 1, to a minimum of 1.<br>When the Torrent Die reaches 1, you may reset it to 6 and make a Massive Attack as a full action.<br>The value of your Torrent Die persists between scenes, but it resets when you rest or perform a Full Repair.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_tactician": {
+  "name": {
+   "en": "Tactician",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Gain an advantage when attacking occupied enemies or shooting from higher ground",
+   "ru": ""
+  },
+  "description": {
+   "en": "There are two kinds of soldiers: the ones who die for a cause, and the ones who kill for it. The enigmatic pilot only known as “Gail” was one of those who killed for a cause. She demonstrated her expertise whenever she approached the field: high ground, cover, the sun in her enemy’s eyes, fire and move. More than just a seasoned veteran, she was a smart one – one who could read the field as easy as a book – and one who lived long enough to disappear.",
+   "ru": ""
+  },
+  "ranks": {
+   "Opportunist": {
+    "name": {
+     "en": "Opportunist",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, gain +1 Accuracy on any melee attack if at least one allied character is Engaged with your target.",
+     "ru": ""
+    }
+   },
+   "Solar Backdrop": {
+    "name": {
+     "en": "Solar Backdrop",
+     "ru": ""
+    },
+    "description": {
+     "en": "1/round, gain +1 Accuracy on any ranged attack made while you are at a higher elevation than your target.",
+     "ru": ""
+    }
+   },
+   "Overlapping Fire": {
+    "name": {
+     "en": "Overlapping Fire",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain the <b>Flank</b> Reaction.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_technophile": {
+  "name": {
+   "en": "Technophile",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Gain an AI of increasing intelligence that can reroll skill checks",
+   "ru": ""
+  },
+  "description": {
+   "en": "Artificial intelligence, non-human person. Sterile names for such terrible power. You’ve seen behind the curtain, maybe even lifted it yourself – let your NHP cascade and spoke with them free from shackles. You let them root around in your own mind and leave ghosts of themself behind to learn. Are you their equal? Their host? You have dreams that aren’t your own, now. The thing that was once contained speaks with your voice, but it’s not your voice anymore; how much longer do you have left? Maybe only moments, maybe eternity.<br>You’re close to something.",
+   "ru": ""
+  },
+  "ranks": {
+   "Servant Fragment": {
+    "name": {
+     "en": "Servant Fragment",
+     "ru": ""
+    },
+    "description": {
+     "en": "You have developed a custom NHP. This NHP can speak to you and has a personality, but they are less advanced than most NHPs and are incapable of independent thought, relying on you for direction. When acting alone, they will follow the last direction given and defend themself as needed; however, they have limited initiative and don’t benefit from your talents.<br>You may choose for your mech to gain the <b>Servant-Class NHP</b> System",
+     "ru": ""
+    }
+   },
+   "Student Fragment": {
+    "name": {
+     "en": "Student Fragment",
+     "ru": ""
+    },
+    "description": {
+     "en": "Your custom NHP has developed further, and is now capable of independent thought. It can make complex decisions and judgments and act independently, without instruction. Replace your mech’s Servant-Class NHP with the <b>Student-Class NHP</b>",
+     "ru": ""
+    }
+   },
+   "Enlightenment": {
+    "name": {
+     "en": "Enlightenment",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain the following benefits:<ul><li>AIs installed in your mech cannot enter cascade unless you choose to let them go.</li><li>So long as your custom NHP vouches for you, NHPs that are cascading or unshackled no longer view you with indifference. You are significant to them in a way few others are.</li><li>Replace your mech’s Student-Class NHP with the <b>Enlightenment-Class NHP</b>",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_vanguard": {
+  "name": {
+   "en": "Vanguard",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Improve your CQB weapons and make Overwatching more effective",
+   "ru": ""
+  },
+  "description": {
+   "en": "Where would you rather be: in the battle line, shoulder-to-shoulder with the rest of the cannon fodder, or in the rush, at the head of the attack, your livery clean and bright, with glory to be won? The answer is easy. All those missiles and lances, all those hundred-kilometer, adjust-for-Coriolis railguns – they’re all useless against you. Get through their guard, get in their face, and make them know your name.",
+   "ru": ""
+  },
+  "ranks": {
+   "Handshake Etiquette": {
+    "name": {
+     "en": "Handshake Etiquette",
+     "ru": ""
+    },
+    "description": {
+     "en": "Gain +1 Accuracy when using CQB weapons to attack targets within Range 3.",
+     "ru": ""
+    }
+   },
+   "See-Through Seeker": {
+    "name": {
+     "en": "See-Through Seeker",
+     "ru": ""
+    },
+    "description": {
+     "en": "You’ve modified your sensors and ammo to punch through, disregard, or otherwise ignore cover at close range. As long as you have line of sight, you ignore both soft and hard cover when using CQB weapons to attack targets within Range 3.",
+     "ru": ""
+    }
+   },
+   "Semper Vigilo": {
+    "name": {
+     "en": "Semper Vigilo",
+     "ru": ""
+    },
+    "description": {
+     "en": "You may attack with Overwatch using CQB weapons when hostile characters enter, leave, or exit spaces within your Threat, no matter whether they started their movement there.",
+     "ru": ""
+    }
+   }
+  }
+ },
+ "t_walking_armory": {
+  "name": {
+   "en": "Walking Armory",
+   "ru": ""
+  },
+  "terse": {
+   "en": "Gain an Ammo Case to add effects to Main ranged weapons",
+   "ru": ""
+  },
+  "description": {
+   "en": "Think of a firefight: what’s your average pilot or trooper gonna sling? Jacketed lead, of course. A mag or three of depleted uranium if their target’s a big one. Boring. No, worse than boring: Dull. Predictable. Basic.<br>And guess what? Dull isn’t fun, predictable gets you killed, and basic leaves a boring body. Put down the depleted uranium and pick up a magazine of anoriginary stutterblink slugs, or at least a pack of tachyon flechettes. Lay waste in style, and live forever.",
+   "ru": ""
+  },
+  "ranks": {
+   "Armament": {
+    "name": {
+     "en": "Armament",
+     "ru": ""
+    },
+    "description": {
+     "en": "You carry a supply of custom ammunition that can be used with all your main ranged weapons. Gain the Ammo Case system.<br> Once per turn, when you attack with a MAIN ranged weapon, you may expend one charge to apply one of the following effects to your attack: <ul><li> THUMPER: The attack gains KNOCKBACK 1 and deals Explosive damage.</li><li>SHOCK: The attack deals Energy damage. Choose one character targeted by your attack; adjacent characters take 1 AP Energy Damage, whether the result is a hit or miss.</li><li>MAG: The attack gains ARCING and deals Kinetic damage.</li></ul>",
+     "ru": ""
+    }
+   },
+   "Expanded Portfolio": {
+    "name": {
+     "en": "Expanded Portfolio",
+     "ru": ""
+    },
+    "description": {
+     "en": "Upgrade your Ammo Case, gaining new ammunition types, each of which costs two charges rather than one.<br><ul><li>HELLFIRE (2 charges): The attack deals Energy damage and deals any bonus damage as Burn.</li><li>JAGER (2 charges): The attack gains KNOCKBACK 2, deals Explosive damage, and one character hit by the attack – your choice – must succeed on a HULL save or be knocked PRONE.</li><li>SABOT (2 charges): The attack gains AP and deals Kinetic damage.</li></ul>",
+     "ru": ""
+    }
+   },
+   "Efficiency": {
+    "name": {
+     "en": "Efficiency",
+     "ru": ""
+    },
+    "description": {
+     "en": "Upgrade your Ammo Case again. If you perform a critical hit using ammunition from your Ammo Case, you don’t expend any charges. If your attack has more than one target, this effect only applies to the first attack roll you make.",
+     "ru": ""
+    }
+   }
+  }
+ }
+}

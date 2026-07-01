@@ -1,0 +1,310 @@
+{
+ "sk_act_unseen_or_unheard": {
+  "name": {
+   "en": "Act Unseen or Unheard",
+   "ru": "Действовать незаметно"
+  },
+  "description": {
+   "en": "Get somewhere or do something without detection.",
+   "ru": "Добраться куда-то или сделать что-то без обнаружения."
+  },
+  "detail": {
+   "en": "Get somewhere or do something without being detected, but not necessarily with speed. Hide, sneak, or move quietly. Infiltrate a facility while avoiding security, patrols, or cameras. Perform a quick action or maneuver without being seen or heard, such as picking a pocket, unholstering your gun, or cheating at cards. Wear a disguise.",
+   "ru": "Добраться куда-то или сделать что-то, не будучи обнаруженным — не обязательно быстро. Спрятаться, прокрасться или двигаться тихо. Проникнуть на объект, минуя охрану, патрули или камеры. Совершить быстрое действие или манёвр незаметно — например, обчистить карман, достать оружие или обмануть в карты. Надеть маскировку."
+  }
+ },
+ "sk_apply_fists_to_faces": {
+  "name": {
+   "en": "Apply Fists to Faces",
+   "ru": "Пустить в ход кулаки"
+  },
+  "description": {
+   "en": "Fight in open, brutal unarmed combat.",
+   "ru": "Драться в открытом, жёстком бою без оружия."
+  },
+  "detail": {
+   "en": "Punch someone in the face, or alternately fight in open, brutal unarmed combat, whether it’s a fist fight, martial arts duel, or a huge brawl. This is never subtle, never clean, and probably causes a lot of noise.",
+   "ru": "Ударить кого-то в лицо или, в более широком смысле, драться в открытом жестоком бою без оружия — будь то кулачная драка, дуэль боевых искусств или массовая свалка. Это никогда не бывает тихим или чистым и, вероятно, вызывает много шума."
+  }
+ },
+ "sk_assault": {
+  "name": {
+   "en": "Assault",
+   "ru": "Штурмовать"
+  },
+  "description": {
+   "en": "Take part in direct and overt combat.",
+   "ru": "Принять участие в прямом, открытом бою."
+  },
+  "detail": {
+   "en": "Take part in direct and overt combat: fighting your way through a building packed with hostile mercenaries, trading shots between rain-slick trenches, fighting in chaotic microgravity as part of a boarding action, or engaging the enemy in the smoking urban rubble of a city under orbital bombardment — When you assault, you’re always assaulting something (a position, a rival pilot, an enemy force, a group of guards), and it’s always loud, open, direct action.",
+   "ru": "Принять участие в прямом, открытом бою: прорываться через здание, полное враждебных наёмников, обмениваться выстрелами в залитых дождём траншеях, сражаться в хаотичной микрогравитации во время штурма корабля или биться с врагом среди дымящихся руин города под орбитальным обстрелом. Штурмуя, вы всегда штурмуете что-то конкретное (позицию, соперника-пилота, силы противника, группу охраны), и это всегда громкое, открытое, прямое действие."
+  }
+ },
+ "sk_blow_something_up": {
+  "name": {
+   "en": "Blow Something Up",
+   "ru": "Взорвать что-нибудь"
+  },
+  "description": {
+   "en": "Use explosives to totally wreck something or turn it into an enormous fireball.",
+   "ru": "Использовать взрывчатку, чтобы полностью разрушить что-то или превратить в огненный шар."
+  },
+  "detail": {
+   "en": "Use explosives (improvised or otherwise), weapons, or maybe just good old fashion brawn to totally wreck something or turn it into an enormous fireball (maybe a wall, sensor array, outpost, reactor core - the good stuff). Probably not to be used against people unless they’re incidentally in the way.",
+   "ru": "Использовать взрывчатку (самодельную или не самодельную), оружие или просто грубую силу, чтобы полностью разрушить что-то или превратить в гигантский огненный шар (стену, массив сенсоров, форпост, реакторное ядро — что-то в этом духе). Вероятно, не применяется против людей, если они не оказались случайно на пути."
+  }
+ },
+ "sk_charm": {
+  "name": {
+   "en": "Charm",
+   "ru": "Очаровать"
+  },
+  "description": {
+   "en": "Convince a receptive audience or use leverage (money, power, personal benefit) to get your way.",
+   "ru": "Убедить восприимчивую аудиторию или использовать рычаг влияния (деньги, власть, личную выгоду), чтобы добиться своего."
+  },
+  "detail": {
+   "en": "To charm, you need a receptive audience, or some kind of promise of leverage (money, power, personal benefit, etc). You can use it when trying to smooth talk your way past guards, get someone on your side, sway a potential benefactor, talk someone down, perform diplomacy between two parties, or blatantly lie to someone. You can also use it when trying to impersonate someone. Charm won’t work on people that aren’t receptive (such as soldiers you are in a gunfight with) or that you don’t have leverage over (promises of safety, money, power, recompense, help, etc). These promises don’t necessarily have to be true but they have to have some weight with your target.",
+   "ru": "Чтобы очаровать, вам нужна восприимчивая аудитория или обещание какого-либо рычага влияния (денег, власти, личной выгоды и т.д.). Это можно использовать, чтобы уговорить охрану пропустить вас, переманить кого-то на свою сторону, склонить потенциального покровителя, успокоить кого-то, провести переговоры между двумя сторонами или откровенно солгать. Также применимо при попытке кого-то изобразить. Очарование не сработает на тех, кто не восприимчив (например, на солдатах, с которыми вы в перестрелке), или на тех, над кем у вас нет рычага влияния (обещания безопасности, денег, власти, компенсации, помощи и т.д.). Эти обещания не обязательно должны быть правдой, но должны иметь какой-то вес для вашей цели."
+  }
+ },
+ "sk_get_a_hold_of_something": {
+  "name": {
+   "en": "Get a Hold of Something",
+   "ru": "Достать что-нибудь"
+  },
+  "description": {
+   "en": "Acquire temporary or permanent allies, assets, or connections through wealth or social influence.",
+   "ru": "Получить временных или постоянных союзников, ресурсы или связи за счёт богатства или социального влияния."
+  },
+  "detail": {
+   "en": "Acquire useful allies, assets, or connections through wealth or social influence. This could be permanent (buying it or receiving it) or temporary (renting or borrowing help or supplies, etc), and might be harder or easier depending on how much you want to use it. This can’t be used for something that’s normally gated by license level (like mech parts) but could be used for aid, supplies, information, food materials, soldiers, or anything else that has more narrative impact. Typically this is acquired by buying it from a market or requisitioning it from a parent organization.",
+   "ru": "Получить полезных союзников, ресурсы или связи за счёт богатства или социального влияния. Это может быть постоянным (купить или получить в собственность) или временным (взять в аренду или одолжить помощь либо снаряжение и т.д.), и может быть сложнее или проще в зависимости от того, насколько сильно вы хотите этим воспользоваться. Нельзя использовать для того, что обычно ограничено уровнем лицензии (например, детали для меха), но можно получить помощь, снаряжение, информацию, продукты, солдат или что-то ещё с бо́льшим сюжетным весом. Обычно это приобретается покупкой на рынке или запросом у вышестоящей организации."
+  }
+ },
+ "sk_get_somewhere_quickly": {
+  "name": {
+   "en": "Get Somewhere Quickly",
+   "ru": "Быстро добраться"
+  },
+  "description": {
+   "en": "Get somewhere quickly and without complications.",
+   "ru": "Добраться куда-то быстро и без осложнений."
+  },
+  "detail": {
+   "en": "Get somewhere without complications and with speed, but not necessarily stealth. Climb, swim, or perform acrobatic maneuvers in an attempt to reach a destination faster than the ‘safe’ way. Fall safely from a great height. Move gracefully in zero-g. Chase or flee, outrun, or out pace a target. Get somewhere faster than anyone else. You can also use this when you want to drive or pilot a vehicle.",
+   "ru": "Добраться куда-то без осложнений и быстро, но не обязательно скрытно. Взбираться, плавать или выполнять акробатические манёвры, пытаясь достичь цели быстрее «безопасного» пути. Безопасно упасть с большой высоты. Грациозно двигаться в невесомости. Преследовать или убегать, обгонять или отставать от цели. Добраться куда-то быстрее всех. Также используется, если вы хотите управлять транспортным средством."
+  }
+ },
+ "sk_hack_or_fix": {
+  "name": {
+   "en": "Hack or Fix",
+   "ru": "Взломать или починить"
+  },
+  "description": {
+   "en": "Repair a device or faulty system; alternatively, hack it wide open, or totally wreck, disable or sabotage it.",
+   "ru": "Отремонтировать устройство или неисправную систему; либо взломать её, либо полностью сломать, отключить или саботировать."
+  },
+  "detail": {
+   "en": "Repair a device or faulty system. Alternately, hack it wide open, or totally wreck, disable or sabotage it. You can use this for hacking or safeguarding electronic systems, such as electronic door locks, computer systems, omninet webs, or NHP coffins.",
+   "ru": "Отремонтировать устройство или неисправную систему. Либо взломать её, либо полностью сломать, отключить или саботировать. Это применимо к взлому или защите электронных систем — таких как электронные замки, компьютерные системы, узлы омнинета или капсулы НЧЛ (нечеловеческих личностей)."
+  }
+ },
+ "sk_invent_or_create": {
+  "name": {
+   "en": "Invent or Create",
+   "ru": "Изобрести или создать"
+  },
+  "description": {
+   "en": "Invent new devices, tools, or approaches to problems.",
+   "ru": "Изобретать новые устройства, инструменты или подходы к решению проблем."
+  },
+  "detail": {
+   "en": "Generally speaking, you need tools and supplies to invent or create something successfully. Use this with many downtime actions to work on projects. You can also use it in the spur of the moment to invent new devices, tools, or approaches to something (improvised explosives, gear, disguises, or some similar).",
+   "ru": "Обычно для успешного изобретения или создания чего-либо нужны инструменты и материалы. Используется во многих действиях простоя для работы над проектами. Также применимо в момент необходимости — придумать новое устройство, инструмент или подход к чему-либо (самодельная взрывчатка, снаряжение, маскировка и подобное)."
+  }
+ },
+ "sk_investigate": {
+  "name": {
+   "en": "Investigate",
+   "ru": "Расследовать"
+  },
+  "description": {
+   "en": "Research a subject, or study something in great detail.",
+   "ru": "Исследовать тему или изучить что-то в мельчайших подробностях."
+  },
+  "detail": {
+   "en": "Research a subject, or look at something in great detail. If you can’t find information directly, you learn how you can get access to that information. Learn about a subject of historical relevance, or become well-read on a subject. Investigate a mystery or solve a puzzle. Locate a person or object through research or investigation.",
+   "ru": "Исследовать тему или изучить что-то в мельчайших подробностях. Если информацию нельзя найти напрямую, вы узнаёте, как получить к ней доступ. Узнать что-то об исторически значимом предмете или стать знатоком темы. Расследовать тайну или решить головоломку. Найти человека или объект через исследование или расследование."
+  }
+ },
+ "sk_lead_or_inspire": {
+  "name": {
+   "en": "Lead or Inspire",
+   "ru": "Вести или вдохновлять"
+  },
+  "description": {
+   "en": "Give an inspiring speech, or motivate a group of people into action.",
+   "ru": "Произнести вдохновляющую речь или побудить группу людей к действию."
+  },
+  "detail": {
+   "en": "Give an inspiring speech, or motivate a group of people into action. Administer or run an organization efficiently or effectively, such as a company, a ship’s crew, a group of colonists or a mining venture. Effectively command a platoon of soldiers in battle, or (perhaps) an entire army.",
+   "ru": "Произнести вдохновляющую речь или побудить группу людей к действию. Эффективно управлять организацией — компанией, экипажем корабля, группой колонистов или горнодобывающим предприятием. Эффективно командовать взводом солдат в бою или (возможно) целой армией."
+  }
+ },
+ "sk_patch": {
+  "name": {
+   "en": "Patch",
+   "ru": "Оказать помощь"
+  },
+  "description": {
+   "en": "Apply medical knowledge to medicate or diagnose.",
+   "ru": "Применить медицинские знания для лечения или диагностики."
+  },
+  "detail": {
+   "en": "Apply your medical knowledge to administer medication, bandage a wound, staunch bleeding, suture, cauterize, neutralize poison, or resuscitate. Alternately, you could use it to diagnose or study disease, pathogens, or illness.",
+   "ru": "Применить медицинские знания, чтобы дать лекарство, перевязать рану, остановить кровотечение, наложить швы, прижечь рану, нейтрализовать яд или провести реанимацию. Либо использовать эти знания для диагностики или изучения болезни, патогена или недомогания."
+  }
+ },
+ "sk_pull_rank": {
+  "name": {
+   "en": "Pull Rank",
+   "ru": "Использовать звание"
+  },
+  "description": {
+   "en": "Get information, resources, or aid from a subordinate.",
+   "ru": "Получить информацию, ресурсы или помощь от подчинённого."
+  },
+  "detail": {
+   "en": "Pull rank on a subordinate, getting information, resources, or aid from them, even unwillingly. You can use this on anyone your social status (noble, celebrity, etc) or military rank would have weight with. Failing this might be risky and could be seen as abusive. You typically can’t pull rank on hostile targets. You could also use this to pretend to have a rank you don’t have, but it’s definitely risky.",
+   "ru": "Использовать своё звание перед подчинённым, чтобы получить от него информацию, ресурсы или помощь, даже против его воли. Это применимо к любому, на кого может повлиять ваш социальный статус (аристократ, знаменитость и т.п.) или воинское звание. Провал может быть рискованным и восприниматься как злоупотребление положением. Обычно нельзя использовать звание против враждебных целей. Также можно попытаться выдать себя за обладателя звания, которого у вас нет, но это определённо рискованно."
+  }
+ },
+ "sk_read_a_situation": {
+  "name": {
+   "en": "Read a Situation",
+   "ru": "Прочитать ситуацию"
+  },
+  "description": {
+   "en": "Look for subtext, motives, or threats in a situation or person.",
+   "ru": "Искать подтекст, мотивы или угрозы в ситуации или человеке."
+  },
+  "detail": {
+   "en": "Look for subtext, motive, or threat in a situation or person, often social situations. Use your intuition to learn someone’s motivation, learn who is really in charge, or who is about to do something rash or stupid. Get a gut feeling about a situation or person. Sense if someone is lying to you.",
+   "ru": "Искать подтекст, мотив или угрозу в ситуации или человеке, часто в социальных ситуациях. Используя интуицию, узнать чью-то мотивацию, понять, кто на самом деле главный, или кто собирается сделать что-то опрометчивое. Получить внутреннее ощущение о ситуации или человеке. Почувствовать, что вам лгут."
+  }
+ },
+ "sk_show_off": {
+  "name": {
+   "en": "Show Off",
+   "ru": "Показать класс"
+  },
+  "description": {
+   "en": "Do something flashy, cool, or impressive, usually – but not exclusively – with your weapon.",
+   "ru": "Сделать что-то эффектное, крутое или впечатляющее — обычно, но не обязательно, с оружием в руках."
+  },
+  "detail": {
+   "en": "Do something flashy, cool, or impressive, usually (but not exclusively) with your weapon, like shooting a very small or rapidly moving target, shooting someone’s hat off or their weapon out of their hand, knocking someone out by throwing a gun at them, performing an acrobatic flourish with a sword, throwing a spear to pin a fleeing target to the ground, and so on.",
+   "ru": "Сделать что-то эффектное, крутое или впечатляющее — обычно (но не обязательно) с оружием: подстрелить очень маленькую или быстро движущуюся цель, сбить чью-то шляпу или оружие выстрелом, оглушить кого-то, бросив в него пистолет, выполнить акробатический трюк с мечом, бросить копьё, чтобы пришпилить убегающую цель к земле, и так далее."
+  }
+ },
+ "sk_spot": {
+  "name": {
+   "en": "Spot",
+   "ru": "Заметить"
+  },
+  "description": {
+   "en": "Spot details, objects, or people that are hidden or difficult to make out.",
+   "ru": "Заметить детали, объекты или людей, которые скрыты или трудноразличимы."
+  },
+  "detail": {
+   "en": "Spot hidden or difficult to make out details, objects, or people. Spot ambushes, hidden compartments, or disguised individuals. Spy on a target from a distance, or make out the details, shape, and number of objects, vehicles, mechs, or people clearly at a distance. Track people or vehicles.",
+   "ru": "Заметить скрытые или трудноразличимые детали, объекты или людей. Обнаружить засаду, тайники или переодетых людей. Наблюдать за целью на расстоянии или ясно различить детали, форму и количество объектов, машин, мехов или людей на расстоянии. Проследить за людьми или машинами."
+  }
+ },
+ "sk_stay_cool": {
+  "name": {
+   "en": "Stay Cool",
+   "ru": "Сохранять хладнокровие"
+  },
+  "description": {
+   "en": "Perform a task that requires concentration, dexterity, speed, or precision under pressure.",
+   "ru": "Выполнить задачу, требующую концентрации, ловкости, скорости или точности под давлением."
+  },
+  "detail": {
+   "en": "Do something that requires concentration, speed, or intense precision under pressure, like picking a lock as your squad trades fire with encroaching guards, avoiding a hostile memetic code while hacking a secure console, carefully disarming an explosive, or unjamming a gun under fire. If you’ve got to do something complicated in a high stress situation without messing up (and possibly not even breaking a sweat) this is the action to use.",
+   "ru": "Сделать что-то, требующее концентрации, скорости или высокой точности под давлением — например, взломать замок, пока ваш отряд обменивается огнём с наступающей охраной, обойти враждебный меметический код при взломе защищённой консоли, аккуратно разминировать взрывное устройство или устранить заклинивание оружия под огнём. Если нужно сделать что-то сложное в напряжённой ситуации без единой ошибки (и, возможно, даже не вспотев) — это то самое действие."
+  }
+ },
+ "sk_survive": {
+  "name": {
+   "en": "Survive",
+   "ru": "Выжить"
+  },
+  "description": {
+   "en": "Persevere through harsh, hostile, or unforgiving environments.",
+   "ru": "Продержаться в суровых, враждебных или беспощадных условиях."
+  },
+  "detail": {
+   "en": "Persevere through harsh, hostile, or unforgiving environments, such as the vacuum of space, frozen tundra, a pirate enclave, a crime-ridden colony, untamed wilderness, or scorching desert. You most often use survive when you want to take a journey through wilderness environments, navigate, or avoid natural hazards such as carnivorous wildlife, rockfalls, thin ice, or lava fields. Alternately you could use it to avoid man-made hazards, such as navigating a city safely, or avoiding dangerous areas of a space station. You could also use it when testing personal endurance, such as shaking off poison or alcohol.",
+   "ru": "Продержаться в суровых, враждебных или беспощадных условиях — таких как вакуум космоса, замёрзшая тундра, пиратский анклав, криминальная колония, дикая природа или обжигающая пустыня. Чаще всего используется, когда нужно пройти через дикую местность, ориентироваться или избежать природных опасностей — плотоядных существ, камнепадов, тонкого льда или лавовых полей. Также применимо для избегания опасностей, созданных людьми — например, безопасно передвигаться по городу или обходить опасные зоны космической станции. Можно использовать и при проверке личной выносливости — например, чтобы стряхнуть действие яда или алкоголя."
+  }
+ },
+ "sk_take_control": {
+  "name": {
+   "en": "Take Control",
+   "ru": "Взять контроль"
+  },
+  "description": {
+   "en": "Use force, violence, presence of will, or direct action to take control of something.",
+   "ru": "Применить силу, насилие, волю или прямое действие, чтобы взять что-то под контроль."
+  },
+  "detail": {
+   "en": "Use force, violence, presence of will, or direct action to take control of something. This is often something concrete, like an object someone is holding. You could take control of someone’s gun or a keycard they have on their person. You can additionally can take control of a situation to force those present to listen, calm down, stop moving, or stop what they’re doing (perhaps for their benefit), though you can’t necessarily force them to do anything further without threatening them. Taking control is never subtle.",
+   "ru": "Применить силу, насилие, волю или прямое действие, чтобы взять что-то под контроль. Часто это что-то конкретное — например, предмет, который кто-то держит в руках. Вы можете вырвать у кого-то оружие или ключ-карту. Также можно взять под контроль саму ситуацию, заставив присутствующих слушать, успокоиться, остановиться или прекратить делать то, что они делают (возможно, для их же пользы), хотя вы не можете заставить их сделать что-то ещё без угроз. Взятие контроля никогда не бывает незаметным."
+  }
+ },
+ "sk_take_someone_out": {
+  "name": {
+   "en": "Take Someone Out",
+   "ru": "Устранить кого-то"
+  },
+  "description": {
+   "en": "Kill or disable someone quickly and quietly.",
+   "ru": "Убить или обезвредить кого-то быстро и тихо."
+  },
+  "detail": {
+   "en": "Kill or disable someone quickly and quietly, from up close and personal or from a distance, probably before they even notice. This is probably a single person but could be two people relatively close together (any more is sort of stretching it and definitely risky). If you’re looking down a sniper scope at a target, preparing to nerve pinch a guard to knock them out instantly, quick-drawing during a gun duel, or dropping from a ceiling to slit a throat, this is the action to use.",
+   "ru": "Убить или обезвредить кого-то быстро и тихо, вблизи или на расстоянии — вероятно, до того, как вас заметят. Обычно это один человек, но может быть и двое, если они находятся достаточно близко друг к другу (больше — уже сомнительно и определённо рискованно). Если вы смотрите в снайперский прицел, готовитесь оглушить охранника нервным зажимом, быстро выхватываете оружие в дуэли или спускаетесь с потолка, чтобы перерезать горло — это то самое действие."
+  }
+ },
+ "sk_threaten": {
+  "name": {
+   "en": "Threaten",
+   "ru": "Угрожать"
+  },
+  "description": {
+   "en": "Use force or threats to make someone do what you want.",
+   "ru": "Применить силу или угрозы, чтобы заставить кого-то сделать то, что вам нужно."
+  },
+  "detail": {
+   "en": "Use force or threats of force to get someone to do what you want them to do. Name what you want someone to do and what you’re going to do to them if they don’t listen to you. This could also be blackmail, leverage, or something similarly nasty. Threatening someone can be very high risk but very effective if successful - either way there’s likely no repairing the relationship afterwards. If you threaten someone unsuccessfully, your threats have no further effect on them unless you change something about the situation (as with all other skill checks).",
+   "ru": "Применить силу или угрозу силой, чтобы заставить кого-то сделать то, что вам нужно. Назвать, что вы хотите от человека, и что вы сделаете с ним, если он не послушает. Это может быть и шантаж, рычаг давления или что-то подобное неприятное. Угрозы могут быть очень рискованными, но очень эффективными в случае успеха — в любом случае отношения после этого, вероятно, не восстановить. Если угроза не сработала, она больше не действует на этого человека, если вы не измените что-то в ситуации (как и с любой другой проверкой навыка)."
+  }
+ },
+ "sk_word_on_the_street": {
+  "name": {
+   "en": "Word on the Street",
+   "ru": "Слухи с улицы"
+  },
+  "description": {
+   "en": "Get gossip, news, or hearsay from the streets, or from a particular social scene.",
+   "ru": "Получить сплетни, новости или слухи с улицы или из определённых социальных кругов."
+  },
+  "detail": {
+   "en": "Get gossip, news, or hearsay from the streets. What you get depends on what ‘streets’ you are getting word from (high society, low society, hearsay, military chatter, etc). This probably takes a lot less time than investigating something in detail, but the information might be more qualitative or colored by opinion (sometimes that might be useful). You can always learn where the information came from or who to go to next.",
+   "ru": "Получить сплетни, новости или слухи с улицы. Что вы получите, зависит от того, из каких «улиц» вы их берёте (высшее общество, низшее общество, слухи, военные разговоры и т.д.). Это, вероятно, займёт гораздо меньше времени, чем детальное расследование, но информация может быть более субъективной или окрашенной чужим мнением (иногда это тоже может быть полезно). Вы всегда можете узнать, откуда пришла информация или к кому обратиться дальше."
+  }
+ }
+}
