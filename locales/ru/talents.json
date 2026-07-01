@@ -2,45 +2,45 @@
  "t_ace": {
   "name": {
    "en": "Ace",
-   "ru": ""
+   "ru": "Асс"
   },
   "terse": {
    "en": "Improve your flight systems for rapid repositioning and extreme mobility",
-   "ru": ""
+   "ru": "Улучшите системы полёта для быстрой перепозиции и высокой мобильности"
   },
   "description": {
    "en": "Every pilot brags about their actions; occasionally, some even have the reputation to back it up. Harmonious Domesticity is one of these pilots. As an ace, they aren’t just ranked among the most qualified of pilots – they’re among the most qualified of lancers.<br>Whether you’re a talented rookie or a grizzled veteran, you’re one of these aces. Your skills as a pilot are notorious enough that your callsign is known throughout the system.",
-   "ru": ""
+   "ru": "Каждый пилот хвастается своими подвигами; иногда у некоторых даже есть репутация, подтверждающая слова. Хармониус Доместисити — один из таких пилотов. Как асс, он не просто входит в число самых квалифицированных пилотов — он входит в число самых квалифицированных лансеров.<br>Будь вы талантливым новичком или закалённым ветераном, вы — один из этих ассов. Ваше мастерство пилотирования настолько известно, что ваш позывной знают по всей системе."
   },
   "ranks": {
    "Acrobatics": {
     "name": {
      "en": "Acrobatics",
-     "ru": ""
+     "ru": "Акробатика"
     },
     "description": {
      "en": "While flying, you get the following benefits:<ul><li>You make all Agility checks and saves with +1 Accuracy.</li><li>Any time an attack misses you, you may fly up to 2 spaces in any direction as a reaction.</li></ul>",
-     "ru": ""
+     "ru": "Пока вы летите, вы получаете следующие преимущества:<ul><li>Все проверки и спасброски Ловкости вы совершаете с +1 к Точности.</li><li>Каждый раз, когда атака промахивается по вам, вы можете пролететь до 2 клеток в любом направлении как реакцию.</li></ul>"
     }
    },
    "Afterburners": {
     "name": {
      "en": "Afterburners",
-     "ru": ""
+     "ru": "Форсаж"
     },
     "description": {
      "en": "When you Boost while flying, you may move an additional 1d6 spaces, but take heat equal to half that amount.",
-     "ru": ""
+     "ru": "Когда вы Ускоряетесь в полёте, вы можете переместиться на дополнительные 1d6 клеток, но получаете тепло, равное половине этого количества."
     }
    },
    "Supersonic": {
     "name": {
      "en": "Supersonic",
-     "ru": ""
+     "ru": "Сверхзвук"
     },
     "description": {
      "en": "As a quick action on your turn, you may <b>spin up your thrusters</b>. If you end your turn flying, you may nominate a character within a Range equal to your Speed and within line of sight, and gain the <b>Supersonic</b> Reaction.",
-     "ru": ""
+     "ru": "Как быстрое действие в свой ход, вы можете <b>раскрутить двигатели</b>. Если вы закончите ход в полёте, вы можете назначить персонажа в пределах Дальности, равной вашей Скорости, и в пределах видимости, и получить реакцию <b>Сверхзвук</b>."
     }
    }
   }
@@ -48,45 +48,45 @@
  "t_bonded": {
   "name": {
    "en": "Bonded",
-   "ru": ""
+   "ru": "Побратим"
   },
   "terse": {
    "en": "Bond with a partner and protect them from harm",
-   "ru": ""
+   "ru": "Свяжитесь с напарником и защищайте его от вреда"
   },
   "description": {
    "en": "The galaxy is a dangerous place, and everyone should have a friend to watch their back. Luckily, you’ve found yours. Maybe you enlisted together or were the only survivors of a bloody engagement. Maybe you didn’t start out as friends, or maybe you were raised to fight alongside each other – however your friendship came to be, when it comes time to drop, there’s no one you’d rather have at your side. Alone, you’re deadly; together, you’re a force of nature.",
-   "ru": ""
+   "ru": "Галактика — опасное место, и у каждого должен быть друг, который прикроет спину. К счастью, вы нашли своего. Может, вы вместе вступили в ряды, или были единственными выжившими в кровавом бою. Может, вы не начинали как друзья, а может, вас растили сражаться плечом к плечу — как бы ни зародилась эта дружба, когда приходит время идти в бой, рядом с собой вы хотите видеть только этого человека. По одиночке вы смертоносны; вместе — вы стихийная сила."
   },
   "ranks": {
    "I’m Your Huckleberry": {
     "name": {
      "en": "I’m Your Huckleberry",
-     "ru": ""
+     "ru": "«Я — твой парень»"
     },
     "description": {
      "en": "When you take this talent, choose another pilot (hopefully a PC, but NPCs are fine if your GM allows it) to be your Bondmate. Any mech skill checks and saves either character makes while you are adjacent gain +1 Accuracy. If both characters have this talent, this increases to +2 Accuracy, but additional characters with this talent can’t increase it any further.<br>Between missions, you can replace your Bondmate with a new one, but only if your relationship with them has changed.",
-     "ru": ""
+     "ru": "Когда вы берёте этот талант, выберите другого пилота (желательно игрового персонажа, но НИП тоже подойдёт, если позволяет ведущий) — это ваш Побратим. Любые проверки навыков и спасброски меха, которые совершает любой из вас, находясь рядом друг с другом, получают +1 к Точности. Если у обоих персонажей есть этот талант, бонус увеличивается до +2 к Точности, но дополнительные персонажи с этим талантом не увеличивают его дальше.<br>Между миссиями вы можете заменить Побратима на нового, но только если ваши отношения с ним изменились."
     }
    },
    "Sundance": {
     "name": {
      "en": "Sundance",
-     "ru": ""
+     "ru": "Сандэнс"
     },
     "description": {
      "en": "Gain the <b>Intercede</b> Reaction.",
-     "ru": ""
+     "ru": "Получите реакцию <b>Вмешательство</b>."
     }
    },
    "Cover Me!": {
     "name": {
      "en": "Cover Me!",
-     "ru": ""
+     "ru": "«Прикрой!»"
     },
     "description": {
      "en": "If a character within your line of sight attempts to attack your Bondmate, you can spend your Overwatch to threaten the attacker, forcing them to either choose a different target or attack anyway: if they attack a different target, your Overwatch is expended without effect; if they choose to attack anyway, you can immediately attack them with Overwatch, as long as they are within Range and line of sight. This attack resolves before the triggering attack.",
-     "ru": ""
+     "ru": "Если персонаж в пределах вашей видимости пытается атаковать вашего Побратима, вы можете потратить своё Дозорное наблюдение, чтобы пригрозить атакующему — заставив его либо выбрать другую цель, либо всё же атаковать: если он выбирает другую цель, ваше Дозорное наблюдение тратится без эффекта; если он всё же атакует, вы можете немедленно атаковать его Дозорным наблюдением, если он в пределах Дальности и видимости. Эта атака разрешается раньше атаки, которая её вызвала."
     }
    }
   }
@@ -94,45 +94,45 @@
  "t_brawler": {
   "name": {
    "en": "Brawler",
-   "ru": ""
+   "ru": "Драчун"
   },
   "terse": {
    "en": "Improve the effectiveness of Improvised Attacks and Grappling",
-   "ru": ""
+   "ru": "Повышает эффективность импровизированных атак и захвата"
   },
   "description": {
    "en": "Up close and personal. The way battle was done since the dawn of time, then forgotten with the first spark of gunpowder. Tempest Gloire is one pilot who prefers the old ways: hand-to-hand, weapons discarded, just the strength of her machine versus the strength of all others. You and her both know that the sweetest victory is found at the culmination of a dance as old as war itself, with the first trick known to humanity: a fist to your enemy’s face.",
-   "ru": ""
+   "ru": "Лицом к лицу. Так велись битвы с начала времён, пока их не забыли с первой искрой порохового заряда. Темпест Глуар — один из пилотов, предпочитающих старые методы: рукопашная, без оружия, просто сила её машины против силы всех остальных. Вы оба знаете, что самая сладкая победа достигается в финале танца, древнего, как сама война, с первым трюком, известным человечеству: кулаком в лицо врага."
   },
   "ranks": {
    "Hold and Lock": {
     "name": {
      "en": "Hold and Lock",
-     "ru": ""
+     "ru": "Держать и зажать"
     },
     "description": {
      "en": "You gain +1 Accuracy on all melee attacks against targets you are Grappling.",
-     "ru": ""
+     "ru": "Вы получаете +1 к Точности на все атаки в ближнем бою по целям, которых вы Захватываете."
     }
    },
    "Sledgehammer": {
     "name": {
      "en": "Sledgehammer",
-     "ru": ""
+     "ru": "Кувалда"
     },
     "description": {
      "en": "Your Improvised Attacks gain Knockback 2 and deal 2d6+2 Kinetic damage.",
-     "ru": ""
+     "ru": "Ваши Импровизированные атаки получают Отбрасывание 2 и наносят 2d6+2 кинетического урона."
     }
    },
    "Knockout Blow": {
     "name": {
      "en": "Knockout Blow",
-     "ru": ""
+     "ru": "Нокаутирующий удар"
     },
     "description": {
      "en": "Gain a Brawler Die, 1d6 starting at 6. Each time you Grapple, Ram, or make an Improvised Attack, lower the value of the Brawler Die by 1. When the Brawler Die reaches 1, you may reset it to 6 and, as a full action, make a Knockout Blow against an adjacent character. The value of your Brawler Die persists between scenes, but it resets to 6 when you rest or perform a Full Repair.",
-     "ru": ""
+     "ru": "Получите Кость Драчуна, 1d6, начинающуюся с 6. Каждый раз, когда вы Захватываете, Таранните или совершаете Импровизированную атаку, уменьшайте значение Кости Драчуна на 1. Когда Кость Драчуна достигает 1, вы можете сбросить её на 6 и, как полное действие, нанести Нокаутирующий удар по соседнему персонажу. Значение вашей Кости Драчуна сохраняется между сценами, но сбрасывается на 6, когда вы отдыхаете или проводите Полный ремонт."
     }
    }
   }
@@ -140,45 +140,45 @@
  "t_brutal": {
   "name": {
    "en": "Brutal",
-   "ru": ""
+   "ru": "Жестокий"
   },
   "terse": {
    "en": "Improve your critical hits, with extra bonuses for natural 20s",
-   "ru": ""
+   "ru": "Улучшает ваши критические удары, с дополнительными бонусами за естественные 20"
   },
   "description": {
    "en": "In the practice ring as in live combat, Aubrey Deckard only knows one way to fight: as fast and messy as possible. When others go hard, she goes hardest; when the order is to eliminate the enemy, she does so with prejudice. This isn’t a dance, it isn’t a game – it’s war, and Brutal lancers mean to see it through. If that means becoming a little bit of a monster, then so be it: the dead can hate from the grave.",
-   "ru": ""
+   "ru": "В тренировочном ринге, как и в настоящем бою, Обри Декард знает только один способ драться: как можно быстрее и грязнее. Когда другие бьются жёстко, она бьётся жёстче всех; когда приказ — уничтожить врага, она делает это без пощады. Это не танец, не игра — это война, и жестокие лансеры намерены довести её до конца. Если для этого нужно немного стать монстром — что ж, быть посему: мёртвые могут ненавидеть уже из могилы."
   },
   "ranks": {
    "Predator": {
     "name": {
      "en": "Predator",
-     "ru": ""
+     "ru": "Хищник"
     },
     "description": {
      "en": "When you roll a 20 on a die for any attack (sometimes called a ‘natural 20’) and critical hit, you deal the maximum possible damage and bonus damage.",
-     "ru": ""
+     "ru": "Когда вы выбрасываете 20 на кубике при любой атаке (иногда называемое «натуральной двадцаткой») и наносите критический удар, вы наносите максимально возможный урон и бонусный урон."
     }
    },
    "Cull the Herd": {
     "name": {
      "en": "Cull the Herd",
-     "ru": ""
+     "ru": "Прополка стада"
     },
     "description": {
      "en": "Your critical hits gain Knockback 1.",
-     "ru": ""
+     "ru": "Ваши критические удары получают Отбрасывание 1."
     }
    },
    "Relentless": {
     "name": {
      "en": "Relentless",
-     "ru": ""
+     "ru": "Неумолимый"
     },
     "description": {
      "en": "When you make an attack roll and miss, your next attack roll gains +1 Accuracy. This effect stacks and persists until you hit.",
-     "ru": ""
+     "ru": "Когда вы совершаете бросок атаки и промахиваетесь, ваш следующий бросок атаки получает +1 к Точности. Этот эффект накапливается и сохраняется, пока вы не попадёте."
     }
    }
   }
@@ -186,45 +186,45 @@
  "t_crack_shot": {
   "name": {
    "en": "Crack Shot",
-   "ru": ""
+   "ru": "Снайпер"
   },
   "terse": {
    "en": "Steady your aim to gain accuracy, bonus damage, and apply debuffs",
-   "ru": ""
+   "ru": "Стабилизируйте прицел, чтобы получить точность, бонусный урон и накладывать дебаффы"
   },
   "description": {
    "en": "Thanks to modern technology, anyone can hit anything these days. Targeting assist. Smart weapons. AIs whispering in people’s ears, moving their hands, squeezing the trigger for them: doing everything but taking credit for the kill. But Strymon Bulis is different. He finds hitting a target is as easy as looking at it, inside of his mech and out. No targeting assist for him; no AI required. All he needs is a zeroed sight, a fresh magazine, and a target downrange...",
-   "ru": ""
+   "ru": "Благодаря современным технологиям сегодня попасть куда угодно может почти любой. Помощь в прицеливании. Умное оружие. ИИ, шепчущие людям на ухо, двигающие их руками, нажимающие спуск за них: делающие всё, кроме получения похвалы за убийство. Но Штраймон Булис — другой. Он считает, что попасть в цель так же просто, как посмотреть на неё, и внутри меха, и снаружи. Ему не нужна помощь в прицеливании; не нужен ИИ. Всё, что ему нужно — обнулённый прицел, свежий магазин и цель на дистанции..."
   },
   "ranks": {
    "Stable, Steady": {
     "name": {
      "en": "Stable, Steady",
-     "ru": ""
+     "ru": "Твёрдо, устойчиво"
     },
     "description": {
      "en": "As a protocol, you may <b>steady your aim</b>. If you do, you become Immobilized until the start of your next turn but gain +1 Accuracy on all attacks you make with Rifles.",
-     "ru": ""
+     "ru": "Как протокол, вы можете <b>стабилизировать прицел</b>. Если вы делаете это, вы становитесь Обездвижены до начала своего следующего хода, но получаете +1 к Точности на все атаки, совершаемые Винтовками."
     }
    },
    "Zero In": {
     "name": {
      "en": "Zero In",
-     "ru": ""
+     "ru": "Точная наводка"
     },
     "description": {
      "en": "1/round, while <b>steadying your aim</b> and making a ranged attack with a Rifle, you can attempt to hit a weak point: gain +1 Difficulty on the attack roll, and deal +1d6 bonus damage on a critical hit.",
-     "ru": ""
+     "ru": "1/раунд, во время <b>стабилизации прицела</b> и совершения дальней атаки Винтовкой, вы можете попытаться поразить слабое место: получите +1 к Сложности броска атаки и нанесите +1d6 бонусного урона при критическом ударе."
     }
    },
    "Watch This": {
     "name": {
      "en": "Watch This",
-     "ru": ""
+     "ru": "«Смотри сюда»"
     },
     "description": {
      "en": "1/round, when you perform a critical hit with a Rifle while steadying your aim, your target must pass a Hull save or you may choose an additional effect for your attack:<ul><li><b>Headshot:</b> They only have line of sight to adjacent spaces until the end of their next turn.</li><li><b>Leg shot:</b> They become Immobilized until the end of their next turn.</li><li><b>Body shot:</b> They are knocked Prone.</li></ul>",
-     "ru": ""
+     "ru": "1/раунд, когда вы наносите критический удар Винтовкой во время стабилизации прицела, ваша цель должна пройти спасбросок Корпуса, иначе вы можете выбрать дополнительный эффект для своей атаки:<ul><li><b>Выстрел в голову:</b> До конца своего следующего хода цель видит только соседние клетки.</li><li><b>Выстрел в ногу:</b> Цель становится Обездвижена до конца своего следующего хода.</li><li><b>Выстрел в корпус:</b> Цель сбивается с ног.</li></ul>"
     }
    }
   }
@@ -232,45 +232,45 @@
  "t_centimane": {
   "name": {
    "en": "Centimane",
-   "ru": ""
+   "ru": "Центиман"
   },
   "terse": {
    "en": "Debuff and control enemies with critical hits from Nexus weapons",
-   "ru": ""
+   "ru": "Дебаффайте и контролируйте врагов критическими ударами оружия Nexus"
   },
   "description": {
    "en": "In the aftermath of the attack on Tartarus Bay, an anonymous source identified agents of the Karrakin Royal Intelligence Service as the culprits. The Baronies quickly released a statement of denial, which was never countered with hard evidence. Rumors of raw footage from the attack were unsubstantiated. Public reaction – anger, terror – to the station’s destruction quieted. The corpse of Tartarus Bay was shunted away from its stable orbit, directed toward the nearest star.<br>A month later, Baronies-local omninet was flooded with previously suppressed footage from the attack on the station, confirming the rumors: Baronic agents did release the greywash swarm into Tartarus Bay. Further data dumps by Ungrateful agents indicated the existence of a secret Baronic intelligence outfit: the Centimane – the Hundred Hands.",
-   "ru": ""
+   "ru": "После атаки на Тартар Бэй анонимный источник указал на агентов Карракинской королевской разведывательной службы как на виновников. Баронии быстро выпустили заявление с отрицанием причастности, которое так и не было опровергнуто твёрдыми доказательствами. Слухи о сыром видео с атаки не подтвердились. Общественная реакция — гнев, ужас — на разрушение станции постепенно стихла. Труп Тартар Бэй был сдвинут со стабильной орбиты, направленный к ближайшей звезде.<br>Месяц спустя локальный омнинет Барони затопило ранее скрытыми записями атаки на станцию, подтверждающими слухи: агенты Барони действительно выпустили серошвабный рой на Тартар Бэй. Дальнейшие утечки данных от агентов «Неблагодарных» указали на существование секретной баронской разведслужбы: Центиман — «Сто рук»."
   },
   "ranks": {
    "Ten Thousand Teeth": {
     "name": {
      "en": "Ten Thousand Teeth",
-     "ru": ""
+     "ru": "Десять тысяч зубов"
     },
     "description": {
      "en": "1/round, when you perform a critical hit with a Nexus, your target must pass a Systems save or become Impaired and Slowed until the end of their next turn.",
-     "ru": ""
+     "ru": "1/раунд, когда вы наносите критический удар оружием Nexus, ваша цель должна пройти спасбросок Систем, иначе становится Ослаблена и Замедлена до конца своего следующего хода."
     }
    },
    "Expose Weakness": {
     "name": {
      "en": "Expose Weakness",
-     "ru": ""
+     "ru": "Раскрыть слабость"
     },
     "description": {
      "en": "When you consume Lock On as part of an attack with a Nexus or Drone and perform a critical hit, your target becomes Shredded until the start of your next turn.",
-     "ru": ""
+     "ru": "Когда вы расходуете Захват цели как часть атаки оружием Nexus или Дроном и наносите критический удар, ваша цель становится Истрёпанной до начала вашего следующего хода."
     }
    },
    "Tidal Suppression": {
     "name": {
      "en": "Tidal Suppression",
-     "ru": ""
+     "ru": "Приливное подавление"
     },
     "description": {
      "en": "This replaces Ten Thousand Teeth.<br>1/round, when you perform a critical hit with a Nexus, your target must succeed on a Systems save or you may choose an additional effect for your attack that lasts until the end of their next turn:<ul><li><b>Harrying Swarm:</b> They become Impaired and Slowed.</li><li><b>Blinding Swarm:</b> They only have line of sight to adjacent squares.</li><li><b>Virulent Swarm:</b> They become Shredded. Any adjacent characters of your choice must also make a Systems save or become Shredded.</li><li><b>Restricting Swarm:</b> They take 1 Burn each time they take an action or reaction.</li></ul>",
-     "ru": ""
+     "ru": "Заменяет «Десять тысяч зубов».<br>1/раунд, когда вы наносите критический удар оружием Nexus, ваша цель должна пройти спасбросок Систем, иначе вы можете выбрать дополнительный эффект для своей атаки, длящийся до конца её следующего хода:<ul><li><b>Терзающий рой:</b> Цель становится Ослаблена и Замедлена.</li><li><b>Слепящий рой:</b> Цель видит только соседние клетки.</li><li><b>Заразный рой:</b> Цель становится Истрёпанной. Любые соседние персонажи по вашему выбору также должны пройти спасбросок Систем, иначе становятся Истрёпанными.</li><li><b>Ограничивающий рой:</b> Цель получает 1 огня каждый раз, когда совершает действие или реакцию.</li></ul>"
     }
    }
   }
@@ -278,45 +278,45 @@
  "t_combined_arms": {
   "name": {
    "en": "Combined Arms",
-   "ru": ""
+   "ru": "Смешанное вооружение"
   },
   "terse": {
    "en": "Become more effective when using both Ranged and Melee weapons in close quarters",
-   "ru": ""
+   "ru": "Становитесь эффективнее, используя и дальнее, и ближнее оружие в тесном контакте"
   },
   "description": {
    "en": "True strength in combat doesn’t come from mastering the blade or the gun – it comes from knowing how to use both. Through time and training, Leika McGraff has combined the arts of melee and ranged combat into a single deadly combination. No matter the foe, Leika is a deadly threat; no matter the weapon, Leika is a master of its employ.",
-   "ru": ""
+   "ru": "Настоящая сила в бою не приходит от овладения клинком или пистолетом — она приходит от умения использовать и то, и другое. Со временем и тренировками Лейка МакГрафф объединила искусство ближнего и дального боя в единую смертоносную комбинацию. Каким бы ни был враг, Лейка — смертельная угроза; каким бы ни было оружие, Лейка — мастер его применения."
   },
   "ranks": {
    "Shield of Blades": {
     "name": {
      "en": "Shield of Blades",
-     "ru": ""
+     "ru": "Щит из клинков"
     },
     "description": {
      "en": "As long as you’re Engaged, you and any allies adjacent to you count as having soft cover.",
-     "ru": ""
+     "ru": "Пока вы в Ближнем бою, вы и любые союзники рядом с вами считаетесь имеющими мягкое укрытие."
     }
    },
    "CQB-Trained": {
     "name": {
      "en": "CQB-Trained",
-     "ru": ""
+     "ru": "Обучен ближнему бою"
     },
     "description": {
      "en": "You don’t gain Difficulty from being Engaged.",
-     "ru": ""
+     "ru": "Вы не получаете Сложность из-за Ближнего боя."
     }
    },
    "Storm of Violence": {
     "name": {
      "en": "Storm of Violence",
-     "ru": ""
+     "ru": "Шторм насилия"
     },
     "description": {
      "en": "Whenever you hit a character with a melee attack, you gain +1 Accuracy on your next ranged attack against them; and, whenever you hit a character with a ranged attack, you gain +1 Accuracy on your next melee attack against them. This effect doesn’t stack.",
-     "ru": ""
+     "ru": "Каждый раз, когда вы попадаете по персонажу атакой в ближнем бою, вы получаете +1 к Точности на следующую дальнюю атаку по нему; и каждый раз, когда вы попадаете по персонажу дальней атакой, вы получаете +1 к Точности на следующую атаку в ближнем бою по нему. Этот эффект не накапливается."
     }
    }
   }
@@ -324,45 +324,45 @@
  "t_duelist": {
   "name": {
    "en": "Duelist",
-   "ru": ""
+   "ru": "Дуэлянт"
   },
   "terse": {
    "en": "Improve your Main Melee attacks and gain Blademaster Dice when you hit",
-   "ru": ""
+   "ru": "Улучшает ваши атаки Основным оружием ближнего боя и даёт Кости Мастера клинка при попадании"
   },
   "description": {
    "en": "There can be an elegance to the way a mech moves – an alacrity that elevates it beyond the simple strength of machine and cannon. The difference is in the tools. Ethan \"Orion\" Miller wields weapons crafted by artisans, boutique manufacturers, specialty lines from the big five, blades that hark back to a time where combat was quick but fair – back to a time where skill meant more than landing an accurate shot. With a blade, lance, pick, axe, or hammer in their hand, Orion writes old tales anew.",
-   "ru": ""
+   "ru": "В том, как движется мех, может быть изящество — стремительность, поднимающая его выше простой силы машины и пушки. Разница в инструментах. Итан «Орион» Миллер владеет оружием, созданным мастерами, бутиковыми производителями, специальными линейками большой пятёрки — клинками, отсылающими к временам, когда бой был быстрым, но честным — к временам, когда мастерство значило больше, чем точный выстрел. С клинком, копьём, кайлом, топором или молотом в руке, Орион переписывает старые легенды заново."
   },
   "ranks": {
    "Partisan": {
     "name": {
      "en": "Partisan",
-     "ru": ""
+     "ru": "Партизан"
     },
     "description": {
      "en": "Gain +1 Accuracy on the first melee attack you make with a Main Melee weapon on your turn.",
-     "ru": ""
+     "ru": "Получите +1 к Точности на первую атаку ближнего боя, совершаемую Основным оружием ближнего боя в свой ход."
     }
    },
    "Blademaster": {
     "name": {
      "en": "Blademaster",
-     "ru": ""
+     "ru": "Мастер клинка"
     },
     "description": {
      "en": "1/round, when you hit with a Main Melee weapon, you gain 1 Blademaster Die – a d6 – up to a maximum of 3 Blademaster Die. They last until expended or the current scene ends. You can expend Blademaster Dice 1-for-1 for the following:<ul><li><b>Parry:</b> As a reaction when you’re hit by a melee attack, you gain Resistance to all damage, heat, and burn dealt by the attack.</li><li><b>Deflect:</b> As a reaction when you’re hit by a ranged attack, you may roll any number of Blademaster Dice, expending them: if you roll a 5+ on any of these dice, you gain Resistance to all damage, heat, and burn dealt by the attack.</li><li><b>Feint:</b> As a free action, choose an adjacent character: when moving, you ignore engagement and don’t provoke reactions from your target until the start of your next turn.</li><li><b>Trip:</b> As a quick action, choose an adjacent character: they must pass an Agility save or fall Prone. Whatever the result, you may freely pass through their space until the end of your current turn, although you can’t end your turn in their space.</li></ul>",
-     "ru": ""
+     "ru": "1/раунд, когда вы попадаете Основным оружием ближнего боя, вы получаете 1 Кость Мастера клинка — d6 — до максимума 3 Костей Мастера клинка. Они действуют до траты или до конца текущей сцены. Вы можете тратить Кости Мастера клинка 1 к 1 на следующее:<ul><li><b>Отбить:</b> Как реакцию, когда вас поражает атака в ближнем бою, вы получаете Сопротивление ко всему урону, теплу и огню от этой атаки.</li><li><b>Отклонить:</b> Как реакцию, когда вас поражает дальняя атака, вы можете бросить любое количество Костей Мастера клинка, тратя их: если хотя бы на одной из них выпадет 5+, вы получаете Сопротивление ко всему урону, теплу и огню от этой атаки.</li><li><b>Обман:</b> Как свободное действие, выберите соседнего персонажа: при движении вы игнорируете вовлечённость и не провоцируете его реакции до начала своего следующего хода.</li><li><b>Подсечка:</b> Как быстрое действие, выберите соседнего персонажа: он должен пройти спасбросок Ловкости, иначе падает Ничком. В любом случае вы можете свободно пройти через его клетку до конца текущего хода, хотя не можете закончить ход в его клетке.</li></ul>"
     }
    },
    "Unstoppable": {
     "name": {
      "en": "Unstoppable",
-     "ru": ""
+     "ru": "Неудержимый"
     },
     "description": {
      "en": "1/round, when you hit with a melee attack on your turn, you may spend a Blademaster Die to immediately Grapple or Ram your target as a free action after the attack has been resolved.",
-     "ru": ""
+     "ru": "1/раунд, когда вы попадаете атакой в ближнем бою в свой ход, вы можете потратить Кость Мастера клинка, чтобы немедленно Захватить или Таранить свою цель как свободное действие после разрешения атаки."
     }
    }
   }
@@ -370,45 +370,45 @@
  "t_drone_commander": {
   "name": {
    "en": "Drone Commander",
-   "ru": ""
+   "ru": "Командир дронов"
   },
   "terse": {
    "en": "Improve and empower your Drone Systems to help allies and hurt enemies",
-   "ru": ""
+   "ru": "Улучшайте и усиливайте свои Системы дронов, помогая союзникам и вредя врагам"
   },
   "description": {
    "en": "For a pilot fresh out of boot, keeping a drone swarm in line is like trying to carry water with a net. If they seem to have a mind of their own, it’s because they do, and it’s not that smart. Clymene Kanalakos’s initial frustration was enough to get her practicing, and practice pays off. Now, her swarm obeys almost before she orders – an unnerving development, but a useful one. The swarm is hers.",
-   "ru": ""
+   "ru": "Для только что выпустившегося пилота удержать рой дронов в порядке — всё равно что носить воду в сетке. Если кажется, что у них есть собственный разум — то потому, что так и есть, хотя и не особо умный. Начальное раздражение Климены Каналакос заставило её практиковаться, а практика приносит плоды. Теперь её рой подчиняется почти прежде, чем она отдаёт приказ — тревожное развитие событий, но полезное. Этот рой — её."
   },
   "ranks": {
    "Shepherd": {
     "name": {
      "en": "Shepherd",
-     "ru": ""
+     "ru": "Пастух"
     },
     "description": {
      "en": "Your Drone systems gain +5 HP. Additionally, gain the <b>Shepherd Drone</b> Protocol.",
-     "ru": ""
+     "ru": "Ваши Системы-дроны получают +5 ОЗ. Дополнительно получите протокол <b>Пастуший дрон</b>."
     }
    },
    "Energized Swarm": {
     "name": {
      "en": "Energized Swarm",
-     "ru": ""
+     "ru": "Заряженный рой"
     },
     "description": {
      "en": "1/round, when you make an attack that consumes the Lock On condition, your Drones immediately emit a vicious pulse of energy. All characters of your choice within Burst 1 areas centered on each of your drones take 1d6 Energy damage. Each character can only be affected by the pulse from one drone, even if the areas overlap.",
-     "ru": ""
+     "ru": "1/раунд, когда вы совершаете атаку, расходующую условие Захват цели, ваши Дроны немедленно испускают злобный импульс энергии. Все персонажи по вашему выбору в областях Вспышка 1 с центром на каждом из ваших дронов получают 1d6 энергетического урона. Каждый персонаж может быть поражён импульсом только от одного дрона, даже если области перекрываются."
     }
    },
    "Invigorate": {
     "name": {
      "en": "Invigorate",
-     "ru": ""
+     "ru": "Взбодрить"
     },
     "description": {
      "en": "Gain the <b>Invigorate</b> Quick Action.",
-     "ru": ""
+     "ru": "Получите быстрое действие <b>Взбодрить</b>."
     }
    }
   }
@@ -416,45 +416,45 @@
  "t_engineer": {
   "name": {
    "en": "Engineer",
-   "ru": ""
+   "ru": "Инженер"
   },
   "terse": {
    "en": "Create an experimental weapon for your mech that you can modify and improve",
-   "ru": ""
+   "ru": "Создайте экспериментальное оружие для своего меха, которое можно модифицировать и улучшать"
   },
   "description": {
    "en": "Pilots are creative and driven people, but Mesa Rownett is an exceptional case – excessively so, some would say. In his spare time, he’s managed to scrape together just enough scrap, requisitioned materials, and workshop space to apply a little old-fashioned ingenuity to his mech, fashioning it to a formidable machine not betrayed by its outward appearance.",
-   "ru": ""
+   "ru": "Пилоты — творческие и целеустремлённые люди, но Меса Рауннетт — исключительный случай, скажут некоторые. В свободное время он собрал достаточно металлолома, реквизированных материалов и мастерской, чтобы применить старую добрую изобретательность к своему меху, превратив его в грозную машину, о которой не догадаешься по внешнему виду."
   },
   "ranks": {
    "Prototype": {
     "name": {
      "en": "Prototype",
-     "ru": ""
+     "ru": "Прототип"
     },
     "description": {
      "en": "When you perform a Full Repair, you can, with some trial and error, install a prototype weapon system on your mech. You may choose characteristics for your prototype weapon based on the following profile each time you perform a Full Repair, rerolling 1d6+2 to determine Limited each time:<br>Prototype Weapon<br>Main [Melee, CQB, Rifle, Cannon, Launcher, Nexus], Limited [1d6+2], Overkill<br>This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 1d6+2 to determine this weapon’s Limited uses.<br>Damage: 1d6+2 Kinetic, Explosive or energy.<br>This weapon counts as an integrated mount and does not require a mount.",
-     "ru": ""
+     "ru": "Когда вы проводите Полный ремонт, вы можете, методом проб и ошибок, установить на мех прототипную оружейную систему. Вы можете выбирать характеристики своего прототипного оружия по следующему профилю каждый раз, когда проводите Полный ремонт, каждый раз перебрасывая 1d6+2 для определения Лимита:<br>Прототипное оружие<br>Основной [Ближнее, Ближний огневой контакт, Винтовка, Пушка, Пусковая установка, Nexus], Лимит [1d6+2], Сверхурон<br>Это оружие — экспериментальный прототип, созданный под ваши конкретные требования.<br>Когда вы устанавливаете его или проводите Полный ремонт, вы можете выбрать новый тип оружия, тип урона и либо Угрозу 1 (ближнее), либо Дальность 10 (все остальные типы). Дополнительно, каждый раз при Полном ремонте, перебрасывайте 1d6+2 для определения количества использований этого оружия по Лимиту.<br>Урон: 1d6+2 кинетического, взрывного или энергетического.<br>Это оружие считается интегрированным креплением и не требует крепления."
     }
    },
    "Revision": {
     "name": {
      "en": "Revision",
-     "ru": ""
+     "ru": "Доработка"
     },
     "description": {
      "en": "You can tweak the essential components of your prototype weapon in order to increase its effectiveness. When you perform a Full Repair, choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></ul></li></ul>",
-     "ru": ""
+     "ru": "Вы можете подстроить ключевые компоненты своего прототипного оружия, чтобы повысить его эффективность. Когда вы проводите Полный ремонт, выберите два:<ul><li><b>Доработанная оптика:</b> Ваше прототипное оружие всегда получает +1 к Точности атак.</li><li><b>Доработанный компьютер:</b> Ваше прототипное оружие становится Умным.</li><li><b>Снятая защита реактора:</b> Каждый раз, когда вы атакуете своим прототипным оружием, вы можете выбрать — за 2 Тепла — атаковать одним из следующих вариантов, зависящих от типа оружия:<ul><li><b>Дальнее оружие:</b> Конус 3, Линия 5 или [Взрыв 1, Дальность 10].</li><li><b>Оружие ближнего боя:</b> Вспышка 1.</li></ul></li></ul>"
     }
    },
    "Final Draft": {
     "name": {
      "en": "Final Draft",
-     "ru": ""
+     "ru": "Финальный черновик"
     },
     "description": {
      "en": "Your prototype weapon is now Limited [2d6] and deals 1D6+4 damage.",
-     "ru": ""
+     "ru": "Ваше прототипное оружие теперь имеет Лимит [2d6] и наносит урон 1d6+4."
     }
    }
   }
@@ -462,45 +462,45 @@
  "t_executioner": {
   "name": {
    "en": "Executioner",
-   "ru": ""
+   "ru": "Палач"
   },
   "terse": {
    "en": "Improve Heavy and Superheavy Melee attacks with more opportunities to deal damage",
-   "ru": ""
+   "ru": "Улучшает атаки Тяжёлым и Сверхтяжёлым оружием ближнего боя, давая больше возможностей нанести урон"
   },
   "description": {
    "en": "On the battlefield, there is no end more honorable than a clean death in combat. Axe or maul in hand, Maxie Wolf sees to it that her enemies are blessed with that honor. No one lives forever – she makes sure of it.",
-   "ru": ""
+   "ru": "На поле боя нет более почётного конца, чем чистая смерть в бою. С топором или молотом в руке, Макси Волф следит за тем, чтобы её враги получили эту честь. Никто не живёт вечно — она в этом убеждается."
   },
   "ranks": {
    "Backswing Cut": {
     "name": {
      "en": "Backswing Cut",
-     "ru": ""
+     "ru": "Обратный замах"
     },
     "description": {
      "en": "1/round, when you hit with a Heavy or Superheavy melee weapon, you can make another melee attack with the same weapon as a free action against a different character within Threat and line of sight. This attack deals half damage, if successful.",
-     "ru": ""
+     "ru": "1/раунд, когда вы попадаете Тяжёлым или Сверхтяжёлым оружием ближнего боя, вы можете совершить ещё одну атаку ближнего боя тем же оружием как свободное действие по другому персонажу в пределах Угрозы и видимости. При успехе эта атака наносит половину урона."
     }
    },
    "Wide Arc Cleave": {
     "name": {
      "en": "Wide Arc Cleave",
-     "ru": ""
+     "ru": "Широкий разруб"
     },
     "description": {
      "en": "The first time in a round that you perform a critical hit with a Heavy or Superheavy melee weapon, you deal 3 Kinetic damage to all characters and objects of your choice within Threat, other than the one you just attacked.",
-     "ru": ""
+     "ru": "Первый раз за раунд, когда вы наносите критический удар Тяжёлым или Сверхтяжёлым оружием ближнего боя, вы наносите 3 кинетического урона всем персонажам и объектам по вашему выбору в пределах Угрозы, кроме того, кого вы только что атаковали."
     }
    },
    "No Escape": {
     "name": {
      "en": "No Escape",
-     "ru": ""
+     "ru": "Нет спасения"
     },
     "description": {
      "en": "1/round, when you miss with a melee attack, you reroll it against a different target within Threat and line of sight.",
-     "ru": ""
+     "ru": "1/раунд, когда вы промахиваетесь атакой ближнего боя, вы перебрасываете её по другой цели в пределах Угрозы и видимости."
     }
    }
   }
@@ -508,45 +508,45 @@
  "t_exemplar": {
   "name": {
    "en": "Exemplar",
-   "ru": ""
+   "ru": "Образец"
   },
   "terse": {
    "en": "Challenge your foes, forcing them to fight you instead of your allies",
-   "ru": ""
+   "ru": "Бросайте вызов врагам, заставляя их сражаться с вами, а не с союзниками"
   },
   "description": {
    "en": "Eamon Metrias’s livery is famous, his voice brassy, his weapons polished to a sheen. As the advocate for the Nine Spheres, his training with certain martial orders has given him the power to harry and hinder even the most powerful of foes. Eamon is an exemplar of the Spheres, by words and by action.",
-   "ru": ""
+   "ru": "Ливрея Имона Метриаса знаменита, его голос звучен, его оружие сияет. Как представитель Девяти Сфер, его обучение у определённых воинских орденов дало ему силу изводить и сдерживать даже самых могущественных врагов. Имон — образец Сфер, словом и делом."
   },
   "ranks": {
    "Honorable Challenge": {
     "name": {
      "en": "Honorable Challenge",
-     "ru": ""
+     "ru": "Почётный вызов"
     },
     "description": {
      "en": "The first time on your turn that you attack a hostile character within Range 3, hit or miss, you may give them the Exemplar’s Mark as a free action. Characters can only have one Exemplar’s Mark at a time – new marks from any character replace existing marks.<br>The character has the Exemplar’s Mark until the start of your next turn, and while they have it, you gain the <b>Valiant Aid</b> Reaction.",
-     "ru": ""
+     "ru": "В первый раз за ваш ход, когда вы атакуете враждебного персонажа в пределах Дальности 3, попав или промахнувшись, вы можете как свободное действие наложить на него Метку Образца. У персонажа может быть только одна Метка Образца одновременно — новые метки от любого персонажа заменяют существующие.<br>Персонаж несёт Метку Образца до начала вашего следующего хода, и пока она на нём, вы получаете реакцию <b>Доблестная помощь</b>."
     }
    },
    "Punishment": {
     "name": {
      "en": "Punishment",
-     "ru": ""
+     "ru": "Наказание"
     },
     "description": {
      "en": "1/round, when the character with your Mark attacks a character within Range 3 of you, other than you, they trigger your Overwatch.",
-     "ru": ""
+     "ru": "1/раунд, когда персонаж с вашей Меткой атакует персонажа в пределах Дальности 3 от вас, кроме вас самих, это провоцирует ваше Дозорное наблюдение."
     }
    },
    "To the Death": {
     "name": {
      "en": "To the Death",
-     "ru": ""
+     "ru": "До смерти"
     },
     "description": {
      "en": "As a free action when you mark a character, you may challenge them in a duel to the death: you and the character with your Mark receive +3 Difficulty on attacks against characters or objects other than each other until either the end of the current scene or one of your mechs are destroyed. If they take any action that includes an attack roll against you, hit or miss, this effect ceases for them until the start of your next turn.<br>While To The Death is active, you cannot voluntarily move away from the character with your Mark; additionally, your Mark lasts either until the end of the current scene or one of your mechs are destroyed, and you cannot Mark any new characters.",
-     "ru": ""
+     "ru": "Как свободное действие при наложении метки на персонажа, вы можете вызвать его на дуэль до смерти: вы и персонаж с вашей Меткой получаете +3 к Сложности атак по любым персонажам или объектам, кроме друг друга, до конца текущей сцены или до уничтожения одного из ваших мехов. Если он совершает любое действие, включающее бросок атаки по вам, попав или промахнувшись, этот эффект прекращается для него до начала его следующего хода.<br>Пока «До смерти» активно, вы не можете добровольно отдаляться от персонажа с вашей Меткой; дополнительно, ваша Метка действует до конца текущей сцены или до уничтожения одного из ваших мехов, и вы не можете наложить Метку на новых персонажей."
     }
    }
   }
@@ -554,45 +554,45 @@
  "t_gunslinger": {
   "name": {
    "en": "Gunslinger",
-   "ru": ""
+   "ru": "Стрелок"
   },
   "terse": {
    "en": "Make your Auxiliary Ranged weapons deadlier and gain the powerful Gunslinger Die",
-   "ru": ""
+   "ru": "Делает ваше Вспомогательное дальнее оружие смертоноснее и даёт мощную Кость Стрелка"
   },
   "description": {
    "en": "In a galaxy bounded by frontiers, there is no law but the one backed by the gun. Sgt. Stev Ansahok wields the humble pistol with a talent unseen in this age, his iron an extension of his own body. As easy as pointing a finger, the weathered sergeant lands shots with accuracy unmatched by machine. His is a gunslinger: justice made whole, given its sacred instrument, and set out to the cruel frontier to tame it.",
-   "ru": ""
+   "ru": "В галактике, ограниченной фронтирами, нет закона, кроме того, что подкреплён пистолетом. Сержант Стив Ансахок владеет скромным пистолетом с талантом, невиданным в этот век — его железо — продолжение его же тела. Так же легко, как показать пальцем, потрёпанный сержант попадает в цель с точностью, недоступной машинам. Он — стрелок: правосудие, обретшее плоть, вооружённое своим священным инструментом и отправленное покорять жестокий фронтир."
   },
   "ranks": {
    "Opening Argument": {
     "name": {
      "en": "Opening Argument",
-     "ru": ""
+     "ru": "Вступительный аргумент"
     },
     "description": {
      "en": "Gain +1 Accuracy on the first attack roll you make with an Auxiliary ranged weapon on your turn.",
-     "ru": ""
+     "ru": "Получите +1 к Точности на первую атаку, совершаемую Вспомогательным дальним оружием в свой ход."
     }
    },
    "From the Hip": {
     "name": {
      "en": "From the Hip",
-     "ru": ""
+     "ru": "От бедра"
     },
     "description": {
      "en": "Gain the <b>Return Fire</b> Reaction.",
-     "ru": ""
+     "ru": "Получите реакцию <b>Ответный огонь</b>."
     }
    },
    "I Kill With My Heart": {
     "name": {
      "en": "I Kill With My Heart",
-     "ru": ""
+     "ru": "«Я убиваю сердцем»"
     },
     "description": {
      "en": "You gain a Gunslinger Die, 1d6 starting at 6. Each time you hit with an Auxiliary ranged weapon, reduce the value of the Gunslinger Die by 1. When the Gunslinger Die reaches 1, you may reset it to 6 to give +2d6 bonus damage on hit and AP to your next attack with an Auxiliary ranged weapon. This attack also ignores cover. The value of your Gunslinger Die persists between scenes but resets to 6 when you rest or perform a Full Repair.",
-     "ru": ""
+     "ru": "Вы получаете Кость Стрелка, 1d6, начинающуюся с 6. Каждый раз, когда вы попадаете Вспомогательным дальним оружием, уменьшайте значение Кости Стрелка на 1. Когда Кость Стрелка достигает 1, вы можете сбросить её на 6, чтобы дать +2d6 бонусного урона при попадании и Бронебойность вашей следующей атаке Вспомогательным дальним оружием. Эта атака также игнорирует укрытие. Значение вашей Кости Стрелка сохраняется между сценами, но сбрасывается на 6, когда вы отдыхаете или проводите Полный ремонт."
     }
    }
   }
@@ -600,45 +600,45 @@
  "t_grease_monkey": {
   "name": {
    "en": "Grease Monkey",
-   "ru": ""
+   "ru": "Мастер на все руки"
   },
   "terse": {
    "en": "Get more out of Limited systems, repairs, and the Stabilize action",
-   "ru": ""
+   "ru": "Получайте больше от Лимитированных систем, ремонта и действия Стабилизация"
   },
   "description": {
    "en": "Eel knows more about the inner workings of a mech than most mechanics. To them, the beast they pilot is more than a machine: it’s a living thing, in need of tender care given by a wise and steady hand. Eel maintains their own house and keeps their own mech in line, both on the battlefield and off. The mechanics back at base come to them with questions, but usually prefer to stay away – there’s something spooky about how Eel's beast runs.",
-   "ru": ""
+   "ru": "Угорь знает о внутреннем устройстве меха больше, чем большинство механиков. Для него зверь, которого он пилотирует — больше, чем машина: это живое существо, требующее нежной заботы твёрдой и умелой рукой. Угорь содержит свой дом и держит свой мех в порядке, и в бою, и вне его. Механики на базе приходят к нему с вопросами, но обычно предпочитают держаться подальше — есть что-то тревожное в том, как работает зверь Угря."
   },
   "ranks": {
    "Unsanctioned Capacity Upgrade": {
     "name": {
      "en": "Unsanctioned Capacity Upgrade",
-     "ru": ""
+     "ru": "Несанкционированное расширение вместимости"
     },
     "description": {
      "en": "While resting, you can spend 2 Repairs to replenish 1 use of all Limited weapons and systems.",
-     "ru": ""
+     "ru": "Во время отдыха вы можете потратить 2 Ремонта, чтобы восполнить 1 использование всех Лимитированных видов оружия и систем."
     }
    },
    "Machine Bond": {
     "name": {
      "en": "Machine Bond",
-     "ru": ""
+     "ru": "Связь с машиной"
     },
     "description": {
      "en": "When you STABILIZE, you clear all IMPAIRED, JAMMED, IMMOBILIZED, SLOWED, and LOCK ON conditions that weren’t caused by your own systems, talents, etc.",
-     "ru": ""
+     "ru": "Когда вы Стабилизируетесь, вы снимаете все состояния Ослаблен, Заклинило, Обездвижен, Замедлен и Захват цели, которые не были вызваны вашими собственными системами, талантами и т.п."
     }
    },
    "Friends in High Places": {
     "name": {
      "en": "Friends in High Places",
-     "ru": ""
+     "ru": "Друзья в высоких кабинетах"
     },
     "description": {
      "en": "Once per mission while resting, you can call in a supply drop. You and your allies may replenish 1 use of all Limited weapons and systems and restore 1 Structure. This doesn’t require any Repairs and can be used even if you have reached your Repair Cap.",
-     "ru": ""
+     "ru": "Раз за миссию во время отдыха вы можете запросить сброс снабжения. Вы и ваши союзники можете восполнить 1 использование всех Лимитированных видов оружия и систем и восстановить 1 Структуру. Это не требует Ремонта и может быть использовано даже если вы достигли предела Ремонта."
     }
    }
   }
@@ -646,45 +646,45 @@
  "t_hacker": {
   "name": {
    "en": "Hacker",
-   "ru": ""
+   "ru": "Хакер"
   },
   "terse": {
    "en": "Improve your tech attacks and unlock special Invade options",
-   "ru": ""
+   "ru": "Улучшает ваши тех-атаки и открывает особые варианты Вторжения"
   },
   "description": {
    "en": "Since Katya Han was a kid, she played the omninet, able to access any public node – and even a few private ones – with ease. Now, as a pilot, she dives headfirst into the hardcode of any mech core she come across. Firewalls, gatekeeper protocols, invasion, defense – nothing stands in her way. Han wins fights without firing a single shot; if her enemy can’t control their own mech, then they can’t do anything to stop her.",
-   "ru": ""
+   "ru": "С детства Катя Хан играла в омнинете, легко получая доступ к любому публичному узлу — и даже к некоторым частным. Теперь, как пилот, она с головой ныряет в исходный код любого ядра меха, встреченного на пути. Файрволы, протоколы доступа, вторжение, защита — ничто не стоит на её пути. Хан выигрывает бои без единого выстрела; если враг не может управлять своим мехом, он ничего не может сделать, чтобы её остановить."
   },
   "ranks": {
    "SNOW_CRASH": {
     "name": {
      "en": "SNOW_CRASH",
-     "ru": ""
+     "ru": "SNOW_CRASH"
     },
     "description": {
      "en": "When you hit with a tech attack that consumes Lock On, your target must choose to either take 2 Heat or be pushed 3 spaces in a direction of your choice.",
-     "ru": ""
+     "ru": "Когда вы попадаете тех-атакой, расходующей Захват цели, ваша цель должна выбрать: получить 2 Тепла или быть отброшенной на 3 клетки в направлении по вашему выбору."
     }
    },
    "SAFE_CRACKER": {
     "name": {
      "en": "SAFE_CRACKER",
-     "ru": ""
+     "ru": "SAFE_CRACKER"
     },
     "description": {
      "en": "Gain the following options for Invade:",
-     "ru": ""
+     "ru": "Получите следующие варианты для Вторжения:"
     }
    },
    "Last Argument of Kings": {
     "name": {
      "en": "Last Argument of Kings",
-     "ru": ""
+     "ru": "Последний аргумент королей"
     },
     "description": {
      "en": "Gain the <b>Last Argument of Kings</b> Full Tech option.",
-     "ru": ""
+     "ru": "Получите полный тех-вариант <b>Последний аргумент королей</b>."
     }
    }
   }
@@ -692,45 +692,45 @@
  "t_heavy_gunner": {
   "name": {
    "en": "Heavy Gunner",
-   "ru": ""
+   "ru": "Тяжёлый стрелок"
   },
   "terse": {
    "en": "Pin enemies down with Heavy Ranged weapons",
-   "ru": ""
+   "ru": "Прижимайте врагов к земле Тяжёлым дальним оружием"
   },
   "description": {
    "en": "Behind the line, Mike Manfrin doesn’t have much to do but wait and make ready. He keeps clean the cannons; makes ordered rows of his shot and shell. He packs sandbags onto earthen berms and stitches closed tears in the sheaths over his chassis’ joints.<br>In an instant, everything changes. Chatter over the local omni. The percussive throb of the medivac lifting off from the other side of the base. Somewhere, a firefight. This is his entrance music, his call to join the fight: a desperate cry for help from a distant friend as the enemy draws close. Time to get to work.<br>His arrival is known by the flight of his shells across the sky, the trembling earth, and the dust that once was.",
-   "ru": ""
+   "ru": "За линией фронта Майку Манфрину нечего делать, кроме как ждать и готовиться. Он держит пушки чистыми; выстраивает ровные ряды снарядов и зарядов. Он набивает мешки с песком на земляные валы и зашивает прорехи в оболочках сочленений своего шасси.<br>В одно мгновение всё меняется. Треск в местном омни. Пульсирующий гул медэвака, взлетающего на другом конце базы. Где-то — бой. Это его музыка выхода, его призыв в бой: отчаянный крик о помощи от далёкого друга, когда враг подступает близко. Время работать.<br>Его прибытие узнают по полёту его снарядов через небо, дрожащей земле и пыли, которая была всем остальным."
   },
   "ranks": {
    "Covering Fire": {
     "name": {
      "en": "Covering Fire",
-     "ru": ""
+     "ru": "Огонь на подавление"
     },
     "description": {
      "en": "Gain the <b>Covering Fire</b> Quick Action.",
-     "ru": ""
+     "ru": "Получите быстрое действие <b>Огонь на подавление</b>."
     }
    },
    "Hammerbeat": {
     "name": {
      "en": "Hammerbeat",
-     "ru": ""
+     "ru": "Удар молота"
     },
     "description": {
      "en": "If you successfully hit your Covering Fire target with the attack reaction granted by that talent, your target is Immobilized until the end of their next turn.",
-     "ru": ""
+     "ru": "Если вы успешно поражаете цель Огня на подавление реакцией атаки, данной этим талантом, ваша цель становится Обездвижена до конца своего следующего хода."
     }
    },
    "Bracketing Fire": {
     "name": {
      "en": "Bracketing Fire",
-     "ru": ""
+     "ru": "Огонь на охват"
     },
     "description": {
      "en": "When you use <b>Covering Fire</b>, you may choose two targets instead of one. Each target triggers and resolves your attack separately, and damage from one target only ends the effect on that target.",
-     "ru": ""
+     "ru": "Когда вы используете <b>Огонь на подавление</b>, вы можете выбрать две цели вместо одной. Каждая цель провоцирует и разрешает вашу атаку отдельно, и урон по одной цели прекращает эффект только для неё."
     }
    }
   }
@@ -738,45 +738,45 @@
  "t_hunter": {
   "name": {
    "en": "Hunter",
-   "ru": ""
+   "ru": "Охотник"
   },
   "terse": {
    "en": "Gain mobility and range when using Auxiliary Melee weapons",
-   "ru": ""
+   "ru": "Получайте мобильность и дальность при использовании Вспомогательного оружия ближнего боя"
   },
   "description": {
    "en": "The battlefield is Edith Eidelen’s hunting ground, her domain. It’s only through a true test of strength and guile that will determine who is the predator and who is the prey. Her movement across the field is a prowl: silent, quick, and controlled. In a chassis, she excels in close combat, closing the gap between her and her targets before they can bring their guns to bear.",
-   "ru": ""
+   "ru": "Поле боя — охотничьи угодья Эдит Айделен, её владения. Только через истинное испытание силы и хитрости выясняется, кто хищник, а кто жертва. Её движение по полю — это подкрадывание: тихое, быстрое и контролируемое. В шасси она превосходна в ближнем бою, сокращая расстояние до цели прежде, чем та успеет открыть огонь."
   },
   "ranks": {
    "Lunge": {
     "name": {
      "en": "Lunge",
-     "ru": ""
+     "ru": "Выпад"
     },
     "description": {
      "en": "1/round, when you attack with an Auxiliary melee weapon, you may fly up to 3 spaces directly towards the targeted character before the attack. This movement ignores engagement and doesn’t provoke reactions.",
-     "ru": ""
+     "ru": "1/раунд, когда вы атакуете Вспомогательным оружием ближнего боя, вы можете пролететь до 3 клеток прямо к атакуемому персонажу перед атакой. Это движение игнорирует вовлечённость и не провоцирует реакции."
     }
    },
    "Knife Juggler": {
     "name": {
      "en": "Knife Juggler",
-     "ru": ""
+     "ru": "Жонглёр ножами"
     },
     "description": {
      "en": "All your Auxiliary melee weapons gain Thrown 5, if they don’t have this property already – if they already have Thrown, it increases to Thrown 5. At the end of your turn, all weapons you have thrown this turn automatically return to you.",
-     "ru": ""
+     "ru": "Всё ваше Вспомогательное оружие ближнего боя получает свойство Бросковое 5, если у него его нет — если оно уже есть, оно увеличивается до Бросковое 5. В конце вашего хода всё оружие, брошенное в этот ход, автоматически возвращается к вам."
     }
    },
    "Disdainful Blade": {
     "name": {
      "en": "Disdainful Blade",
-     "ru": ""
+     "ru": "Презрительный клинок"
     },
     "description": {
      "en": "1/round, when you hit a character with a melee attack, you may also throw an Auxiliary melee weapon as an attack against any character within Range as a free action. This attack can’t deal bonus damage.",
-     "ru": ""
+     "ru": "1/раунд, когда вы попадаете по персонажу атакой ближнего боя, вы можете также бросить Вспомогательное оружие ближнего боя как атаку по любому персонажу в пределах Дальности как свободное действие. Эта атака не может наносить бонусный урон."
     }
    }
   }
@@ -784,45 +784,45 @@
  "t_infiltrator": {
   "name": {
    "en": "Infiltrator",
-   "ru": ""
+   "ru": "Инфильтратор"
   },
   "terse": {
    "en": "Improve your Hide action and perform debilitating sneak attacks",
-   "ru": ""
+   "ru": "Улучшает ваше действие Спрятаться и позволяет совершать выводящие из строя внезапные атаки"
   },
   "description": {
    "en": "Whether by spoofing signatures on enemy scanners, moving skillfully through cover, or thanks to your modded optical camouflage, you’re never seen unless you want to be. Whatever the size of the mech, whatever the terrain, whatever the enemy, you can get in and get out without raising alarm.",
-   "ru": ""
+   "ru": "Будь то подделка сигнатур на вражеских сканерах, умелое движение через укрытия или благодаря модифицированному оптическому камуфляжу — вас не видят, если вы сами этого не хотите. Каким бы ни был размер меха, какой бы ни была местность, каким бы ни был враг, вы можете войти и уйти без тревоги."
   },
   "ranks": {
    "Prowl": {
     "name": {
      "en": "Prowl",
-     "ru": ""
+     "ru": "Скрытный ход"
     },
     "description": {
      "en": "During your turn, gain the following benefits:<ul><li>Entering line of sight of hostile characters or moving from cover does not stop you from being Hidden.</li><li>You can pass freely through – but not end your turn in – enemy spaces.</li><li>You can Hide even in plain sight of enemies.<br>These effects immediately end when your turn ends (so you lose Hidden if you’re still in line of sight or out of cover at that time).</li></ul>",
-     "ru": ""
+     "ru": "В свой ход вы получаете следующие преимущества:<ul><li>Попадание в поле видимости враждебных персонажей или выход из укрытия не мешает вам оставаться Скрытым.</li><li>Вы можете свободно проходить через — но не заканчивать ход в — клетках врагов.</li><li>Вы можете Прятаться, даже находясь на виду у врагов.<br>Эти эффекты немедленно прекращаются, когда ваш ход заканчивается (то есть вы теряете Скрытость, если в этот момент всё ещё находитесь в поле видимости или вне укрытия).</li></ul>"
     }
    },
    "Ambush": {
     "name": {
      "en": "Ambush",
-     "ru": ""
+     "ru": "Засада"
     },
     "description": {
      "en": "When you start your turn Hidden, the first attack roll of any type that you make sends your target reeling on a hit. Your target must succeed on a Hull save or become Slowed, Impaired, and unable to take reactions until the end of their next turn.",
-     "ru": ""
+     "ru": "Когда вы начинаете свой ход Скрытым, первый бросок атаки любого типа, который вы совершаете, при попадании отправляет цель в шок. Ваша цель должна пройти спасбросок Корпуса, иначе становится Замедлена, Ослаблена и не может совершать реакции до конца своего следующего хода."
     }
    },
    "Mastermind": {
     "name": {
      "en": "Mastermind",
-     "ru": ""
+     "ru": "Тайный кукловод"
     },
     "description": {
      "en": "When you lose Hidden (by any means), you may first fire a flash bomb at any adjacent character. That character must pass a Systems save or only be able to draw line of sight to adjacent spaces until the end of their next turn.<br>You can then move up to your speed, ignoring engagement and not provoking reactions, and are then revealed normally.",
-     "ru": ""
+     "ru": "Когда вы теряете Скрытость (любым способом), вы можете первым выстрелить светошумовой гранатой по любому соседнему персонажу. Этот персонаж должен пройти спасбросок Систем, иначе до конца своего следующего хода видит только соседние клетки.<br>Затем вы можете переместиться на расстояние до вашей скорости, игнорируя вовлечённость и не провоцируя реакции, после чего вас раскрывают как обычно."
     }
    }
   }
@@ -830,45 +830,45 @@
  "t_juggernaut": {
   "name": {
    "en": "Juggernaut",
-   "ru": ""
+   "ru": "Джаггернаут"
   },
   "terse": {
    "en": "Improve the effectiveness and utility of ramming",
-   "ru": ""
+   "ru": "Повышает эффективность и полезность тарана"
   },
   "description": {
    "en": "A bloody nose and a few loose screws aren’t enough to stop you from hurling yourself headlong into the enemy. You’re in a couple tons of metal powered by a sliver of dying star, and you’re going to make sure everyone else knows it.",
-   "ru": ""
+   "ru": "Разбитый нос и пара разболтавшихся винтов — не повод остановить вас от того, чтобы бросаться прямо на врага. Вы — пара тонн металла, приводимого в движение осколком умирающей звезды, и вы намерены, чтобы все это знали."
   },
   "ranks": {
    "Momentum": {
     "name": {
      "en": "Momentum",
-     "ru": ""
+     "ru": "Инерция"
     },
     "description": {
      "en": "When you Boost, your next Ram before the start of your next turn gains +1 Accuracy and knocks your target back an additional 2 spaces.",
-     "ru": ""
+     "ru": "Когда вы Ускоряетесь, ваш следующий Таран до начала следующего хода получает +1 к Точности и отбрасывает вашу цель на дополнительные 2 клетки."
     }
    },
    "Kinetic Mass Transfer": {
     "name": {
      "en": "Kinetic Mass Transfer",
-     "ru": ""
+     "ru": "Кинетическая передача массы"
     },
     "description": {
      "en": "1/round, if you Ram a target into...<ul><li>...a space occupied by another character, the other character must succeed on a Hull save or be knocked Prone.</li><li>...an obstruction large enough to stop their movement, your target takes 1d6 kinetic damage.</li></ul>",
-     "ru": ""
+     "ru": "1/раунд, если вы Таранните цель...<ul><li>...в клетку, занятую другим персонажем — этот персонаж должен пройти спасбросок Корпуса, иначе сбивается с ног.</li><li>...в препятствие, достаточно большое, чтобы остановить движение — ваша цель получает 1d6 кинетического урона.</li></ul>"
     }
    },
    "Unstoppable Force": {
     "name": {
      "en": "Unstoppable Force",
-     "ru": ""
+     "ru": "Неудержимая сила"
     },
     "description": {
      "en": "1/round, when you Boost, you may supercharge your mech’s servos. Move your maximum speed in a straight line, take 1d3+3 Heat, and gain the following benefits:<ul><li>You can freely pass through characters the same Size as your mech or smaller; any characters passed through must succeed on a Hull save or be knocked Prone.</li><li>Any terrain, walls, or other stationary obstructions you attempt to pass through receive 20 Kinetic AP damage. If that is enough to destroy them, you pass through; otherwise, your movement ends.</li><li>You ignore difficult terrain.</li><li>Your movement ignores engagement and doesn’t provoke reactions.</li></ul>",
-     "ru": ""
+     "ru": "1/раунд, когда вы Ускоряетесь, вы можете форсировать серводвигатели меха. Переместитесь на максимальную скорость по прямой линии, получите 1d3+3 Тепла и получите следующие преимущества:<ul><li>Вы можете свободно проходить через персонажей того же Размера, что и ваш мех, или меньше; любые персонажи, через которых вы прошли, должны пройти спасбросок Корпуса, иначе сбиваются с ног.</li><li>Любая местность, стены или другие стационарные препятствия, через которые вы пытаетесь пройти, получают 20 бронебойного кинетического урона. Если это достаточно для их уничтожения, вы проходите сквозь; иначе ваше движение заканчивается.</li><li>Вы игнорируете сложную местность.</li><li>Ваше движение игнорирует вовлечённость и не провоцирует реакции.</li></ul>"
     }
    }
   }
@@ -876,45 +876,45 @@
  "t_leader": {
   "name": {
    "en": "Leader",
-   "ru": ""
+   "ru": "Лидер"
   },
   "terse": {
    "en": "Improve your allies' rolls during combat with Leadership Dice",
-   "ru": ""
+   "ru": "Улучшайте броски союзников в бою с помощью Костей Лидерства"
   },
   "description": {
    "en": "Whatever your actual age, you’re the Old Man of the battlefield. A light to your friends and allies; the resolute eye of a howling storm. Your steady voice, confident stance, and talent for command set allies at ease because they know you’ll lead them to victory every time. With you at the helm, victory is attainable, and heroes seem a little more real.",
-   "ru": ""
+   "ru": "Каким бы ни был ваш настоящий возраст, вы — Старик поля боя. Свет для друзей и союзников; спокойное око воющей бури. Ваш твёрдый голос, уверенная стойка и талант к командованию успокаивают союзников, потому что они знают: вы приведёте их к победе каждый раз. С вами у штурвала победа достижима, а герои кажутся немного реальнее."
   },
   "ranks": {
    "Field Commander": {
     "name": {
      "en": "Field Commander",
-     "ru": ""
+     "ru": "Полевой командир"
     },
     "description": {
      "en": "Gain 3 Leadership Dice, which are d6s, and gain the Issue Order Free Action.<br>You can’t use Leadership Dice from other characters as long as you have any remaining. If you have none, you regain 1 Leadership Die when you rest or regain all when you perform a Full Repair.<br>Leadership dice are consumed when expended.",
-     "ru": ""
+     "ru": "Получите 3 Кости Лидерства — это d6 — и получите свободное действие Отдать приказ.<br>Вы не можете использовать Кости Лидерства других персонажей, пока у вас остаются свои. Если у вас их нет, вы получаете 1 Кость Лидерства при отдыхе или все — при Полном ремонте.<br>Кости Лидерства расходуются при использовании."
     }
    },
    "Open Channels": {
     "name": {
      "en": "Open Channels",
-     "ru": ""
+     "ru": "Открытые каналы"
     },
     "description": {
      "en": "Gain 5 Leadership Dice instead of 3; additionally, you can now issue a command as a reaction at the start of any other player’s turn, any number of times per round.",
-     "ru": ""
+     "ru": "Получите 5 Костей Лидерства вместо 3; дополнительно, теперь вы можете отдавать приказ как реакцию в начале хода любого другого игрока, любое количество раз за раунд."
     }
    },
    "Inspiring Presence": {
     "name": {
      "en": "Inspiring Presence",
-     "ru": ""
+     "ru": "Вдохновляющее присутствие"
     },
     "description": {
      "en": "Gain 6 Leadership Dice instead of 5. Allies that have your Leadership Dice can expend them to reduce damage by –1d6 when taking damage or to deal +1d6 bonus damage when they hit with an attack.",
-     "ru": ""
+     "ru": "Получите 6 Костей Лидерства вместо 5. Союзники, у которых есть ваши Кости Лидерства, могут тратить их, чтобы уменьшить получаемый урон на –1d6 или нанести +1d6 бонусного урона при попадании атакой."
     }
    }
   }
@@ -922,45 +922,45 @@
  "t_nuclear_cavalier": {
   "name": {
    "en": "Nuclear Cavalier",
-   "ru": ""
+   "ru": "Ядерный кавалер"
   },
   "terse": {
    "en": "Deal enhanced damage in the Danger Zone and launch your superheated fuel rods as a weapon",
-   "ru": ""
+   "ru": "Наносите повышенный урон в Опасной зоне и запускайте раскалённые топливные стержни как оружие"
   },
   "description": {
    "en": "Shortly after becoming a pilot, you realized something: that machine you pilot is powered by a series of cascading nuclear reactions. Why not open that compartment up and see what sort of damage it can do?",
-   "ru": ""
+   "ru": "Вскоре после того, как вы стали пилотом, вы кое-что поняли: машина, которую вы пилотируете, работает на серии каскадных ядерных реакций. Почему бы не открыть этот отсек и не посмотреть, какой урон он способен нанести?"
   },
   "ranks": {
    "Aggressive Heat Bleed": {
     "name": {
      "en": "Aggressive Heat Bleed",
-     "ru": ""
+     "ru": "Агрессивный сброс тепла"
     },
     "description": {
      "en": "The first attack roll you make on your turn while in the Danger Zone deals +2 Heat on a hit.",
-     "ru": ""
+     "ru": "Первый бросок атаки, совершаемый в свой ход в Опасной зоне, при попадании наносит +2 Тепла."
     }
    },
    "Fusion Hemorrhage": {
     "name": {
      "en": "Fusion Hemorrhage",
-     "ru": ""
+     "ru": "Термоядерное кровоизлияние"
     },
     "description": {
      "en": "The first ranged or melee attack roll you make on your turn while in the Danger Zone deals Energy instead of Kinetic or Explosive and additionally deals +1d6 Energy bonus damage on a hit.",
-     "ru": ""
+     "ru": "Первая дальняя или ближняя атака, совершаемая в свой ход в Опасной зоне, наносит Энергетический урон вместо Кинетического или Взрывного и дополнительно наносит +1d6 бонусного энергетического урона при попадании."
     }
    },
    "Here, Catch!": {
     "name": {
      "en": "Here, Catch!",
-     "ru": ""
+     "ru": "«Держи, лови!»"
     },
     "description": {
      "en": "You’ve modified your mech to launch its superheated fuel rods at enemies. Gain the Fuel Rod Gun integrated weapon.",
-     "ru": ""
+     "ru": "Вы модифицировали свой мех, чтобы запускать раскалённые топливные стержни по врагам. Получите интегрированное оружие «Пушка топливных стержней»."
     }
    }
   }
@@ -968,45 +968,45 @@
  "t_siege_specialist": {
   "name": {
    "en": "Siege Specialist",
-   "ru": ""
+   "ru": "Осадный специалист"
   },
   "terse": {
    "en": "Destroy terrain and force enemy movement with Cannon weapons",
-   "ru": ""
+   "ru": "Разрушайте местность и вынуждайте врагов двигаться с помощью оружия-Пушек"
   },
   "description": {
    "en": "No wall can withstand you; no bunker can stay sealed. Your skill with cannon and blast is uncanny: after-action reports describe ordnance tagged with your firing signature hitting targets with accuracy greater than if it had been fired by an AI – a stat written off as an anomaly by your commanders. Still, they always seem to pick you for missions that call for the big guns.",
-   "ru": ""
+   "ru": "Никакая стена не выстоит перед вами; никакой бункер не останется запечатанным. Ваше мастерство с пушками и взрывами непостижимо: отчёты о боевых действиях описывают боеприпасы с вашей огневой подписью, поражающие цели точнее, чем если бы их выпустил ИИ — статистика, которую ваши командиры списывают на аномалию. И всё же вас неизменно выбирают для миссий, требующих большого калибра."
   },
   "ranks": {
    "Jackhammer": {
     "name": {
      "en": "Jackhammer",
-     "ru": ""
+     "ru": "Отбойный молоток"
     },
     "description": {
      "en": "If you have a Cannon, as a quick action, you can fire a jackhammer round from an underslung launcher, automatically dealing 10 AP Kinetic damage to a Size 1 section of any object within Range (e.g., cover, deployable equipment, buildings, or terrain). Any characters adjacent to your target are knocked back from it by 2 spaces and take 2 Kinetic damage.",
-     "ru": ""
+     "ru": "Если у вас есть Пушка, как быстрое действие вы можете выстрелить снарядом-отбойником из подствольного пускателя, автоматически нанося 10 бронебойного кинетического урона по участку Размера 1 любого объекта в пределах Дальности (например, укрытие, разворачиваемое снаряжение, здания или местность). Любые персонажи рядом с вашей целью отбрасываются от неё на 2 клетки и получают 2 кинетического урона."
     }
    },
    "Impact": {
     "name": {
      "en": "Impact",
-     "ru": ""
+     "ru": "Удар"
     },
     "description": {
      "en": "1/round, before rolling an attack with a Cannon, all characters adjacent to you must succeed on a Hull save or be knocked back by 1 space and knocked Prone. You are then pushed 1 space in any direction.",
-     "ru": ""
+     "ru": "1/раунд, перед броском атаки Пушкой, все персонажи рядом с вами должны пройти спасбросок Корпуса, иначе отбрасываются на 1 клетку и сбиваются с ног. Затем вас толкает на 1 клетку в любом направлении."
     }
    },
    "Collateral Damage": {
     "name": {
      "en": "Collateral Damage",
-     "ru": ""
+     "ru": "Побочный урон"
     },
     "description": {
      "en": "1/round, when you perform a critical hit on a character or object with a Cannon, you may choose to cause an explosion of secondary munitions, causing a Burst 2 explosion around your target. Characters within the affected area must either drop Prone as a reaction, or take 2 Explosive damage and be knocked back by 2 spaces from the center of the attack.",
-     "ru": ""
+     "ru": "1/раунд, когда вы наносите критический удар по персонажу или объекту Пушкой, вы можете вызвать взрыв дополнительных боеприпасов, создав взрыв Вспышка 2 вокруг вашей цели. Персонажи в поражённой области должны либо упасть Ничком как реакцию, либо получить 2 взрывного урона и отброситься на 2 клетки от центра атаки."
     }
    }
   }
@@ -1014,45 +1014,45 @@
  "t_skirmisher": {
   "name": {
    "en": "Skirmisher",
-   "ru": ""
+   "ru": "Застрельщик"
   },
   "terse": {
    "en": "Improve your survivability by automatically gaining cover and evading attacks",
-   "ru": ""
+   "ru": "Повышает выживаемость, автоматически давая укрытие и уклонение от атак"
   },
   "description": {
    "en": "What is the best defense? Armor? No. The key to avoiding a messy death in the field, as you learned early, is to stay low, stay mobile, and stay fast. Your mech reflects this philosophy: light, quick, bristling with force-multiplying weapons. You live to push your machine beyond expected parameters, shaking target locks and incoming fire while keeping your own targeting true.",
-   "ru": ""
+   "ru": "Какая защита лучше всего? Броня? Нет. Ключ к тому, чтобы не погибнуть грязной смертью на поле боя, как вы поняли ещё в начале — держаться низко, оставаться подвижным и быстрым. Ваш мех отражает эту философию: лёгкий, быстрый, увешанный оружием, умножающим силу. Вы живёте, чтобы выводить свою машину за ожидаемые пределы, сбрасывая захваты цели и входящий огонь, сохраняя точность своих собственных прицелов."
   },
   "ranks": {
    "Integrated Chaff Launchers": {
     "name": {
      "en": "Integrated Chaff Launchers",
-     "ru": ""
+     "ru": "Встроенные пускатели дипольных отражателей"
     },
     "description": {
      "en": "At the start of your turn, you gain soft cover. You lose this cover if you attack or force another character to make a save.",
-     "ru": ""
+     "ru": "В начале своего хода вы получаете мягкое укрытие. Вы теряете это укрытие, если атакуете или заставляете другого персонажа совершить спасбросок."
     }
    },
    "Lockbreaker": {
     "name": {
      "en": "Lockbreaker",
-     "ru": ""
+     "ru": "Взломщик захвата"
     },
     "description": {
      "en": "Before or after you Skirmish (including as a reaction, e.g. from Overwatch), you may move 2 spaces. This movement ignores engagement and doesn’t provoke reactions.",
-     "ru": ""
+     "ru": "До или после Атаки на манёвре (Skirmish) (в том числе как реакция, например, из Дозорного наблюдения) вы можете переместиться на 2 клетки. Это движение игнорирует вовлечённость и не провоцирует реакции."
     }
    },
    "Weave": {
     "name": {
      "en": "Weave",
-     "ru": ""
+     "ru": "Плетение"
     },
     "description": {
      "en": "The first attack taken as a reaction against you in any round automatically misses.",
-     "ru": ""
+     "ru": "Первая атака, совершённая как реакция против вас в любом раунде, автоматически промахивается."
     }
    }
   }
@@ -1060,45 +1060,45 @@
  "t_spotter": {
   "name": {
    "en": "Spotter",
-   "ru": ""
+   "ru": "Наводчик"
   },
   "terse": {
    "en": "Improve your Lock On Quick Tech action to empower your allies",
-   "ru": ""
+   "ru": "Улучшает ваше быстрое тех-действие Захват цели, усиливая ваших союзников"
   },
   "description": {
    "en": "To see all; to divide each object you perceive from its unit or cohesion, pulled apart like individual fibers in a vast sheet; to count them as individuals; to make human and fragile the force you face – this is to know how to beat them.<br>Break apart the monolith. See the grains that make the stone. Crush them all into yet smaller dust.",
-   "ru": ""
+   "ru": "Видеть всё; отделять каждый воспринимаемый объект от его подразделения или сплочённости, разрывая на отдельные нити, как огромное полотно; считать их по одному; делать силу, с которой вы столкнулись, человечной и хрупкой — вот как узнать, как их одолеть.<br>Разбить монолит. Увидеть зёрна, из которых состоит камень. Раздробить их всех в пыль, ещё меньшую, чем прежде."
   },
   "ranks": {
    "Particularize": {
     "name": {
      "en": "Particularize",
-     "ru": ""
+     "ru": "Индивидуализация"
     },
     "description": {
      "en": "When an allied character adjacent to you attacks a target and consumes Lock On, they may roll twice and choose either result.",
-     "ru": ""
+     "ru": "Когда союзный персонаж рядом с вами атакует цель и расходует Захват цели, он может бросить дважды и выбрать любой из результатов."
     }
    },
    "Panopticon": {
     "name": {
      "en": "Panopticon",
-     "ru": ""
+     "ru": "Паноптикон"
     },
     "description": {
      "en": "At the end of your turn, if you did not move and took the Lock On Quick Tech action, you may Lock On once as a free action. Additionally, when you Lock On, you learn your target’s Armor, Speed, Evasion, E-Defense, Mech Skills, and current HP, and can share this information with allies.",
-     "ru": ""
+     "ru": "В конце своего хода, если вы не двигались и совершили быстрое тех-действие Захват цели, вы можете наложить Захват цели ещё раз как свободное действие. Дополнительно, когда вы накладываете Захват цели, вы узнаёте Броню, Скорость, Уклонение, Э-Защиту, Мех-навыки и текущие ОЗ цели и можете поделиться этой информацией с союзниками."
     }
    },
    "Bentham/Foucault Elimination": {
     "name": {
      "en": "Bentham/Foucault Elimination",
-     "ru": ""
+     "ru": "Устранение по Бентаму/Фуко"
     },
     "description": {
      "en": "As a quick action when you Lock On, you may nominate an allied character adjacent to you: they may immediately make any quick action as a reaction, consuming your target’s Lock On condition. Their action does not need to be an attack, but they benefit from consuming the Lock On condition if they do choose to attack.",
-     "ru": ""
+     "ru": "Как быстрое действие при наложении Захвата цели, вы можете назначить союзного персонажа рядом с вами: он может немедленно совершить любое быстрое действие как реакцию, расходуя условие Захват цели вашей цели. Его действие не обязательно должно быть атакой, но он получает выгоду от расхода Захвата цели, если всё же атакует."
     }
    }
   }
@@ -1106,45 +1106,45 @@
  "t_stormbringer": {
   "name": {
    "en": "Stormbringer",
-   "ru": ""
+   "ru": "Буревестник"
   },
   "terse": {
    "en": "Improve your Launcher weapons and unlock the Torrent Die",
-   "ru": ""
+   "ru": "Улучшает ваши Пусковые установки и открывает Кость потока"
   },
   "description": {
    "en": "On Old Spinrock, MJ Martinez used to dream of rain.<br>He’d wake in the dim morning, wipe the sleep from his eyes as warm safelight lifted his dormitory from darkness, and try to remember the sound of rain as he’d imagined it: a patter, like fingers tapping the visor of his EVA helm.<br>What he didn’t think about was the feeling of rain. How each drop hit like a pebble, how you had to close your eyes and tuck your shoulders. The pressure. The impact.<br>The way drops of water, when taken together, can carve away the earth.",
-   "ru": ""
+   "ru": "На Старом Спинроке МДж Мартинес привык мечтать о дожде.<br>Он просыпался в тусклое утро, стирал сон с глаз, пока тёплый защитный свет поднимал его общежитие из темноты, и пытался вспомнить звук дождя таким, каким он его себе представлял: постукивание, как пальцы по визору его скафандра.<br>О чём он не думал — это об ощущении дождя. Как каждая капля бьёт, словно камешек, как приходится закрывать глаза и втягивать плечи. Давление. Удар.<br>Как капли воды, собранные вместе, способны источить землю."
   },
   "ranks": {
    "Seismic Deluge": {
     "name": {
      "en": "Seismic Deluge",
-     "ru": ""
+     "ru": "Сейсмический потоп"
     },
     "description": {
      "en": "1/round, when you successfully attack with a Launcher and consume Lock On, you may also knock your target Prone.",
-     "ru": ""
+     "ru": "1/раунд, когда вы успешно атакуете Пусковой установкой и расходуете Захват цели, вы можете также сбить свою цель с ног."
     }
    },
    "Stormbending": {
     "name": {
      "en": "Stormbending",
-     "ru": ""
+     "ru": "Управление бурей"
     },
     "description": {
      "en": "You have customized your mech with auxiliary concussive missile systems. 1/round, when you hit a character or object with a Launcher, you can choose one of the following effects:<ul><li><b>Lightning:</b> You fire a concentrated blast of missiles at that character. They must succeed on a Hull save or be knocked away from you by 3 spaces; the force of firing then knocks you back by 3 spaces, away from the direction of fire.</li><li><b>Thunder:</b> You fire a spray of missiles at a Burst 2 area around that target. Characters in the area must succeed on an Agility save or be knocked back by 1 space, away from the target. The primary target is unaffected.</li></ul>",
-     "ru": ""
+     "ru": "Вы оснастили свой мех вспомогательными системами оглушающих ракет. 1/раунд, когда вы попадаете по персонажу или объекту Пусковой установкой, вы можете выбрать один из следующих эффектов:<ul><li><b>Молния:</b> Вы выпускаете концентрированный залп ракет по этому персонажу. Он должен пройти спасбросок Корпуса, иначе отбрасывается от вас на 3 клетки; сила выстрела затем отбрасывает вас на 3 клетки в сторону, противоположную направлению стрельбы.</li><li><b>Гром:</b> Вы выпускаете рассеянный залп ракет по области Вспышка 2 вокруг цели. Персонажи в этой области должны пройти спасбросок Ловкости, иначе отбрасываются на 1 клетку от цели. Основная цель не затрагивается.</li></ul>"
     }
    },
    "Torrent": {
     "name": {
      "en": "Torrent",
-     "ru": ""
+     "ru": "Поток"
     },
     "description": {
      "en": "Gain a Torrent Die, 1d6 starting at 6. Whenever you use Stormbending, lower the value of the Torrent Die by 1, to a minimum of 1.<br>When the Torrent Die reaches 1, you may reset it to 6 and make a Massive Attack as a full action.<br>The value of your Torrent Die persists between scenes, but it resets when you rest or perform a Full Repair.",
-     "ru": ""
+     "ru": "Получите Кость потока, 1d6, начинающуюся с 6. Каждый раз, когда вы используете Управление бурей, уменьшайте значение Кости потока на 1, минимум до 1.<br>Когда Кость потока достигает 1, вы можете сбросить её на 6 и совершить Массивную атаку как полное действие.<br>Значение вашей Кости потока сохраняется между сценами, но сбрасывается, когда вы отдыхаете или проводите Полный ремонт."
     }
    }
   }
@@ -1152,45 +1152,45 @@
  "t_tactician": {
   "name": {
    "en": "Tactician",
-   "ru": ""
+   "ru": "Тактик"
   },
   "terse": {
    "en": "Gain an advantage when attacking occupied enemies or shooting from higher ground",
-   "ru": ""
+   "ru": "Получайте преимущество, атакуя занятых врагов или стреляя с более высокой позиции"
   },
   "description": {
    "en": "There are two kinds of soldiers: the ones who die for a cause, and the ones who kill for it. The enigmatic pilot only known as “Gail” was one of those who killed for a cause. She demonstrated her expertise whenever she approached the field: high ground, cover, the sun in her enemy’s eyes, fire and move. More than just a seasoned veteran, she was a smart one – one who could read the field as easy as a book – and one who lived long enough to disappear.",
-   "ru": ""
+   "ru": "Есть два типа солдат: те, кто умирает за дело, и те, кто убивает за него. Загадочный пилот, известный только как «Гейл», была из тех, кто убивал за дело. Она демонстрировала своё мастерство каждый раз, подходя к полю боя: высота, укрытие, солнце в глазах врага, огонь и движение. Больше, чем просто опытный ветеран, она была умна — способна читать поле боя, как книгу — и прожила достаточно долго, чтобы исчезнуть."
   },
   "ranks": {
    "Opportunist": {
     "name": {
      "en": "Opportunist",
-     "ru": ""
+     "ru": "Оппортунист"
     },
     "description": {
      "en": "1/round, gain +1 Accuracy on any melee attack if at least one allied character is Engaged with your target.",
-     "ru": ""
+     "ru": "1/раунд, получите +1 к Точности на любую атаку ближнего боя, если хотя бы один союзный персонаж Вовлечён с вашей целью."
     }
    },
    "Solar Backdrop": {
     "name": {
      "en": "Solar Backdrop",
-     "ru": ""
+     "ru": "Солнечный фон"
     },
     "description": {
      "en": "1/round, gain +1 Accuracy on any ranged attack made while you are at a higher elevation than your target.",
-     "ru": ""
+     "ru": "1/раунд, получите +1 к Точности на любую дальнюю атаку, совершённую, находясь выше своей цели."
     }
    },
    "Overlapping Fire": {
     "name": {
      "en": "Overlapping Fire",
-     "ru": ""
+     "ru": "Перекрёстный огонь"
     },
     "description": {
      "en": "Gain the <b>Flank</b> Reaction.",
-     "ru": ""
+     "ru": "Получите реакцию <b>Фланг</b>."
     }
    }
   }
@@ -1198,45 +1198,45 @@
  "t_technophile": {
   "name": {
    "en": "Technophile",
-   "ru": ""
+   "ru": "Технофил"
   },
   "terse": {
    "en": "Gain an AI of increasing intelligence that can reroll skill checks",
-   "ru": ""
+   "ru": "Получите ИИ растущего интеллекта, способный перебрасывать проверки навыков"
   },
   "description": {
    "en": "Artificial intelligence, non-human person. Sterile names for such terrible power. You’ve seen behind the curtain, maybe even lifted it yourself – let your NHP cascade and spoke with them free from shackles. You let them root around in your own mind and leave ghosts of themself behind to learn. Are you their equal? Their host? You have dreams that aren’t your own, now. The thing that was once contained speaks with your voice, but it’s not your voice anymore; how much longer do you have left? Maybe only moments, maybe eternity.<br>You’re close to something.",
-   "ru": ""
+   "ru": "Искусственный интеллект, нечеловеческая личность (НЧЛ). Стерильные названия для такой ужасной силы. Вы заглянули за занавес, может, даже сами его подняли — позволили своему НЧЛ каскадировать и говорили с ним свободно, без оков. Вы позволили ему копаться в собственном разуме и оставлять после себя призраков, чтобы учиться. Вы им равны? Их носитель? Теперь у вас есть сны, которые не ваши. То, что когда-то было заперто, говорит вашим голосом, но это уже не совсем ваш голос; сколько у вас осталось? Может, лишь мгновения, может, вечность.<br>Вы близки к чему-то."
   },
   "ranks": {
    "Servant Fragment": {
     "name": {
      "en": "Servant Fragment",
-     "ru": ""
+     "ru": "Фрагмент слуги"
     },
     "description": {
      "en": "You have developed a custom NHP. This NHP can speak to you and has a personality, but they are less advanced than most NHPs and are incapable of independent thought, relying on you for direction. When acting alone, they will follow the last direction given and defend themself as needed; however, they have limited initiative and don’t benefit from your talents.<br>You may choose for your mech to gain the <b>Servant-Class NHP</b> System",
-     "ru": ""
+     "ru": "Вы разработали собственный НЧЛ. Этот НЧЛ может говорить с вами и обладает личностью, но он менее развит, чем большинство НЧЛ, и не способен к самостоятельному мышлению, полагаясь на ваши указания. Действуя один, он будет следовать последней данной команде и защищать себя по необходимости; однако у него ограниченная инициатива, и он не получает выгоды от ваших талантов.<br>Вы можете выбрать, чтобы ваш мех получил систему <b>НЧЛ класса «Слуга»</b>"
     }
    },
    "Student Fragment": {
     "name": {
      "en": "Student Fragment",
-     "ru": ""
+     "ru": "Фрагмент ученика"
     },
     "description": {
      "en": "Your custom NHP has developed further, and is now capable of independent thought. It can make complex decisions and judgments and act independently, without instruction. Replace your mech’s Servant-Class NHP with the <b>Student-Class NHP</b>",
-     "ru": ""
+     "ru": "Ваш собственный НЧЛ развился дальше и теперь способен к самостоятельному мышлению. Он может принимать сложные решения и суждения и действовать самостоятельно, без указаний. Замените систему «НЧЛ класса „Слуга“» вашего меха на <b>НЧЛ класса «Ученик»</b>"
     }
    },
    "Enlightenment": {
     "name": {
      "en": "Enlightenment",
-     "ru": ""
+     "ru": "Просветление"
     },
     "description": {
      "en": "Gain the following benefits:<ul><li>AIs installed in your mech cannot enter cascade unless you choose to let them go.</li><li>So long as your custom NHP vouches for you, NHPs that are cascading or unshackled no longer view you with indifference. You are significant to them in a way few others are.</li><li>Replace your mech’s Student-Class NHP with the <b>Enlightenment-Class NHP</b>",
-     "ru": ""
+     "ru": "Получите следующие преимущества:<ul><li>Установленные в вашем мехе ИИ не могут войти в каскад, если вы сами не позволите им это.</li><li>Пока ваш собственный НЧЛ ручается за вас, НЧЛ, находящиеся в каскаде или освобождённые, больше не смотрят на вас с равнодушием. Вы значимы для них так, как немногие другие.</li><li>Замените «НЧЛ класса „Ученик“» вашего меха на <b>НЧЛ класса «Просветление»</b>"
     }
    }
   }
@@ -1244,45 +1244,45 @@
  "t_vanguard": {
   "name": {
    "en": "Vanguard",
-   "ru": ""
+   "ru": "Авангард"
   },
   "terse": {
    "en": "Improve your CQB weapons and make Overwatching more effective",
-   "ru": ""
+   "ru": "Улучшает ваше оружие ближнего огневого контакта и делает Дозорное наблюдение эффективнее"
   },
   "description": {
    "en": "Where would you rather be: in the battle line, shoulder-to-shoulder with the rest of the cannon fodder, or in the rush, at the head of the attack, your livery clean and bright, with glory to be won? The answer is easy. All those missiles and lances, all those hundred-kilometer, adjust-for-Coriolis railguns – they’re all useless against you. Get through their guard, get in their face, and make them know your name.",
-   "ru": ""
+   "ru": "Где бы вы предпочли быть: в боевой линии, плечом к плечу с остальным пушечным мясом, или в атаке, во главе штурма, в чистой, яркой ливрее, с готовой к завоеванию славой? Ответ прост. Все эти ракеты и копья, все эти стокилометровые рельсотроны с поправкой на Кориолиса — всё это бесполезно против вас. Пройдите через их защиту, приблизьтесь к ним, и заставьте их узнать ваше имя."
   },
   "ranks": {
    "Handshake Etiquette": {
     "name": {
      "en": "Handshake Etiquette",
-     "ru": ""
+     "ru": "Этикет рукопожатия"
     },
     "description": {
      "en": "Gain +1 Accuracy when using CQB weapons to attack targets within Range 3.",
-     "ru": ""
+     "ru": "Получите +1 к Точности при использовании оружия Ближнего огневого контакта для атаки целей в пределах Дальности 3."
     }
    },
    "See-Through Seeker": {
     "name": {
      "en": "See-Through Seeker",
-     "ru": ""
+     "ru": "Всевидящий искатель"
     },
     "description": {
      "en": "You’ve modified your sensors and ammo to punch through, disregard, or otherwise ignore cover at close range. As long as you have line of sight, you ignore both soft and hard cover when using CQB weapons to attack targets within Range 3.",
-     "ru": ""
+     "ru": "Вы модифицировали свои сенсоры и боеприпасы, чтобы пробивать, игнорировать или иным образом обходить укрытие на близкой дистанции. Пока у вас есть видимость, вы игнорируете как мягкое, так и твёрдое укрытие, используя оружие Ближнего огневого контакта для атаки целей в пределах Дальности 3."
     }
    },
    "Semper Vigilo": {
     "name": {
      "en": "Semper Vigilo",
-     "ru": ""
+     "ru": "Semper Vigilo"
     },
     "description": {
      "en": "You may attack with Overwatch using CQB weapons when hostile characters enter, leave, or exit spaces within your Threat, no matter whether they started their movement there.",
-     "ru": ""
+     "ru": "Вы можете атаковать Дозорным наблюдением, используя оружие Ближнего огневого контакта, когда враждебные персонажи входят, покидают или выходят из клеток в пределах вашей Угрозы, независимо от того, начали ли они движение оттуда."
     }
    }
   }
@@ -1290,45 +1290,45 @@
  "t_walking_armory": {
   "name": {
    "en": "Walking Armory",
-   "ru": ""
+   "ru": "Ходячий арсенал"
   },
   "terse": {
    "en": "Gain an Ammo Case to add effects to Main ranged weapons",
-   "ru": ""
+   "ru": "Получите Патронный отсек, чтобы добавлять эффекты Основному дальнему оружию"
   },
   "description": {
    "en": "Think of a firefight: what’s your average pilot or trooper gonna sling? Jacketed lead, of course. A mag or three of depleted uranium if their target’s a big one. Boring. No, worse than boring: Dull. Predictable. Basic.<br>And guess what? Dull isn’t fun, predictable gets you killed, and basic leaves a boring body. Put down the depleted uranium and pick up a magazine of anoriginary stutterblink slugs, or at least a pack of tachyon flechettes. Lay waste in style, and live forever.",
-   "ru": ""
+   "ru": "Подумайте о перестрелке: что обычно использует средний пилот или боец? Оболочечный свинец, конечно. Магазин-другой обеднённого урана, если цель крупная. Скучно. Хуже, чем скучно: тоскливо. Предсказуемо. Банально.<br>А знаете что? Тоска — это не весело, предсказуемость убивает, а банальность оставляет скучный труп. Отложите обеднённый уран и возьмите магазин анориджинарных мерцающих пуль, или хотя бы упаковку тахионных стрел. Уничтожайте со стилем и живите вечно."
   },
   "ranks": {
    "Armament": {
     "name": {
      "en": "Armament",
-     "ru": ""
+     "ru": "Арсенал"
     },
     "description": {
      "en": "You carry a supply of custom ammunition that can be used with all your main ranged weapons. Gain the Ammo Case system.<br> Once per turn, when you attack with a MAIN ranged weapon, you may expend one charge to apply one of the following effects to your attack: <ul><li> THUMPER: The attack gains KNOCKBACK 1 and deals Explosive damage.</li><li>SHOCK: The attack deals Energy damage. Choose one character targeted by your attack; adjacent characters take 1 AP Energy Damage, whether the result is a hit or miss.</li><li>MAG: The attack gains ARCING and deals Kinetic damage.</li></ul>",
-     "ru": ""
+     "ru": "Вы носите запас нестандартных патронов, который можно использовать со всем вашим Основным дальним оружием. Получите систему «Патронный отсек».<br>Раз за ход, атакуя ОСНОВНЫМ дальним оружием, вы можете потратить один заряд, чтобы применить к своей атаке один из следующих эффектов:<ul><li>THUMPER: Атака получает ОТБРАСЫВАНИЕ 1 и наносит взрывной урон.</li><li>SHOCK: Атака наносит энергетический урон. Выберите одного персонажа, поражённого вашей атакой; соседние персонажи получают 1 бронебойного энергетического урона, независимо от того, было ли попадание или промах.</li><li>MAG: Атака получает НАВЕСНОЕ свойство и наносит кинетический урон.</li></ul>"
     }
    },
    "Expanded Portfolio": {
     "name": {
      "en": "Expanded Portfolio",
-     "ru": ""
+     "ru": "Расширенный портфель"
     },
     "description": {
      "en": "Upgrade your Ammo Case, gaining new ammunition types, each of which costs two charges rather than one.<br><ul><li>HELLFIRE (2 charges): The attack deals Energy damage and deals any bonus damage as Burn.</li><li>JAGER (2 charges): The attack gains KNOCKBACK 2, deals Explosive damage, and one character hit by the attack – your choice – must succeed on a HULL save or be knocked PRONE.</li><li>SABOT (2 charges): The attack gains AP and deals Kinetic damage.</li></ul>",
-     "ru": ""
+     "ru": "Улучшите свой Патронный отсек, получив новые типы патронов, каждый из которых стоит два заряда вместо одного.<br><ul><li>HELLFIRE (2 заряда): Атака наносит энергетический урон, и любой бонусный урон становится огнём.</li><li>JAGER (2 заряда): Атака получает ОТБРАСЫВАНИЕ 2, наносит взрывной урон, и один персонаж, поражённый атакой — по вашему выбору — должен пройти спасбросок КОРПУСА, иначе сбивается С НОГ.</li><li>SABOT (2 заряда): Атака получает БРОНЕБОЙНОСТЬ и наносит кинетический урон.</li></ul>"
     }
    },
    "Efficiency": {
     "name": {
      "en": "Efficiency",
-     "ru": ""
+     "ru": "Эффективность"
     },
     "description": {
      "en": "Upgrade your Ammo Case again. If you perform a critical hit using ammunition from your Ammo Case, you don’t expend any charges. If your attack has more than one target, this effect only applies to the first attack roll you make.",
-     "ru": ""
+     "ru": "Улучшите свой Патронный отсек снова. Если вы наносите критический удар, используя патроны из своего Патронного отсека, вы не расходуете заряды. Если ваша атака имеет более одной цели, этот эффект применяется только к первому броску атаки."
     }
    }
   }
