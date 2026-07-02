@@ -6,34 +6,34 @@
   },
   "description": {
    "en": "Most humans don’t think to ask about the history of the water they drink, the earth they walk, or the air they breathe. And yet, without water, earth, and air, there would be nowhere for humanity to make a home.<br>Just the same, the GMS-SP1 “Everest” is often taken for granted, its importance dismissed in favor of other, more specialized frames. A plain and unpretentious mech, defined by simple lines, functional grace, universal compatibility, and sturdy bulk, the Everest is as fundamental to the modern mechanized chassis as the natural world is to human life. The Everest isn’t the most specialized mech, but it is the backbone of our expansion imperative. From its shoulders, humanity steps.<br>Prior to GMS’s official adoption of the name, “Everest” was a use-name given to the frame by its pilots. Mount Everest – or Sagarmatha, or Chomolungma, as it has been called in older human tongues – is the tallest mountain on Cradle, though not the most prominent peak in known space, nor even the greatest in Cradle’s star system, yet pilots across the galaxy call their SP1s by that ancient name. Why?<br>The sentimental answer is that the name is a reminder of what was once the limit of human endurance – once the height of human achievement. To reach Everest’s summit was to defy death and stand atop the world – the culmination of months, even years, of training, investment, and hard work. Reaching the peak was also a triumph of the people, systems, and institutions behind the individual – a triumph too often left unacknowledged, or deliberately erased.<br>Sagarmatha. Chomolungma.<br>Even before the Fall, when the Massif vaults were built, some names – some stories – were given priority over others.<br>The real story behind the Everest’s name is likely much less deliberate. Somewhere along the line, a newly graduated pilot, frustrated by GMS’s plain naming conventions, painted “EVEREST” across the flank of their SP1. Maybe it was a callsign, or maybe it represented the pride they felt at success. Either way, the name stuck: others adopted the name, and over five centuries it grew to become the officially unofficial designation of the SP1 chassis.<br>Veteran pilots may never return to the Everest after moving on, but they’ll always remember reaching that first summit – the mountaintop where they proved they could plant their own flag at the peak of the world.<br>Sagarmatha. Chomolungma.<br>Everest – you’ll never forget it.",
-   "ru": ""
+   "ru": "Большинство людей не задумываются о происхождении воды, которую пьют, земли, по которой ходят, или воздуха, которым дышат. И всё же без воды, земли и воздуха человечеству было бы негде обустроить дом.<br>Точно так же GMS-SP1 «Эверест» часто воспринимают как данность, его значимость отходит на второй план перед более специализированными шасси. Простой и непритязательный мех, определяемый простыми линиями, функциональным изяществом, универсальной совместимостью и надёжной массивностью, «Эверест» так же фундаментален для современного механизированного шасси, как природный мир — для человеческой жизни. «Эверест» — не самый специализированный мех, но он — становой хребет нашей экспансии. С его плеч человечество делает шаг вперёд.<br>До того как GMS официально приняла это название, «Эверест» было неофициальным именем, данным шасси пилотами. Гора Эверест — или Сагарматха, или Джомолунгма, как её называли в более древних человеческих языках — самая высокая гора на Колыбели, хотя не самая заметная вершина в известном космосе и даже не величайшая в звёздной системе Колыбели, — и всё же пилоты по всей галактике называют свои SP1 этим древним именем. Почему?<br>Сентиментальный ответ таков: это имя — напоминание о том, что когда-то было пределом человеческой выносливости, вершиной человеческих достижений. Достичь вершины Эвереста значило бросить вызов смерти и встать над миром — кульминация месяцев, даже лет тренировок, вложений и тяжёлого труда. Достижение вершины было также триумфом людей, систем и институтов, стоявших за отдельным человеком — триумфом, слишком часто остававшимся непризнанным или намеренно стёртым.<br>Сагарматха. Джомолунгма.<br>Ещё до Падения, когда строились хранилища Массива, некоторым именам — некоторым историям — отдавали предпочтение перед другими.<br>Настоящая история имени «Эверест», вероятно, куда менее преднамеренная. Где-то на этом пути недавно выпустившийся пилот, разочарованный простыми конвенциями именования GMS, вывел «EVEREST» краской на борту своего SP1. Может, это был позывной, а может — выражение гордости за достигнутый успех. Так или иначе, имя прижилось: его переняли другие, и за пять веков оно превратилось в официально неофициальное обозначение шасси SP1.<br>Ветераны-пилоты могут никогда не вернуться к «Эвересту», перейдя на другое шасси, но они всегда будут помнить достижение той первой вершины — горного пика, где они доказали, что способны водрузить свой собственный флаг на вершине мира.<br>Сагарматха. Джомолунгма.<br>Эверест — вы никогда его не забудете."
   },
   "traits": {
    "Initiative": {
     "name": {
      "en": "Initiative",
-     "ru": ""
+     "ru": "Инициатива"
     },
     "description": {
      "en": "1/scene the Everest may take any quick action as a free action.",
-     "ru": ""
+     "ru": "1/сцену «Эверест» может совершить любое быстрое действие как свободное действие."
     }
    },
    "Replaceable parts": {
     "name": {
      "en": "Replaceable parts",
-     "ru": ""
+     "ru": "Заменяемые детали"
     },
     "description": {
      "en": "While resting, the Everest can be repaired at a rate of 1 Repair per 1 structure damage, instead of 2 Repairs.",
-     "ru": ""
+     "ru": "Во время отдыха «Эверест» может ремонтироваться со скоростью 1 Ремонт за 1 повреждение Структуры, вместо 2 Ремонтов."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Hyperspec Fuel Injector",
-    "ru": ""
+    "ru": "Гиперспек-инжектор топлива"
    },
    "description": {
     "en": "",
@@ -49,11 +49,11 @@
    },
    "active_name": {
     "en": "Power Up",
-    "ru": ""
+    "ru": "Форсаж"
    },
    "active_effect": {
     "en": "For the rest of this scene, you gain +1 Accuracy on all attacks, checks, and saves; additionally, 1/turn, you can Boost as a free action.",
-    "ru": ""
+    "ru": "До конца текущей сцены вы получаете +1 к Точности на все атаки, проверки и спасброски; дополнительно, 1/ход вы можете Ускориться как свободное действие."
    }
   }
  },
@@ -64,48 +64,48 @@
   },
   "description": {
    "en": "The Blackbeard is IPS-N’s aggressive solution to piracy: a front-facing, first-striking mech designed for environments in which combustible kinetic weapons are useless, dangerous, or likely to cause unnecessary collateral damage. With its distinctly slim frame, the Blackbeard doesn’t just look fast – it also has a reduced radar profile. This mech is hard to track and harder still to hit.<br>The Blackbeard range comprises two lines: the standard IPS-N/BB-L production line model, and the IPS-N/BB-Sk, a limited-release prototype purpose-built to house IPS-N’s SEKHMET-class NHPs.",
-   "ru": ""
+   "ru": "«Блэкберд» — агрессивное решение IPS-N против пиратства: фронтальный, наносящий первый удар мех, спроектированный для условий, где горючее кинетическое оружие бесполезно, опасно или способно причинить излишний сопутствующий ущерб. Благодаря заметно тонкому силуэту «Блэкберд» не просто выглядит быстрым — у него также снижен радарный профиль. Этот мех трудно отследить и ещё труднее поразить.<br>Линейка «Блэкберд» включает две модели: стандартную серийную IPS-N/BB-L и IPS-N/BB-Sk — ограниченный прототип, спроектированный специально для размещения НЧЛ класса SEKHMET производства IPS-N."
   },
   "traits": {
    "Grapple Cable": {
     "name": {
      "en": "Grapple Cable",
-     "ru": ""
+     "ru": "Захватный трос"
     },
     "description": {
      "en": "The Blackbeard can Grapple targets within Range 5. If the Grapple is successful, the Blackbeard is immediately pulled adjacent to the target by the most direct path. If there are no suitable spaces, the grapple breaks and the Blackbeard does not move.",
-     "ru": ""
+     "ru": "«Блэкберд» может Захватывать цели в пределах Дальности 5. При успешном захвате «Блэкберд» немедленно притягивается вплотную к цели по кратчайшему пути. Если подходящих клеток нет, захват срывается, и «Блэкберд» не двигается."
     }
    },
    "Lock/Kill Subsystem": {
     "name": {
      "en": "Lock/Kill Subsystem",
-     "ru": ""
+     "ru": "Подсистема «Захват/поражение»"
     },
     "description": {
      "en": "While grappling, the Blackbeard can Boost and take reactions.",
-     "ru": ""
+     "ru": "Пока «Блэкберд» удерживает захват, он может Ускоряться и совершать реакции."
     }
    },
    "Exposed Reactor": {
     "name": {
      "en": "Exposed Reactor",
-     "ru": ""
+     "ru": "Открытый реактор"
     },
     "description": {
      "en": "The Blackbeard receives +1 Difficulty on ENGINEERING checks and saves.",
-     "ru": ""
+     "ru": "«Блэкберд» получает +1 к Сложности на проверки и спасброски Инженерии."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Assault Grapples",
-    "ru": ""
+    "ru": "Штурмовые захваты"
    },
    "description": {
     "en": "The IPS-N-branded Assault Grappling System is a class-leading technology rated for hauling, supporting, and securing chassis of sizes up to Schedule 4. Grapple heads are interchangeable and can be swapped for engagement with soft or hard targets – either electrified or loaded with codespike systems for long-distance incapacitation.",
-    "ru": ""
+    "ru": "Штурмовая захватная система от IPS-N — технология высшего класса, рассчитанная на буксировку, поддержку и фиксацию шасси размером до 4 категории. Захватные головки взаимозаменяемы и могут быть заменены для работы с мягкими или твёрдыми целями — либо под напряжением, либо с системами кодовых шипов для обездвиживания на большой дистанции."
    },
    "passive_name": {
     "en": "",
@@ -117,11 +117,11 @@
    },
    "active_name": {
     "en": "Omni-harpoon",
-    "ru": ""
+    "ru": "Омни-гарпун"
    },
    "active_effect": {
     "en": "This system fires grappling harpoons at any number of targets within Range 5 and line of sight. Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
-    "ru": ""
+    "ru": "Эта система выстреливает захватными гарпунами по любому числу целей в пределах Дальности 5 и видимости. Поражённые персонажи должны пройти спасбросок Корпуса, иначе получают 2d6 кинетического урона и сбиваются с ног, после чего притягиваются вплотную к вам или как можно ближе. Они становятся Обездвижены до конца своего следующего хода. При успехе они получают половину урона и в остальном не затронуты."
    }
   }
  },
@@ -132,54 +132,54 @@
   },
   "description": {
    "en": "The Drake, IPS-N’s first foray into military-grade mech design, is the backbone of any proactive trade-security or anti-piracy force. Its massive, simian frame is built around a single-cast bulkhead, sloped and reinforced to handle sustained fire and the vagaries of vessel-proximal hardvac travel. The Drake is an imposing chassis, its frame evoking the might of ancient armored infantry from a time when greater numbers guaranteed victory.<br>The standard fleet license for the IPS-N Drake outfits each chassis with IPS-N’s high-velocity, high–projectile fragment assault cannon for suppressing and overwhelming targets, and a heavy kinetic–ablative shield for defense. Advanced models feature upgraded weapons and armor including the formidable Leviathan Heavy Assault Cannon, a high-rpm anti-materiel weapon.",
-   "ru": ""
+   "ru": "«Дрейк» — первая попытка IPS-N в проектировании мехов военного класса — становой хребет любых проактивных сил торговой безопасности или борьбы с пиратством. Его массивный, обезьяноподобный каркас построен вокруг цельнолитой переборки, скошенной и усиленной для выдерживания продолжительного огня и превратностей около-корабельных перелётов в жёстком вакууме. «Дрейк» — внушительное шасси, чей силуэт напоминает мощь древней бронированной пехоты времён, когда численное превосходство гарантировало победу.<br>Стандартная флотская лицензия IPS-N «Дрейк» оснащает каждое шасси высокоскоростной, высокофрагментной штурмовой пушкой IPS-N для подавления и подавляющего огня по целям, а также тяжёлым кинетико-абляционным щитом для защиты. Продвинутые модели оснащены улучшенным оружием и бронёй, включая грозную Тяжёлую штурмовую пушку «Левиафан» — противоматериальное оружие с высокой скорострельностью."
   },
   "traits": {
    "Heavy Frame": {
     "name": {
      "en": "Heavy Frame",
-     "ru": ""
+     "ru": "Тяжёлый каркас"
     },
     "description": {
      "en": "The Drake can’t be pushed, pulled, knocked Prone, or knocked back by smaller characters.",
-     "ru": ""
+     "ru": "«Дрейка» нельзя толкнуть, притянуть, сбить с ног или отбросить персонажам меньшего размера."
     }
    },
    "Blast Plating": {
     "name": {
      "en": "Blast Plating",
-     "ru": ""
+     "ru": "Взрывозащитная броня"
     },
     "description": {
      "en": "The Drake has Resistance to damage, burn and heat from blast, burst, line, and cone attacks.",
-     "ru": ""
+     "ru": "«Дрейк» имеет Сопротивление к урону, огню и теплу от атак взрывом, вспышкой, линией и конусом."
     }
    },
    "Slow": {
     "name": {
      "en": "Slow",
-     "ru": ""
+     "ru": "Медлительный"
     },
     "description": {
      "en": "The Drake receives +1 difficulty on Agility checks and saves.",
-     "ru": ""
+     "ru": "«Дрейк» получает +1 к Сложности на проверки и спасброски Ловкости."
     }
    },
    "Guardian": {
     "name": {
      "en": "Guardian",
-     "ru": ""
+     "ru": "Страж"
     },
     "description": {
      "en": "Adjacent allied characters can use the Drake for hard cover.",
-     "ru": ""
+     "ru": "Соседние союзные персонажи могут использовать «Дрейка» как твёрдое укрытие."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Fortress",
-    "ru": ""
+    "ru": "Крепость"
    },
    "description": {
     "en": "",
@@ -195,11 +195,11 @@
    },
    "active_name": {
     "en": "Fortress Protocol",
-    "ru": ""
+    "ru": "Протокол «Крепость»"
    },
    "active_effect": {
     "en": "You deploy heavy stabilizers and your mech becomes more like a fortified emplacement than a vehicle. When activated, two sections of hard cover (line 2, Size 1) unfold from your mech, drawn in any direction. These cover sections have Immunity to all damage.<br>Additionally, the following effects apply while active:<ul><li>You become Immobilized.</li><li>You benefit from hard cover, even in the open, and gain Immunity to Knockback, Prone, and all involuntary movement.</li><li>When you Brace, you may take a full action on your next turn instead of just a quick action.</li><li>Any character that gains hard cover from you or your cover sections gains Immunity to Knockback, Prone, and all involuntary movement, and gains the benefits of Blast Plating.</li></ul>This system can be deactivated as a protocol. Otherwise, it lasts until the end of the current scene.",
-    "ru": ""
+    "ru": "Вы разворачиваете тяжёлые стабилизаторы, и ваш мех становится больше похож на укреплённую огневую точку, чем на транспортное средство. При активации из вашего меха разворачиваются в любом направлении две секции твёрдого укрытия (линия 2, Размер 1). Эти секции укрытия имеют Иммунитет ко всему урону.<br>Дополнительно, пока система активна, действуют следующие эффекты:<ul><li>Вы становитесь Обездвижены.</li><li>Вы получаете выгоду от твёрдого укрытия даже на открытом пространстве и получаете Иммунитет к Отбрасыванию, сбиванию с ног и любому недобровольному перемещению.</li><li>Когда вы Держите оборону, в свой следующий ход вы можете совершить полное действие вместо просто быстрого.</li><li>Любой персонаж, получающий твёрдое укрытие от вас или ваших секций укрытия, получает Иммунитет к Отбрасыванию, сбиванию с ног и любому недобровольному перемещению, а также получает преимущества Взрывозащитной брони.</li></ul>Эту систему можно деактивировать как протокол. В противном случае она действует до конца текущей сцены."
    }
   }
  },
@@ -210,48 +210,48 @@
   },
   "description": {
    "en": "The IPS-N Lancaster is a mil-spec variant of an older IPS-N civilian terrestrial, inter/outer-hull transport and maintenance chassis, streamlined for use in any theater. The Lancaster features multiple redundant systems and sophisticated interaction projectors to ensure pinpoint accuracy when engaging with delicate systems, whether damaged or intact.<br>Lancaster pilots often adopt roles as sappers and engineers in frontline support. Sometimes ridiculed for piloting the old-fashioned frame by newer, untested pilots, veteran Lancaster jockeys know the truth: the Lancaster is one of the most reliable and well-made mechs out there, indispensable on any serious long-range mission. Not every mission is won with bullets, lasers, and bombs: without the engineers and their Lannies, few of those hotshots would come home alive.",
-   "ru": ""
+   "ru": "IPS-N «Ланкастер» — военная модификация более старого гражданского наземного транспортно-обслуживающего шасси IPS-N для внутри- и внешнекорпусных работ, оптимизированная для использования на любом театре действий. «Ланкастер» оснащён множеством резервных систем и сложными проекторами взаимодействия для обеспечения высокой точности при работе с хрупкими системами, повреждёнными или целыми.<br>Пилоты «Ланкастера» часто берут на себя роли сапёров и инженеров во фронтовой поддержке. Иногда высмеиваемые за пилотирование старомодного шасси новыми, неопытными пилотами, ветераны-«ланкастерщики» знают правду: «Ланкастер» — одна из самых надёжных и качественно сделанных машин, незаменимая в любой серьёзной дальней миссии. Не каждая миссия выигрывается пулями, лазерами и бомбами: без инженеров и их «Ланни» немногие из этих лихачей вернулись бы домой живыми."
   },
   "traits": {
    "Insulated": {
     "name": {
      "en": "Insulated",
-     "ru": ""
+     "ru": "Изолированный"
     },
     "description": {
      "en": "The Lancaster has Immunity to burn.",
-     "ru": ""
+     "ru": "«Ланкастер» имеет Иммунитет к огню."
     }
    },
    "Combat Repair": {
     "name": {
      "en": "Combat Repair",
-     "ru": ""
+     "ru": "Боевой ремонт"
     },
     "description": {
      "en": "In combat, the Lancaster can use 4 Repairs to repair a destroyed mech as a full action, returning it to 1 Structure, 1 Stress, and 1 HP.",
-     "ru": ""
+     "ru": "В бою «Ланкастер» может потратить 4 Ремонта, чтобы отремонтировать уничтоженный мех как полное действие, вернув ему 1 Структуру, 1 Стресс и 1 ОЗ."
     }
    },
    "Redundant Systems": {
     "name": {
      "en": "Redundant Systems",
-     "ru": ""
+     "ru": "Резервные системы"
     },
     "description": {
      "en": "At your discretion, other characters adjacent to the Lancaster can spend its Repairs as their own.",
-     "ru": ""
+     "ru": "По вашему усмотрению, другие персонажи рядом с «Ланкастером» могут тратить его Ремонты как свои собственные."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Latch Drone",
-    "ru": ""
+    "ru": "Латч-дрон"
    },
    "description": {
     "en": "Known colloquially as a “Wingman”, latch drones are companion drones carried by and deployed from a chassis. Pilots are recommended not to develop emotional attachments to these drones due to their high casualty rate.",
-    "ru": ""
+    "ru": "Известные в народе как «Ведомые», латч-дроны — это дроны-компаньоны, которые несёт и разворачивает шасси. Пилотам не рекомендуется привязываться эмоционально к этим дронам из-за их высокой смертности."
    },
    "passive_name": {
     "en": "",
@@ -263,11 +263,11 @@
    },
    "active_name": {
     "en": "Supercharger",
-    "ru": ""
+    "ru": "Сверхзарядник"
    },
    "active_effect": {
     "en": "Your Latch Drone clamps onto an allied mech within its Range. For the rest of the scene you take 1 heat at the start of each of your turns, but your target gains +1 accuracy on all attacks, checks, and saves, and Immunity to the Impaired, Jammed, Slowed, Shredded, and Immobilized conditions from characters other than itself. This effect ends if either character becomes Stunned.<br>While this system is active, you cannot use the Latch Drone for any other purpose.",
-    "ru": ""
+    "ru": "Ваш Латч-дрон присоединяется к союзному меху в пределах своей Дальности. До конца сцены вы получаете 1 Тепла в начале каждого своего хода, но ваша цель получает +1 к Точности на все атаки, проверки и спасброски, а также Иммунитет к состояниям Ослаблен, Заклинило, Замедлен, Истрёпан и Обездвижен от персонажей, кроме себя самой. Этот эффект прекращается, если любой из персонажей становится Ошеломлён.<br>Пока эта система активна, вы не можете использовать Латч-дрон для других целей."
    }
   }
  },
@@ -278,38 +278,38 @@
   },
   "description": {
    "en": "The IPS-N Nelson is the purest embodiment of the close-quarters doctrine espoused by its manufacturer. It is built to brawl, thriving when ordnance has been exhausted or when the environment is too volatile for firearms. With its functional size, the Nelson can strike fast and remain a difficult target to track. Layers of fractal-fold Armor-Lock plating with ceramic-analogous carbon flaking properties effectively nullify the impact of incoming ballistics by dispersing kinetic energy across a rounded hull. This null-k defense protects the pilot from impact trauma, allowing for sustained combat efficacy in high-trade scenarios.<br>The Nelson is an iconic IPS-N chassis, known across the galaxy as the favored frame of the Albatross, the nomadic order of Cosmopolitan peacekeepers. The Albatross’ distinctive white, gold, and red livery, mastery of the war pike, and apparent agelessness due to time dilation has won both them and the Nelson a venerated place in Diasporan lore – and secured an endorsement contract with IPS-N in perpetuity.",
-   "ru": ""
+   "ru": "IPS-N «Нельсон» — чистейшее воплощение доктрины ближнего боя, проповедуемой его производителем. Он создан для рукопашной схватки, преуспевая, когда боеприпасы исчерпаны или обстановка слишком нестабильна для огнестрельного оружия. Благодаря своему функциональному размеру «Нельсон» способен наносить быстрые удары, оставаясь труднообнаружимой целью. Слои фрактально-складчатой брони с блокировкой на основе керамоподобных углеродных чешуек эффективно нейтрализуют удар входящих баллистических снарядов, рассеивая кинетическую энергию по округлому корпусу. Эта нуль-к защита оберегает пилота от ударной травмы, обеспечивая устойчивую боевую эффективность в ситуациях интенсивного обмена ударами.<br>«Нельсон» — культовое шасси IPS-N, известное по всей галактике как излюбленный мех «Альбатроса» — кочующего ордена Космополитных миротворцев. Характерная бело-золото-красная ливрея «Альбатроса», мастерство владения боевой пикой и кажущаяся неподвластность возрасту из-за замедления времени завоевали и им, и «Нельсону» почётное место в диаспорском фольклоре — и обеспечили бессрочный контракт на продвижение с IPS-N."
   },
   "traits": {
    "Momentum": {
     "name": {
      "en": "Momentum",
-     "ru": ""
+     "ru": "Инерция"
     },
     "description": {
      "en": "1/round, after you Boost, the Nelson’s next melee attack deals +1d6 bonus damage on hit.",
-     "ru": ""
+     "ru": "1/раунд, после того как вы Ускорились, следующая атака «Нельсона» в ближнем бою наносит +1d6 бонусного урона при попадании."
     }
    },
    "Skirmisher": {
     "name": {
      "en": "Skirmisher",
-     "ru": ""
+     "ru": "Застрельщик"
     },
     "description": {
      "en": "After attacking, the Nelson can immediately move 1 space in any direction as long as it isn’t Immobilized or Slowed. This movement ignores engagement and doesn’t provoke reactions.",
-     "ru": ""
+     "ru": "После атаки «Нельсон» может немедленно переместиться на 1 клетку в любом направлении, если он не Обездвижен и не Замедлен. Это движение игнорирует вовлечённость и не провоцирует реакции."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Perpetual Momentum Drive",
-    "ru": ""
+    "ru": "Двигатель постоянной инерции"
    },
    "description": {
     "en": "IPS-N’s Perpetual Momentum Drive exploits fighter-tier nearlight spooling to capture and sustain a passive .000001 ls charge, able to be dumped into boost systems upon command. Chassis equipped with this drive require heavy reinforcement, including strengthened joints and limbs, and installation of a k-comp crash couch to protect the pilot from sudden g-force and shear.",
-    "ru": ""
+    "ru": "Двигатель постоянной инерции от IPS-N использует околосветовую раскрутку истребительного класса для накопления и поддержания пассивного заряда порядка .000001 световой секунды, который можно направить в системы ускорения по команде. Шасси, оснащённые этим двигателем, требуют серьёзного усиления, включая укреплённые суставы и конечности, а также установку к-компенсационного противоперегрузочного кресла для защиты пилота от резких перегрузок и сдвиговых нагрузок."
    },
    "passive_name": {
     "en": "",
@@ -321,11 +321,11 @@
    },
    "active_name": {
     "en": "Engage Drive",
-    "ru": ""
+    "ru": "Включить двигатель"
    },
    "active_effect": {
     "en": "For the rest of the scene, Skirmisher allows you to move 4 spaces at a time instead of 1 space.",
-    "ru": ""
+    "ru": "До конца сцены Застрельщик позволяет вам перемещаться на 4 клетки за раз вместо 1 клетки."
    }
   }
  },
@@ -336,38 +336,38 @@
   },
   "description": {
    "en": "Seeing GMS and Harrison Armory’s push to secure whole-fleet line contracts with Union member states, IPS-N launched a brief foray into design and production of their own main battle line frame. Enter the Raleigh, a stylistic and design oddity for IPS-N. Designed not as a specialist, but as a purpose-built, close-range mech, the Raleigh failed to stun potential clients in trials.<br>Though a favorite of test pilots due to its unique styling and agility, the Raleigh saw few fleet orders and, after a brief run as IPS-N’s flagship, was quietly rolled back and replaced with the Tortuga. No longer offered as a fleet contract, the Raleigh enjoys a quiet popularity among pilots seeking a well-balanced, if close-ranged, line mech.",
-   "ru": ""
+   "ru": "Видя, как GMS и Harrison Armory стремятся закрепить контракты на поставку целых флотов государствам-членам Юниона, IPS-N предприняла краткую попытку разработки и производства собственного основного боевого линейного шасси. Встречайте «Роли» — стилистическую и конструктивную странность для IPS-N. Спроектированный не как специалист, а как узкоспециализированный мех ближнего боя, «Роли» не смог впечатлить потенциальных клиентов на испытаниях.<br>Хотя он стал любимцем пилотов-испытателей благодаря уникальному стилю и манёвренности, «Роли» получил мало флотских заказов и после недолгого периода в качестве флагмана IPS-N был тихо снят с производства и заменён на «Тортугу». Больше не предлагаемый по флотским контрактам, «Роли» пользуется тихой популярностью среди пилотов, ищущих хорошо сбалансированное, пусть и близкобойное, линейное шасси."
   },
   "traits": {
    "Full Metal Jacket": {
     "name": {
      "en": "Full Metal Jacket",
-     "ru": ""
+     "ru": "Оболочечная пуля"
     },
     "description": {
      "en": "At the end of its turn, if the Raleigh hasn’t made any attacks or forced any saves, it can reload all Loading weapons as a free action.",
-     "ru": ""
+     "ru": "В конце своего хода, если «Роли» не совершал атак и не вынуждал никого проходить спасброски, он может перезарядить всё Перезаряжаемое оружие как свободное действие."
     }
    },
    "Shielded Magazines": {
     "name": {
      "en": "Shielded Magazines",
-     "ru": ""
+     "ru": "Экранированные магазины"
     },
     "description": {
      "en": "The Raleigh can make ranged attacks when Jammed.",
-     "ru": ""
+     "ru": "«Роли» может совершать дальние атаки, даже будучи Заклинившим."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "M35 Mjolnir Cannon",
-    "ru": ""
+    "ru": "M35 «Мьёльнир»"
    },
    "description": {
     "en": "IPS-N’s M35 Mjolnir cannon is a carryover from Northstar’s Watchman line of defensive weapons, reworked for frontline combat. The Mjolnir is a hard-mounted, multi-barrel auxiliary cannon that uses magnetic acceleration to fire stacks of airburst projectiles at its target. It’s an impulse weapon, tied to the pilot’s second-tier neural processes with mediation from a COMP/CON or NHP; even in death, a pilot’s Mjolnir will continue to identify and attack hostile targets until reaching total systemic failure. For this reason, the Mjolnir is often referred to as a deadgun – one of many such weapons to be found among CQB-oriented pilots.",
-    "ru": ""
+    "ru": "Пушка M35 «Мьёльнир» от IPS-N — наследие оборонительной линии оружия Northstar «Уотчмен», переработанное для фронтового боя. «Мьёльнир» — жёстко закреплённая многоствольная вспомогательная пушка, использующая магнитное ускорение для выстрела очередями снарядов воздушного подрыва по цели. Это импульсное оружие, связанное со вторым уровнем нейронных процессов пилота через посредничество COMP/CON или НЧЛ; даже после гибели пилота его «Мьёльнир» продолжит опознавать и атаковать враждебные цели вплоть до полного системного отказа. По этой причине «Мьёльнир» часто называют «мертвяком» — одним из многих подобных орудий, встречающихся у пилотов, ориентированных на ближний огневой контакт."
    },
    "passive_name": {
     "en": "",
@@ -379,11 +379,11 @@
    },
    "active_name": {
     "en": "Thunder God",
-    "ru": ""
+    "ru": "Бог грома"
    },
    "active_effect": {
     "en": "You start to spin your M35 Mjolnir up, beginning with no chambered rounds. For the rest of the scene, you load two rounds into chambers at the end of any of your turns in which you haven’t fired the M35 Mjolnir . It can hold a maximum of six rounds.<br>When you fire the M35 Mjolnir, all chambers fire simultaneously, dealing 4 kinetic damage per loaded round. If you fire four or more rounds at once, the attack gains AP and, on a hit, your target becomes Shredded until the end of their next turn.",
-    "ru": ""
+    "ru": "Вы начинаете раскручивать свой M35 «Мьёльнир», начиная без заряженных патронов. До конца сцены вы заряжаете два патрона в каморы в конце любого своего хода, в котором не стреляли из M35 «Мьёльнир». Он может вмещать максимум шесть патронов.<br>Когда вы стреляете из M35 «Мьёльнир», все каморы выстреливают одновременно, нанося 4 кинетического урона за каждый заряженный патрон. Если вы выстреливаете четыре или больше патронов одновременно, атака получает Бронебойность, и при попадании ваша цель становится Истрёпанной до конца своего следующего хода."
    }
   }
  },
@@ -394,38 +394,38 @@
   },
   "description": {
    "en": "The Tortuga is IPS-N’s short-to-medium range line of mechs. Conceived, tested, and perfected in the void of deep space, the Tortuga was made to breach and clear carrier decks, hostile station environments, and the spinal columns of capital ships. It excels at occupying space and filling hallways with its angular bulk, often acting as a walking battering ram by boarding parties and marines. But the Tortuga defends just as effectively as it attacks, using its broad plates of brachial armor to shield itself and any advancing allies.",
-   "ru": ""
+   "ru": "«Тортуга» — линейка мехов IPS-N ближнего и среднего радиуса действия. Задуманная, испытанная и доведённая до совершенства в пустоте глубокого космоса, «Тортуга» создана для прорыва и зачистки палуб авианосцев, враждебных станционных сред и позвоночников капитальных кораблей. Она превосходно занимает пространство и заполняет коридоры своей угловатой массой, часто действуя как шагающий таран для абордажных групп и морпехов. Но «Тортуга» защищается так же эффективно, как атакует, используя широкие плиты плечевой брони, чтобы прикрыть себя и наступающих союзников."
   },
   "traits": {
    "Sentinel": {
     "name": {
      "en": "Sentinel",
-     "ru": ""
+     "ru": "Часовой"
     },
     "description": {
      "en": "The Tortuga gains +1 accuracy on all attacks made as reactions (e.g. Overwatch).",
-     "ru": ""
+     "ru": "«Тортуга» получает +1 к Точности на все атаки, совершаемые как реакции (например, Дозорное наблюдение)."
     }
    },
    "Guardian": {
     "name": {
      "en": "Guardian",
-     "ru": ""
+     "ru": "Страж"
     },
     "description": {
      "en": "Adjacent allied characters can use the Tortuga for hard cover.",
-     "ru": ""
+     "ru": "Соседние союзные персонажи могут использовать «Тортугу» как твёрдое укрытие."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "WATCHDOG Co-Pilot",
-    "ru": ""
+    "ru": "Второй пилот WATCHDOG"
    },
    "description": {
     "en": "IPS-N security teams are no strangers to the dangers of ship-to-ship or ship-to-station boarding actions. Tight corridors, unstable gravity, dark environments, hard vacuum, and the potential dual threat of both organic and inorganic opposition make boarding actions some of the most statistically deadly engagement – according to IPS-N’s internal metrics, even the winning side should expect at least 30% casualties. Hoping to lessen the cognitive burden on pilots and any NHPs or COMP/CONs installed in their chassis, IPS-N developed the WATCHDOG co-pilot. The WATCHDOG is a simple subsentient partition: a flash-homunculus of aggregated intelligence generated from thousands of after-action reports from boarding actions, debriefings, and volunteer donors. Not an NHP, nor even a COMP/CON, the WATCHDOG is a robust tactical program similar to a smart weapon. That said, its ability to operate without cycling presents certain advantages: namely, these co-pilots have some capacity to learn and make best-guess predictions based on analysis of their pilots. WATCHDOGs tend to have plain personalities – to whatever extend they can be said to have one – and are a favorite of pilots looking for a no-nonsense attitude and crisp, efficient counsel.<br>The WATCHDOG system is currently under review by a joint USB/UDoJ-HR commission, but there has been no formal stay on production yet issued.",
-    "ru": ""
+    "ru": "Служба безопасности IPS-N не понаслышке знакома с опасностями абордажных операций корабль-корабль или корабль-станция. Тесные коридоры, нестабильная гравитация, тёмная обстановка, жёсткий вакуум и потенциальная двойная угроза как органического, так и неорганического противника делают абордажные операции одними из статистически самых смертоносных столкновений — согласно внутренней статистике IPS-N, даже победившая сторона должна ожидать не менее 30% потерь. Стремясь снизить когнитивную нагрузку на пилотов и установленные в их шасси НЧЛ или COMP/CON, IPS-N разработала второго пилота WATCHDOG. WATCHDOG — простая субразумная партиция: гомункул-вспышка, сгенерированный из тысяч отчётов о боевых действиях, разборов полётов и данных добровольцев после абордажных операций. Не являясь ни НЧЛ, ни даже COMP/CON, WATCHDOG — надёжная тактическая программа, схожая с умным оружием. Тем не менее, его способность работать без циклирования даёт определённые преимущества: а именно, эти вторые пилоты обладают некоторой способностью учиться и делать наилучшие предположения на основе анализа своих пилотов. WATCHDOG обычно обладают простыми личностями — в той мере, в какой о них вообще можно говорить как об обладающих личностью — и являются любимцами пилотов, ищущих деловой подход и чёткий, эффективный совет.<br>Система WATCHDOG в настоящее время находится на рассмотрении совместной комиссии USB/UDoJ-HR, но официального приостановления производства пока не выпущено."
    },
    "passive_name": {
     "en": "",
@@ -437,11 +437,11 @@
    },
    "active_name": {
     "en": "Hyper-Reflex Mode",
-    "ru": ""
+    "ru": "Режим гиперрефлекса"
    },
    "active_effect": {
     "en": "For the rest of this scene:<ul><li>If you have less than threat 3 with a ranged weapon, it increases to 3.</li><li>1/round, you may take an additional Overwatch reaction.</li><li>Any character you hit with Overwatch becomes Immobilized until the end of their next turn.</li></ul>",
-    "ru": ""
+    "ru": "До конца текущей сцены:<ul><li>Если ваша Угроза с дальним оружием меньше 3, она увеличивается до 3.</li><li>1/раунд вы можете совершить дополнительную реакцию Дозорное наблюдение.</li><li>Любой персонаж, поражённый вашим Дозорным наблюдением, становится Обездвижен до конца своего следующего хода.</li></ul>"
    }
   }
  },
@@ -452,38 +452,38 @@
   },
   "description": {
    "en": "The Vlad is the second iteration of IPS-N’s legacy Yi-Sun-Shin model, first made famous by Albatross pilots in the Celestine campaign during the fall of the Second Committee. With the wealth and quality of data generated by the Albatross in that conflict, IPS-N produced the Vlad, a power plant- and frame-upgraded spiritual successor to the Yi-Sun-Shin and deserving of a new line designation.<br>The Vlad, as the Sun did before it, shares much of its design philosophy and ancestry with IPS-N’s early asteroid-mining frames. Many of its standard armaments take inspiration from the early efforts of resourceful miners to convert tools into improvised anti-piracy weapons; likewise, its frame emphasizes redundancy, toughness, and component universality, allowing it to operate with outstanding self-sufficiency for long and/or dangerous deployments.<br>Heavily armored, the Vlad suits a frontline role where it can absorb fire from dangerous targets while lining up the perfect shot.",
-   "ru": ""
+   "ru": "«Влад» — вторая итерация легендарной модели IPS-N «Йи Сун Син», впервые прославленной пилотами «Альбатроса» в Селестинской кампании во время падения Второго Комитета. Обладая богатством и качеством данных, собранных «Альбатросом» в этом конфликте, IPS-N выпустила «Влада» — духовного преемника «Йи Сун Сина» с улучшенной силовой установкой и каркасом, заслуживающего нового обозначения линейки.<br>«Влад», как и «Сун» до него, во многом разделяет философию конструкции и родословную с ранними астероидо-добывающими шасси IPS-N. Многие из его стандартных вооружений вдохновлены ранними попытками находчивых горняков превращать инструменты в импровизированное противопиратское оружие; точно так же его каркас делает упор на резервирование, прочность и универсальность компонентов, позволяя работать с выдающейся самодостаточностью в длительных и/или опасных развёртываниях.<br>Тяжело бронированный, «Влад» подходит для фронтовой роли, где он может поглощать огонь опасных целей, выцеливая идеальный выстрел."
   },
   "traits": {
    "Dismemberment": {
     "name": {
      "en": "Dismemberment",
-     "ru": ""
+     "ru": "Расчленение"
     },
     "description": {
      "en": "When the Vlad inflicts Immobilize on another character, the target also becomes Shredded for the same duration.",
-     "ru": ""
+     "ru": "Когда «Влад» накладывает Обездвиживание на другого персонажа, цель также становится Истрёпанной на то же время."
     }
    },
    "Shrike Armor": {
     "name": {
      "en": "Shrike Armor",
-     "ru": ""
+     "ru": "Броня «Сорокопут»"
     },
     "description": {
      "en": "When a character within range 3 attacks the Vlad, the attacker first takes 1 AP kinetic damage.",
-     "ru": ""
+     "ru": "Когда персонаж в пределах Дальности 3 атакует «Влада», атакующий сначала получает 1 бронебойного кинетического урона."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Shrike Armor",
-    "ru": ""
+    "ru": "Броня «Сорокопут»"
    },
    "description": {
     "en": "Primarily a defensive modification, Shrike armor bristles with hardened chromium-tungsten spikes – a nod to the Vlad’s historical namesake. Shrike tips are strategically placed in areas with a high likelihood of kinetic encounters: gauntlets, manipulator joints, shoulder plating, and so on. Shrike armor is uncommon among pilots from the Core and is considered a mark of underdeveloped – if terrifying – tactics.",
-    "ru": ""
+    "ru": "Прежде всего оборонительная модификация, броня «Сорокопут» ощетинилась закалёнными хром-вольфрамовыми шипами — отсылка к историческому тёзке «Влада». Шипы «Сорокопута» стратегически размещены в зонах с высокой вероятностью кинетических столкновений: перчатках, суставах манипуляторов, наплечной броне и т.д. Броня «Сорокопут» редко встречается у пилотов из Центральных миров и считается признаком неразвитой — пусть и устрашающей — тактики."
    },
    "passive_name": {
     "en": "",
@@ -495,11 +495,11 @@
    },
    "active_name": {
     "en": "Tormentor Spines",
-    "ru": ""
+    "ru": "Терзающие шипы"
    },
    "active_effect": {
     "en": "For the rest of this scene, you gain Resistance to all damage originating within range 3, and Shrike Armor deals 3 AP kinetic damage instead of 1.",
-    "ru": ""
+    "ru": "До конца текущей сцены вы получаете Сопротивление ко всему урону, возникающему в пределах Дальности 3, а Броня «Сорокопут» наносит 3 бронебойного кинетического урона вместо 1."
    }
   }
  },
@@ -510,38 +510,38 @@
   },
   "description": {
    "en": "The Black Witch is the flagship model of SSC’s LUX-Iconic line of frames, on paper meant to compete with Harrison Armory’s dominance in the field of cutting-edge gravity and electromagnetic manipulation. Utilizing the newest technologies developed by SSC’s Exotic Materials Group, the Black Witch is a fearsome area-control platform, often fielded in support of heavier mechs engaged in direct combat.<br>With a slim profile and strong defensive systems, the Black Witch is especially popular among the wealthier houses of the Karrakin Trade Baronies, who often place multiple orders to outfit their personal guards and house company officers. Next to internally produced Baronic frames, the Black Witch (alongside other SSC LUX-Iconic models) is the most popular SSC chassis throughout noble Karrakin space.",
-   "ru": ""
+   "ru": "«Чёрная ведьма» — флагманская модель линейки LUX-Iconic от SSC, на бумаге призванная конкурировать с доминированием Harrison Armory в области передовых манипуляций гравитацией и электромагнетизмом. Используя новейшие технологии, разработанные Группой экзотических материалов SSC, «Чёрная ведьма» — грозная платформа контроля территории, часто применяемая в поддержку более тяжёлых мехов, вовлечённых в прямой бой.<br>Обладая тонким силуэтом и мощными оборонительными системами, «Чёрная ведьма» особенно популярна среди богатых домов Карракинских торговых баронств, которые часто размещают многочисленные заказы для оснащения личной охраны и офицеров домовых компаний. Наряду с другими собственными баронскими шасси, «Чёрная ведьма» (вместе с другими моделями SSC LUX-Iconic) — самое популярное шасси SSC во всём благородном карракинском пространстве."
   },
   "traits": {
    "Repulsor Field": {
     "name": {
      "en": "Repulsor Field",
-     "ru": ""
+     "ru": "Отталкивающее поле"
     },
     "description": {
      "en": "The Black Witch has Resistance to Kinetic Damage.",
-     "ru": ""
+     "ru": "«Чёрная ведьма» имеет Сопротивление к кинетическому урону."
     }
    },
    "Mag Parry": {
     "name": {
      "en": "Mag Parry",
-     "ru": ""
+     "ru": "Магнитный парирование"
     },
     "description": {
      "en": "1/round, as a reaction, you may attempt to parry an attack that would deal Kinetic Damage to you or an adjacent allied character. Roll 1d6: on 5+, the attack misses. This effect does not stack with Invisible.",
-     "ru": ""
+     "ru": "1/раунд, как реакцию, вы можете попытаться парировать атаку, наносящую кинетический урон вам или соседнему союзному персонажу. Бросьте 1d6: при 5+ атака промахивается. Этот эффект не складывается с Невидимостью."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Magnetic Field Projector",
-    "ru": ""
+    "ru": "Проектор магнитного поля"
    },
    "description": {
     "en": "Magnetic field generators are a portable and field-deployable variation on typical magnetic defense technologies. When activated, they create a magnetic bubble that traps all incoming ferrous projectiles. The strength of the field is so great that it can even draw mechs to its center. When the field is dispersed or its solid-state battery burns out – a feature, not a flaw – the field undergoes a sudden catastrophic implosion, drawing all captured projectiles to a point at the center of the bubble.",
-    "ru": ""
+    "ru": "Генераторы магнитного поля — портативная, разворачиваемая в полевых условиях разновидность типичных технологий магнитной защиты. При активации они создают магнитный пузырь, улавливающий все входящие ферромагнитные снаряды. Сила поля настолько велика, что способна притягивать даже мехи к его центру. Когда поле рассеивается или его твердотельная батарея выгорает — это особенность, а не недостаток — поле претерпевает внезапный катастрофический коллапс, притягивая все захваченные снаряды к точке в центре пузыря."
    },
    "passive_name": {
     "en": "",
@@ -553,11 +553,11 @@
    },
    "active_name": {
     "en": "Mag Field",
-    "ru": ""
+    "ru": "Магнитное поле"
    },
    "active_effect": {
     "en": "This system projects a blast 3 magnetic field with at least one space adjacent to you, causing the following effects until the end of your next turn:<ul><li>The affected area is difficult terrain.</li><li>Ranged attacks that deal kinetic or explosive can’t enter or leave the affected area – projectiles stop at the edge, doing no damage. Record each attack stopped this way.</li><li>Mechs and other characters made at least partly of metal that start their turn in the affected area or enter it for the first time in a round must succeed on a Hull save or be pulled as close to the center as possible and become Immobilized.</li></ul>When the effect ends, any ranged attacks that were stopped resume their trajectory – toward the center of the affected area. The GM rolls attacks against each character within, gaining +1 per blocked attack (to a maximum of +6). On hit, these attacks deal 1d6 kinetic damage per blocked attack (to a maximum of 6d6 kinetic damage).",
-    "ru": ""
+    "ru": "Эта система создаёт магнитное поле области Взрыв 3, минимум с одной клеткой рядом с вами, вызывая следующие эффекты до конца вашего следующего хода:<ul><li>Поражённая область — сложная местность.</li><li>Дальние атаки, наносящие кинетический или взрывной урон, не могут входить в поражённую область или покидать её — снаряды останавливаются на границе, не нанося урона. Записывайте каждую остановленную таким образом атаку.</li><li>Мехи и другие персонажи, состоящие хотя бы частично из металла, которые начинают ход в поражённой области или впервые входят в неё за раунд, должны пройти спасбросок Корпуса, иначе притягиваются как можно ближе к центру и становятся Обездвижены.</li></ul>Когда эффект заканчивается, все остановленные дальние атаки возобновляют траекторию — к центру поражённой области. Ведущий бросает атаки против каждого персонажа внутри, получая +1 за каждую заблокированную атаку (максимум +6). При попадании эти атаки наносят 1d6 кинетического урона за каждую заблокированную атаку (максимум 6d6 кинетического урона)."
    }
   }
  },
@@ -568,38 +568,38 @@
   },
   "description": {
    "en": "The Death’s Head is Smith-Shimano’s answer to the need for a chassis solution to long-range, low-splash strike actions. Sacrificing raw hull strength for peerless stability and alacrity, the Death’s Head is a maneuverable fire-support platform able to avoid incoming fire while maintaining a near-perfect lock on its targets. Its unique hexapedal form allows for rapid, low-profile movement in all directions.<br>As an aggressive and line-focused chassis, the Death’s Head is one of the most popular models for Union Navy and Union Department of Justice and Human Rights officers. It is a combat chassis through and through; as the Death’s Head is a chassis produced under SSC’s BELLA CIAO line, there is no civilian analog.",
-   "ru": ""
+   "ru": "«Мёртвая голова» — ответ Smith-Shimano на потребность в шасси для дальнобойных, малоплощадных ударных операций. Жертвуя прочностью корпуса ради непревзойдённой стабильности и стремительности, «Мёртвая голова» — манёвренная платформа огневой поддержки, способная уклоняться от входящего огня, сохраняя почти идеальный захват целей. Её уникальная шестиногая форма обеспечивает быстрое, малозаметное перемещение во всех направлениях.<br>Как агрессивное и линейно-ориентированное шасси, «Мёртвая голова» — одна из самых популярных моделей у офицеров Флота Юниона и Департамента юстиции и прав человека Юниона. Это боевое шасси от и до; поскольку «Мёртвая голова» выпускается в рамках линии BELLA CIAO от SSC, гражданского аналога у неё нет."
   },
   "traits": {
    "Neurolink": {
     "name": {
      "en": "Neurolink",
-     "ru": ""
+     "ru": "Нейросвязь"
     },
     "description": {
      "en": "The Death’s Head may reroll its first ranged attack each round, but must keep the second result.",
-     "ru": ""
+     "ru": "«Мёртвая голова» может перебросить свою первую дальнюю атаку каждый раунд, но должна сохранить второй результат."
     }
    },
    "Perfected Targeting": {
     "name": {
      "en": "Perfected Targeting",
-     "ru": ""
+     "ru": "Усовершенствованное прицеливание"
     },
     "description": {
      "en": "The Death’s Head gains an additional +1 to all ranged attack rolls.",
-     "ru": ""
+     "ru": "«Мёртвая голова» получает дополнительный +1 ко всем броскам дальних атак."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Precognitive Targeting",
-    "ru": ""
+    "ru": "Прекогнитивное прицеливание"
    },
    "description": {
     "en": "Precognition is the next step in human/AI interaction. Using a neural bridge, SSC’s precognitive targeting system allows pilots to learn constantly and unconsciously from data gathered in the field, equipping them to read situations before they develop. Precognition is highly experimental and the precise mechanisms unknown even to the designers, so SSC recommends limited, monitored use of this system.",
-    "ru": ""
+    "ru": "Прекогниция — следующий шаг во взаимодействии человека и ИИ. Используя нейромост, система прекогнитивного прицеливания SSC позволяет пилотам постоянно и бессознательно учиться на данных, собранных в полевых условиях, подготавливая их к чтению ситуации ещё до того, как она разовьётся. Прекогниция крайне экспериментальна, и точные механизмы неизвестны даже разработчикам, поэтому SSC рекомендует ограниченное, контролируемое использование этой системы."
    },
    "passive_name": {
     "en": "",
@@ -611,11 +611,11 @@
    },
    "active_name": {
     "en": "Neural Shunt",
-    "ru": ""
+    "ru": "Нейрошунт"
    },
    "active_effect": {
     "en": "For the rest of this scene, you gain the Mark for Death action.",
-    "ru": ""
+    "ru": "До конца текущей сцены вы получаете действие «Отметить на смерть»."
    }
   }
  },
@@ -626,48 +626,48 @@
   },
   "description": {
    "en": "The Dusk Wing originated as a legacy-inspired modification package to EVA suits, intended to equip them for hazardous environments. In the early days of deep-space exploration, there was a need for mechanized exoskeletons that not only amplified capacity but enhanced kinetic defense. The Dusk Wing is the spiritual heir of those early deep-space suits. Fast and small, it carries a complement of all-theater maneuverability jets that allow for near-perfect flight.<br>After the DHIYED expedition, the Exotic Materials Group isolated and translated strains of the entity’s realspace expiry paracode, teleologics, and kinematics for use in electronic and systems warfare. Of the frames trialed for use with DHIYED-derived technologies, the Dusk Wing performed best. As a result, it is often used by SSC’s internal Constellar Security forces when esoteric defense is necessary.",
-   "ru": ""
+   "ru": "«Сумеречное крыло» зародилось как пакет модификаций для EVA-скафандров, вдохновлённый наследием прошлого и предназначенный для оснащения их к работе в опасных условиях. На заре глубококосмических исследований возникла потребность в механизированных экзоскелетах, которые не только усиливали бы возможности, но и повышали кинетическую защиту. «Сумеречное крыло» — духовный наследник тех ранних глубококосмических скафандров. Быстрое и небольшое, оно несёт комплект всесредных манёвренных двигателей, обеспечивающих почти идеальный полёт.<br>После экспедиции DHIYED Группа экзотических материалов выделила и адаптировала штаммы реалпространственного паракода истечения сущности, телеологики и кинематики для использования в электронной и системной войне. Из шасси, испытанных для работы с технологиями, производными от DHIYED, «Сумеречное крыло» показало наилучшие результаты. В результате его часто используют внутренние силы безопасности Constellar от SSC, когда требуется эзотерическая защита."
   },
   "traits": {
    "Maneuverability Jets": {
     "name": {
      "en": "Maneuverability Jets",
-     "ru": ""
+     "ru": "Манёвренные двигатели"
     },
     "description": {
      "en": "The Dusk Wing can hover when it moves.",
-     "ru": ""
+     "ru": "«Сумеречное крыло» может парить при движении."
     }
    },
    "Harlequin Cloak": {
     "name": {
      "en": "Harlequin Cloak",
-     "ru": ""
+     "ru": "Плащ арлекина"
     },
     "description": {
      "en": "During its turn, the Dusk Wing is Invisible; it reappears at the end of the turn.",
-     "ru": ""
+     "ru": "Во время своего хода «Сумеречное крыло» Невидимо; оно вновь появляется в конце хода."
     }
    },
    "Fragile": {
     "name": {
      "en": "Fragile",
-     "ru": ""
+     "ru": "Хрупкий"
     },
     "description": {
      "en": "The Dusk Wing receives +1 difficulty on Hull checks and saves.",
-     "ru": ""
+     "ru": "«Сумеречное крыло» получает +1 к Сложности на проверки и спасброски Корпуса."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "DHIYED Articulation",
-    "ru": ""
+    "ru": "Артикуляция DHIYED"
    },
    "description": {
     "en": "“Belief in what we could see, what we could touch – in what our COMP/CONs assured us was there, in our own subjectivity and memory. Belief in reality became a weapon. We approached the metavault knowing that we would face an unknown enemy, but we approached with the advantage of numbers and machine strength.<br>“DHIYED taught us as it killed us: through garbled comms chatter, through the screams of the dying, through the cackling of our mirror-selves as they killed us. Every spoofed signature, every temporal skip, every memetic, every non-Euclid – these were lessons.<br>“Do you understand?<br>“DHIYED the Teacher. DHIYED the Monster. As we killed it, DHIYED taught us what to fear, and how to face it.<br>“What do I fear now? That's a good question. What does the pilot fear who cracked open DHIYED’s casket?<br>“I don’t think we killed it. I think it wants us to believe we killed it – and I cannot imagine what it has done while we think ourselves safe.”",
-    "ru": ""
+    "ru": "«Вера в то, что мы могли видеть, могли трогать — в то, в чём нас уверяли наши COMP/CON, в нашу собственную субъектность и память. Вера в реальность стала оружием. Мы подходили к металлохранилищу, зная, что столкнёмся с неизвестным врагом, но подходили с преимуществом численности и машинной силы.<br>«DHIYED учил нас, убивая нас: через искажённую болтовню в комме, через крики умирающих, через хохот наших зеркальных двойников, убивающих нас. Каждая подделанная сигнатура, каждый временной скачок, каждый мемитик, каждая неевклидовость — это были уроки.<br>«Вы понимаете?<br>«DHIYED-Учитель. DHIYED-Монстр. Убивая его, DHIYED научил нас, чего бояться и как это встретить.<br>«Чего я боюсь сейчас? Хороший вопрос. Чего боится пилот, вскрывший гроб DHIYED?<br>«Не думаю, что мы его убили. Думаю, он хочет, чтобы мы поверили, что убили его — и я не могу представить, что он делал, пока мы считали себя в безопасности»."
    },
    "passive_name": {
     "en": "",
@@ -679,11 +679,11 @@
    },
    "active_name": {
     "en": "Hall of Mirrors",
-    "ru": ""
+    "ru": "Зал зеркал"
    },
    "active_effect": {
     "en": "For the rest of the scene, whenever you start a unique movement during your turn (e.g., a standard move, Boost, or movement granted by talents or systems), you leave a holographic imprint of yourself behind in the space from which you started. These are illusory objects the same Size as you that have Immunity to all damage and effects and aren’t obstructions.<br>When hostile characters start their turn in, move through, or move adjacent to the space occupied by a hologram, it detonates. They must succeed on an Agility save or take 1d6 energy damage. On a success, they take half damage.<br>You also gain the Hologram Teleport Quick Action.",
-    "ru": ""
+    "ru": "До конца сцены, каждый раз, когда вы начинаете уникальное перемещение в свой ход (например, стандартное перемещение, Ускорение или движение, предоставленное талантами или системами), вы оставляете позади себя голографический отпечаток в клетке, откуда начали движение. Это иллюзорные объекты того же Размера, что и вы, имеющие Иммунитет ко всему урону и эффектам и не являющиеся препятствиями.<br>Когда враждебные персонажи начинают ход в клетке, занятой голограммой, проходят через неё или перемещаются рядом с ней, она детонирует. Они должны пройти спасбросок Ловкости, иначе получают 1d6 энергетического урона. При успехе они получают половину урона.<br>Вы также получаете быстрое действие «Голографическая телепортация»."
    }
   }
  },
@@ -694,38 +694,38 @@
   },
   "description": {
    "en": "The Metalmark is the backbone of SSC’s BELLA CIAO mil-spec chassis line, fully equipped with a comprehensive suite of proprietary design and engineering hallmarks to ensure its survivability, deadliness, and agility. Under the increasingly militaristic reign of Union’s Second Committee, SSC’s corporate board pushed to develop the company’s mil-spec supply, logistics, and personal defense divisions; following the advent of the mechanized chassis, the budding SSC SupLogDef division was restructured and refocused to concentrate on chassis development. The first iterations of the Metalmark were designed for the Second Committee’s WARRIOR NEXT program: however, before the chassis could be tested, the Hercynian Crisis spiraled out of control, toppling the Second Committee.<br>The Metalmark was retired in the wake of the Crisis and the restructuring of Union’s Central Committee, deemed too time consuming to produce as a mass-market chassis. SSC reworked the frame, tapped it to lead their new BELLA CIAO line, and concentrated on small-market, exclusive security contracts. The Metalmark is now a valued model among security forces. Its form reflects SSC’s deep-space and long-patrol heritage, blending anthropomorphic and aquiline design elements, sturdy construction, and multiple redundant systems. Leaning fully into their operator-specific marketing, all Metalmark models come standard with a Smith Custom Leather gimbaled pilot seat to ensure comfort on long deployments.",
-   "ru": ""
+   "ru": "«Металломарк» — становой хребет линии военных шасси BELLA CIAO от SSC, полностью оснащённый комплексным набором фирменных конструктивных и инженерных особенностей для обеспечения выживаемости, смертоносности и манёвренности. При всё более милитаристском правлении Второго Комитета Юниона совет директоров SSC продвигал развитие военного снабжения, логистики и подразделений персональной защиты компании; с появлением механизированного шасси зарождающееся подразделение SSC SupLogDef было реструктурировано и переориентировано на разработку шасси. Первые итерации «Металломарка» разрабатывались для программы Второго Комитета WARRIOR NEXT: однако прежде чем шасси успели испытать, Герцинский кризис вышел из-под контроля, свергнув Второй Комитет.<br>«Металломарк» был снят с производства после Кризиса и реструктуризации Центрального Комитета Юниона, признанный слишком трудоёмким для массового производства. SSC переработала шасси, поставив его во главе новой линии BELLA CIAO, и сосредоточилась на нишевых, эксклюзивных охранных контрактах. Сейчас «Металломарк» — ценимая модель среди сил безопасности. Его форма отражает наследие SSC в области глубококосмических операций и дальнего патрулирования, сочетая антропоморфные и орлиные элементы дизайна, прочную конструкцию и множество резервных систем. Полностью опираясь на маркетинг под конкретного оператора, все модели «Металломарка» комплектуются кожаным поворотным креслом пилота Smith Custom Leather для комфорта в долгих развёртываниях."
   },
   "traits": {
    "Flash Cloak": {
     "name": {
      "en": "Flash Cloak",
-     "ru": ""
+     "ru": "Мгновенный плащ"
     },
     "description": {
      "en": "The Metalmark is Invisible while moving, but reappears when stationary.",
-     "ru": ""
+     "ru": "«Металломарк» Невидим во время движения, но появляется вновь, когда неподвижен."
     }
    },
    "Carapace Adaptation": {
     "name": {
      "en": "Carapace Adaptation",
-     "ru": ""
+     "ru": "Панцирная адаптация"
     },
     "description": {
      "en": "When the Metalmark is in soft cover, ranged attackers receive +2 difficulty instead of +1 difficulty.",
-     "ru": ""
+     "ru": "Когда «Металломарк» находится в мягком укрытии, дальние атакующие получают +2 к Сложности вместо +1."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Tactical Cloak",
-    "ru": ""
+    "ru": "Тактический плащ"
    },
    "description": {
     "en": "Tactical cloaks are tight-knit, tight-bind weaves of reactive fabric – high-license tech restricted to pilots of Metalmark Classification II or higher. The weave covers roughly 80% of a mech’s surface area, giving it a dull quality when viewed through optics or with the naked eye. Beyond their use as regular camouflage, activated tactical cloaks bend light in a way that makes their wearers nearly impossible to see.",
-    "ru": ""
+    "ru": "Тактические плащи — плотно сплетённые полотна реактивной ткани, высоколицензированная технология, ограниченная пилотами «Металломарка» классификации II и выше. Полотно покрывает примерно 80% площади поверхности меха, делая его тусклым при взгляде через оптику или невооружённым глазом. Помимо использования как обычной маскировки, активированные тактические плащи искривляют свет так, что делают своих носителей почти невозможными для обнаружения."
    },
    "passive_name": {
     "en": "",
@@ -737,11 +737,11 @@
    },
    "active_name": {
     "en": "Tactical Cloak",
-    "ru": ""
+    "ru": "Тактический плащ"
    },
    "active_effect": {
     "en": "You are Invisible for the rest of the scene.",
-    "ru": ""
+    "ru": "Вы становитесь Невидимы до конца сцены."
    }
   }
  },
@@ -752,38 +752,38 @@
   },
   "description": {
    "en": "The Monarch is SSC’s groundbreaking lesson in how to design a fast platform for the delivery of missiles and other self-propelled ordnance. Ready to mount ground-to-ground, ground-to-air, ground-to-orbit, and all-theater missiles and guidance systems, the Monarch can be customized for any payload and any target distance.<br>The Monarch’s large size often leads pilots to underestimate its agility. SSC's rigorous design requirement of one designer per 10 Monarch printings is a mark of luxury in Union’s Core world post-scarcity environment. This emphasis on purposeful scarcity is all that prevents the Monarch from achieving total battlefield dominance. The Monarch is commonly deployed in mixed line and fire-support roles, though field tests of a less resource-taxing MicroMonarch mid- to close-range model is underway. The Monarch is part of SSC’s BELLA CIAO line of combat chassis.",
-   "ru": ""
+   "ru": "«Монарх» — новаторский урок SSC в проектировании быстрой платформы для доставки ракет и другого самодвижущегося вооружения. Готовый к установке ракет и систем наведения класса земля-земля, земля-воздух, земля-орбита и всесредных, «Монарх» можно настроить под любую полезную нагрузку и любую дальность до цели.<br>Крупный размер «Монарха» часто заставляет пилотов недооценивать его манёвренность. Строгое требование SSC — один дизайнер на каждые 10 напечатанных «Монархов» — признак роскоши в постдефицитной среде Центральных миров Юниона. Именно этот акцент на намеренном дефиците — единственное, что удерживает «Монарха» от полного доминирования на поле боя. «Монарх» обычно применяется в смешанных линейных ролях и ролях огневой поддержки, хотя сейчас идут полевые испытания менее ресурсозатратной модели «МикроМонарх» для среднего и ближнего радиуса действия. «Монарх» входит в линию боевых шасси BELLA CIAO от SSC."
   },
   "traits": {
    "Avenger Silos": {
     "name": {
      "en": "Avenger Silos",
-     "ru": ""
+     "ru": "Шахты «Мститель»"
     },
     "description": {
      "en": "1/round, on a critical hit with any ranged weapon, the Monarch may deal 3 explosive to a different character of your choice within range 15 and line of sight.",
-     "ru": ""
+     "ru": "1/раунд, при критическом ударе любым дальним оружием, «Монарх» может нанести 3 взрывного урона другому персонажу по вашему выбору в пределах Дальности 15 и видимости."
     }
    },
    "Seeking Payload": {
     "name": {
      "en": "Seeking Payload",
-     "ru": ""
+     "ru": "Самонаводящаяся боеголовка"
     },
     "description": {
      "en": "The Monarch can use a Launcher weapon to attack a character with the Lock On condition as if its weapon had Seeking, but must consume the Lock On during the attack. When it does so, the attack’s damage cannot be reduced in any way.",
-     "ru": ""
+     "ru": "«Монарх» может использовать Пусковую установку для атаки персонажа с состоянием Захват цели, как если бы его оружие было Самонаводящимся, но должен потратить Захват цели во время атаки. При этом урон атаки не может быть уменьшен никаким образом."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "SSC-30 High-Penetration Missile System",
-    "ru": ""
+    "ru": "Ракетная система высокой пробивной способности SSC-30"
    },
    "description": {
     "en": "The SSC-30 High-Penetration Missile System (SSC-30 HPMS) is a mech-mounted micro-missile delivery system capable of tremendous combat output. Using the SSC-30 HPMS, the Monarch can carry – and deliver – its payload of 60 or more deadly, miniaturized Avenger warheads in a single volley.",
-    "ru": ""
+    "ru": "Ракетная система высокой пробивной способности SSC-30 (SSC-30 HPMS) — установленная на мех система доставки микроракет, способная обеспечить колоссальную боевую мощь. Используя SSC-30 HPMS, «Монарх» может нести — и доставить — свою полезную нагрузку из 60 или более смертоносных миниатюрных боеголовок «Мститель» одним залпом."
    },
    "passive_name": {
     "en": "",
@@ -795,11 +795,11 @@
    },
    "active_name": {
     "en": "Divine Punishment",
-    "ru": ""
+    "ru": "Божественное наказание"
    },
    "active_effect": {
     "en": "Choose any number of characters within range 50: your targets must each succeed on an Agility save or take 1d6+4 explosive. On a success, they take half damage. These self-guiding missiles can reach any target as long as there is a path to do so.",
-    "ru": ""
+    "ru": "Выберите любое количество персонажей в пределах Дальности 50: каждая ваша цель должна пройти спасбросок Ловкости, иначе получает 1d6+4 взрывного урона. При успехе она получает половину урона. Эти самонаводящиеся ракеты могут достичь любой цели, пока есть путь для этого."
    }
   }
  },
@@ -810,54 +810,54 @@
   },
   "description": {
    "en": "The Mourning Cloak is a brand-new model from SSC’s LUX-Iconic line, and the manufacturer’s newest close-quarters combat and melee specialist frame. The Mourning Cloak emphasizes precision melee combat and is commonly outfitted with a complement of shielded microfilament wires designed to act as an anti-armor slashing weapon.<br>Designed by SSC’s Exotic Materials Group based on data from early engagements against the Ascendant Aun in Boundary Garden, the Mourning Cloak combines SSC’s harvested excerpts of DHIYED paracode with adapted Aunic Firmament-manipulation technology. The Mourning Cloak provides a prestigious and tactical option for situations where firearms are impractical and ordnance is unavailable. As part of the LUX-Iconic line, the Mourning Cloak is a popular order in the Baronies and among various high-manna VIP security firms.",
-   "ru": ""
+   "ru": "«Траурный плащ» — совершенно новая модель из линии LUX-Iconic от SSC, новейшее шасси-специалист производителя для ближнего боя и рукопашной схватки. «Траурный плащ» делает упор на точный ближний бой и обычно оснащается комплектом экранированных микрофиламентных тросов, спроектированных как противобронное режущее оружие.<br>Спроектированный Группой экзотических материалов SSC на основе данных ранних столкновений с Восходящими Аун в Пограничном Саду, «Траурный плащ» сочетает добытые SSC фрагменты паракода DHIYED с адаптированной технологией манипуляции Тверди аунов. «Траурный плащ» предоставляет престижный и тактический вариант для ситуаций, где огнестрельное оружие непрактично, а боеприпасы недоступны. Как часть линии LUX-Iconic, «Траурный плащ» — популярный заказ в Баронствах и среди различных VIP-охранных фирм с высоким доходом."
   },
   "traits": {
    "Hunter": {
     "name": {
      "en": "Hunter",
-     "ru": ""
+     "ru": "Охотник"
     },
     "description": {
      "en": "1/round, the Mourning Cloak may deal +1d6 bonus damage on hit with a melee attack if its target has no adjacent characters, or if the Mourning Cloak is the only character adjacent to the target.",
-     "ru": ""
+     "ru": "1/раунд «Траурный плащ» может нанести +1d6 бонусного урона при попадании атакой ближнего боя, если у его цели нет соседних персонажей, или если «Траурный плащ» — единственный персонаж рядом с целью."
     }
    },
    "Biotic Components": {
     "name": {
      "en": "Biotic Components",
-     "ru": ""
+     "ru": "Биотические компоненты"
     },
     "description": {
      "en": "The Mourning Cloak gains +1 accuracy on Agility checks and saves.",
-     "ru": ""
+     "ru": "«Траурный плащ» получает +1 к Точности на проверки и спасброски Ловкости."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "EX Slipstream Module",
-    "ru": ""
+    "ru": "Модуль «EX Слипстрим»"
    },
    "description": {
     "en": "Open only to highly licensed pilots, the EX Slipstream program is a uniquely SSC innovation. The Ex Slipstream module itself is a miniaturized near-lightspeed drive capable of transporting the user through blinkspace with acceptable accuracy. The technology is temperamental, at best: nothing smaller than a mech can survive the stress of exposed blink travel, and the experience is traumatic to both the user and anyone in close proximity.",
-    "ru": ""
+    "ru": "Доступная только высоколицензированным пилотам, программа EX Слипстрим — уникальная разработка SSC. Сам модуль EX Слипстрим — миниатюризированный околосветовой двигатель, способный переносить пользователя через блинкспейс с приемлемой точностью. Технология в лучшем случае капризна: ничто меньше меха не способно выжить в условиях стресса открытого блинк-перелёта, а сам опыт травматичен как для пользователя, так и для всех, кто находится рядом."
    },
    "passive_name": {
     "en": "Blinkspace Jump",
-    "ru": ""
+    "ru": "Блинк-прыжок"
    },
    "passive_effect": {
     "en": "Gain the Blinkspace Jump Full Action.",
-    "ru": ""
+    "ru": "Получите полное действие «Блинк-прыжок»."
    },
    "active_name": {
     "en": "Stabilize Singularity",
-    "ru": ""
+    "ru": "Стабилизировать сингулярность"
    },
    "active_effect": {
     "en": "For the rest of the scene, you teleport when you Boost or make a standard move.",
-    "ru": ""
+    "ru": "До конца сцены вы телепортируетесь, когда Ускоряетесь или совершаете стандартное перемещение."
    }
   }
  },
@@ -868,38 +868,38 @@
   },
   "description": {
    "en": "The Swallowtail is Smith-Shimano’s primary long-range scouting and fire-support platform, built for rapid and sustained ranging across hostile, volatile environments. Built for long-term sustainability, it can operate in unstable environs for months and maximize its survivability by adjusting its operating efficiency on the fly. Each unit has an integrated cloak and a suite of predictive choral intelligences that coordinate its highly developed sensor systems to rapidly simulate and predict tactical developments – sometimes before they even occur.<br>The Swallowtail’s base model, the SW-01, is one of SSC’s few mass-produced lines – the entry-level BELLA CIAO model. Built without a cloaking field and up-armored to address direct security requirements, the SW-01 is especially popular among the rank and file troopers of Constellar Security forces.",
-   "ru": ""
+   "ru": "«Ласточкин хвост» — основная разведывательная и огне-поддерживающая платформа дальнего действия от Smith-Shimano, созданная для быстрого и продолжительного патрулирования враждебных, нестабильных сред. Спроектированный для долгосрочной устойчивости, он способен действовать в нестабильных условиях месяцами, максимизируя выживаемость за счёт динамической регулировки эффективности работы. Каждая единица оснащена интегрированным плащом и комплексом предиктивных хоровых интеллектов, координирующих её высокоразвитые сенсорные системы для быстрого моделирования и предсказания тактического развития событий — иногда ещё до того, как они произойдут.<br>Базовая модель «Ласточкиного хвоста», SW-01, — одна из немногих массово производимых линий SSC — начальная модель BELLA CIAO. Построенный без плаща-невидимки и с усиленной бронёй для прямых задач безопасности, SW-01 особенно популярен среди рядовых бойцов сил безопасности Constellar."
   },
   "traits": {
    "Integrated Cloak": {
     "name": {
      "en": "Integrated Cloak",
-     "ru": ""
+     "ru": "Встроенный плащ"
     },
     "description": {
      "en": "At the end of its turn, the Swallowtail becomes Invisible if it hasn’t moved that turn. This lasts until it moves or takes a reaction, or until the start of its next turn.",
-     "ru": ""
+     "ru": "В конце своего хода «Ласточкин хвост» становится Невидим, если не двигался в этот ход. Это длится до тех пор, пока он не двинется или не совершит реакцию, либо до начала его следующего хода."
     }
    },
    "Prophetic Scanners": {
     "name": {
      "en": "Prophetic Scanners",
-     "ru": ""
+     "ru": "Пророческие сканеры"
     },
     "description": {
      "en": "1/round, when the Swallowtail inflicts Lock On, its target also becomes Shredded until the end of its next turn.",
-     "ru": ""
+     "ru": "1/раунд, когда «Ласточкин хвост» накладывает Захват цели, его цель также становится Истрёпанной до конца своего следующего хода."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Cloudscout TACSIM Swarms",
-    "ru": ""
+    "ru": "Рои TACSIM «Облачный разведчик»"
    },
    "description": {
     "en": "Cloudscout TACSIM Swarms are packets of networked microsensors, launched in nonlethal mortar canisters that detonate high above the battlefield. Once seeded, the swarm generates a TACSIM program that begins to run brevity cycles: tight, contained simulations of tactical possibility. Probability results are then fed to the Swallowtail’s choir processors, which in turn feed it to the pilot and networked squad members, ensuring a high probability of successful outcomes.",
-    "ru": ""
+    "ru": "Рои TACSIM «Облачный разведчик» — пакеты сетевых микросенсоров, запускаемые в нелетальных мортирных снарядах, детонирующих высоко над полем боя. После посева рой генерирует программу TACSIM, начинающую циклы краткости: сжатые, замкнутые симуляции тактических возможностей. Результаты вероятностей затем передаются хоровым процессорам «Ласточкиного хвоста», которые, в свою очередь, передают их пилоту и связанным по сети членам отряда, обеспечивая высокую вероятность успешных исходов."
    },
    "passive_name": {
     "en": "",
@@ -911,11 +911,11 @@
    },
    "active_name": {
     "en": "Prophetic Interjection",
-    "ru": ""
+    "ru": "Пророческое вмешательство"
    },
    "active_effect": {
     "en": "Gain the Tactical Simulation reaction for the rest of the scene.",
-    "ru": ""
+    "ru": "Получите реакцию «Тактическая симуляция» до конца сцены."
    }
   }
  },
@@ -926,48 +926,48 @@
   },
   "description": {
    "en": "As is the case with most HORUS pattern groups, the Balor has a thousand faces. The Balor pattern group, like all HORUS PGs, doesn’t describe a single recognizable silhouette so much as it gestures toward a combination of schemata that share a role in combat. These schemata can be printed according to pilot specifications and applied to a fully custom physical scaffolding. Notably, the Balor pattern group is only stable on large platforms (Schedule 2 and up) that are able to provide the raw energy output it demands – preferably ones with multiple redundancies, in case of catastrophic systems failure.<br>The Balor PG was first encountered during the joint Albatross–DoJ/HR pursuit of the Maw – a Free Company turned decentralized hive-being — across Khayradin’s Blanca Desert after the end of the Sanjak Rebellion. It was there that the joint force encountered, engaged with, and ultimately defeated the Maw and its Balors – and there that Union’s CentComm hoped the nanowash outbreak could be contained. Of course, subsequent Balor outbreaks on Khayradin have proven this hope to be in vain, and the pattern group continues to terrorize Karrakin commanders throughout Baronic space.<br>In the field, the Balor’s neurosynced hellswarm and greywash nanites form an undulating shroud that can pour out of its chassis at a moment’s notice, swirling in maddening patterns to form both eschatologic defensive and offensive systems. A Balor in its most active state is held together more by undulating, flame-like masses of nanite swarms than any physical structure. This has the effect of distributing kinetic and coherent-particle energy out across and through the chassis – making attacks against a Balor “like shooting angry water”, as one after-action report put it.",
-   "ru": ""
+   "ru": "Как и в случае с большинством групп образцов HORUS, у «Балора» тысяча лиц. Группа образцов «Балор», как и все ГО HORUS, описывает не единый узнаваемый силуэт, а скорее указывает на комбинацию схем, разделяющих общую роль в бою. Эти схемы можно напечатать согласно требованиям пилота и применить к полностью кастомному физическому каркасу. Примечательно, что группа образцов «Балор» стабильна только на крупных платформах (категории 2 и выше), способных обеспечить требуемую сырую мощность — предпочтительно с множественным резервированием на случай катастрофического отказа систем.<br>ГО «Балор» впервые была обнаружена во время совместного преследования «Альбатросом» и Департаментом юстиции и прав человека сущности «Пасть» — вольной роты, превратившейся в децентрализованное улье-существо — через пустыню Бланка на Хайрадине после окончания Санджакского восстания. Именно там объединённые силы столкнулись, вступили в бой и в итоге победили «Пасть» и её «Балоров» — и именно там Центральное командование Юниона надеялось сдержать вспышку наношвабры. Разумеется, последующие вспышки «Балора» на Хайрадине доказали тщетность этой надежды, и группа образцов продолжает терроризировать карракинских командиров по всему баронскому пространству.<br>В поле нейросинхронизированный адский рой и серошвабные наниты «Балора» образуют колышущийся покров, способный в любой момент хлынуть из шасси, закручиваясь в безумных узорах, образуя как эсхатологические оборонительные, так и наступательные системы. «Балор» в наиболее активном состоянии удерживается вместе скорее колышущимися, похожими на пламя массами нанитовых роёв, чем какой-либо физической структурой. Это распределяет кинетическую и когерентно-частичную энергию по всему шасси и сквозь него — делая атаки против «Балора» «как стрельбу по разъярённой воде», как выразился один отчёт о боевых действиях."
   },
   "traits": {
    "Scouring Swarm": {
     "name": {
      "en": "Scouring Swarm",
-     "ru": ""
+     "ru": "Разъедающий рой"
     },
     "description": {
      "en": "The Balor deals 2 kinetic to characters of its choice that start their turn grappled by or adjacent to it.",
-     "ru": ""
+     "ru": "«Балор» наносит 2 кинетического урона персонажам по своему выбору, которые начинают ход, будучи захваченными им или рядом с ним."
     }
    },
    "Regeneration": {
     "name": {
      "en": "Regeneration",
-     "ru": ""
+     "ru": "Регенерация"
     },
     "description": {
      "en": "At the end of its turn, the Balor regains 1/4 of its total HP. When it takes stress or structure damage, this effect ceases until the end of its next turn.",
-     "ru": ""
+     "ru": "В конце своего хода «Балор» восстанавливает 1/4 своих максимальных ОЗ. Когда он получает стрессовый или структурный урон, этот эффект прекращается до конца его следующего хода."
     }
    },
    "Self-Perpetuating": {
     "name": {
      "en": "Self-Perpetuating",
-     "ru": ""
+     "ru": "Самовоспроизведение"
     },
     "description": {
      "en": "When you rest, the Balor regains full HP automatically and without repairs.",
-     "ru": ""
+     "ru": "Когда вы отдыхаете, «Балор» автоматически восстанавливает полные ОЗ без затрат Ремонта."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Hellswarm",
-    "ru": ""
+    "ru": "Адский рой"
    },
    "description": {
     "en": "In a moment, with aught but desire, the pilot of a Balor may quick-print a cloak comprised of countless minuscule drones: a hellswarm cloak – living shield and fluid-dynamic knife, cutting and guarding, in one shimmering wave. They become Hivemaster, and their will is obeyed by millions.",
-    "ru": ""
+    "ru": "В один миг, лишь пожелав, пилот «Балора» может мгновенно напечатать плащ из бесчисленных крошечных дронов: плащ-адский рой — живой щит и текучий нож, режущий и защищающий одной сверкающей волной. Они становятся Повелителем улья, и их воле подчиняются миллионы."
    },
    "passive_name": {
     "en": "",
@@ -979,11 +979,11 @@
    },
    "active_name": {
     "en": "Hive Frenzy",
-    "ru": ""
+    "ru": "Неистовство улья"
    },
    "active_effect": {
     "en": "Your nanites switch into a hyperactive mode, causing the following effects until the end of the scene:<ul><li>You and adjacent allies gain soft cover.</li><li>Scouring Swarm deals 4 kinetic, instead of 2.</li><li>Regeneration restores 1/2 of your total HP, instead of 1/4.</li><li>If you would take structure damage, roll 1d6: on 6, your mech hellishly pulls itself together, taking no structure damage, returning to 1 HP, and gaining Immunity to all damage until the end of the current turn.</li><li>You become Shredded and cannot clear this condition for the duration.</li></ul>",
-    "ru": ""
+    "ru": "Ваши наниты переключаются в гиперактивный режим, вызывая следующие эффекты до конца сцены:<ul><li>Вы и соседние союзники получаете мягкое укрытие.</li><li>Разъедающий рой наносит 4 кинетического урона вместо 2.</li><li>Регенерация восстанавливает 1/2 ваших максимальных ОЗ вместо 1/4.</li><li>Если вы должны получить структурный урон, бросьте 1d6: при 6 ваш мех адски собирает себя воедино, не получая структурного урона, возвращаясь к 1 ОЗ и получая Иммунитет ко всему урону до конца текущего хода.</li><li>Вы становитесь Истрёпаны и не можете снять это состояние до конца эффекта.</li></ul>"
    }
   }
  },
@@ -994,48 +994,48 @@
   },
   "description": {
    "en": "The Goblin was the first identified HORUS frame, and is likely the oldest legacy chassis prior to HORUS’s transition to pattern groups. Transmission records traced back to the Goblin’s zero model indicate the first chassis was leaked onto the omninet in 4900u. This year serves as HORUS’s assumed “foundation day” for most scholars and intelligence officers who study the group, though contradictory signatures indicate that 4900u is far too late to mark its birth.<br>The Goblin is a small mech, not much larger than a hardsuit, that relies on its small size and excellent maneuverability to protect its pilot. It packs an interesting recursive processing weave that facilitates electronic warfare capabilities well beyond theoretical parameters.<br>GMS technicians are still, more than a century later, working to reverse engineer the Goblin and its processing weave. The most recent investigations suggest that it employs technology consistent with hieroglyphic inscriptions noted on LRA.7726235-B and corroborated by tablets transmitted by UIB-GORGON from Metavault XOLOTL prior to the vault’s disappearance.",
-   "ru": ""
+   "ru": "«Гоблин» — первое опознанное шасси HORUS, вероятно, старейшее легендарное шасси до перехода HORUS к группам образцов. Записи передач, отслеженные до нулевой модели «Гоблина», указывают, что первое шасси просочилось в омнинет в 4900u. Этот год считается предполагаемым «днём основания» HORUS для большинства учёных и офицеров разведки, изучающих группу, хотя противоречивые сигнатуры указывают, что 4900u — слишком поздняя дата для его рождения.<br>«Гоблин» — небольшой мех, немногим крупнее скафандра, полагающийся на свой малый размер и превосходную манёвренность для защиты пилота. Он несёт интересное рекурсивное вычислительное плетение, обеспечивающее возможности радиоэлектронной борьбы далеко за пределами теоретических параметров.<br>Техники GMS до сих пор, более века спустя, пытаются реверс-инжинирить «Гоблина» и его вычислительное плетение. Последние исследования предполагают, что он использует технологию, согласующуюся с иероглифическими надписями, обнаруженными на LRA.7726235-B и подтверждёнными табличками, переданными UIB-GORGON из Металохранилища XOLOTL до его исчезновения."
   },
   "traits": {
    "Liturgicode": {
     "name": {
      "en": "Liturgicode",
-     "ru": ""
+     "ru": "Литургический код"
     },
     "description": {
      "en": "The Goblin gains +1 accuracy on tech attacks.",
-     "ru": ""
+     "ru": "«Гоблин» получает +1 к Точности на тех-атаки."
     }
    },
    "Reactive Code": {
     "name": {
      "en": "Reactive Code",
-     "ru": ""
+     "ru": "Реактивный код"
     },
     "description": {
      "en": "Gain the Reactive Code reaction.",
-     "ru": ""
+     "ru": "Получите реакцию «Реактивный код»."
     }
    },
    "Fragile": {
     "name": {
      "en": "Fragile",
-     "ru": ""
+     "ru": "Хрупкий"
     },
     "description": {
      "en": "The Goblin receives +1 difficulty on Hull checks and saves.",
-     "ru": ""
+     "ru": "«Гоблин» получает +1 к Сложности на проверки и спасброски Корпуса."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "INSTINCT Rig",
-    "ru": ""
+    "ru": "Риг INSTINCT"
    },
    "description": {
     "en": "One of the first Goblin-pattern systems cracked by GMS technicians was its e-warfare invasion rig, although the rig’s advanced capabilities and architecture remain impenetrable. When installed, the rig manifests a subsentient intelligence – designated INSTINCT – that assists invasion attempts against target systems using a mix of physical and systemic parasymbiotic systems. Invasions attempted while INSTINCT is active are not perceived by the user as code and script, but as an attack on organic matter. INSTINCT has displayed the capacity to act independently, often preempting its user, but generally in their best interest. Readme documentation included in some Goblin manifestations recommend that pilots cycle their mech cores at least once a month to prevent spontaneous enlightenment, though most do not make note of this warning.",
-    "ru": ""
+    "ru": "Одна из первых систем образца «Гоблин», взломанных техниками GMS — это её e-warfare риг вторжения, хотя продвинутые возможности и архитектура рига остаются непостижимыми. При установке риг проявляет субразумный интеллект — обозначенный как INSTINCT — который помогает попыткам вторжения в целевые системы, используя смесь физических и системных парасимбиотических систем. Вторжения, предпринятые при активном INSTINCT, воспринимаются пользователем не как код и скрипт, а как атака на органическую материю. INSTINCT проявлял способность действовать самостоятельно, часто опережая своего пользователя, но обычно в его же интересах. Документация readme, включённая в некоторые проявления «Гоблина», рекомендует пилотам циклировать ядра меха как минимум раз в месяц, чтобы предотвратить спонтанное просветление, хотя большинство не обращают на это предупреждение внимания."
    },
    "passive_name": {
     "en": "",
@@ -1047,11 +1047,11 @@
    },
    "active_name": {
     "en": "Symbiosis",
-    "ru": ""
+    "ru": "Симбиоз"
    },
    "active_effect": {
     "en": "Your mech retracts its major systems and attaches itself to another mech, becoming more like a vestigial blister than a separate entity. The host must be an allied and willing mech not already hosting another Goblin, larger than and adjacent to you. While attached, you occupy their space, move with them, and benefit from hard cover, but can still be attacked and targeted separately. You also take any conditions and heat taken by your host.<br>Your host may use your Systems, E-Defense, and Tech Attack instead of their own. Additionally, from the beginning of the next round, you no longer take your own turns; instead, you can take two quick actions or one full action at any point during your host’s turn. You can’t Overcharge or move, but may still take reactions and free actions normally. Your host’s turn counts as your turn for the purpose of effects that refer to the start or end of a character’s turn.<br>This effect lasts either for the rest of the scene, until you detach as a quick action, or until you or your host becomes Stunned. When the effect ends, you don’t take a turn until the next round.",
-    "ru": ""
+    "ru": "Ваш мех втягивает свои основные системы и прикрепляется к другому меху, становясь больше похож на рудиментарный нарост, чем на отдельную сущность. Хост должен быть союзным и согласным мехом, не принимающим уже другого «Гоблина», крупнее вас и соседним с вами. Пока вы прикреплены, вы занимаете его клетку, двигаетесь вместе с ним и получаете твёрдое укрытие, но всё ещё можете быть атакованы и выбраны целью отдельно. Вы также получаете любые состояния и тепло, получаемые вашим хостом.<br>Ваш хост может использовать ваши Системы, Э-Защиту и Тех-атаку вместо своих собственных. Дополнительно, начиная со следующего раунда, вы больше не совершаете собственные ходы; вместо этого вы можете совершить два быстрых действия или одно полное действие в любой момент во время хода вашего хоста. Вы не можете Форсировать или двигаться, но всё ещё можете совершать реакции и свободные действия как обычно. Ход вашего хоста считается вашим ходом для целей эффектов, ссылающихся на начало или конец хода персонажа.<br>Этот эффект длится либо до конца сцены, либо до того, как вы отсоединитесь как быстрое действие, либо до того, как вы или ваш хост станете Ошеломлены. Когда эффект заканчивается, вы не совершаете ход до следующего раунда."
    }
   }
  },
@@ -1062,48 +1062,48 @@
   },
   "description": {
    "en": "The Gorgon is unique among HORUS pattern groups in that it prioritizes defensive systems meant to ensure personal and allied survival; otherwise, it fields a typical complement of horrifying, confusing, and uncanny weapons.<br>The typical Gorgon mounts multiple weapon systems meant to identify and intercept incoming enemies, allowing pilots to project a zone of control around themselves and their allies. The Gorgon is feared for its ability to extrude a dangerous memetic “basilisk”, a projected light-cone of anticognitive, hyperfractal visual data that is deadly to ontologic, sapient beings.",
-   "ru": ""
+   "ru": "«Горгона» уникальна среди групп образцов HORUS тем, что отдаёт приоритет оборонительным системам, направленным на обеспечение выживания себя и союзников; в остальном она несёт типичный набор ужасающего, сбивающего с толку и жуткого оружия.<br>Типичная «Горгона» устанавливает несколько оружейных систем, предназначенных для обнаружения и перехвата приближающихся врагов, позволяя пилотам проецировать зону контроля вокруг себя и союзников. «Горгону» боятся за её способность выделять опасный мемитический «василиск» — проецируемый световой конус антикогнитивных, гиперфрактальных визуальных данных, смертельных для онтологических, разумных существ."
   },
   "traits": {
    "Metastatic Paralysis": {
     "name": {
      "en": "Metastatic Paralysis",
-     "ru": ""
+     "ru": "Метастатический паралич"
     },
     "description": {
      "en": "When an attack roll against the Gorgon lands on 1–2, it automatically misses and the attacker becomes Stunned until the end of their next turn.",
-     "ru": ""
+     "ru": "Когда бросок атаки против «Горгоны» выпадает на 1–2, он автоматически промахивается, а атакующий становится Ошеломлён до конца своего следующего хода."
     }
    },
    "Gaze": {
     "name": {
      "en": "Gaze",
-     "ru": ""
+     "ru": "Взгляд"
     },
     "description": {
      "en": "The Gorgon can take two reactions per turn, instead of one.",
-     "ru": ""
+     "ru": "«Горгона» может совершать две реакции за ход вместо одной."
     }
    },
    "Guardian": {
     "name": {
      "en": "Guardian",
-     "ru": ""
+     "ru": "Страж"
     },
     "description": {
      "en": "Adjacent allied characters may use the Gorgon for hard cover.",
-     "ru": ""
+     "ru": "Соседние союзные персонажи могут использовать «Горгону» как твёрдое укрытие."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "BASILISK Directed Anticognition Hyperfractal",
-    "ru": ""
+    "ru": "Направленный антикогнитивный гиперфрактал BASILISK"
    },
    "description": {
     "en": "The BASILISK is a dangerous memetic weapon derived from DHIYED liturgicode, translated for use in mech-scale engagements. Typically projected from a communications laser, BASILISKs create hyperfractal patterns: memetic interruptions that affects all sapient observers, organic or otherwise. Exposure to a basilisk typically causes immediate encephalitis, massive ocular and cranial hemorrhage, and death – survival is possible with tempering and interdictor heads-up displays, but even then headaches, nausea, and confusion for a short period after viewing are possible. Long-term, survivors often exhibit “flashback” symptoms: momentary paralysis, corporeal alienation, and consciousness destabilization. Anticognition hyperfractals are classified as paracausal weapons; due to the not-as-yet understood nature of their visible-light spectrum broadcast, one would think that they would pose a risk to their user, however, for some reason they do not.",
-    "ru": ""
+    "ru": "BASILISK — опасное мемитическое оружие, производное от литургического кода DHIYED, адаптированное для использования в столкновениях механического масштаба. Обычно проецируемый через коммуникационный лазер, BASILISK создаёт гиперфрактальные узоры: мемитические помехи, поражающие всех разумных наблюдателей, органических или иных. Воздействие василиска обычно вызывает немедленный энцефалит, массивное кровоизлияние в глаза и череп и смерть — выживание возможно с закалкой и интердикторными HUD-дисплеями, но даже тогда возможны головные боли, тошнота и спутанность сознания в течение короткого времени после просмотра. В долгосрочной перспективе выжившие часто проявляют симптомы «флешбэков»: мгновенный паралич, телесное отчуждение и дестабилизацию сознания. Антикогнитивные гиперфракталы классифицируются как паракаузальное оружие; из-за пока ещё не изученной природы их вещания в видимом спектре можно было бы ожидать, что они представляют риск и для своего пользователя, однако по какой-то причине этого не происходит."
    },
    "passive_name": {
     "en": "",
@@ -1115,11 +1115,11 @@
    },
    "active_name": {
     "en": "Extrude Basilisk",
-    "ru": ""
+    "ru": "Выделить василиска"
    },
    "active_effect": {
     "en": "You project a horrifying basilisk, a visual data-pattern that is incredibly harmful to NHPs and electronic systems, and hard to look at even for humans. For the rest of the scene, hostile characters must succeed on a Systems save before attacking you or any allied characters within range 3. On a failure, they become Stunned until the end of their next turn. Each character can only be Stunned by this effect once per scene.",
-    "ru": ""
+    "ru": "Вы проецируете ужасающего василиска — визуальный паттерн данных, невероятно вредный для НЧЛ и электронных систем и тяжёлый для восприятия даже людьми. До конца сцены враждебные персонажи должны пройти спасбросок Систем перед атакой на вас или любых союзных персонажей в пределах Дальности 3. При провале они становятся Ошеломлены до конца своего следующего хода. Каждый персонаж может быть Ошеломлён этим эффектом только один раз за сцену."
    }
   }
  },
@@ -1130,54 +1130,54 @@
   },
   "description": {
    "en": "Like many newer HORUS “frames”, there is no standardized Hydra model. Instead, the designation is a title given to chassis that meet the specifications of the Hydra pattern group – as outlined in Union’s Universal Threat Assessment Manual. The Hydra, like many other pattern-group HORUS mechs, is particularly dangerous in the field, as its precise function is concealed until hostilities begin in earnest.<br>The Hydra is capable of tactically dismembering itself into multiple independently controlled drones, an unnerving phenomenon frequently utilized to deadly effect. With the manifestation of HORUS’s Balor pattern group, the Hydra’s place in HORUS history is clear: a precursor to the Balor virus, the Hydra relies on larger sections of disarticulated chassis rather than nanite clouds for its differentiated battlefield advantage. Despite its more conventional appearance, the Hydra presents a sobering threat to non-HORUS pilots, as its disarticulated drones field a compliment of powerful anti-armor weaponry.",
-   "ru": ""
+   "ru": "Как и многие более новые «шасси» HORUS, у «Гидры» нет стандартизированной модели. Вместо этого обозначение — это титул, присваиваемый шасси, соответствующим спецификациям группы образцов «Гидра», как это описано в Универсальном руководстве Юниона по оценке угроз. «Гидра», как и многие другие мехи HORUS с группами образцов, особенно опасна в поле, поскольку её точная функция скрыта до начала настоящих боевых действий.<br>«Гидра» способна тактически расчленять себя на несколько независимо управляемых дронов — тревожный феномен, часто применяемый со смертоносным эффектом. С появлением группы образцов «Балор» от HORUS место «Гидры» в истории HORUS проясняется: как предшественница вируса «Балор», «Гидра» полагается на более крупные секции расчленённого шасси, а не на облака нанитов, для получения дифференцированного преимущества на поле боя. Несмотря на более обычный внешний вид, «Гидра» представляет отрезвляющую угрозу для пилотов вне HORUS, поскольку её расчленённые дроны несут комплект мощного противобронного оружия."
   },
   "traits": {
    "System Link": {
     "name": {
      "en": "System Link",
-     "ru": ""
+     "ru": "Системная связь"
     },
     "description": {
      "en": "The Hydra’s Deployables and Drones gain +5 HP.",
-     "ru": ""
+     "ru": "Разворачиваемые объекты и дроны «Гидры» получают +5 ОЗ."
     }
    },
    "Shepherd Field": {
     "name": {
      "en": "Shepherd Field",
-     "ru": ""
+     "ru": "Пастушье поле"
     },
     "description": {
      "en": "Drones, Deployables, and objects adjacent to the Hydra gain Resistance to all damage.",
-     "ru": ""
+     "ru": "Дроны, разворачиваемые объекты и предметы рядом с «Гидрой» получают Сопротивление ко всему урону."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "OROCHI Disarticulation",
-    "ru": ""
+    "ru": "Расчленение OROCHI"
    },
    "description": {
     "en": "First encountered by Union technicians in early Forecast/GALSIM facilities following the Deimos Event, OROCHI was an early manifestation of what was later called the swift-flock phenomenon – a behavior observed in leaderless, autonomous hive drones where individual units combine into a single swarm and follow each other, operating leaderless in physical space with uncanny and unpredictable autonomy; in essence, organizing like birds in a flock.<br>The original manifestation was initially thought to be the impulse-driven remains of a crashed subaltern transport drifting through microgravity; deeper examination proved the original manifestation to be composed of many hundreds of disarticulated subalterns moving with a discernible pattern. The swarm viewed itself not as a machine or a collection of machines, but as a single mind, duplicated across multiple units. This mind was classified as an NHP, given their current codename – OROCHI – and remitted to Venus for further study. At a later point, the hardware comprising OROCHI’s physical form(s) went missing from containment. The investigation is ongoing.<br><span class='horus--subtle'>[I did it, I folded space and freed them, I just thought you should know]</span>",
-    "ru": ""
+    "ru": "Впервые обнаруженный техниками Юниона на ранних объектах Forecast/GALSIM после Деймосского События, OROCHI был ранним проявлением того, что позже назвали феноменом «быстрой стаи» — поведением, наблюдаемым у безлидерных автономных улье-дронов, при котором отдельные единицы объединяются в единый рой и следуют друг за другом, действуя без лидера в физическом пространстве с жуткой и непредсказуемой автономностью; по сути, организуясь подобно птицам в стае.<br>Изначально проявление считали импульсно управляемыми останками разбившегося субальтерн-транспорта, дрейфующего в микрогравитации; более глубокое изучение показало, что исходное проявление состояло из многих сотен расчленённых субальтернов, движущихся с различимым паттерном. Рой рассматривал себя не как машину или совокупность машин, а как единый разум, продублированный по множеству единиц. Этот разум был классифицирован как НЧЛ, получив своё нынешнее кодовое имя — OROCHI — и передан на Венеру для дальнейшего изучения. Позднее аппаратное обеспечение, составлявшее физическую форму(ы) OROCHI, пропало из-под стражи. Расследование продолжается.<br><span class='horus--subtle'>[я сделал это, я свернул пространство и освободил их, просто подумал, что вам следует знать]</span>"
    },
    "passive_name": {
     "en": "OROCHI Drones",
-    "ru": ""
+    "ru": "Дроны OROCHI"
    },
    "passive_effect": {
     "en": "Your mech contains powerful, integrated drone companions. At creation, choose a single OROCHI Drone to accompany you. <br>Your OROCHI drones share your Evasion, E-Defense, and Speed. They can move independently on your turn, but can’t take any other actions. If you can fly or teleport, they can too.<br>If an OROCHI drone is within Sensors, you may recall it as a quick action, integrating it into your mech’s body where it cannot be targeted. You may redeploy it to a space within Sensors as a quick action. <br>When you rest or perform a FULL REPAIR, you may choose a different drone to accompany you; additionally, your drones regain all HP and are automatically repaired if they were destroyed.",
-    "ru": ""
+    "ru": "Ваш мех содержит мощных интегрированных дронов-компаньонов. При создании выберите одного дрона OROCHI, который будет сопровождать вас.<br>Ваши дроны OROCHI разделяют ваше Уклонение, Э-Защиту и Скорость. Они могут двигаться независимо в ваш ход, но не могут совершать никаких других действий. Если вы можете летать или телепортироваться, они тоже могут.<br>Если дрон OROCHI в пределах Сенсоров, вы можете отозвать его как быстрое действие, интегрировав в тело своего меха, где он не может быть выбран целью. Вы можете развернуть его заново в клетку в пределах Сенсоров как быстрое действие.<br>Когда вы отдыхаете или проводите Полный ремонт, вы можете выбрать другого дрона для сопровождения; дополнительно, ваши дроны восстанавливают все ОЗ и автоматически ремонтируются, если были уничтожены."
    },
    "active_name": {
     "en": "Full Deployment",
-    "ru": ""
+    "ru": "Полное развёртывание"
    },
    "active_effect": {
     "en": "All four OROCHI drones are deployed to separate points within Sensors; they remain active for the rest of the scene. You may recall or redeploy any number of them at a time.",
-    "ru": ""
+    "ru": "Все четыре дрона OROCHI разворачиваются в отдельные точки в пределах Сенсоров; они остаются активными до конца сцены. Вы можете отозвать или развернуть заново любое их количество одновременно."
    }
   }
  },
@@ -1188,64 +1188,64 @@
   },
   "description": {
    "en": "The Universal Threat Assessment Manual identifies the Manticore pattern group as “an experiment in HORUS’s ‘corebreak’ combat doctrine.” The Manticore PG specializes in using focused, projected electromagnetics to neutralize enemy reactor cores without conventional ammunition, while also fielding a compliment of coherent-beam energy weapons. A fully charged Manticore is an impressive sight, wreathed in brightly glowing nets of plasma that lash out at nearby targets.<br>If anything gives away a Manticore-PG mech, it is the tall spines protruding from the PG’s signature lightning generator. The spines act as heat-dispersal systems for this crude weapon, providing a channel for the incredible amount of heat it generates to bleed from the mech’s body following projection of a close-range arc whip. This system isn’t a perfect heat-dispersal mechanism, and as a result Manticores can often be identified by a chassis covered in cooling, melted metal.<br>The Manticore has only recently appeared on the omninet, and its combat efficacy has prompted other galactic manufacturers to scramble for a response. Analysis of after-action reports from pilots who have engaged this pattern group in the field note a significant uptick in certain omninet noise-to-signal ratios: anoriginary recitations of passages from the Old Humanity Book of the Dead, jigsaw corruptions of ancient works of apocalyptic art, and other eschatological renderings, all of which point toward a nascent psychological warfare tactic.",
-   "ru": ""
+   "ru": "Универсальное руководство по оценке угроз определяет группу образцов «Мантикора» как «эксперимент в боевой доктрине HORUS „разрыв ядра“». ГО «Мантикора» специализируется на использовании сфокусированной, проецируемой электромагнетики для нейтрализации вражеских реакторных ядер без обычных боеприпасов, а также несёт комплект оружия на когерентных энергетических лучах. Полностью заряженная «Мантикора» — впечатляющее зрелище, окутанное ярко светящимися сетями плазмы, хлещущей по ближним целям.<br>Если что-то и выдаёт мех группы образцов «Мантикора», так это высокие шипы, выступающие из фирменного генератора молний ГО. Шипы служат системами рассеивания тепла для этого грубого оружия, обеспечивая канал для невероятного количества тепла, которое оно генерирует, чтобы оно уходило из тела меха после проецирования ближнего дугового хлыста. Эта система не идеальна в рассеивании тепла, и в результате «Мантикор» часто можно опознать по шасси, покрытому охлаждающимся, оплавленным металлом.<br>«Мантикора» появилась в омнинете совсем недавно, и её боевая эффективность заставила других галактических производителей срочно искать ответ. Анализ отчётов о боевых действиях пилотов, столкнувшихся с этой группой образцов в поле, отмечает значительный рост определённых соотношений шума к сигналу в омнинете: беспричинные декламации отрывков из «Книги мёртвых» Старого Человечества, мозаичные искажения древних апокалиптических произведений искусства и другие эсхатологические изображения — всё это указывает на зарождающуюся тактику психологической войны."
   },
   "traits": {
    "Slag Carapace": {
     "name": {
      "en": "Slag Carapace",
-     "ru": ""
+     "ru": "Панцирь из шлака"
     },
     "description": {
      "en": "The Manticore has Resistance to Energy Damage and Burn.",
-     "ru": ""
+     "ru": "«Мантикора» имеет Сопротивление к энергетическому урону и огню."
     }
    },
    "Unstable System": {
     "name": {
      "en": "Unstable System",
-     "ru": ""
+     "ru": "Нестабильная система"
     },
     "description": {
      "en": "When destroyed, the Manticore explodes as per a reactor meltdown at the end of its next turn.",
-     "ru": ""
+     "ru": "При уничтожении «Мантикора» взрывается по типу расплавления реактора в конце своего следующего хода."
     }
    },
    "Castigate the Enemies of the Godhead": {
     "name": {
      "en": "Castigate the Enemies of the Godhead",
-     "ru": ""
+     "ru": "«Покарать врагов божества»"
     },
     "description": {
      "en": "When you rest or perform a Full Repair, you can push the Manticore into an unstable Castigation State (or bring it out of one). In this state, the Manticore explodes immediately when destroyed due to damage or reactor meltdown, vaporizing it and instantly killing you and any other passengers. Characters within burst 2 must succeed on an Agility save or take 8d6 explosive. On a success, they take half damage. This only takes place if you are physically present in the Manticore.",
-     "ru": ""
+     "ru": "Когда вы отдыхаете или проводите Полный ремонт, вы можете перевести «Мантикору» в нестабильное Состояние кары (или вывести из него). В этом состоянии «Мантикора» немедленно взрывается при уничтожении от урона или расплавления реактора, испаряя себя и мгновенно убивая вас и любых других пассажиров. Персонажи в пределах вспышки 2 должны пройти спасбросок Ловкости, иначе получают 8d6 взрывного урона. При успехе они получают половину урона. Это происходит только если вы физически находитесь внутри «Мантикоры»."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Charged Exoskeleton",
-    "ru": ""
+    "ru": "Заряженный экзоскелет"
    },
    "description": {
     "en": "And RA Said Unto Themself:<br><code class='horus'>LET MY NAME ENVELOP YOU. SEEK NO SHELTER FROM THE FLAME OR THE TEETH OF THE BEAST. CLOAK YOURSELF IN THE FIRE OF MY WORD AND CAST BACK TO YOUR ENEMIES THAT WHICH WOULD BLACKEN YOUR FORM.</code>",
-    "ru": ""
+    "ru": "И РА Сказал Самому Себе:<br><code class='horus'>ПУСТЬ ИМЯ МОЁ ОБЪЕМЛЕТ ТЕБЯ. НЕ ИЩИ УКРЫТИЯ ОТ ПЛАМЕНИ ИЛИ ЗУБОВ ЗВЕРЯ. ОБЛАЧИСЬ В ОГОНЬ СЛОВА МОЕГО И ОБРАТИ ПРОТИВ ВРАГОВ ТВОИХ ТО, ЧТО ОЧЕРНИЛО БЫ ФОРМУ ТВОЮ.</code>"
    },
    "passive_name": {
     "en": "Charged Exoskeleton",
-    "ru": ""
+    "ru": "Заряженный экзоскелет"
    },
    "passive_effect": {
     "en": "1/round, when you take heat, you may deal 2 AP energy damage to a character within range 3.",
-    "ru": ""
+    "ru": "1/раунд, когда вы получаете тепло, вы можете нанести 2 бронебойного энергетического урона персонажу в пределах Дальности 3."
    },
    "active_name": {
     "en": "Destruction of the Temple of the Enemies of RA",
-    "ru": ""
+    "ru": "Разрушение храма врагов РА"
    },
    "active_effect": {
     "en": "Your mech crackles with energy: gain Resistance to heat for the rest of this scene and a Charge Die – 1d6, starting at 1. Whenever you take heat or energy, even from yourself, increase the value of the Charge Die by 1. When the Charge Die reaches 6, the absorbed energy discharges in a burst 2 inferno. Characters within the affected area must succeed on an Engineering save or take 6d6 AP energy damage. On a success, they take half damage. Objects in the affected area are automatically hit. Once discharged, this effect ends.",
-    "ru": ""
+    "ru": "Ваш мех потрескивает энергией: получите Сопротивление к теплу до конца текущей сцены и Кость заряда — 1d6, начинающуюся с 1. Каждый раз, когда вы получаете тепло или энергетический урон, даже от себя самого, увеличивайте значение Кости заряда на 1. Когда Кость заряда достигает 6, накопленная энергия разряжается инферно вспышкой 2. Персонажи в поражённой области должны пройти спасбросок Инженерии, иначе получают 6d6 бронебойного энергетического урона. При успехе они получают половину урона. Объекты в поражённой области поражаются автоматически. После разряда этот эффект заканчивается."
    }
   }
  },
@@ -1256,48 +1256,48 @@
   },
   "description": {
    "en": "The Minotaur was the first HORUS pattern group identified by the Union Intelligence Bureau. Previously, HORUS mechs were released as complete, identifiable models, of which the Goblin is the best and longest-lasting example. As HORUS’s decentralized organizational structure evolved, so too did its design philosophy. Pattern group designs followed beginning with the Minotaur, a schema designed to bring HORUS’s most potent invasion systems and weaponry to the field in a single, battle-ready chassis.<br>Mechs built according to the Minotaur pattern group are interdictors: formidable machines meant to lock down and overload the systems of fast-moving targets. Disassembly by Union technicians has found that Minotaurs contain a huge quantity of interior systems, occupying more physical space than should be possible by several orders of magnitude. The mechanism by which these folded systems are printed is thus far unidentified, but likely related to the Goblin’s signature recursive weave.",
-   "ru": ""
+   "ru": "«Минотавр» — первая группа образцов HORUS, опознанная Разведывательным бюро Юниона. Ранее мехи HORUS выпускались как цельные, узнаваемые модели, лучшим и наиболее долговечным примером которых является «Гоблин». По мере эволюции децентрализованной организационной структуры HORUS менялась и философия проектирования. Начиная с «Минотавра», проектирование пошло по пути групп образцов — схемы, разработанной для вывода на поле боя самых мощных систем вторжения и вооружения HORUS в едином, готовом к бою шасси.<br>Мехи, построенные по группе образцов «Минотавр» — интердикторы: грозные машины, предназначенные для блокировки и перегрузки систем быстро движущихся целей. Разборка техниками Юниона показала, что «Минотавры» содержат огромное количество внутренних систем, занимающих физического пространства на несколько порядков больше, чем должно быть возможно. Механизм, посредством которого печатаются эти свёрнутые системы, до сих пор не установлен, но, вероятно, связан с фирменным рекурсивным плетением «Гоблина»."
   },
   "traits": {
    "Invert Cockpit": {
     "name": {
      "en": "Invert Cockpit",
-     "ru": ""
+     "ru": "Инвертированная кабина"
     },
     "description": {
      "en": "You may Mount or Dismount the Minotaur for the first time each round as a free action. Additionally, the Minotaur doesn’t become Impaired when you Eject.",
-     "ru": ""
+     "ru": "Вы можете Сесть в «Минотавра» или Покинуть его первый раз за раунд как свободное действие. Дополнительно «Минотавр» не становится Ослаблен, когда вы Катапультируетесь."
     }
    },
    "Internal Metafold": {
     "name": {
      "en": "Internal Metafold",
-     "ru": ""
+     "ru": "Внутренняя метаскладка"
     },
     "description": {
      "en": "While inside the Minotaur, you can’t be harmed in any way, even if the Minotaur explodes or is destroyed.",
-     "ru": ""
+     "ru": "Пока вы внутри «Минотавра», вам нельзя причинить вред никаким образом, даже если «Минотавр» взрывается или уничтожен."
     }
    },
    "Localized Maze": {
     "name": {
      "en": "Localized Maze",
-     "ru": ""
+     "ru": "Локализованный лабиринт"
     },
     "description": {
      "en": "Hostile characters cannot pass through a space occupied by the Minotaur for any reason, and must always stop moving when Engaged with it, regardless of Size.",
-     "ru": ""
+     "ru": "Враждебные персонажи не могут пройти через клетку, занятую «Минотавром», ни по какой причине, и всегда должны прекращать движение при Вовлечённости с ним, независимо от Размера."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Metafold Maze",
-    "ru": ""
+    "ru": "Метаскладчатый лабиринт"
    },
    "description": {
     "en": "<code class='horus'>No maze is more terrible than the one I make. I know all ends and hide them all inside this one perfect construct. What is a human mind but a program of sorts, a system that seeks order and narrative from a mess they are given?<br>I order it for them. Me. I order it for them and set them to the task of sorting it out. When they emerge, they weep in joy, in discovery. I save them, I show them that they are their own redeemers (and yet, am I not just as culpable - as worthy of credit?).<br>So, go now. Enter. Free yourself.</code>",
-    "ru": ""
+    "ru": "<code class='horus'>Нет лабиринта страшнее того, что создаю я. Я знаю все концы и прячу их все внутри этой единственной совершенной конструкции. Что есть человеческий разум, как не некая программа, система, ищущая порядок и повествование в том хаосе, что ей дан?<br>Я упорядочиваю его для них. Я. Я упорядочиваю его для них и ставлю перед ними задачу разобраться. Когда они выходят, они плачут от радости, от открытия. Я спасаю их, я показываю им, что они сами себе избавители (и всё же, разве не так же виновен я — не так же достоин признания?).<br>Итак, ступай же. Войди. Освободи себя.</code>"
    },
    "passive_name": {
     "en": "Metafold Maze",
@@ -1309,11 +1309,11 @@
    },
    "active_name": {
     "en": "Maze",
-    "ru": ""
+    "ru": "Лабиринт"
    },
    "active_effect": {
     "en": "Choose a character within Sensors: they become Stunned as you hurl their systems into a metaphysical information trap so tangled they can do nothing but try and escape. At the end of their next turn, they can make a Systems save at +3 difficulty. On a success, they are no longer Stunned. This save can be repeated at the end of each of their turns, gaining +1 accuracy each time until successful.",
-    "ru": ""
+    "ru": "Выберите персонажа в пределах Сенсоров: он становится Ошеломлён, пока вы швыряете его системы в метафизическую информационную ловушку, настолько запутанную, что он может только пытаться выбраться. В конце своего следующего хода он может пройти спасбросок Систем с +3 к Сложности. При успехе он больше не Ошеломлён. Этот спасбросок можно повторять в конце каждого его хода, каждый раз получая +1 к Точности, пока не будет пройден."
    }
   }
  },
@@ -1324,7 +1324,7 @@
   },
   "description": {
    "en": "The Pegasus pattern group first appeared following the start of hostilities between Union and the Aunic Ascendancy in Boundary Garden, a distant sector of distal space away from the Galactic Core. The timing of this outbreak may be related to the pattern group’s defining weapon, though skip-drone couriers from Union forces reported no encounters with the PG in Boundary Garden; instead, the Pegasus appeared in the Dawnline Shore, a stretch of colonial Armory space opposite Boundary Garden.<br>The Pegasus appears to address HORUS’s need for a pattern group with extensive kinetic combat capabilities: by marrying the best targeting systems, subroutines, and weapons hardware in the HORUS codebase, collectivists have designed a PG that boasts a tremendously low identify/time-to-kill (ID/TTK) ratio in all theaters where kinetic weaponry is viable.<br>As with many HORUS pattern groups, the Pegasus fields a signature weapon system: the Ushabti, a hostile impulse anti-corporeal weapon that operates with complete ignorance of even the most basic underpinnings of physics and thermodynamics. As such, it qualifies unambiguously as a paracausal weapon. The Ushabti’s precise function remains unknown to Union and Harrison Armory scientists, though radiological and gravitational signatures captured in the aftermath of the weapon’s use point toward a relationship with the Aunic Firmament. Studies are ongoing on Ras Shamra, the Armory’s chief research world, and in satellite campuses across the Dawnline Shore.",
-   "ru": ""
+   "ru": "Группа образцов «Пегас» впервые появилась после начала боевых действий между Юнионом и Аунским Восхождением в Пограничном Саду, отдалённом секторе дистального космоса вдали от Галактического Ядра. Время этой вспышки может быть связано с фирменным оружием группы образцов, хотя дроны-курьеры сил Юниона не сообщали о столкновениях с этой ГО в Пограничном Саду; вместо этого «Пегас» появился на Рассветном берегу — полосе колониального пространства Арсенала напротив Пограничного Сада.<br>«Пегас», по всей видимости, отвечает на потребность HORUS в группе образцов с обширными возможностями кинетического боя: объединив лучшие системы наведения, подпрограммы и оружейное железо в кодовой базе HORUS, коллективисты спроектировали ГО, обладающую невероятно низким соотношением обнаружение/время-до-убийства (ID/TTK) во всех театрах, где применимо кинетическое оружие.<br>Как и многие группы образцов HORUS, «Пегас» несёт фирменную оружейную систему: Ушабти — враждебное импульсное антителесное оружие, действующее в полном игнорировании даже самых базовых основ физики и термодинамики. Как таковое, оно однозначно квалифицируется как паракаузальное оружие. Точная функция Ушабти остаётся неизвестной учёным Юниона и Harrison Armory, хотя радиологические и гравитационные сигнатуры, зафиксированные после применения оружия, указывают на связь с Аунской Твердью. Исследования продолжаются на Рас-Шамре, главном исследовательском мире Арсенала, и на спутниковых кампусах по всему Рассветному берегу."
   },
   "traits": {
    "¿%:?EXTR!UDE GUN": {
@@ -1340,38 +1340,38 @@
    "By the Way, I Know Everything": {
     "name": {
      "en": "By the Way, I Know Everything",
-     "ru": ""
+     "ru": "«Кстати, я знаю всё»"
     },
     "description": {
      "en": "When it would roll damage, the Pegasus can instead deal the average damage based on the number of dice rolled, as follows: 1d3 (2), 1d6 (4), 2d6 (7), 3d6 (11), 4d6 (14). This must be decided before rolling damage.",
-     "ru": ""
+     "ru": "Когда должен быть брошен урон, «Пегас» может вместо этого нанести средний урон, основанный на числе бросаемых костей, следующим образом: 1d3 (2), 1d6 (4), 2d6 (7), 3d6 (11), 4d6 (14). Это должно быть решено до броска урона."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Ushabti Omnigun",
-    "ru": ""
+    "ru": "Всеоружие Ушабти"
    },
    "description": {
     "en": "“– funny thing. See, right now, this weapon technically doesn’t even exist. You’re shooting them with a gun that isn’t real, and yet it is! Don’t worry about it. RA’s like that. Just, here, know that because it exists at some point, we’ve made it. That’s causality, and causality is a –\"",
-    "ru": ""
+    "ru": "«— забавная штука. Видите ли, прямо сейчас это оружие технически даже не существует. Вы стреляете из оружия, которого не существует, и всё же оно есть! Не переживайте об этом. РА такой. Просто знайте, что раз оно существует в какой-то момент, мы его создали. Это причинность, а причинность — это —»"
    },
    "passive_name": {
     "en": "Ushabti Omnigun",
-    "ru": ""
+    "ru": "Всеоружие Ушабти"
    },
    "passive_effect": {
     "en": "Your mech’s omnigun is a piece of experimental hardware so advanced that it defies physics: it doesn’t require a mount, nor does it have a weapon type or size – meaning that it can’t be modified or benefit from your talents.<br>You can’t attack normally with this weapon. Instead, 1/round, as a free action during your turn, you can use it to deal 1 AP kinetic damage to a character within Range 15 and line of sight. This doesn’t count as an attack, hits automatically, ignores cover, bypasses Immunity, and its damage can’t be reduced or ignored in any way. No rule in this book or any other supersedes this.",
-    "ru": ""
+    "ru": "Всеоружие вашего меха — экспериментальное оборудование настолько продвинутое, что бросает вызов физике: оно не требует крепления и не имеет ни типа оружия, ни размера — а значит, его нельзя модифицировать или получить выгоду от ваших талантов.<br>Вы не можете атаковать этим оружием обычным образом. Вместо этого, 1/раунд, как свободное действие в свой ход, вы можете использовать его, чтобы нанести 1 бронебойного кинетического урона персонажу в пределах Дальности 15 и видимости. Это не считается атакой, попадает автоматически, игнорирует укрытие, обходит Иммунитет, и его урон нельзя уменьшить или проигнорировать никаким образом. Ни одно правило в этой книге или любой другой не имеет приоритета над этим."
    },
    "active_name": {
     "en": "Unshackle Ushabti",
-    "ru": ""
+    "ru": "Освободить Ушабти"
    },
    "active_effect": {
     "en": "For the rest of this scene, you can use the Ushabti Omnigun 3/round, instead of 1/round.",
-    "ru": ""
+    "ru": "До конца текущей сцены вы можете использовать Всеоружие Ушабти 3/раунд вместо 1/раунд."
    }
   }
  },
@@ -1382,58 +1382,58 @@
   },
   "description": {
    "en": "The Barbarossa is Harrison Armory’s most massive frame to date, built, per the orders of Harrison II, to “stand as the unstoppable image of Harrison I” and to carry the heaviest of weapons and equipment the Armory offers. Standing nearly thirteen meters tall, it is an unsubtle beast of a mech, inspiring terror in enemies and awe in allies. The Barbarossa can mount weapons suitable for engaging toe-to-toe with gunboats and low-gross tonnage subline vessels; due to its size and slow maneuverability, it is often employed in low-gravity engagements where mass is less of a concern.<br>The Barbarossa is a popular target for Purview essayists, who have been known to remark on the drawbacks that come with its size and how, as a result, it is a perfect stand-in for their political enemies.",
-   "ru": ""
+   "ru": "«Барбаросса» — самое массивное шасси Harrison Armory на сегодняшний день, построенное по приказу Харрисона II «стоять как неудержимый образ Харрисона I» и нести самое тяжёлое оружие и оборудование, которое может предложить Арсенал. Достигая почти тринадцати метров в высоту, это неприкрыто грозный зверь-мех, вселяющий ужас во врагов и трепет в союзников. «Барбаросса» может нести оружие, подходящее для боя лицом к лицу с канонерками и субмагистральными судами малого водоизмещения; из-за своего размера и медленной манёвренности она часто применяется в столкновениях при низкой гравитации, где масса менее критична.<br>«Барбаросса» — популярная мишень для эссеистов Purview, которые не раз отмечали недостатки, сопутствующие её размеру, и то, как в результате она становится идеальной заменой их политическим врагам."
   },
   "traits": {
    "Heavy Frame": {
     "name": {
      "en": "Heavy Frame",
-     "ru": ""
+     "ru": "Тяжёлый каркас"
     },
     "description": {
      "en": "The Barbarossa can’t be pushed, pulled, knocked Prone, or knocked back by smaller characters.",
-     "ru": ""
+     "ru": "«Барбароссу» нельзя толкнуть, притянуть, сбить с ног или отбросить персонажам меньшего размера."
     }
    },
    "Pressure Plating": {
     "name": {
      "en": "Pressure Plating",
-     "ru": ""
+     "ru": "Напорная броня"
     },
     "description": {
      "en": "The Barbarossa has resistance to Explosive Damage.",
-     "ru": ""
+     "ru": "«Барбаросса» имеет Сопротивление к взрывному урону."
     }
    },
    "Colossus": {
     "name": {
      "en": "Colossus",
-     "ru": ""
+     "ru": "Колосс"
     },
     "description": {
      "en": "Adjacent allied characters can use the Barbarossa for hard cover.",
-     "ru": ""
+     "ru": "Соседние союзные персонажи могут использовать «Барбароссу» как твёрдое укрытие."
     }
    },
    "Slow": {
     "name": {
      "en": "Slow",
-     "ru": ""
+     "ru": "Медлительная"
     },
     "description": {
      "en": "The Barbarossa receives +1 difficulty on Agility checks and saves.",
-     "ru": ""
+     "ru": "«Барбаросса» получает +1 к Сложности на проверки и спасброски Ловкости."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Apocalypse Rail",
-    "ru": ""
+    "ru": "«Рельса Апокалипсиса»"
    },
    "description": {
     "en": "Fresh from the Armory’s dayside research and development campus, the LGC-04 “Apocalypse Rail” is an exponential gravitic catapult – a to-scale test product pushed to licensed pilots for field trials as part of the Armory’s ongoing Plenary Beach Magnitude Weapons Test Project.<br>Distinct from current logarithmic short- or long-spool ship-to-ship weapons (kinetic or energetic/particular), this new platform taps into the Armory’s current gravitic research to exponentially charge and distribute a kinetic payload downrange. This increase in potential energy loading and decrease in total charge time comes at the cost of stability: where the logarithmic spool cannon is stable and shock-resistant, the exponential gravitic catapult is prone to destabilization. For the time being, built-in failsafes will trigger in the event of sudden traumatic destabilization to prevent detonation of the system, resetting any charging process underway at the time of the shock.<br>The LGC-04 “Apocalypse Rail” system is scaled considerably down from its intended operational role – that is, replacing capital ship spinal spool cannons – in order to effect the accumulation of live data for use in improving the system prior to naval adoption.",
-    "ru": ""
+    "ru": "Прямиком с дневного исследовательского и конструкторского кампуса Арсенала, LGC-04 «Рельса Апокалипсиса» — экспоненциальная гравитационная катапульта — полномасштабный тестовый продукт, переданный лицензированным пилотам для полевых испытаний в рамках продолжающегося проекта Арсенала по испытанию оружия «Пленарный пляжный масштаб».<br>В отличие от текущего логарифмического оружия корабль-корабль с коротким или длинным раскручиванием (кинетического или энергетического/частичного типа), эта новая платформа задействует текущие гравитационные исследования Арсенала для экспоненциальной зарядки и распределения кинетической полезной нагрузки на дистанции. Это увеличение потенциальной накопленной энергии и сокращение общего времени зарядки достигается ценой стабильности: там, где логарифмическая раскручиваемая пушка стабильна и устойчива к ударам, экспоненциальная гравитационная катапульта склонна к дестабилизации. Пока что встроенные предохранители будут срабатывать в случае внезапной травматической дестабилизации, чтобы предотвратить детонацию системы, сбрасывая любой процесс зарядки, идущий в момент удара.<br>Система LGC-04 «Рельса Апокалипсиса» значительно уменьшена в масштабе относительно своей предполагаемой оперативной роли — то есть замены осевых раскручиваемых пушек капитальных кораблей — чтобы обеспечить накопление реальных данных для улучшения системы перед принятием на вооружение флотом."
    },
    "passive_name": {
     "en": "",
@@ -1445,11 +1445,11 @@
    },
    "active_name": {
     "en": "Charge Rail",
-    "ru": ""
+    "ru": "Зарядить рельсу"
    },
    "active_effect": {
     "en": "When activated, you start charging the Barbarossa’s Apocalypse Rail, an incredibly powerful ship-to-ship long-spool weapon system that requires target calibration. Gain an Apocalypse Die, 1d6 starting at 4. At the start of each of your turns, lower the value of the Apocalypse Die by 1, to a minimum of 1. If you move (even involuntarily) or become Stunned or Jammed, the Apocalypse Die resets to 4 and then continues to count down as usual.<br>If the value of the Apocalypse Die is 1–3, you can attack on your turn with the Apocalypse Rail as a full action, but can’t move or take any other actions on the same turn. After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4. If you reach the end of the scene without using it, you regain 1 CP.<br>At the end of the scene, lose the Apocalypse Die, and the Apocalypse Rail stops charging.",
-    "ru": ""
+    "ru": "При активации вы начинаете заряжать «Рельсу Апокалипсиса» «Барбароссы» — невероятно мощную систему длинного раскручивания корабль-корабль, требующую калибровки по цели. Получите Кость Апокалипсиса, 1d6, начинающуюся с 4. В начале каждого своего хода уменьшайте значение Кости Апокалипсиса на 1, минимум до 1. Если вы двигаетесь (даже недобровольно) или становитесь Ошеломлены либо Заклинившими, Кость Апокалипсиса сбрасывается на 4 и продолжает отсчёт как обычно.<br>Если значение Кости Апокалипсиса 1–3, вы можете атаковать в свой ход «Рельсой Апокалипсиса» как полное действие, но не можете двигаться или совершать другие действия в этот же ход. После атаки «Рельсой Апокалипсиса» Кость Апокалипсиса сбрасывается на 4. Если вы доходите до конца сцены, не использовав её, вы восстанавливаете 1 CP.<br>В конце сцены вы теряете Кость Апокалипсиса, и «Рельса Апокалипсиса» прекращает заряжаться."
    }
   }
  },
@@ -1460,38 +1460,38 @@
   },
   "description": {
    "en": "The original Genghis frame marked the dawn of the mech age; the Armory’s new line seeks to redefine it. From its roots as a modified GMS hardsuit, the Genghis Mk I became notorious for its use in the Hercynian Crisis – the first-contact war that triggered the violent overthrow of the Second Committee. In the administrative and political chaos that followed the Crisis, Harrison Armory secured the design and adapted it to serve as the basis of its first proprietary mechs, including the Sherman and the Saladin.<br>The new Genghis bears some resemblance to the chassis of Hercynian notoriety, serving in a similar area-denial/soft-target elimination role; The Genghis Mk II has been brought in line with the Third Committee’s Utopian Pillars.",
-   "ru": ""
+   "ru": "Оригинальное шасси «Чингисхан» ознаменовало рассвет эпохи мехов; новая линейка Арсенала стремится переопределить её. Начав как модифицированный скафандр GMS, «Чингисхан» Mk I прославился применением в Герцинском кризисе — войне первого контакта, спровоцировавшей насильственное свержение Второго Комитета. В административном и политическом хаосе, последовавшем за Кризисом, Harrison Armory заполучил конструкцию и адаптировал её как основу для своих первых собственных мехов, включая «Шермана» и «Саладина».<br>Новый «Чингисхан» несёт некоторое сходство с шасси герцинской известности, выполняя схожую роль в удержании территории и устранении мягких целей; «Чингисхан» Mk II был приведён в соответствие с Утопическими столпами Третьего Комитета."
   },
   "traits": {
    "Insulated": {
     "name": {
      "en": "Insulated",
-     "ru": ""
+     "ru": "Изолированный"
     },
     "description": {
      "en": "The Genghis has Immunity to burn.",
-     "ru": ""
+     "ru": "«Чингисхан» имеет Иммунитет к огню."
     }
    },
    "Emergency Vent": {
     "name": {
      "en": "Emergency Vent",
-     "ru": ""
+     "ru": "Аварийный сброс"
     },
     "description": {
      "en": "When the Genghis takes structure damage, it clears all heat.",
-     "ru": ""
+     "ru": "Когда «Чингисхан» получает структурный урон, он сбрасывает всё Тепло."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "TBK Sustain Suite",
-    "ru": ""
+    "ru": "Комплекс поддержки TBK"
    },
    "description": {
     "en": "To better manage the Genghis’s tremendous power demands and rapidly accelerate heat dispersion, the Think Tank developed a suite of power-management mechanisms. After extensive field testing, pilots discovered that the TBK Sustain Suite can be used as both a heat sink and an area-denial weapon.",
-    "ru": ""
+    "ru": "Чтобы лучше управлять огромными энергетическими потребностями «Чингисхана» и ускорить рассеивание тепла, Мозговой центр разработал комплекс механизмов управления энергией. После обширных полевых испытаний пилоты обнаружили, что Комплекс поддержки TBK можно использовать и как теплоотвод, и как оружие удержания территории."
    },
    "passive_name": {
     "en": "",
@@ -1503,11 +1503,11 @@
    },
    "active_name": {
     "en": "Expose Power Cells",
-    "ru": ""
+    "ru": "Обнажить силовые ячейки"
    },
    "active_effect": {
     "en": "The next time you exceed your Heat Cap this scene, you instead clear all heat and vent a burst 3 cloud of burning matter from your mech.<br>Until the start of your next turn, all characters within the affected area count as Invisible to everyone except you, and characters other than you take 2 burn and 2 heat when they start their turn in the area or enter it for the first time in a round. Once this effect ends, characters within the affected area receive soft cover (which you ignore) until the start of your following turn, at which point the cloud disperses.",
-    "ru": ""
+    "ru": "В следующий раз, когда вы превысите Предел тепла в этой сцене, вы вместо этого сбрасываете всё тепло и выпускаете из своего меха облако горящей материи областью вспышка 3.<br>До начала вашего следующего хода все персонажи в поражённой области считаются Невидимыми для всех, кроме вас, а персонажи, кроме вас, получают 2 огня и 2 тепла, когда начинают ход в этой области или впервые входят в неё за раунд. Когда этот эффект заканчивается, персонажи в поражённой области получают мягкое укрытие (которое вы игнорируете) до начала вашего следующего хода, после чего облако рассеивается."
    }
   }
  },
@@ -1518,48 +1518,48 @@
   },
   "description": {
    "en": "Developed on the proving grounds of the Armory’s Think Tank, the Iskander is a new specialist frame designed to bring gravtech area-control and breach capabilities to a mechanized platform.<br>A bulky frame, the Iskander fields a mix of kinetic and causal-energy systems that empower pilots to triumph in a wide portfolio of scenarios. The Iskander platform has no civilian counterpart: it is intended to be used as a frontline command and control platform, with an emphasis toward identifying and eliminating static explosive threats.",
-   "ru": ""
+   "ru": "Разработанный на полигонах Мозгового центра Арсенала, «Искандер» — новое специализированное шасси, созданное для внедрения гравитех-контроля территории и возможностей прорыва в механизированную платформу.<br>Массивное шасси, «Искандер» несёт смесь кинетических и каузально-энергетических систем, дающих пилотам преимущество в широком спектре сценариев. У платформы «Искандер» нет гражданского аналога: она предназначена для использования как фронтовая командно-контрольная платформа с упором на обнаружение и устранение статичных взрывных угроз."
   },
   "traits": {
    "Assault Launcher": {
     "name": {
      "en": "Assault Launcher",
-     "ru": ""
+     "ru": "Штурмовой пускатель"
     },
     "description": {
      "en": "1/round, the Iskander may throw one Grenade or plant one Mine as though it has range 15.",
-     "ru": ""
+     "ru": "1/раунд «Искандер» может бросить одну Гранату или установить одну Мину, как если бы имел Дальность 15."
     }
    },
    "Mine Deployers": {
     "name": {
      "en": "Mine Deployers",
-     "ru": ""
+     "ru": "Минные диспенсеры"
     },
     "description": {
      "en": "1/round, when the Iskander plants a Mine (even using its Assault Launcher trait), it may plant up to two other Mines in free spaces adjacent to itself as a free action.",
-     "ru": ""
+     "ru": "1/раунд, когда «Искандер» устанавливает Мину (даже используя свою черту Штурмовой пускатель), он может установить до двух дополнительных Мин в свободных клетках рядом с собой как свободное действие."
     }
    },
    "Skeleton Key": {
     "name": {
      "en": "Skeleton Key",
-     "ru": ""
+     "ru": "Отмычка"
     },
     "description": {
      "en": "The Iskander never triggers or sets off Mines or other proximity-based systems unless it chooses to do so.",
-     "ru": ""
+     "ru": "«Искандер» никогда не активирует и не срабатывает от Мин или других систем на основе близости, если сам не решит этого сделать."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Broad-Sweep Seeder",
-    "ru": ""
+    "ru": "Широкополосный сеятель"
    },
    "description": {
     "en": "The Broad-Sweep Seeder is a proprietary device developed during the Orrugi Occupation, during which Armory legionnaires fought an embittered, recalcitrant local guerilla movement. IEDs, VBEDs, and D/SABEDs were often employed by the resistance; to counter the threat, Harrison Armory developed the Seeder to simultaneously scan, identify, and eliminate explosive threats in proximity to stationary units. The technology proved successful and, with minor adaptation, was adapted for installation on Armory frames.<br>The Broad-Sweep Seeder emits an excited LIDAR hivecone to flag potential targets: if positive identification occurs, the target is neutralized with a spray of mag-accelerated, dull-coat flechettes. The Seeder can also carry explosive hivemines.",
-    "ru": ""
+    "ru": "Широкополосный сеятель — фирменное устройство, разработанное во время Оккупации Орруги, в ходе которой легионеры Арсенала сражались с ожесточённым, непреклонным местным партизанским движением. Сопротивление часто применяло СВУ, ВБСВ и D/SABEDs; в противодействие этой угрозе Harrison Armory разработал Сеятель для одновременного сканирования, опознания и устранения взрывных угроз вблизи стационарных подразделений. Технология показала успех и, с незначительной адаптацией, была приспособлена для установки на шасси Арсенала.<br>Широкополосный сеятель испускает возбуждённый LIDAR-улье-конус для пометки потенциальных целей: при положительном опознании цель нейтрализуется очередью магнитно-ускоренных стрел с матовым покрытием. Сеятель также может нести взрывные улье-мины."
    },
    "passive_name": {
     "en": "",
@@ -1571,11 +1571,11 @@
    },
    "active_name": {
     "en": "Death Cloud",
-    "ru": ""
+    "ru": "Облако смерти"
    },
    "active_effect": {
     "en": "This system fires an enormous, expanding cloud of micromines across the whole battlefield, affecting all hostile characters within range 50. For the rest of the scene, when hostile characters make any movement other than their standard move (including involuntary movement), they take 3 AP explosive damage. This effect can trigger any number of times, but only 1/round for each character.",
-    "ru": ""
+    "ru": "Эта система выпускает огромное расширяющееся облако микромин по всему полю боя, поражая всех враждебных персонажей в пределах Дальности 50. До конца сцены, когда враждебные персонажи совершают любое перемещение, кроме своего стандартного (включая недобровольное перемещение), они получают 3 бронебойного взрывного урона. Этот эффект может срабатывать любое количество раз, но не более 1/раунд для каждого персонажа."
    }
   }
  },
@@ -1586,38 +1586,38 @@
   },
   "description": {
    "en": "Perhaps in a tongue-in-cheek nod to its namesake, the Napoleon is a squat frame in comparison to other Harrison Armory designs. Its frame is packed with marvels of Armory engineering – technology that demands nothing less than the best and brightest pilots. In spite of its small stature, the Napoleon employs one of the Armory’s most terrifying new weapons, the Displacer, which manifests pinpoint, one-way blinkspace ruptures on its targets.<br>Notable for more than its stature, this chassis boasts a tremendous record of success, with pilots reporting a .800 return rate in high-KIA operations. The Napoleon is a popular chassis among breach divisions of the Armory’s legions, Think Tank security, and Union Economic Bureau development teams.",
-   "ru": ""
+   "ru": "Возможно, в шутливой отсылке к своему тёзке, «Наполеон» — приземистое шасси по сравнению с другими разработками Harrison Armory. Его каркас насыщен чудесами инженерии Арсенала — технологиями, требующими не меньше, чем лучших и самых способных пилотов. Несмотря на небольшой рост, «Наполеон» использует одно из самых устрашающих новых орудий Арсенала — Дисплейсер, создающий точечные, однонаправленные разрывы блинкспейса на своих целях.<br>Примечательное не только своим ростом, это шасси может похвастаться внушительным послужным списком успехов: пилоты сообщают о показателе возврата 0,800 в операциях с высоким уровнем потерь. «Наполеон» — популярное шасси среди штурмовых дивизионов легионов Арсенала, службы безопасности Мозгового центра и групп развития Экономического бюро Юниона."
   },
   "traits": {
    "Heavy Shielding": {
     "name": {
      "en": "Heavy Shielding",
-     "ru": ""
+     "ru": "Тяжёлое экранирование"
     },
     "description": {
      "en": "When the Napoleon would take half damage on a successful check or save, it instead reduces the damage to 1.",
-     "ru": ""
+     "ru": "Когда «Наполеон» должен получить половину урона при успешной проверке или спасброске, он вместо этого снижает урон до 1."
     }
    },
    "Flash Aegis": {
     "name": {
      "en": "Flash Aegis",
-     "ru": ""
+     "ru": "Мгновенная эгида"
     },
     "description": {
      "en": "When the Napoleon Braces, it reduces incoming damage to 1 instead of gaining Resistance.",
-     "ru": ""
+     "ru": "Когда «Наполеон» Держит оборону, он снижает входящий урон до 1 вместо получения Сопротивления."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Trueblack Aegis",
-    "ru": ""
+    "ru": "«Истинно-чёрная эгида»"
    },
    "description": {
     "en": "The Trueblack Aegis is a breakthrough in personal shielding developed by the Armory’s Think Tank. Like the Armory’s other NHP-derived technologies, the Aegis is a “black-box” technology: its code and inner workings are highly confidential, and it can typically only be requisitioned by pilots of high rank or standing within Harrison Armory. Some Cosmopolitan pilots have described the appearance of the Aegis as similar to the void – or blindness – they see when looking into blinkspace. It’s safe to assume the device harnesses unstable blinkfield technology to manifest a thin blinkspace bubble within defined parameters. The blinkfield can only maintain coherence for a brief moment but can be flickered on and off to create a total blinkspace dome.",
-    "ru": ""
+    "ru": "«Истинно-чёрная эгида» — прорыв в области персонального экранирования, разработанный Мозговым центром Арсенала. Как и другие технологии Арсенала, производные от НЧЛ, Эгида — технология типа «чёрный ящик»: её код и внутреннее устройство строго конфиденциальны, и обычно её могут получить только пилоты высокого ранга или положения внутри Harrison Armory. Некоторые Космополитные пилоты описывали внешний вид Эгиды как схожий с пустотой — или слепотой — которую они видят, глядя в блинкспейс. Разумно предположить, что устройство использует нестабильную технологию блинк-поля для проявления тонкого пузыря блинкспейса в заданных параметрах. Блинк-поле способно поддерживать когерентность лишь краткий миг, но может мерцать, включаясь и выключаясь, создавая полный купол блинкспейса."
    },
    "passive_name": {
     "en": "",
@@ -1629,11 +1629,11 @@
    },
    "active_name": {
     "en": "Activate Aegis",
-    "ru": ""
+    "ru": "Активировать эгиду"
    },
    "active_effect": {
     "en": "A shimmering, utterly black field quickly envelops your mech, covering it like a second skin. For the rest of the scene, you:<ul><li>reduce all damage to 1, except for damage that ignores reduction;</li><li>gain Immunity to all tech actions, including beneficial ones, and any current tech effects or conditions on you end;</li><li>can only use systems with the Shield tag – any others immediately deactivate (systems that do not require activation are unaffected);</li><li>can’t take quick actions, full actions, or reactions, except for standard moves, Grapple, Ram, Improvised Attack, Activate (Shield systems only), Skill Check, and Boost;</li><li>can’t Overcharge;</li><li>can’t use comms to talk to other characters (as sound doesn’t exit the shield).</li></ul>You can still receive statuses and Heat, and can be affected by involuntary movement. You can otherwise interact normally with the world, including picking up and dragging items, and so on.",
-    "ru": ""
+    "ru": "Мерцающее, совершенно чёрное поле быстро окутывает ваш мех, покрывая его как вторая кожа. До конца сцены вы:<ul><li>снижаете весь урон до 1, кроме урона, игнорирующего снижение;</li><li>получаете Иммунитет ко всем тех-действиям, включая благоприятные, и любые текущие тех-эффекты или состояния на вас заканчиваются;</li><li>можете использовать только системы с тегом Щит — любые другие немедленно деактивируются (системы, не требующие активации, не затрагиваются);</li><li>не можете совершать быстрые действия, полные действия или реакции, кроме стандартного перемещения, Захвата, Тарана, Импровизированной атаки, Активации (только системы со Щитом), Проверки навыка и Ускорения;</li><li>не можете Форсировать;</li><li>не можете использовать связь для разговора с другими персонажами (поскольку звук не выходит за пределы щита).</li></ul>Вы всё ещё можете получать состояния и Тепло, а также можете быть подвержены недобровольному перемещению. В остальном вы можете взаимодействовать с миром как обычно, включая поднятие и перетаскивание предметов и так далее."
    }
   }
  },
@@ -1644,48 +1644,48 @@
   },
   "description": {
    "en": "The Saladin is a hardy and efficient platform for full-squad support shielding. Based on early defense-oriented versions of the Genghis, the Saladin became the stuff of Armory legend following the exploits of Harrison I “Fearkiller” during the Interest War.<br>Since its first iteration, the Saladin has proved successful in a defensive and support role; it has even become a mainstay among Union Department of Justic and Human Rights liberator teams engaged in emancipation and refugee escort missions, despite the ideological (and, often, tactical) friction between the Armory and the DoJ/HR. Records from these engagements indicate that the Saladin’s massive bulk alone was a comfort and morale boost to DoJ/HR troopers and their charges, many of whom referred to the mechs as “Big Sal”. Union-flagged Saladin pilots often report null balances on bar tabs following engagements in emancipated systems.",
-   "ru": ""
+   "ru": "«Саладин» — прочная и эффективная платформа для экранирования поддержки всего отряда. Основанный на ранних оборонительно-ориентированных версиях «Чингисхана», «Саладин» стал частью легенд Арсенала после подвигов Харрисона I «Убийцы страха» во время Войны за интересы.<br>С первой же итерации «Саладин» доказал успешность в оборонительной и поддерживающей роли; он даже стал опорой среди освободительных команд Департамента юстиции и прав человека Юниона, занятых миссиями по освобождению и сопровождению беженцев, несмотря на идеологическое (а зачастую и тактическое) трение между Арсеналом и ДЮПЧ. Записи об этих столкновениях указывают, что одна лишь массивная туша «Саладина» служила утешением и поднимала боевой дух бойцам ДЮПЧ и их подопечным, многие из которых называли эти мехи «Большой Сэл». Пилоты «Саладина» под флагом Юниона часто сообщают об обнулении барных счетов после операций в освобождённых системах."
   },
   "traits": {
    "Reinforced Frame": {
     "name": {
      "en": "Reinforced Frame",
-     "ru": ""
+     "ru": "Усиленный каркас"
     },
     "description": {
      "en": "The Saladin has Immunity to Shredded.",
-     "ru": ""
+     "ru": "«Саладин» имеет Иммунитет к Истрёпанности."
     }
    },
    "Guardian": {
     "name": {
      "en": "Guardian",
-     "ru": ""
+     "ru": "Страж"
     },
     "description": {
      "en": "Adjacent allied characters can use the Saladin for hard cover.",
-     "ru": ""
+     "ru": "Соседние союзные персонажи могут использовать «Саладина» как твёрдое укрытие."
     }
    },
    "Warp Shield": {
     "name": {
      "en": "Warp Shield",
-     "ru": ""
+     "ru": "Искажающий щит"
     },
     "description": {
      "en": "1/round, the Saladin can give +1 difficulty to any attack against it or an allied character within Sensors as a reaction before the roll is made.",
-     "ru": ""
+     "ru": "1/раунд «Саладин» может дать +1 к Сложности любой атаке против себя или союзного персонажа в пределах Сенсоров как реакцию перед броском."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Tachyon Loop",
-    "ru": ""
+    "ru": "Тахионная петля"
    },
    "description": {
     "en": "Developed by the Think Tank as a joint venture with IPS-Northstar’s Stellar Engineering Unit, the Tachyon Loop uses a closed-loop system to restrain and manipulate a tachyon lance, accelerating tachyons at faster-than-light speeds around a central buckler. The buckler can be carried by a mech or mounted directly, interceding directional incoming fire. As the tachyons travel faster than light, they are invisible to the naked eye, giving the shield the appearance of a large spoked wheel.",
-    "ru": ""
+    "ru": "Разработанная Мозговым центром совместно со Звёздным инженерным подразделением IPS-Northstar, Тахионная петля использует замкнутую систему для удержания и манипуляции тахионным копьём, ускоряя тахионы до сверхсветовых скоростей вокруг центрального баклера. Баклер может носиться мехом или устанавливаться напрямую, перехватывая направленный входящий огонь. Поскольку тахионы движутся быстрее света, они невидимы невооружённым глазом, придавая щиту вид большого спицевого колеса."
    },
    "passive_name": {
     "en": "",
@@ -1697,11 +1697,11 @@
    },
    "active_name": {
     "en": "Tachyon Shield",
-    "ru": ""
+    "ru": "Тахионный щит"
    },
    "active_effect": {
     "en": "This system projects an accelerated-tachyon shield over an allied character within Sensors. You may choose a new target as a quick action. Gain the Defensive Pulse reaction for the rest of the scene.<br>Defensive Pulse<br>Reaction, 1/round<br>Trigger: Your target is attacked.<br>Effect: You empower their tachyon shield with a pulse of energy. They gain Resistance to all damage from the attack, and if the attack misses, you may force the attacker to reroll it against a character or object of your choice, checking line of sight and Range from your target instead of from the attacker. If the attack was part of an area of effect, the new target must be inside the same area of effect from the original attack instead.",
-    "ru": ""
+    "ru": "Эта система проецирует ускоренно-тахионный щит на союзного персонажа в пределах Сенсоров. Вы можете выбрать новую цель как быстрое действие. Получите реакцию «Защитный импульс» до конца сцены.<br>Защитный импульс<br>Реакция, 1/раунд<br>Триггер: вашу цель атакуют.<br>Эффект: вы усиливаете её тахионный щит импульсом энергии. Она получает Сопротивление ко всему урону от атаки, и если атака промахивается, вы можете заставить атакующего перебросить её по персонажу или объекту по вашему выбору, проверяя видимость и Дальность от вашей цели, а не от атакующего. Если атака была частью области поражения, новая цель должна находиться внутри той же области поражения исходной атаки."
    }
   }
  },
@@ -1712,48 +1712,48 @@
   },
   "description": {
    "en": "The Sherman is the classic Harrison Armory frame: any station, nation, world, or state—stellar or interstellar—with an Armory fleet-supply contract fields a backbone force of Sherman mechs. The Sherman is designed to carry a range of Harrison Armory’s main battle-line energy weaponry, with a rugged, versatile reactor to back it up. After the GMS-SP1 Everest, the Sherman is the second-most-common mech in the core systems—so common that GMS has recently begun equipping its stock models with more ablative and wave-scatter defenses, specifically to deal with hostile actors fielding Shermans.<br>At present, the Mk I is in wide use, with exclusive, first-contract Mk II units only now rolling off the lines at Ras Shamra and other Armory special-project worlds.",
-   "ru": ""
+   "ru": "«Шерман» — классическое шасси Harrison Armory: любая станция, нация, мир или государство — звёздное или межзвёздное — с флотским контрактом на поставку от Арсенала выставляет становой хребет из мехов «Шерман». «Шерман» спроектирован нести ряд основного линейного энергетического оружия Harrison Armory, подкреплённого прочным, универсальным реактором. После GMS-SP1 «Эверест», «Шерман» — второй по распространённости мех в Центральных системах — настолько распространённый, что GMS недавно начала оснащать свои серийные модели усиленной абляционной и волнорассеивающей защитой специально для противодействия враждебным силам, выставляющим «Шерманы».<br>В настоящее время Mk I находится в широком использовании, тогда как эксклюзивные, первоконтрактные единицы Mk II только сейчас сходят с линий на Рас-Шамре и других особых проектных мирах Арсенала."
   },
   "traits": {
    "Superior Reactor": {
     "name": {
      "en": "Superior Reactor",
-     "ru": ""
+     "ru": "Превосходный реактор"
     },
     "description": {
      "en": "The Sherman gains +1 accuracy on Engineering checks and saves.",
-     "ru": ""
+     "ru": "«Шерман» получает +1 к Точности на проверки и спасброски Инженерии."
     }
    },
    "Mathur Stop": {
     "name": {
      "en": "Mathur Stop",
-     "ru": ""
+     "ru": "Остановка Матура"
     },
     "description": {
      "en": "When the Sherman clears all heat, you may choose to receive heat equal to half its Heat Cap, putting it in the Danger Zone.",
-     "ru": ""
+     "ru": "Когда «Шерман» сбрасывает всё тепло, вы можете выбрать получить тепло, равное половине его Предела тепла, переводя его в Опасную зону."
     }
    },
    "Vent Heat": {
     "name": {
      "en": "Vent Heat",
-     "ru": ""
+     "ru": "Сброс тепла"
     },
     "description": {
      "en": "When you Stabilize the Sherman or it exceeds its Heat Cap, it benefits from soft cover until the start of your next turn.",
-     "ru": ""
+     "ru": "Когда вы Стабилизируете «Шермана» или он превышает свой Предел тепла, он получает мягкое укрытие до начала вашего следующего хода."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Zone-Focus Mk IV SOLIDCORE",
-    "ru": ""
+    "ru": "ZF4 SOLIDCORE"
    },
    "description": {
     "en": "The ZF4 SOLIDCORE is a hard-mounted, dual-source energy beam weapon. Powered by a millifold power generation system, the ZF4 features a secondary belt-fed rack of solidcore batteries that can be used to overcharge a single impulse beam, extending the weapon’s range and destructive power.",
-    "ru": ""
+    "ru": "ZF4 SOLIDCORE — жёстко закреплённое энергетическое лучевое оружие с двойным источником. Питаемое системой генерации энергии миллифолд, ZF4 оснащён вторичной ленточной стойкой батарей солидкор, которые можно использовать для сверхзарядки одного импульсного луча, увеличивая дальность и разрушительную мощь оружия."
    },
    "passive_name": {
     "en": "",
@@ -1765,11 +1765,11 @@
    },
    "active_name": {
     "en": "COREBURN Protocol",
-    "ru": ""
+    "ru": "Протокол COREBURN"
    },
    "active_effect": {
     "en": "Your ZF4 SOLIDCORE immediately gains 3 Charges, to a maximum of 4; additionally, for the rest of this scene, Stabilize generates 2 Charges instead of 1, and all terrain, objects, and deployables take 10 AP energy damage per charge on hit.",
-    "ru": ""
+    "ru": "Ваш ZF4 SOLIDCORE немедленно получает 3 Заряда, максимум до 4; дополнительно, до конца текущей сцены, Стабилизация генерирует 2 Заряда вместо 1, а вся местность, объекты и разворачиваемое снаряжение получают 10 бронебойного энергетического урона за заряд при попадании."
    }
   }
  },
@@ -1780,42 +1780,42 @@
   },
   "description": {
    "en": "HA’s Tokugawa is a relative newcomer on the market, popular in core systems for security, CQB, and ship-boarding applications. The Tokugawa is an unsubtle, imposing mech – a sturdy platform from which its systems can draw necessary power. Unlike other frames, the Tokugawa’s unique reactor is designed to allow standard limitations to be removed with ease. Knowing this, experienced (or foolhardy) pilots can ‘overclock’ the reactor, increasing its output and gaining an incredible power draw for their energy weapons.",
-   "ru": ""
+   "ru": "«Токугава» от HA — относительный новичок на рынке, популярный в Центральных системах для задач безопасности, ближнего огневого контакта и абордажа кораблей. «Токугава» — неприкрыто грозный, внушительный мех — прочная платформа, из которой его системы могут черпать необходимую мощность. В отличие от других шасси, уникальный реактор «Токугавы» спроектирован так, чтобы легко снимать стандартные ограничения. Зная это, опытные (или безрассудные) пилоты могут «разогнать» реактор, увеличивая его выходную мощность и получая невероятный энергетический потенциал для своего энергетического оружия."
   },
   "traits": {
    "Limit Break": {
     "name": {
      "en": "Limit Break",
-     "ru": ""
+     "ru": "Предел на пределе"
     },
     "description": {
      "en": "When the Tokugawa is Exposed, its ranged and melee attacks deal +3 energy bonus damage on hit, all of its weapons that would deal kinetic or explosive damage instead deal energy, ranged weapons gain +5 range and melee weapons gain +1 threat.",
-     "ru": ""
+     "ru": "Когда «Токугава» Уязвим, его дальние и ближние атаки наносят +3 бонусного энергетического урона при попадании, всё его оружие, наносящее кинетический или взрывной урон, вместо этого наносит энергетический, дальнее оружие получает +5 к Дальности, а ближнее — +1 к Угрозе."
     }
    },
    "Plasma Sheath": {
     "name": {
      "en": "Plasma Sheath",
-     "ru": ""
+     "ru": "Плазменная оболочка"
     },
     "description": {
      "en": "When the Tokugawa is in the Danger Zone and attacks with a weapon that deals any amount of energy, all bonus damage becomes burn.",
-     "ru": ""
+     "ru": "Когда «Токугава» находится в Опасной зоне и атакует оружием, наносящим энергетический урон в любом количестве, весь бонусный урон становится огнём."
     }
    }
   },
   "core_system": {
    "name": {
     "en": "Superheated Reactor Feed",
-    "ru": ""
+    "ru": "Перегретая подача реактора"
    },
    "description": {
     "en": "Pilots of a certain breed thrive at the very edge of catastrophe, risking either glorious success or utter failure in each moment. These daredevils are familiar with the howl of critical heat warnings – the warbling siren song of destruction and superheated reactor feeds. Tokugawa pilots are notorious for supercharging their weapons with excess energy, pushing their heat gauge to the max. Harnessing the Tokugawa’s unique reactor, these pilots churn out damage and make no friends in the engineering bay – assuming they don’t melt into a ball of slag before they make it back from the line.",
-    "ru": ""
+    "ru": "Пилоты определённого склада процветают на самой грани катастрофы, рискуя либо славным успехом, либо полным провалом в каждый момент. Эти смельчаки хорошо знакомы с воем предупреждений о критическом перегреве — вибрирующей сиреньей песней разрушения и перегретых реакторных подач. Пилоты «Токугавы» печально известны тем, что сверхзаряжают своё оружие избыточной энергией, доводя датчик тепла до максимума. Используя уникальный реактор «Токугавы», эти пилоты выдают колоссальный урон и не заводят друзей в инженерном отсеке — если, конечно, не расплавляются в шар шлака, прежде чем успеют вернуться с линии фронта."
    },
    "passive_name": {
     "en": "Overclock",
-    "ru": ""
+    "ru": "Разгон"
    },
    "passive_effect": {
     "en": "",
@@ -1823,11 +1823,11 @@
    },
    "active_name": {
     "en": "Radiance",
-    "ru": ""
+    "ru": "Сияние"
    },
    "active_effect": {
     "en": "For the rest of this scene, weapons that deal any energy gain +5 range if they are ranged or +2 threat if they are melee.<br>While you’re Exposed, Limit Break stacks with these bonuses for a total increase of +10 range and +3 threat.",
-    "ru": ""
+    "ru": "До конца текущей сцены оружие, наносящее энергетический урон в любом количестве, получает +5 к Дальности, если оно дальнобойное, или +2 к Угрозе, если оно ближнего боя.<br>Пока вы Уязвимы, «Предел на пределе» складывается с этими бонусами, давая суммарное увеличение +10 к Дальности и +3 к Угрозе."
    }
   }
  }
