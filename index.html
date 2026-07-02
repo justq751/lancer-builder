@@ -431,11 +431,15 @@ function localizeData(base, locale) {
   const L = JSON.parse(JSON.stringify(base)); // deep clone, never mutate the fetched base
   if (!locale) return L; // "en" — nothing to overlay, English IS the source data
 
-  // frames: name is a logic key (license matching) -> never overlaid
+  // frames: fr.name stays English — it's a logic key (state.licenses[fr.name],
+  // item.license === fr.name for unlocking). We instead populate fr.display_name
+  // with the translation, purely for rendering; see dispName() and its call sites.
   const frOverlay = locale.frames || {};
   L.frames.forEach(fr => {
+    fr.display_name = fr.name; // default: no translation yet -> show the English name
     const t = frOverlay[fr.id];
     if (!t) return;
+    if (t.name) fr.display_name = pickText(fr.name, t.name);
     if (t.description !== undefined) fr.description = pickText(fr.description, t.description);
     overlayNamedSublist(fr.traits, t.traits);
     if (fr.core_system && t.core_system) {
@@ -496,6 +500,11 @@ function trTag(tag) {
   const parenT = paren && dict[paren] ? " " + (dict[paren][currentLang] || paren) : (paren ? " " + paren : "");
   return (baseT + num + parenT);
 }
+
+/* Display-only translated frame name. frame.name itself is NEVER used here —
+   it must stay English everywhere else (license keys / matching), see
+   localizeData() above. Falls back to the English name if untranslated. */
+const dispName = f => (f && (f.display_name || f.name)) || "";
 
 /* Fetches everything needed for `lang` and returns the ready-to-use L object. */
 async function fetchAndLocalize(lang) {
@@ -685,7 +694,7 @@ function renderHUD(){
   </div>
   <div class="card">
     <div class="head"><span class="lbl"><b>//</b> СВОДКА МЕХА</span>
-      ${d.frame?`<span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.name)}</span>`:""}</div>
+      ${d.frame?`<span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(dispName(d.frame))}</span>`:""}</div>
     <div class="body">${stats}</div>
   </div>`;
 }
@@ -874,7 +883,7 @@ function renderLicenses(){
         const nUnlock = [...L.weapons,...L.systems].filter(it=>it.license===f.name && (it.license_level||0)<=v).length;
         return `<div class="item ${v?'sel':''}">
           <div class="src" style="background:${srcColor(src)}"></div>
-          <div class="top"><div class="nm">${esc(f.name)}</div><div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
+          <div class="top"><div class="nm">${esc(dispName(f))}</div><div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
           <div class="meta">ШАССИ открывается на ранге ${f.license_level} · открыто предметов: ${nUnlock}</div>
           <div class="stepper" style="margin-top:11px">
             <button class="stepbtn" data-lic="${esc(f.name)}" data-d="-1" ${v<=0?"disabled":""}>−</button>
@@ -906,7 +915,7 @@ function renderFrame(){
     const s=f.stats;
     return `<div class="item ${sel?'sel':''} ${lk?'locked':''}" data-frame="${f.id}">
       <div class="src" style="background:${srcColor(f.source)}"></div>
-      <div class="top"><div class="nm">${esc(f.name)}</div>
+      <div class="top"><div class="nm">${esc(dispName(f))}</div>
         <div class="badge ${lk?'lock':''}">${lk?"🔒 LL"+f.license_level:f.source}</div></div>
       <div class="meta">${f.mechtype.map(tr).join(" / ")} · РАЗМЕР ${s.size}</div>
       <div class="tags">
@@ -928,7 +937,7 @@ function openFrame(id){
       ${cs.description?`<div class="desc" style="margin-bottom:8px">${rich(cs.description)}</div>`:""}
       ${cs.passive_name?`<div style="margin-bottom:8px"><b>Пассивно — ${esc(cs.passive_name)}:</b> <span class="desc">${rich(cs.passive_effect)}</span></div>`:""}
       ${cs.active_name?`<div><b>CORE-актив — ${esc(cs.active_name)}:</b> <span class="desc">${rich(cs.active_effect)}</span></div>`:""}`:"";
-  modal(f.name, `
+  modal(dispName(f), `
     <div class="meta" style="margin-bottom:8px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype.map(tr).join(" / ")} · лицензия LL${f.license_level}</div>
     <div class="desc" style="margin-bottom:14px">${rich(f.description)}</div>
     <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
@@ -957,7 +966,7 @@ function renderLoadout(){
     return;
   }
   const over=d.sp.used>d.sp.cap;
-  $("#tab").innerHTML = sechead("// 07 · ВООРУЖЕНИЕ",`Снаряжение — ${esc(d.frame.name)}`,
+  $("#tab").innerHTML = sechead("// 07 · ВООРУЖЕНИЕ",`Снаряжение — ${esc(dispName(d.frame))}`,
     `Установите оружие в крепления и системы в рамках системных очков (SP). Использовано SP: ${d.sp.used} из ${d.sp.cap}.`)
     + (over?`<div class="warnbox">⚠ Превышен лимит системных очков на ${d.sp.used-d.sp.cap} SP.</div>`:"")
     + `<h3 style="font-family:'Chakra Petch';font-size:16px;margin:6px 0 12px">// КРЕПЛЕНИЯ ОРУЖИЯ</h3>
@@ -1091,7 +1100,7 @@ function renderSummary(){
     const slist=state.mech.systems.map(id=>`<li><span class="mk">▸</span> ${esc(M.system[id].name)} <span class="hint">(${M.system[id].sp} SP)</span></li>`).join("")||"<li class='hint'>систем нет</li>";
     mechBlock=`
       <div class="kv" style="margin-bottom:12px">
-        <span class="k">ШАССИ</span><span style="color:${srcColor(d.frame.source)}">${esc(d.frame.name)} (${esc(d.frame.source)})</span>
+        <span class="k">ШАССИ</span><span style="color:${srcColor(d.frame.source)}">${esc(dispName(d.frame))} (${esc(d.frame.source)})</span>
         <span class="k">ТИП</span><span>${d.frame.mechtype.join(" / ")}</span></div>
       <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px">
         ${["hp","armor","evasion","edef","heatcap","repcap","speed","sensor_range","tech_attack","save","size","sp"].map(k=>
@@ -1193,7 +1202,7 @@ function buildPrintSheet(d){
     <p><b>Таланты:</b> ${Object.entries(state.talents).map(([id,v])=>esc(M.talent[id]?.name)+" "+["I","II","III"][v-1]).join(", ")||"—"}</p>
     <p><b>Мех-навыки:</b> ${HASE.map(h=>h.en+" "+state.hase[h.k]).join(" · ")}</p>
     <p><b>CORE-бонусы:</b> ${state.cores.map(id=>esc(M.core[id]?.name)).join(", ")||"—"}</p>
-    ${d.frame?`<h2 style="font-family:Arial">МЕХ — ${esc(d.frame.name)} (${esc(d.frame.source)})</h2>
+    ${d.frame?`<h2 style="font-family:Arial">МЕХ — ${esc(dispName(d.frame))} (${esc(d.frame.source)})</h2>
       <p>HP ${d.mech.hp} · Armor ${d.mech.armor} · Evasion ${d.mech.evasion} · E-Def ${d.mech.edef} · Heat ${d.mech.heatcap} · Speed ${d.mech.speed} · Save ${d.mech.save} · SP ${d.sp.used}/${d.sp.cap}</p>
       <p><b>Оружие:</b> ${state.mech.mounts.flatMap(mt=>mt.items.map(id=>"["+tr(mt.type)+"] "+esc(M.weapon[id].name))).join(", ")||"—"}</p>
       <p><b>Системы:</b> ${state.mech.systems.map(id=>esc(M.system[id].name)).join(", ")||"—"}</p>`:""}`;
