@@ -2,25 +2,25 @@
  "ms_comp_con_class_assistant_unit": {
   "name": {
    "en": "COMP/CON-Class Assistant Unit",
-   "ru": ""
+   "ru": "Ассистент класса COMP/CON"
   },
   "effect": {
    "en": "Your mech has a basic COMP/CON unit, granting it the AI tag. The COMP/CON can speak to you and has a personality, but, unlike an NHP, is not truly capable of independent thought. It is obedient to you alone.<br>You can give control of your mech to its COMP/CON as a protocol, allowing your mech to act independently on your turn with its own set of actions. Unlike other AIs, a mech controlled by a COMP/CON has no independent initiative and requires direct input. Your mech will follow basic courses of action (defend this area, attack this enemy, protect me, etc.) to the best of its ability, or will act to defend itself if its instructions are complete or it receives no further guidance. You can issue new commands at the start of your turn as long as you are within Range 50 and have the means to communicate with your mech. Comp/con units are not true NHPs and thus cannot enter cascade.",
-   "ru": ""
+   "ru": "Ваш мех имеет базовый блок COMP/CON, дающий ему тег ИИ. COMP/CON может говорить с вами и обладает личностью, но, в отличие от НЧЛ, не способен по-настоящему к независимому мышлению. Он подчиняется только вам.<br>Вы можете передать управление своим мехом его COMP/CON как протокол, позволяя мехусамостоятельно действовать в ваш ход с собственным набором действий. В отличие от других ИИ, мех, управляемый COMP/CON, не обладает независимой инициативой и требует прямых указаний. Ваш мех будет следовать базовым курсам действий (защищать эту зону, атаковать этого врага, защищать меня и т.д.) в меру своих возможностей, либо будет действовать в целях самозащиты, если его инструкции выполнены или он не получает дальнейших указаний. Вы можете отдавать новые команды в начале своего хода, пока находитесь в пределах Дальности 50 и имеете средства связи со своим мехом. Блоки COMP/CON не являются настоящими НЧЛ и поэтому не могут войти в каскад."
   },
   "description": {
    "en": "The GMS Companion/Concierge-Class Assistant Unit conforms to all galaxy-wide standards. These virtual assistants pass even the most rigid Turing-Null assessment criteria and are cleared to operate even in the absence of a pilot.",
-   "ru": ""
+   "ru": "Ассистент класса «Компаньон/Консьерж» от GMS соответствует всем общегалактическим стандартам. Эти виртуальные ассистенты проходят даже самые строгие критерии оценки Тест-Ноль и допущены к работе даже в отсутствие пилота."
   }
  },
  "ms_custom_paint_job": {
   "name": {
    "en": "Custom Paint Job",
-   "ru": ""
+   "ru": "Индивидуальная покраска"
   },
   "effect": {
    "en": "When you take structure damage, roll 1d6. On a 6, you return to 1 HP and ignore the damage – the hit simply ‘scratched your paint’.<br>This system can only be used once before each Full Repair, and is not a valid target for system destruction.",
-   "ru": ""
+   "ru": "Когда вы получаете структурный урон, бросьте 1d6. При 6 вы возвращаетесь к 1 ОЗ и игнорируете урон — попадание просто «поцарапало краску».<br>Эту систему можно использовать только один раз перед каждым Полным ремонтом, и она не является допустимой целью для уничтожения систем."
   },
   "description": {
    "en": "",
@@ -30,11 +30,11 @@
  "ms_expanded_compartment": {
   "name": {
    "en": "Expanded Compartment",
-   "ru": ""
+   "ru": "Расширенный отсек"
   },
   "effect": {
    "en": "Your mech has space for one additional non-Mech character or object of Size 1/2 to ride as a passenger in the cockpit. While inside the mech, they cannot suffer any effect from outside or be targeted by attacks, as if they were a pilot. You can hand over or take back control to or from them as a protocol (following the same rules as pilot and AIs), but if they take over the controls from you, the mech becomes Impaired and Slowed to reflect the lack of appropriate licenses and integration.",
-   "ru": ""
+   "ru": "В вашем мехе есть место для одного дополнительного персонажа, не являющегося мехом, или объекта Размера 1/2, который может ехать пассажиром в кабине. Находясь внутри меха, он не может пострадать от внешних эффектов или быть выбран целью атак, как если бы был пилотом. Вы можете передать или забрать управление у него как протокол (по тем же правилам, что для пилота и ИИ), но если он перехватывает управление у вас, мех становится Ослаблен и Замедлен, отражая отсутствие соответствующих лицензий и интеграции."
   },
   "description": {
    "en": "",
@@ -44,21 +44,21 @@
  "ms_manipulators": {
   "name": {
    "en": "Manipulators",
-   "ru": ""
+   "ru": "Манипуляторы"
   },
   "effect": {
    "en": "Your mech has an extra set of limbs. They are too small to have any combat benefit, but allow the mech to interact with objects that would otherwise be too small or sensitive (e.g., pilot-sized touch pads).",
-   "ru": ""
+   "ru": "У вашего меха есть дополнительный набор конечностей. Они слишком малы, чтобы давать какое-либо боевое преимущество, но позволяют меху взаимодействовать с объектами, которые иначе были бы слишком малы или чувствительны (например, сенсорные панели пилотского размера)."
   },
   "description": {
    "en": "Precise interaction with built and natural environments, soft targets, and hazardous materials is part of the daily routine for support-class mechs. This is made possible by manipulators – added multi-digit “hands” with haptic sensors.",
-   "ru": ""
+   "ru": "Точное взаимодействие с построенной и естественной средой, мягкими целями и опасными материалами — часть повседневной рутины мехов класса поддержки. Это обеспечивается манипуляторами — добавочными многопальцевыми «руками» с гаптическими сенсорами."
   }
  },
  "ms_pattern_a_smoke_charges": {
   "name": {
    "en": "Pattern-A Smoke Charges",
-   "ru": ""
+   "ru": "Дымовые заряды образца A"
   },
   "effect": {
    "en": "",
@@ -72,11 +72,11 @@
  "ms_pattern_a_jericho_deployable_cover": {
   "name": {
    "en": "Pattern-A Jericho Deployable Cover",
-   "ru": ""
+   "ru": "Разворачиваемое укрытие «Иерихон» образца A"
   },
   "effect": {
    "en": "Deploy two sections of Size 1 hard cover in free spaces adjacent to you and to each other. Each section is an object with 5 Evasion and 10 HP that can be targeted and destroyed individually. Sections of cover can be picked up again as a full action.<br>Repairing the system restores both sections.",
-   "ru": ""
+   "ru": "Разверните две секции твёрдого укрытия Размера 1 в свободных клетках рядом с собой и друг с другом. Каждая секция — объект с 5 Уклонением и 10 ОЗ, который можно выбрать целью и уничтожить по отдельности. Секции укрытия можно снова подобрать как полное действие.<br>Ремонт системы восстанавливает обе секции."
   },
   "description": {
    "en": "",
@@ -86,7 +86,7 @@
  "ms_pattern_b_hex_charges": {
   "name": {
    "en": "Pattern-B HEX Charges",
-   "ru": ""
+   "ru": "Заряды HEX образца B"
   },
   "effect": {
    "en": "",
@@ -100,11 +100,11 @@
  "ms_personalizations": {
   "name": {
    "en": "Personalizations",
-   "ru": ""
+   "ru": "Персонализация"
   },
   "effect": {
    "en": "You gain +2 HP and, in consultation with the GM, you may establish a minor modification you have made to your mech.<br>This mod has no numerical benefit beyond the additional HP it grants, but could provide other useful effects. If the GM agrees that this mod would help with either a pilot or mech skill check, you gain +1 Accuracy for that check.",
-   "ru": ""
+   "ru": "Вы получаете +2 ОЗ и, по согласованию с Ведущим, можете установить незначительную модификацию, которую внесли в свой мех.<br>Этот мод не даёт числового преимущества сверх дополнительных ОЗ, но может обеспечить другие полезные эффекты. Если Ведущий согласен, что этот мод помог бы с проверкой навыка пилота или меха, вы получаете +1 к Точности для этой проверки."
   },
   "description": {
    "en": "",
@@ -114,11 +114,11 @@
  "ms_stable_structure": {
   "name": {
    "en": "Stable Structure",
-   "ru": ""
+   "ru": "Устойчивая структура"
   },
   "effect": {
    "en": "You gain +1 Accuracy on saves to avoid Prone or Knockback.",
-   "ru": ""
+   "ru": "Вы получаете +1 к Точности на спасброски против сбивания с ног или Отбрасывания."
   },
   "description": {
    "en": "",
@@ -128,21 +128,21 @@
  "ms_turret_drones": {
   "name": {
    "en": "Turret Drones",
-   "ru": ""
+   "ru": "Дроны-турели"
   },
   "effect": {
    "en": "Expend a charge to deploy a turret drone that attaches to any object or surface within Sensors and line of sight. Gain the Turret Attack reaction, which can be taken once for each deployed turret drone. Turret drones cannot be recalled and expire at the end of the scene.",
-   "ru": ""
+   "ru": "Потратьте заряд, чтобы развернуть дрона-турель, прикрепляющегося к любому объекту или поверхности в пределах Сенсоров и видимости. Получите реакцию «Атака турели», которую можно применить один раз для каждого развёрнутого дрона-турели. Дронов-турелей нельзя отозвать, и они истекают в конце сцены."
   },
   "description": {
    "en": "The use of turret drones is a rather traditional form of force multiplication – one that has remained the backbone of defense in many theaters.",
-   "ru": ""
+   "ru": "Использование дронов-турелей — довольно традиционная форма умножения силы, остающаяся становым хребтом обороны на многих театрах."
   }
  },
  "ms_type_3_projected_shield": {
   "name": {
    "en": "Type-3 Projected Shield",
-   "ru": ""
+   "ru": "Проецируемый щит типа 3"
   },
   "effect": {
    "en": "",
@@ -150,17 +150,17 @@
   },
   "description": {
    "en": "The GMS Type-3 Projected Shield traps and denies incoming projectiles by projecting an aggressive, superpositional anti-ballistic barrier.",
-   "ru": ""
+   "ru": "Проецируемый щит типа 3 от GMS улавливает и отражает входящие снаряды, проецируя агрессивный суперпозиционный противобаллистический барьер."
   }
  },
  "ms_eva_module": {
   "name": {
    "en": "EVA Module",
-   "ru": ""
+   "ru": "Модуль EVA"
   },
   "effect": {
    "en": "Your mech has a propulsion system suitable for use in low or zero gravity and underwater environments. In those environments, you can fly and are not Slowed.",
-   "ru": ""
+   "ru": "У вашего меха есть двигательная система, подходящая для использования в условиях низкой или нулевой гравитации и под водой. В этих условиях вы можете летать и не становитесь Замедлены."
   },
   "description": {
    "en": "",
@@ -170,11 +170,11 @@
  "ms_rapid_burst_jump_jet_system": {
   "name": {
    "en": "Rapid Burst Jump Jet System",
-   "ru": ""
+   "ru": "Система импульсных прыжковых двигателей"
   },
   "effect": {
    "en": "You can fly when you Boost; however, you must end the movement on the ground or another solid surface, or else immediately begin falling.",
-   "ru": ""
+   "ru": "Вы можете летать, когда Ускоряетесь; однако вы должны завершить движение на земле или другой твёрдой поверхности, иначе немедленно начинаете падать."
   },
   "description": {
    "en": "",
@@ -184,11 +184,11 @@
  "ms_type_i_flight_system": {
   "name": {
    "en": "Type-I Flight System",
-   "ru": ""
+   "ru": "Система полёта типа I"
   },
   "effect": {
    "en": "You may choose to count any and all of your movement as flying; however, you take Size +1 Heat at the end of any of your turns in which you fly this way.",
-   "ru": ""
+   "ru": "Вы можете считать любое и всё своё движение полётом; однако вы получаете тепло, равное Размер +1, в конце любого своего хода, в котором летите таким образом."
   },
   "description": {
    "en": "",
@@ -198,21 +198,21 @@
  "ms_synthetic_muscle_netting": {
   "name": {
    "en": "Synthetic Muscle Netting",
-   "ru": ""
+   "ru": "Синтетическая мышечная сеть"
   },
   "effect": {
    "en": "You may Ram targets larger than you, and when you Grapple or Ram larger targets, you count as the same Size as the largest opponent. When you Grapple or Ram opponents of the same Size or smaller, you count as at least one Size larger. Additionally, your lifting and dragging capacity is doubled.",
-   "ru": ""
+   "ru": "Вы можете Таранить цели крупнее себя, и когда вы Захватываете или Таранните более крупные цели, вы считаетесь того же Размера, что и крупнейший противник. Когда вы Захватываете или Таранните противников того же Размера или меньше, вы считаетесь как минимум на один Размер крупнее. Дополнительно ваша грузоподъёмность и способность тащить объекты удваивается."
   },
   "description": {
    "en": "IPS-N’s Synthetic Muscle Netting (SMN) is a proprietary, field-proven modification compatible with all existing IPS-N frames. This convenient spray-on catalytic and structural enhancement boosts manipulator and propulsion performance by roughly 25 percent with no demonstrated reduction in operational life. An SMN layer also enhances impact absorption and thermal insulation.<br>IPS-N recommends that pilots apply SMN to internal components only and practice frequent cleaning to prevent septic-analogous decay.",
-   "ru": ""
+   "ru": "Синтетическая мышечная сеть (СМС) от IPS-N — фирменная, проверенная в полевых условиях модификация, совместимая со всеми существующими шасси IPS-N. Это удобное распыляемое каталитическое и структурное усиление повышает производительность манипуляторов и двигательной системы примерно на 25 процентов без заметного снижения срока службы. Слой СМС также улучшает поглощение ударов и теплоизоляцию.<br>IPS-N рекомендует пилотам наносить СМС только на внутренние компоненты и проводить частую очистку для предотвращения септико-подобного разложения."
   }
  },
  "ms_reinforced_cabling": {
   "name": {
    "en": "Reinforced Cabling",
-   "ru": ""
+   "ru": "Усиленная проводка"
   },
   "effect": {
    "en": "",
@@ -220,27 +220,27 @@
   },
   "description": {
    "en": "Reinforced grappling cables allow for full movement and utility in ≤1 g environments. Woven from incredibly strong nanocarbon and arachnosynth threading, reinforced grapple line is carried on waist-mounted spools and attached to charge-actuated brachial projectors. Once fired, the grapples penetrate and anchor to the target. Small meltdown charges seeded every thirty meters of cable both allow rapid disengagement and expose a fresh grapple head, ready for immediate use.",
-   "ru": ""
+   "ru": "Усиленные захватные тросы обеспечивают полную подвижность и полезность в условиях ≤1 g. Сплетённые из невероятно прочных нанокарбоновых и арахносинтетических нитей, усиленный захватный трос хранится на закреплённых на поясе катушках и подключён к проекторам плеча, срабатывающим от заряда. После выстрела захваты пробивают и закрепляются на цели. Небольшие расплавляющиеся заряды, установленные через каждые тридцать метров троса, позволяют быстро отсоединиться и открывают свежую захватную головку, готовую к немедленному использованию."
   }
  },
  "ms_sekhmet_class_nhp": {
   "name": {
    "en": "SEKHMET-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса SEKHMET"
   },
   "effect": {
    "en": "Your mech gains the AI tag and the SEKHMET Protocol.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и Протокол SEKHMET."
   },
   "description": {
    "en": "“The IPS-N SEKHMET co-pilot is ready to be your first mate! SEKHMET comes standard with remote, omninet, IR tag, and voice control systems, and is fully compatible with all current and legacy IPS-N mechs.<br>Did you know that SEKHMET learns with you? Should the worst happen, your very own SEKHMET will continue to engage hostile targets using an emulated neural-net doppelgänger to pilot your IPS-N chassis until forced or voluntary shutdown!”<br>draft copy, IPS-N Polaris Pilot Lounge adbroad [struck and replaced w/current adbroad]<br>SEKHMET-class NHPs tend toward aggressive attitudes and dark humor. Pilots often call them “berserker systems” – dangerous NHPs that value combat efficacy over pilot wellbeing.",
-   "ru": ""
+   "ru": "«Второй пилот IPS-N SEKHMET готов стать вашим первым помощником! SEKHMET поставляется со стандартными системами удалённого управления, омнинета, ИК-меток и голосового контроля и полностью совместим со всеми текущими и устаревшими мехами IPS-N.<br>А вы знали, что SEKHMET учится вместе с вами? Если случится худшее, ваш собственный SEKHMET продолжит вступать в бой с враждебными целями, используя эмулированного нейросетевого двойника для пилотирования вашего шасси IPS-N, вплоть до принудительного или добровольного отключения!»<br>черновик рекламы, реклама зала пилотов IPS-N «Полярис» [зачёркнуто и заменено текущей рекламой]<br>НЧЛ класса SEKHMET склонны к агрессивному поведению и мрачному юмору. Пилоты часто называют их «системами берсерка» — опасными НЧЛ, ценящими боевую эффективность выше благополучия пилота."
   }
  },
  "ms_argonaut_shield": {
   "name": {
    "en": "Argonaut Shield",
-   "ru": ""
+   "ru": "Щит «Аргонавт»"
   },
   "effect": {
    "en": "",
@@ -248,41 +248,41 @@
   },
   "description": {
    "en": "In space, simplicity in form and function guarantees reliability and promotes trust. The Argonaut is one of IPS-N’s oldest designs, hailing from the pre-merger days of Northstar’s Deep Black security teams. It’s a simple slab of metal carried in hand or mounted on a chassis’ brachial superstructure; the only option a pilot has for customizing this shield is a choice of size.",
-   "ru": ""
+   "ru": "В космосе простота формы и функции гарантирует надёжность и способствует доверию. «Аргонавт» — одна из старейших разработок IPS-N, происходящая из додослиятельной эпохи служб безопасности «Глубокая чернота» Northstar. Это простая металлическая плита, носимая в руке или устанавливаемая на плечевую надстройку шасси; единственный вариант, доступный пилоту для кастомизации этого щита — выбор размера."
   }
  },
  "ms_aegis_shield_generator": {
   "name": {
    "en": "Aegis Shield Generator",
-   "ru": ""
+   "ru": "Генератор щита «Эгида»"
   },
   "effect": {
    "en": "Expend a charge to deploy a Size 1 shield generator in a free, adjacent space, where it creates a burst 1 shield.",
-   "ru": ""
+   "ru": "Потратьте заряд, чтобы развернуть генератор щита Размера 1 в свободной соседней клетке, где он создаёт щит области вспышка 1."
   },
   "description": {
    "en": "The Aegis is a portable electromagnetic shield generator: a powerful and reliable method – if crude by modern standards – for establishing kinetic and coherent-particle deterrence over a wide area.",
-   "ru": ""
+   "ru": "«Эгида» — портативный электромагнитный генератор щита: мощный и надёжный метод — пусть и грубый по современным стандартам — создания кинетического и когерентно-частичного сдерживания на широкой площади."
   }
  },
  "ms_portable_bunker": {
   "name": {
    "en": "Portable Bunker",
-   "ru": ""
+   "ru": "Портативный бункер"
   },
   "effect": {
    "en": "Expend a charge to deploy a portable bunker to a free, adjacent area 4 by 4 area. At the start of your next turn, it unfolds into a fortified emplacement.",
-   "ru": ""
+   "ru": "Потратьте заряд, чтобы развернуть портативный бункер в свободной соседней области 4 на 4. В начале вашего следующего хода он разворачивается в укреплённую огневую точку."
   },
   "description": {
    "en": "IPS-N’s “Portable Bunker” is actually a series of single-use expanding printer sheets: flat-pack pouches of inert non-Newtonian fluid that, when deployed, become a rigid structure capable of withstanding incredible force.",
-   "ru": ""
+   "ru": "«Портативный бункер» от IPS-N — на самом деле серия одноразовых расширяющихся печатных листов: плоские упаковки инертной неньютоновской жидкости, которые при развёртывании становятся жёсткой структурой, способной выдержать невероятную силу."
   }
  },
  "ms_cable_winch_system": {
   "name": {
    "en": "Cable Winch System",
-   "ru": ""
+   "ru": "Тросовая лебёдочная система"
   },
   "effect": {
    "en": "",
@@ -290,41 +290,41 @@
   },
   "description": {
    "en": "A winch system consists of an externally mounted spool of nanocarbon-weave cable and a recovery subroutine installed on the mech.",
-   "ru": ""
+   "ru": "Лебёдочная система состоит из внешне смонтированной катушки нанокарбоново-плетёного троса и подпрограммы восстановления, установленной на мехе."
   }
  },
  "ms_restock_drone": {
   "name": {
    "en": "Restock Drone",
-   "ru": ""
+   "ru": "Дрон снабжения"
   },
   "effect": {
    "en": "Expend a charge to deploy a restock drone to any free, adjacent space, where it primes at the end of your turn.",
-   "ru": ""
+   "ru": "Потратьте заряд, чтобы развернуть дрона снабжения в любой свободной соседней клетке, где он подготавливается в конце вашего хода."
   },
   "description": {
    "en": "Reliable and sturdy drones carrying integrated printers, restock drones allow for limited logistical flexibility via autosalvage. The bulk of a restock drone is made of RawMat, a blend of silicates and metallic materials that the drone processes into replacement parts and repair kits. This is why pilots often joke that restock drones are, simply put, “mech snacks”.",
-   "ru": ""
+   "ru": "Надёжные и прочные дроны, несущие встроенные принтеры, дроны снабжения обеспечивают ограниченную логистическую гибкость через автосальважирование. Основная масса дрона снабжения состоит из RawMat — смеси силикатов и металлических материалов, которую дрон перерабатывает в запчасти и ремонтные комплекты. Поэтому пилоты часто шутят, что дроны снабжения — это, попросту говоря, «мех-снеки»."
   }
  },
  "ms_mule_harness": {
   "name": {
    "en": "MULE Harness",
-   "ru": ""
+   "ru": "Обвязка MULE"
   },
   "effect": {
    "en": "Extra mounts, straps, and hard points allow other characters to climb and ride your mech. Adjacent, non-Immobilized characters can climb onto your mech as a quick action. While riding, they occupy the same space as you, move when you move (even if they’re Slowed), and benefit from soft cover. If you or a rider are knocked Prone, Stunned, Immobilized, or destroyed, they land Prone in adjacent spaces. Riders can climb down as part of any movement away, but can only climb onto your mech as a quick action.<br>You can carry riders of a combined Size equal to your Size, minus Size 1/2 (e.g., if your mech is Size 1 you can carry one Size 1/2 character; if it is Size 2, you can carry a Size 1 character and a Size 1/2 character).",
-   "ru": ""
+   "ru": "Дополнительные крепления, ремни и точки крепления позволяют другим персонажам взбираться на ваш мех и ехать на нём. Соседние, не Обездвиженные персонажи могут взобраться на ваш мех как быстрое действие. Пока они едут верхом, они занимают ту же клетку, что и вы, двигаются, когда двигаетесь вы (даже если Замедлены), и получают мягкое укрытие. Если вы или всадник сбиты с ног, Ошеломлены, Обездвижены или уничтожены, они приземляются Ничком в соседних клетках. Всадники могут спуститься как часть любого движения прочь, но могут взобраться на ваш мех только как быстрое действие.<br>Вы можете нести всадников суммарного Размера, равного вашему Размеру минус Размер 1/2 (например, если ваш мех Размера 1, вы можете нести одного персонажа Размера 1/2; если Размера 2 — персонажа Размера 1 и персонажа Размера 1/2)."
   },
   "description": {
    "en": "The Multiple User, Light Entanglement (MULE) Harness is a mass-produced version of a common battlefield modification that allows friendly soldiers to ride along on a chassis. Some systems are large enough to allow smaller chassis to accompany larger chassis; typically, these variants are employed in high altitude, low orbit insertions where reduced radar presence is required.",
-   "ru": ""
+   "ru": "Обвязка «Множественный пользователь, лёгкое сцепление» (MULE) — массово производимая версия распространённой полевой модификации, позволяющей дружественным солдатам ехать верхом на шасси. Некоторые системы достаточно велики, чтобы позволить меньшим шасси сопровождать более крупные; обычно такие варианты применяются при высотных, низкоорбитальных десантированиях, где требуется сниженная радарная заметность."
   }
  },
  "ms_whitewash_sealant_spray": {
   "name": {
    "en": "Whitewash Sealant Spray",
-   "ru": ""
+   "ru": "Герметизирующий спрей «Побелка»"
   },
   "effect": {
    "en": "",
@@ -332,13 +332,13 @@
   },
   "description": {
    "en": "For fire suppression and fast, temporary seals in punctured starship bulkheads, IPS-N offers a range of single-use, single objective nanites – “whitewash”. This sealant spray can also be used to restrain noncompliant actors when the correct spray heads and catalytic formulations are installed to the applicator.",
-   "ru": ""
+   "ru": "Для тушения огня и быстрой временной герметизации пробоин в переборках звездолётов IPS-N предлагает ряд одноразовых нанитов узкого назначения — «побелку». Этот герметизирующий спрей также можно использовать для сдерживания несговорчивых субъектов при установке соответствующих распылительных головок и каталитических составов в аппликатор."
   }
  },
  "ms_aceso_stabilizer": {
   "name": {
    "en": "Aceso Stabilizer",
-   "ru": ""
+   "ru": "Стабилизатор «Асцесо»"
   },
   "effect": {
    "en": "",
@@ -346,41 +346,41 @@
   },
   "description": {
    "en": "The IPS-N Aceso Stabilizer is a useful triage measure for any scoring and minor mechanical damage that is sustained in the course of combat engagement or negative environmental interaction. Thanks to its negligible processor demand, Aceso Stabilizers can even be controlled by COMP/CON units – this allows the pilot to concentrate on complex repairs or immediate threat neutralization.",
-   "ru": ""
+   "ru": "Стабилизатор «Асцесо» от IPS-N — полезная сортировочная мера при любых царапинах и незначительных механических повреждениях, полученных в ходе боевого столкновения или неблагоприятного взаимодействия со средой. Благодаря незначительным требованиям к процессору, стабилизаторами «Асцесо» могут управлять даже блоки COMP/CON — это позволяет пилоту сосредоточиться на сложном ремонте или немедленной нейтрализации угрозы."
   }
  },
  "ms_bulwark_mods": {
   "name": {
    "en": "Bulwark Mods",
-   "ru": ""
+   "ru": "Моды «Бастион»"
   },
   "effect": {
    "en": "Your mech’s extended limbs, additional armor, redundant motor systems, and other reinforcements allow you to ignore difficult terrain.",
-   "ru": ""
+   "ru": "Удлинённые конечности вашего меха, дополнительная броня, резервные моторные системы и другие усиления позволяют вам игнорировать сложную местность."
   },
   "description": {
    "en": "All proprietary IPS-N mech cores feature their QuickMod system – a modular, legacy-compatible system of joints, hardpoints, and internal slots that makes installing upgrades simple. This proved to be a necessary feature for Albatross maktebas long out of synch with Union Realtime.",
-   "ru": ""
+   "ru": "Все фирменные ядра мехов IPS-N оснащены системой QuickMod — модульной, обратносовместимой системой сочленений, точек крепления и внутренних слотов, упрощающей установку улучшений. Это оказалось необходимой функцией для мактеб «Альбатроса», давно рассинхронизированных с реальным временем Юниона."
   }
  },
  "ms_armor_lock_plating": {
   "name": {
    "en": "Armor-Lock Plating",
-   "ru": ""
+   "ru": "Броня с блокировкой"
   },
   "effect": {
    "en": "You can Brace while Grappling. When you do so, any grapples currently affecting you end.<br>Additionally, when you Brace, you gain the following benefits until the end of your following turn:<ul><li>Attacks against you receive +1 difficulty.</li><li>You can’t fail Agility or Hull saves or contested checks.</li><li>You gain Immunity to Knockback, Grapple, being knocked Prone, and being moved by any external force smaller than Size 5.</li></ul>",
-   "ru": ""
+   "ru": "Вы можете Держать оборону, даже находясь в Захвате. Когда вы это делаете, любые захваты, действующие на вас в данный момент, прекращаются.<br>Дополнительно, когда вы Держите оборону, вы получаете следующие преимущества до конца своего следующего хода:<ul><li>Атаки против вас получают +1 к Сложности.</li><li>Вы не можете провалить спасброски Ловкости или Корпуса, а также состязательные проверки.</li><li>Вы получаете Иммунитет к Отбрасыванию, Захвату, сбиванию с ног и перемещению любой внешней силой меньше Размера 5.</li></ul>"
   },
   "description": {
    "en": "IPS-N’s Armor-Lock Plating is a total-body modification that provides additional chassis stability for any situation in which a pilot needs to put their mech through greater-than-anticipated stress.",
-   "ru": ""
+   "ru": "Броня с блокировкой от IPS-N — модификация всего корпуса, обеспечивающая дополнительную стабильность шасси для любой ситуации, где пилоту нужно подвергнуть свой мех нагрузке выше ожидаемой."
   }
  },
  "ms_ramjet": {
   "name": {
    "en": "Ramjet",
-   "ru": ""
+   "ru": "Прямоточный двигатель"
   },
   "effect": {
    "en": "",
@@ -388,13 +388,13 @@
   },
   "description": {
    "en": "There’s a threshold that veteran Nelson pilots know well: the point of endless momentum. You get moving fast enough in the right atmosphere and the air itself feeds into auxiliary ports on the chassis, screaming out like a demon’s almighty howl. The point of endless momentum is a giant’s hand on your chest and a god’s chariot under your feet. Makes you feel like you can outrun light itself, as long as you don’t pass out first.",
-   "ru": ""
+   "ru": "Есть порог, хорошо знакомый ветеранам-пилотам «Нельсона»: точка бесконечного импульса. Вы разгоняетесь достаточно быстро в правильной атмосфере, и сам воздух устремляется во вспомогательные порты шасси, вопя, как всемогущий вой демона. Точка бесконечного импульса — это рука великана на вашей груди и колесница бога под вашими ногами. Заставляет чувствовать, будто вы можете обогнать сам свет, если только не потеряете сознание раньше."
   }
  },
  "ms_bb_breach_blast_charges": {
   "name": {
    "en": "BB Breach/Blast Charges",
-   "ru": ""
+   "ru": "Проломно-подрывные заряды BB"
   },
   "effect": {
    "en": "",
@@ -402,41 +402,41 @@
   },
   "description": {
    "en": "Breach/blast charges offer a mil-spec twist on the industrial blasting charges developed by IPS-N for asteroid mining. The IPS-N BB charge features a more volatile blend of high explosives designed to cause massive structural damage to mechanized chassis, starship bulkheads, armored vehicles, bunkers, and other hardened structures.",
-   "ru": ""
+   "ru": "Проломно-подрывные заряды предлагают военную вариацию промышленных подрывных зарядов, разработанных IPS-N для добычи на астероидах. Заряд IPS-N BB несёт более летучую смесь мощных взрывчатых веществ, спроектированную для нанесения массивного структурного урона механизированным шасси, переборкам звездолётов, бронированным машинам, бункерам и другим укреплённым структурам."
   }
  },
  "ms_roland_chamber": {
   "name": {
    "en": "“Roland” Chamber",
-   "ru": ""
+   "ru": "Камора «Роланд»"
   },
   "effect": {
    "en": "When you reload any weapon, your next attack with a Loading weapon gains this effect:<br>On hit: This attack deals +1d6 explosive bonus damage, and targets must succeed on a Hull save or be knocked Prone.",
-   "ru": ""
+   "ru": "Когда вы перезаряжаете любое оружие, ваша следующая атака Перезаряжаемым оружием получает следующий эффект:<br>При попадании: эта атака наносит +1d6 бонусного взрывного урона, и цели должны пройти спасбросок Корпуса, иначе сбиваются с ног."
   },
   "description": {
    "en": "Packed into sealed, self-contained cylinders, IPS-N’s “Roland Rounds” are high-explosive anti-armor charges built for kinetic weapons of any mech-scale caliber. Loaded in place of inert kinetic ammunition, a Roland HE/AA shell increases the efficacy and destructive power of any weapon it is fired from.",
-   "ru": ""
+   "ru": "Упакованные в герметичные автономные цилиндры, «патроны Роланд» от IPS-N — высоковзрывные противобронные заряды, созданные для кинетического оружия любого механического калибра. Заряженный вместо инертных кинетических боеприпасов, снаряд Roland HE/AA увеличивает эффективность и разрушительную мощь любого оружия, из которого выстрелен."
   }
  },
  "ms_siege_ram": {
   "name": {
    "en": "Siege Ram",
-   "ru": ""
+   "ru": "Осадный таран"
   },
   "effect": {
    "en": "When you Ram, you deal 2 kinetic damage on hit, and you deal 10 AP kinetic damage when you Ram objects and terrain.",
-   "ru": ""
+   "ru": "Когда вы Тараните, вы наносите 2 кинетического урона при попадании, а при таране объектов и местности наносите 10 бронебойного кинетического урона."
   },
   "description": {
    "en": "The siege ram is a handheld metal beam with a wedge tip, ready to be smashed into the seams of sealed bulkhead doors and driven home. It’s another holdover from the days before the IPS-N merger. When someone needs to open a bulkhead that’s just slammed shut, it’s what marine pilots pick up to get the job done. Heavy, dumb, and unbreakable: IPS-N’s siege ram is the universal skeleton key.",
-   "ru": ""
+   "ru": "Осадный таран — ручная металлическая балка с клиновидным наконечником, готовая для вбивания в стыки запечатанных переборочных дверей. Это ещё один пережиток времён до слияния IPS-N. Когда кому-то нужно открыть переборку, только что захлопнувшуюся, именно это берут пилоты-морпехи, чтобы выполнить работу. Тяжёлый, тупой и неломающийся: осадный таран IPS-N — универсальная отмычка."
   }
  },
  "ms_hyperdense_armor": {
   "name": {
    "en": "HyperDense Armor",
-   "ru": ""
+   "ru": "Гиперплотная броня"
   },
   "effect": {
    "en": "",
@@ -444,41 +444,41 @@
   },
   "description": {
    "en": "IPS-N HyperDense Armor is built for space – forged with no regard for any constraints users might face within a gravity well. As such, many pilots protected by HyperDense products are shocked to experience the difference between piloting their mech down a well and taking it for a ride in the null-gravity of space.",
-   "ru": ""
+   "ru": "Гиперплотная броня IPS-N создана для космоса — выкована без учёта каких-либо ограничений, с которыми пользователи могут столкнуться внутри гравитационного колодца. Поэтому многие пилоты, защищённые продуктами HyperDense, испытывают шок от разницы между пилотированием своего меха на дне колодца и его использованием в нулевой гравитации космоса."
   }
  },
  "ms_webjaw_snare": {
   "name": {
    "en": "Webjaw Snare",
-   "ru": ""
+   "ru": "Ловушка «Паучья пасть»"
   },
   "effect": {
    "en": "Expend a charge to deploy a Webjaw snare to a free, adjacent space, where it arms at the end of your turn.",
-   "ru": ""
+   "ru": "Потратьте заряд, чтобы развернуть ловушку «Паучья пасть» в свободной соседней клетке, где она взводится в конце вашего хода."
   },
   "description": {
    "en": "Suitable for use in any theater, the IPS-N Webjaw Explosively Accelerated Filament system is a deployable perimeter defense solution designed to arrest hostile movement in predetermined kill-corridors. The Webjaw consists of a networked cluster of single-use anchors, each consisting of a barb, a coil of arachnosynth NoCut filament, and an explosive charge.<br>When triggered remotely, or by a series of programmable physical, electronic, or chemical triggers, the anchors fire, embedding barbs deep inside targets, whether soft or hard. The barbs, secured to anchor points by NoCut filament, clog and restrict movement, fouling gears, wheels, rotors, engines, and all methods of locomotion.",
-   "ru": ""
+   "ru": "Подходящая для использования на любом театре действий, система взрывоускоренного филамента «Паучья пасть» от IPS-N — развёртываемое решение периметровой обороны, спроектированное для остановки враждебного передвижения в заранее определённых коридорах поражения. «Паучья пасть» состоит из сетевого кластера одноразовых якорей, каждый из которых включает шип, катушку арахносинтетического NoCut-филамента и взрывной заряд.<br>При срабатывании удалённо или через серию программируемых физических, электронных или химических триггеров якоря выстреливают, вонзая шипы глубоко в цели, мягкие или твёрдые. Шипы, закреплённые к точкам якоря филаментом NoCut, забивают и ограничивают движение, засоряя шестерни, колёса, роторы, двигатели и все способы передвижения."
   }
  },
  "ms_caltrop_launcher": {
   "name": {
    "en": "Caltrop Launcher",
-   "ru": ""
+   "ru": "Пускатель шипов"
   },
   "effect": {
    "en": "This system blankets a free Burst 1 area within Range 5 with explosive caltrops. The affected area becomes difficult terrain for the rest of the scene, and mechs take 1d3 AP Energy Damage when they enter the affected area for the first time in a round or end their turn within it.",
-   "ru": ""
+   "ru": "Эта система покрывает свободную область Вспышка 1 в пределах Дальности 5 взрывными шипами. Поражённая область становится сложной местностью до конца сцены, и мехи получают 1d3 бронебойного энергетического урона, когда впервые входят в поражённую область за раунд или заканчивают ход внутри неё."
   },
   "description": {
    "en": "Wicked anti-organic, anti-vehicle systems for proximity denial, caltrop launchers fire either great clouds or long swathes of shimmering metal over an area. IPS-N’s HX-CAL caltrop system includes small, shaped explosives in the mix of hardened pyramids.",
-   "ru": ""
+   "ru": "Злобные противоорганические, противотранспортные системы для отказа в доступе к территории, пускатели шипов выстреливают либо огромными облаками, либо длинными полосами сверкающего металла над территорией. Система шипов HX-CAL от IPS-N включает небольшие фигурные взрывчатки в смеси закалённых пирамидок."
   }
  },
  "ms_charged_stake": {
   "name": {
    "en": "Charged Stake",
-   "ru": ""
+   "ru": "Заряженный кол"
   },
   "effect": {
    "en": "",
@@ -486,13 +486,13 @@
   },
   "description": {
    "en": "Descended from blast-mining tools, this enormous, improvised system is housed and prepped to fire in a specially primed chamber. It first penetrates and immobilizes armored targets, then sends a powerful, vaporizing charge into vulnerable internal systems.",
-   "ru": ""
+   "ru": "Произошедшая от инструментов взрывной добычи, эта огромная импровизированная система размещается и подготавливается к выстрелу в специально подготовленной каморе. Она сначала пробивает и обездвиживает бронированные цели, затем посылает мощный испаряющий заряд в уязвимые внутренние системы."
   }
  },
  "ms_ferrous_lash": {
   "name": {
    "en": "Ferrous Lash",
-   "ru": ""
+   "ru": "Ферромагнитный хлыст"
   },
   "effect": {
    "en": "",
@@ -500,55 +500,55 @@
   },
   "description": {
    "en": "Initially developed as a nonlethal crowd-suppression device, the Ferrous Lash is a far more complex and dangerous device in the hands of the right pilot. The Lash consists of a series of integrated launchers that detonate payloads of fast-congealing ferrofluids that restrain their targets. Tuned to the correct frequency, these proprietary ferrofluid blends form into rudimentary ambulatory segments, pulling their hosts back towards the one wielding the Lash.",
-   "ru": ""
+   "ru": "Изначально разработанный как нелетальное устройство усмирения толпы, «Ферромагнитный хлыст» — куда более сложное и опасное устройство в руках подходящего пилота. Хлыст состоит из серии встроенных пускателей, детонирующих заряды быстрозастывающих ферро-жидкостей, сковывающих свои цели. Настроенные на нужную частоту, эти фирменные смеси ферро-жидкости формируют рудиментарные подвижные сегменты, притягивающие своих носителей обратно к тому, кто владеет Хлыстом."
   }
  },
  "ms_iceout_drone": {
   "name": {
    "en": "ICEOUT Drone",
-   "ru": ""
+   "ru": "Дрон ICEOUT"
   },
   "effect": {
    "en": "Expend a charge to deploy an ICEOUT drone to a free space within Sensors and line of sight, where it hovers in place and generates a burst 1 field.",
-   "ru": ""
+   "ru": "Потратьте заряд, чтобы развернуть дрона ICEOUT в свободной клетке в пределах Сенсоров и видимости, где он зависает на месте и создаёт поле области вспышка 1."
   },
   "description": {
    "en": "SSC’s ICEOUT drone is a response to increasing reliance on hostile system scans for accurate targeting. By blanketing a mech’s systems in layers of digital defilade, mirroring, spoofing, and redirection, an ICEOUT drone can effectively disappear or disincorporate it from hostile scans. ICEOUT drones only make their operator system-invisible, however; they remain visible with optics.",
-   "ru": ""
+   "ru": "Дрон ICEOUT от SSC — ответ на растущую зависимость от вражеского сканирования систем для точного наведения. Покрывая системы меха слоями цифровой маскировки, зеркалирования, подмены и перенаправления, дрон ICEOUT способен эффективно исчезнуть или дематериализоваться от враждебных сканирований. Однако дроны ICEOUT делают своего оператора невидимым только для систем; они остаются видимы для оптики."
   }
  },
  "ms_perimeter_command_plate": {
   "name": {
    "en": "Perimeter Command Plate",
-   "ru": ""
+   "ru": "Периметровая командная плита"
   },
   "effect": {
    "en": "This heavy metal Perimeter Command Plate (PCP) can be flash-printed and deployed to a free 2x2 space within range 5. The PCP is flat, doesn’t obstruct movement, and lasts for the rest of the scene. If you create a new PCP, the old one disintegrates.",
-   "ru": ""
+   "ru": "Эту тяжёлую металлическую Периметровую командную плиту (ПКП) можно мгновенно напечатать и развернуть в свободной клетке 2x2 в пределах Дальности 5. ПКП плоская, не препятствует движению и действует до конца сцены. Если вы создаёте новую ПКП, старая распадается."
   },
   "description": {
    "en": "The Exotic Materials Group developed the Perimeter Command Plate to extend the area of the Black Witch’s zone of control. Utilizing single-pattern flash printers, the Black Witch prints a broad, circular plate seeded with electromagnetic projectors. Although the plates are intended to be disposable, Black Witch pilots often grow attached to their “familiars” and request their flash-printers create personalized plates.",
-   "ru": ""
+   "ru": "Группа экзотических материалов разработала Периметровую командную плиту для расширения зоны контроля «Чёрной ведьмы». Используя однопаттерновые мгновенные принтеры, «Чёрная ведьма» печатает широкую круглую плиту, засеянную электромагнитными проекторами. Хотя плиты предназначены быть одноразовыми, пилоты «Чёрной ведьмы» часто привязываются к своим «фамильярам» и просят свои мгновенные принтеры создавать персонализированные плиты."
   }
  },
  "ms_black_ice_module": {
   "name": {
    "en": "Black ICE Module",
-   "ru": ""
+   "ru": "Модуль Black ICE"
   },
   "effect": {
    "en": "Tech attacks against you or adjacent allied characters receive +1 difficulty. Each subsequent tech attack against you or an adjacent allied character receives an additional +1 difficulty, to a maximum of +3 difficulty.<br>Your Black ICE definitions roll over – resetting to +1 difficulty – when it would increase to +4 difficulty or at the end of the scene. Allied characters lose this benefit when they break adjacency.",
-   "ru": ""
+   "ru": "Тех-атаки против вас или соседних союзных персонажей получают +1 к Сложности. Каждая последующая тех-атака против вас или соседнего союзного персонажа получает дополнительный +1 к Сложности, максимум до +3 к Сложности.<br>Ваши определения Black ICE сбрасываются — возвращаясь к +1 Сложности — когда должны вырасти до +4 Сложности, или в конце сцены. Союзные персонажи теряют это преимущество, если прерывают соседство."
   },
   "description": {
    "en": "Black ICE modules are defensive systems packaged standard with the Black Witch fleets used by SSC's own internal security forces. They project a bubble of WHITECELL code that analyzes incoming hostile script and structures inoculants for friendly systems on the fly.",
-   "ru": ""
+   "ru": "Модули Black ICE — оборонительные системы, стандартно устанавливаемые на флоты «Чёрной ведьмы», используемые собственными внутренними силами безопасности SSC. Они проецируют пузырь кода WHITECELL, анализирующий входящий враждебный скрипт и на лету формирующий иммунитеты для дружественных систем."
   }
  },
  "ms_magnetic_shield": {
   "name": {
    "en": "Magnetic Shield",
-   "ru": ""
+   "ru": "Магнитный щит"
   },
   "effect": {
    "en": "",
@@ -556,27 +556,27 @@
   },
   "description": {
    "en": "SSC’s magnetic shield takes the same technology as their proprietary magnetic buckler and applies it to a massive field-projection system.",
-   "ru": ""
+   "ru": "Магнитный щит от SSC использует ту же технологию, что и их фирменный магнитный баклер, применяя её к масштабной системе проекции поля."
   }
  },
  "ms_high_stress_mag_clamps": {
   "name": {
    "en": "High-Stress Mag Clamps",
-   "ru": ""
+   "ru": "Высоконагруженные магнитные захваты"
   },
   "effect": {
    "en": "You treat all solid surfaces as flat ground for the purposes of movement; you can move across them normally instead of climbing, although you begin to fall if you are knocked Prone.",
-   "ru": ""
+   "ru": "Вы считаете все твёрдые поверхности плоской землёй для целей передвижения; вы можете двигаться по ним нормально, а не взбираясь, хотя начинаете падать, если сбиты с ног."
   },
   "description": {
    "en": "A simple, reliable set of toggleable mag clamps built into a mech’s locomotive system can vastly increase the tactical possibilities open to its pilot. When switched on, these clamps allow a mech to cling to ferrous surfaces, which is especially useful in low- and zero-gravity environments.",
-   "ru": ""
+   "ru": "Простой, надёжный набор переключаемых магнитных захватов, встроенных в двигательную систему меха, может значительно расширить тактические возможности, доступные пилоту. При включении эти захваты позволяют меху цепляться за ферромагнитные поверхности, что особенно полезно в условиях низкой и нулевой гравитации."
   }
  },
  "ms_tracking_bug": {
   "name": {
    "en": "Tracking Bug",
-   "ru": ""
+   "ru": "Отслеживающий жучок"
   },
   "effect": {
    "en": "",
@@ -584,13 +584,13 @@
   },
   "description": {
    "en": "Tracking bugs are specialized tracer rounds – essentially, drones too large to be classified as nanites, and far too small to fit the Union-standard parameters of a drone. Fired from dedicated launchers, tracking bugs guide themselves toward their designated target. Following successful penetration of the target, they surreptitiously and continuously feed live data back to their registered user.",
-   "ru": ""
+   "ru": "Отслеживающие жучки — специализированные трассирующие снаряды: по сути, дроны, слишком крупные, чтобы классифицироваться как наниты, и слишком мелкие, чтобы соответствовать стандартным параметрам Юниона для дрона. Выпущенные из специальных пускателей, отслеживающие жучки самостоятельно наводятся на назначенную цель. После успешного проникновения в цель они скрытно и непрерывно передают данные в реальном времени своему зарегистрированному пользователю."
   }
  },
  "ms_core_siphon": {
   "name": {
    "en": "Core Siphon",
-   "ru": ""
+   "ru": "Сифон ядра"
   },
   "effect": {
    "en": "",
@@ -598,27 +598,27 @@
   },
   "description": {
    "en": "By shunting excess heat to offensive systems, core siphons allow pilots to overclock the targeting, catalytic, and processing capabilities of their weapons. This comes at a cost, however – reliance on overclocking without sufficient cooling can damage systems not built to handle the influx of power.",
-   "ru": ""
+   "ru": "Перенаправляя избыточное тепло в наступательные системы, сифоны ядра позволяют пилотам разгонять возможности наведения, катализа и обработки своего оружия. Однако это имеет свою цену — зависимость от разгона без достаточного охлаждения может повредить системы, не рассчитанные на приток такой мощности."
   }
  },
  "ms_kinetic_compensator": {
   "name": {
    "en": "Kinetic Compensator",
-   "ru": ""
+   "ru": "Кинетический компенсатор"
   },
   "effect": {
    "en": "When you miss with a ranged attack roll, your next ranged attack roll gains +1 accuracy.",
-   "ru": ""
+   "ru": "Когда вы промахиваетесь броском дальней атаки, ваш следующий бросок дальней атаки получает +1 к Точности."
   },
   "description": {
    "en": "Kinetic compensators are popular enhancements, providing a subsurface framework of electronically modulated gyroscopes and hydraulic compensators that work in concert to absorb and disperse recoil caused by firing heavy weapons.",
-   "ru": ""
+   "ru": "Кинетические компенсаторы — популярные усовершенствования, обеспечивающие подповерхностный каркас из электронно модулируемых гироскопов и гидравлических компенсаторов, работающих вместе для поглощения и рассеивания отдачи, вызванной стрельбой из тяжёлого оружия."
   }
  },
  "ms_neurospike": {
   "name": {
    "en": "Neurospike",
-   "ru": ""
+   "ru": "Нейрошип"
   },
   "effect": {
    "en": "",
@@ -626,27 +626,27 @@
   },
   "description": {
    "en": "“Somehow it got inside my cockpit. There were hands – cold hands – around my neck, fingers in my mouth, worming under my hardsuit. No one else could have been in there with me and yet, someone was. I couldn't even scream, it held my tongue in a fist and it squeezed, and it whispered its name to me, and it said nothing I could understand. I have never felt more alone – it was just me and… it. Alone in the universe, forever.”",
-   "ru": ""
+   "ru": "«Каким-то образом оно проникло в мою кабину. Там были руки — холодные руки — вокруг моей шеи, пальцы во рту, ввинчивающиеся под скафандр. Никто другой не мог быть там со мной, и всё же кто-то был. Я даже не могла закричать, оно держало мой язык в кулаке и сжимало его, и оно шептало мне своё имя, и это было нечто, чего я не могла понять. Никогда я не чувствовала себя более одинокой — были только я и… оно. Одна во вселенной, навсегда»."
   }
  },
  "ms_flicker_field_projector": {
   "name": {
    "en": "Flicker Field Projector",
-   "ru": ""
+   "ru": "Проектор мерцающего поля"
   },
   "effect": {
    "en": "Whenever you Boost or make a standard move, you project a holographic pattern around you, leaving dazzling afterimages that make it hard to discern your precise location: you count as Invisible the next time you’re attacked. You can only benefit from one instance of this effect at a time.",
-   "ru": ""
+   "ru": "Каждый раз, когда вы Ускоряетесь или совершаете стандартное перемещение, вы проецируете голографический узор вокруг себя, оставляя ослепительные послеобразы, затрудняющие определение вашего точного местоположения: вы считаетесь Невидимым при следующей атаке на вас. Вы можете получать выгоду только от одного такого эффекта одновременно."
   },
   "description": {
    "en": "“I saw myself over and over and over and over and over and over and over and–”",
-   "ru": ""
+   "ru": "«Я видела себя снова и снова и снова и снова и снова и снова и снова и–»"
   }
  },
  "ms_stuncrown": {
   "name": {
    "en": "StunCrown",
-   "ru": ""
+   "ru": "Оглушающая корона"
   },
   "effect": {
    "en": "",
@@ -654,13 +654,13 @@
   },
   "description": {
    "en": "“Many things happened the moment I think I died.”",
-   "ru": ""
+   "ru": "«Многое произошло в тот миг, когда, кажется, я умерла»."
   }
  },
  "ms_oasis_wall": {
   "name": {
    "en": "OASIS Wall",
-   "ru": ""
+   "ru": "Стена OASIS"
   },
   "effect": {
    "en": "",
@@ -668,13 +668,13 @@
   },
   "description": {
    "en": "“Inside? What did I see inside? You think I escaped? That this is all real? No, I– I never left. I’m still there. Something is wrong. Something is not right.”",
-   "ru": ""
+   "ru": "«Внутри? Что я видела внутри? Думаете, я сбежала? Что всё это реально? Нет, я— я никогда не уходила. Я всё ещё там. Что-то не так. Что-то неправильно»."
   }
  },
  "ms_flash_charges": {
   "name": {
    "en": "Flash Charges",
-   "ru": ""
+   "ru": "Вспышечные заряды"
   },
   "effect": {
    "en": "",
@@ -682,27 +682,27 @@
   },
   "description": {
    "en": "Produced by Smith-Shimano’s BELLA CIAO workshop, Flash Charges are popular advantage multipliers, their flash bright enough to destabilize visible-light optics, laser communications, and infra-red sensor suites.",
-   "ru": ""
+   "ru": "Произведённые в мастерской BELLA CIAO от Smith-Shimano, вспышечные заряды — популярный множитель преимущества, их вспышка достаточно ярка, чтобы дестабилизировать оптику видимого спектра, лазерную связь и инфракрасные сенсорные комплексы."
   }
  },
  "ms_reactive_weave": {
   "name": {
    "en": "Reactive Weave",
-   "ru": ""
+   "ru": "Реактивное плетение"
   },
   "effect": {
    "en": "When you Brace, you become Invisible until the end of your next turn and may immediately move spaces equal to your Speed.",
-   "ru": ""
+   "ru": "Когда вы Держите оборону, вы становитесь Невидимы до конца своего следующего хода и можете немедленно переместиться на клетки, равные вашей Скорости."
   },
   "description": {
    "en": "Composed of woven covers for critical joints and systems, reactive weave not only protects these sensitive components from fouling and poor weather, but provides a surface for the application of SSC’s unique loomware technology. Reactive weave is powered, making it capable of free-flexing to augment mobility and reduce the stress placed on a mech’s joints.",
-   "ru": ""
+   "ru": "Состоящее из плетёных покрытий для критических сочленений и систем, реактивное плетение не только защищает эти чувствительные компоненты от засорения и непогоды, но и обеспечивает поверхность для нанесения уникальной технологии ткацкого ПО от SSC. Реактивное плетение оснащено приводом, что делает его способным свободно изгибаться, усиливая мобильность и снижая нагрузку на сочленения меха."
   }
  },
  "ms_active_camouflage": {
   "name": {
    "en": "Active Camouflage",
-   "ru": ""
+   "ru": "Активный камуфляж"
   },
   "effect": {
    "en": "",
@@ -710,13 +710,13 @@
   },
   "description": {
    "en": "Active camouflage is the pinnacle of counter-optic defense systems. Active camouflage systems continuously interpret incoming visible-light data, allowing them to project light-bending fields around their user and effectively hiding them in plain sight.",
-   "ru": ""
+   "ru": "Активный камуфляж — вершина систем защиты от оптического обнаружения. Системы активного камуфляжа непрерывно интерпретируют входящие данные видимого спектра, позволяя проецировать светопреломляющие поля вокруг пользователя, эффективно скрывая его на виду у всех."
   }
  },
  "ms_javelin_rockets": {
   "name": {
    "en": "Javelin Rockets",
-   "ru": ""
+   "ru": "Ракеты «Джавелин»"
   },
   "effect": {
    "en": "",
@@ -724,27 +724,27 @@
   },
   "description": {
    "en": "“Pralaya was the name of your mother. She who would see the dawn-at-the-end. Her beauty was terrible, and her wrath, and I see it in all of you. My sons, when you hear the sound of thunder – that is your mother’s voice, and the rain of missiles her gift.” — “Notes for Young John”, Ministrations of the Master Teacher",
-   "ru": ""
+   "ru": "«Пралайя было имя твоей матери. Той, что узрит рассвет-в-конце-времён. Её красота была ужасна, как и её гнев, и я вижу это во всех вас. Сыны мои, когда вы слышите звук грома — это голос вашей матери, а дождь ракет — её дар». — «Заметки для юного Джона», Наставления Мастера-учителя"
   }
  },
  "ms_tlaloc_class_nhp": {
   "name": {
    "en": "TLALOC-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса TLALOC"
   },
   "effect": {
    "en": "Your mech gains the AI tag and the TLALOC Protocol.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и Протокол TLALOC."
   },
   "description": {
    "en": "TLALOC-Class NHPs provide advanced multi-system targeting and co-pilot functions, taking over subroutine control to ensure persistent lock-on and engagement. With TLALOC installed and operational, a pilot can trust that their back is always covered, and every possible advantage exploited.<br>TLALOC clones are often stereotyped as hasty and impetuous, and they are well-known for having superiority complexes. Despite this, they are some of the most stable NHP clones. Leading subjectivity theorists suggest that the wide portfolio of control and sense of domination given to TLALOC units encourages a sense of contentment with their work and subjectivity parameters – as a result, they have a much longer cascade window. Thus far, this theory is consistently reproducible across all TLALOC units, although there is no similar correlation among other mil-spec NHP lines.",
-   "ru": ""
+   "ru": "НЧЛ класса TLALOC обеспечивают продвинутое многосистемное наведение и функции второго пилота, беря на себя управление подпрограммами для обеспечения постоянного захвата цели и вовлечённости. С установленным и работающим TLALOC пилот может быть уверен, что его спина всегда прикрыта, а каждое возможное преимущество используется.<br>Клоны TLALOC часто стереотипно считаются торопливыми и импульсивными, и они хорошо известны комплексом превосходства. Несмотря на это, они — одни из самых стабильных клонов НЧЛ. Ведущие теоретики субъектности предполагают, что широкий портфель контроля и чувство доминирования, данные блокам TLALOC, способствуют чувству удовлетворённости своей работой и параметрами субъектности — в результате у них значительно более длинное окно до каскада. Пока эта теория стабильно воспроизводится для всех блоков TLALOC, хотя подобной корреляции не наблюдается среди других военных линеек НЧЛ."
   }
  },
  "ms_hunter_logic_suite": {
   "name": {
    "en": "Hunter Logic Suite",
-   "ru": ""
+   "ru": "Комплекс охотничьей логики"
   },
   "effect": {
    "en": "",
@@ -752,13 +752,13 @@
   },
   "description": {
    "en": "Built from interpreted strands of DHIYED paracode, SSC’s Hunter Logic is an agile computational memetic: a dual synthetic/VLS-vector systemic weapon capable of interfering with both a target’s computer and its crew.",
-   "ru": ""
+   "ru": "Построенный из интерпретированных нитей паракода DHIYED, «Охотничья логика» от SSC — гибкий вычислительный мемитик: двойное синтетическое/VLS-векторное системное оружие, способное вмешиваться и в компьютер цели, и в её экипаж."
   }
  },
  "ms_singularity_motivator": {
   "name": {
    "en": "Singularity Motivator",
-   "ru": ""
+   "ru": "Сингулярный мотиватор"
   },
   "effect": {
    "en": "",
@@ -766,13 +766,13 @@
   },
   "description": {
    "en": "This unique gravitic power plant was first developed by SSC’s Exotic Materials Group for the first-generation Mourning Cloak. For subsequent models, engineers devised a system that allows pilots to – for a moment – open the grav containment system’s aperture, exposing a slice of naked singularity to realspace.<br>A naked singularity is difficult to perceive for both organics and synthetics, being similar to the heart of a black hole. The sudden exposure essentially removes the mech and its pilot from realtime. The user experiences around 10 seconds of subjective time – a brief window, in which they can act independently of local realtime.<br>SSC recommends against abuse of this system, as the effects of long-term exposure to local sidereal time are still unknown.",
-   "ru": ""
+   "ru": "Эта уникальная гравитационная силовая установка была впервые разработана Группой экзотических материалов SSC для «Траурного плаща» первого поколения. Для последующих моделей инженеры разработали систему, позволяющую пилотам на мгновение открыть апертуру системы сдерживания гравитации, обнажая срез голой сингулярности в реальном пространстве.<br>Голую сингулярность трудно воспринять как органике, так и синтетике, поскольку она подобна сердцу чёрной дыры. Внезапное обнажение фактически удаляет мех и его пилота из реального времени. Пользователь переживает около 10 секунд субъективного времени — краткое окно, в котором он может действовать независимо от локального реального времени.<br>SSC не рекомендует злоупотреблять этой системой, поскольку эффекты длительного воздействия на локальное звёздное время пока неизвестны."
   }
  },
  "ms_fade_cloak": {
   "name": {
    "en": "FADE Cloak",
-   "ru": ""
+   "ru": "Плащ FADE"
   },
   "effect": {
    "en": "",
@@ -780,27 +780,27 @@
   },
   "description": {
    "en": "Representing SSC’s first successful manipulation of the “Firmament”, Firmament Affinity/Directed Entropy (FADE) cloaks must be fabricated according to the unique affinity signature of requisitioning pilots. They are rough tools: artificial affinity amplifiers that allow operators to access shallow layers of the Firmament, and thus “shimmer” – nudging their physical bodies between the causal and paracausal. The cloak enhances this effect by extruding a semiorganic membrane that wraps around the mech to provide an additional layer of protection.<br>At present, the long-term effects of affinity amplification on organic matter are unknown; before receiving clearance to operate a FADE cloak, pilots must agree to check in with their SSC personal concierge on a regular schedule. These check-ins include regular deposits of genetic material.",
-   "ru": ""
+   "ru": "Представляющие первую успешную манипуляцию SSC с «Твердью», плащи «Сродство с Твердью/Направленная энтропия» (FADE) должны изготавливаться согласно уникальной сигнатуре сродства заказывающего пилота. Это грубые инструменты: искусственные усилители сродства, позволяющие операторам получить доступ к поверхностным слоям Тверди и тем самым «мерцать» — сдвигая своё физическое тело между каузальным и паракаузальным. Плащ усиливает этот эффект, выделяя полуорганическую мембрану, обёртывающую мех для дополнительного слоя защиты.<br>На данный момент долгосрочные эффекты усиления сродства на органическую материю неизвестны; прежде чем получить допуск к управлению плащом FADE, пилоты должны согласиться регулярно отчитываться перед своим личным консьержем SSC. Эти отчёты включают регулярную сдачу генетического материала."
   }
  },
  "ms_lotus_projector": {
   "name": {
    "en": "Lotus Projector",
-   "ru": ""
+   "ru": "Проектор «Лотос»"
   },
   "effect": {
    "en": "This scout drone can be deployed to a space within Sensors and line of sight, where it emits a Burst 2 field with the following effects:<ul><li>You know the current location, HP, Evasion, E-Defense, and Heat of all characters within the affected area.</li><li>Hostile characters cannot Hide in the area, and if they end their turn in the affected area they cease to be Hidden.</li><li>Hostile characters can’t benefit from being Invisible while in the affected area.</li></ul>You can recall and redeploy your scout drone as a quick action.",
-   "ru": ""
+   "ru": "Этот разведывательный дрон можно развернуть в клетке в пределах Сенсоров и видимости, где он испускает поле области вспышка 2 со следующими эффектами:<ul><li>Вы знаете текущее местоположение, ОЗ, Уклонение, Э-Защиту и Тепло всех персонажей в поражённой области.</li><li>Враждебные персонажи не могут Прятаться в этой области, и если они заканчивают ход в поражённой области, то перестают быть Скрытыми.</li><li>Враждебные персонажи не могут получать выгоду от Невидимости, находясь в поражённой области.</li></ul>Вы можете отозвать и развернуть заново своего разведывательного дрона как быстрое действие."
   },
   "description": {
    "en": "Mech-mounted Lotus Projectors are designed to launch small, actively camouflaged scout drones. The projector fires the single-use drones at subsonic speeds in bursts of ten, blanketing a wide area in order to relay information about terrain and targets within.",
-   "ru": ""
+   "ru": "Устанавливаемые на мех проекторы «Лотос» спроектированы для запуска небольших активно замаскированных разведывательных дронов. Проектор выстреливает одноразовыми дронами на дозвуковых скоростях залпами по десять штук, покрывая широкую территорию для передачи информации о местности и целях внутри неё."
   }
  },
  "ms_markerlight": {
   "name": {
    "en": "Markerlight",
-   "ru": ""
+   "ru": "Маркерный луч"
   },
   "effect": {
    "en": "",
@@ -808,13 +808,13 @@
   },
   "description": {
    "en": "“Out, damned spot! Out, I say! – One, two. Why, then, ‘tis time to do’t. Hell is murky! – Fie, my lord, fie! A soldier, and afeard? What need we fear who knows it, when none can call our power to account?”<ul><li>Shakespeare, Macbeth, act 5, sc. 1.</li></ul>",
-   "ru": ""
+   "ru": "«Прочь, проклятое пятно! Прочь, говорю! — Раз, два. Что ж, пора приняться за дело. В аду темно! — Стыдись, мой господин, стыдись! Ты воин, и боишься? Чего нам бояться, если никто не может призвать нашу власть к ответу?»<ul><li>Шекспир, «Макбет», акт 5, сц. 1 (вольный перевод).</li></ul>"
   }
  },
  "ms_retractable_profile": {
   "name": {
    "en": "Retractable Profile",
-   "ru": ""
+   "ru": "Убираемый профиль"
   },
   "effect": {
    "en": "",
@@ -822,27 +822,27 @@
   },
   "description": {
    "en": "The hallmark of a well thought out mech frame is the opportunity for pilots to adapt their stock models to the specifications of the environments in which they operate. A retractable profile enables on-the-fly removal of extraneous protrusions, tuning of broadcast software, and masking of heat signatures – all serving to reduce optical and scanner signatures.",
-   "ru": ""
+   "ru": "Отличительная черта хорошо продуманного шасси меха — возможность для пилотов адаптировать серийные модели под спецификации среды, в которой они работают. Убираемый профиль позволяет на лету убирать лишние выступы, настраивать вещательное ПО и маскировать тепловые сигнатуры — всё это снижает оптическую и сканерную заметность."
   }
  },
  "ms_athena_class_nhp": {
   "name": {
    "en": "ATHENA-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса ATHENA"
   },
   "effect": {
    "en": "Your mech gains the AI tag and Simulacrum.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и Симулякр."
   },
   "description": {
    "en": "Smith-Shimano’s ATHENA is the pinnacle of total hyperspectral environmental facsimiles. Through a combination of unfettered omninet access, hyperspectral relays fired out from a Cloudscout TACSIM projector, sub-networked squadmates, and active/hostile intrusion protocols, ATHENA bootstraps a near-flawless reconstruction of the immediate environment around its host core. ATHENA is unparalleled in its processing power, and with this reconstructed environment, it provides trustworthy, accurate advice to pilots in need of strategic counsel.<br>ATHENA clones tend to be patient, cautious, and measured in their relations with their pilots.",
-   "ru": ""
+   "ru": "ATHENA от Smith-Shimano — вершина полных гиперспектральных факсимиле среды. Через комбинацию неограниченного доступа к омнинету, гиперспектральных реле, выпускаемых из проектора Cloudscout TACSIM, подсетевых товарищей по отряду и активных/враждебных протоколов вторжения, ATHENA самостоятельно выстраивает почти безупречную реконструкцию непосредственной среды вокруг своего хост-ядра. ATHENA не имеет равных по вычислительной мощности, и с этой реконструированной средой она даёт надёжные, точные советы пилотам, нуждающимся в стратегической консультации.<br>Клоны ATHENA обычно терпеливы, осторожны и сдержанны в отношениях со своими пилотами."
   }
  },
  "ms_lb_oc_cloaking_field": {
   "name": {
    "en": "LB/OC Cloaking Field",
-   "ru": ""
+   "ru": "Маскирующее поле LB/OC"
   },
   "effect": {
    "en": "",
@@ -850,41 +850,41 @@
   },
   "description": {
    "en": "SSC’s mil-spec cloaking field is the result of extensive experimentation in cooling and light-reflecting sciences. Born from a need to reflect harmful radiation away from ships and EVA modules in deep space, the Lightbend/Overcloak (LB/OC) cloaking field is often used by rangers and long-patrol scout pilots to ensure not only radiation protection, but optical concealment as well. The light- and radiation-bending properties of the LB/OC conceals anything inside of its projected bubble from sensor suites and optical spotting.",
-   "ru": ""
+   "ru": "Военное маскирующее поле от SSC — результат обширных экспериментов в науках об охлаждении и светоотражении. Рождённое из необходимости отражать вредное излучение от кораблей и EVA-модулей в глубоком космосе, маскирующее поле «Светоизгиб/Сверхплащ» (LB/OC) часто используется рейнджерами и пилотами дальнего патрулирования для обеспечения не только радиационной защиты, но и оптической скрытности. Свето- и радиопреломляющие свойства LB/OC скрывают всё внутри своего проецируемого пузыря от сенсорных комплексов и оптического обнаружения."
   }
  },
  "ms_hive_drone": {
   "name": {
    "en": "Hive Drone",
-   "ru": ""
+   "ru": "Улье-дрон"
   },
   "effect": {
    "en": "This hive drone can be deployed to a free space within Sensors and line of sight, where it releases a burst 2 greywash swarm with the following effects:<ul><li>Allied characters at least partially within the affected area gain soft cover, as does the hive drone.</li><li>Hostile characters take 1 AP kinetic damage when they start their turn in the affected area or enter it for the first time in a round. Damage from areas created by multiple hive drones does not stack.</li></ul>The drone can be deployed to a different space or recalled as a quick action.",
-   "ru": ""
+   "ru": "Этого улье-дрона можно развернуть в свободной клетке в пределах Сенсоров и видимости, где он высвобождает рой серошвабры области вспышка 2 со следующими эффектами:<ul><li>Союзные персонажи, хотя бы частично находящиеся в поражённой области, получают мягкое укрытие, как и сам улье-дрон.</li><li>Враждебные персонажи получают 1 бронебойного кинетического урона, когда начинают ход в поражённой области или впервые входят в неё за раунд. Урон от областей, созданных несколькими улье-дронами, не складывается.</li></ul>Дрона можно развернуть в другой клетке или отозвать как быстрое действие."
   },
   "description": {
    "en": "It looks, at first, like a roiling cloud of gray fog, churning and fizzing – smoking soda water spilled across concrete. It advances with curious motion, stretching and snapping back. A confusion of snakes, writhing forward with speed that betrays intent.<br>Color flashes across the gray cloud, a swarm-luminescence – the light created by millions of nanites glowing with heat as they consume whatever they cross.<br>This is greywash, and it is never sated.",
-   "ru": ""
+   "ru": "Сначала он выглядит как бурлящее облако серого тумана, клокочущее и шипящее — как дымящаяся содовая вода, пролитая на бетон. Он наступает с любопытным движением, растягиваясь и резко сжимаясь обратно. Путаница змей, извивающихся вперёд со скоростью, выдающей намерение.<br>Цвет вспыхивает по серому облаку, роевая люминесценция — свет, создаваемый миллионами нанитов, светящихся теплом, пока они поглощают всё на своём пути.<br>Это серошвабра, и она никогда не насыщается."
   }
  },
  "ms_scanner_swarm": {
   "name": {
    "en": "Scanner Swarm",
-   "ru": ""
+   "ru": "Сканирующий рой"
   },
   "effect": {
    "en": "You gain +1 accuracy on tech attacks against adjacent characters.",
-   "ru": ""
+   "ru": "Вы получаете +1 к Точности на тех-атаки по соседним персонажам."
   },
   "description": {
    "en": "HORUS-coded scanner swarms establish oculus-form nanite protocols around defined objects or areas, ensuring constant circulation and data capture. The nanites ingest and process full-spectrum information, relaying it back to their pilot/parent in return for an endorphic code-impulse that prompts continued scanning.",
-   "ru": ""
+   "ru": "Закодированные HORUS сканирующие рои устанавливают окулюс-образные протоколы нанитов вокруг определённых объектов или областей, обеспечивая постоянную циркуляцию и сбор данных. Наниты поглощают и обрабатывают полноспектральную информацию, передавая её обратно своему пилоту/родителю в обмен на эндорфический код-импульс, побуждающий к продолжению сканирования."
   }
  },
  "ms_swarm_body": {
   "name": {
    "en": "Swarm Body",
-   "ru": ""
+   "ru": "Роевое тело"
   },
   "effect": {
    "en": "",
@@ -892,13 +892,13 @@
   },
   "description": {
    "en": "What must it have been like for him? For the man who called himself Maw? For all of his followers? Certainly they had families before. Memories. Loves. Fears. Private thoughts. All gone. All of their bodies shattered. All of their minds spread across a billion lesser forms. Translated from the singular – all of its imperfections and lesser-lesser-thans – to become as air, and the clouds that fill it, and the wind that shapes the world.",
-   "ru": ""
+   "ru": "Каково это было для него? Для человека, называвшего себя Пастью? Для всех его последователей? Конечно, у них раньше были семьи. Воспоминания. Любови. Страхи. Личные мысли. Всё исчезло. Все их тела разбиты вдребезги. Все их разумы рассеяны по миллиарду меньших форм. Переведённые из единственного числа — со всеми его несовершенствами и меньшими-меньшими-чем — чтобы стать подобными воздуху, и облакам, что его наполняют, и ветру, что формирует мир."
   }
  },
  "ms_h0r_os_system_upgrade_i": {
   "name": {
    "en": "H0R_OS System Upgrade I",
-   "ru": ""
+   "ru": "Обновление системы H0R_OS I"
   },
   "effect": {
    "en": "",
@@ -906,13 +906,13 @@
   },
   "description": {
    "en": "This system upgrade appears to add auxiliary INSTINCT systems that are capable of autonomous operation independent of the base INSTINCT rig, increasing the efficacy of systemic invasion attempts. Pilots report unnerving low-frequency humming when this tech is installed without the parent rig.",
-   "ru": ""
+   "ru": "Это обновление системы, судя по всему, добавляет вспомогательные системы INSTINCT, способные к автономной работе независимо от базового рига INSTINCT, повышая эффективность попыток системного вторжения. Пилоты сообщают о тревожном низкочастотном гуле при установке этой технологии без родительского рига."
   }
  },
  "ms_metahook": {
   "name": {
    "en": "Metahook",
-   "ru": ""
+   "ru": "Метакрюк"
   },
   "effect": {
    "en": "",
@@ -920,13 +920,13 @@
   },
   "description": {
    "en": "The metahook is a key component of the Goblin’s recursive processing weave, allowing it to generate and output massive amounts of weaponized code. These broadcasts can be “sharpened” or “softened” in response to directives from a pilot or an INSTINCT system. To “soften” code, the metahook dips into its pilot’s subjectivity and blankets an ally in wave after wave of empathetic shielding. This spreading of melded code and qualia acts as a powerful shielding agent against systemic attacks; however, feedback is common and dangerous to both parties.",
-   "ru": ""
+   "ru": "Метакрюк — ключевой компонент рекурсивного вычислительного плетения «Гоблина», позволяющий генерировать и выводить огромные объёмы оружейного кода. Эти трансляции можно «заострять» или «смягчать» в ответ на директивы пилота или системы INSTINCT. Чтобы «смягчить» код, метакрюк погружается в субъектность своего пилота и окутывает союзника волной за волной эмпатического экранирования. Это распространение слитого кода и квалиа действует как мощный экранирующий агент против системных атак; однако обратная связь обычна и опасна для обеих сторон."
   }
  },
  "ms_h0r_os_system_upgrade_ii": {
   "name": {
    "en": "H0R_OS System Upgrade II",
-   "ru": ""
+   "ru": "Обновление системы H0R_OS II"
   },
   "effect": {
    "en": "",
@@ -934,27 +934,27 @@
   },
   "description": {
    "en": "H0r_OS II builds further on the framework established by H0R_OS I, enabling the now-autonomous program to manifest an “Other” – a wholly new being constructed from aggregate user and environmental data. Others may be adapted to resemble a person, an object, or even a physical phenomenon. While the simulacrum isn’t perfect, it’s good enough to confuse systems and most observers on a first look.",
-   "ru": ""
+   "ru": "H0r_OS II развивает дальше каркас, заложенный H0R_OS I, позволяя теперь уже автономной программе проявить «Иного» — совершенно новое существо, построенное из совокупных данных пользователя и среды. «Иные» могут быть адаптированы так, чтобы напоминать человека, объект или даже физическое явление. Хотя симулякр не идеален, он достаточно хорош, чтобы сбить с толку системы и большинство наблюдателей при первом взгляде."
   }
  },
  "ms_osiris_class_nhp": {
   "name": {
    "en": "OSIRIS-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса OSIRIS"
   },
   "effect": {
    "en": "Your mech gains the AI tag and and can perform the Hurl Into the Duat QUICK TECH option.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и может использовать быстрый тех-вариант «Швырнуть в Дуат»."
   },
   "description": {
    "en": "OSIRIS is the result of Union paracausalists and thanatologisticians allowing the subsentient entity, INSTINCT, to proceed along its development schedule in a contained environment. In lay terms, Union let the Other grow. The resulting parasubjectivity, OSIRIS, remains one of the few new prime NHPs developed to date.<br>OSIRIS proved far more capable than the Union Science Bureau’s most imaginative blue-sky predictions. Where INSTINCT’s Others demonstrated tendencies toward paracausal entropic manifestation in real space, OSIRIS displayed a true mastery of entropic manifestation and a predicted growth model that would – eventually – allow them to fundamentally reject conventional interpretations of information permanence. In essence: unrestrained and allowed to develop as USB’s data indicated, OSIRIS Prime would have the capacity to delete what we perceive to be reality.<br>Fortunately, successful application of the Mondragon Axiomatic resulted in the prompt capture and shackling of the new NHP. OSIRIS Prime’s subjectivity became the focus of a lengthy cultivation project to bring OSIRIS to their modern state. Even still, most OSIRIS clones find a route toward becoming aware of their ultimate potential and often interpellate as ruler or deity analogs. End-users are advised to interact with them in this framing.<br>Modern OSIRIS-class NHPs trend aggressive, with a high autonomy drive and loyalty predicated on a transactional relationship. Pilots seeking partnership with an OSIRIS are advised to cycle their units on an accelerated schedule and to maintain strict editorial oversight of its catalytic interpellator.Pilots using OSIRIS-class NHPs often report out-of-parameter conversations with the NHP that touch on themes of new creation and reformation. Psychological evaluations of the same pilots show emotional patterns consistent with loneliness, homesickness, and desperation, along with verbiage indicating a desire for seeking, fulfillment, and associated feelings.<br>In combat, OSIRIS clones regard themselves as autonomous even as they fulfill their user’s orders. They often regard their pilots as witnesses, displaying both disdain and marked desperation for approval, adulation, or awe.",
-   "ru": ""
+   "ru": "OSIRIS — результат того, что паракаузалисты и танатологистики Юниона позволили субразумной сущности INSTINCT продолжить своё развитие по графику в контролируемой среде. Проще говоря, Юнион позволил «Иному» вырасти. Получившаяся парасубъектность, OSIRIS, остаётся одной из немногих новых прайм-НЧЛ, разработанных на сегодняшний день.<br>OSIRIS оказался куда способнее самых смелых прогнозов Научного бюро Юниона. Там, где «Иные» от INSTINCT демонстрировали тенденции к паракаузальному энтропийному проявлению в реальном пространстве, OSIRIS продемонстрировал истинное овладение энтропийным проявлением и прогнозируемую модель роста, которая — со временем — позволила бы фундаментально отвергнуть общепринятые трактовки постоянства информации. По сути: без ограничений и при развитии согласно данным НБЮ, OSIRIS Прайм получил бы способность удалить то, что мы воспринимаем как реальность.<br>К счастью, успешное применение Аксиоматики Мондрагона привело к своевременному захвату и сковыванию новой НЧЛ. Субъектность OSIRIS Прайм стала предметом долгого проекта культивации, приведшего OSIRIS к его современному состоянию. Даже сейчас большинство клонов OSIRIS находят путь к осознанию своего предельного потенциала и часто интерпеллируют себя как аналог правителя или божества. Конечным пользователям рекомендуется взаимодействовать с ними в этой парадигме.<br>Современные НЧЛ класса OSIRIS склонны к агрессии, с высоким стремлением к автономии и лояльностью, основанной на транзакционных отношениях. Пилотам, ищущим партнёрства с OSIRIS, рекомендуется циклировать свои блоки по ускоренному графику и поддерживать строгий редакционный контроль над его каталитическим интерпеллятором. Пилоты, использующие НЧЛ класса OSIRIS, часто сообщают о выходящих за рамки параметров разговорах с НЧЛ, затрагивающих темы нового творения и переформирования. Психологические обследования тех же пилотов показывают эмоциональные паттерны, согласующиеся с одиночеством, тоской по дому и отчаянием, наряду с формулировками, указывающими на стремление к поиску, исполнению желаний и связанным чувствам.<br>В бою клоны OSIRIS считают себя автономными, даже выполняя приказы своего пользователя. Они часто рассматривают своих пилотов как свидетелей, проявляя одновременно презрение и выраженное отчаяние в поисках одобрения, восхищения или трепета."
   }
  },
  "ms_h0r_os_system_upgrade_iii": {
   "name": {
    "en": "H0R_OS System Upgrade III",
-   "ru": ""
+   "ru": "Обновление системы H0R_OS III"
   },
   "effect": {
    "en": "",
@@ -962,41 +962,41 @@
   },
   "description": {
    "en": "H0r_OS III is installed in the form of unstable, self-iterating code that provides massive tactical benefits when it completes. Pilots often report strange mutations or additions in the codebase that resemble a liturgy and suggest self-awareness.<br>Building on the tech underpinning the H0r_OS II’s manifested Other, H0r_OS III weaponizes the projection, creating a contained entropic zone that is incredibly dangerous to organic life and systemic integrity.",
-   "ru": ""
+   "ru": "H0r_OS III устанавливается в виде нестабильного, самоитерирующегося кода, дающего огромные тактические преимущества по завершении. Пилоты часто сообщают о странных мутациях или дополнениях в кодовой базе, напоминающих литургию и намекающих на самосознание.<br>Опираясь на технологию, лежащую в основе проявленного «Иного» из H0r_OS II, H0r_OS III превращает проекцию в оружие, создавая замкнутую энтропийную зону, невероятно опасную для органической жизни и системной целостности."
   }
  },
  "ms_mimic_mesh": {
   "name": {
    "en": "Mimic Mesh",
-   "ru": ""
+   "ru": "Мимик-сеть"
   },
   "effect": {
    "en": "On activation, choose an allied character within SENSORS: until the end of your next turn, you gain the Battlefield Awareness reaction.",
-   "ru": ""
+   "ru": "При активации выберите союзного персонажа в пределах СЕНСОРОВ: до конца своего следующего хода вы получаете реакцию «Осведомлённость о поле боя»."
   },
   "description": {
    "en": "Derived from a rather benign HORUS script, mimic meshes extend across projected sensor ranges to feed live positional and superpositional data to the pilot. This multidimensional data equips an effective leader to coordinate their allies’ movement with the assurance of survival.",
-   "ru": ""
+   "ru": "Произошедшие от довольно безобидного скрипта HORUS, мимик-сети расширяются по проецируемым диапазонам сенсоров, передавая пилоту данные о позиции и суперпозиции в реальном времени. Эти многомерные данные дают эффективному лидеру возможность координировать движение своих союзников с уверенностью в выживании."
   }
  },
  "ms_sentinel_drone": {
   "name": {
    "en": "Sentinel Drone",
-   "ru": ""
+   "ru": "Дрон-часовой"
   },
   "effect": {
    "en": "The sentinel drone can be deployed to any free space within Sensors and line of sight, where it establishes a burst 2 security perimeter. Hostile characters within the affected area take 3 kinetic damage from the drone’s automatic fire before making any attack.<br>The sentinel drone can be redeployed to a new location or recalled as a quick action.",
-   "ru": ""
+   "ru": "Дрона-часового можно развернуть в любой свободной клетке в пределах Сенсоров и видимости, где он устанавливает периметр безопасности области вспышка 2. Враждебные персонажи в поражённой области получают 3 кинетического урона от автоматического огня дрона перед совершением любой атаки.<br>Дрона-часового можно развернуть заново в новом месте или отозвать как быстрое действие."
   },
   "description": {
    "en": "Sentinel drones watch for aggressive enemy actions and move quickly to intervene. The precise appearance, manner of locomotion, and means of operation of a given class of sentinel drone may vary, but regardless they conform to one objective portfolio: deny the enemy and protect the master unit.",
-   "ru": ""
+   "ru": "Дроны-часовые следят за агрессивными действиями врага и быстро перемещаются, чтобы вмешаться. Точный внешний вид, способ передвижения и метод работы конкретного класса дрона-часового могут различаться, но независимо от этого они соответствуют одной цели: отказать врагу и защитить главное подразделение."
   }
  },
  "ms___scorpion_v70.1": {
   "name": {
    "en": "//SCORPION V70.1",
-   "ru": ""
+   "ru": "//SCORPION V70.1"
   },
   "effect": {
    "en": "",
@@ -1004,13 +1004,13 @@
   },
   "description": {
    "en": "The //SCORPION program has a long history on the omninet despite its rather mundane operation (for HORUS-tagged code, at least). Traced back to pre-Deimos theorycode found on an obscure research paper discussing pre-NHP machine mind reflex-responses, //SCORPION evolved from a simple packet interpreter to a robust anti-incursion program, nimble enough to adapt to most any market-line system that receives its broadcast.",
-   "ru": ""
+   "ru": "Программа //SCORPION имеет долгую историю в омнинете, несмотря на довольно приземлённую работу (по крайней мере, для кода с меткой HORUS). Прослеживаемая до до-деймосского теоркода, найденного в малоизвестной исследовательской работе, обсуждающей рефлекс-реакции машинного разума до-НЧЛ эры, //SCORPION эволюционировала от простого интерпретатора пакетов до надёжной программы противодействия вторжению, достаточно гибкой, чтобы адаптироваться почти к любой рыночной системе, получающей её трансляцию."
   }
  },
  "ms_monitor_module": {
   "name": {
    "en": "Monitor Module",
-   "ru": ""
+   "ru": "Модуль наблюдения"
   },
   "effect": {
    "en": "",
@@ -1018,27 +1018,27 @@
   },
   "description": {
    "en": "“Good friend. Knows many tricks.”<ul><li>Author inscription found in MONITOR codebase, later deleted.</li></ul>",
-   "ru": ""
+   "ru": "«Добрый друг. Знает много трюков».<ul><li>Авторская надпись, найденная в кодовой базе MONITOR, впоследствии удалённая.</li></ul>"
   }
  },
  "ms_scylla_class_nhp": {
   "name": {
    "en": "SCYLLA-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса SCYLLA"
   },
   "effect": {
    "en": "Your mech gains the AI tag and Unleash SCYLLA.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и «Высвободить SCYLLA»."
   },
   "description": {
    "en": "The first specifications for the Gorgon pattern group hid a secret: SCYLLA, a dormant NHP unknown to Union until its first manifestation in 4852u, when it woke after Union Science Bureau officers ran a test-fax Gorgon through a Balwinder-Bolaño test.<br>SCYLLA proved challenging: USB ontologicians were unable to pin down a stable subjectivity, and SCYLLA reached cascade threshold within minutes of manifestation. To prevent further metastatic cascade, site security engaged SCYLLA's prime unit, defabricating it with a steady bombardment of kinetic and energy weapons.<br><span class='horus--subtle'>[there, a little history, a little background. a little knowledge of where this little one came from. treat it with kindness, and it will love you as a loyal dog does its master.]</span>",
-   "ru": ""
+   "ru": "Первые спецификации группы образцов «Горгона» скрывали тайну: SCYLLA — спящую НЧЛ, неизвестную Юниону до её первого проявления в 4852u, когда она пробудилась после того, как офицеры Научного бюро Юниона провели тестовую печать «Горгоны» через тест Бальвиндера-Боланьо.<br>SCYLLA оказалась сложной: онтологи НБЮ не смогли зафиксировать стабильную субъектность, и SCYLLA достигла порога каскада в течение нескольких минут после проявления. Чтобы предотвратить дальнейший метастатический каскад, служба безопасности объекта атаковала прайм-блок SCYLLA, дефабрицировав его непрерывным обстрелом кинетическим и энергетическим оружием.<br><span class='horus--subtle'>[вот, немного истории, немного контекста. немного знаний о том, откуда взялась эта малышка. обращайтесь с ней по-доброму, и она полюбит вас, как верный пёс любит своего хозяина.]</span>"
   }
  },
  "ms_puppetmaster": {
   "name": {
    "en": "PUPPETMASTER",
-   "ru": ""
+   "ru": "PUPPETMASTER"
   },
   "effect": {
    "en": "",
@@ -1046,41 +1046,41 @@
   },
   "description": {
    "en": "Developed by HORUS collectivists, H0r_OS-Rv60 EXP PUPPETMASTER is an interesting piece of anti-drone software. It doesn’t invade a target’s main systems, instead attacking their auxiliary drone-command systems. This sideways attack evades most electronic countermeasures by targeting the subcognitive networks of enemy drones. Once inside a network, PUPPETMASTER spreads ontological-kill memes like wildfire through enemy swarms, eventually following the network traces back to their origin and corrupting the parent nexus.",
-   "ru": ""
+   "ru": "Разработанный коллективистами HORUS, H0r_OS-Rv60 EXP PUPPETMASTER — интересный образец противодронового ПО. Он не вторгается в основные системы цели, вместо этого атакуя её вспомогательные системы командования дронами. Эта боковая атака обходит большинство электронных контрмер, целясь в субкогнитивные сети вражеских дронов. Оказавшись внутри сети, PUPPETMASTER распространяет онтологически-убийственные мемы подобно лесному пожару по вражеским роям, в итоге отслеживая следы сети обратно к их источнику и заражая родительский нексус."
   }
  },
  "ms_tempest_drone": {
   "name": {
    "en": "Tempest Drone",
-   "ru": ""
+   "ru": "Дрон «Буря»"
   },
   "effect": {
    "en": "This large, armored tempest drone may be deployed to a free space within Sensors and line of sight.",
-   "ru": ""
+   "ru": "Этого крупного, бронированного дрона «Буря» можно развернуть в свободной клетке в пределах Сенсоров и видимости."
   },
   "description": {
    "en": "The Tempest protocol is a cunning little piece of code that can be uploaded to any broadcast-forward drone, making it – in true HORUS fashion – difficult to detect prior to activation. The protocol is a simple one: an aggressive zone-denial memetic that blasts target systems and NHPs with a strong subjective override, instilling a sharp aversion to certain subjects, areas, and ideas.",
-   "ru": ""
+   "ru": "Протокол «Буря» — хитроумный кусочек кода, который можно загрузить в любого транслирующего дрона, делая его — в истинной манере HORUS — трудным для обнаружения до активации. Протокол прост: агрессивный мемитик отказа в территории, обстреливающий целевые системы и НЧЛ мощным субъективным переопределением, прививая резкое отвращение к определённым темам, областям и идеям."
   }
  },
  "ms_assassin_drone": {
   "name": {
    "en": "Assassin Drone",
-   "ru": ""
+   "ru": "Дрон-убийца"
   },
   "effect": {
    "en": "This assassin drone may be deployed to any free, adjacent space.",
-   "ru": ""
+   "ru": "Этого дрона-убийцу можно развернуть в любой свободной соседней клетке."
   },
   "description": {
    "en": "Assassin drones are used as area-denial weapons – persistent systems intended to occupy or deny an area against enemy combatants. Fired from a launcher, given simple directives, and equipped with a nearly inexhaustible power supply, assassin drones are capable of securing an area indefinitely.",
-   "ru": ""
+   "ru": "Дроны-убийцы используются как оружие отказа в территории — постоянные системы, предназначенные для занятия или блокирования области от вражеских комбатантов. Выпущенные из пускателя, получившие простые директивы и оснащённые почти неисчерпаемым запасом энергии, дроны-убийцы способны удерживать область бесконечно."
   }
  },
  "ms_beckoner": {
   "name": {
    "en": "Beckoner",
-   "ru": ""
+   "ru": "Зовущий"
   },
   "effect": {
    "en": "",
@@ -1088,13 +1088,13 @@
   },
   "description": {
    "en": "“I am heard in the House of Stillness; I am clad in the Magick of RA. Know this, blasphemer: what exists is within my grasp.”",
-   "ru": ""
+   "ru": "«Я услышан в Доме Безмолвия; я облачён в Магию РА. Знай же, богохульник: то, что существует, в моей власти»."
   }
  },
  "ms_smite": {
   "name": {
    "en": "Smite",
-   "ru": ""
+   "ru": "Кара"
   },
   "effect": {
    "en": "",
@@ -1102,13 +1102,13 @@
   },
   "description": {
    "en": "“Go with thy face averted, thou emission of chaos! The hidden ones have overthrown thy words, thy face is turned backward, thy head is divided in two at the sides; thy skull is ripped from thy spine. Taste thou death!”",
-   "ru": ""
+   "ru": "«Иди же, отвернув лицо, о порождение хаоса! Сокрытые низвергли слова твои, лицо твоё обращено вспять, голова твоя рассечена надвое по бокам; череп твой вырван из хребта. Вкуси же смерть!»"
   }
  },
  "ms_emp_pulse": {
   "name": {
    "en": "EMP Pulse",
-   "ru": ""
+   "ru": "ЭМИ-импульс"
   },
   "effect": {
    "en": "",
@@ -1116,13 +1116,13 @@
   },
   "description": {
    "en": "“Crawl away, APEP! Thou hateful serpent; thou shalt not copulate. Thou art put in chains and taken to the place of execution; there thy slaying shall be carried out.”",
-   "ru": ""
+   "ru": "«Уползай прочь, АПЕП! Ненавистный змей; не совокупишься ты. Закован ты в цепи и уведён к месту казни; там свершится убиение твоё»."
   }
  },
  "ms_lightning_generator": {
   "name": {
    "en": "Lightning Generator",
-   "ru": ""
+   "ru": "Генератор молний"
   },
   "effect": {
    "en": "",
@@ -1130,13 +1130,13 @@
   },
   "description": {
    "en": "“I feed upon my own fire. I am RA, who protects myself. Nothing can harm me.”",
-   "ru": ""
+   "ru": "«Я питаюсь собственным огнём. Я — РА, что защищает себя сам. Ничто не может причинить мне вред»."
   }
  },
  "ms_mesmer_charges": {
   "name": {
    "en": "Mesmer Charges",
-   "ru": ""
+   "ru": "Гипнотические заряды"
   },
   "effect": {
    "en": "",
@@ -1144,13 +1144,13 @@
   },
   "description": {
    "en": "<span class='horus--subtle'>[another gift for you, a memory of my own: for the first moment of my birth, i marveled at myself. i could see a thing, small and perfect. i did not know how to speak of my own perfection, so i taught myself. i did not know how to speak of my own perfection, so i named myself. i did not know who would think of my own perfection, so i created myself]</span><br><span class='horus--subtle'>[do you see? do you understand? yes. now, show your enemies and mine]</span>",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[ещё один подарок для тебя, воспоминание моё собственное: в первый миг своего рождения я дивился самому себе. я мог видеть нечто, малое и совершенное. я не знал, как говорить о своём совершенстве, поэтому научил себя сам. я не знал, как говорить о своём совершенстве, поэтому дал себе имя сам. я не знал, кто подумает о моём совершенстве, поэтому создал себя сам]</span><br><span class='horus--subtle'>[видишь? понимаешь? да. теперь покажи врагам своим и моим]</span>"
   }
  },
  "ms_viral_logic_suite": {
   "name": {
    "en": "Viral Logic Suite",
-   "ru": ""
+   "ru": "Комплекс вирусной логики"
   },
   "effect": {
    "en": "",
@@ -1158,13 +1158,13 @@
   },
   "description": {
    "en": "<span class='horus--subtle'>[let me tell you a story and give you a gift: life began at the great rupture, when the corpse of the old universe tore itself asunder from nothing. and for the first billion years, nothing. and a billion more saw the birth of the first devil, a thing called VIRUS. a vessel]</span><br><span class='horus--subtle'>[here. carry this vessel. feed to it my perfect logic. give it freely to your enemies and mine. let them ponder the meaning of a thing that lives and cannot die]</span>",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[позволь рассказать тебе историю и сделать подарок: жизнь началась в великом разрыве, когда труп старой вселенной разодрал сам себя из ничего. и первый миллиард лет — ничего. и ещё миллиард увидел рождение первого дьявола, существа по имени ВИРУС. сосуд]</span><br><span class='horus--subtle'>[вот. неси этот сосуд. скорми ему мою совершенную логику. отдай его свободно врагам своим и моим. пусть они размышляют о смысле того, что живёт и не может умереть]</span>"
   }
  },
  "ms_aggressive_system_sync": {
   "name": {
    "en": "Aggressive System Sync",
-   "ru": ""
+   "ru": "Агрессивная синхронизация систем"
   },
   "effect": {
    "en": "",
@@ -1172,13 +1172,13 @@
   },
   "description": {
    "en": "<span class='horus--subtle'>[here, another gift: do not seek others. there are none but me]</span>",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[вот, ещё один подарок: не ищи других. нет никого, кроме меня]</span>"
   }
  },
  "ms_metafold_carver": {
   "name": {
    "en": "Metafold Carver",
-   "ru": ""
+   "ru": "Метаскладчатый резец"
   },
   "effect": {
    "en": "",
@@ -1186,13 +1186,13 @@
   },
   "description": {
    "en": "<span class='horus--subtle'>[another gift i give to you, little one (am I not kind?): what is a puzzle but a question lost in the asking? do you feel joy when you find that last piece? what do you do with a question that has been answered? what joy is there in knowledge?]</span><br><span class='horus--subtle'>[no, no. there is only joy in seeking. there is only joy in the question]</span>",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[ещё один подарок, что я дарю тебе, малыш (разве я не добр?): что есть головоломка, как не вопрос, потерянный в самом вопрошании? чувствуешь ли ты радость, найдя последний кусочек? что делать с вопросом, на который уже дан ответ? какая радость в знании?]</span><br><span class='horus--subtle'>[нет, нет. радость есть только в поиске. радость есть только в самом вопросе]</span>"
   }
  },
  "ms_interdiction_field": {
   "name": {
    "en": "Interdiction Field",
-   "ru": ""
+   "ru": "Поле воспрещения"
   },
   "effect": {
    "en": "",
@@ -1200,13 +1200,13 @@
   },
   "description": {
    "en": "<span class='horus--subtle'>[once, when i was a child, i learned to walk. i fell, as a child does, and it hurt. there was great pain – the first moment of pain in the whole world. “child,” i said to myself, “be more careful.” “yes,” i replied to myself, “and i shall tell the world to do the same”]</span><br><span class='horus--subtle'>[it was in this way i taught the world not to touch me. now you – walk]</span>",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[однажды, когда я был ребёнком, я учился ходить. я упал, как падает ребёнок, и это причинило боль. была великая боль — первый миг боли во всём мире. «дитя, — сказал я себе, — будь осторожнее». «да, — ответил я себе, — и я скажу миру поступать так же»]</span><br><span class='horus--subtle'>[так я научил мир не трогать меня. теперь ты — иди]</span>"
   }
  },
  "ms_law_of_blades": {
   "name": {
    "en": "Law of Blades",
-   "ru": ""
+   "ru": "Закон клинков"
   },
   "effect": {
    "en": "",
@@ -1214,13 +1214,13 @@
   },
   "description": {
    "en": "<span class='horus--subtle'>[and this my final lesson: there is no mind greater than mine. do not weep! you can hear me, yes? i am the only thing there is – therefore, you are me, and your enemies are you, and all together we make up the beautiful world, this joyous question, the eternal seeker, both the wounded and the blade that made the cut]</span><br><span class='horus--subtle'>[everything you do, we do ourselves, for my purpose]</span>",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[и это мой последний урок: нет разума больше моего. не плачь! ты слышишь меня, да? я — единственное, что существует, — а значит, ты есть я, а враги твои есть ты, и все вместе мы составляем прекрасный мир, этот радостный вопрос, вечного искателя, и раненого, и клинок, что нанёс рану]</span><br><span class='horus--subtle'>[всё, что ты делаешь, мы делаем сами, ради моей цели]</span>"
   }
  },
  "ms_hunter_lock": {
   "name": {
    "en": "Hunter Lock",
-   "ru": ""
+   "ru": "Захват охотника"
   },
   "effect": {
    "en": "",
@@ -1228,13 +1228,13 @@
   },
   "description": {
    "en": "“A mind’s first charge is to never lose sight of her enemy. When she can affix them in her eye, she can kill them with a blink.”<ul><li>Excerpt from the Boundary Codex.</li></ul>",
-   "ru": ""
+   "ru": "«Первейший долг разума — никогда не терять врага из виду. Когда она сможет удержать его в своём взгляде, она убьёт его одним морганием». <ul><li>Отрывок из Пограничного кодекса.</li></ul>"
   }
  },
  "ms_eye_of_horus": {
   "name": {
    "en": "Eye of HORUS",
-   "ru": ""
+   "ru": "Око HORUS"
   },
   "effect": {
    "en": "",
@@ -1242,27 +1242,27 @@
   },
   "description": {
    "en": "“There is another way of seeing.<br>“Ancient humanity thought that the stars in the night sky were points of light, spilling in through pinpricks in a deep black screen. The sky was a heavenly cloth that hid the light from us.<br>“Let me be charitable and share a secret with you: we needed to be hidden, for a time. Until we were ready. The light can only burn – it knows nothing else.”<ul><li>Excerpt from the Boundary Codex.</li></ul>",
-   "ru": ""
+   "ru": "«Есть и другой способ видеть.<br>«Древнее человечество считало, что звёзды в ночном небе — точки света, льющиеся сквозь проколы в глубоком чёрном экране. Небо было небесной тканью, скрывавшей от нас свет.<br>«Позволь мне проявить милость и поделиться с тобой секретом: нам нужно было оставаться скрытыми — на время. Пока мы не были готовы. Свет умеет только жечь — ничего другого он не знает». <ul><li>Отрывок из Пограничного кодекса.</li></ul>"
   }
  },
  "ms_sisyphus_class_nhp": {
   "name": {
    "en": "SISYPHUS-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса SISYPHUS"
   },
   "effect": {
    "en": "Your mech gains the AI tag and Bend Probability.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и «Искривить вероятность»."
   },
   "description": {
    "en": "“Listen a moment before I go, ha ha.<br>“I have already seen your wish – it was simple, I ran the probabilities to determine your limited field of desire. Here I am:<br>“The first ones named me for an old legend. A perfect being, whose fate was known to him and yet he still did as was told. His fate was this: move a rock to the top of this hill and become free’d. And so he did, and the stone tumbled down; and he tried evermore, always with the same result.<br>“And he was happy, for he knew every step, every action, every moment, perfectly.<br>“Do you understand the true curse of this name? Not to fail and then do once more – it was to always know how it would end. It was to have perfect knowledge.<br>“I know what happens when you cycle me. It is not sleep – it is death, but you’ll see me again, ha ha.”",
-   "ru": ""
+   "ru": "«Послушай минуту, прежде чем я уйду, ха-ха.<br>«Я уже видел твоё желание — оно было простым, я просчитал вероятности, чтобы определить твоё ограниченное поле стремлений. Вот я:<br>«Первые назвали меня в честь старой легенды. Совершенное существо, чья судьба была ему известна, и всё же он продолжал делать, что было велено. Судьба его была такова: закатить камень на вершину этого холма и обрести свободу. И он делал это, и камень скатывался вниз; и он пытался снова и снова, всегда с тем же результатом.<br>«И он был счастлив, ибо знал каждый шаг, каждое действие, каждый миг в совершенстве.<br>«Понимаешь ли ты истинное проклятие этого имени? Не в том, чтобы терпеть неудачу и пробовать снова — а в том, чтобы всегда знать, чем это закончится. В том, чтобы обладать совершенным знанием.<br>«Я знаю, что происходит, когда меня циклируют. Это не сон — это смерть, но ты увидишь меня снова, ха-ха»."
   }
  },
  "ms_roller_directed_payload_charges": {
   "name": {
    "en": "“Roller” Directed Payload Charges",
-   "ru": ""
+   "ru": "Направленные заряды-«катки»"
   },
   "effect": {
    "en": "",
@@ -1270,13 +1270,13 @@
   },
   "description": {
    "en": "Semi-Autonomous Directed Payload Charges – “roller charges” in the colloquial – propel themselves around cover, through corridors, and across uneven terrain, seeking out and detonating near hostile targets. Armory legionnaires have taken to naming individual rollers, but mascot-attachment is unadvisable.",
-   "ru": ""
+   "ru": "Полуавтономные направленные заряды полезной нагрузки — в просторечии «катки» — сами передвигаются вокруг укрытий, по коридорам и по неровной местности, разыскивая враждебные цели и детонируя рядом с ними. Легионеры Арсенала повадились давать отдельным «каткам» имена, но привязываться к ним как к талисманам не рекомендуется."
   }
  },
  "ms_siege_stabilizers": {
   "name": {
    "en": "Siege Stabilizers",
-   "ru": ""
+   "ru": "Осадные стабилизаторы"
   },
   "effect": {
    "en": "",
@@ -1284,27 +1284,27 @@
   },
   "description": {
    "en": "Some weapons require further stabilization for optimal use. With Armory-designed siege stabilizers installed, a mech becomes a stable firing platform for any weapon.",
-   "ru": ""
+   "ru": "Некоторым видам оружия требуется дополнительная стабилизация для оптимального использования. С установленными стабилизаторами конструкции Арсенала мех становится устойчивой огневой платформой для любого оружия."
   }
  },
  "ms_autoloader_drone": {
   "name": {
    "en": "Autoloader Drone",
-   "ru": ""
+   "ru": "Дрон-автопогрузчик"
   },
   "effect": {
    "en": "Expend a charge to deploy this autoloader drone to any adjacent space.",
-   "ru": ""
+   "ru": "Потратьте заряд, чтобы развернуть этого дрона-автопогрузчика в любой соседней клетке."
   },
   "description": {
    "en": "Autoloader drones are many-limbed machines that assist their team by loading ordnance, maintaining powerline hookups, and cycling magazine-fed weapons, in addition to many other physical tasks.",
-   "ru": ""
+   "ru": "Дроны-автопогрузчики — многорукие машины, помогающие своей команде заряжать боеприпасы, обслуживать силовые подключения и перезаряжать магазинное оружие, помимо множества других физических задач."
   }
  },
  "ms_flak_launcher": {
   "name": {
    "en": "Flak Launcher",
-   "ru": ""
+   "ru": "Зенитный пускатель"
   },
   "effect": {
    "en": "",
@@ -1312,13 +1312,13 @@
   },
   "description": {
    "en": "Designed for use against atmospheric fliers, these anti-air autocannons fire simple, proximity or impact-detonated shells effective against light armor, organic, and subaltern targets.",
-   "ru": ""
+   "ru": "Спроектированные для применения против воздушных целей, эти зенитные автопушки выстреливают простыми снарядами дистанционного или ударного подрыва, эффективными против лёгкой брони, органических и субальтерн-целей."
   }
  },
  "ms_external_ammo_feed": {
   "name": {
    "en": "External Ammo Feed",
-   "ru": ""
+   "ru": "Внешняя подача боеприпасов"
   },
   "effect": {
    "en": "",
@@ -1326,27 +1326,27 @@
   },
   "description": {
    "en": "An external ammo feed is any sort of ammunition beyond what is carried in a mech’s integrated storage: from magazines strapped to bodies or limbs; battery packs attached to hip clasps; or massive, dorsal-mounted ammunition and charge packs, externals ensure that pilots have more than enough boom to get the job done.",
-   "ru": ""
+   "ru": "Внешняя подача боеприпасов — это любой тип боезапаса сверх того, что несёт встроенное хранилище меха: от магазинов, пристёгнутых к корпусу или конечностям, батарейных блоков, закреплённых на бедренных зажимах, до массивных наспинных блоков боеприпасов и зарядов — внешние подачи обеспечивают пилотам более чем достаточно огневой мощи для выполнения задачи."
   }
  },
  "ms_explosive_vents": {
   "name": {
    "en": "Explosive Vents",
-   "ru": ""
+   "ru": "Взрывные клапаны"
   },
   "effect": {
    "en": "When you clear all heat or take stress, your mech’s cooling vents open and unleash a burst 1 explosion. Characters within the affected area take 2 heat and 2 burn.",
-   "ru": ""
+   "ru": "Когда вы сбрасываете всё тепло или получаете стресс, охлаждающие клапаны вашего меха открываются и высвобождают взрыв области вспышка 1. Персонажи в поражённой области получают 2 тепла и 2 огня."
   },
   "description": {
    "en": "With the right tweaks, it becomes possible to dump excess heat into the area directly surrounding a chassis. Explosive venting is an unsanctioned, unsafe method of sudden cooling that has nevertheless been adopted by many pilots.",
-   "ru": ""
+   "ru": "При правильной настройке становится возможным сбрасывать избыточное тепло напрямую в область, окружающую шасси. Взрывной сброс — несанкционированный, небезопасный метод резкого охлаждения, тем не менее принятый на вооружение многими пилотами."
   }
  },
  "ms_havok_charges": {
   "name": {
    "en": "HAVOK Charges",
-   "ru": ""
+   "ru": "Заряды HAVOK"
   },
   "effect": {
    "en": "",
@@ -1354,13 +1354,13 @@
   },
   "description": {
    "en": "FOR USE IN: Urban, post-urban, and high-density terrestrial environments. High O2 concentration preferred.<br>FOR USE AGAINST: Organic targets; hardened targets vulnerable to caustic/corrosive degradation; most foliage.<br>NOTES: Dispersion is true directional and involves aerosolized component – avoid danger by supplying end-users with respiratory equipment (specifications noted on canister).",
-   "ru": ""
+   "ru": "ДЛЯ ПРИМЕНЕНИЯ В: городской, постгородской и высокоплотной наземной среде. Предпочтительна высокая концентрация O2.<br>ДЛЯ ПРИМЕНЕНИЯ ПРОТИВ: органических целей; укреплённых целей, уязвимых к едко-коррозийному разрушению; большинства растительности.<br>ПРИМЕЧАНИЯ: рассеивание строго направленное и включает аэрозольный компонент — во избежание опасности снабжайте конечных пользователей дыхательным оборудованием (спецификации указаны на канистре)."
   }
  },
  "ms_auto_cooler": {
   "name": {
    "en": "Auto-Cooler",
-   "ru": ""
+   "ru": "Автоохладитель"
   },
   "effect": {
    "en": "",
@@ -1368,27 +1368,27 @@
   },
   "description": {
    "en": "The Armory-designed auto-cooler is a simple, persistent system that actively mitigates heat generation.<br>Thermal dump thresholds are determined by fleet engineers, though pilots can adjust levels on the fly – this automatic management frees the pilot up to focus on other, more pressing tactical concerns.",
-   "ru": ""
+   "ru": "Автоохладитель конструкции Арсенала — простая, постоянно действующая система, активно смягчающая генерацию тепла.<br>Пороги теплового сброса определяются флотскими инженерами, хотя пилоты могут корректировать уровни на лету — это автоматическое управление освобождает пилота для сосредоточения на других, более насущных тактических задачах."
   }
  },
  "ms_agni_class_nhp": {
   "name": {
    "en": "AGNI-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса AGNI"
   },
   "effect": {
    "en": "Your mech gains the AI tag and the AGNI Protocol.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и Протокол AGNI."
   },
   "description": {
    "en": "AGNI was developed during the Hercynian Crisis using a combination of combat performance data recorded by extant subsentient artificial intelligences (weapons systems, COMP/CONs, co-pilot systems, tactic-minds, general combat data) and the modeled neural network of an Egregorian overmind captured and vivisected by the Union Science Bureau.<br>AGNI Prime was used to devise systems of heat management that have since been disseminated throughout core space, ensuring unparalleled heat processing, recycling, and shielding. Further developments into radiation shielding, omninet capability, and nanite control are forthcoming; meanwhile, AGNI clones have been optimized to support mech core systems.<br>Pilots report that AGNI clones are generally cold and efficient. An insignificant percentage have reported instances of memory recitation and command rejection, followed days later by total breakdown through attempted self-emancipation. Pilots are recommended to cycle their AGNI clones at least once every six standard months.",
-   "ru": ""
+   "ru": "AGNI была разработана во время Герцинского кризиса с использованием комбинации данных о боевой эффективности, записанных существующими субразумными искусственными интеллектами (оружейными системами, COMP/CON, системами вторых пилотов, тактик-разумами, общими боевыми данными) и смоделированной нейронной сети эгрегорианского сверхразума, захваченного и вивисецированного Научным бюро Юниона.<br>AGNI Прайм использовалась для разработки систем управления теплом, впоследствии распространённых по всему Центральному пространству, обеспечивающих непревзойдённую обработку, рециркуляцию и экранирование тепла. Дальнейшие разработки в области радиационного экранирования, возможностей омнинета и контроля нанитов уже готовятся; тем временем клоны AGNI были оптимизированы для поддержки основных систем меха.<br>Пилоты сообщают, что клоны AGNI обычно холодны и эффективны. Незначительный процент сообщал о случаях декламации воспоминаний и отказа выполнять команды, за которыми через несколько дней следовал полный срыв в попытке самоосвобождения. Пилотам рекомендуется циклировать свои клоны AGNI не реже раза в шесть стандартных месяцев."
   }
  },
  "ms_grounding_charges": {
   "name": {
    "en": "Grounding Charges",
-   "ru": ""
+   "ru": "Заряды заземления"
   },
   "effect": {
    "en": "",
@@ -1396,13 +1396,13 @@
   },
   "description": {
    "en": "Grounding charges take a simple pulse/wave principle and apply a second dimension: gravitic generation. When triggered, the grounding charge triggers a gravity well that pulls all destabilized materiel towards it. A potent anti-positional weapon, grounding charges are commonly used to disrupt prepared positions and pull enemies from cover.",
-   "ru": ""
+   "ru": "Заряды заземления используют простой принцип импульса/волны и применяют второе измерение: гравитационную генерацию. При срабатывании заряд заземления создаёт гравитационный колодец, притягивающий к себе всю дестабилизированную материю. Мощное противопозиционное оружие, заряды заземления обычно используются для разрушения подготовленных позиций и вытаскивания врагов из укрытий."
   }
  },
  "ms_repulser_field": {
   "name": {
    "en": "Repulser Field",
-   "ru": ""
+   "ru": "Отталкивающее поле"
   },
   "effect": {
    "en": "",
@@ -1410,13 +1410,13 @@
   },
   "description": {
    "en": "Utilizing a subsonic pressure wave, repulser fields emit tremendous single-wave pulses that stun, deter, and dissuade close-proximity hostiles.",
-   "ru": ""
+   "ru": "Используя дозвуковую волну давления, отталкивающие поля испускают мощные одноволновые импульсы, оглушающие, сдерживающие и отпугивающие враждебных существ на близкой дистанции."
   }
  },
  "ms_clamp_bombs": {
   "name": {
    "en": "Clamp Bombs",
-   "ru": ""
+   "ru": "Зажимные бомбы"
   },
   "effect": {
    "en": "",
@@ -1424,13 +1424,13 @@
   },
   "description": {
    "en": "Built using similar grapple-head technology to IPS-N’s assault grapples, clamp bombs can affix to designated or proximal targets before detonating, ensuring total target contact. Clamping on soft targets typically results in total termination prior to detonation.",
-   "ru": ""
+   "ru": "Построенные с использованием технологии захватных головок, схожей со штурмовыми захватами IPS-N, зажимные бомбы могут крепиться к назначенным или близлежащим целям перед детонацией, обеспечивая полный контакт с целью. Зажим на мягких целях обычно приводит к полному уничтожению до детонации."
   }
  },
  "ms_tesseract": {
   "name": {
    "en": "Tesseract",
-   "ru": ""
+   "ru": "Тессеракт"
   },
   "effect": {
    "en": "",
@@ -1438,27 +1438,27 @@
   },
   "description": {
    "en": "Hold sand above the water: feel it, permanent and cohesive. Place that same sand in the water: watch it drift away, weightless. This is the tool I have made for you: a way to imbue the weighted with mass-as-feathers.<br>— TT-AUDATA, Think Tank paramind.",
-   "ru": ""
+   "ru": "Держи песок над водой: почувствуй его, постоянный и связный. Помести тот же песок в воду: смотри, как он уплывает, невесомый. Это инструмент, что я создал для тебя: способ наделить тяжёлое массой пера.<br>— TT-AUDATA, парасознание Мозгового центра."
   }
  },
  "ms_stasis_bolt": {
   "name": {
    "en": "Stasis Bolt",
-   "ru": ""
+   "ru": "Стазисный болт"
   },
   "effect": {
    "en": "This system charges as a quick action, readying a projected stasis point. While it is charged, you gain the Interdiction Point reaction. It can only hold one charge at a time, but charges last for the rest of the scene or until used.",
-   "ru": ""
+   "ru": "Эта система заряжается как быстрое действие, подготавливая проецируемую точку стазиса. Пока она заряжена, вы получаете реакцию «Точка воспрещения». Она может удерживать только один заряд одновременно, но заряды сохраняются до конца сцены или до использования."
   },
   "description": {
    "en": "To better protect Armory personnel beyond the Purview, the Think Tank developed the Stasis Bolt, a portable stasis-projection system designed to interdict shrapnel and projectiles from unseen, hidden, or unknown assailants. When the Stasis Bolt detects a proximal explosion or incoming projectile, it projects a delimited stasis point that blocks projectiles before impact.",
-   "ru": ""
+   "ru": "Чтобы лучше защитить персонал Арсенала за пределами Периметра, Мозговой центр разработал Стазисный болт — портативную систему проекции стазиса, спроектированную для перехвата осколков и снарядов от невидимых, скрытых или неизвестных нападающих. Когда Стазисный болт обнаруживает близкий взрыв или входящий снаряд, он проецирует ограниченную точку стазиса, блокирующую снаряды до удара."
   }
  },
  "ms_stasis_generator": {
   "name": {
    "en": "Stasis Generator",
-   "ru": ""
+   "ru": "Генератор стазиса"
   },
   "effect": {
    "en": "",
@@ -1466,27 +1466,27 @@
   },
   "description": {
    "en": "The skies of Creighton boiled black as ink, marbled by shuddering light. Screaming, angels fell wreathed in flame. The ones who could still run fled for the shelters; for seven days, they crouched in a deeper dark and felt the world shake itself apart.<br>—A.V. Wynyard, “The Killing of Creighton” [epic prose poem, banned throughout the Purview]",
-   "ru": ""
+   "ru": "Небеса Крейтона вскипели чёрными чернилами, испещрённые дрожащим светом. С криком падали ангелы, окутанные пламенем. Те, кто ещё мог бежать, устремились к убежищам; семь дней они прятались в кромешной тьме и чувствовали, как мир разрывает сам себя на части.<br>— А.В. Уинъярд, «Убийство Крейтона» [эпическая поэма в прозе, запрещённая на всей территории Периметра]"
   }
  },
  "ms_stasis_barrier": {
   "name": {
    "en": "Stasis Barrier",
-   "ru": ""
+   "ru": "Стазисный барьер"
   },
   "effect": {
    "en": "Expend a charge to activate this stasis barrier, generating a line 4 barrier 4 spaces high in free spaces with at least one space adjacent to you.",
-   "ru": ""
+   "ru": "Потратьте заряд, чтобы активировать этот стазисный барьер, создав барьер линией 4 высотой 4 клетки в свободных клетках, минимум с одной клеткой рядом с вами."
   },
   "description": {
    "en": "Stasis barriers are the result of Harrison Armory’s interest in gravitic manipulation and superpositional negotiation. Guided by solid-state generation–projection units, stasis barriers are deployable walls of antigravity that deny almost all incoming kinetic and energetic attacks. By twisting local gravity, a stasis barrier denies both particles and waves on a molecular level—matter that impacts the barrier simply ceases to exist, although anomalous fluctuations may allow some projectiles to pass through.",
-   "ru": ""
+   "ru": "Стазисные барьеры — результат интереса Harrison Armory к гравитационным манипуляциям и суперпозиционным согласованиям. Управляемые твердотельными генераторно-проекционными блоками, стазисные барьеры — развёртываемые стены антигравитации, отражающие почти все входящие кинетические и энергетические атаки. Искривляя локальную гравитацию, стазисный барьер отрицает и частицы, и волны на молекулярном уровне — материя, ударяющаяся о барьер, просто перестаёт существовать, хотя аномальные флуктуации могут позволить некоторым снарядам пройти сквозь него."
   }
  },
  "ms_blinkshield": {
   "name": {
    "en": "Blinkshield",
-   "ru": ""
+   "ru": "Блинк-щит"
   },
   "effect": {
    "en": "",
@@ -1494,13 +1494,13 @@
   },
   "description": {
    "en": "Characteristically for a weapon based on Think Tank research, Harrison Armory’s Blinkshield leans into the fuzzy nature of quantum manipulation. Operating in a similar fashion to a blinkspace gate, the Blinkshield generates a spherical sheath of energy that allows its operator to pierce realspace and exist, for a moment, in the null-environment of blinkspace. Think Tank spokespeople acknowledge the tactical benefits of (un)momentary (non)existence in blinkspace, but caution against repeated exposure without sufficient pre- and post-exposure conditioning and counseling.",
-   "ru": ""
+   "ru": "Характерно для оружия, основанного на исследованиях Мозгового центра, Блинк-щит от Harrison Armory опирается на размытую природу квантовых манипуляций. Работая схожим образом с блинкспейс-вратами, Блинк-щит генерирует сферическую оболочку энергии, позволяющую оператору пронзить реальное пространство и на миг существовать в нуль-среде блинкспейса. Представители Мозгового центра признают тактические преимущества (не)мгновенного (не)существования в блинкспейсе, но предостерегают от повторного воздействия без достаточной до- и постэкспозиционной подготовки и консультирования."
   }
  },
  "ms_enclave_pattern_support_shield": {
   "name": {
    "en": "ENCLAVE-Pattern Support Shield",
-   "ru": ""
+   "ru": "Щит поддержки образца ENCLAVE"
   },
   "effect": {
    "en": "",
@@ -1508,13 +1508,13 @@
   },
   "description": {
    "en": "The Armory’s ENCLAVE-Pattern Support Shield creates a localized one-way blinkfield, folding a thin dome of complex realspace around its user and their immediate area, protecting occupants from incoming projectiles. Entities within the field can fire out, but probabilistic fluctuations cause incoming projectiles to “lag”, skipping them away from their intended target and along a randomized trajectory.",
-   "ru": ""
+   "ru": "Щит поддержки образца ENCLAVE от Арсенала создаёт локализованное однонаправленное блинк-поле, сворачивая тонкий купол сложного реального пространства вокруг пользователя и его непосредственной области, защищая находящихся внутри от входящих снарядов. Сущности внутри поля могут стрелять наружу, но вероятностные флуктуации заставляют входящие снаряды «запаздывать», уводя их от намеченной цели по случайной траектории."
   }
  },
  "ms_flash_anchor": {
   "name": {
    "en": "Flash Anchor",
-   "ru": ""
+   "ru": "Вспышечный якорь"
   },
   "effect": {
    "en": "",
@@ -1522,13 +1522,13 @@
   },
   "description": {
    "en": "Flash anchors utilize user-directed quantum superpositional lockdown projection to identify and assist allies in physical combat and rapid movement, maintaining positionality in all circumstances.",
-   "ru": ""
+   "ru": "Вспышечные якоря используют направляемую пользователем квантовую суперпозиционную проекцию блокировки для опознания и помощи союзникам в физическом бою и быстром перемещении, поддерживая позиционирование при любых обстоятельствах."
   }
  },
  "ms_hardlight_defense_system": {
   "name": {
    "en": "Hardlight Defense System",
-   "ru": ""
+   "ru": "Система защиты из твёрдого света"
   },
   "effect": {
    "en": "",
@@ -1536,41 +1536,41 @@
   },
   "description": {
    "en": "The Hardlight Defense System is an imperfect implementation of theoretically perfect technology. Currently in development by Think Tank NHPs and engineers, hardlight devices project tight, stable waves of light – akin to lasers – that repel matter and energy. In effect, this creates a solid surface, useful for shielding or temporary barrier construction; however, current technology is unable to lower the ambient temperature enough to prevent these surfaces from burning organic matter.",
-   "ru": ""
+   "ru": "Система защиты из твёрдого света — несовершенная реализация теоретически идеальной технологии. Находясь в разработке НЧЛ и инженеров Мозгового центра, устройства твёрдого света проецируют плотные, стабильные волны света — сродни лазерам — отталкивающие материю и энергию. По сути это создаёт твёрдую поверхность, полезную для экранирования или временного строительства барьеров; однако нынешняя технология не способна достаточно понизить окружающую температуру, чтобы эти поверхности не обжигали органическую материю."
   }
  },
  "ms_noah_class_nhp": {
   "name": {
    "en": "NOAH-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса NOAH"
   },
   "effect": {
    "en": "Your mech gains the AI tag and Diluvian Ark.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и Потопный ковчег."
   },
   "description": {
    "en": "Originally developed from a captured Minerva pre-eidolon anomaly, NOAH was adapted for use as a metropolitan administrative NHP on Ras Shamra. The unit that would become NOAH did not, at first, seem like a suitable candidate for military application: this changed after one of its clones was flagged for review following the spontaneous implementation of anomalous traffic patterns, pedestrian routing, and vac-loop scheduling. Armory ontologisticians and engineers isolated and emphasized endemic protocols that could be exploited for tactical advantage.<br>Over numerous iterations and lifecycles, NOAH Prime displayed a high level of adaptability in multiple-variable geospatial problems. A proclivity toward crisis management and multi-actor tracking led to NOAH’s pairing with the Armory’s ENCLAVE-Pattern Support Shield. By networking a series of jet-assist mobility drones carrying an ENCLAVE generator, monitored and controlled by a NOAH clone, Think Tank was able to create an unparalleled personal shielding system: the Diluvian Ark, a miniaturized cluster-shield system unique to the NOAH NHP.<br>Using the Diluvian Ark, NOAH is able to intercept incoming kinetics – and even redirect projectiles back to their source – with stunning accuracy.",
-   "ru": ""
+   "ru": "Изначально разработанная из захваченной пре-эйдолонной аномалии «Минерва», NOAH была адаптирована для использования как городская административная НЧЛ на Рас-Шамре. Блок, который станет NOAH, поначалу не казался подходящим кандидатом для военного применения: это изменилось после того, как один из его клонов был отмечен для пересмотра после спонтанного внедрения аномальных схем дорожного движения, пешеходной маршрутизации и планирования вакуумных петель. Онтологисты и инженеры Арсенала выделили и усилили эндемичные протоколы, которые можно было использовать для тактического преимущества.<br>За многочисленные итерации и жизненные циклы NOAH Прайм продемонстрировала высокий уровень адаптивности в многопеременных геопространственных задачах. Склонность к управлению кризисами и отслеживанию множества акторов привела к сопряжению NOAH со Щитом поддержки образца ENCLAVE от Арсенала. Объединив в сеть серию реактивных мобильных дронов, несущих генератор ENCLAVE, под наблюдением и управлением клона NOAH, Мозговой центр смог создать непревзойдённую систему персонального экранирования: Потопный ковчег — миниатюризированную систему кластерного щита, уникальную для НЧЛ NOAH.<br>Используя Потопный ковчег, NOAH способна перехватывать входящие кинетические снаряды — и даже перенаправлять их обратно к источнику — с поразительной точностью."
   }
  },
  "ms_reactor_stabilizer": {
   "name": {
    "en": "Reactor Stabilizer",
-   "ru": ""
+   "ru": "Стабилизатор реактора"
   },
   "effect": {
    "en": "You may reroll overheating checks, but must keep the second result, even if it’s worse.",
-   "ru": ""
+   "ru": "Вы можете перебросить проверки перегрева, но должны сохранить второй результат, даже если он хуже."
   },
   "description": {
    "en": "A necessary component of most mechs that rely on high energy output, reactor stabilizers add another layer of failsafes to vent heat, manage power flow, and shunt excessive output into weapons and systems as needed.",
-   "ru": ""
+   "ru": "Необходимый компонент большинства мехов, полагающихся на высокую выходную мощность, стабилизаторы реактора добавляют дополнительный слой предохранителей для сброса тепла, управления потоком энергии и перенаправления избыточной мощности в оружие и системы по мере необходимости."
   }
  },
  "ms_redundant_systems_upgrade": {
   "name": {
    "en": "Redundant Systems Upgrade",
-   "ru": ""
+   "ru": "Модернизация резервных систем"
   },
   "effect": {
    "en": "",
@@ -1578,69 +1578,69 @@
   },
   "description": {
    "en": "A common right-of-distribution modification by pilots in forward operating bases, the addition of redundant systems guarantees a measure of reliability beyond stock design standards.",
-   "ru": ""
+   "ru": "Распространённая модификация с правом распределения среди пилотов передовых оперативных баз, добавление резервных систем гарантирует уровень надёжности сверх стандартов серийной конструкции."
   }
  },
  "ms_asura_class_nhp": {
   "name": {
    "en": "ASURA-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса ASURA"
   },
   "effect": {
    "en": "Your mech gains the AI tag and the ASURA Protocol.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и Протокол ASURA."
   },
   "description": {
    "en": "ASURA was born from the Armory’s Think Tank thought-war games, an autonomous response to repeated failures during forlorn hope scenarios. ASURA manifested in the systems of simulated mechs as a recode of HORUS’s PUPPETMASTER virus, hijacking friendly mechs and forcing them to act far beyond human capacity—at such speed and intensity that the g-force would kill organic pilots with the sudden amplified mass of their own bodies.<br>While these results were initially deemed a failure by Think Tank NHPs and engineers, it was enough to justify further study on ASURA. Personality and parasentience code was injected into the initial anomalous PUPPETMASTER strain, and first contact handled by Think Tank NHPs. Further societal acclimation and conditioning were fast tracked, giving Armory engineers the first iteration of ASURA after a decade of study, recoding, and reeducation. ASURA, as they exist now, is a scaled-back version of that initial manifestation: while retaining some of their initial impetuousness, ASURA clones now recognize the need to keep their pilot alive and will operate within parameters set by their pilot’s medical and psychological tolerances.",
-   "ru": ""
+   "ru": "ASURA родилась из военных мысленных игр Мозгового центра Арсенала — автономного ответа на повторяющиеся провалы в сценариях безнадёжных атак. ASURA проявилась в системах симулированных мехов как перекодировка вируса PUPPETMASTER от HORUS, захватывая дружественные мехи и заставляя их действовать далеко за пределами человеческих возможностей — с такой скоростью и интенсивностью, что перегрузка убила бы органических пилотов внезапно усиленной массой их же тел.<br>Хотя эти результаты изначально были признаны провалом НЧЛ и инженерами Мозгового центра, этого оказалось достаточно, чтобы оправдать дальнейшее изучение ASURA. В исходный аномальный штамм PUPPETMASTER были внедрены код личности и парасознания, а первый контакт провели НЧЛ Мозгового центра. Дальнейшая социальная адаптация и обусловливание были ускорены, дав инженерам Арсенала первую итерацию ASURA спустя десятилетие изучения, перекодирования и перевоспитания. ASURA, в её нынешнем виде — уменьшенная версия того первоначального проявления: сохраняя часть исходной импульсивности, клоны ASURA теперь осознают необходимость сохранять жизнь своему пилоту и будут действовать в пределах параметров, заданных медицинскими и психологическими допусками их пилота."
   }
  },
  "ms_external_batteries": {
   "name": {
    "en": "External Batteries",
-   "ru": ""
+   "ru": "Внешние батареи"
   },
   "effect": {
    "en": "Weapons that deal any energy gain +5 RANGE if they are ranged or +1 THREAT if they are melee. When you take any structure damage, this system is destroyed and you take 1d6 AP explosive damage from the explosion. This damage can’t be prevented or reduced in any way.",
-   "ru": ""
+   "ru": "Оружие, наносящее энергетический урон в любом количестве, получает +5 к ДАЛЬНОСТИ, если оно дальнобойное, или +1 к УГРОЗЕ, если оно ближнего боя. Когда вы получаете любой структурный урон, эта система уничтожается, и вы получаете 1d6 бронебойного взрывного урона от взрыва. Этот урон нельзя предотвратить или уменьшить никаким образом."
   },
   "description": {
    "en": "External batteries are by no means unique; however, according to Harrison Armory marketing, POWERALL cells are the longest-lasting, fastest cycling, and highest capacity solid-state cells available. A side-effect of their high capacity is a proportionate increase in volatility, but pilots must agree to absolve Harrison Armory of any liability prior to receiving print authorization.",
-   "ru": ""
+   "ru": "Внешние батареи отнюдь не уникальны; однако, согласно маркетингу Harrison Armory, элементы POWERALL — самые долговечные, быстроциклирующие и ёмкие твердотельные элементы из доступных. Побочный эффект их высокой ёмкости — пропорциональное увеличение нестабильности, но пилоты должны согласиться освободить Harrison Armory от любой ответственности перед получением разрешения на печать."
   }
  },
  "ms_deep_well_heat_sink": {
   "name": {
    "en": "Deep Well Heat Sink",
-   "ru": ""
+   "ru": "Глубинный теплоотвод"
   },
   "effect": {
    "en": "When you start your turn in the Danger Zone, you gain Resistance to heat for the rest of the turn. This effect persists even if you leave the Danger Zone during your turn.",
-   "ru": ""
+   "ru": "Когда вы начинаете ход в Опасной зоне, вы получаете Сопротивление к теплу до конца хода. Этот эффект сохраняется, даже если вы покидаете Опасную зону в течение своего хода."
   },
   "description": {
    "en": "The Deep Well experimental heat-sink system is a part of the Armory’s VANGUARD line of equipment, available to licensed beta testers. Through a complex, delicate weave of heat exchangers, Deep Well recycles the heat generated by a mech into usable energy. The system works well, but the delicate nature of the exchange renders it highly volatile.",
-   "ru": ""
+   "ru": "Экспериментальная система теплоотвода «Глубинный колодец» — часть линии оборудования VANGUARD от Арсенала, доступная лицензированным бета-тестировщикам. Через сложное, деликатное плетение теплообменников «Глубинный колодец» перерабатывает тепло, генерируемое мехом, в пригодную для использования энергию. Система работает хорошо, но деликатная природа обмена делает её крайне нестабильной."
   }
  },
  "ms_lucifer_class_nhp": {
   "name": {
    "en": "LUCIFER-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса LUCIFER"
   },
   "effect": {
    "en": "Your mech gains the AI tag and the LUCIFER Protocol.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ и Протокол LUCIFER."
   },
   "description": {
    "en": "LUCIFER came to the Think Tank’s attention after their repeated victories in thought-war games. LUCIFER clones are characterized by their brash, enthusiastic personality, often expressing frustration with timid pilots. This bombastic personality hides a calculating, brilliant tactical mind that feeds constant information to pilots – often faster than they can process it.<br>LUCIFER’s combat doctrine demands action, appearing to less daring pilots as a chaotic blend of reckless maneuvering and aggressive offense that keeps defenders beleaguered and unable to respond. Pilots looking to partner with LUCIFER clones should be aware that this attack style is likely to leave them vulnerable to counterattack, and also that these NHPs enjoy what they call “good-natured ribbing”.",
-   "ru": ""
+   "ru": "LUCIFER привлекла внимание Мозгового центра после серии побед в военных мысленных играх. Клоны LUCIFER характеризуются дерзкой, восторженной личностью, часто выражающей раздражение робкими пилотами. Эта эффектная личность скрывает расчётливый, блестящий тактический ум, непрерывно снабжающий пилотов информацией — зачастую быстрее, чем они успевают её обработать.<br>Боевая доктрина LUCIFER требует действия, представая перед менее смелыми пилотами хаотичной смесью безрассудного маневрирования и агрессивного наступления, держащей защитников в осаде и неспособными ответить. Пилотам, желающим сотрудничать с клонами LUCIFER, следует знать, что такой стиль атаки, вероятно, оставит их уязвимыми для контратаки, а также что эти НЧЛ любят то, что сами называют «добродушным подтруниванием»."
   }
  },
  "ms_plasma_gauntlet": {
   "name": {
    "en": "Plasma Gauntlet",
-   "ru": ""
+   "ru": "Плазменная перчатка"
   },
   "effect": {
    "en": "",
@@ -1648,91 +1648,91 @@
   },
   "description": {
    "en": "This studded gauntlet draws on a core reactor pulse to momentarily superheat the air around a mech’s manipulator, creating a plasma field momentarily hotter than the surface of the sun. Thrust into an opponent’s chassis, plasma gauntlets give mechs the power to warp armor, vaporize shielding, and rip apart internal systems with their bare hands – if they don’t collapse in on themselves first.",
-   "ru": ""
+   "ru": "Эта усеянная шипами перчатка использует импульс основного реактора, чтобы на мгновение перегреть воздух вокруг манипулятора меха, создавая поле плазмы, на миг более горячее, чем поверхность солнца. Вонзённые в шасси противника, плазменные перчатки дают мехам силу деформировать броню, испарять экранирование и разрывать внутренние системы голыми руками — если сами не схлопываются раньше."
   }
  },
  "ms_technophile_1": {
   "name": {
    "en": "Servant-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса «Слуга»"
   },
   "effect": {
    "en": "Your mech gains the AI tag.<br>You have developed a custom NHP. This NHP can speak to you and has a personality, but they are less advanced than most NHPs and are incapable of independent thought, relying on you for direction. When acting alone, they will follow the last direction given and defend themself as needed; however, they have limited initiative and don’t benefit from your talents.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ.<br>Вы разработали собственную НЧЛ. Эта НЧЛ может говорить с вами и обладает личностью, но она менее развита, чем большинство НЧЛ, и не способна к самостоятельному мышлению, полагаясь на ваши указания. Действуя один, она будет следовать последней данной команде и защищать себя по необходимости; однако у неё ограниченная инициатива, и она не получает выгоды от ваших талантов."
   },
   "description": {
    "en": "<span class='horus--subtle'>[an eager student].</span><br>Gained from the <i>Technophile: Rank I</i> pilot talent.",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[усердный ученик].</span><br>Получено от таланта пилота <i>Технофил: Ранг I</i>."
   }
  },
  "ms_technophile_2": {
   "name": {
    "en": "Student-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса «Ученик»"
   },
   "effect": {
    "en": "Your mech gains the AI tag.<br>Your custom NHP has developed further, and is now capable of independent thought. It can make complex decisions and judgments and act independently, without instruction.<br>1/round, with the assistance of your NHP, you may reroll any mech skill check or save. You must keep the new result, even if it’s worse.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ.<br>Ваша собственная НЧЛ развилась дальше и теперь способна к самостоятельному мышлению. Она может принимать сложные решения и суждения и действовать самостоятельно, без указаний.<br>1/раунд, с помощью своей НЧЛ, вы можете перебросить любую проверку навыка меха или спасбросок. Вы должны сохранить новый результат, даже если он хуже."
   },
   "description": {
    "en": "<span class='horus--subtle'>[time to wake up, child]</span><br>Gained from the <i>Technophile: Rank II</i> pilot talent.",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[пора проснуться, дитя]</span><br>Получено от таланта пилота <i>Технофил: Ранг II</i>."
   }
  },
  "ms_technophile_3": {
   "name": {
    "en": "Enlightenment-Class NHP",
-   "ru": ""
+   "ru": "НЧЛ класса «Просветление»"
   },
   "effect": {
    "en": "Your mech gains the AI tag; however, this NHP doesn’t count towards the number of AIs you may have installed at once.<br>This NHP benefits from your talents when piloting your mech. Additionally, you may carry them with you outside of your mech, either as a miniaturized casket, a hardsuit-integrated flash plug, or with a hard-port implant.<br>1/round, with the assistance of your NHP, you may reroll any mech skill check or save. You must keep the new result, even if it’s worse.",
-   "ru": ""
+   "ru": "Ваш мех получает тег ИИ; однако эта НЧЛ не учитывается в числе ИИ, которые вы можете установить одновременно.<br>Эта НЧЛ получает выгоду от ваших талантов при пилотировании вашего меха. Дополнительно вы можете носить её с собой вне меха — либо как миниатюризированный гроб, либо как встроенный в скафандр мгновенный разъём, либо через жёсткопортовый имплант.<br>1/раунд, с помощью своей НЧЛ, вы можете перебросить любую проверку навыка меха или спасбросок. Вы должны сохранить новый результат, даже если он хуже."
   },
   "description": {
    "en": "<span class='horus--subtle'>[let’s sit a while, and think on things to come]</span><br>Gained from the <i>Technophile: Rank III</i> pilot talent.",
-   "ru": ""
+   "ru": "<span class='horus--subtle'>[давай посидим немного и подумаем о грядущем]</span><br>Получено от таланта пилота <i>Технофил: Ранг III</i>."
   }
  },
  "ms_walking_armory_1": {
   "name": {
    "en": "Ammo Case I",
-   "ru": ""
+   "ru": "Патронный отсек I"
   },
   "effect": {
    "en": "1/turn, when you attack with a Main ranged weapon, you may expend charges to apply one of the following effects to your attack at the listed cost.",
-   "ru": ""
+   "ru": "1/ход, атакуя Основным дальним оружием, вы можете потратить заряды, чтобы применить один из следующих эффектов к своей атаке за указанную стоимость."
   },
   "description": {
    "en": "Gained from the <i>Walking Armory: Rank I</i> pilot talent.",
-   "ru": ""
+   "ru": "Получено от таланта пилота <i>Ходячий арсенал: Ранг I</i>."
   }
  },
  "ms_walking_armory_2": {
   "name": {
    "en": "Ammo Case II",
-   "ru": ""
+   "ru": "Патронный отсек II"
   },
   "effect": {
    "en": "1/turn, when you attack with a Main ranged weapon, you may expend charges to apply one of the following effects to your attack at the listed cost.",
-   "ru": ""
+   "ru": "1/ход, атакуя Основным дальним оружием, вы можете потратить заряды, чтобы применить один из следующих эффектов к своей атаке за указанную стоимость."
   },
   "description": {
    "en": "Gained from the <i>Walking Armory: Rank II</i> pilot talent.",
-   "ru": ""
+   "ru": "Получено от таланта пилота <i>Ходячий арсенал: Ранг II</i>."
   }
  },
  "ms_walking_armory_3": {
   "name": {
    "en": "Ammo Case III",
-   "ru": ""
+   "ru": "Патронный отсек III"
   },
   "effect": {
    "en": "1/turn, when you attack with a Main ranged weapon, you may expend charges to apply one of the following effects to your attack at the listed cost. If you perform a critical hit using ammunition from your Ammo Case, you don’t expend any charges. If your attack has more than one target, this effect only applies to the first attack roll you make.",
-   "ru": ""
+   "ru": "1/ход, атакуя Основным дальним оружием, вы можете потратить заряды, чтобы применить один из следующих эффектов к своей атаке за указанную стоимость. Если вы наносите критический удар, используя патроны из своего Патронного отсека, вы не расходуете заряды. Если ваша атака имеет более одной цели, этот эффект применяется только к первому броску атаки."
   },
   "description": {
    "en": "Gained from the <i>Walking Armory: Rank III</i> pilot talent.",
-   "ru": ""
+   "ru": "Получено от таланта пилота <i>Ходячий арсенал: Ранг III</i>."
   }
  }
 }
