@@ -328,7 +328,7 @@
   },
   "Invisible": {
    "en": "Invisible",
-   "ru": "Невидимость"
+   "ru": "Невидимое"
   },
   "Danger Zone": {
    "en": "Danger Zone",
@@ -362,13 +362,21 @@
    "en": "(Self)",
    "ru": "(себе)"
   },
-  "Exotic": {
-   "en": "Exotic",
-   "ru": "Экзотическое"
-  },
   "Quick Action": {
    "en": "Quick Action",
    "ru": "Быстрое действие"
+  },
+  "Exotic Gear": {
+   "en": "Exotic Gear",
+   "ru": "Экзотическое снаряжение"
+  },
+  "Round": {
+   "en": "Round",
+   "ru": "Раунд"
+  },
+  "Turn": {
+   "en": "Turn",
+   "ru": "Ход"
   }
  }
 }

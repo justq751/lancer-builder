@@ -27,7 +27,7 @@ TAG_WORDS = {
     "tg_ai": "AI",
     "tg_ap": "Armor-Piercing (AP)",
     "tg_danger_zone": "Danger Zone",
-    "tg_exotic": "Exotic",
+    "tg_exotic": "Exotic Gear",
     "tg_gear": "Gear",
     "tg_limited": "Limited",
     "tg_loading": "Loading",

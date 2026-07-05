@@ -205,6 +205,17 @@ def build_manufacturers(data, old):
     return out
 
 
+def build_tags(data, old):
+    out = {}
+    for t in data.get("tags", []):
+        old_e = old.get(t["id"], {})
+        out[t["id"]] = {
+            "name": pair(t.get("name"), old_e.get("name")),
+            "description": pair(t.get("description"), old_e.get("description")),
+        }
+    return out
+
+
 BUILDERS = {
     "frames.json": build_frames,
     "weapons.json": build_weapons,
@@ -215,6 +226,7 @@ BUILDERS = {
     "pilot_gear.json": build_pilot_gear,
     "backgrounds.json": build_backgrounds,
     "manufacturers.json": build_manufacturers,
+    "tags.json": build_tags,
 }
 
 
@@ -222,6 +234,9 @@ def load_combined_data():
     """Core data + every normalized pack in data/packs/, merged into one
     lookup so pack items get template entries alongside core-book items."""
     data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    tags_file = ROOT / "data" / "tags.json"
+    if tags_file.exists():
+        data["tags"] = json.loads(tags_file.read_text(encoding="utf-8"))
     if PACKS_DIR.exists():
         for pack_file in sorted(PACKS_DIR.glob("*.json")):
             pack = json.loads(pack_file.read_text(encoding="utf-8"))

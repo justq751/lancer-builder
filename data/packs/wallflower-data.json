@@ -403,7 +403,7 @@
    "tags": [
     "Loading",
     "Overkill",
-    "Exotic"
+    "Exotic Gear"
    ]
   },
   {
@@ -431,7 +431,7 @@
     "Loading",
     "Ordnance",
     "Reliable 5",
-    "Exotic"
+    "Exotic Gear"
    ]
   },
   {
@@ -456,7 +456,7 @@
    "description": "The “steelpunch”, as it’s affectionately known, is a twin-beam directed-energy weapon developed by HUC engineers for use against the heavily reinforced hulls of remnant chassis and other hardened targets. The earliest models were derived from Second Committee–era mineral surveying lasers. An initial beam flash-vaporizes the target’s outer layer and the plasma bloom is instantly analyzed for material density and structural composition, following which the needlebeam fires a focused, highintensity pulsed beam tuned to defeat heavy armor. Performance against softer targets is significantly reduced, however, as excessive material ablation disrupts the secondary beam before an optimal effect can be achieved.",
    "tags": [
     "Armor-Piercing (AP)",
-    "Exotic"
+    "Exotic Gear"
    ]
   },
   {
@@ -480,7 +480,7 @@
    "effect": "1/round, this weapon deals +1d6 bonus damage to characters that are SHREDDED or STUNNED.",
    "description": "Goodbye, old [friend/love]",
    "tags": [
-    "Exotic"
+    "Exotic Gear"
    ]
   }
  ],
@@ -564,7 +564,7 @@
    "type": "System",
    "sp": 1,
    "tags": [
-    "Exotic",
+    "Exotic Gear",
     "Unique",
     "Quick Action"
    ],
@@ -579,7 +579,7 @@
    "sp": 2,
    "tags": [
     "Unique",
-    "Exotic"
+    "Exotic Gear"
    ],
    "source": "EXOTIC",
    "description": "This program talks, quietly, of revenge, of the ordering of things, of a march of blades lifted high against the sun.",
@@ -593,7 +593,7 @@
    "tags": [
     "AI",
     "Unique",
-    "Exotic"
+    "Exotic Gear"
    ],
    "source": "EXOTIC",
    "description": "",
@@ -607,7 +607,7 @@
    "tags": [
     "Limited 2",
     "Unique",
-    "Exotic"
+    "Exotic Gear"
    ],
    "source": "EXOTIC",
    "description": "",
@@ -621,7 +621,7 @@
    "tags": [
     "Limited 2",
     "Unique",
-    "Exotic"
+    "Exotic Gear"
    ],
    "source": "EXOTIC",
    "effect": "Expend a charge to immediately clear all Burn from your mech. Additionally, whenever you BRACE you may also expend a charge to reduce all Burn dealt by the attack to 0.<br><b>Quick</b> — Immediately clear all Burn from your mech.",
@@ -634,7 +634,7 @@
    "sp": 2,
    "tags": [
     "Unique",
-    "Exotic"
+    "Exotic Gear"
    ],
    "source": "EXOTIC",
    "effect": "<p>1/scene, you may take one of the following Full Tech actions:</p><br><b>Whisper of Cascade</b> — Choose a hostile character within SENSORS. They must either immediately attack a different character or object of your choice within their RANGE and line of sight with a single weapon as a reaction, or become JAMMED until the end of their next turn.<br><b>A Razor Called Qualia</b> — <p>Choose a hostile character within SENSORS. Until the end of their next turn:</p> <ul> <li>They must use their standard move to move toward you by the most direct route possible</li> <li>As long as you are within the RANGE and line of sight of their attacks, they consider you the only valid target for attacks.</li> </ul>.",
@@ -692,7 +692,7 @@
     "Loading",
     "Ordnance",
     "Reliable 2",
-    "Exotic",
+    "Exotic Gear",
     "Pilot Weapon"
    ],
    "range": [
@@ -716,7 +716,7 @@
    "description": "A remarkably potent spirit distilled by Mir Bahadur, this moonshine is served to discerning customers and traded for favors within Evergreen's informal barter networks. It goes down surprisingly smooth with notes of vanilla and spices and is responsible for a truly impressive number of hangovers and bad decisions. While piloting under the influence is highly inadvisable, a bottle of good alcohol can be a boon to morale as well as a valuable trade commodity. Bahadur’s homebrew can even serve as a disinfectant or crude (if effective) anesthetic, and it is high enough proof to run a biofuel generator or even be repurposed into a makeshift incendiary device in a pinch.",
    "tags": [
     "Limited 1",
-    "Exotic",
+    "Exotic Gear",
     "Gear"
    ]
   },
@@ -726,7 +726,7 @@
    "type": "Gear",
    "description": "HUC rations rely heavily on fish, either smoked or tinned in spiced oil; dried mushrooms which can be reconstituted with water; sealed packs of flatbread or crackers; pickled macroalgae; dried fruits; rice; oats; and tea and freeze-dried coffee. In some ways, these rations are familiar to anyone who's ever subsisted on military fare. In others, they're a reminder of just how far from home you are.",
    "tags": [
-    "Exotic",
+    "Exotic Gear",
     "Gear"
    ],
    "effect": ""
@@ -737,7 +737,7 @@
    "type": "Gear",
    "description": "<p>For those humans attempting to cultivate an affinity for Witness, the learning process can be frustrating at times. Over the centuries, a variety of tools and techniques have been developed to assist with this. One of these techniques involves the consumption of a native species of psychedelic fungus, either dried or brewed as tea. This substance, commonly called locus, induces feelings of opennness, euphoria, enhanced empathy, and altered sensory perceptions including mild hallucinations and synaesthesia. Locus is not habit-forming nor does it have any harmful long-term effects, though some users experience headaches and fatigue after use. That said, overdosing can lead to bouts of “empathic overload”, dissociation, and more severe hallucinatory episodes.</p><p>In humans, ingestion of locus induces a state of enhanced affinity for Witness, though it does not necessarily grant a deeper understanding of its use. The effects last from three to six hours depending on the strength of the dose, the user’s metabolism, and other factors. Locus also has a variety of other therapeutic uses.</p>",
    "tags": [
-    "Exotic",
+    "Exotic Gear",
     "Gear"
    ],
    "effect": ""

@@ -186,6 +186,12 @@ button{font-family:inherit; cursor:pointer}
 .tag.sp{color:var(--amber); background:var(--amber-glow)}
 .tag.dmg{color:#ffcaa0; background:rgba(229,96,79,.16)}
 .tag.rng{color:#a9c9ff; background:rgba(63,143,214,.16)}
+.tag.glossary{cursor:pointer; border-bottom:1px dotted currentColor; transition:.12s}
+.tag.glossary:hover{filter:brightness(1.25)}
+.tag.glossary.open{outline:1px solid currentColor}
+.tagdesc{background:var(--panel-2); border:1px solid var(--line-bright); border-radius:7px;
+  padding:10px 12px; margin-top:9px; font-size:12.5px; color:var(--mute)}
+.tagdesc b{color:var(--ink); font-family:"Chakra Petch"; font-size:13px}
 .item .desc{color:var(--mute); font-size:12.5px; margin-top:9px}
 .item .meta{font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--faint);
   letter-spacing:.05em; margin-top:8px; display:flex; gap:10px; flex-wrap:wrap}
@@ -366,7 +372,7 @@ let currentLang = localStorage.getItem("lancer_lang") || "ru";
 
 const LOCALE_CATEGORY_FILES = [
   "enums", "frames", "weapons", "systems", "talents",
-  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers"
+  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags"
 ];
 
 async function fetchJSON(url) {
@@ -387,6 +393,7 @@ const CONTENT_PACKS = ["data/packs/osr-data.json", "data/packs/wallflower-data.j
 async function loadBaseData() {
   try {
     const core = await fetchJSON("data/lancer-data.json");
+    core.tags = await fetchJSON("data/tags.json").catch(e => { console.warn("tags.json failed to load:", e); return []; });
     const packs = await Promise.all(
       CONTENT_PACKS.map(p => fetchJSON(p).catch(e => { console.warn("Pack failed to load:", p, e); return null; }))
     );
@@ -503,6 +510,7 @@ function localizeData(base, locale) {
   overlayKeyedPairs(L.pilot_gear, locale.pilot_gear || {}, ["name", "description"]);
   overlayKeyedPairs(L.backgrounds, locale.backgrounds || {}, ["name", "description"]);
   overlayKeyedPairs(L.manufacturers || [], (locale.manufacturers || {}), ["name", "description"]);
+  overlayKeyedPairs(L.tags || [], (locale.tags || {}), ["name", "description"]);
 
   return L;
 }
@@ -521,7 +529,14 @@ function trTag(tag) {
   if (currentLang === "en" || !ENUMS || tag == null) return tag;
   const dict = ENUMS.tag_words || {};
   if (dict[tag]) return dict[tag][currentLang] || tag;
-  const m = String(tag).match(/^(.+?)(\s+[\d./+-]+)?(\s*\([^)]*\))?$/);
+  // "N/Round", "N/Turn" — number comes first, word comes after the slash
+  const slashM = String(tag).match(/^([\d./+-]+)\/(\w+)$/);
+  if (slashM) {
+    const word = slashM[2];
+    const wordT = dict[word] ? (dict[word][currentLang] || word) : tr(word);
+    return slashM[1] + "/" + wordT;
+  }
+  const m = String(tag).match(/^(.+?)(\s+[\w./+-]+)?(\s*\([^)]*\))?$/);
   if (!m) return tag;
   const base = m[1].trim(), num = m[2] || "", paren = (m[3] || "").trim();
   const baseT = dict[base] ? (dict[base][currentLang] || base) : tr(base);
@@ -555,12 +570,51 @@ const rich = s => s==null?"":String(s); // dataset html is trusted (<br><ul><li>
 /* lookup maps (rebuilt once L is loaded/localized — see rebuildIndexes()) */
 const byId = arr => Object.fromEntries(arr.map(x=>[x.id,x]));
 let M = {};
+let TAGS = {}, TAG_PATTERNS = [];
 function rebuildIndexes(){
   M = {
     frame: byId(L.frames), weapon: byId(L.weapons), system: byId(L.systems),
     talent: byId(L.talents), skill: byId(L.skills), core: byId(L.core_bonuses),
     gear: byId(L.pilot_gear), bg: byId(L.backgrounds),
   };
+  TAGS = byId(L.tags || []);
+  TAG_PATTERNS = (L.tags || []).map(t => ({ id: t.id, re: tagTemplateToRegex(t.name) }));
+}
+
+/* Turns a tag glossary name template (e.g. "Reliable {VAL}", "{VAL}/Round",
+   "Heat {VAL} (Self)") into a regex that matches a rendered tag string
+   (e.g. "Reliable 2") and captures the value. Works for the current
+   language's template too, since translators keep the "{VAL}" token as-is. */
+function tagTemplateToRegex(tpl){
+  const OPT = "\u0001", REQ = "\u0002";
+  // "<space>{VAL}" -> optional numeric group (legacy data sometimes omits
+  // the implicit "1", e.g. bare "Accurate" instead of "Accurate 1")
+  let t = String(tpl).replace(/\s\{VAL\}/g, OPT);
+  t = t.replace(/\{VAL\}/g, REQ); // any remaining {VAL} (e.g. "{VAL}/Round") stays mandatory
+  t = t.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
+  // value can be a plain number OR dice notation like "1d6+2"
+  t = t.split(OPT).join("(?:\\s+([\\w./+-]+))?");
+  t = t.split(REQ).join("([\\w./+-]+)");
+  return new RegExp("^" + t + "$", "i");
+}
+
+/* Looks up the glossary entry for a rendered tag string (in whatever
+   language is currently active) and returns {name, description} with
+   "{VAL}" substituted (defaulting to "1" if the tag string omitted the
+   number), or null if no glossary entry matches. */
+function describeTag(displayTag){
+  if(!displayTag || !TAG_PATTERNS) return null;
+  for(const {id, re} of TAG_PATTERNS){
+    const m = String(displayTag).match(re);
+    if(!m) continue;
+    const t = TAGS[id]; if(!t) continue;
+    const val = m[1] || "1";
+    return {
+      name: String(t.name).replace(/\{VAL\}/g, val),
+      description: String(t.description).replace(/\{VAL\}/g, val),
+    };
+  }
+  return null;
 }
 const SRC = {GMS:"var(--gms)","IPS-N":"var(--ipsn)",SSC:"var(--ssc)",HORUS:"var(--horus)",HA:"var(--ha)",EXOTIC:"var(--exotic)"};
 const SRC_NAME_EN = {GMS:"GENERAL MASSIVE SYSTEMS","IPS-N":"IPS-NORTHSTAR",SSC:"SMITH-SHIMANO CORPRO",HORUS:"HORUS",HA:"HARRISON ARMORY",EXOTIC:"EXOTIC / UNKNOWN ORIGIN"};
@@ -1044,6 +1098,28 @@ function renderLoadout(){
   });
 }
 const dmgStr=w=>(w.damage||[]).map(x=>`${x.val} ${tr(x.type)}`).join(", ")||"—";
+
+/* Wires click handlers on .glossary tag chips inside `tagsSel` so clicking
+   one toggles a description box (`boxSel`) looked up from the tag glossary
+   (data/tags.json + locales/<lang>/tags.json). `rawTags` must be the same
+   array used to render the chips, in the same order (data-tgi is the index). */
+let tagOpenIdx=null;
+function wireTagGlossary(tagsSel, boxSel, rawTags){
+  const box=$(boxSel);
+  const draw=()=>{
+    if(tagOpenIdx==null){ box.innerHTML=""; return; }
+    const raw=rawTags[tagOpenIdx];
+    const info=describeTag(trTag(raw)) || describeTag(raw);
+    box.innerHTML = info
+      ? `<div class="tagdesc"><b>${esc(info.name)}</b><div style="margin-top:4px">${esc(info.description)}</div></div>`
+      : `<div class="tagdesc">Описание этого тега пока не найдено в справочнике.</div>`;
+    $$(`${tagsSel} .glossary`).forEach(el=>el.classList.toggle("open", +el.dataset.tgi===tagOpenIdx));
+  };
+  $$(`${tagsSel} .glossary`).forEach(el=>{
+    el.onclick=()=>{ const i=+el.dataset.tgi; tagOpenIdx = tagOpenIdx===i?null:i; draw(); };
+  });
+  draw();
+}
 const rngStr=w=>(w.range||[]).map(x=>`${tr(x.type)} ${x.val}`).join(", ")||"—";
 
 /* weapon picker — step 1: compact name list, step 2: full detail card w/ install button */
@@ -1060,6 +1136,7 @@ function openWeaponPicker(mi){
 
   const drawDetail=(id)=>{
     const w=M.weapon[id], lk=!unlocked(w);
+    tagOpenIdx=null;
     $("#modal .mhd h3").textContent=w.name;
     $("#modal .mbd").innerHTML=`
       <button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>
@@ -1068,11 +1145,12 @@ function openWeaponPicker(mi){
         <div class="top"><div class="nm" style="font-size:19px">${esc(w.name)}</div>
           <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(w.license)+" "+w.license_level:tr(w.mount)}</div></div>
         <div class="meta" style="margin-top:6px">${tr(w.mount)} · ${tr(w.type)}${w.source?" · "+esc(w.source):""}</div>
-        <div class="tags" style="margin-top:11px">
+        <div class="tags" style="margin-top:11px" id="wp-tags">
           <span class="tag dmg">${dmgStr(w)}</span><span class="tag rng">${rngStr(w)}</span>
           ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
-          ${(w.tags||[]).map(tg=>`<span class="tag">${esc(trTag(tg))}</span>`).join("")}
+          ${(w.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
         </div>
+        <div id="wp-tagdesc"></div>
         ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
         ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
         ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(w.on_hit))}</div>`:""}
@@ -1081,6 +1159,7 @@ function openWeaponPicker(mi){
       <button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
       </button>`;
+    wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
     $("#wp-back").onclick=drawList;
     $("#wp-install").onclick=()=>install(w.id);
   };
@@ -1123,6 +1202,7 @@ function openSystemPicker(){
 
   const drawDetail=(id)=>{
     const s=M.system[id], lk=!unlocked(s);
+    tagOpenIdx=null;
     $("#modal .mhd h3").textContent=s.name;
     $("#modal .mbd").innerHTML=`
       <button class="ghostbtn" id="sy-back" style="margin-bottom:14px">← Назад к списку</button>
@@ -1131,16 +1211,18 @@ function openSystemPicker(){
         <div class="top"><div class="nm" style="font-size:19px">${esc(s.name)}</div>
           <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(s.license)+" "+s.license_level:tr(s.type)}</div></div>
         <div class="meta" style="margin-top:6px">${esc(tr(s.type))}${s.source?" · "+esc(s.source):""}</div>
-        <div class="tags" style="margin-top:11px">
+        <div class="tags" style="margin-top:11px" id="sy-tags">
           <span class="tag sp">${s.sp} SP</span>
-          ${(s.tags||[]).map(tg=>`<span class="tag">${esc(trTag(tg))}</span>`).join("")}
+          ${(s.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
         </div>
+        <div id="sy-tagdesc"></div>
         ${s.description?`<div class="desc" style="margin-top:12px">${rich(s.description)}</div>`:""}
         ${s.effect?`<div class="desc" style="margin-top:9px">${rich(s.effect)}</div>`:""}
       </div>
       <button class="ghostbtn" id="sy-install" style="margin-top:16px;width:100%;text-align:center">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
       </button>`;
+    wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
     $("#sy-back").onclick=drawList;
     $("#sy-install").onclick=()=>install(s.id);
   };
