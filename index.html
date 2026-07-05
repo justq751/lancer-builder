@@ -172,6 +172,8 @@ button{font-family:inherit; cursor:pointer}
 .item:hover{border-color:var(--line-bright)}
 .item.sel{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent-glow)}
 .item.locked{opacity:.78}
+.item.static{cursor:default}
+.item.static:hover{border-color:var(--line)}
 .item .src{position:absolute; top:0; left:0; bottom:0; width:3px; border-radius:8px 0 0 8px}
 .item .top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
 .item .nm{font-family:"Chakra Petch"; font-size:16px; line-height:1.2}
@@ -205,6 +207,13 @@ button{font-family:inherit; cursor:pointer}
 .listrow .info .nm{font-family:"Chakra Petch"; font-size:16px}
 .listrow .info .ds{color:var(--mute); font-size:12.5px; margin-top:3px}
 .listrow.maxed{border-color:var(--accent)}
+.listrow.clickable{cursor:pointer; transition:.12s}
+.listrow.clickable:hover{border-color:var(--line-bright); background:var(--panel-2)}
+.listrow.locked{opacity:.68}
+.rowbadge{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.06em;
+  color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap; flex-shrink:0}
+.rowbadge.lock{color:var(--amber); border-color:var(--amber)}
+.chevron{color:var(--faint); font-size:18px; flex-shrink:0; font-family:"Chakra Petch"}
 
 /* talent rank descriptions */
 .rankbox{margin-top:10px; display:flex; flex-direction:column; gap:7px}
@@ -1037,74 +1046,133 @@ function renderLoadout(){
 const dmgStr=w=>(w.damage||[]).map(x=>`${x.val} ${tr(x.type)}`).join(", ")||"—";
 const rngStr=w=>(w.range||[]).map(x=>`${tr(x.type)} ${x.val}`).join(", ")||"—";
 
-/* weapon picker */
+/* weapon picker — step 1: compact name list, step 2: full detail card w/ install button */
 let wpSearch="";
 function openWeaponPicker(mi){
   const mt=state.mech.mounts[mi];
   const sizes=mt.items.map(id=>M.weapon[id]?.mount);
   const allow=allowedNext(mt.type,sizes);
-  const draw=()=>{
-    const list=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???")
-      .filter(w=>!wpSearch||(w.name+w.type+w.source).toLowerCase().includes(wpSearch.toLowerCase()))
-      .sort((a,b)=>(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
-    $("#wp-list").innerHTML=list.map(w=>{
-      const lk=!unlocked(w);
-      return `<div class="item ${lk?'locked':''}" data-w="${w.id}">
+  wpSearch="";
+
+  const install=id=>{ state.mech.mounts[mi].items.push(id); closeModal(); render(); };
+
+  const onHitText=v=>v==null?"":(typeof v==="string"?v:v.detail);
+
+  const drawDetail=(id)=>{
+    const w=M.weapon[id], lk=!unlocked(w);
+    $("#modal .mhd h3").textContent=w.name;
+    $("#modal .mbd").innerHTML=`
+      <button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>
+      <div class="item static">
         <div class="src" style="background:${srcColor(w.source)}"></div>
-        <div class="top"><div class="nm">${esc(w.name)}</div>
+        <div class="top"><div class="nm" style="font-size:19px">${esc(w.name)}</div>
           <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(w.license)+" "+w.license_level:tr(w.mount)}</div></div>
-        <div class="tags">
+        <div class="meta" style="margin-top:6px">${tr(w.mount)} · ${tr(w.type)}${w.source?" · "+esc(w.source):""}</div>
+        <div class="tags" style="margin-top:11px">
           <span class="tag dmg">${dmgStr(w)}</span><span class="tag rng">${rngStr(w)}</span>
           ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
-          ${w.tags.slice(0,3).map(tg=>`<span class="tag">${esc(trTag(tg))}</span>`).join("")}
+          ${(w.tags||[]).map(tg=>`<span class="tag">${esc(trTag(tg))}</span>`).join("")}
         </div>
-        ${w.effect?`<div class="desc">${rich(w.effect)}</div>`:""}
+        ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
+        ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
+        ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(w.on_hit))}</div>`:""}
+        ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}
+      </div>
+      <button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">
+        ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
+      </button>`;
+    $("#wp-back").onclick=drawList;
+    $("#wp-install").onclick=()=>install(w.id);
+  };
+
+  const drawList=()=>{
+    const list=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???")
+      .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
+      .sort((a,b)=>(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
+    $("#modal .mhd h3").textContent=`Установить оружие · ${tr(mt.type)}`;
+    $("#modal .mbd").innerHTML=
+      `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
+       <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
+       <div class="grid" id="wp-list" style="gap:8px"></div>`;
+    $("#wp-list").innerHTML=list.map(w=>{
+      const lk=!unlocked(w);
+      return `<div class="listrow clickable ${lk?'locked':''}" data-w="${w.id}">
+        <div class="info"><div class="nm">${esc(w.name)}</div>
+          <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
+        ${lk?`<span class="rowbadge lock">🔒 ${esc(w.license)} ${w.license_level}</span>`:`<span class="chevron">›</span>`}
       </div>`;
     }).join("")||`<div class="hint">// нет подходящего оружия</div>`;
-    $$("#wp-list .item").forEach(it=>it.onclick=()=>{
-      state.mech.mounts[mi].items.push(it.dataset.w); closeModal(); render();
-    });
+    const input=$("#wp-search");
+    input.oninput=e=>{wpSearch=e.target.value; drawList(); $("#wp-search").focus();};
+    if(wpSearch) input.setSelectionRange(input.value.length,input.value.length);
+    $$("#wp-list .listrow").forEach(it=>it.onclick=()=>drawDetail(it.dataset.w));
   };
-  modal(`Установить оружие · ${tr(mt.type)}`,
-    `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
-     <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px">
-     <div class="grid cards" id="wp-list"></div>`);
-  $("#wp-search").oninput=e=>{wpSearch=e.target.value; draw();};
-  wpSearch=""; draw();
+
+  modal(`Установить оружие · ${tr(mt.type)}`, "");
+  drawList();
 }
 
-/* system picker */
+
+/* system picker — same two-step list → detail-card flow as weapons */
 let syFilter="ALL", sySearch="";
 function openSystemPicker(){
-  const draw=()=>{
+  const install=id=>{ state.mech.systems.push(id); closeModal(); render(); };
+
+  const drawDetail=(id)=>{
+    const s=M.system[id], lk=!unlocked(s);
+    $("#modal .mhd h3").textContent=s.name;
+    $("#modal .mbd").innerHTML=`
+      <button class="ghostbtn" id="sy-back" style="margin-bottom:14px">← Назад к списку</button>
+      <div class="item static">
+        <div class="src" style="background:${srcColor(s.source)}"></div>
+        <div class="top"><div class="nm" style="font-size:19px">${esc(s.name)}</div>
+          <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(s.license)+" "+s.license_level:tr(s.type)}</div></div>
+        <div class="meta" style="margin-top:6px">${esc(tr(s.type))}${s.source?" · "+esc(s.source):""}</div>
+        <div class="tags" style="margin-top:11px">
+          <span class="tag sp">${s.sp} SP</span>
+          ${(s.tags||[]).map(tg=>`<span class="tag">${esc(trTag(tg))}</span>`).join("")}
+        </div>
+        ${s.description?`<div class="desc" style="margin-top:12px">${rich(s.description)}</div>`:""}
+        ${s.effect?`<div class="desc" style="margin-top:9px">${rich(s.effect)}</div>`:""}
+      </div>
+      <button class="ghostbtn" id="sy-install" style="margin-top:16px;width:100%;text-align:center">
+        ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
+      </button>`;
+    $("#sy-back").onclick=drawList;
+    $("#sy-install").onclick=()=>install(s.id);
+  };
+
+  const drawList=()=>{
     const list=L.systems
       .filter(s=>syFilter==="ALL"||s.source===syFilter)
       .filter(s=>!state.mech.systems.includes(s.id))
-      .filter(s=>!sySearch||(s.name+s.type+s.source).toLowerCase().includes(sySearch.toLowerCase()))
+      .filter(s=>!sySearch||(s.name+" "+tr(s.type)+" "+s.source+" "+(s.tags||[]).map(trTag).join(" ")).toLowerCase().includes(sySearch.toLowerCase()))
       .sort((a,b)=>(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
+    $("#modal .mhd h3").textContent="Добавить систему";
+    $("#modal .mbd").innerHTML=
+      `<div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
+       <input class="input" id="sy-search" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
+       <div class="grid" id="sy-list" style="gap:8px"></div>`;
     $("#sy-list").innerHTML=list.map(s=>{
       const lk=!unlocked(s);
-      return `<div class="item ${lk?'locked':''}" data-s="${s.id}">
-        <div class="src" style="background:${srcColor(s.source)}"></div>
-        <div class="top"><div class="nm">${esc(s.name)}</div>
-          <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(s.license)+" "+s.license_level:tr(s.type)}</div></div>
-        <div class="tags"><span class="tag sp">${s.sp} SP</span>
-          ${s.tags.slice(0,3).map(tg=>`<span class="tag">${esc(trTag(tg))}</span>`).join("")}</div>
-        ${s.effect?`<div class="desc">${rich(s.effect)}</div>`:s.description?`<div class="desc">${rich(s.description).slice(0,160)}…</div>`:""}
+      return `<div class="listrow clickable ${lk?'locked':''}" data-s="${s.id}">
+        <div class="info"><div class="nm">${esc(s.name)}</div>
+          <div class="ds">${esc(tr(s.type))} · ${s.sp} SP</div></div>
+        ${lk?`<span class="rowbadge lock">🔒 ${esc(s.license)} ${s.license_level}</span>`:`<span class="chevron">›</span>`}
       </div>`;
     }).join("")||`<div class="hint">// нет систем</div>`;
-    $$("#sy-list .item").forEach(it=>it.onclick=()=>{
-      state.mech.systems.push(it.dataset.s); closeModal(); render();
-    });
+    $$(".modal .chip[data-syf]").forEach(c=>c.onclick=()=>{syFilter=c.dataset.syf; drawList();});
+    const input=$("#sy-search");
+    input.oninput=e=>{sySearch=e.target.value; drawList(); $("#sy-search").focus();};
+    if(sySearch) input.setSelectionRange(input.value.length,input.value.length);
+    $$("#sy-list .listrow").forEach(it=>it.onclick=()=>drawDetail(it.dataset.s));
   };
-  modal("Добавить систему",
-    `<div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
-     <input class="input" id="sy-search" placeholder="поиск систем…" style="margin-bottom:14px">
-     <div class="grid cards" id="sy-list"></div>`);
-  $$(".modal .chip[data-syf]").forEach(c=>c.onclick=()=>{syFilter=c.dataset.syf; $$(".modal .chip[data-syf]").forEach(x=>x.classList.toggle("on",x.dataset.syf===syFilter)); draw();});
-  $("#sy-search").oninput=e=>{sySearch=e.target.value; draw();};
-  sySearch=""; draw();
+
+  syFilter="ALL"; sySearch="";
+  modal("Добавить систему", "");
+  drawList();
 }
+
 
 /* ============ SUMMARY ============ */
 function renderSummary(){

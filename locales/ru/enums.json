@@ -361,6 +361,14 @@
   "(Self)": {
    "en": "(Self)",
    "ru": "(себе)"
+  },
+  "Exotic": {
+   "en": "Exotic",
+   "ru": "Экзотическое"
+  },
+  "Quick Action": {
+   "en": "Quick Action",
+   "ru": "Быстрое действие"
   }
  }
 }
