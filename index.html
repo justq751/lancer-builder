@@ -563,7 +563,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-sorting-availability-manufacturer";
+const APP_BUILD = "2026-07-05-frame-sort-manufacturer";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1053,7 +1053,7 @@ function renderFrame(){
         ${["ALL","GMS","IPS-N","SSC","HORUS","HA"].map(s=>`<button class="chip ${frameFilter===s?'on':''}" data-ff="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}
        </div><div class="grid cards" id="frame-list"></div>`;
   const list=L.frames.filter(f=>frameFilter==="ALL"||f.source===frameFilter)
-    .sort((a,b)=>(frameUnlocked(b)-frameUnlocked(a))||dispName(a).localeCompare(dispName(b)));
+    .sort((a,b)=>(frameUnlocked(b)-frameUnlocked(a))||(sourceOrder(a.source)-sourceOrder(b.source))||dispName(a).localeCompare(dispName(b)));
   $("#frame-list").innerHTML=list.map(f=>{
     const sel=state.mech.frameId===f.id;
     const lk=!frameUnlocked(f);
