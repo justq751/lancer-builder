@@ -4151,10 +4151,86 @@
    "license": "",
    "license_level": 0,
    "sp": 0,
-   "effect": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power.<br>This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5.<br> After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
+   "effect": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power. This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5. If the value of the Apocalypse Die is 1–3, you can attack on your turn with the Apocalypse Rail as a full action, but can’t move or take any other actions on the same turn. After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
    "on_hit": null,
    "on_attack": null,
-   "on_crit": null
+   "on_crit": null,
+   "profiles": [
+    {
+     "name": "Charge Rail: 4",
+     "damage": [
+      {
+       "val": "N/A"
+      }
+     ],
+     "range": [
+      {
+       "val": "N/A"
+      }
+     ],
+     "effect": "Cannot Be Fired"
+    },
+    {
+     "name": "Charge Rail: 3",
+     "damage": [
+      {
+       "type": "Explosive",
+       "val": "2d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 20
+      },
+      {
+       "type": "Blast",
+       "val": 2
+      }
+     ],
+     "effect": "Objects within the affected area automatically take 20 AP explosive damage. After the attack, the blast cloud lingers, providing soft cover to characters within the affected area until the end of your next turn."
+    },
+    {
+     "name": "Charge Rail: 2",
+     "damage": [
+      {
+       "type": "Explosive",
+       "val": "3d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 25
+      },
+      {
+       "type": "Blast",
+       "val": 2
+      }
+     ],
+     "effect": "Objects and terrain in the area automatically take 40 AP explosive damage, and on hit characters become Shredded and Impaired until the end of their next turn. The blast cloud is a burning storm: until the end of your next turn, characters within the affected area receive soft cover, and characters that start their turn within the area or move there for the first time in a round take 4 burn."
+    },
+    {
+     "name": "Charge Rail: 1",
+     "damage": [
+      {
+       "type": "Explosive",
+       "val": "4d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 30
+      },
+      {
+       "type": "Blast",
+       "val": 2
+      }
+     ],
+     "effect": "Objects and terrain in the area automatically take 100 AP explosive damage, and characters become Shredded and Stunned until the end of their next turn on hit. The ground in the affected area is vaporized on impact: for the rest of the scene, it is difficult terrain, characters within the affected area receive soft cover, and characters that start their turn with the area or move there for the first time in a round take 4 burn."
+    }
+   ]
   },
   {
    "id": "mw_sherman_integrated",
@@ -4170,10 +4246,72 @@
    "license": "",
    "license_level": 0,
    "sp": 0,
-   "effect": null,
+   "effect": "This weapon’s profile is determined by the number of Charges it carries. It begins with 1 Charge, dealing 1d6 energy with line 4. Each time you Stabilize, you gain an additional 1 Charge, up to a maximum of 4. The ZF4 gains an additional +4 line and +1d6 energy damage for each charge, and resets to 1 Charge after each attack. Charges persist between scenes, but are lost during a full repair.",
    "on_hit": null,
    "on_attack": null,
-   "on_crit": null
+   "on_crit": null,
+   "profiles": [
+    {
+     "name": "1 Charge",
+     "damage": [
+      {
+       "type": "Energy",
+       "val": "1d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Line",
+       "val": 4
+      }
+     ]
+    },
+    {
+     "name": "2 Charges",
+     "damage": [
+      {
+       "type": "Energy",
+       "val": "2d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Line",
+       "val": 8
+      }
+     ]
+    },
+    {
+     "name": "3 Charges",
+     "damage": [
+      {
+       "type": "Energy",
+       "val": "3d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Line",
+       "val": 12
+      }
+     ]
+    },
+    {
+     "name": "4 Charges",
+     "damage": [
+      {
+       "type": "Energy",
+       "val": "4d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Line",
+       "val": 16
+      }
+     ]
+    }
+   ]
   }
  ],
  "systems": [

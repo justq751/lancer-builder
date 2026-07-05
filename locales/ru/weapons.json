@@ -915,8 +915,50 @@
    "ru": "«Рельса Апокалипсиса»"
   },
   "effect": {
-   "en": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power.<br>This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5.<br> After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
-   "ru": "«Рельса Апокалипсиса» должна быть заряжена перед выстрелом, с помощью CORE-способности «Зарядить рельсу».<br>У этого оружия разные профили, определяемые текущим значением КОСТИ АПОКАЛИПСИСА в момент выстрела. Каждый профиль заменяет предыдущий. «Рельса Апокалипсиса» не может стрелять по целям в пределах Дальности 5.<br>После атаки «Рельсой Апокалипсиса» Кость Апокалипсиса сбрасывается на 4."
+   "en": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power. This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5. If the value of the Apocalypse Die is 1–3, you can attack on your turn with the Apocalypse Rail as a full action, but can’t move or take any other actions on the same turn. After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
+   "ru": "«Рельса Апокалипсиса» должна быть заряжена перед выстрелом, с помощью CORE-способности «Зарядить рельсу».<br>У этого оружия разные профили, определяемые текущим значением КОСТИ АПОКАЛИПСИСА в момент выстрела. Каждый профиль заменяет предыдущий. «Рельса Апокалипсиса» не может стрелять по целям в пределах Дальности 5.<br>Если значение Кости Апокалипсиса 1–3, вы можете атаковать в свой ход «Рельсой Апокалипсиса» как полное действие, но не можете двигаться или совершать другие действия в этот же ход.<br>После атаки «Рельсой Апокалипсиса» Кость Апокалипсиса сбрасывается на 4."
+  },
+  "profiles": {
+   "Charge Rail: 4": {
+    "name": {
+     "en": "Charge Rail: 4",
+     "ru": "Заряд рельсы: 4"
+    },
+    "effect": {
+     "en": "Cannot Be Fired",
+     "ru": "Невозможно выстрелить"
+    }
+   },
+   "Charge Rail: 3": {
+    "name": {
+     "en": "Charge Rail: 3",
+     "ru": "Заряд рельсы: 3"
+    },
+    "effect": {
+     "en": "Objects within the affected area automatically take 20 AP explosive damage. After the attack, the blast cloud lingers, providing soft cover to characters within the affected area until the end of your next turn.",
+     "ru": "Объекты в поражённой области автоматически получают 20 бронебойного взрывного урона. После атаки облако взрыва задерживается, давая мягкое укрытие персонажам в поражённой области до конца вашего следующего хода."
+    }
+   },
+   "Charge Rail: 2": {
+    "name": {
+     "en": "Charge Rail: 2",
+     "ru": "Заряд рельсы: 2"
+    },
+    "effect": {
+     "en": "Objects and terrain in the area automatically take 40 AP explosive damage, and on hit characters become Shredded and Impaired until the end of their next turn. The blast cloud is a burning storm: until the end of your next turn, characters within the affected area receive soft cover, and characters that start their turn within the area or move there for the first time in a round take 4 burn.",
+     "ru": "Объекты и местность в области автоматически получают 40 бронебойного взрывного урона, а персонажи при попадании становятся Истрёпаны и Ослаблены до конца своего следующего хода. Облако взрыва — горящий шторм: до конца вашего следующего хода персонажи в поражённой области получают мягкое укрытие, а персонажи, начинающие ход в этой области или впервые входящие в неё за раунд, получают 4 огня."
+    }
+   },
+   "Charge Rail: 1": {
+    "name": {
+     "en": "Charge Rail: 1",
+     "ru": "Заряд рельсы: 1"
+    },
+    "effect": {
+     "en": "Objects and terrain in the area automatically take 100 AP explosive damage, and characters become Shredded and Stunned until the end of their next turn on hit. The ground in the affected area is vaporized on impact: for the rest of the scene, it is difficult terrain, characters within the affected area receive soft cover, and characters that start their turn with the area or move there for the first time in a round take 4 burn.",
+     "ru": "Объекты и местность в области автоматически получают 100 бронебойного взрывного урона, а персонажи при попадании становятся Истрёпаны и Ошеломлены до конца своего следующего хода. Земля в поражённой области испаряется при ударе: до конца сцены это сложная местность, персонажи в поражённой области получают мягкое укрытие, а персонажи, начинающие ход в этой области или впервые входящие в неё за раунд, получают 4 огня."
+    }
+   }
   }
  },
  "mw_sherman_integrated": {
@@ -925,8 +967,34 @@
    "ru": "ZF4 SOLIDCORE"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "This weapon’s profile is determined by the number of Charges it carries. It begins with 1 Charge, dealing 1d6 energy with line 4. Each time you Stabilize, you gain an additional 1 Charge, up to a maximum of 4. The ZF4 gains an additional +4 line and +1d6 energy damage for each charge, and resets to 1 Charge after each attack. Charges persist between scenes, but are lost during a full repair.",
+   "ru": "Профиль этого оружия определяется числом накопленных Зарядов. Оно начинает с 1 Заряда, нанося 1d6 энергетического урона с Линией 4. Каждый раз, когда вы Стабилизируетесь, вы получаете дополнительный 1 Заряд, максимум до 4. ZF4 получает дополнительные +4 к Линии и +1d6 энергетического урона за каждый заряд, и сбрасывается до 1 Заряда после каждой атаки. Заряды сохраняются между сценами, но теряются при Полном ремонте."
+  },
+  "profiles": {
+   "1 Charge": {
+    "name": {
+     "en": "1 Charge",
+     "ru": "1 Заряд"
+    }
+   },
+   "2 Charges": {
+    "name": {
+     "en": "2 Charges",
+     "ru": "2 Заряда"
+    }
+   },
+   "3 Charges": {
+    "name": {
+     "en": "3 Charges",
+     "ru": "3 Заряда"
+    }
+   },
+   "4 Charges": {
+    "name": {
+     "en": "4 Charges",
+     "ru": "4 Заряда"
+    }
+   }
   }
  },
  "mw_xc_br_battle_rifle": {

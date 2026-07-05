@@ -109,6 +109,18 @@ def build_weapons(data, old):
             text = _on_field(w.get(k))
             if text:
                 entry[k] = pair(text, old_e.get(k))
+        profiles = w.get("profiles")
+        if profiles:
+            old_profiles = old_e.get("profiles", {})
+            pentry = {}
+            for p in profiles:
+                key = p["name"]
+                old_p = old_profiles.get(key, {})
+                pp = {"name": pair(p.get("name"), old_p.get("name"))}
+                if p.get("effect"):
+                    pp["effect"] = pair(p.get("effect"), old_p.get("effect"))
+                pentry[key] = pp
+            entry["profiles"] = pentry
         out[w["id"]] = entry
     return out
 

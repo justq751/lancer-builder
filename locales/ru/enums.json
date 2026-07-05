@@ -32,6 +32,10 @@
   "Ship-class": {
    "en": "Ship-class",
    "ru": "Корабельный"
+  },
+  "Integrated": {
+   "en": "Integrated",
+   "ru": "Интегрированное"
   }
  },
  "weapon_types": {

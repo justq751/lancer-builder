@@ -221,6 +221,7 @@ button{font-family:inherit; cursor:pointer}
 .rowbadge.lock{color:var(--amber); border-color:var(--amber)}
 .chevron{color:var(--faint); font-size:18px; flex-shrink:0; font-family:"Chakra Petch"}
 .viewtoggle{display:flex; gap:8px; margin-bottom:12px}
+.profiles{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:11px}
 .pickitem{display:block}
 .listrow.open{border-color:var(--accent); border-bottom-left-radius:0; border-bottom-right-radius:0}
 .expand-detail{background:var(--panel-2); border:1px solid var(--accent); border-top:0;
@@ -236,6 +237,7 @@ button{font-family:inherit; cursor:pointer}
 
 /* mount blocks */
 .mount{background:var(--panel); border:1px solid var(--line); border-radius:9px; margin-bottom:14px; overflow:hidden}
+.mount.integrated{border-color:var(--line-bright)}
 .mount .mhead{display:flex; align-items:center; justify-content:space-between; gap:10px;
   padding:11px 14px; background:var(--panel-2); border-bottom:1px solid var(--line)}
 .mount .mhead .mt{font-family:"Chakra Petch"; font-size:16px}
@@ -501,6 +503,14 @@ function localizeData(base, locale) {
     overlayOnField(w, "on_hit", t.on_hit);
     overlayOnField(w, "on_attack", t.on_attack);
     overlayOnField(w, "on_crit", t.on_crit);
+    if (w.profiles && t.profiles) {
+      w.profiles.forEach(p => {
+        const tp = t.profiles[p.name];
+        if (!tp) return;
+        if (tp.name) p.name = pickText(p.name, tp.name);
+        if (p.effect !== undefined && tp.effect) p.effect = pickText(p.effect, tp.effect);
+      });
+    }
   });
 
   overlayKeyedPairs(L.systems, locale.systems || {}, ["name", "effect", "description"]);
@@ -563,7 +573,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-no-autoswitch-tab";
+const APP_BUILD = "2026-07-05-integrated-mounts-and-profiles";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -753,7 +763,24 @@ function allowedNext(type,sizes){
   }
   return [];
 }
-function buildMounts(frame){ return frame.mounts.map(t=>({type:t,items:[]})); }
+function buildMounts(frame){
+  const mounts = frame.mounts.map(t=>({type:t,items:[]}));
+  const iw = FRAME_INTEGRATED_WEAPON[frame.id];
+  if(iw) mounts.push({type:"Integrated", items:[iw]});
+  return mounts;
+}
+/* Frames whose CORE system is (or includes) a built-in weapon that doesn't
+   occupy a normal mount slot — e.g. Raleigh's M35 Mjolnir, Barbarossa's
+   Apocalypse Rail. These get an automatic "Integrated" mount, pre-filled;
+   if removed, it can only be restored via openIntegratedPicker() (below),
+   never filled with anything else. */
+const FRAME_INTEGRATED_WEAPON = {
+  "mf_lancaster": "mw_lancaster_integrated",
+  "mf_raleigh": "mw_raleigh_integrated",
+  "mf_barbarossa": "mw_barbarossa_integrated",
+  "mf_sherman": "mw_sherman_integrated",
+  "mf_tokugawa_alt_enkidu": "mw_tokugawa_alt_enkidu_integrated",
+};
 
 /* ---------------- RENDER ROOT ---------------- */
 function render(){ renderHUD(); renderTab(); renderTabBar(); }
@@ -1109,8 +1136,9 @@ function renderLoadout(){
 
   // mounts
   $("#mounts").innerHTML = state.mech.mounts.map((mt,mi)=>{
+    const isInt = mt.type==="Integrated";
     const sizes=mt.items.map(id=>M.weapon[id]?.mount);
-    const can=allowedNext(mt.type,sizes).length>0;
+    const can = isInt ? false : allowedNext(mt.type,sizes).length>0;
     const slots = mt.items.map((id,wi)=>{
       const w=M.weapon[id];
       return `<div class="slot"><div class="equipped">
@@ -1119,11 +1147,17 @@ function renderLoadout(){
         <button class="xbtn" data-rmw="${mi}:${wi}">✕</button>
       </div></div>`;
     }).join("");
-    return `<div class="mount">
+    const capLine = isInt
+      ? `${mt.items.length} / 1 · встроено в шасси`
+      : `${mt.items.length} / ${mt.type.includes("/")||mt.type==="Flex"?2:1} · ${allowedNext(mt.type,sizes).map(tr).join("/")||"заполнено"}`;
+    const restoreBtn = (isInt && !mt.items.length)
+      ? `<div class="slot"><button class="ghostbtn" data-restoreint="${mi}">+ ВОССТАНОВИТЬ ИНТЕГРИРОВАННОЕ ОРУЖИЕ</button></div>` : "";
+    return `<div class="mount ${isInt?'integrated':''}">
       <div class="mhead"><span class="mt">${tr(mt.type)}</span>
-        <span class="cap">${mt.items.length} / ${mt.type.includes("/")||mt.type==="Flex"?2:1} · ${allowedNext(mt.type,sizes).map(tr).join("/")||"заполнено"}</span></div>
+        <span class="cap">${capLine}</span></div>
       ${slots}
       ${can?`<div class="slot"><button class="ghostbtn" data-addw="${mi}">+ УСТАНОВИТЬ ОРУЖИЕ</button></div>`:""}
+      ${restoreBtn}
     </div>`;
   }).join("");
 
@@ -1137,6 +1171,7 @@ function renderLoadout(){
   }).join("") : `<div class="hint">// систем не установлено</div>`;
 
   $$("#mounts .ghostbtn[data-addw]").forEach(b=>b.onclick=()=>openWeaponPicker(+b.dataset.addw));
+  $$("#mounts .ghostbtn[data-restoreint]").forEach(b=>b.onclick=()=>openIntegratedPicker(+b.dataset.restoreint));
   $$("#mounts .xbtn[data-rmw]").forEach(b=>b.onclick=e=>{
     e.stopPropagation();
     const [mi,wi]=b.dataset.rmw.split(":").map(Number);
@@ -1218,14 +1253,33 @@ function wireViewToggle(onSwitch){
 /* Weapon detail content without the name/header — used for the inline
    in-list expansion. weaponCardHTML() (below) wraps this with a header for
    standalone modal views (view-installed / card-mode picker). */
+/* Multi-stage weapons (e.g. Apocalypse Rail, ZF4 SOLIDCORE) carry a
+   "profiles" array — different damage/range/effect depending on a
+   charge/die value. profileViewIdx is purely a *display* toggle for
+   browsing those stages inside the card; it isn't part of the saved build. */
+let profileViewIdx=0;
+const profDmgStr = p => (p.damage||[]).map(x=>x.type?`${x.val} ${tr(x.type)}`:`${x.val}`).join(", ")||"—";
+const profRngStr = p => (p.range||[]).map(x=>x.type?`${tr(x.type)} ${x.val}`:`${x.val}`).join(", ")||"—";
+function wireProfileChips(sel, redraw){
+  $$(`${sel} .profile-chip`).forEach(b=>b.onclick=()=>{ profileViewIdx=+b.dataset.pi; redraw(); });
+}
+
 function weaponCardBody(w){
-  return `<div class="tags" id="wp-tags">
-      <span class="tag dmg">${dmgStr(w)}</span><span class="tag rng">${rngStr(w)}</span>
+  const hasProfiles = w.profiles && w.profiles.length;
+  const idx = hasProfiles ? Math.min(profileViewIdx, w.profiles.length-1) : -1;
+  const prof = hasProfiles ? w.profiles[idx] : null;
+  const dmg = prof ? profDmgStr(prof) : dmgStr(w);
+  const rng = prof ? profRngStr(prof) : rngStr(w);
+  return `${hasProfiles?`<div class="profiles" id="wp-profiles">${w.profiles.map((p,i)=>
+      `<button class="chip profile-chip ${i===idx?'on':''}" data-pi="${i}">${esc(p.name)}</button>`).join("")}</div>`:""}
+    <div class="tags" id="wp-tags">
+      <span class="tag dmg">${dmg}</span><span class="tag rng">${rng}</span>
       ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
       ${(w.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
     </div>
     <div id="wp-tagdesc"></div>
     ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
+    ${prof && prof.effect?`<div class="desc" style="margin-top:9px"><b>${esc(prof.name)}:</b> ${rich(prof.effect)}</div>`:""}
     ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
     ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(w.on_hit))}</div>`:""}
     ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}`;
@@ -1269,11 +1323,15 @@ function systemCardHTML(s){
    slot in the loadout tab. */
 function viewEquippedWeapon(mi, wi){
   const w=M.weapon[state.mech.mounts[mi].items[wi]];
-  tagOpenSet=new Set();
-  modal(w.name, weaponCardHTML(w) +
-    `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
-  wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
-  $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
+  tagOpenSet=new Set(); profileViewIdx=0;
+  const draw=()=>{
+    modal(w.name, weaponCardHTML(w) +
+      `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
+    wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+    wireProfileChips("#wp-profiles", draw);
+    $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
+  };
+  draw();
 }
 
 /* Same, for an already-installed system. */
@@ -1300,7 +1358,7 @@ function openWeaponPicker(mi){
 
   const drawDetail=(id)=>{
     const w=M.weapon[id], lk=!unlocked(w);
-    tagOpenSet=new Set();
+    tagOpenSet=new Set(); profileViewIdx=0;
     $("#modal .mhd h3").textContent=w.name;
     $("#modal .mbd").innerHTML=
       `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
@@ -1309,6 +1367,7 @@ function openWeaponPicker(mi){
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
       </button>`;
     wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+    wireProfileChips("#wp-profiles", ()=>drawDetail(id));
     $("#wp-back").onclick=drawList;
     $("#wp-install").onclick=()=>install(w.id);
   };
@@ -1350,17 +1409,77 @@ function openWeaponPicker(mi){
       const id=it.dataset.w;
       if(pickerViewMode==="card"){ drawDetail(id); return; }
       wpExpanded = wpExpanded===id?null:id;
-      tagOpenSet=new Set();
+      tagOpenSet=new Set(); profileViewIdx=0;
       drawList();
     });
     if(pickerViewMode==="inline" && wpExpanded){
       const w=M.weapon[wpExpanded];
       wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+      wireProfileChips("#wp-profiles", drawList);
       $("#wp-install-inline").onclick=()=>install(w.id);
     }
   };
 
   modal(`Установить оружие · ${tr(mt.type)}`, "");
+  drawList();
+}
+
+/* Restores a frame's integrated weapon after it was removed from its
+   Integrated mount. Uses the exact same list→detail flow as the normal
+   weapon picker (view toggle, inline expand, tag glossary, profile
+   switching all work identically) — the only difference is the list
+   contains exactly one weapon: the one built into this frame. */
+function openIntegratedPicker(mi){
+  const mt=state.mech.mounts[mi];
+  const w=M.weapon[FRAME_INTEGRATED_WEAPON[state.mech.frameId]];
+  wpExpanded=null;
+
+  const install=()=>{ mt.items=[w.id]; closeModal(); render(); };
+
+  const drawDetail=()=>{
+    tagOpenSet=new Set(); profileViewIdx=0;
+    $("#modal .mhd h3").textContent=w.name;
+    $("#modal .mbd").innerHTML=
+      `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
+      + weaponCardHTML(w) +
+      `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">✓ Восстановить это оружие</button>`;
+    wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+    wireProfileChips("#wp-profiles", drawDetail);
+    $("#wp-back").onclick=drawList;
+    $("#wp-install").onclick=install;
+  };
+
+  const drawList=()=>{
+    const open=pickerViewMode==="inline" && wpExpanded===w.id;
+    $("#modal .mhd h3").textContent="Восстановить интегрированное оружие";
+    $("#modal .mbd").innerHTML=
+      `<div class="hint" style="margin-bottom:10px">Это оружие встроено в шасси — заменить его нельзя, можно только вернуть на место.</div>
+       ${viewToggleHTML()}
+       <div class="grid" id="wp-list" style="gap:8px"></div>`;
+    const row=`<div class="listrow clickable ${open?'open':''}" data-w="${w.id}">
+      <div class="info"><div class="nm">${esc(w.name)}</div>
+        <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
+      <span class="chevron">${open?'⌄':'›'}</span>
+    </div>`;
+    const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
+      <button class="ghostbtn" id="wp-install-inline" style="margin-top:14px;width:100%;text-align:center">✓ Восстановить это оружие</button></div>`:"";
+    $("#wp-list").innerHTML=`<div class="pickitem">${row}${expand}</div>`;
+
+    wireViewToggle(drawList);
+    $$("#wp-list .listrow").forEach(it=>it.onclick=()=>{
+      if(pickerViewMode==="card"){ drawDetail(); return; }
+      wpExpanded = wpExpanded===w.id?null:w.id;
+      tagOpenSet=new Set(); profileViewIdx=0;
+      drawList();
+    });
+    if(pickerViewMode==="inline" && wpExpanded){
+      wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+      wireProfileChips("#wp-profiles", drawList);
+      $("#wp-install-inline").onclick=install;
+    }
+  };
+
+  modal("Восстановить интегрированное оружие", "");
   drawList();
 }
 
