@@ -559,7 +559,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-multi-tag-glossary";
+const APP_BUILD = "2026-07-05-fix-truncated-preview";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1095,7 +1095,7 @@ function renderLoadout(){
     const sy=M.system[id];
     return `<div class="listrow">
       <div class="info clickable" data-views="${si}"><div class="nm">${esc(sy.name)} <span class="tag sp">${sy.sp} SP</span></div>
-        <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+rich(sy.effect).slice(0,140):""}</div></div>
+        <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+esc(truncateWords(stripHTML(sy.effect),140)):""}</div></div>
       <button class="xbtn" data-rms="${si}">✕</button></div>`;
   }).join("") : `<div class="hint">// систем не установлено</div>`;
 
@@ -1116,6 +1116,18 @@ function renderLoadout(){
   });
   $$("#syslist .info[data-views]").forEach(el=>el.onclick=()=>viewEquippedSystem(+el.dataset.views));
 }
+/* Strips HTML tags for a plain-text preview, then truncates at a word
+   boundary (never mid-word, never mid-tag) with an ellipsis. Used for
+   one-line summaries in compact lists — full text is always shown untouched
+   in the detail card. */
+const stripHTML = html => String(html || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+const truncateWords = (str, max) => {
+  if (str.length <= max) return str;
+  const cut = str.slice(0, max);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > max * 0.6 ? cut.slice(0, lastSpace) : cut).trim() + "…";
+};
+
 const dmgStr=w=>(w.damage||[]).map(x=>`${x.val} ${tr(x.type)}`).join(", ")||"—";
 
 /* Wires click handlers on .glossary tag chips inside `tagsSel` so clicking
