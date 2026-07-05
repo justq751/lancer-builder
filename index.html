@@ -1047,12 +1047,12 @@ const dmgStr=w=>(w.damage||[]).map(x=>`${x.val} ${tr(x.type)}`).join(", ")||"—
 const rngStr=w=>(w.range||[]).map(x=>`${tr(x.type)} ${x.val}`).join(", ")||"—";
 
 /* weapon picker — step 1: compact name list, step 2: full detail card w/ install button */
-let wpSearch="";
+let wpSearch="", wpFilter="ALL";
 function openWeaponPicker(mi){
   const mt=state.mech.mounts[mi];
   const sizes=mt.items.map(id=>M.weapon[id]?.mount);
   const allow=allowedNext(mt.type,sizes);
-  wpSearch="";
+  wpSearch=""; wpFilter="ALL";
 
   const install=id=>{ state.mech.mounts[mi].items.push(id); closeModal(); render(); };
 
@@ -1087,11 +1087,13 @@ function openWeaponPicker(mi){
 
   const drawList=()=>{
     const list=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???")
+      .filter(w=>wpFilter==="ALL"||w.source===wpFilter)
       .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
       .sort((a,b)=>(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent=`Установить оружие · ${tr(mt.type)}`;
     $("#modal .mbd").innerHTML=
       `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
+       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
        <div class="grid" id="wp-list" style="gap:8px"></div>`;
     $("#wp-list").innerHTML=list.map(w=>{
@@ -1102,6 +1104,7 @@ function openWeaponPicker(mi){
         ${lk?`<span class="rowbadge lock">🔒 ${esc(w.license)} ${w.license_level}</span>`:`<span class="chevron">›</span>`}
       </div>`;
     }).join("")||`<div class="hint">// нет подходящего оружия</div>`;
+    $$(".modal .chip[data-wpf]").forEach(c=>c.onclick=()=>{wpFilter=c.dataset.wpf; drawList();});
     const input=$("#wp-search");
     input.oninput=e=>{wpSearch=e.target.value; drawList(); $("#wp-search").focus();};
     if(wpSearch) input.setSelectionRange(input.value.length,input.value.length);
