@@ -1,0 +1,51 @@
+name: Deploy static site to Pages
+
+on:
+  # Запускается при каждом push в основную ветку.
+  # Если ваша основная ветка называется не "main" (например, "master"),
+  # поменяйте значение ниже.
+  push:
+    branches: ["main"]
+
+  # Позволяет запустить деплой вручную из вкладки Actions на GitHub
+  # (кнопка "Run workflow"), без необходимости делать новый коммит.
+  workflow_dispatch:
+
+# Права, необходимые именно для деплоя на Pages через GitHub Actions.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Не даёт запускать несколько деплоев параллельно (это и было одной
+# из причин зависания очереди). cancel-in-progress: false — рекомендация
+# самого GitHub, чтобы не прерывать деплой, который уже пишет файлы.
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # Здесь просто загружается всё содержимое репозитория как есть —
+      # у сайта нет шага сборки (это обычный статический HTML/JS/JSON).
+      # Если файлы сайта лежат не в корне репозитория, а в подпапке
+      # (например, docs/ или lancer-registry/), поменяйте путь ниже.
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
