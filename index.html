@@ -573,7 +573,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-system-stat-bonuses";
+const APP_BUILD = "2026-07-05-equipped-accordion-inline";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -596,6 +596,7 @@ const rich = s => s==null?"":String(s); // dataset html is trusted (<br><ul><li>
 /* lookup maps (rebuilt once L is loaded/localized — see rebuildIndexes()) */
 const byId = arr => Object.fromEntries(arr.map(x=>[x.id,x]));
 let M = {};
+let eqWeaponExpanded=null, eqSystemExpanded=null; // "mi:wi" / system-index of the equipped item currently expanded inline
 let TAGS = {}, TAG_PATTERNS = [];
 function rebuildIndexes(){
   M = {
@@ -1157,11 +1158,17 @@ function renderLoadout(){
     const can = isInt ? false : allowedNext(mt.type,sizes).length>0;
     const slots = mt.items.map((id,wi)=>{
       const w=M.weapon[id];
-      return `<div class="slot"><div class="equipped">
-        <div class="ei clickable" data-vieww="${mi}:${wi}"><div class="en">${esc(w.name)}</div>
+      const key=`${mi}:${wi}`, open=eqWeaponExpanded===key;
+      const row=`<div class="equipped">
+        <div class="ei clickable" data-vieww="${key}"><div class="en">${esc(w.name)}</div>
           <div class="em">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}${w.sp?` · ${w.sp} SP`:""}</div></div>
-        <button class="xbtn" data-rmw="${mi}:${wi}">✕</button>
-      </div></div>`;
+        <div style="display:flex;align-items:center;gap:10px">
+          <span class="chevron">${open?'⌄':'›'}</span>
+          <button class="xbtn" data-rmw="${key}">✕</button>
+        </div>
+      </div>`;
+      const expand=open?`<div class="expand-detail">${weaponCardBody(w)}</div>`:"";
+      return `<div class="slot">${row}${expand}</div>`;
     }).join("");
     const capLine = isInt
       ? `${mt.items.length} / 1 · встроено в шасси`
@@ -1176,33 +1183,62 @@ function renderLoadout(){
       ${restoreBtn}
     </div>`;
   }).join("");
+  if(eqWeaponExpanded){
+    const [emi,ewi]=eqWeaponExpanded.split(":").map(Number);
+    const mnt=state.mech.mounts[emi], w=mnt && M.weapon[mnt.items[ewi]];
+    if(w){ wireTagGlossary("#wp-tags","#wp-tagdesc", w.tags||[]); wireProfileChips("#wp-profiles", renderLoadout); }
+    else eqWeaponExpanded=null;
+  }
 
   // systems
   $("#syslist").innerHTML = state.mech.systems.length? state.mech.systems.map((id,si)=>{
     const sy=M.system[id];
-    return `<div class="listrow">
+    const open=eqSystemExpanded===si;
+    const row=`<div class="listrow">
       <div class="info clickable" data-views="${si}"><div class="nm">${esc(sy.name)} <span class="tag sp">${sy.sp} SP</span></div>
         <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+esc(truncateWords(stripHTML(sy.effect),140)):""}</div></div>
-      <button class="xbtn" data-rms="${si}">✕</button></div>`;
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="chevron">${open?'⌄':'›'}</span>
+        <button class="xbtn" data-rms="${si}">✕</button>
+      </div>
+    </div>`;
+    const expand=open?`<div class="expand-detail">${systemCardBody(sy)}</div>`:"";
+    return `<div class="pickitem">${row}${expand}</div>`;
   }).join("") : `<div class="hint">// систем не установлено</div>`;
+  if(eqSystemExpanded!=null){
+    const sy=M.system[state.mech.systems[eqSystemExpanded]];
+    if(sy) wireTagGlossary("#sy-tags","#sy-tagdesc", sy.tags||[]);
+    else eqSystemExpanded=null;
+  }
 
   $$("#mounts .ghostbtn[data-addw]").forEach(b=>b.onclick=()=>openWeaponPicker(+b.dataset.addw));
   $$("#mounts .ghostbtn[data-restoreint]").forEach(b=>b.onclick=()=>openIntegratedPicker(+b.dataset.restoreint));
   $$("#mounts .xbtn[data-rmw]").forEach(b=>b.onclick=e=>{
     e.stopPropagation();
     const [mi,wi]=b.dataset.rmw.split(":").map(Number);
-    state.mech.mounts[mi].items.splice(wi,1); render();
+    state.mech.mounts[mi].items.splice(wi,1);
+    eqWeaponExpanded=null;
+    render();
   });
   $$("#mounts .ei[data-vieww]").forEach(el=>el.onclick=()=>{
-    const [mi,wi]=el.dataset.vieww.split(":").map(Number);
-    viewEquippedWeapon(mi,wi);
+    const key=el.dataset.vieww;
+    eqWeaponExpanded = eqWeaponExpanded===key?null:key;
+    tagOpenSet=new Set(); profileViewIdx=0;
+    renderLoadout();
   });
   $("#add-system").onclick=openSystemPicker;
   $$("#syslist .xbtn[data-rms]").forEach(b=>b.onclick=e=>{
     e.stopPropagation();
-    state.mech.systems.splice(+b.dataset.rms,1); render();
+    state.mech.systems.splice(+b.dataset.rms,1);
+    eqSystemExpanded=null;
+    render();
   });
-  $$("#syslist .info[data-views]").forEach(el=>el.onclick=()=>viewEquippedSystem(+el.dataset.views));
+  $$("#syslist .info[data-views]").forEach(el=>el.onclick=()=>{
+    const si=+el.dataset.views;
+    eqSystemExpanded = eqSystemExpanded===si?null:si;
+    tagOpenSet=new Set();
+    renderLoadout();
+  });
 }
 /* Strips HTML tags for a plain-text preview, then truncates at a word
    boundary (never mid-word, never mid-tag) with an ellipsis. Used for
@@ -1337,28 +1373,7 @@ function systemCardHTML(s){
 /* Opens a read-only-ish detail card for an already-installed weapon, with a
    button to remove it from its mount — triggered by clicking the equipped
    slot in the loadout tab. */
-function viewEquippedWeapon(mi, wi){
-  const w=M.weapon[state.mech.mounts[mi].items[wi]];
-  tagOpenSet=new Set(); profileViewIdx=0;
-  const draw=()=>{
-    modal(w.name, weaponCardHTML(w) +
-      `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
-    wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
-    wireProfileChips("#wp-profiles", draw);
-    $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
-  };
-  draw();
-}
 
-/* Same, for an already-installed system. */
-function viewEquippedSystem(si){
-  const s=M.system[state.mech.systems[si]];
-  tagOpenSet=new Set();
-  modal(s.name, systemCardHTML(s) +
-    `<button class="ghostbtn warn" id="sy-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать эту систему</button>`);
-  wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
-  $("#sy-remove").onclick=()=>{ state.mech.systems.splice(si,1); closeModal(); render(); };
-}
 
 
 /* weapon picker — inline-expand list (default) or separate detail card,
@@ -1713,7 +1728,7 @@ function renderCore(){
 }
 
 /* View an already-selected CORE bonus (opened from the slot list) — mirrors
-   viewEquippedWeapon/viewEquippedSystem: no back button, just a remove action. */
+   the pattern used for equipped weapons/systems: no back button, just a remove action. */
 function viewSelectedCore(ci){
   const c=M.core[state.cores[ci]];
   modal(c.name, coreCardHTML(c) +
