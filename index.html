@@ -558,7 +558,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-core-bonus-gating";
+const APP_BUILD = "2026-07-05-core-bonus-slots";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1397,74 +1397,110 @@ function renderSummary(){
    We expose CORE selection through a dedicated control: */
 /* ============ CORE-БОНУСЫ ============ */
 let coreFilter="ALL", coreSearch="";
+
+/* Shared detail-card markup for a CORE bonus, used both when viewing an
+   already-selected bonus and when browsing the add-picker. */
+function coreCardHTML(c){
+  const unl=coreBonusUnlocked(c);
+  return `<div class="item static">
+    <div class="src" style="background:${srcColor(c.source)}"></div>
+    <div class="top"><div class="nm" style="font-size:19px">${esc(c.name)}</div>
+      <div class="badge ${unl?'':'lock'}">${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
+    ${unl?"":`<div class="hint" style="margin-top:6px">Требуется 3+ ранга лицензии на шасси ${esc(c.source)} (сейчас: ${manufacturerRank(c.source)}).</div>`}
+    <div class="desc" style="margin-top:12px">${rich(c.effect)}</div>
+    ${c.mounted_effect?`<div class="desc" style="margin-top:9px"><b>Если установлено на крепление:</b> ${rich(c.mounted_effect)}</div>`:""}
+  </div>`;
+}
+
 function renderCore(){
   const d=derived();
   const capped=d.b.core.cap<1;
+  const full=state.cores.length>=d.b.core.cap;
   $("#tab").innerHTML = sechead("// 08 · CORE-БОНУСЫ","CORE-бонусы",
       capped
         ? "CORE-бонусы открываются с LL3, и затем ещё по одному за каждые 3 уровня лицензий (LL6, LL9…)."
         : `Выбрано ${state.cores.length} из ${d.b.core.cap}. Бонусы конкретного производителя открываются, когда у вас есть 3+ ранга лицензии на любое шасси этого производителя — иначе доступны только бонусы GMS.`)
     + (capped ? "" : `
-      <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${coreFilter===s?'on':''}" data-cf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
-      <input class="input" id="core-search" placeholder="поиск CORE-бонусов…" style="margin-bottom:14px" value="${esc(coreSearch)}">
-      <div class="grid" id="core-list" style="gap:8px"></div>`);
+      <div id="core-selected"></div>
+      <button class="ghostbtn" id="add-core" style="margin-top:10px" ${full?"disabled":""}>
+        ${full?`⚠ Лимит исчерпан (${state.cores.length}/${d.b.core.cap})`:"+ ДОБАВИТЬ CORE-БОНУС"}
+      </button>`);
   if(capped) return;
+
+  $("#core-selected").innerHTML = state.cores.length ? `<div class="mount">` + state.cores.map((id,ci)=>{
+    const c=M.core[id];
+    return `<div class="slot"><div class="equipped">
+      <div class="ei clickable" data-viewcore="${ci}"><div class="en">${esc(c.name)}</div>
+        <div class="em">${esc(c.source)}</div></div>
+      <button class="xbtn" data-rmcore="${ci}">✕</button>
+    </div></div>`;
+  }).join("") + `</div>` : `<div class="hint">// CORE-бонусы не выбраны</div>`;
+
+  if(!full) $("#add-core").onclick=openCorePicker;
+  $$("#core-selected .ei[data-viewcore]").forEach(el=>el.onclick=()=>viewSelectedCore(+el.dataset.viewcore));
+  $$("#core-selected .xbtn[data-rmcore]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
+    state.cores.splice(+b.dataset.rmcore,1); render();
+  });
+}
+
+/* View an already-selected CORE bonus (opened from the slot list) — mirrors
+   viewEquippedWeapon/viewEquippedSystem: no back button, just a remove action. */
+function viewSelectedCore(ci){
+  const c=M.core[state.cores[ci]];
+  modal(c.name, coreCardHTML(c) +
+    `<button class="ghostbtn warn" id="core-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать этот CORE-бонус</button>`);
+  $("#core-remove").onclick=()=>{ state.cores.splice(ci,1); closeModal(); render(); };
+}
+
+/* Add-picker — same two-step list → detail-card flow as weapons/systems.
+   Already-selected bonuses are excluded from the list (they're shown as
+   slots on the tab instead). Only reachable while there's room left, so no
+   per-item cap check is needed here. */
+function openCorePicker(){
+  coreFilter="ALL"; coreSearch="";
+  const select=id=>{ state.cores.push(id); closeModal(); render(); };
+
+  const drawDetail=(id)=>{
+    const c=M.core[id], unl=coreBonusUnlocked(c);
+    $("#modal .mhd h3").textContent=c.name;
+    $("#modal .mbd").innerHTML=
+      `<button class="ghostbtn" id="core-back" style="margin-bottom:14px">← Назад к списку</button>`
+      + coreCardHTML(c) +
+      `<button class="ghostbtn ${unl?'':'warn'}" id="core-select" style="margin-top:16px;width:100%;text-align:center">
+        ${unl?"✓ Выбрать этот CORE-бонус":`⚠ Выбрать всё равно (лицензия ${esc(c.source)} не открыта)`}
+      </button>`;
+    $("#core-back").onclick=drawList;
+    $("#core-select").onclick=()=>select(id);
+  };
 
   const drawList=()=>{
     const list=L.core_bonuses
+      .filter(c=>!state.cores.includes(c.id))
       .filter(c=>coreFilter==="ALL"||c.source===coreFilter)
       .filter(c=>!coreSearch||(c.name+" "+c.source).toLowerCase().includes(coreSearch.toLowerCase()))
-      .sort((a,b)=>(state.cores.includes(b.id)-state.cores.includes(a.id))
-                 ||(coreBonusUnlocked(b)-coreBonusUnlocked(a))
-                 ||a.name.localeCompare(b.name));
-    $("#core-list").innerHTML=list.map(c=>{
-      const sel=state.cores.includes(c.id);
+      .sort((a,b)=>(coreBonusUnlocked(b)-coreBonusUnlocked(a))||a.name.localeCompare(b.name));
+    $("#modal .mhd h3").textContent="Добавить CORE-бонус";
+    $("#modal .mbd").innerHTML=
+      `<div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${coreFilter===s?'on':''}" data-cf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
+       <input class="input" id="core-search" placeholder="поиск CORE-бонусов…" style="margin-bottom:14px" value="${esc(coreSearch)}">
+       <div class="grid" id="core-list-modal" style="gap:8px"></div>`;
+    $("#core-list-modal").innerHTML=list.map(c=>{
       const unl=coreBonusUnlocked(c);
-      const badge = sel
-        ? `<span class="rowbadge" style="color:var(--accent);border-color:var(--accent)">✓ ВЫБРАН</span>`
-        : (unl ? `<span class="chevron">›</span>` : `<span class="rowbadge lock">🔒 ${esc(c.source)} 3+</span>`);
-      return `<div class="listrow clickable ${sel?'maxed':''} ${!unl&&!sel?'locked':''}" data-c="${c.id}">
-        <div class="info"><div class="nm">${esc(c.name)}</div>
-          <div class="ds">${esc(c.source)}</div></div>
-        ${badge}
+      return `<div class="listrow clickable ${!unl?'locked':''}" data-c="${c.id}">
+        <div class="info"><div class="nm">${esc(c.name)}</div><div class="ds">${esc(c.source)}</div></div>
+        ${unl?`<span class="chevron">›</span>`:`<span class="rowbadge lock">🔒 ${esc(c.source)} 3+</span>`}
       </div>`;
-    }).join("")||`<div class="hint">// нет CORE-бонусов по этому запросу</div>`;
+    }).join("")||`<div class="hint">// нет доступных CORE-бонусов по этому запросу</div>`;
+    $$(".modal .chip[data-cf]").forEach(ch=>ch.onclick=()=>{coreFilter=ch.dataset.cf; drawList();});
     const input=$("#core-search");
     input.oninput=e=>{coreSearch=e.target.value; drawList(); $("#core-search").focus();};
     if(coreSearch) input.setSelectionRange(input.value.length,input.value.length);
-    $$("#core-list .listrow").forEach(it=>it.onclick=()=>openCoreDetail(it.dataset.c));
+    $$("#core-list-modal .listrow").forEach(it=>it.onclick=()=>drawDetail(it.dataset.c));
   };
-  $$("#tab .chip[data-cf]").forEach(ch=>ch.onclick=()=>{
-    coreFilter=ch.dataset.cf;
-    $$("#tab .chip[data-cf]").forEach(x=>x.classList.toggle("on",x.dataset.cf===coreFilter));
-    drawList();
-  });
-  drawList();
-}
 
-function openCoreDetail(id){
-  const c=M.core[id], d=derived();
-  const sel=state.cores.includes(id);
-  const full=state.cores.length>=d.b.core.cap && !sel;
-  const unl=coreBonusUnlocked(c);
-  modal(c.name, `
-    <div class="item static">
-      <div class="src" style="background:${srcColor(c.source)}"></div>
-      <div class="top"><div class="nm" style="font-size:19px">${esc(c.name)}</div>
-        <div class="badge ${unl?'':'lock'}">${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
-      ${unl?"":`<div class="hint" style="margin-top:6px">Требуется 3+ ранга лицензии на шасси ${esc(c.source)} (сейчас: ${manufacturerRank(c.source)}).</div>`}
-      <div class="desc" style="margin-top:12px">${rich(c.effect)}</div>
-      ${c.mounted_effect?`<div class="desc" style="margin-top:9px"><b>Если установлено на крепление:</b> ${rich(c.mounted_effect)}</div>`:""}
-    </div>
-    <button class="ghostbtn ${sel?'warn':(full?'':(unl?'':'warn'))}" id="core-toggle" style="margin-top:16px;width:100%;text-align:center" ${full?"disabled":""}>
-      ${sel?"✕ Убрать этот CORE-бонус":(full?`⚠ Лимит исчерпан (${state.cores.length}/${d.b.core.cap})`:(unl?"✓ Выбрать этот CORE-бонус":`⚠ Выбрать всё равно (лицензия ${esc(c.source)} не открыта)`))}
-    </button>`);
-  $("#core-toggle").onclick=()=>{
-    if(full) return;
-    const i=state.cores.indexOf(id);
-    if(i>=0) state.cores.splice(i,1); else state.cores.push(id);
-    closeModal(); render();
-  };
+  modal("Добавить CORE-бонус", "");
+  drawList();
 }
 
 /* ============ MODAL ============ */
