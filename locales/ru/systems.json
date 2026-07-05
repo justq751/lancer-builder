@@ -1734,5 +1734,201 @@
    "en": "Gained from the <i>Walking Armory: Rank III</i> pilot talent.",
    "ru": "Получено от таланта пилота <i>Ходячий арсенал: Ранг III</i>."
   }
+ },
+ "ms_adjutant_class_compcon": {
+  "name": {
+   "en": "ADJUTANT-Class Comp/Con",
+   "ru": "COMP/CON класса ADJUTANT"
+  },
+  "effect": {
+   "en": "<p>Your mech gains the AI tag and Active Assist.</p><p>Additionally, you may load one talent rank you qualify for but do not have onto this system’s ontologic bridge. You gain access to that talent while piloting your mech. If this system is destroyed, neither this talent nor any systems or mech capabilities it grants can be used until it’s repaired. You may choose a different talent rank whenever you take a Full Repair.</p><p>This system isn’t a full NHP and cannot enter cascade.</p><br><b>Active Assist</b> — 1/scene, you may take a quick action of your choice. This action cannot be an attack or force any saves.",
+   "ru": "<p>Ваш мех получает тег ИИ и «Активную помощь».</p><p>Дополнительно вы можете загрузить один ранг таланта, для которого вы соответствуете требованиям, но которым не владеете, на онтологический мост этой системы. Вы получаете доступ к этому таланту, пока пилотируете свой мех. Если эта система уничтожена, ни этот талант, ни какие-либо системы или возможности меха, которые он даёт, не могут использоваться до её ремонта. Вы можете выбрать другой ранг таланта каждый раз при Полном ремонте.</p><p>Эта система не является полноценной НЧЛ и не может войти в каскад.</p><br><b>Активная помощь</b> — 1/сцену вы можете совершить любое быстрое действие по своему выбору. Это действие не может быть атакой или вынуждать спасброски."
+  },
+  "description": {
+   "en": "<p>A major cornerstone of GMS's advanced technology initiative is the planned development of a next-generation companion/concierge system to replace the standard EPIPHANY-Class C/C currently in use by Union pilots. For reasons both practical as well as ethical, widespread dissemination of chassis-compatible C/C systems is currently being pushed by Union CentComm over military NHP design, and the ADJUTANT is the latest model to be approved for limited field trials following First Contact Accords compliance evaluation. Utilizing a new-model ontologic bridge framework, ADJUTANT allows for the use of selected simulant/reflex architectures to be uploaded to an engrammatic matrix for compatible pilot integration along both first- and second-tier neural processes. Long-term effects of repeated engrammatic synthesis are currently unknown, but early feedback is promising with test pilots reporting minimal difficulty expressing previously unheld aptitudes.</p>",
+   "ru": "<p>Ключевой краеугольный камень программы передовых технологий GMS — планируемая разработка системы «компаньон/консьерж» следующего поколения для замены стандартного C/C класса EPIPHANY, используемого сейчас пилотами Юниона. По причинам как практическим, так и этическим, ЦентКом Юниона сейчас продвигает широкое распространение совместимых с шасси C/C систем вместо военных НЧЛ, и ADJUTANT — последняя модель, допущенная к ограниченным полевым испытаниям после оценки соответствия Соглашениям о Первом Контакте. Используя новую модель каркаса онтологического моста, ADJUTANT позволяет загружать выбранные симулянт/рефлекторные архитектуры в энграмматическую матрицу для совместимой интеграции пилота по нейропроцессам первого и второго уровня. Долгосрочные эффекты повторного энграмматического синтеза пока неизвестны, но первые отзывы обещающие — тест-пилоты сообщают о минимальных трудностях в проявлении ранее недоступных навыков.</p>"
+  }
+ },
+ "ms_pattern_c_advanced_charges": {
+  "name": {
+   "en": "Pattern-C Advanced Charges",
+   "ru": "Продвинутые заряды образца C"
+  },
+  "effect": {
+   "en": "Expend a charge from this system for one of the following effects:<br><b>Smart Grenade</b> — All hostile characters within the affected area must pass a Systems save or take 1d6 energy damage and gain Lock On. On a success, they gain Lock On only.<br><b>Deployable — Lurker Mine:</b> This mine does not detonate as normal. Instead, gain the Selective Detonation reaction, which can be performed once per deployed lurker mine.<br><b>Selective Detonation</b> — The mine detonates and affected characters must pass an Agility save or take 2d6 explosive damage. On a success, they take half damage.",
+   "ru": "Потратьте заряд этой системы для одного из следующих эффектов:<br><b>Умная гранта</b> — Все враждебные персонажи в поражённой области должны пройти спасбросок Систем, иначе получают 1d6 энергетического урона и получают Захват цели. При успехе они получают только Захват цели.<br><b>Разворачиваемое — Затаившаяся мина:</b> Эта мина не детонирует как обычно. Вместо этого получите реакцию «Избирательная детонация», которую можно применить один раз для каждой развёрнутой затаившейся мины.<br><b>Избирательная детонация</b> — Мина детонирует, и поражённые персонажи должны пройти спасбросок Ловкости, иначе получают 2d6 взрывного урона. При успехе они получают половину урона."
+  },
+  "description": {
+   "en": "<p>GMS’s latest intelligent munition system is a self-contained, multi-mode weapon designed to be easily deployable from a variety of chassis. Boasting advanced decision-making capabilities, each drone-tier charge is capable of independent target selection and interception, maintaining regular pilot-in-the-loop protocols to ensure optimal detonation parameters.</p>",
+   "ru": "<p>Последняя разработка GMS в области интеллектуальных боеприпасов — автономное многорежимное оружие, спроектированное для лёгкого развёртывания с различных шасси. Обладая продвинутыми возможностями принятия решений, каждый заряд дронового уровня способен самостоятельно выбирать и перехватывать цели, поддерживая обычные протоколы «пилот в контуре» для обеспечения оптимальных параметров детонации.</p>"
+  }
+ },
+ "ms_miniaturized_linac_coherent_beam_cannon": {
+  "name": {
+   "en": "Miniaturized LinAc Coherent Beam Cannon",
+   "ru": "Миниатюризированная когерентно-лучевая пушка LinAc"
+  },
+  "effect": {
+   "en": "Your mech gains an additional Core System that can be used 1/mission.<br><b>LinAc CBC</b> — Activate this devastating charged particle cannon, firing it in a Line 30 path. All sources of cover, terrain, objects, and deployables smaller than Size 5 in this area are boiled away instantly, and then all characters within the area must pass an Agility save or take 14 energy damage. On a success, they take half damage. This damage can’t be reduced in any way. Characters with 7 HP or less, only 1 Structure remaining, and no Immunity to damage are instead instantly and automatically destroyed, annihilated utterly and leaving no wreck behind.<br>You can take no other actions on the same turn you activate this particle cannon except for your standard move or Boost, and the stress of firing it causes you to become Stunned until the start of your next turn.",
+   "ru": "Ваш мех получает дополнительную CORE-систему, которую можно использовать 1/миссию.<br><b>LinAc CBC</b> — Активируйте эту разрушительную пушку заряженных частиц, выстрелив ею по пути линией 30. Все укрытия, местность, объекты и разворачиваемые предметы размером менее 5 в этой области немедленно испаряются, а затем все персонажи в области должны пройти спасбросок Ловкости, иначе получают 14 энергетического урона. При успехе они получают половину урона. Этот урон нельзя уменьшить никаким образом. Персонажи с 7 ОЗ или менее, только с 1 оставшейся Структурой и без Иммунитета к урону вместо этого немедленно и автоматически уничтожаются, полностью аннигилированные, не оставляя после себя обломков.<br>Вы не можете совершать никаких других действий в тот же ход, когда активируете эту пушку частиц, кроме стандартного перемещения или Ускорения, а стресс от выстрела заставляет вас стать Ошеломлённым до начала своего следующего хода."
+  },
+  "description": {
+   "en": "<p>Cressidium’s self-imposed isolation has led to a number of divergent technological advances over the centuries, among them the pursuit of more compact lance weapon development as opposed to further exploration and refinement of naval long-cycle weaponry. Weapons engineers looked to miniaturization, incorporating chemical and exotic-metal batteries and rapid-charge fire-cycling systems suitable for use on smaller and smaller platforms, ultimately including mechanized chassis. This example, reverse-engineered from combat data gathered by Union pilots during an engagement against Vestan Sovereignty special forces, appears to be a descendant of old linear accelerator coherent beam cannon designs – weapons now considered out of date by contemporary naval standards but which are nonetheless exceedingly lethal when employed at this scale.</p>",
+   "ru": "<p>Самоизоляция Крессидиума привела к ряду отклоняющихся технологических достижений за века, среди них — стремление к разработке более компактного копейного оружия, а не дальнейшему изучению и совершенствованию длинноцикличного флотского вооружения. Оружейные инженеры обратились к миниатюризации, внедрив химические и экзотико-металлические батареи и системы быстрой перезарядки, подходящие для всё меньших и меньших платформ, в итоге включая механизированные шасси. Этот образец, реконструированный на основе боевых данных, собранных пилотами Юниона во время столкновения со спецназом Вестанского Суверенитета, судя по всему, происходит от старых конструкций линейно-ускорительных когерентно-лучевых пушек — оружия, ныне считающегося устаревшим по современным флотским стандартам, но всё равно чрезвычайно смертоносного в этом масштабе.</p>"
+  }
+ },
+ "ms_pebcac": {
+  "name": {
+   "en": "PEBCAC",
+   "ru": "PEBCAC"
+  },
+  "effect": {
+   "en": "<br><b>Quick Tech</b> — <p>: An allied mech character within line of sight and SENSORS quickly flash reboots at the system level. This ends all effects caused by tech actions, stops NHP cascades, and gives the target Immunity to all tech actions – hostile and allied – other than this one until the end of their next turn. This cannot be used on Jammed characters.</p> <p>Additionally, roll 1d6 to determine a side effect from the table below. These effects take place immediately and don&rsquo;t count as an action or reaction. Any movement they cause is involuntary.</p> <ol> <li>Your target becomes JAMMED until the end of their next turn.</li> <li>Your target moves up to its SPEED in a direction of the GM&rsquo;s choice.</li> <li>Your target immediately moves up to 3 spaces toward the nearest character (allied or hostile) and performs an IMPROVISED ATTACK against them. If no characters are in range, it only moves.</li> <li>Your target falls PRONE and takes 2 Kinetic Damage.</li> <li>Your target vents 1d6 Heat and deals the amount cooled as energy damage to all adjacent characters.</li> <li>Your target immediately takes the STABILIZE action and can choose what to do.</li> </ol>",
+   "ru": "<br><b>Быстрое тех-действие</b> — <p>Союзный мех-персонаж в пределах видимости и СЕНСОРОВ быстро перезагружается на уровне системы вспышкой. Это завершает все эффекты, вызванные тех-действиями, останавливает каскады НЧЛ и даёт цели Иммунитет ко всем тех-действиям — враждебным и союзным — кроме этого, до конца её следующего хода. Это нельзя использовать на Заклинивших персонажах.</p><p>Дополнительно бросьте 1d6, чтобы определить побочный эффект из таблицы ниже. Эти эффекты происходят немедленно и не считаются действием или реакцией. Любое вызванное ими движение недобровольно.</p><ol><li>Ваша цель становится Заклинившей до конца своего следующего хода.</li><li>Ваша цель перемещается на расстояние до своей Скорости в направлении по выбору Ведущего.</li><li>Ваша цель немедленно перемещается на до 3 клеток к ближайшему персонажу (союзному или враждебному) и совершает по нему Импровизированную атаку. Если персонажей в пределах дальности нет, она только двигается.</li><li>Ваша цель падает Ничком и получает 2 кинетического урона.</li><li>Ваша цель сбрасывает 1d6 тепла и наносит охлаждённое количество как энергетический урон всем соседним персонажам.</li><li>Ваша цель немедленно совершает действие «Стабилизация» и может выбрать, что делать.</li></ol>"
+  },
+  "description": {
+   "en": "When the problem exists between chair and chassis, aggressive solutions are needed. This rather quick solution is an old system-level reboot program that is often used by asteroid miners dealing with aging hardware.",
+   "ru": "Когда проблема существует между стулом и шасси, нужны агрессивные решения. Это довольно быстрое решение — старая программа перезагрузки на системном уровне, часто используемая астероидными шахтёрами, работающими со стареющим железом."
+  }
+ },
+ "ms_omnibus_plate": {
+  "name": {
+   "en": "Omnibus Plate",
+   "ru": "Универсальная плита"
+  },
+  "effect": {
+   "en": "Expend a charge to deploy an omnibus plate to a space within Range 5.<br><b>Deployable — Omnibus Plate:</b> The plate cannot be moved, is flat, and does not block movement. It is large enough to hold a single SIZE 1 or smaller DRONE or DEPLOYABLE at a time. DRONES and DEPLOYABLES placed on the plate gain RESISTANCE to all damage and gain +1 to the size of any BURST or BLAST effects they generate. Additionally, any of their effects that require adjacency can now be activated from within Range 2.",
+   "ru": "Потратьте заряд, чтобы развернуть универсальную плиту в клетке в пределах Дальности 5.<br><b>Разворачиваемое — Универсальная плита:</b> Плиту нельзя передвинуть, она плоская и не препятствует движению. Она достаточно велика, чтобы вместить одного ДРОНА или РАЗВОРАЧИВАЕМЫЙ ОБЪЕКТ Размера 1 или меньше одновременно. ДРОНЫ и РАЗВОРАЧИВАЕМЫЕ ОБЪЕКТЫ, размещённые на плите, получают СОПРОТИВЛЕНИЕ ко всему урону и +1 к размеру любых создаваемых ими эффектов ВСПЫШКИ или ВЗРЫВА. Дополнительно любые их эффекты, требующие соседства, теперь можно активировать с Дальности 2."
+  },
+  "description": {
+   "en": "Northstar Branch Robotics returned to their roots with the Omnibus Plate, creating a simple, deployable catalytic for frontline nexus users. Designed with adaptation in mind, Omnibus Plates can attach securely to any drone or deployable system, increasing that system’s efficacy in all aspects of employ.",
+   "ru": "Northstar Branch Robotics вернулась к своим корням с Универсальной плитой, создав простой развёртываемый катализатор для фронтовых пользователей Nexus-оружия. Спроектированные с учётом адаптивности, Универсальные плиты можно надёжно прикрепить к любой системе дрона или разворачиваемого объекта, повышая эффективность этой системы во всех аспектах применения."
+  }
+ },
+ "ms_field_approved_brass_ignorant_modifications": {
+  "name": {
+   "en": "Field-Approved, Brass Ignorant Modifications",
+   "ru": "Полевые модификации «Начальству знать не положено»"
+  },
+  "effect": {
+   "en": "<br><b>Quick Tech</b> — <p>Choose an allied mech character within line of sight and SENSORS. You power up their weapons. When they make a ranged or melee attack roll:</p> <ul> <li>the attack&rsquo;s damage cannot be reduced in any way</li> <li>the kick from firing the weapon knocks them back 1 space in any direction after the attack</li> <li><strong>On Hit:</strong> their target must succeed on a HULL save or be knocked PRONE.</li> </ul> <p>This effect ends when your target successfully hits with a ranged or melee attack roll or at the end of the scene.</p>",
+   "ru": "<br><b>Быстрое тех-действие</b> — <p>Выберите союзного мех-персонажа в пределах видимости и СЕНСОРОВ. Вы усиливаете его оружие. Когда он совершает дальнюю или ближнюю атаку:</p><ul><li>урон атаки нельзя уменьшить никаким образом;</li><li>отдача от выстрела отбрасывает его на 1 клетку в любом направлении после атаки;</li><li><b>При попадании:</b> его цель должна пройти спасбросок Корпуса, иначе сбивается с ног.</li></ul><p>Этот эффект заканчивается, когда ваша цель успешно попадает дальней или ближней атакой, или в конце сцены.</p>"
+  },
+  "description": {
+   "en": "As implied by the name, FABI modifications are ad hoc battlefield modifications that, while technically falling well outside the approved envelope of functionality and safety, are nonetheless popular among veteran pilots. FABI mods tend to be temporary in nature: removal of joule governors with quick-patched code, fieldcooked “hot” kinetic rounds, and so on.",
+   "ru": "Как следует из названия, модификации FABI — импровизированные полевые модификации, которые, хотя технически выходят далеко за рамки утверждённых норм функциональности и безопасности, тем не менее популярны среди ветеранов-пилотов. Моды FABI обычно временные по природе: снятие джоульных ограничителей быстро залатанным кодом, полевые «горячие» кинетические патроны и так далее."
+  }
+ },
+ "ms_forge_2_subaltern_squad": {
+  "name": {
+   "en": "FORGE-2 Subaltern Squad",
+   "ru": "Отряд субальтернов FORGE-2"
+  },
+  "effect": {
+   "en": "<p>1/round, expend a charge to deploy a team of FORGE-2 subalterns to start work on one of the following projects in a free space within line of sight and Range 5.</p> <p>The project is an immovable object that is finished at the start of your next turn, gaining +10 HP (maximum and current). It is canceled if it&rsquo;s destroyed.</p> <p>The subalterns aren&rsquo;t treated as separate entities and can&rsquo;t be targeted. They return to you if the project is destroyed, canceled, or finished, no matter where you are.</p> <p>If you OVERCHARGE to use this system again, it may ignore the 1/round limit, but the second project must be placed adjacent to the first.</p><br><b>Deployable — Emplacement:</b> When finished, this elevated emplacement is SIZE 1 and 3 spaces high. The top third is a is a shielded platform that can fit characters up to a combined SIZE 1 (the rest is solid metal or plastic). Firing slits allow line of sight both into and out of the emplacement but give characters within hard cover from all directions. Characters can enter or exit the emplacement from any adjacent space as a quick action. Upon entering, they move into the shielded platform. Characters and DEPLOYABLES can stand on the flat roof of the structure, but don’t gain cover.<br><b>Deployable — Snare Foam:</b> When finished, this project continually sprays foam around it, creating a Burst 2 area of difficult terrain. Destroying it removes the effect.<br><b>Deployable — Damping Station:</b> When finished, this repair station generates a Burst 1 field within which allied characters gain IMMUNITY to burn and clear any burn currently affecting them.<br><b>Deployable — Armor Pack:</b> When finished, this pack latches onto the next allied character that moves adjacent to it and fuses onto them. The project is destroyed, but they gain +1 ARMOR for the rest of the scene. This could temporarily put them over the armor maximum.",
+   "ru": "<p>1/раунд потратьте заряд, чтобы развернуть команду субальтернов FORGE-2 для начала работы над одним из следующих проектов в свободной клетке в пределах видимости и Дальности 5.</p><p>Проект — неподвижный объект, завершающийся в начале вашего следующего хода, получая +10 ОЗ (максимум и текущие). Он отменяется при уничтожении.</p><p>Субальтерны не считаются отдельными сущностями и не могут быть выбраны целью. Они возвращаются к вам, если проект уничтожен, отменён или завершён, независимо от вашего местоположения.</p><p>Если вы ПЕРЕГРУЖАЕТЕ для повторного использования этой системы, она может игнорировать лимит 1/раунд, но второй проект должен быть размещён рядом с первым.</p><br><b>Разворачиваемое — Огневая точка:</b> При завершении эта возвышенная огневая точка имеет Размер 1 и высоту 3 клетки. Верхняя треть — экранированная платформа, вмещающая персонажей суммарного Размера 1 (остальное — сплошной металл или пластик). Бойницы позволяют видимость как внутрь, так и наружу огневой точки, но дают персонажам внутри твёрдое укрытие со всех направлений. Персонажи могут войти или выйти из огневой точки из любой соседней клетки как быстрое действие. При входе они перемещаются на экранированную платформу. Персонажи и РАЗВОРАЧИВАЕМЫЕ ОБЪЕКТЫ могут стоять на плоской крыше конструкции, но не получают укрытие.<br><b>Разворачиваемое — Сковывающая пена:</b> При завершении этот проект непрерывно распыляет вокруг себя пену, создавая область Вспышка 2 сложной местности. Уничтожение убирает эффект.<br><b>Разворачиваемое — Станция демпфирования:</b> При завершении эта ремонтная станция создаёт поле области Вспышка 1, в котором союзные персонажи получают ИММУНИТЕТ к огню и снимают весь огонь, действующий на них.<br><b>Разворачиваемое — Комплект брони:</b> При завершении этот комплект прикрепляется к следующему союзному персонажу, переместившемуся рядом с ним, и сливается с ним. Проект уничтожается, но персонаж получает +1 БРОНЮ до конца сцены. Это может временно превысить максимум брони."
+  },
+  "description": {
+   "en": "The FORGE line of subalterns represents IPS-N’s premier range of frontline autonomous robotic humanoids. Produced by its robotics division, Northstar Branch Robotics, FORGE-2 subalterns are IPS-N’s newest combat engineering models, built to user scale and function.",
+   "ru": "Линейка субальтернов FORGE представляет собой премиальный ряд IPS-N фронтовых автономных роботизированных гуманоидов. Произведённые её робототехническим подразделением, Northstar Branch Robotics, субальтерны FORGE-2 — новейшие боевые инженерные модели IPS-N, построенные в пользовательском масштабе и функции."
+  }
+ },
+ "ms_smokestack_heatsink": {
+  "name": {
+   "en": "SMOKESTACK Heat Sink",
+   "ru": "Теплоотвод SMOKESTACK"
+  },
+  "effect": {
+   "en": "<br><b>Deployable — SMOKESTACK Heat Sink:</b> Expend a charge to deploy a pylon that absorbs heat in a Burst 2 area around itself. It absorbs any heat dealt to characters at least partially within the affected area from any source (before reductions, including RESISTANCE). Once the pylon has absorbed 6 Heat, it explodes. Characters within the affected area must succeed on an AGILITY save or take 1d6+3 AP Energy Damage. On a success, they take half damage. Objects and DEPLOYABLES are hit automatically. Any excess heat absorbed by the pylon as part of the same action or effect that caused it to explode disperses with no effect.",
+   "ru": "<br><b>Разворачиваемое — Теплоотвод SMOKESTACK:</b> Потратьте заряд, чтобы развернуть пилон, поглощающий тепло в области Вспышка 2 вокруг себя. Он поглощает любое тепло, наносимое персонажам хотя бы частично находящимся в поражённой области, из любого источника (до снижений, включая СОПРОТИВЛЕНИЕ). Как только пилон поглотит 6 Тепла, он взрывается. Персонажи в поражённой области должны пройти спасбросок ЛОВКОСТИ, иначе получают 1d6+3 бронебойного энергетического урона. При успехе они получают половину урона. Объекты и РАЗВОРАЧИВАЕМЫЕ ОБЪЕКТЫ поражаются автоматически. Любое избыточное тепло, поглощённое пилоном в рамках того же действия или эффекта, что вызвал взрыв, рассеивается без эффекта."
+  },
+  "description": {
+   "en": "The IPS-N Kidd’s SMOKESTACK Heat Sink represents the latest in IPS-N’s heat dispersion systems for chassis and other CORE-powered vehicles and vessels. Utilizing proprietary axiomatics, the SMOKESTACK system establishes (via deployable pylon) a localized, minor, and stable pinhole into an omega state, allowing users to – for a certain value of thermodynamic exchange – cool excess heat debt by depositing it into that same state. Once the SMOKESTACK reaches capacity – a hard-coded feature – it detonates, making the system just as effective a weapon as it is a heat sink.",
+   "ru": "Теплоотвод SMOKESTACK «Кидда» от IPS-N представляет собой последнее слово систем рассеивания тепла IPS-N для шасси и других CORE-питаемых машин и судов. Используя фирменную аксиоматику, система SMOKESTACK устанавливает (через разворачиваемый пилон) локализованный, малый и стабильный прокол в омега-состояние, позволяя пользователям — для определённого значения термодинамического обмена — охлаждать избыточный теплодолг, депонируя его в то же состояние. Как только SMOKESTACK достигает предела вместимости — заложенная особенность — он детонирует, делая систему таким же эффективным оружием, как и теплоотводом."
+  }
+ },
+ "ms_exo_snapdragon_launcher": {
+  "name": {
+   "en": "Snapdragon Anti-Chassis Guided Missile Launcher",
+   "ru": "Противошассийная управляемая ракетная установка «Снэпдрэгон»"
+  },
+  "effect": {
+   "en": "<p>1/mission, the \"Snapdragon\" anti-chassis guided missile launcher can be used to make a ranged attack with the following profile:</p><p>Heavy Launcher, Reliable 4, Seeking <br> Range 15, 2d6 + 2 Explosive Damage</p>",
+   "ru": "<p>1/миссию противошассийная управляемая ракетная установка «Снэпдрэгон» может быть использована для дальней атаки со следующим профилем:</p><p>Тяжёлая пусковая установка, Надёжное 4, Самонаводящееся<br>Дальность 15, 2d6 + 2 взрывного урона</p>"
+  },
+  "description": {
+   "en": "<ol> <li>Check all safety locks.</li> <li>Extend launch tube. Missile door should open automatically (if door fails to open, launcher will not fire).</li> <li>Activate rangefinder, acquire target. Wait for positive tone and visual confirmation that target has been acquired (TGT OK).</li> <li>Check backblast area. Minimum safe distance 100 meters. WARNING: backblast poses serious injury risk to unprotected personnel.</li> <li>Fire.</li> </ol>",
+   "ru": "<ol><li>Проверьте все предохранители.</li><li>Выдвиньте пусковую трубу. Люк ракеты должен открыться автоматически (если люк не открывается, установка не выстрелит).</li><li>Активируйте дальномер, захватите цель. Ждите положительного тона и визуального подтверждения захвата цели (TGT OK).</li><li>Проверьте зону обратной вспышки. Минимальное безопасное расстояние — 100 метров. ВНИМАНИЕ: обратная вспышка представляет серьёзную опасность травмирования для незащищённого персонала.</li><li>Огонь.</li></ol>"
+  }
+ },
+ "ms_exo_cynosure": {
+  "name": {
+   "en": "Cynosure",
+   "ru": "Путеводная звезда"
+  },
+  "effect": {
+   "en": "<br><b>Celestial Ordering</b> — Every character on the battlefield involuntarily moves 1 space in a direction of your choice, ignoring engagement and without provoking reactions. They must all move in the same direction.<br><b>Unblinking Pursuit</b> — A hostile character within line of sight and SENSORS must succeed on a SYSTEMS save or be mesmerized. Choose another visible character. Any voluntary movement the mesmerized character makes must be toward the chosen character by the most direct route possible. This effect ends when the mesmerized character starts or ends their turn adjacent to any other character, otherwise it lasts until the end of combat.",
+   "ru": "<br><b>Небесное упорядочивание</b> — Каждый персонаж на поле боя недобровольно перемещается на 1 клетку в выбранном вами направлении, игнорируя вовлечённость и не провоцируя реакции. Все они должны двигаться в одном направлении.<br><b>Неотступное преследование</b> — Враждебный персонаж в пределах видимости и СЕНСОРОВ должен пройти спасбросок СИСТЕМ, иначе оказывается загипнотизирован. Выберите другого видимого персонажа. Любое добровольное движение загипнотизированного персонажа должно быть направлено к выбранному персонажу самым прямым возможным путём. Этот эффект заканчивается, когда загипнотизированный персонаж начинает или заканчивает свой ход рядом с любым другим персонажем, иначе действует до конца боя."
+  },
+  "description": {
+   "en": "This program talks, quietly, of revenge, of the ordering of things, of a march of blades lifted high against the sun.",
+   "ru": "Эта программа тихо говорит о мести, об упорядочивании вещей, о марше клинков, вознесённых высоко против солнца."
+  }
+ },
+ "ms_exo_opportunity": {
+  "name": {
+   "en": "Opportunity",
+   "ru": "Возможность"
+  },
+  "effect": {
+   "en": "<br><b>Knock</b> — <p>Opportunity lends their extraordinary processing power and their precise (if exacting) aid, optimizing an ally&rsquo;s systems to a more &ldquo;organized&rdquo; state.</p> <p>Choose an allied mech character within line of sight and SENSORS to benefit from Opportunity&rsquo;s optimization. They gain immunity to heat from other characters, +1 Accuracy on all SYSTEMS checks and saves, and attackers gain +1 Difficulty on tech attacks against them.</p> <p>This effect ends immediately when you take this action again, or when the affected character &ldquo;makes a mess of things&rdquo; by taking an attack roll, forcing a save, or taking any other action that would affect a hostile character.</p>",
+   "ru": "<br><b>Стук</b> — <p>«Возможность» одалживает свою экстраординарную вычислительную мощь и точную (хоть и требовательную) помощь, оптимизируя системы союзника до более «организованного» состояния.</p><p>Выберите союзного мех-персонажа в пределах видимости и СЕНСОРОВ, чтобы он получил выгоду от оптимизации «Возможности». Он получает иммунитет к теплу от других персонажей, +1 к Точности на все проверки и спасброски СИСТЕМ, а атакующие получают +1 к Сложности на тех-атаки против него.</p><p>Этот эффект немедленно заканчивается, когда вы совершаете это действие снова, или когда поражённый персонаж «всё портит», совершая бросок атаки, вынуждая спасбросок или совершая любое другое действие, влияющее на враждебного персонажа.</p>"
+  },
+  "description": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "ms_exo_markeys_fusebox": {
+  "name": {
+   "en": "Markey’s Fusebox",
+   "ru": "Взрывной щиток Марки"
+  },
+  "effect": {
+   "en": "<br><b>Deployable — Markey’s Fusebox:</b> Expend a charge to set an explosive charge in a free adjacent space. It arms at the end of the round; once armed, it explodes if it takes any damage or heat. Characters within Burst 3 must succeed on an AGILITY save or take 2d6 Explosive damage and be pushed out of the affected area, or as far as possible. On a success, they are still pushed but take half damage.",
+   "ru": "<br><b>Разворачиваемое — Взрывной щиток Марки:</b> Потратьте заряд, чтобы установить взрывной заряд в свободной соседней клетке. Он взводится в конце раунда; будучи взведённым, взрывается при получении любого урона или тепла. Персонажи в пределах Вспышки 3 должны пройти спасбросок ЛОВКОСТИ, иначе получают 2d6 взрывного урона и отбрасываются за пределы поражённой области или как можно дальше. При успехе их всё равно отбрасывает, но урон уменьшается вдвое."
+  },
+  "description": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "ms_exo_carapace_cladding": {
+  "name": {
+   "en": "Carapace Cladding",
+   "ru": "Панцирная обшивка"
+  },
+  "effect": {
+   "en": "Expend a charge to immediately clear all Burn from your mech. Additionally, whenever you BRACE you may also expend a charge to reduce all Burn dealt by the attack to 0.<br><b>Quick</b> — Immediately clear all Burn from your mech.",
+   "ru": "Потратьте заряд, чтобы немедленно снять весь Огонь с вашего меха. Дополнительно, каждый раз, когда вы Держите оборону, вы можете также потратить заряд, чтобы снизить весь Огонь от атаки до 0.<br><b>Быстрое</b> — Немедленно снимите весь Огонь с вашего меха."
+  },
+  "description": {
+   "en": "While sufficient for personal armor, Egregorian chitin on its own is not robust enough to withstand attacks from heavier weapons, nor can it easily be gathered in sufficient quantities to fully outfit a chassis. Regardless, many rangers still utilize carapace-based secondary defensive enhancements anchored over critical systems as an additional layer of ablative protection, most notably against incendiary or caustic/corrosive munitions that might otherwise resist conventional suppression.",
+   "ru": "Хотя хитин Эгрегориан достаточен для личной броневой защиты, сам по себе он недостаточно прочен, чтобы выдержать атаки более тяжёлого оружия, и его нелегко собрать в достаточном количестве, чтобы полностью оснастить шасси. Тем не менее многие рейнджеры до сих пор используют вторичные защитные усиления на основе панциря, закреплённые над критическими системами как дополнительный слой абляционной защиты, особенно против зажигательных или едко-коррозийных боеприпасов, которые иначе могли бы противостоять обычному подавлению."
+  }
+ },
+ "ms_exo_fragment_beggar_one": {
+  "name": {
+   "en": "Fragment of Beggar One",
+   "ru": "Фрагмент «Нищего-один»"
+  },
+  "effect": {
+   "en": "<p>1/scene, you may take one of the following Full Tech actions:</p><br><b>Whisper of Cascade</b> — Choose a hostile character within SENSORS. They must either immediately attack a different character or object of your choice within their RANGE and line of sight with a single weapon as a reaction, or become JAMMED until the end of their next turn.<br><b>A Razor Called Qualia</b> — <p>Choose a hostile character within SENSORS. Until the end of their next turn:</p> <ul> <li>They must use their standard move to move toward you by the most direct route possible</li> <li>As long as you are within the RANGE and line of sight of their attacks, they consider you the only valid target for attacks.</li> </ul>.",
+   "ru": "<p>1/сцену вы можете совершить одно из следующих Полных тех-действий:</p><br><b>Шёпот каскада</b> — Выберите враждебного персонажа в пределах СЕНСОРОВ. Он должен либо немедленно атаковать другого персонажа или объект по вашему выбору в пределах своей ДАЛЬНОСТИ и видимости одним оружием как реакцию, либо стать ЗАКЛИНИВШИМ до конца своего следующего хода.<br><b>«Бритва по имени Квалиа»</b> — <p>Выберите враждебного персонажа в пределах СЕНСОРОВ. До конца его следующего хода:</p><ul><li>Он должен использовать своё стандартное перемещение, чтобы двигаться к вам самым прямым возможным путём;</li><li>Пока вы находитесь в пределах ДАЛЬНОСТИ и видимости его атак, он считает вас единственной допустимой целью для атак.</li></ul>."
+  },
+  "description": {
+   "en": "This artifact, recovered following the termination of Beggar One (provisionally designated /obj/00001), displays a number of unusual properties. Though tangible and presumed to be chemically stable, its monocrystalline composition does not correspond to any known element and emits a steady, measurable level of gamma radiation through an unknown process. Deep magnetic resonance scans indicate the presence of significant quantities of compressed data stored within the object, though it shows no signs of self-directed intelligence at any quantifiable level. Its exact purpose, if it has one, has yet to be determined.",
+   "ru": "Этот артефакт, найденный после ликвидации «Нищего-один» (предварительно обозначенного /obj/00001), демонстрирует ряд необычных свойств. Хотя он материален и предположительно химически стабилен, его монокристаллическая структура не соответствует ни одному известному элементу и испускает устойчивый, измеримый уровень гамма-излучения через неизвестный процесс. Глубокие магнитно-резонансные сканирования указывают на присутствие значительных объёмов сжатых данных, хранящихся внутри объекта, хотя он не показывает признаков самонаправленного интеллекта на каком-либо измеримом уровне. Его точное назначение, если оно есть, пока не установлено."
+  }
  }
 }

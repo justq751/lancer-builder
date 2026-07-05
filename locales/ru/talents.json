@@ -1332,5 +1332,143 @@
     }
    }
   }
+ },
+ "t_demolitionist": {
+  "name": {
+   "en": "Demolitionist",
+   "ru": "Подрывник"
+  },
+  "terse": {
+   "en": "Improve your grenades and mines to fly further and hit harder",
+   "ru": "Улучшает ваши гранаты и мины, увеличивая дальность и урон"
+  },
+  "description": {
+   "en": "Explosives and warfare go together like alcohol and bad decisions. The power of a bomb in the palm of your hand is a great equalizer, and a well-placed satchel charge or two has brought even the mightiest of fortifications tumbling down. Forget bullets with names etched on them, the packages you deliver go out addressed “To Whom It May Concern,” and you’ve got plenty to go around.",
+   "ru": "Взрывчатка и война идут рука об руку, как алкоголь и плохие решения. Сила бомбы на ладони — великий уравнитель, а пара удачно заложенных зарядов обрушила даже самые могучие укрепления. Забудьте про пули с именами на них — посылки, которые вы доставляете, адресованы «Всем, кого это касается», и у вас их достаточно на всех."
+  },
+  "ranks": {
+   "Frag and Clear": {
+    "name": {
+     "en": "Frag and Clear",
+     "ru": "«Осколки и чисто»"
+    },
+    "description": {
+     "en": "When you use a Grenade, you may choose one character in the affected area to ignore its effects. Additionally, at the end of each scene, you restore 1 charge to each Limited system with the Mine tag for each undetonated Mine you deployed from that system.",
+     "ru": "Когда вы используете Гранату, вы можете выбрать одного персонажа в поражённой области, который проигнорирует её эффекты. Дополнительно, в конце каждой сцены вы восстанавливаете 1 заряд каждой Лимитированной системе с тегом «Мина» за каждую невзорвавшуюся Мину, установленную этой системой."
+    }
+   },
+   "Quarterback": {
+    "name": {
+     "en": "Quarterback",
+     "ru": "Плеймейкер"
+    },
+    "description": {
+     "en": "Your Grenades gain +3 Range, and you can plant Mines up to Range 3 (or add +3 Range to them if they have one). Additionally, you do not require line of sight for Grenades and Mines as long as it’s possible to trace a path to the target.",
+     "ru": "Ваши Гранаты получают +3 к Дальности, и вы можете устанавливать Мины на Дальности до 3 (или добавить +3 к Дальности, если она у них уже есть). Дополнительно вам не требуется видимость для Гранат и Мин, пока возможно провести путь до цели."
+    }
+   },
+   "Fire in the Hole": {
+    "name": {
+     "en": "Fire in the Hole",
+     "ru": "«Осторожно, взрыв!»"
+    },
+    "description": {
+     "en": "<p>Your explosive charges have been enhanced with customized payloads. 1/round, you may choose one of the following:</p> <ul> <li>When you throw a Grenade, up to three characters within Range 3 of the targeted space take 2 explosive damage and are knocked back 1 space in a direction of your choice by explosive shrapnel.</li> <li>When a character fails a save against one of your Mines, they take +1d6 explosive bonus damage. If the mine deals no damage normally when detonated, whether it forces a save or not, one character in the affected area takes 1d6 explosive damage instead.</li> </ul>",
+     "ru": "Ваши взрывные заряды усилены индивидуальными полезными нагрузками. 1/раунд вы можете выбрать одно из следующего:<ul><li>Когда вы бросаете Гранату, до трёх персонажей в пределах Дальности 3 от целевой клетки получают 2 взрывного урона и отбрасываются на 1 клетку в выбранном вами направлении осколками.</li><li>Когда персонаж проваливает спасбросок против одной из ваших Мин, он получает +1d6 бонусного взрывного урона. Если мина не наносит урона при срабатывании (независимо от того, требует ли она спасброска), один персонаж в поражённой области вместо этого получает 1d6 взрывного урона.</li></ul>"
+    }
+   }
+  }
+ },
+ "t_sysop": {
+  "name": {
+   "en": "Sysop",
+   "ru": "Сисоп"
+  },
+  "terse": {
+   "en": "Improve your Bolster to shield your allies from systemic attacks",
+   "ru": "Улучшает ваше действие Подбодрить, защищая союзников от системных атак"
+  },
+  "description": {
+   "en": "Modern systemic warfare is a filthy mess of code-worms, logic bombs, and adaptive viruses, to say nothing of all the physical detritus that litters the battlefield, and you’re the one responsible for keeping things clean. System operator or system optimizer, formatting software barriers or tuning servos, your command of diagnostic programs and deep-level hardware overrides gives you all the tools you need to push your squad’s limits beyond manufacturer spec with orderly, surgical precision.",
+   "ru": "Современная системная война — грязное месиво из кодовых червей, логических бомб и адаптивных вирусов, не говоря уже о физическом мусоре, устилающем поле боя, а вы — тот, кто отвечает за то, чтобы всё было чисто. Системный оператор или системный оптимизатор, форматирующий программные барьеры или настраивающий сервоприводы, ваше владение диагностическими программами и глубоким аппаратным переопределением даёт вам все инструменты, нужные, чтобы вывести возможности отряда за пределы заводских спецификаций с упорядоченной, хирургической точностью."
+  },
+  "ranks": {
+   "Inoculation": {
+    "name": {
+     "en": "Inoculation",
+     "ru": "Инокуляция"
+    },
+    "description": {
+     "en": "When you Bolster an allied character, the additional Accuracy they gain lasts until their next skill check or save.",
+     "ru": "Когда вы Подбадриваете союзного персонажа, дополнительная Точность, которую он получает, действует до его следующей проверки навыка или спасброска."
+    }
+   },
+   "Firewall": {
+    "name": {
+     "en": "Firewall",
+     "ru": "Файрвол"
+    },
+    "description": {
+     "en": "When you Bolster an allied character, tech attacks against them receive +1 Difficulty until the end of their next turn.",
+     "ru": "Когда вы Подбадриваете союзного персонажа, тех-атаки против него получают +1 к Сложности до конца его следующего хода."
+    }
+   },
+   "Aggressive Countermeasures": {
+    "name": {
+     "en": "Aggressive Countermeasures",
+     "ru": "Агрессивные контрмеры"
+    },
+    "description": {
+     "en": "1/round, when you Bolster an ally, you induce a special cycle into their reactor. They reduce the next amount of heat they would take from a hostile character to 0, and that character takes 2 heat and becomes Impaired until the end of their next turn. This effect does not stack, and lasts until triggered.",
+     "ru": "1/раунд, когда вы Подбадриваете союзника, вы вызываете особый цикл в его реакторе. Он снижает до 0 следующее количество тепла, которое получил бы от враждебного персонажа, а этот персонаж получает 2 тепла и становится Ослаблен до конца своего следующего хода. Этот эффект не складывается и действует до срабатывания."
+    }
+   }
+  }
+ },
+ "t_empath": {
+  "name": {
+   "en": "Empath",
+   "ru": "Эмпат"
+  },
+  "terse": {
+   "en": "Gain abilities that grant your allies guaranteed dice results",
+   "ru": "Получите способности, дающие союзникам гарантированные результаты костей"
+  },
+  "description": {
+   "en": "<p><i>Your time on Hercynia has always been marked by a kind of … searching. A connection to the planet, to something alive there. You can perceive it best at night, when it’s quiet: your name, or a whisper that speaks something deeper and more true, spoken in the voice of another. You don’t feel any fear when you hear it. You feel complete. It takes some time down the well, but one morning you awake resolute.</p><p>Time to find the distant speaker.</i></p><p>Whether your character was born offworld and came to Hercynia knowing nothing of the Egregorians, Witness, or any of the planet’s history, or you were born in Evergreen or one of the cities of the HUC, your character can be an empath. An empath is someone who can not only register when Witness is being shared, but begin to understand it and, with some training, even add their own subjectivity to it.</p><p>Mere exposure to Hercynia is enough for a character to become an empath. Nobody is “born” an empath – it is a learned process, not an inherited one. Although, like all skills, some people find it easier than others, anyone can potentially learn to understand Witness. Normally, human empaths bond with Egregorians – there are many examples of such in the United Cities. Rarely, empaths can form bonds with other humans – a process that is as rare and wondrous to Egregorians as it is to the humans undergoing it, and one that also suggests that a human extension of Witness may latent and possible with exploration.</p>",
+   "ru": "<p><i>Ваше время на Гercинии всегда было отмечено своего рода… поиском. Связью с планетой, с чем-то живым там. Вы лучше всего ощущаете это ночью, когда тихо: своё имя, или шёпот, говорящий что-то более глубокое и истинное, произнесённое голосом другого. Вы не чувствуете страха, слыша это. Вы чувствуете целостность. Требуется время в колодце, но однажды утром вы просыпаетесь с решимостью.</p><p>Пора найти того далёкого собеседника.</i></p><p>Родился ли ваш персонаж не на этой планете и прибыл на Герцинию, ничего не зная об Эгрегорианах, Свидетеле или истории этого мира, или же родился в Эвергрине или одном из городов ОГК, ваш персонаж может быть эмпатом. Эмпат — тот, кто не просто способен ощутить, когда происходит обмен Свидетелем, но начинает понимать его и, с некоторой тренировкой, даже добавлять собственную субъектность в него.</p><p>Простого пребывания на Герцинии достаточно, чтобы персонаж стал эмпатом. Никто не «рождается» эмпатом — это приобретаемый процесс, а не наследуемый. Хотя, как и с любым навыком, некоторым он даётся легче, чем другим, потенциально любой может научиться понимать Свидетеля. Обычно человеческие эмпаты образуют связь с Эгрегорианами — таких примеров много в Объединённых городах. Редко эмпаты могут образовывать связь с другими людьми — процесс, столь же редкий и чудесный для Эгрегориан, как и для самих людей, переживающих его, и указывающий на то, что человеческое расширение Свидетеля может быть скрытым и достижимым через исследование.</p>"
+  },
+  "ranks": {
+   "Sympathetic Precognition": {
+    "name": {
+     "en": "Sympathetic Precognition",
+     "ru": "Симпатическое предвидение"
+    },
+    "description": {
+     "en": "Your ability to sense the subjectivities of others grants you an uncanny ability to predict your ally’s actions, guiding them with your influence.",
+     "ru": "Ваша способность ощущать субъектность других даёт вам сверхъестественную способность предугадывать действия союзника, направляя его своим влиянием."
+    }
+   },
+   "Bend to Will": {
+    "name": {
+     "en": "Bend to Will",
+     "ru": "Подчинить воле"
+    },
+    "description": {
+     "en": "1/scene when an allied character in line of sight makes a structure or overheating check, they can roll twice and choose either result.",
+     "ru": "1/сцену, когда союзный персонаж в пределах видимости совершает проверку структуры или перегрева, он может бросить дважды и выбрать любой результат."
+    }
+   },
+   "Shared Subjectivity": {
+    "name": {
+     "en": "Shared Subjectivity",
+     "ru": "Общая субъектность"
+    },
+    "description": {
+     "en": "1/scene as a quick action, you may tap deep reserves of willpower to grant extraordinary awareness to an allied character in line of sight. Your mech immediately becomes STUNNED until the start of your next turn and your perception almost completely merges with that of the other character. Until the end of their next turn, any time that character makes an attack, check, or saving throw, they can choose to roll as normal or instead treat that attack, check, or save as if they had rolled a 10 on the d20. They must decide before rolling.",
+     "ru": "1/сцену, как быстрое действие, вы можете обратиться к глубоким резервам воли, чтобы дать необычайную осведомлённость союзному персонажу в пределах видимости. Ваш мех немедленно становится Ошеломлён до начала своего следующего хода, а ваше восприятие почти полностью слито с восприятием другого персонажа. До конца его следующего хода каждый раз, когда этот персонаж совершает атаку, проверку или спасбросок, он может выбрать бросить как обычно или вместо этого считать эту атаку, проверку или спасбросок так, как если бы выбросил 10 на d20. Решение нужно принять до броска."
+    }
+   }
+  }
  }
 }

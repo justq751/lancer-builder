@@ -37,6 +37,7 @@ import pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA_FILE = ROOT / "data" / "lancer-data.json"
+PACKS_DIR = ROOT / "data" / "packs"
 
 
 def pair(en, old):
@@ -217,12 +218,26 @@ BUILDERS = {
 }
 
 
+def load_combined_data():
+    """Core data + every normalized pack in data/packs/, merged into one
+    lookup so pack items get template entries alongside core-book items."""
+    data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    if PACKS_DIR.exists():
+        for pack_file in sorted(PACKS_DIR.glob("*.json")):
+            pack = json.loads(pack_file.read_text(encoding="utf-8"))
+            for cat, items in pack.items():
+                if cat in data and items:
+                    data[cat] = data[cat] + items
+            print(f"  + merged {pack_file.name}")
+    return data
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--lang", default="ru")
     args = ap.parse_args()
 
-    data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
+    data = load_combined_data()
     out_dir = ROOT / "locales" / args.lang
     out_dir.mkdir(parents=True, exist_ok=True)
 
