@@ -558,7 +558,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-core-bonus-tab";
+const APP_BUILD = "2026-07-05-core-bonus-gating";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -668,7 +668,7 @@ function derived(){
   const grit = Math.ceil(ll/2);
   const b = {
     skill:{cap:4+ll}, talent:{cap:3+ll}, hase:{cap:2+ll},
-    license:{cap:ll}, core:{cap:Math.floor(ll/2)}
+    license:{cap:ll}, core:{cap:Math.floor(ll/3)}
   };
   b.skill.used   = Object.values(state.skills).reduce((a,v)=>a+v/2,0);
   b.talent.used  = Object.values(state.talents).reduce((a,v)=>a+v,0);
@@ -707,6 +707,17 @@ function derived(){
 
 /* license helpers */
 const licRank = name => state.licenses[name]||0;
+/* Highest license rank the pilot has invested among all frames of a given
+   manufacturer (e.g. rank 2 in "Minotaur" and rank 2 in "Genghis" both count
+   toward HORUS/HA respectively, but neither reaches the 3 needed to unlock
+   that manufacturer's CORE Bonuses). GMS has no such requirement. */
+function manufacturerRank(source){
+  const ranks = L.frames.filter(f=>f.source===source).map(f=>licRank(f.name));
+  return ranks.length ? Math.max(...ranks) : 0;
+}
+function coreBonusUnlocked(c){
+  return c.source==="GMS" || manufacturerRank(c.source)>=3;
+}
 function unlocked(item){
   if(item.source==="GMS"||item.license==="GMS"||(item.license_level||0)===0) return true;
   return licRank(item.license) >= (item.license_level||0);
@@ -1391,8 +1402,8 @@ function renderCore(){
   const capped=d.b.core.cap<1;
   $("#tab").innerHTML = sechead("// 08 · CORE-БОНУСЫ","CORE-бонусы",
       capped
-        ? "CORE-бонусы открываются с LL2 (по одному за каждый чётный уровень лицензий)."
-        : `Выбрано ${state.cores.length} из ${d.b.core.cap}.`)
+        ? "CORE-бонусы открываются с LL3, и затем ещё по одному за каждые 3 уровня лицензий (LL6, LL9…)."
+        : `Выбрано ${state.cores.length} из ${d.b.core.cap}. Бонусы конкретного производителя открываются, когда у вас есть 3+ ранга лицензии на любое шасси этого производителя — иначе доступны только бонусы GMS.`)
     + (capped ? "" : `
       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${coreFilter===s?'on':''}" data-cf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
       <input class="input" id="core-search" placeholder="поиск CORE-бонусов…" style="margin-bottom:14px" value="${esc(coreSearch)}">
@@ -1403,13 +1414,19 @@ function renderCore(){
     const list=L.core_bonuses
       .filter(c=>coreFilter==="ALL"||c.source===coreFilter)
       .filter(c=>!coreSearch||(c.name+" "+c.source).toLowerCase().includes(coreSearch.toLowerCase()))
-      .sort((a,b)=>(state.cores.includes(b.id)-state.cores.includes(a.id))||a.name.localeCompare(b.name));
+      .sort((a,b)=>(state.cores.includes(b.id)-state.cores.includes(a.id))
+                 ||(coreBonusUnlocked(b)-coreBonusUnlocked(a))
+                 ||a.name.localeCompare(b.name));
     $("#core-list").innerHTML=list.map(c=>{
       const sel=state.cores.includes(c.id);
-      return `<div class="listrow clickable ${sel?'maxed':''}" data-c="${c.id}">
+      const unl=coreBonusUnlocked(c);
+      const badge = sel
+        ? `<span class="rowbadge" style="color:var(--accent);border-color:var(--accent)">✓ ВЫБРАН</span>`
+        : (unl ? `<span class="chevron">›</span>` : `<span class="rowbadge lock">🔒 ${esc(c.source)} 3+</span>`);
+      return `<div class="listrow clickable ${sel?'maxed':''} ${!unl&&!sel?'locked':''}" data-c="${c.id}">
         <div class="info"><div class="nm">${esc(c.name)}</div>
           <div class="ds">${esc(c.source)}</div></div>
-        ${sel?`<span class="rowbadge" style="color:var(--accent);border-color:var(--accent)">✓ ВЫБРАН</span>`:`<span class="chevron">›</span>`}
+        ${badge}
       </div>`;
     }).join("")||`<div class="hint">// нет CORE-бонусов по этому запросу</div>`;
     const input=$("#core-search");
@@ -1429,16 +1446,18 @@ function openCoreDetail(id){
   const c=M.core[id], d=derived();
   const sel=state.cores.includes(id);
   const full=state.cores.length>=d.b.core.cap && !sel;
+  const unl=coreBonusUnlocked(c);
   modal(c.name, `
     <div class="item static">
       <div class="src" style="background:${srcColor(c.source)}"></div>
       <div class="top"><div class="nm" style="font-size:19px">${esc(c.name)}</div>
-        <div class="badge">${esc(c.source)}</div></div>
+        <div class="badge ${unl?'':'lock'}">${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
+      ${unl?"":`<div class="hint" style="margin-top:6px">Требуется 3+ ранга лицензии на шасси ${esc(c.source)} (сейчас: ${manufacturerRank(c.source)}).</div>`}
       <div class="desc" style="margin-top:12px">${rich(c.effect)}</div>
       ${c.mounted_effect?`<div class="desc" style="margin-top:9px"><b>Если установлено на крепление:</b> ${rich(c.mounted_effect)}</div>`:""}
     </div>
-    <button class="ghostbtn ${sel?'warn':''}" id="core-toggle" style="margin-top:16px;width:100%;text-align:center" ${full?"disabled":""}>
-      ${sel?"✕ Убрать этот CORE-бонус":(full?`⚠ Лимит исчерпан (${state.cores.length}/${d.b.core.cap})`:"✓ Выбрать этот CORE-бонус")}
+    <button class="ghostbtn ${sel?'warn':(full?'':(unl?'':'warn'))}" id="core-toggle" style="margin-top:16px;width:100%;text-align:center" ${full?"disabled":""}>
+      ${sel?"✕ Убрать этот CORE-бонус":(full?`⚠ Лимит исчерпан (${state.cores.length}/${d.b.core.cap})`:(unl?"✓ Выбрать этот CORE-бонус":`⚠ Выбрать всё равно (лицензия ${esc(c.source)} не открыта)`))}
     </button>`);
   $("#core-toggle").onclick=()=>{
     if(full) return;
