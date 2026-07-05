@@ -239,6 +239,10 @@ button{font-family:inherit; cursor:pointer}
 .mount .slot:last-child{border-bottom:0}
 .equipped{display:flex; align-items:center; justify-content:space-between; gap:12px}
 .equipped .ei{min-width:0}
+.equipped .ei.clickable{cursor:pointer; border-radius:6px; padding:4px 6px; margin:-4px -6px; transition:.12s}
+.equipped .ei.clickable:hover{background:var(--panel-3)}
+.listrow .info.clickable{cursor:pointer; border-radius:6px; padding:2px 4px; margin:-2px -4px; transition:.12s}
+.listrow .info.clickable:hover{background:var(--panel-3)}
 .equipped .ei .en{font-family:"Chakra Petch"; font-size:15px}
 .equipped .ei .em{font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--faint); margin-top:2px}
 .empty-slot{display:flex; align-items:center; gap:10px; color:var(--faint);
@@ -248,6 +252,8 @@ button{font-family:inherit; cursor:pointer}
   font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.05em;
   padding:7px 12px; border-radius:6px; transition:.15s}
 .ghostbtn:hover{border-style:solid; box-shadow:0 0 0 3px var(--accent-glow)}
+.ghostbtn.warn{border-color:var(--red); color:var(--red)}
+.ghostbtn.warn:hover{box-shadow:0 0 0 3px rgba(229,96,79,.22)}
 .xbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--mute);
   width:28px;height:28px; border-radius:6px; font-size:14px; transition:.12s}
 .xbtn:hover{border-color:var(--red); color:var(--red)}
@@ -550,6 +556,12 @@ function trTag(tag) {
 const dispName = f => (f && (f.display_name || f.name)) || "";
 
 /* Fetches everything needed for `lang` and returns the ready-to-use L object. */
+/* Bump this string whenever index.html changes — printed on load so you can
+   verify in the browser console (F12) that the deployed copy is current,
+   instead of guessing whether a cached/older file is being served. */
+const APP_BUILD = "2026-07-05-view-installed-items";
+console.log("[Lancer Registry] build:", APP_BUILD);
+
 async function fetchAndLocalize(lang) {
   const [base, locale] = await Promise.all([loadBaseData(), loadLocaleFiles(lang)]);
   ENUMS = locale ? locale.enums : null;
@@ -1065,7 +1077,7 @@ function renderLoadout(){
     const slots = mt.items.map((id,wi)=>{
       const w=M.weapon[id];
       return `<div class="slot"><div class="equipped">
-        <div class="ei"><div class="en">${esc(w.name)}</div>
+        <div class="ei clickable" data-vieww="${mi}:${wi}"><div class="en">${esc(w.name)}</div>
           <div class="em">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}${w.sp?` · ${w.sp} SP`:""}</div></div>
         <button class="xbtn" data-rmw="${mi}:${wi}">✕</button>
       </div></div>`;
@@ -1082,20 +1094,27 @@ function renderLoadout(){
   $("#syslist").innerHTML = state.mech.systems.length? state.mech.systems.map((id,si)=>{
     const sy=M.system[id];
     return `<div class="listrow">
-      <div class="info"><div class="nm">${esc(sy.name)} <span class="tag sp">${sy.sp} SP</span></div>
+      <div class="info clickable" data-views="${si}"><div class="nm">${esc(sy.name)} <span class="tag sp">${sy.sp} SP</span></div>
         <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+rich(sy.effect).slice(0,140):""}</div></div>
       <button class="xbtn" data-rms="${si}">✕</button></div>`;
   }).join("") : `<div class="hint">// систем не установлено</div>`;
 
   $$("#mounts .ghostbtn[data-addw]").forEach(b=>b.onclick=()=>openWeaponPicker(+b.dataset.addw));
-  $$("#mounts .xbtn[data-rmw]").forEach(b=>b.onclick=()=>{
+  $$("#mounts .xbtn[data-rmw]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
     const [mi,wi]=b.dataset.rmw.split(":").map(Number);
     state.mech.mounts[mi].items.splice(wi,1); render();
   });
+  $$("#mounts .ei[data-vieww]").forEach(el=>el.onclick=()=>{
+    const [mi,wi]=el.dataset.vieww.split(":").map(Number);
+    viewEquippedWeapon(mi,wi);
+  });
   $("#add-system").onclick=openSystemPicker;
-  $$("#syslist .xbtn[data-rms]").forEach(b=>b.onclick=()=>{
+  $$("#syslist .xbtn[data-rms]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
     state.mech.systems.splice(+b.dataset.rms,1); render();
   });
+  $$("#syslist .info[data-views]").forEach(el=>el.onclick=()=>viewEquippedSystem(+el.dataset.views));
 }
 const dmgStr=w=>(w.damage||[]).map(x=>`${x.val} ${tr(x.type)}`).join(", ")||"—";
 
@@ -1121,6 +1140,69 @@ function wireTagGlossary(tagsSel, boxSel, rawTags){
   draw();
 }
 const rngStr=w=>(w.range||[]).map(x=>`${tr(x.type)} ${x.val}`).join(", ")||"—";
+const onHitText=v=>v==null?"":(typeof v==="string"?v:v.detail);
+
+/* Full weapon detail card markup, shared by the weapon picker's detail view
+   and the "view installed weapon" modal opened from the loadout list. */
+function weaponCardHTML(w){
+  const lk=!unlocked(w);
+  return `<div class="item static">
+    <div class="src" style="background:${srcColor(w.source)}"></div>
+    <div class="top"><div class="nm" style="font-size:19px">${esc(w.name)}</div>
+      <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(w.license)+" "+w.license_level:tr(w.mount)}</div></div>
+    <div class="meta" style="margin-top:6px">${tr(w.mount)} · ${tr(w.type)}${w.source?" · "+esc(w.source):""}</div>
+    <div class="tags" style="margin-top:11px" id="wp-tags">
+      <span class="tag dmg">${dmgStr(w)}</span><span class="tag rng">${rngStr(w)}</span>
+      ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
+      ${(w.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+    </div>
+    <div id="wp-tagdesc"></div>
+    ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
+    ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
+    ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(w.on_hit))}</div>`:""}
+    ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}
+  </div>`;
+}
+
+/* Full system detail card markup, shared by the system picker's detail view
+   and the "view installed system" modal opened from the loadout list. */
+function systemCardHTML(s){
+  const lk=!unlocked(s);
+  return `<div class="item static">
+    <div class="src" style="background:${srcColor(s.source)}"></div>
+    <div class="top"><div class="nm" style="font-size:19px">${esc(s.name)}</div>
+      <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(s.license)+" "+s.license_level:tr(s.type)}</div></div>
+    <div class="meta" style="margin-top:6px">${esc(tr(s.type))}${s.source?" · "+esc(s.source):""}</div>
+    <div class="tags" style="margin-top:11px" id="sy-tags">
+      <span class="tag sp">${s.sp} SP</span>
+      ${(s.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+    </div>
+    <div id="sy-tagdesc"></div>
+    ${s.description?`<div class="desc" style="margin-top:12px">${rich(s.description)}</div>`:""}
+    ${s.effect?`<div class="desc" style="margin-top:9px">${rich(s.effect)}</div>`:""}
+  </div>`;
+}
+
+/* Opens a read-only-ish detail card for an already-installed weapon, with a
+   button to remove it from its mount — triggered by clicking the equipped
+   slot in the loadout tab. */
+function viewEquippedWeapon(mi, wi){
+  const w=M.weapon[state.mech.mounts[mi].items[wi]];
+  modal(w.name, weaponCardHTML(w) +
+    `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
+  wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+  $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
+}
+
+/* Same, for an already-installed system. */
+function viewEquippedSystem(si){
+  const s=M.system[state.mech.systems[si]];
+  modal(s.name, systemCardHTML(s) +
+    `<button class="ghostbtn warn" id="sy-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать эту систему</button>`);
+  wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
+  $("#sy-remove").onclick=()=>{ state.mech.systems.splice(si,1); closeModal(); render(); };
+}
+
 
 /* weapon picker — step 1: compact name list, step 2: full detail card w/ install button */
 let wpSearch="", wpFilter="ALL";
@@ -1132,31 +1214,14 @@ function openWeaponPicker(mi){
 
   const install=id=>{ state.mech.mounts[mi].items.push(id); closeModal(); render(); };
 
-  const onHitText=v=>v==null?"":(typeof v==="string"?v:v.detail);
-
   const drawDetail=(id)=>{
     const w=M.weapon[id], lk=!unlocked(w);
     tagOpenIdx=null;
     $("#modal .mhd h3").textContent=w.name;
-    $("#modal .mbd").innerHTML=`
-      <button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>
-      <div class="item static">
-        <div class="src" style="background:${srcColor(w.source)}"></div>
-        <div class="top"><div class="nm" style="font-size:19px">${esc(w.name)}</div>
-          <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(w.license)+" "+w.license_level:tr(w.mount)}</div></div>
-        <div class="meta" style="margin-top:6px">${tr(w.mount)} · ${tr(w.type)}${w.source?" · "+esc(w.source):""}</div>
-        <div class="tags" style="margin-top:11px" id="wp-tags">
-          <span class="tag dmg">${dmgStr(w)}</span><span class="tag rng">${rngStr(w)}</span>
-          ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
-          ${(w.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
-        </div>
-        <div id="wp-tagdesc"></div>
-        ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
-        ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
-        ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(w.on_hit))}</div>`:""}
-        ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}
-      </div>
-      <button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">
+    $("#modal .mbd").innerHTML=
+      `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
+      + weaponCardHTML(w) +
+      `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
       </button>`;
     wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
@@ -1204,22 +1269,10 @@ function openSystemPicker(){
     const s=M.system[id], lk=!unlocked(s);
     tagOpenIdx=null;
     $("#modal .mhd h3").textContent=s.name;
-    $("#modal .mbd").innerHTML=`
-      <button class="ghostbtn" id="sy-back" style="margin-bottom:14px">← Назад к списку</button>
-      <div class="item static">
-        <div class="src" style="background:${srcColor(s.source)}"></div>
-        <div class="top"><div class="nm" style="font-size:19px">${esc(s.name)}</div>
-          <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(s.license)+" "+s.license_level:tr(s.type)}</div></div>
-        <div class="meta" style="margin-top:6px">${esc(tr(s.type))}${s.source?" · "+esc(s.source):""}</div>
-        <div class="tags" style="margin-top:11px" id="sy-tags">
-          <span class="tag sp">${s.sp} SP</span>
-          ${(s.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
-        </div>
-        <div id="sy-tagdesc"></div>
-        ${s.description?`<div class="desc" style="margin-top:12px">${rich(s.description)}</div>`:""}
-        ${s.effect?`<div class="desc" style="margin-top:9px">${rich(s.effect)}</div>`:""}
-      </div>
-      <button class="ghostbtn" id="sy-install" style="margin-top:16px;width:100%;text-align:center">
+    $("#modal .mbd").innerHTML=
+      `<button class="ghostbtn" id="sy-back" style="margin-bottom:14px">← Назад к списку</button>`
+      + systemCardHTML(s) +
+      `<button class="ghostbtn" id="sy-install" style="margin-top:16px;width:100%;text-align:center">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
       </button>`;
     wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
