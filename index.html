@@ -559,7 +559,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-view-installed-items";
+const APP_BUILD = "2026-07-05-multi-tag-glossary";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1122,20 +1122,26 @@ const dmgStr=w=>(w.damage||[]).map(x=>`${x.val} ${tr(x.type)}`).join(", ")||"—
    one toggles a description box (`boxSel`) looked up from the tag glossary
    (data/tags.json + locales/<lang>/tags.json). `rawTags` must be the same
    array used to render the chips, in the same order (data-tgi is the index). */
-let tagOpenIdx=null;
+let tagOpenSet=new Set();
 function wireTagGlossary(tagsSel, boxSel, rawTags){
   const box=$(boxSel);
   const draw=()=>{
-    if(tagOpenIdx==null){ box.innerHTML=""; return; }
-    const raw=rawTags[tagOpenIdx];
-    const info=describeTag(trTag(raw)) || describeTag(raw);
-    box.innerHTML = info
-      ? `<div class="tagdesc"><b>${esc(info.name)}</b><div style="margin-top:4px">${esc(info.description)}</div></div>`
-      : `<div class="tagdesc">Описание этого тега пока не найдено в справочнике.</div>`;
-    $$(`${tagsSel} .glossary`).forEach(el=>el.classList.toggle("open", +el.dataset.tgi===tagOpenIdx));
+    const openIdx=[...tagOpenSet].sort((a,b)=>a-b);
+    box.innerHTML = openIdx.map(i=>{
+      const raw=rawTags[i];
+      const info=describeTag(trTag(raw)) || describeTag(raw);
+      return info
+        ? `<div class="tagdesc"><b>${esc(info.name)}</b><div style="margin-top:4px">${esc(info.description)}</div></div>`
+        : `<div class="tagdesc">Описание этого тега пока не найдено в справочнике.</div>`;
+    }).join("");
+    $$(`${tagsSel} .glossary`).forEach(el=>el.classList.toggle("open", tagOpenSet.has(+el.dataset.tgi)));
   };
   $$(`${tagsSel} .glossary`).forEach(el=>{
-    el.onclick=()=>{ const i=+el.dataset.tgi; tagOpenIdx = tagOpenIdx===i?null:i; draw(); };
+    el.onclick=()=>{
+      const i=+el.dataset.tgi;
+      if(tagOpenSet.has(i)) tagOpenSet.delete(i); else tagOpenSet.add(i);
+      draw();
+    };
   });
   draw();
 }
@@ -1188,6 +1194,7 @@ function systemCardHTML(s){
    slot in the loadout tab. */
 function viewEquippedWeapon(mi, wi){
   const w=M.weapon[state.mech.mounts[mi].items[wi]];
+  tagOpenSet=new Set();
   modal(w.name, weaponCardHTML(w) +
     `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
   wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
@@ -1197,6 +1204,7 @@ function viewEquippedWeapon(mi, wi){
 /* Same, for an already-installed system. */
 function viewEquippedSystem(si){
   const s=M.system[state.mech.systems[si]];
+  tagOpenSet=new Set();
   modal(s.name, systemCardHTML(s) +
     `<button class="ghostbtn warn" id="sy-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать эту систему</button>`);
   wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
@@ -1216,7 +1224,7 @@ function openWeaponPicker(mi){
 
   const drawDetail=(id)=>{
     const w=M.weapon[id], lk=!unlocked(w);
-    tagOpenIdx=null;
+    tagOpenSet=new Set();
     $("#modal .mhd h3").textContent=w.name;
     $("#modal .mbd").innerHTML=
       `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
@@ -1267,7 +1275,7 @@ function openSystemPicker(){
 
   const drawDetail=(id)=>{
     const s=M.system[id], lk=!unlocked(s);
-    tagOpenIdx=null;
+    tagOpenSet=new Set();
     $("#modal .mhd h3").textContent=s.name;
     $("#modal .mbd").innerHTML=
       `<button class="ghostbtn" id="sy-back" style="margin-bottom:14px">← Назад к списку</button>`
