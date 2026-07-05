@@ -563,7 +563,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-picker-view-modes";
+const APP_BUILD = "2026-07-05-frame-card-and-integrated-filter";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1011,10 +1011,39 @@ function renderLicenses(){
 
 /* ============ FRAME ============ */
 let frameFilter="ALL";
+/* Traits + CORE system markup, shared by the frame detail modal, the
+   selected-frame card on the ШАССИ tab, and the ИТОГ (summary) tab. */
+function frameTraitsCoreHTML(f){
+  const cs=f.core_system;
+  const traits=f.traits.map(t=>`<div style="margin-bottom:10px"><b style="font-family:'Chakra Petch'">${esc(t.name)}</b><div class="desc" style="margin-top:3px">${rich(t.description)}</div></div>`).join("");
+  const core = cs?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px;color:var(--accent)">CORE-СИСТЕМА — ${esc(cs.name)}</h3>
+      ${cs.description?`<div class="desc" style="margin-bottom:8px">${rich(cs.description)}</div>`:""}
+      ${cs.passive_name?`<div style="margin-bottom:8px"><b>Пассивно — ${esc(cs.passive_name)}:</b> <span class="desc">${rich(cs.passive_effect)}</span></div>`:""}
+      ${cs.active_name?`<div><b>CORE-актив — ${esc(cs.active_name)}:</b> <span class="desc">${rich(cs.active_effect)}</span></div>`:""}`:"";
+  return (traits?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px">ОСОБЕННОСТИ</h3>${traits}`:"") + core;
+}
+/* Full frame detail: meta line + description + stat grid + traits/CORE. */
+function frameDetailBodyHTML(f){
+  return `
+    <div class="meta" style="margin-bottom:8px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype.map(tr).join(" / ")} · лицензия LL${f.license_level}</div>
+    <div class="desc" style="margin-bottom:14px">${rich(f.description)}</div>
+    <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
+      ${["hp","armor","evasion","edef","heatcap","repcap","speed","sensor_range","tech_attack","save","size","sp"].map(k=>
+        `<div class="stat"><span class="k">${STAT_RU[k][0]}</span><span class="v">${f.stats[k]}</span></div>`).join("")}
+    </div>
+    ${frameTraitsCoreHTML(f)}`;
+}
+
 function renderFrame(){
   const d=derived();
   $("#tab").innerHTML = sechead("// 06 · ШАССИ","Выбор меха",
     "Выберите рамную платформу (frame). Её базовые статы складываются с вашими мех-навыками и GRIT. Замок означает, что лицензия ещё не открыта — выбрать можно всё, но проверьте требования на вкладке ЛИЦЕНЗИИ.")
+    + (d.frame ? `
+      <div class="card" style="margin-bottom:20px">
+        <div class="head"><span class="lbl"><b>//</b> ВЫБРАННОЕ ШАССИ — ${esc(dispName(d.frame))}</span>
+          <span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.source)}</span></div>
+        <div class="body">${frameDetailBodyHTML(d.frame)}</div>
+      </div>` : "")
     + `<div class="filters" id="frame-filters">
         ${["ALL","GMS","IPS-N","SSC","HORUS","HA"].map(s=>`<button class="chip ${frameFilter===s?'on':''}" data-ff="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}
        </div><div class="grid cards" id="frame-list"></div>`;
@@ -1041,21 +1070,7 @@ function renderFrame(){
 }
 function openFrame(id){
   const f=M.frame[id];
-  const cs=f.core_system;
-  const traits=f.traits.map(t=>`<div style="margin-bottom:10px"><b style="font-family:'Chakra Petch'">${esc(t.name)}</b><div class="desc" style="margin-top:3px">${rich(t.description)}</div></div>`).join("");
-  const core = cs?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px;color:var(--accent)">CORE-СИСТЕМА — ${esc(cs.name)}</h3>
-      ${cs.description?`<div class="desc" style="margin-bottom:8px">${rich(cs.description)}</div>`:""}
-      ${cs.passive_name?`<div style="margin-bottom:8px"><b>Пассивно — ${esc(cs.passive_name)}:</b> <span class="desc">${rich(cs.passive_effect)}</span></div>`:""}
-      ${cs.active_name?`<div><b>CORE-актив — ${esc(cs.active_name)}:</b> <span class="desc">${rich(cs.active_effect)}</span></div>`:""}`:"";
-  modal(dispName(f), `
-    <div class="meta" style="margin-bottom:8px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype.map(tr).join(" / ")} · лицензия LL${f.license_level}</div>
-    <div class="desc" style="margin-bottom:14px">${rich(f.description)}</div>
-    <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
-      ${["hp","armor","evasion","edef","heatcap","repcap","speed","sensor_range","tech_attack","save","size","sp"].map(k=>
-        `<div class="stat"><span class="k">${STAT_RU[k][0]}</span><span class="v">${f.stats[k]}</span></div>`).join("")}
-    </div>
-    ${traits?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px">ОСОБЕННОСТИ</h3>${traits}`:""}
-    ${core}
+  modal(dispName(f), frameDetailBodyHTML(f) + `
     <div style="margin-top:18px;display:flex;gap:10px">
       <button class="toolbtn" style="border-color:var(--accent);color:var(--accent)" id="pick-frame">▶ ВЫБРАТЬ ЭТО ШАССИ</button>
       <button class="toolbtn" id="close-frame">ОТМЕНА</button>
@@ -1293,7 +1308,7 @@ function openWeaponPicker(mi){
   };
 
   const drawList=()=>{
-    const list=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???")
+    const list=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???" && w.source!=="")
       .filter(w=>wpFilter==="ALL"||w.source===wpFilter)
       .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
       .sort((a,b)=>(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
@@ -1376,6 +1391,7 @@ function openSystemPicker(){
 
   const drawList=()=>{
     const list=L.systems
+      .filter(s=>s.source!=="")
       .filter(s=>syFilter==="ALL"||s.source===syFilter)
       .filter(s=>!state.mech.systems.includes(s.id))
       .filter(s=>!sySearch||(s.name+" "+tr(s.type)+" "+s.source+" "+(s.tags||[]).map(trTag).join(" ")).toLowerCase().includes(sySearch.toLowerCase()))
@@ -1446,7 +1462,8 @@ function renderSummary(){
           `<div class="stat"><span class="k">${STAT_RU[k][0]}</span><span class="v">${d.mech[k]}</span></div>`).join("")}
       </div>
       <h3 style="margin-top:6px"><span class="hash">//</span> ОРУЖИЕ</h3><ul class="minilist">${wlist}</ul>
-      <h3 style="margin-top:14px"><span class="hash">//</span> СИСТЕМЫ <span class="hint mono">SP ${d.sp.used}/${d.sp.cap}</span></h3><ul class="minilist">${slist}</ul>`;
+      <h3 style="margin-top:14px"><span class="hash">//</span> СИСТЕМЫ <span class="hint mono">SP ${d.sp.used}/${d.sp.cap}</span></h3><ul class="minilist">${slist}</ul>
+      <div style="margin-top:14px">${frameTraitsCoreHTML(d.frame)}</div>`;
   }
   $("#tab").innerHTML = sechead("// 09 · СВОДКА","Лист персонажа",
     "Полная сводка пилота и меха. Сохраните сборку в файл или распечатайте лист.")
