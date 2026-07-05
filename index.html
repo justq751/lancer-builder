@@ -563,7 +563,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-frame-sort-manufacturer";
+const APP_BUILD = "2026-07-05-no-autoswitch-tab";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1083,7 +1083,7 @@ function openFrame(id){
     </div>`);
   $("#pick-frame").onclick=()=>{
     if(state.mech.frameId!==id){ state.mech.frameId=id; state.mech.mounts=buildMounts(f); }
-    closeModal(); activeTab="loadout"; render(); window.scrollTo({top:0});
+    closeModal(); render();
   };
   $("#close-frame").onclick=closeModal;
 }
