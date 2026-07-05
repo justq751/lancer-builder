@@ -264,6 +264,7 @@ button{font-family:inherit; cursor:pointer}
 .xbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--mute);
   width:28px;height:28px; border-radius:6px; font-size:14px; transition:.12s}
 .xbtn:hover{border-color:var(--red); color:var(--red)}
+.xbtn.expand:hover{border-color:var(--accent); color:var(--accent)}
 
 /* filters */
 .filters{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; align-items:center}
@@ -573,7 +574,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-equipped-accordion-inline";
+const APP_BUILD = "2026-07-05-multi-independent-accordion";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -596,7 +597,10 @@ const rich = s => s==null?"":String(s); // dataset html is trusted (<br><ul><li>
 /* lookup maps (rebuilt once L is loaded/localized — see rebuildIndexes()) */
 const byId = arr => Object.fromEntries(arr.map(x=>[x.id,x]));
 let M = {};
-let eqWeaponExpanded=null, eqSystemExpanded=null; // "mi:wi" / system-index of the equipped item currently expanded inline
+let eqWeaponExpanded=new Set(), eqSystemExpanded=new Set(); // sets of "mi:wi" / system-index currently expanded inline
+const eqWeaponTagSets=new Map(), eqWeaponProfIdx=new Map(); // per-item tag/profile-stage state, keyed the same way
+const eqSystemTagSets=new Map();
+function getMap(map,key,fallback){ if(!map.has(key)) map.set(key,fallback()); return map.get(key); }
 let TAGS = {}, TAG_PATTERNS = [];
 function rebuildIndexes(){
   M = {
@@ -1158,16 +1162,16 @@ function renderLoadout(){
     const can = isInt ? false : allowedNext(mt.type,sizes).length>0;
     const slots = mt.items.map((id,wi)=>{
       const w=M.weapon[id];
-      const key=`${mi}:${wi}`, open=eqWeaponExpanded===key;
+      const key=`${mi}:${wi}`, dk=`${mi}-${wi}`, open=eqWeaponExpanded.has(key);
       const row=`<div class="equipped">
         <div class="ei clickable" data-vieww="${key}"><div class="en">${esc(w.name)}</div>
           <div class="em">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}${w.sp?` · ${w.sp} SP`:""}</div></div>
-        <div style="display:flex;align-items:center;gap:10px">
-          <span class="chevron">${open?'⌄':'›'}</span>
+        <div style="display:flex;align-items:center;gap:8px">
+          <button class="xbtn expand" data-expw="${key}" title="Показать подробности">${open?'⌄':'›'}</button>
           <button class="xbtn" data-rmw="${key}">✕</button>
         </div>
       </div>`;
-      const expand=open?`<div class="expand-detail">${weaponCardBody(w)}</div>`:"";
+      const expand=open?`<div class="expand-detail">${weaponCardBody(w, dk, eqWeaponProfIdx.get(key)||0)}</div>`:"";
       return `<div class="slot">${row}${expand}</div>`;
     }).join("");
     const capLine = isInt
@@ -1183,62 +1187,72 @@ function renderLoadout(){
       ${restoreBtn}
     </div>`;
   }).join("");
-  if(eqWeaponExpanded){
-    const [emi,ewi]=eqWeaponExpanded.split(":").map(Number);
+  eqWeaponExpanded.forEach(key=>{
+    const [emi,ewi]=key.split(":").map(Number);
     const mnt=state.mech.mounts[emi], w=mnt && M.weapon[mnt.items[ewi]];
-    if(w){ wireTagGlossary("#wp-tags","#wp-tagdesc", w.tags||[]); wireProfileChips("#wp-profiles", renderLoadout); }
-    else eqWeaponExpanded=null;
-  }
+    if(!w){ eqWeaponExpanded.delete(key); return; }
+    const dk=`${emi}-${ewi}`;
+    const tagSet=getMap(eqWeaponTagSets,key,()=>new Set());
+    wireTagGlossary(`#wp-tags-${dk}`,`#wp-tagdesc-${dk}`, w.tags||[], tagSet);
+    wireProfileChips(`#wp-profiles-${dk}`, renderLoadout, v=>eqWeaponProfIdx.set(key,v));
+  });
 
   // systems
   $("#syslist").innerHTML = state.mech.systems.length? state.mech.systems.map((id,si)=>{
     const sy=M.system[id];
-    const open=eqSystemExpanded===si;
+    const open=eqSystemExpanded.has(si);
     const row=`<div class="listrow">
       <div class="info clickable" data-views="${si}"><div class="nm">${esc(sy.name)} <span class="tag sp">${sy.sp} SP</span></div>
         <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+esc(truncateWords(stripHTML(sy.effect),140)):""}</div></div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <span class="chevron">${open?'⌄':'›'}</span>
+      <div style="display:flex;align-items:center;gap:8px">
+        <button class="xbtn expand" data-exps="${si}" title="Показать подробности">${open?'⌄':'›'}</button>
         <button class="xbtn" data-rms="${si}">✕</button>
       </div>
     </div>`;
-    const expand=open?`<div class="expand-detail">${systemCardBody(sy)}</div>`:"";
+    const expand=open?`<div class="expand-detail">${systemCardBody(sy, String(si))}</div>`:"";
     return `<div class="pickitem">${row}${expand}</div>`;
   }).join("") : `<div class="hint">// систем не установлено</div>`;
-  if(eqSystemExpanded!=null){
-    const sy=M.system[state.mech.systems[eqSystemExpanded]];
-    if(sy) wireTagGlossary("#sy-tags","#sy-tagdesc", sy.tags||[]);
-    else eqSystemExpanded=null;
-  }
+  eqSystemExpanded.forEach(si=>{
+    const sy=M.system[state.mech.systems[si]];
+    if(!sy){ eqSystemExpanded.delete(si); return; }
+    const tagSet=getMap(eqSystemTagSets,si,()=>new Set());
+    wireTagGlossary(`#sy-tags-${si}`,`#sy-tagdesc-${si}`, sy.tags||[], tagSet);
+  });
 
   $$("#mounts .ghostbtn[data-addw]").forEach(b=>b.onclick=()=>openWeaponPicker(+b.dataset.addw));
   $$("#mounts .ghostbtn[data-restoreint]").forEach(b=>b.onclick=()=>openIntegratedPicker(+b.dataset.restoreint));
   $$("#mounts .xbtn[data-rmw]").forEach(b=>b.onclick=e=>{
     e.stopPropagation();
-    const [mi,wi]=b.dataset.rmw.split(":").map(Number);
+    const key=b.dataset.rmw, [mi,wi]=key.split(":").map(Number);
     state.mech.mounts[mi].items.splice(wi,1);
-    eqWeaponExpanded=null;
+    eqWeaponExpanded.delete(key); eqWeaponTagSets.delete(key); eqWeaponProfIdx.delete(key);
     render();
   });
-  $$("#mounts .ei[data-vieww]").forEach(el=>el.onclick=()=>{
-    const key=el.dataset.vieww;
-    eqWeaponExpanded = eqWeaponExpanded===key?null:key;
-    tagOpenSet=new Set(); profileViewIdx=0;
+  $$("#mounts .xbtn[data-expw]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
+    const key=b.dataset.expw;
+    if(eqWeaponExpanded.has(key)) eqWeaponExpanded.delete(key); else eqWeaponExpanded.add(key);
     renderLoadout();
+  });
+  $$("#mounts .ei[data-vieww]").forEach(el=>el.onclick=()=>{
+    const [mi,wi]=el.dataset.vieww.split(":").map(Number);
+    viewEquippedWeapon(mi,wi);
   });
   $("#add-system").onclick=openSystemPicker;
   $$("#syslist .xbtn[data-rms]").forEach(b=>b.onclick=e=>{
     e.stopPropagation();
-    state.mech.systems.splice(+b.dataset.rms,1);
-    eqSystemExpanded=null;
+    const si=+b.dataset.rms;
+    state.mech.systems.splice(si,1);
+    eqSystemExpanded.delete(si); eqSystemTagSets.delete(si);
     render();
   });
-  $$("#syslist .info[data-views]").forEach(el=>el.onclick=()=>{
-    const si=+el.dataset.views;
-    eqSystemExpanded = eqSystemExpanded===si?null:si;
-    tagOpenSet=new Set();
+  $$("#syslist .xbtn[data-exps]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
+    const si=+b.dataset.exps;
+    if(eqSystemExpanded.has(si)) eqSystemExpanded.delete(si); else eqSystemExpanded.add(si);
     renderLoadout();
   });
+  $$("#syslist .info[data-views]").forEach(el=>el.onclick=()=>viewEquippedSystem(+el.dataset.views));
 }
 /* Strips HTML tags for a plain-text preview, then truncates at a word
    boundary (never mid-word, never mid-tag) with an ellipsis. Used for
@@ -1259,10 +1273,11 @@ const dmgStr=w=>(w.damage||[]).map(x=>`${x.val} ${tr(x.type)}`).join(", ")||"—
    (data/tags.json + locales/<lang>/tags.json). `rawTags` must be the same
    array used to render the chips, in the same order (data-tgi is the index). */
 let tagOpenSet=new Set();
-function wireTagGlossary(tagsSel, boxSel, rawTags){
+function wireTagGlossary(tagsSel, boxSel, rawTags, tagSet){
+  tagSet = tagSet || tagOpenSet;
   const box=$(boxSel);
   const draw=()=>{
-    const openIdx=[...tagOpenSet].sort((a,b)=>a-b);
+    const openIdx=[...tagSet].sort((a,b)=>a-b);
     box.innerHTML = openIdx.map(i=>{
       const raw=rawTags[i];
       const info=describeTag(trTag(raw)) || describeTag(raw);
@@ -1270,12 +1285,12 @@ function wireTagGlossary(tagsSel, boxSel, rawTags){
         ? `<div class="tagdesc"><b>${esc(info.name)}</b><div style="margin-top:4px">${esc(info.description)}</div></div>`
         : `<div class="tagdesc">Описание этого тега пока не найдено в справочнике.</div>`;
     }).join("");
-    $$(`${tagsSel} .glossary`).forEach(el=>el.classList.toggle("open", tagOpenSet.has(+el.dataset.tgi)));
+    $$(`${tagsSel} .glossary`).forEach(el=>el.classList.toggle("open", tagSet.has(+el.dataset.tgi)));
   };
   $$(`${tagsSel} .glossary`).forEach(el=>{
     el.onclick=()=>{
       const i=+el.dataset.tgi;
-      if(tagOpenSet.has(i)) tagOpenSet.delete(i); else tagOpenSet.add(i);
+      if(tagSet.has(i)) tagSet.delete(i); else tagSet.add(i);
       draw();
     };
   });
@@ -1312,24 +1327,32 @@ function wireViewToggle(onSwitch){
 let profileViewIdx=0;
 const profDmgStr = p => (p.damage||[]).map(x=>x.type?`${x.val} ${tr(x.type)}`:`${x.val}`).join(", ")||"—";
 const profRngStr = p => (p.range||[]).map(x=>x.type?`${tr(x.type)} ${x.val}`:`${x.val}`).join(", ")||"—";
-function wireProfileChips(sel, redraw){
-  $$(`${sel} .profile-chip`).forEach(b=>b.onclick=()=>{ profileViewIdx=+b.dataset.pi; redraw(); });
+function wireProfileChips(sel, redraw, setIdx){
+  setIdx = setIdx || (v=>{profileViewIdx=v;});
+  $$(`${sel} .profile-chip`).forEach(b=>b.onclick=()=>{ setIdx(+b.dataset.pi); redraw(); });
 }
 
-function weaponCardBody(w){
+/* `uid`, when given, namespaces the internal element ids (so several of
+   these can be expanded on the same page at once — e.g. several equipped
+   weapons in the loadout tab) and `curProfIdx` lets the caller supply its
+   own per-instance "which stage is shown" value instead of the shared
+   global (used by the single-instance modals/pickers). */
+function weaponCardBody(w, uid, curProfIdx){
+  const tagsId = uid?`wp-tags-${uid}`:"wp-tags", descId = uid?`wp-tagdesc-${uid}`:"wp-tagdesc", profId = uid?`wp-profiles-${uid}`:"wp-profiles";
   const hasProfiles = w.profiles && w.profiles.length;
-  const idx = hasProfiles ? Math.min(profileViewIdx, w.profiles.length-1) : -1;
+  const curIdx = curProfIdx!=null ? curProfIdx : profileViewIdx;
+  const idx = hasProfiles ? Math.min(curIdx, w.profiles.length-1) : -1;
   const prof = hasProfiles ? w.profiles[idx] : null;
   const dmg = prof ? profDmgStr(prof) : dmgStr(w);
   const rng = prof ? profRngStr(prof) : rngStr(w);
-  return `${hasProfiles?`<div class="profiles" id="wp-profiles">${w.profiles.map((p,i)=>
+  return `${hasProfiles?`<div class="profiles" id="${profId}">${w.profiles.map((p,i)=>
       `<button class="chip profile-chip ${i===idx?'on':''}" data-pi="${i}">${esc(p.name)}</button>`).join("")}</div>`:""}
-    <div class="tags" id="wp-tags">
+    <div class="tags" id="${tagsId}">
       <span class="tag dmg">${dmg}</span><span class="tag rng">${rng}</span>
       ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
       ${(w.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
     </div>
-    <div id="wp-tagdesc"></div>
+    <div id="${descId}"></div>
     ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
     ${prof && prof.effect?`<div class="desc" style="margin-top:9px"><b>${esc(prof.name)}:</b> ${rich(prof.effect)}</div>`:""}
     ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
@@ -1349,13 +1372,15 @@ function weaponCardHTML(w){
 
 /* Full system detail card markup, shared by the system picker's detail view
    and the "view installed system" modal opened from the loadout list. */
-/* Same split as weaponCardBody/weaponCardHTML, for systems. */
-function systemCardBody(s){
-  return `<div class="tags" id="sy-tags">
+/* Same split as weaponCardBody/weaponCardHTML, for systems. `uid` namespaces
+   ids the same way as weaponCardBody, for independently-expandable rows. */
+function systemCardBody(s, uid){
+  const tagsId = uid?`sy-tags-${uid}`:"sy-tags", descId = uid?`sy-tagdesc-${uid}`:"sy-tagdesc";
+  return `<div class="tags" id="${tagsId}">
       <span class="tag sp">${s.sp} SP</span>
       ${(s.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
     </div>
-    <div id="sy-tagdesc"></div>
+    <div id="${descId}"></div>
     ${s.description?`<div class="desc" style="margin-top:12px">${rich(s.description)}</div>`:""}
     ${s.effect?`<div class="desc" style="margin-top:9px">${rich(s.effect)}</div>`:""}`;
 }
@@ -1512,6 +1537,33 @@ function openIntegratedPicker(mi){
 
   modal("Восстановить интегрированное оружие", "");
   drawList();
+}
+
+/* Full-card modal view for an already-installed weapon — opened by clicking
+   the equipped row itself. The separate accordion toggle button (next to ✕)
+   handles inline in-list expansion instead; this modal is for a focused,
+   full-screen look with the same tag glossary / profile switching. */
+function viewEquippedWeapon(mi, wi){
+  const w=M.weapon[state.mech.mounts[mi].items[wi]];
+  tagOpenSet=new Set(); profileViewIdx=0;
+  const draw=()=>{
+    modal(w.name, weaponCardHTML(w) +
+      `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
+    wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+    wireProfileChips("#wp-profiles", draw);
+    $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
+  };
+  draw();
+}
+
+/* Same, for an already-installed system. */
+function viewEquippedSystem(si){
+  const s=M.system[state.mech.systems[si]];
+  tagOpenSet=new Set();
+  modal(s.name, systemCardHTML(s) +
+    `<button class="ghostbtn warn" id="sy-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать эту систему</button>`);
+  wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
+  $("#sy-remove").onclick=()=>{ state.mech.systems.splice(si,1); closeModal(); render(); };
 }
 
 
