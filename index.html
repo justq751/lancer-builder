@@ -220,6 +220,11 @@ button{font-family:inherit; cursor:pointer}
   color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap; flex-shrink:0}
 .rowbadge.lock{color:var(--amber); border-color:var(--amber)}
 .chevron{color:var(--faint); font-size:18px; flex-shrink:0; font-family:"Chakra Petch"}
+.viewtoggle{display:flex; gap:8px; margin-bottom:12px}
+.pickitem{display:block}
+.listrow.open{border-color:var(--accent); border-bottom-left-radius:0; border-bottom-right-radius:0}
+.expand-detail{background:var(--panel-2); border:1px solid var(--accent); border-top:0;
+  border-radius:0 0 8px 8px; padding:14px; margin-top:-1px}
 
 /* talent rank descriptions */
 .rankbox{margin-top:10px; display:flex; flex-direction:column; gap:7px}
@@ -558,7 +563,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-core-bonus-slots";
+const APP_BUILD = "2026-07-05-picker-view-modes";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1173,14 +1178,27 @@ const onHitText=v=>v==null?"":(typeof v==="string"?v:v.detail);
 
 /* Full weapon detail card markup, shared by the weapon picker's detail view
    and the "view installed weapon" modal opened from the loadout list. */
-function weaponCardHTML(w){
-  const lk=!unlocked(w);
-  return `<div class="item static">
-    <div class="src" style="background:${srcColor(w.source)}"></div>
-    <div class="top"><div class="nm" style="font-size:19px">${esc(w.name)}</div>
-      <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(w.license)+" "+w.license_level:tr(w.mount)}</div></div>
-    <div class="meta" style="margin-top:6px">${tr(w.mount)} · ${tr(w.type)}${w.source?" · "+esc(w.source):""}</div>
-    <div class="tags" style="margin-top:11px" id="wp-tags">
+/* ============ PICKER VIEW MODE (shared: weapon/system/core pickers) ============ */
+let pickerViewMode = localStorage.getItem("picker_view_mode") || "inline"; // "inline" default | "card"
+function viewToggleHTML(){
+  return `<div class="viewtoggle">
+    <button class="chip ${pickerViewMode==='inline'?'on':''}" data-vm="inline">☰ Разворачивать в списке</button>
+    <button class="chip ${pickerViewMode==='card'?'on':''}" data-vm="card">▣ Отдельная карточка</button>
+  </div>`;
+}
+function wireViewToggle(onSwitch){
+  $$(".modal [data-vm]").forEach(b=>b.onclick=()=>{
+    pickerViewMode=b.dataset.vm;
+    localStorage.setItem("picker_view_mode", pickerViewMode);
+    onSwitch();
+  });
+}
+
+/* Weapon detail content without the name/header — used for the inline
+   in-list expansion. weaponCardHTML() (below) wraps this with a header for
+   standalone modal views (view-installed / card-mode picker). */
+function weaponCardBody(w){
+  return `<div class="tags" id="wp-tags">
       <span class="tag dmg">${dmgStr(w)}</span><span class="tag rng">${rngStr(w)}</span>
       ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
       ${(w.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
@@ -1189,12 +1207,31 @@ function weaponCardHTML(w){
     ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
     ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
     ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(w.on_hit))}</div>`:""}
-    ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}
+    ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}`;
+}
+function weaponCardHTML(w){
+  const lk=!unlocked(w);
+  return `<div class="item static">
+    <div class="src" style="background:${srcColor(w.source)}"></div>
+    <div class="top"><div class="nm" style="font-size:19px">${esc(w.name)}</div>
+      <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(w.license)+" "+w.license_level:tr(w.mount)}</div></div>
+    <div class="meta" style="margin-top:6px">${tr(w.mount)} · ${tr(w.type)}${w.source?" · "+esc(w.source):""}</div>
+    <div style="margin-top:11px">${weaponCardBody(w)}</div>
   </div>`;
 }
 
 /* Full system detail card markup, shared by the system picker's detail view
    and the "view installed system" modal opened from the loadout list. */
+/* Same split as weaponCardBody/weaponCardHTML, for systems. */
+function systemCardBody(s){
+  return `<div class="tags" id="sy-tags">
+      <span class="tag sp">${s.sp} SP</span>
+      ${(s.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+    </div>
+    <div id="sy-tagdesc"></div>
+    ${s.description?`<div class="desc" style="margin-top:12px">${rich(s.description)}</div>`:""}
+    ${s.effect?`<div class="desc" style="margin-top:9px">${rich(s.effect)}</div>`:""}`;
+}
 function systemCardHTML(s){
   const lk=!unlocked(s);
   return `<div class="item static">
@@ -1202,13 +1239,7 @@ function systemCardHTML(s){
     <div class="top"><div class="nm" style="font-size:19px">${esc(s.name)}</div>
       <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(s.license)+" "+s.license_level:tr(s.type)}</div></div>
     <div class="meta" style="margin-top:6px">${esc(tr(s.type))}${s.source?" · "+esc(s.source):""}</div>
-    <div class="tags" style="margin-top:11px" id="sy-tags">
-      <span class="tag sp">${s.sp} SP</span>
-      ${(s.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
-    </div>
-    <div id="sy-tagdesc"></div>
-    ${s.description?`<div class="desc" style="margin-top:12px">${rich(s.description)}</div>`:""}
-    ${s.effect?`<div class="desc" style="margin-top:9px">${rich(s.effect)}</div>`:""}
+    <div style="margin-top:11px">${systemCardBody(s)}</div>
   </div>`;
 }
 
@@ -1235,13 +1266,14 @@ function viewEquippedSystem(si){
 }
 
 
-/* weapon picker — step 1: compact name list, step 2: full detail card w/ install button */
-let wpSearch="", wpFilter="ALL";
+/* weapon picker — inline-expand list (default) or separate detail card,
+   toggled via viewToggleHTML()/wireViewToggle(). */
+let wpSearch="", wpFilter="ALL", wpExpanded=null;
 function openWeaponPicker(mi){
   const mt=state.mech.mounts[mi];
   const sizes=mt.items.map(id=>M.weapon[id]?.mount);
   const allow=allowedNext(mt.type,sizes);
-  wpSearch=""; wpFilter="ALL";
+  wpSearch=""; wpFilter="ALL"; wpExpanded=null;
 
   const install=id=>{ state.mech.mounts[mi].items.push(id); closeModal(); render(); };
 
@@ -1268,22 +1300,43 @@ function openWeaponPicker(mi){
     $("#modal .mhd h3").textContent=`Установить оружие · ${tr(mt.type)}`;
     $("#modal .mbd").innerHTML=
       `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
+       ${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
        <div class="grid" id="wp-list" style="gap:8px"></div>`;
     $("#wp-list").innerHTML=list.map(w=>{
       const lk=!unlocked(w);
-      return `<div class="listrow clickable ${lk?'locked':''}" data-w="${w.id}">
+      const open=pickerViewMode==="inline" && wpExpanded===w.id;
+      const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-w="${w.id}">
         <div class="info"><div class="nm">${esc(w.name)}</div>
           <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
-        ${lk?`<span class="rowbadge lock">🔒 ${esc(w.license)} ${w.license_level}</span>`:`<span class="chevron">›</span>`}
+        ${lk?`<span class="rowbadge lock">🔒 ${esc(w.license)} ${w.license_level}</span>`:`<span class="chevron">${open?'⌄':'›'}</span>`}
       </div>`;
+      const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
+        <button class="ghostbtn" id="wp-install-inline" style="margin-top:14px;width:100%;text-align:center">
+          ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
+        </button></div>`:"";
+      return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет подходящего оружия</div>`;
+
+    wireViewToggle(drawList);
     $$(".modal .chip[data-wpf]").forEach(c=>c.onclick=()=>{wpFilter=c.dataset.wpf; drawList();});
     const input=$("#wp-search");
     input.oninput=e=>{wpSearch=e.target.value; drawList(); $("#wp-search").focus();};
     if(wpSearch) input.setSelectionRange(input.value.length,input.value.length);
-    $$("#wp-list .listrow").forEach(it=>it.onclick=()=>drawDetail(it.dataset.w));
+
+    $$("#wp-list .listrow").forEach(it=>it.onclick=()=>{
+      const id=it.dataset.w;
+      if(pickerViewMode==="card"){ drawDetail(id); return; }
+      wpExpanded = wpExpanded===id?null:id;
+      tagOpenSet=new Set();
+      drawList();
+    });
+    if(pickerViewMode==="inline" && wpExpanded){
+      const w=M.weapon[wpExpanded];
+      wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+      $("#wp-install-inline").onclick=()=>install(w.id);
+    }
   };
 
   modal(`Установить оружие · ${tr(mt.type)}`, "");
@@ -1291,10 +1344,20 @@ function openWeaponPicker(mi){
 }
 
 
-/* system picker — same two-step list → detail-card flow as weapons */
-let syFilter="ALL", sySearch="";
+/* system picker — same inline/card toggle as weapons, but installing a
+   system does NOT close the modal (per request): the list just refreshes
+   (the newly-installed system drops out, since it's now in state.mech.systems),
+   so several systems can be added in one sitting. */
+let syFilter="ALL", sySearch="", syExpanded=null;
 function openSystemPicker(){
-  const install=id=>{ state.mech.systems.push(id); closeModal(); render(); };
+  syFilter="ALL"; sySearch=""; syExpanded=null;
+
+  const install=id=>{
+    state.mech.systems.push(id);
+    syExpanded=null;
+    render();    // updates the loadout tab/HUD (SP counters) behind the modal
+    drawList();  // refresh the picker itself; installed item drops out of the list
+  };
 
   const drawDetail=(id)=>{
     const s=M.system[id], lk=!unlocked(s);
@@ -1319,25 +1382,45 @@ function openSystemPicker(){
       .sort((a,b)=>(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent="Добавить систему";
     $("#modal .mbd").innerHTML=
-      `<div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
+      `${viewToggleHTML()}
+       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="sy-search" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
        <div class="grid" id="sy-list" style="gap:8px"></div>`;
     $("#sy-list").innerHTML=list.map(s=>{
       const lk=!unlocked(s);
-      return `<div class="listrow clickable ${lk?'locked':''}" data-s="${s.id}">
+      const open=pickerViewMode==="inline" && syExpanded===s.id;
+      const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-s="${s.id}">
         <div class="info"><div class="nm">${esc(s.name)}</div>
           <div class="ds">${esc(tr(s.type))} · ${s.sp} SP</div></div>
-        ${lk?`<span class="rowbadge lock">🔒 ${esc(s.license)} ${s.license_level}</span>`:`<span class="chevron">›</span>`}
+        ${lk?`<span class="rowbadge lock">🔒 ${esc(s.license)} ${s.license_level}</span>`:`<span class="chevron">${open?'⌄':'›'}</span>`}
       </div>`;
+      const expand=open?`<div class="expand-detail">${systemCardBody(s)}
+        <button class="ghostbtn" id="sy-install-inline" style="margin-top:14px;width:100%;text-align:center">
+          ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
+        </button></div>`:"";
+      return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет систем</div>`;
+
+    wireViewToggle(drawList);
     $$(".modal .chip[data-syf]").forEach(c=>c.onclick=()=>{syFilter=c.dataset.syf; drawList();});
     const input=$("#sy-search");
     input.oninput=e=>{sySearch=e.target.value; drawList(); $("#sy-search").focus();};
     if(sySearch) input.setSelectionRange(input.value.length,input.value.length);
-    $$("#sy-list .listrow").forEach(it=>it.onclick=()=>drawDetail(it.dataset.s));
+
+    $$("#sy-list .listrow").forEach(it=>it.onclick=()=>{
+      const id=it.dataset.s;
+      if(pickerViewMode==="card"){ drawDetail(id); return; }
+      syExpanded = syExpanded===id?null:id;
+      tagOpenSet=new Set();
+      drawList();
+    });
+    if(pickerViewMode==="inline" && syExpanded){
+      const s=M.system[syExpanded];
+      wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
+      $("#sy-install-inline").onclick=()=>install(s.id);
+    }
   };
 
-  syFilter="ALL"; sySearch="";
   modal("Добавить систему", "");
   drawList();
 }
@@ -1396,19 +1479,23 @@ function renderSummary(){
 /* CORE bonuses live on the summary side — add a quick picker via summary cores section: handled on pilot? 
    We expose CORE selection through a dedicated control: */
 /* ============ CORE-БОНУСЫ ============ */
-let coreFilter="ALL", coreSearch="";
+let coreFilter="ALL", coreSearch="", coreExpanded=null;
 
 /* Shared detail-card markup for a CORE bonus, used both when viewing an
    already-selected bonus and when browsing the add-picker. */
+function coreCardBody(c){
+  const unl=coreBonusUnlocked(c);
+  return `${unl?"":`<div class="hint" style="margin-top:2px">Требуется 3+ ранга лицензии на шасси ${esc(c.source)} (сейчас: ${manufacturerRank(c.source)}).</div>`}
+    <div class="desc" style="margin-top:10px">${rich(c.effect)}</div>
+    ${c.mounted_effect?`<div class="desc" style="margin-top:9px"><b>Если установлено на крепление:</b> ${rich(c.mounted_effect)}</div>`:""}`;
+}
 function coreCardHTML(c){
   const unl=coreBonusUnlocked(c);
   return `<div class="item static">
     <div class="src" style="background:${srcColor(c.source)}"></div>
     <div class="top"><div class="nm" style="font-size:19px">${esc(c.name)}</div>
       <div class="badge ${unl?'':'lock'}">${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
-    ${unl?"":`<div class="hint" style="margin-top:6px">Требуется 3+ ранга лицензии на шасси ${esc(c.source)} (сейчас: ${manufacturerRank(c.source)}).</div>`}
-    <div class="desc" style="margin-top:12px">${rich(c.effect)}</div>
-    ${c.mounted_effect?`<div class="desc" style="margin-top:9px"><b>Если установлено на крепление:</b> ${rich(c.mounted_effect)}</div>`:""}
+    <div style="margin-top:11px">${coreCardBody(c)}</div>
   </div>`;
 }
 
@@ -1458,7 +1545,7 @@ function viewSelectedCore(ci){
    slots on the tab instead). Only reachable while there's room left, so no
    per-item cap check is needed here. */
 function openCorePicker(){
-  coreFilter="ALL"; coreSearch="";
+  coreFilter="ALL"; coreSearch=""; coreExpanded=null;
   const select=id=>{ state.cores.push(id); closeModal(); render(); };
 
   const drawDetail=(id)=>{
@@ -1482,21 +1569,39 @@ function openCorePicker(){
       .sort((a,b)=>(coreBonusUnlocked(b)-coreBonusUnlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent="Добавить CORE-бонус";
     $("#modal .mbd").innerHTML=
-      `<div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${coreFilter===s?'on':''}" data-cf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
+      `${viewToggleHTML()}
+       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${coreFilter===s?'on':''}" data-cf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="core-search" placeholder="поиск CORE-бонусов…" style="margin-bottom:14px" value="${esc(coreSearch)}">
        <div class="grid" id="core-list-modal" style="gap:8px"></div>`;
     $("#core-list-modal").innerHTML=list.map(c=>{
       const unl=coreBonusUnlocked(c);
-      return `<div class="listrow clickable ${!unl?'locked':''}" data-c="${c.id}">
+      const open=pickerViewMode==="inline" && coreExpanded===c.id;
+      const row=`<div class="listrow clickable ${!unl?'locked':''} ${open?'open':''}" data-c="${c.id}">
         <div class="info"><div class="nm">${esc(c.name)}</div><div class="ds">${esc(c.source)}</div></div>
-        ${unl?`<span class="chevron">›</span>`:`<span class="rowbadge lock">🔒 ${esc(c.source)} 3+</span>`}
+        ${unl?`<span class="chevron">${open?'⌄':'›'}</span>`:`<span class="rowbadge lock">🔒 ${esc(c.source)} 3+</span>`}
       </div>`;
+      const expand=open?`<div class="expand-detail">${coreCardBody(c)}
+        <button class="ghostbtn ${unl?'':'warn'}" id="core-select-inline" style="margin-top:14px;width:100%;text-align:center">
+          ${unl?"✓ Выбрать этот CORE-бонус":`⚠ Выбрать всё равно (лицензия ${esc(c.source)} не открыта)`}
+        </button></div>`:"";
+      return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет доступных CORE-бонусов по этому запросу</div>`;
+
+    wireViewToggle(drawList);
     $$(".modal .chip[data-cf]").forEach(ch=>ch.onclick=()=>{coreFilter=ch.dataset.cf; drawList();});
     const input=$("#core-search");
     input.oninput=e=>{coreSearch=e.target.value; drawList(); $("#core-search").focus();};
     if(coreSearch) input.setSelectionRange(input.value.length,input.value.length);
-    $$("#core-list-modal .listrow").forEach(it=>it.onclick=()=>drawDetail(it.dataset.c));
+
+    $$("#core-list-modal .listrow").forEach(it=>it.onclick=()=>{
+      const id=it.dataset.c;
+      if(pickerViewMode==="card"){ drawDetail(id); return; }
+      coreExpanded = coreExpanded===id?null:id;
+      drawList();
+    });
+    if(pickerViewMode==="inline" && coreExpanded){
+      $("#core-select-inline").onclick=()=>select(coreExpanded);
+    }
   };
 
   modal("Добавить CORE-бонус", "");
