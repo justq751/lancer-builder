@@ -372,6 +372,14 @@ details.note .body ul{margin:5px 0; padding-left:18px}
   </div>
 </div>
 
+<!-- Single global stat-glossary tooltip, kept as a direct child of <body>
+     (outside every panel/card). Any tooltip nested inside a card can end up
+     clipped or out-stacked by that card's own rendering context in some
+     browsers even with position:fixed, if an ancestor sets a property that
+     creates a new containing block (filter/transform/etc.) — living at the
+     top level sidesteps that class of bug entirely. See wireStatTooltips(). -->
+<div class="stattip-box" id="global-stattip"></div>
+
 <script>
 /* =================================================================
    LANCER // REGISTRY — I18N DATA LOADER
@@ -602,7 +610,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-fixed-stat-tooltip";
+const APP_BUILD = "2026-07-05-global-body-tooltip";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -703,15 +711,16 @@ const STAT_RU = {
 function statKeyHTML(k){
   const g = L && L.glossary && L.glossary[k];
   if(!g) return STAT_RU[k][0];
-  return `${STAT_RU[k][0]}<span class="stattip">ⓘ<span class="stattip-box"><b>${esc(g.name)}</b><br>${g.description}</span></span>`;
+  return `${STAT_RU[k][0]}<span class="stattip" data-tipname="${esc(g.name)}" data-tipdesc="${esc(g.description)}">ⓘ</span>`;
 }
 /* Delegated (registered once, survives re-renders) — shows the stat
    glossary tooltip at a fixed screen position computed from the hovered
    icon's own bounding box, flipping below if there isn't room above. */
 (function wireStatTooltips(){
+  const box=document.getElementById("global-stattip");
   document.addEventListener("mouseover", e=>{
     const tip=e.target.closest(".stattip"); if(!tip) return;
-    const box=tip.querySelector(".stattip-box"); if(!box) return;
+    box.innerHTML = `<b>${tip.dataset.tipname}</b><br>${tip.dataset.tipdesc}`;
     box.style.display="block";
     const r=tip.getBoundingClientRect();
     const bw=box.offsetWidth, bh=box.offsetHeight;
@@ -724,8 +733,7 @@ function statKeyHTML(k){
   });
   document.addEventListener("mouseout", e=>{
     const tip=e.target.closest(".stattip"); if(!tip) return;
-    const box=tip.querySelector(".stattip-box");
-    if(box) box.style.display="none";
+    box.style.display="none";
   });
 })();
 const HASE = [
