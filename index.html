@@ -599,7 +599,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-fix-integrated-leak-and-exotic-filter";
+const APP_BUILD = "2026-07-05-custom-pilot-skills";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -635,6 +635,13 @@ function rebuildIndexes(){
   };
   TAGS = byId(L.tags || []);
   TAG_PATTERNS = (L.tags || []).map(t => ({ id: t.id, re: tagTemplateToRegex(t.name) }));
+}
+/* Looks up a skill by id among the built-in glossary (M.skill) OR the
+   pilot's own custom skills (state.customSkills) — used wherever selected
+   skills are displayed (summary, print sheet), since custom ones aren't
+   in L.skills/M.skill. */
+function skillInfo(id){
+  return M.skill[id] || (state.customSkills||[]).find(s=>s.id===id);
 }
 
 /* Turns a tag glossary name template (e.g. "Reliable {VAL}", "{VAL}/Round",
@@ -706,6 +713,7 @@ const HASE = [
 const state = {
   pilot:{ name:"", callsign:"", background:"", ll:0 },
   skills:{},        // id -> 0/2/4/6
+  customSkills:[],  // [{id,name,description}] — user-created skill triggers, ranked the same as state.skills
   talents:{},       // id -> 1..3
   hase:{hull:0,agility:0,systems:0,engineering:0},
   licenses:{},      // frameName -> 0..3
@@ -978,17 +986,22 @@ function renderSkills(){
   $("#tab").innerHTML = sechead("// 02 · ТРИГГЕРЫ","Навыки пилота",
     `Распределите очки между триггерами навыков. Каждый шаг даёт +2 (максимум +6 на триггер). Потрачено ${(+d.b.skill.used)} из ${d.b.skill.cap}.`)
     + (over?`<div class="warnbox">⚠ Превышен бюджет навыков на ${d.b.skill.used-d.b.skill.cap}. Уменьшите ранги.</div>`:"")
-    + `<div class="grid" id="skill-list"></div>`;
-  $("#skill-list").innerHTML = L.skills.map(s=>{
+    + `<div class="grid" id="skill-list"></div>
+       <button class="ghostbtn" id="add-custom-skill" style="margin-top:12px">+ СВОЙ НАВЫК</button>`;
+  const allSkills = [...L.skills, ...(state.customSkills||[])];
+  $("#skill-list").innerHTML = allSkills.map(s=>{
+    const custom = !L.skills.includes(s) && (state.customSkills||[]).some(cs=>cs.id===s.id);
     const v=state.skills[s.id]||0;
     const remaining=d.b.skill.cap-d.b.skill.used;
     const canInc=v<6 && remaining>=1;
     return `<div class="listrow ${v===6?'maxed':''}">
-      <div class="info"><div class="nm">${esc(s.name)}</div><div class="ds">${rich(s.description)}</div></div>
+      <div class="info"><div class="nm">${esc(s.name)}${custom?' <span class="tag" style="margin-left:6px">СВОЙ</span>':''}</div><div class="ds">${rich(s.description)}</div></div>
       <div class="stepper">
         <button class="stepbtn" data-sk="${s.id}" data-d="-1" ${v<=0?"disabled":""}>−</button>
         <span class="stepval">${v?"+"+v:"—"}</span>
         <button class="stepbtn" data-sk="${s.id}" data-d="1" ${canInc?"":"disabled"}>+</button>
+        ${custom?`<button class="xbtn" data-editsk="${s.id}" title="Редактировать" style="margin-left:8px">✎</button>
+                  <button class="xbtn" data-rmsk="${s.id}" title="Удалить">✕</button>`:""}
       </div></div>`;
   }).join("");
   $$("#skill-list .stepbtn").forEach(b=>b.onclick=()=>{
@@ -997,6 +1010,44 @@ function renderSkills(){
     if(v===0) delete state.skills[id]; else state.skills[id]=v;
     render();
   });
+  $$("#skill-list .xbtn[data-editsk]").forEach(b=>b.onclick=()=>openCustomSkillEditor(b.dataset.editsk));
+  $$("#skill-list .xbtn[data-rmsk]").forEach(b=>b.onclick=()=>{
+    const id=b.dataset.rmsk;
+    state.customSkills=(state.customSkills||[]).filter(s=>s.id!==id);
+    delete state.skills[id];
+    render();
+  });
+  $("#add-custom-skill").onclick=()=>openCustomSkillEditor(null);
+}
+
+/* Create/edit a custom pilot skill trigger. `id===null` creates a new one;
+   otherwise edits the existing custom skill with that id. */
+function openCustomSkillEditor(id){
+  const existing = id ? (state.customSkills||[]).find(s=>s.id===id) : null;
+  modal(existing?"Редактировать свой навык":"Новый навык пилота", `
+    <div class="field"><label>НАЗВАНИЕ</label>
+      <input class="input" id="csk-name" placeholder="например, «Взломать реальность»" value="${esc(existing?.name||"")}"></div>
+    <div class="field" style="margin-top:12px"><label>ОПИСАНИЕ</label>
+      <textarea class="input" id="csk-desc" rows="4" placeholder="Что делает этот навык, когда его применяют" style="resize:vertical; font-family:inherit">${esc(existing?.description||"")}</textarea></div>
+    <div style="display:flex;gap:10px;margin-top:16px">
+      <button class="toolbtn" style="border-color:var(--accent);color:var(--accent)" id="csk-save">${existing?"✓ СОХРАНИТЬ":"✓ СОЗДАТЬ"}</button>
+      <button class="toolbtn" id="csk-cancel">ОТМЕНА</button>
+    </div>`);
+  $("#csk-name").focus();
+  $("#csk-cancel").onclick=closeModal;
+  $("#csk-save").onclick=()=>{
+    const name=$("#csk-name").value.trim();
+    if(!name){ $("#csk-name").focus(); return; }
+    const description=$("#csk-desc").value.trim();
+    if(existing){
+      existing.name=name; existing.description=description;
+    } else {
+      const newId="custom_"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+      state.customSkills=state.customSkills||[];
+      state.customSkills.push({id:newId, name, description});
+    }
+    closeModal(); render();
+  };
 }
 
 /* ============ TALENTS ============ */
@@ -1763,7 +1814,7 @@ function openSystemPicker(){
 /* ============ SUMMARY ============ */
 function renderSummary(){
   const d=derived(); const p=state.pilot;
-  const skills=Object.entries(state.skills).map(([id,v])=>`<li><span class="mk">+${v}</span> ${esc(M.skill[id]?.name||id)}</li>`).join("")||"<li class='hint'>—</li>";
+  const skills=Object.entries(state.skills).map(([id,v])=>`<li><span class="mk">+${v}</span> ${esc(skillInfo(id)?.name||id)}</li>`).join("")||"<li class='hint'>—</li>";
   const tals=Object.entries(state.talents).map(([id,v])=>`<li><span class="mk">${["I","II","III"][v-1]}</span> ${esc(M.talent[id]?.name||id)}</li>`).join("")||"<li class='hint'>—</li>";
   const cores=state.cores.map(id=>`<li><span class="mk">◆</span> ${esc(M.core[id]?.name||id)}</li>`).join("")||"<li class='hint'>—</li>";
   const hase=HASE.map(h=>`<div class="kv"><span class="k">${h.ru}</span><span>${state.hase[h.k]}</span></div>`).join("");
@@ -1951,7 +2002,7 @@ function buildPrintSheet(d){
   const p=state.pilot;
   ps.innerHTML=`<h1 style="font-family:Arial">${esc(p.callsign||"PILOT")} — ${esc(p.name||"")}</h1>
     <p>LL${d.ll} · GRIT +${d.grit} · ${esc(M.bg[p.background]?.name||"")}</p>
-    <p><b>Навыки:</b> ${Object.entries(state.skills).map(([id,v])=>esc(M.skill[id]?.name)+" +"+v).join(", ")||"—"}</p>
+    <p><b>Навыки:</b> ${Object.entries(state.skills).map(([id,v])=>esc(skillInfo(id)?.name)+" +"+v).join(", ")||"—"}</p>
     <p><b>Таланты:</b> ${Object.entries(state.talents).map(([id,v])=>esc(M.talent[id]?.name)+" "+["I","II","III"][v-1]).join(", ")||"—"}</p>
     <p><b>Мех-навыки:</b> ${HASE.map(h=>h.en+" "+state.hase[h.k]).join(" · ")}</p>
     <p><b>CORE-бонусы:</b> ${state.cores.map(id=>esc(M.core[id]?.name)).join(", ")||"—"}</p>
@@ -1967,7 +2018,7 @@ function wireTopbar(){
   $("#t-import").onclick=()=>$("#import-file").click();
   $("#import-file").onchange=e=>{ if(e.target.files[0]) importBuild(e.target.files[0]); e.target.value=""; };
   $("#t-reset").onclick=()=>{ if(confirm("Сбросить всю сборку?")){
-    Object.assign(state,{pilot:{name:"",callsign:"",background:"",ll:0},skills:{},talents:{},
+    Object.assign(state,{pilot:{name:"",callsign:"",background:"",ll:0},skills:{},customSkills:[],talents:{},
       hase:{hull:0,agility:0,systems:0,engineering:0},licenses:{},gear:{armor:null,weapons:[],gear:[]},
       cores:[],mech:{frameId:null,mounts:[],systems:[]}}); activeTab="pilot"; render();
   }};
