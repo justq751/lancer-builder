@@ -308,6 +308,8 @@ button{font-family:inherit; cursor:pointer}
 .minilist{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px}
 .minilist li{font-size:13px; display:flex; gap:8px}
 .minilist li .mk{color:var(--accent); font-family:"JetBrains Mono",monospace}
+.minilist li.clickable{cursor:pointer; border-radius:5px; padding:2px 4px; margin:-2px -4px; transition:.12s}
+.minilist li.clickable:hover{background:var(--panel-2); color:var(--ink)}
 .warnbox{background:var(--amber-glow); border:1px solid var(--amber); border-radius:8px;
   padding:11px 14px; color:var(--amber); font-size:12.5px; font-family:"JetBrains Mono",monospace; margin-bottom:14px}
 
@@ -597,7 +599,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-leviathan-cannon-fix";
+const APP_BUILD = "2026-07-05-license-item-preview";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1071,8 +1073,8 @@ function licenseRanksHTML(f){
   const byRank={1:[],2:[],3:[]};
   items.forEach(it=>{ const r=it.license_level||1; if(byRank[r]) byRank[r].push(it); });
   const line=it=>it.mount
-    ? `<li><span class="mk">⚔</span> ${esc(it.name)} <span class="hint">${tr(it.mount)} · ${dmgStr(it)}</span></li>`
-    : `<li><span class="mk">⚙</span> ${esc(it.name)} <span class="hint">${it.sp} SP</span></li>`;
+    ? `<li class="clickable" data-viewitem="w:${it.id}"><span class="mk">⚔</span> ${esc(it.name)} <span class="hint">${tr(it.mount)} · ${dmgStr(it)}</span></li>`
+    : `<li class="clickable" data-viewitem="s:${it.id}"><span class="mk">⚙</span> ${esc(it.name)} <span class="hint">${it.sp} SP</span></li>`;
   return [1,2,3].map(rank=>{
     const frameHere = f.license_level===rank;
     const list = byRank[rank];
@@ -1098,6 +1100,29 @@ function openLicenseDetail(fid){
     ${licenseRanksHTML(f)}`);
   $("#lic-minus").onclick=()=>{ stepLicense(f.name,-1); render(); openLicenseDetail(fid); };
   $("#lic-plus").onclick=()=>{ stepLicense(f.name,1); render(); openLicenseDetail(fid); };
+  $$("#modal [data-viewitem]").forEach(el=>el.onclick=()=>{
+    const [kind,id]=el.dataset.viewitem.split(":");
+    viewLicenseItemPreview(kind, id, ()=>openLicenseDetail(fid));
+  });
+}
+
+/* Read-only preview of a weapon/system from the license-rank breakdown —
+   no install/remove action, since we're on the ЛИЦЕНЗИИ tab, not editing
+   the loadout. "← Назад" returns to the license rank detail it came from. */
+function viewLicenseItemPreview(kind, id, back){
+  tagOpenSet=new Set(); profileViewIdx=0;
+  const draw=()=>{
+    const isWeapon = kind==="w";
+    const item = isWeapon ? M.weapon[id] : M.system[id];
+    $("#modal .mhd h3").textContent=item.name;
+    $("#modal .mbd").innerHTML=
+      `<button class="ghostbtn" id="lip-back" style="margin-bottom:14px">← Назад к лицензии</button>`
+      + (isWeapon ? weaponCardHTML(item) : systemCardHTML(item));
+    wireTagGlossary(isWeapon?"#wp-tags":"#sy-tags", isWeapon?"#wp-tagdesc":"#sy-tagdesc", isWeapon?weaponDisplayTags(item, profileViewIdx):(item.tags||[]));
+    if(isWeapon) wireProfileChips("#wp-profiles", draw);
+    $("#lip-back").onclick=back;
+  };
+  draw();
 }
 
 function renderLicenses(){
