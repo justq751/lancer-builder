@@ -125,6 +125,17 @@ button{font-family:inherit; cursor:pointer}
 .stat.hl .v{color:var(--accent)}
 .hud .nomech{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); text-align:center; padding:14px 4px; letter-spacing:.05em}
 
+/* stat glossary tooltip (hover icon, compcon.app-style) */
+.stattip{position:relative; display:inline-block; margin-left:3px; width:10px; height:10px; line-height:10px;
+  font-size:9px; font-family:"JetBrains Mono",monospace; color:var(--faint); cursor:help; vertical-align:middle}
+.stattip:hover{color:var(--accent)}
+.stattip-box{display:none; position:absolute; left:50%; bottom:135%; transform:translateX(-50%);
+  width:220px; max-width:62vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:8px;
+  padding:10px 12px; font-family:"Inter",sans-serif; font-size:11.5px; line-height:1.45; color:var(--ink);
+  text-align:left; text-transform:none; z-index:300; box-shadow:0 10px 28px rgba(0,0,0,.45); letter-spacing:normal; font-weight:400}
+.stattip-box b{display:block; margin-bottom:4px; color:var(--accent); font-family:"Chakra Petch"; font-size:12.5px; font-weight:500}
+.stattip:hover .stattip-box{display:block}
+
 /* ---- tabs ---- */
 .tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px}
 .tab{background:var(--panel); border:1px solid var(--line); color:var(--mute);
@@ -385,7 +396,7 @@ let currentLang = localStorage.getItem("lancer_lang") || "ru";
 
 const LOCALE_CATEGORY_FILES = [
   "enums", "frames", "weapons", "systems", "talents",
-  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags"
+  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags", "glossary"
 ];
 
 async function fetchJSON(url) {
@@ -407,6 +418,7 @@ async function loadBaseData() {
   try {
     const core = await fetchJSON("data/lancer-data.json");
     core.tags = await fetchJSON("data/tags.json").catch(e => { console.warn("tags.json failed to load:", e); return []; });
+    core.glossary = await fetchJSON("data/glossary.json").catch(e => { console.warn("glossary.json failed to load:", e); return {}; });
     const packs = await Promise.all(
       CONTENT_PACKS.map(p => fetchJSON(p).catch(e => { console.warn("Pack failed to load:", p, e); return null; }))
     );
@@ -533,6 +545,17 @@ function localizeData(base, locale) {
   overlayKeyedPairs(L.manufacturers || [], (locale.manufacturers || {}), ["name", "description"]);
   overlayKeyedPairs(L.tags || [], (locale.tags || {}), ["name", "description"]);
 
+  // glossary: a dict keyed by our internal stat key (hp/armor/...), not an
+  // array with .id like everything else — overlay it directly.
+  if (L.glossary && locale.glossary) {
+    for (const key in L.glossary) {
+      const t = locale.glossary[key];
+      if (!t) continue;
+      if (t.name) L.glossary[key].name = pickText(L.glossary[key].name, t.name);
+      if (t.description !== undefined) L.glossary[key].description = pickText(L.glossary[key].description, t.description);
+    }
+  }
+
   return L;
 }
 
@@ -574,7 +597,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-multi-independent-accordion";
+const APP_BUILD = "2026-07-05-glossary-data-file";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -662,6 +685,14 @@ const STAT_RU = {
   sensor_range:["СЕНСОР","Sensors"], tech_attack:["ТЕХ-АТК","Tech Attack"], save:["СПАС.","Save"],
   size:["РАЗМЕР","Size"], sp:["SP","System Points"],
 };
+/* Stat glossary — from massif-press/lancer-data/lib/glossary.json (data/glossary.json),
+   translated via locales/<lang>/glossary.json like everything else. Powers
+   the hover-tooltip icon next to each stat label (compcon.app-style). */
+function statKeyHTML(k){
+  const g = L && L.glossary && L.glossary[k];
+  if(!g) return STAT_RU[k][0];
+  return `${STAT_RU[k][0]}<span class="stattip">ⓘ<span class="stattip-box"><b>${esc(g.name)}</b><br>${g.description}</span></span>`;
+}
 const HASE = [
   {k:"hull",      ru:"КОРПУС",   en:"HULL",        eff:"+2 HP · +1 Ремонт за 2 ранга"},
   {k:"agility",   ru:"ЛОВКОСТЬ", en:"AGILITY",     eff:"+1 Уклонение · +1 Скорость за 2 ранга"},
@@ -824,7 +855,7 @@ function renderHUD(){
     <div class="statgrid">
       ${["hp","evasion","edef","heatcap","speed","armor","sensor_range","tech_attack","save","repcap","size","sp"].map(k=>{
         const hl=["hp","evasion","sp"].includes(k)?"hl":"";
-        return `<div class="stat ${hl}"><span class="k">${STAT_RU[k][0]}</span><span class="v">${d.mech[k]}</span></div>`;
+        return `<div class="stat ${hl}"><span class="k">${statKeyHTML(k)}</span><span class="v">${d.mech[k]}</span></div>`;
       }).join("")}
     </div>
     <div class="brow" style="margin-top:10px">
@@ -1082,7 +1113,7 @@ function frameDetailBodyHTML(f){
     <div class="desc" style="margin-bottom:14px">${rich(f.description)}</div>
     <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
       ${["hp","armor","evasion","edef","heatcap","repcap","speed","sensor_range","tech_attack","save","size","sp"].map(k=>
-        `<div class="stat"><span class="k">${STAT_RU[k][0]}</span><span class="v">${f.stats[k]}</span></div>`).join("")}
+        `<div class="stat"><span class="k">${statKeyHTML(k)}</span><span class="v">${f.stats[k]}</span></div>`).join("")}
     </div>
     ${frameTraitsCoreHTML(f)}`;
 }
@@ -1667,7 +1698,7 @@ function renderSummary(){
         <span class="k">ТИП</span><span>${d.frame.mechtype.join(" / ")}</span></div>
       <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px">
         ${["hp","armor","evasion","edef","heatcap","repcap","speed","sensor_range","tech_attack","save","size","sp"].map(k=>
-          `<div class="stat"><span class="k">${STAT_RU[k][0]}</span><span class="v">${d.mech[k]}</span></div>`).join("")}
+          `<div class="stat"><span class="k">${statKeyHTML(k)}</span><span class="v">${d.mech[k]}</span></div>`).join("")}
       </div>
       <h3 style="margin-top:6px"><span class="hash">//</span> ОРУЖИЕ</h3><ul class="minilist">${wlist}</ul>
       <h3 style="margin-top:14px"><span class="hash">//</span> СИСТЕМЫ <span class="hint mono">SP ${d.sp.used}/${d.sp.cap}</span></h3><ul class="minilist">${slist}</ul>

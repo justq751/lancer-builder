@@ -1,0 +1,58 @@
+{
+ "hp": {
+  "name": "HP",
+  "description": "The amount of damage a pilot can receive before going DOWN AND OUT, and the amount of damage a mech can receive before it takes structure damage. When Mechs reach 0 HP, they take 1 structure damage and their HP resets. When they lose STRUCTURE like this, mechs have to make a special structure damage check and receive a consequence based on the roll. Most mechs have 4 STRUCTURE and are destroyed when they reach 0 STRUCTURE."
+ },
+ "armor": {
+  "name": "Armor",
+  "description": "A mech’s ARMOR reduces all incoming damage by that amount, excluding some special types of damage. ARMOR mostly depends on your mech’s FRAME, and never goes above four."
+ },
+ "structure": {
+  "name": "Structure",
+  "description": "All PC mechs (and some NPCs) have a certain amount of STRUCTURE – generally 4 STRUCTURE for PCs. This is the amount of structure damage they can take before they are destroyed. When mechs reach 0 HP, they take 1 structure damage and make a structure check."
+ },
+ "stress": {
+  "name": "Stress",
+  "description": "All PC mechs (and some NPCs) have a certain amount of STRESS – generally 4 STRESS for PCs. This is the amount of stress damage they can take before they suffer a reactor meltdown. When mechs exceed their HEAT CAP, they take 1 stress damage and make an overheating check."
+ },
+ "heatcap": {
+  "name": "Heat Capacity",
+  "description": "Your mech can take heat from tech attacks and some of its own systems. If it takes more heat than its HEAT CAP, it overheats. Mechs also have STRESS, which is similar to STRUCTURE – when they exceed their HEAT CAP, they take 1 STRESS and clear all heat. When they lose STRESS like this, mechs have to make a special stress damage check and receive a consequence based on the roll. Most mechs have 4 STRESS, and are destroyed when they reach 0 STRESS.<br><br>If a character without a HEAT CAP would take heat, they instead take an equivalent amount of energy damage."
+ },
+ "repcap": {
+  "name": "Repair Capacity",
+  "description": "REPAIRS are a kind of currency that you can use to heal and repair your mech. If your mech runs out of REPAIRS, you can no longer regain HP or fix damaged systems in the field."
+ },
+ "evasion": {
+  "name": "Evasion",
+  "description": "EVASION is how hard it is for ranged and melee attacks to hit you."
+ },
+ "edef": {
+  "name": "E-Defense",
+  "description": "E-DEFENSE is how hard it is for electronic and guided weapons and systems to hit you."
+ },
+ "speed": {
+  "name": "Speed",
+  "description": "Your mech’s SPEED determines how far you can move on your turn, in spaces, when you make a standard move or BOOST."
+ },
+ "sensor_range": {
+  "name": "Sensors",
+  "description": "Your mech’s SENSORS is the maximum distance (in spaces) over which a mech can detect enemies, use tech systems, and make tech attacks. If a character is within your SENSORS and isn’t hiding, you know they’re there – even if you can’t directly see them."
+ },
+ "tech_attack": {
+  "name": "Tech Attack",
+  "description": "You add your mech’s TECH ATTACK as a bonus instead of GRIT when you conduct electronic warfare."
+ },
+ "save": {
+  "name": "Save Target",
+  "description": "When you force another character to make a save, they must match or beat your mech’s SAVE TARGET or take consequences."
+ },
+ "size": {
+  "name": "Size",
+  "description": "All mechs, characters, and objects on the battlefield have a SIZE that describes how large they are, in grid spaces, on each side (rounded up to 1 if smaller, so a SIZE 1/2 and SIZE 1 character occupy the same space). SIZE is an abstract measurement – it doesn’t describe a precise height and width in feet, but the space a character controls around them. Humans and the smallest mechs are SIZE 1/2. Most mechs are SIZE 1, but some are as large as SIZE 3."
+ },
+ "sp": {
+  "name": "System Points",
+  "description": "Mech FRAMES also have a set number of SYSTEM POINTS (SP). SP can be spent to add extra systems to your mech, and some heavier weapons require both mounts and SP. You cannot add systems to your mech that would cause you to exceed your available SP. Your pilot’s GRIT, equal to half their LL, is added to your total SP, and you gain an additional SP for every two points of SYSTEMS."
+ }
+}

@@ -228,6 +228,17 @@ def build_tags(data, old):
     return out
 
 
+def build_glossary(data, old):
+    out = {}
+    for key, g in data.get("glossary", {}).items():
+        old_e = old.get(key, {})
+        out[key] = {
+            "name": pair(g.get("name"), old_e.get("name")),
+            "description": pair(g.get("description"), old_e.get("description")),
+        }
+    return out
+
+
 BUILDERS = {
     "frames.json": build_frames,
     "weapons.json": build_weapons,
@@ -239,6 +250,7 @@ BUILDERS = {
     "backgrounds.json": build_backgrounds,
     "manufacturers.json": build_manufacturers,
     "tags.json": build_tags,
+    "glossary.json": build_glossary,
 }
 
 
@@ -249,6 +261,9 @@ def load_combined_data():
     tags_file = ROOT / "data" / "tags.json"
     if tags_file.exists():
         data["tags"] = json.loads(tags_file.read_text(encoding="utf-8"))
+    glossary_file = ROOT / "data" / "glossary.json"
+    if glossary_file.exists():
+        data["glossary"] = json.loads(glossary_file.read_text(encoding="utf-8"))
     if PACKS_DIR.exists():
         for pack_file in sorted(PACKS_DIR.glob("*.json")):
             pack = json.loads(pack_file.read_text(encoding="utf-8"))
