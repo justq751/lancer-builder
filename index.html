@@ -125,16 +125,19 @@ button{font-family:inherit; cursor:pointer}
 .stat.hl .v{color:var(--accent)}
 .hud .nomech{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); text-align:center; padding:14px 4px; letter-spacing:.05em}
 
-/* stat glossary tooltip (hover icon, compcon.app-style) */
+/* stat glossary tooltip (hover icon, compcon.app-style).
+   position:fixed + JS-computed coordinates (see wireStatTooltips()) instead
+   of position:absolute — an absolutely-positioned tooltip gets clipped by
+   any scrollable ancestor (e.g. the HUD sidebar has overflow:auto for its
+   own scrollbar), fixed positioning escapes that entirely. */
 .stattip{position:relative; display:inline-block; margin-left:3px; width:10px; height:10px; line-height:10px;
   font-size:9px; font-family:"JetBrains Mono",monospace; color:var(--faint); cursor:help; vertical-align:middle}
 .stattip:hover{color:var(--accent)}
-.stattip-box{display:none; position:absolute; left:50%; bottom:135%; transform:translateX(-50%);
+.stattip-box{display:none; position:fixed;
   width:220px; max-width:62vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:8px;
   padding:10px 12px; font-family:"Inter",sans-serif; font-size:11.5px; line-height:1.45; color:var(--ink);
-  text-align:left; text-transform:none; z-index:300; box-shadow:0 10px 28px rgba(0,0,0,.45); letter-spacing:normal; font-weight:400}
+  text-align:left; text-transform:none; z-index:1000; box-shadow:0 10px 28px rgba(0,0,0,.45); letter-spacing:normal; font-weight:400}
 .stattip-box b{display:block; margin-bottom:4px; color:var(--accent); font-family:"Chakra Petch"; font-size:12.5px; font-weight:500}
-.stattip:hover .stattip-box{display:block}
 
 /* ---- tabs ---- */
 .tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px}
@@ -599,7 +602,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-custom-pilot-skills";
+const APP_BUILD = "2026-07-05-fixed-stat-tooltip";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -702,6 +705,29 @@ function statKeyHTML(k){
   if(!g) return STAT_RU[k][0];
   return `${STAT_RU[k][0]}<span class="stattip">ⓘ<span class="stattip-box"><b>${esc(g.name)}</b><br>${g.description}</span></span>`;
 }
+/* Delegated (registered once, survives re-renders) — shows the stat
+   glossary tooltip at a fixed screen position computed from the hovered
+   icon's own bounding box, flipping below if there isn't room above. */
+(function wireStatTooltips(){
+  document.addEventListener("mouseover", e=>{
+    const tip=e.target.closest(".stattip"); if(!tip) return;
+    const box=tip.querySelector(".stattip-box"); if(!box) return;
+    box.style.display="block";
+    const r=tip.getBoundingClientRect();
+    const bw=box.offsetWidth, bh=box.offsetHeight;
+    let left=r.left+r.width/2-bw/2;
+    left=Math.max(6, Math.min(left, window.innerWidth-bw-6));
+    let top=r.top-bh-8;
+    if(top<6) top=r.bottom+8;
+    box.style.left=left+"px";
+    box.style.top=top+"px";
+  });
+  document.addEventListener("mouseout", e=>{
+    const tip=e.target.closest(".stattip"); if(!tip) return;
+    const box=tip.querySelector(".stattip-box");
+    if(box) box.style.display="none";
+  });
+})();
 const HASE = [
   {k:"hull",      ru:"КОРПУС",   en:"HULL",        eff:"+2 HP · +1 Ремонт за 2 ранга"},
   {k:"agility",   ru:"ЛОВКОСТЬ", en:"AGILITY",     eff:"+1 Уклонение · +1 Скорость за 2 ранга"},
