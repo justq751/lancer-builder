@@ -273,8 +273,30 @@
    "ru": "Тяжёлая штурмовая пушка «Левиафан»"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "The Leviathan Heavy Assault Cannon (HAC) is a massive, multi-barrel rotary cannon fed by an external reservoir, usually dorsally mounted on the chassis carrying it. Unmodified, the Leviathan should only be fired within the recommended burst timing specifications to prevent percussive trauma to joints and pilots.<br>In partnership with Harrison Armory’s Think Tank, IPS-N is currently investigating remote solutions for the cannon’s ammunition consumption demands.",
+   "ru": "Тяжёлая штурмовая пушка «Левиафан» (HAC) — массивная многоствольная вращающаяся пушка, питающаяся от внешнего резервуара, обычно устанавливаемая на спине несущего её шасси. Без модификаций «Левиафан» следует применять только в рекомендованных временных режимах очередей, чтобы избежать ударной травмы суставов и пилота.<br>В партнёрстве с Мозговым центром Harrison Armory, IPS-N в настоящее время изучает дистанционные решения для потребностей пушки в боеприпасах."
+  },
+  "profiles": {
+   "Standard": {
+    "name": {
+     "en": "Standard",
+     "ru": "Стандартный"
+    },
+    "effect": {
+     "en": "Unlike other Superheavy weapons, the Leviathan can be used with Skirmish. You can spin up this weapon’s barrels as a quick action.<br><b>Spin Up Leviathan</b> — Spin up the barrels of the Leviathan Heavy Assault Cannon, Slowing your mech and allowing use of its “Spin-Up Mode” profile.",
+     "ru": "В отличие от другого Сверхтяжёлого оружия, «Левиафан» можно использовать с Атакой на манёвре (Skirmish). Вы можете раскрутить стволы этого оружия как быстрое действие.<br><b>Раскрутить «Левиафан»</b> — Раскрутите стволы Тяжёлой штурмовой пушки «Левиафан», получая Замедление и открывая доступ к её профилю «Режим раскрутки»."
+    }
+   },
+   "Spin-Up Mode": {
+    "name": {
+     "en": "Spin-Up Mode",
+     "ru": "Режим раскрутки"
+    },
+    "effect": {
+     "en": "While spinning, you are Slowed and can no longer use the Leviathan with Skirmish.<br>You can cease this effect as a protocol.<br><b>Cease Spin-Up</b> — End the Leviathan Heavy Assault Cannon’s “Spin-Up Mode”, ending the Slowed condition and allowing the Leviathan to be used with its “Standard” profile.",
+     "ru": "Пока пушка раскручена, вы Замедлены и не можете использовать «Левиафан» с Атакой на манёвре.<br>Вы можете прекратить этот эффект как протокол.<br><b>Прекратить раскрутку</b> — Завершите режим «Режим раскрутки» Тяжёлой штурмовой пушки «Левиафан», снимая Замедление и открывая доступ к профилю «Стандартный»."
+    }
+   }
   }
  },
  "mw_cutter_mkii_plasma_torch": {

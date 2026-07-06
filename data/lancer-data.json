@@ -2344,10 +2344,48 @@
    "license": "Drake",
    "license_level": 3,
    "sp": 0,
-   "effect": null,
+   "effect": "The Leviathan Heavy Assault Cannon (HAC) is a massive, multi-barrel rotary cannon fed by an external reservoir, usually dorsally mounted on the chassis carrying it. Unmodified, the Leviathan should only be fired within the recommended burst timing specifications to prevent percussive trauma to joints and pilots.<br>In partnership with Harrison Armory’s Think Tank, IPS-N is currently investigating remote solutions for the cannon’s ammunition consumption demands.",
    "on_hit": null,
    "on_attack": null,
-   "on_crit": null
+   "on_crit": null,
+   "profiles": [
+    {
+     "name": "Standard",
+     "damage": [
+      {
+       "type": "Kinetic",
+       "val": "1d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 8
+      }
+     ],
+     "effect": "Unlike other Superheavy weapons, the Leviathan can be used with Skirmish. You can spin up this weapon’s barrels as a quick action.<br><b>Spin Up Leviathan</b> — Spin up the barrels of the Leviathan Heavy Assault Cannon, Slowing your mech and allowing use of its “Spin-Up Mode” profile."
+    },
+    {
+     "name": "Spin-Up Mode",
+     "damage": [
+      {
+       "type": "Kinetic",
+       "val": "4d6+4"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 8
+      }
+     ],
+     "tags": [
+      "Reliable 5",
+      "Heat 2 (Self)"
+     ],
+     "effect": "While spinning, you are Slowed and can no longer use the Leviathan with Skirmish.<br>You can cease this effect as a protocol.<br><b>Cease Spin-Up</b> — End the Leviathan Heavy Assault Cannon’s “Spin-Up Mode”, ending the Slowed condition and allowing the Leviathan to be used with its “Standard” profile."
+    }
+   ]
   },
   {
    "id": "mw_cutter_mkii_plasma_torch",

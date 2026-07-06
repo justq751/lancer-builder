@@ -597,7 +597,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-license-rank-detail";
+const APP_BUILD = "2026-07-05-leviathan-cannon-fix";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1265,7 +1265,7 @@ function renderLoadout(){
     if(!w){ eqWeaponExpanded.delete(key); return; }
     const dk=`${emi}-${ewi}`;
     const tagSet=getMap(eqWeaponTagSets,key,()=>new Set());
-    wireTagGlossary(`#wp-tags-${dk}`,`#wp-tagdesc-${dk}`, w.tags||[], tagSet);
+    wireTagGlossary(`#wp-tags-${dk}`,`#wp-tagdesc-${dk}`, weaponDisplayTags(w, eqWeaponProfIdx.get(key)||0), tagSet);
     wireProfileChips(`#wp-profiles-${dk}`, renderLoadout, v=>eqWeaponProfIdx.set(key,v));
   });
 
@@ -1409,6 +1409,18 @@ function wireProfileChips(sel, redraw, setIdx){
    weapons in the loadout tab) and `curProfIdx` lets the caller supply its
    own per-instance "which stage is shown" value instead of the shared
    global (used by the single-instance modals/pickers). */
+/* Combines base weapon tags with the active profile's own tags (some
+   multi-stage weapons, like the Leviathan HAC, only carry certain tags in
+   specific modes) into one array — used for both rendering the chips and
+   as the `rawTags` index base for wireTagGlossary, so data-tgi stays
+   consistent between the two. */
+function weaponDisplayTags(w, curProfIdx){
+  const hasProfiles = w.profiles && w.profiles.length;
+  if(!hasProfiles) return w.tags||[];
+  const idx = Math.min(curProfIdx!=null?curProfIdx:profileViewIdx, w.profiles.length-1);
+  const prof = w.profiles[idx];
+  return [...(w.tags||[]), ...((prof&&prof.tags)||[])];
+}
 function weaponCardBody(w, uid, curProfIdx){
   const tagsId = uid?`wp-tags-${uid}`:"wp-tags", descId = uid?`wp-tagdesc-${uid}`:"wp-tagdesc", profId = uid?`wp-profiles-${uid}`:"wp-profiles";
   const hasProfiles = w.profiles && w.profiles.length;
@@ -1417,12 +1429,13 @@ function weaponCardBody(w, uid, curProfIdx){
   const prof = hasProfiles ? w.profiles[idx] : null;
   const dmg = prof ? profDmgStr(prof) : dmgStr(w);
   const rng = prof ? profRngStr(prof) : rngStr(w);
+  const dispTags = weaponDisplayTags(w, curIdx);
   return `${hasProfiles?`<div class="profiles" id="${profId}">${w.profiles.map((p,i)=>
       `<button class="chip profile-chip ${i===idx?'on':''}" data-pi="${i}">${esc(p.name)}</button>`).join("")}</div>`:""}
     <div class="tags" id="${tagsId}">
       <span class="tag dmg">${dmg}</span><span class="tag rng">${rng}</span>
       ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
-      ${(w.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+      ${dispTags.map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
     </div>
     <div id="${descId}"></div>
     ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
@@ -1494,7 +1507,7 @@ function openWeaponPicker(mi){
       `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
       </button>`;
-    wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+    wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", ()=>drawDetail(id));
     $("#wp-back").onclick=drawList;
     $("#wp-install").onclick=()=>install(w.id);
@@ -1542,7 +1555,7 @@ function openWeaponPicker(mi){
     });
     if(pickerViewMode==="inline" && wpExpanded){
       const w=M.weapon[wpExpanded];
-      wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+      wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
       wireProfileChips("#wp-profiles", drawList);
       $("#wp-install-inline").onclick=()=>install(w.id);
     }
@@ -1571,7 +1584,7 @@ function openIntegratedPicker(mi){
       `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
       + weaponCardHTML(w) +
       `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">✓ Восстановить это оружие</button>`;
-    wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+    wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", drawDetail);
     $("#wp-back").onclick=drawList;
     $("#wp-install").onclick=install;
@@ -1601,7 +1614,7 @@ function openIntegratedPicker(mi){
       drawList();
     });
     if(pickerViewMode==="inline" && wpExpanded){
-      wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+      wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
       wireProfileChips("#wp-profiles", drawList);
       $("#wp-install-inline").onclick=install;
     }
@@ -1621,7 +1634,7 @@ function viewEquippedWeapon(mi, wi){
   const draw=()=>{
     modal(w.name, weaponCardHTML(w) +
       `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
-    wireTagGlossary("#wp-tags", "#wp-tagdesc", w.tags||[]);
+    wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", draw);
     $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
   };
