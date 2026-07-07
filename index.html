@@ -319,7 +319,7 @@
 html{scroll-behavior:smooth}
 body{
   margin:0; background:var(--bg); color:var(--ink);
-  font-family:"Inter",system-ui,sans-serif; font-size:15px; line-height:1.55;
+  font-family:"Inter",system-ui,sans-serif; font-size:16.5px; line-height:1.55;
   background-image:
     linear-gradient(var(--bg-grid) 1px,transparent 1px),
     linear-gradient(90deg,var(--bg-grid) 1px,transparent 1px);
@@ -339,8 +339,8 @@ button{font-family:inherit; cursor:pointer}
 #boot.done{opacity:0; pointer-events:none}
 #boot .ring{width:54px;height:54px;border:2px solid var(--line);border-top-color:var(--accent);
   border-radius:50%; animation:spin .8s linear infinite}
-#boot .blog{color:var(--accent); font-size:12.5px; min-height:1.4em; letter-spacing:.06em}
-#boot .ttl{color:var(--faint); font-size:11px; letter-spacing:.4em}
+#boot .blog{color:var(--accent); font-size:13.5px; min-height:1.4em; letter-spacing:.06em}
+#boot .ttl{color:var(--faint); font-size:12px; letter-spacing:.4em}
 @keyframes spin{to{transform:rotate(360deg)}}
 
 /* ---- header ---- */
@@ -349,27 +349,27 @@ button{font-family:inherit; cursor:pointer}
   border-bottom:1px solid var(--line); padding:11px clamp(14px,3vw,30px);
   display:flex; align-items:center; gap:16px; flex-wrap:wrap}
 .brand{display:flex; align-items:baseline; gap:11px}
-.brand .sig{font-family:"JetBrains Mono",monospace; color:var(--accent); font-size:13px; letter-spacing:.12em}
-.brand .name{font-family:"Chakra Petch"; font-size:19px; letter-spacing:.06em}
+.brand .sig{font-family:"JetBrains Mono",monospace; color:var(--accent); font-size:14px; letter-spacing:.12em}
+.brand .name{font-family:"Chakra Petch"; font-size:21px; letter-spacing:.06em}
 .brand .name b{color:var(--accent)}
-.brand .ver{font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--faint);
+.brand .ver{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
   border:1px solid var(--line); padding:1px 6px; border-radius:3px; align-self:center}
 .topbar .spacer{flex:1}
 .toolbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
-  font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.05em;
-  padding:7px 12px; border-radius:5px; display:inline-flex; gap:7px; align-items:center; transition:.15s}
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
+  padding:9px 14px; border-radius:5px; display:inline-flex; gap:7px; align-items:center; transition:.15s}
 .toolbtn:hover{border-color:var(--accent); color:var(--accent); box-shadow:0 0 0 1px var(--accent-glow)}
 .toolbtn.warn:hover{border-color:var(--amber); color:var(--amber); box-shadow:none}
 
 /* ---- layout ---- */
-.shell{display:grid; grid-template-columns:312px 1fr; gap:clamp(14px,2.2vw,28px);
-  max-width:1380px; margin:0 auto; padding:clamp(16px,2.5vw,30px)}
-@media(max-width:940px){.shell{grid-template-columns:1fr}}
+.shell{display:grid; grid-template-columns:344px 1fr; gap:clamp(16px,2.4vw,32px);
+  max-width:1680px; margin:0 auto; padding:clamp(18px,2.6vw,34px)}
+@media(max-width:1020px){.shell{grid-template-columns:1fr}}
 
 /* ---- HUD sidebar ---- */
 .hud{position:sticky; top:78px; align-self:start; display:flex; flex-direction:column; gap:14px;
   max-height:calc(100vh - 96px); overflow:auto; padding-right:2px}
-@media(max-width:940px){.hud{position:static; max-height:none}}
+@media(max-width:1020px){.hud{position:static; max-height:none}}
 .hud::-webkit-scrollbar{width:7px}
 .hud::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px}
 
@@ -381,22 +381,22 @@ button{font-family:inherit; cursor:pointer}
 .card::after{bottom:-1px; right:-1px; border-bottom:2px solid var(--accent); border-right:2px solid var(--accent); border-radius:0 0 2px 0}
 .card .head{display:flex; align-items:center; justify-content:space-between; gap:10px;
   padding:10px 14px; border-bottom:1px solid var(--line)}
-.card .head .lbl{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.16em; color:var(--mute)}
+.card .head .lbl{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.16em; color:var(--mute)}
 .card .head .lbl b{color:var(--accent); font-weight:400}
 .card .body{padding:14px}
 
-.hud .pid{font-family:"Chakra Petch"; font-size:21px; line-height:1.15}
-.hud .pid small{display:block; font-family:"JetBrains Mono",monospace; font-size:11px;
+.hud .pid{font-family:"Chakra Petch"; font-size:23px; line-height:1.15}
+.hud .pid small{display:block; font-family:"JetBrains Mono",monospace; font-size:12px;
   color:var(--accent); letter-spacing:.12em; margin-top:3px}
 .hud .ll{margin-top:12px; display:flex; align-items:center; gap:10px}
-.hud .ll .big{font-family:"Chakra Petch"; font-size:30px; color:var(--accent); line-height:1}
-.hud .ll .meta{font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--faint); letter-spacing:.08em}
+.hud .ll .big{font-family:"Chakra Petch"; font-size:33px; color:var(--accent); line-height:1}
+.hud .ll .meta{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); letter-spacing:.08em}
 
 /* budget rows */
 .budget{display:flex; flex-direction:column; gap:9px}
 .brow{display:grid; grid-template-columns:1fr auto; gap:4px 8px; align-items:center}
-.brow .nm{font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--mute); letter-spacing:.04em}
-.brow .val{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--ink)}
+.brow .nm{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--mute); letter-spacing:.04em}
+.brow .val{font-family:"JetBrains Mono",monospace; font-size:13px; color:var(--ink)}
 .brow .val.over{color:var(--amber)}
 .brow .bar{grid-column:1/3; height:4px; background:var(--panel-3); border-radius:3px; overflow:hidden}
 .brow .bar i{display:block; height:100%; background:var(--accent); border-radius:3px; transition:width .25s}
@@ -406,15 +406,15 @@ button{font-family:inherit; cursor:pointer}
 .statgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:7px}
 .stat{position:relative; background:var(--bg-grid); border:1px solid var(--line); border-radius:5px;
   padding:7px 6px 6px; text-align:center}
-.stat .k{font-family:"JetBrains Mono",monospace; font-size:8.5px; letter-spacing:.07em; color:var(--faint); display:block; min-height:2.2em}
-.stat .v{font-family:"Chakra Petch"; font-size:19px; color:var(--ink); line-height:1}
+.stat .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.07em; color:var(--faint); display:block; min-height:2.2em}
+.stat .v{font-family:"Chakra Petch"; font-size:21px; color:var(--ink); line-height:1}
 .stat.hl .v{color:var(--accent)}
 
 /* Compact icon+value tile (no text label) — used in the СВОДКА МЕХА HUD
    card. Value font size intentionally matches .statrow .v below, so both
    this and the ВЫБРАННОЕ ШАССИ card read at the same visual scale. */
 .stat.compact{display:flex; align-items:center; justify-content:center; gap:9px; padding:11px 8px}
-.stat.compact .v{font-size:24px}
+.stat.compact .v{font-size:26px}
 
 /* Horizontal [icon] LABEL ... value row — used in the ВЫБРАННОЕ ШАССИ card
    (frameDetailBodyHTML) instead of the cramped square .stat tiles. */
@@ -425,10 +425,10 @@ button{font-family:inherit; cursor:pointer}
 .statrow-line.cols2{grid-template-columns:repeat(2,1fr)}
 .statrow{display:flex; align-items:center; gap:10px; background:var(--bg-grid); border:1px solid var(--line);
   border-radius:6px; padding:9px 12px}
-.statrow .k{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.06em; color:var(--mute); flex:1}
-.statrow .v{font-family:"Chakra Petch"; font-size:24px; color:var(--ink); line-height:1; flex-shrink:0}
+.statrow .k{font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.06em; color:var(--mute); flex:1}
+.statrow .v{font-family:"Chakra Petch"; font-size:26px; color:var(--ink); line-height:1; flex-shrink:0}
 .statrow.hl .v{color:var(--accent)}
-.hud .nomech{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); text-align:center; padding:14px 4px; letter-spacing:.05em}
+.hud .nomech{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--faint); text-align:center; padding:14px 4px; letter-spacing:.05em}
 
 /* stat glossary tooltip (hover icon, compcon.app-style).
    position:fixed + JS-computed coordinates (see wireStatTooltips()) instead
@@ -436,22 +436,22 @@ button{font-family:inherit; cursor:pointer}
    any scrollable ancestor (e.g. the HUD sidebar has overflow:auto for its
    own scrollbar), fixed positioning escapes that entirely. */
 .stattip{position:relative; display:inline-flex; align-items:center; justify-content:center; margin-left:4px; width:14px; height:14px;
-  cursor:help; vertical-align:middle; opacity:.8; transition:.15s; font-size:10px; color:var(--faint)}
+  cursor:help; vertical-align:middle; opacity:.8; transition:.15s; font-size:11px; color:var(--faint)}
 .stattip:hover{opacity:1; color:var(--accent)}
 .stattip.lg{width:26px; height:26px; margin-left:0; flex-shrink:0}
 .stattip-icon{width:100%; height:100%; object-fit:contain; display:block}
 .stattip-box{display:none; position:fixed;
   width:220px; max-width:62vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:8px;
-  padding:10px 12px; font-family:"Inter",sans-serif; font-size:11.5px; line-height:1.45; color:var(--ink);
+  padding:10px 12px; font-family:"Inter",sans-serif; font-size:12.5px; line-height:1.45; color:var(--ink);
   text-align:left; text-transform:none; z-index:1000; box-shadow:0 10px 28px rgba(0,0,0,.45); letter-spacing:normal; font-weight:400}
-.stattip-box b{display:block; margin-bottom:4px; color:var(--accent); font-family:"Chakra Petch"; font-size:12.5px; font-weight:500}
+.stattip-box b{display:block; margin-bottom:4px; color:var(--accent); font-family:"Chakra Petch"; font-size:13.5px; font-weight:500}
 
 /* ---- tabs ---- */
 .tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px}
 .tab{background:var(--panel); border:1px solid var(--line); color:var(--mute);
-  font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.05em;
-  padding:9px 13px; border-radius:6px; display:flex; align-items:center; gap:8px; transition:.15s}
-.tab .ix{color:var(--faint); font-size:10px}
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
+  padding:10px 15px; border-radius:6px; display:flex; align-items:center; gap:8px; transition:.15s}
+.tab .ix{color:var(--faint); font-size:11px}
 .tab:hover{color:var(--ink); border-color:var(--line-bright)}
 .tab.active{color:var(--accent); border-color:var(--accent); background:var(--panel-2);
   box-shadow:inset 0 0 0 1px var(--accent-glow)}
@@ -464,16 +464,16 @@ button{font-family:inherit; cursor:pointer}
 .section.show{display:block; animation:fade .3s ease}
 @keyframes fade{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
 .sechead{margin-bottom:16px}
-.sechead .mk{font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--accent); letter-spacing:.16em}
-.sechead h2{font-size:25px; margin-top:3px}
-.sechead p{color:var(--mute); font-size:13.5px; margin:6px 0 0; max-width:62ch}
+.sechead .mk{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--accent); letter-spacing:.16em}
+.sechead h2{font-size:27px; margin-top:3px}
+.sechead p{color:var(--mute); font-size:14.5px; margin:6px 0 0; max-width:62ch}
 
 /* form fields */
 .field{margin-bottom:14px}
-.field>label{display:block; font-family:"JetBrains Mono",monospace; font-size:11px;
+.field>label{display:block; font-family:"JetBrains Mono",monospace; font-size:12px;
   letter-spacing:.1em; color:var(--mute); margin-bottom:6px}
 .input,select,textarea{width:100%; background:var(--bg-grid); border:1px solid var(--line);
-  color:var(--ink); border-radius:6px; padding:9px 11px; font-family:inherit; font-size:14px; transition:.15s}
+  color:var(--ink); border-radius:6px; padding:9px 11px; font-family:inherit; font-size:15px; transition:.15s}
 .input:focus,select:focus,textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-glow)}
 .row2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
 @media(max-width:560px){.row2{grid-template-columns:1fr}}
@@ -482,12 +482,12 @@ button{font-family:inherit; cursor:pointer}
 .llpick{display:flex; align-items:center; gap:14px; background:var(--bg-grid);
   border:1px solid var(--line); border-radius:8px; padding:14px 16px}
 .llpick input[type=range]{flex:1; accent-color:var(--accent)}
-.llpick .num{font-family:"Chakra Petch"; font-size:34px; color:var(--accent); min-width:54px; text-align:center}
-.llpick .lab{font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--faint); letter-spacing:.08em}
+.llpick .num{font-family:"Chakra Petch"; font-size:37px; color:var(--accent); min-width:54px; text-align:center}
+.llpick .lab{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--faint); letter-spacing:.08em}
 
 /* generic item card grid */
 .grid{display:grid; gap:12px}
-.grid.cards{grid-template-columns:repeat(auto-fill,minmax(252px,1fr))}
+.grid.cards{grid-template-columns:repeat(auto-fill,minmax(288px,1fr))}
 .item{position:relative; background:var(--panel); border:1px solid var(--line);
   border-radius:8px; padding:13px 14px; transition:.15s; cursor:pointer}
 .item:hover{border-color:var(--line-bright)}
@@ -497,12 +497,12 @@ button{font-family:inherit; cursor:pointer}
 .item.static:hover{border-color:var(--line)}
 .item .src{position:absolute; top:0; left:0; bottom:0; width:3px; border-radius:8px 0 0 8px}
 .item .top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
-.item .nm{font-family:"Chakra Petch"; font-size:16px; line-height:1.2}
-.item .badge{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.06em;
+.item .nm{font-family:"Chakra Petch"; font-size:17.5px; line-height:1.2}
+.item .badge{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
   color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap}
 .item .badge.lock{color:var(--amber); border-color:var(--amber)}
 .item .tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:9px}
-.tag{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.03em;
+.tag{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em;
   color:var(--accent); background:var(--accent-deep); border-radius:4px; padding:2px 6px}
 .tag.sp{color:var(--amber); background:var(--amber-glow)}
 .tag.dmg{color:#ffcaa0; background:rgba(229,96,79,.16)}
@@ -511,19 +511,19 @@ button{font-family:inherit; cursor:pointer}
 .tag.glossary:hover{filter:brightness(1.25)}
 .tag.glossary.open{outline:1px solid currentColor}
 .tagdesc{background:var(--panel-2); border:1px solid var(--line-bright); border-radius:7px;
-  padding:10px 12px; margin-top:9px; font-size:12.5px; color:var(--mute)}
-.tagdesc b{color:var(--ink); font-family:"Chakra Petch"; font-size:13px}
-.item .desc{color:var(--mute); font-size:12.5px; margin-top:9px}
-.item .meta{font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--faint);
+  padding:10px 12px; margin-top:9px; font-size:13.5px; color:var(--mute)}
+.tagdesc b{color:var(--ink); font-family:"Chakra Petch"; font-size:14px}
+.item .desc{color:var(--mute); font-size:13.5px; margin-top:9px}
+.item .meta{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
   letter-spacing:.05em; margin-top:8px; display:flex; gap:10px; flex-wrap:wrap}
 
 /* stepper for skills/talents/hase */
 .stepper{display:flex; align-items:center; gap:8px}
-.stepbtn{width:30px; height:30px; border-radius:6px; background:var(--panel-2);
-  border:1px solid var(--line); color:var(--ink); font-size:17px; line-height:1; display:grid; place-items:center; transition:.12s}
+.stepbtn{width:34px; height:34px; border-radius:6px; background:var(--panel-2);
+  border:1px solid var(--line); color:var(--ink); font-size:18px; line-height:1; display:grid; place-items:center; transition:.12s}
 .stepbtn:hover{border-color:var(--accent); color:var(--accent)}
 .stepbtn:disabled{opacity:.32; cursor:not-allowed; border-color:var(--line); color:var(--faint)}
-.stepval{font-family:"Chakra Petch"; font-size:18px; min-width:48px; text-align:center; color:var(--accent)}
+.stepval{font-family:"Chakra Petch"; font-size:19.5px; min-width:48px; text-align:center; color:var(--accent)}
 .pips{display:flex; gap:3px}
 .pip{width:13px;height:6px;border-radius:2px;background:var(--panel-3); border:1px solid var(--line)}
 .pip.on{background:var(--accent); border-color:var(--accent)}
@@ -531,16 +531,16 @@ button{font-family:inherit; cursor:pointer}
 .listrow{display:flex; justify-content:space-between; align-items:center; gap:14px;
   background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px 14px}
 .listrow .info{min-width:0}
-.listrow .info .nm{font-family:"Chakra Petch"; font-size:16px}
-.listrow .info .ds{color:var(--mute); font-size:12.5px; margin-top:3px}
+.listrow .info .nm{font-family:"Chakra Petch"; font-size:17.5px}
+.listrow .info .ds{color:var(--mute); font-size:13.5px; margin-top:3px}
 .listrow.maxed{border-color:var(--accent)}
 .listrow.clickable{cursor:pointer; transition:.12s}
 .listrow.clickable:hover{border-color:var(--line-bright); background:var(--panel-2)}
 .listrow.locked{opacity:.68}
-.rowbadge{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.06em;
+.rowbadge{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
   color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap; flex-shrink:0}
 .rowbadge.lock{color:var(--amber); border-color:var(--amber)}
-.chevron{color:var(--faint); font-size:18px; flex-shrink:0; font-family:"Chakra Petch"}
+.chevron{color:var(--faint); font-size:19px; flex-shrink:0; font-family:"Chakra Petch"}
 .viewtoggle{display:flex; gap:8px; margin-bottom:12px}
 .profiles{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:11px}
 .pickitem{display:block}
@@ -550,8 +550,8 @@ button{font-family:inherit; cursor:pointer}
 
 /* talent rank descriptions */
 .rankbox{margin-top:10px; display:flex; flex-direction:column; gap:7px}
-.rankline{display:flex; gap:9px; font-size:12.5px; color:var(--faint); transition:.15s}
-.rankline .rk{font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--faint);
+.rankline{display:flex; gap:9px; font-size:13.5px; color:var(--faint); transition:.15s}
+.rankline .rk{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
   border:1px solid var(--line); border-radius:4px; padding:1px 6px; height:fit-content}
 .rankline.active{color:var(--ink)}
 .rankline.active .rk{color:var(--accent); border-color:var(--accent)}
@@ -561,8 +561,8 @@ button{font-family:inherit; cursor:pointer}
 .mount.integrated{border-color:var(--line-bright)}
 .mount .mhead{display:flex; align-items:center; justify-content:space-between; gap:10px;
   padding:11px 14px; background:var(--panel-2); border-bottom:1px solid var(--line)}
-.mount .mhead .mt{font-family:"Chakra Petch"; font-size:16px}
-.mount .mhead .cap{font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--faint); letter-spacing:.06em}
+.mount .mhead .mt{font-family:"Chakra Petch"; font-size:17.5px}
+.mount .mhead .cap{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); letter-spacing:.06em}
 .mount .slot{padding:10px 14px; border-bottom:1px dashed var(--line)}
 .mount .slot:last-child{border-bottom:0}
 .equipped{display:flex; align-items:center; justify-content:space-between; gap:12px}
@@ -571,26 +571,26 @@ button{font-family:inherit; cursor:pointer}
 .equipped .ei.clickable:hover{background:var(--panel-3)}
 .listrow .info.clickable{cursor:pointer; border-radius:6px; padding:2px 4px; margin:-2px -4px; transition:.12s}
 .listrow .info.clickable:hover{background:var(--panel-3)}
-.equipped .ei .en{font-family:"Chakra Petch"; font-size:15px}
-.equipped .ei .em{font-family:"JetBrains Mono",monospace; font-size:10.5px; color:var(--faint); margin-top:2px}
+.equipped .ei .en{font-family:"Chakra Petch"; font-size:16.5px}
+.equipped .ei .em{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); margin-top:2px}
 .empty-slot{display:flex; align-items:center; gap:10px; color:var(--faint);
-  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em}
+  font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.04em}
 
 .ghostbtn{background:transparent; border:1px dashed var(--line-bright); color:var(--accent);
-  font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.05em;
-  padding:7px 12px; border-radius:6px; transition:.15s}
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
+  padding:9px 14px; border-radius:6px; transition:.15s}
 .ghostbtn:hover{border-style:solid; box-shadow:0 0 0 3px var(--accent-glow)}
 .ghostbtn.warn{border-color:var(--red); color:var(--red)}
 .ghostbtn.warn:hover{box-shadow:0 0 0 3px rgba(229,96,79,.22)}
 .xbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--mute);
-  width:28px;height:28px; border-radius:6px; font-size:14px; transition:.12s}
+  width:32px;height:32px; border-radius:6px; font-size:15px; transition:.12s}
 .xbtn:hover{border-color:var(--red); color:var(--red)}
 .xbtn.expand:hover{border-color:var(--accent); color:var(--accent)}
 
 /* filters */
 .filters{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; align-items:center}
 .chip{background:var(--panel); border:1px solid var(--line); color:var(--mute);
-  font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.04em; padding:6px 11px;
+  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; padding:7px 13px;
   border-radius:20px; transition:.15s}
 .chip:hover{color:var(--ink)}
 .chip.on{color:#06140f; background:var(--accent); border-color:var(--accent); font-weight:600}
@@ -601,33 +601,33 @@ button{font-family:inherit; cursor:pointer}
   background:rgba(4,6,10,.74); backdrop-filter:blur(3px); padding:5vh 16px; overflow:auto}
 .modal.show{display:flex}
 .modal .panel{background:var(--panel); border:1px solid var(--line-bright); border-radius:10px;
-  width:min(760px,100%); box-shadow:var(--shadow)}
-.modal .mhd{display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid var(--line)}
-.modal .mhd h3{font-size:18px}
-.modal .mbd{padding:14px 16px; max-height:64vh; overflow:auto}
+  width:min(880px,94vw); box-shadow:var(--shadow)}
+.modal .mhd{display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--line)}
+.modal .mhd h3{font-size:20px}
+.modal .mbd{padding:18px 20px; max-height:70vh; overflow:auto}
 
 /* summary sheet */
 .sheet{display:grid; grid-template-columns:1fr 1fr; gap:16px}
 @media(max-width:760px){.sheet{grid-template-columns:1fr}}
 .sheet .full{grid-column:1/-1}
-.kv{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:13.5px}
-.kv .k{font-family:"JetBrains Mono",monospace; font-size:11px; color:var(--mute); letter-spacing:.04em}
-.sheet h3{font-family:"Chakra Petch"; font-size:17px; margin-bottom:10px;
+.kv{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:14.5px}
+.kv .k{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--mute); letter-spacing:.04em}
+.sheet h3{font-family:"Chakra Petch"; font-size:18.5px; margin-bottom:10px;
   padding-bottom:7px; border-bottom:1px solid var(--line)}
-.sheet h3 .hash{color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:13px}
+.sheet h3 .hash{color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:13.5px}
 .minilist{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px}
-.minilist li{font-size:13px; display:flex; gap:8px}
+.minilist li{font-size:14px; display:flex; gap:8px}
 .minilist li .mk{color:var(--accent); font-family:"JetBrains Mono",monospace}
 .minilist li.clickable{cursor:pointer; border-radius:5px; padding:2px 4px; margin:-2px -4px; transition:.12s}
 .minilist li.clickable:hover{background:var(--panel-2); color:var(--ink)}
 .warnbox{background:var(--amber-glow); border:1px solid var(--amber); border-radius:8px;
-  padding:11px 14px; color:var(--amber); font-size:12.5px; font-family:"JetBrains Mono",monospace; margin-bottom:14px}
+  padding:11px 14px; color:var(--amber); font-size:13.5px; font-family:"JetBrains Mono",monospace; margin-bottom:14px}
 
-.hint{color:var(--faint); font-size:12px; font-family:"JetBrains Mono",monospace; letter-spacing:.03em}
+.hint{color:var(--faint); font-size:13px; font-family:"JetBrains Mono",monospace; letter-spacing:.03em}
 .spacer-sm{height:8px}
 details.note{margin-top:6px}
-details.note summary{cursor:pointer; color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:11.5px}
-details.note .body{color:var(--mute); font-size:12.5px; margin-top:7px}
+details.note summary{cursor:pointer; color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:12.5px}
+details.note .body{color:var(--mute); font-size:13.5px; margin-top:7px}
 details.note .body ul{margin:5px 0; padding-left:18px}
 
 /* print */
@@ -1342,7 +1342,7 @@ function renderPilot(){
             <div class="lab" style="display:flex;justify-content:space-between;margin-top:4px">
               <span>LL0 · новобранец</span><span>LL12 · ветеран</span></div>
           </div>
-          <div class="lab" style="text-align:right">GRIT<br><b style="color:var(--accent);font-size:20px">+${Math.ceil(p.ll/2)}</b></div>
+          <div class="lab" style="text-align:right">GRIT<br><b style="color:var(--accent);font-size:22px">+${Math.ceil(p.ll/2)}</b></div>
         </div></div>
       <details class="note"><summary>Как считается бюджет?</summary><div class="body">
         На каждом LL вы получаете: <b>+1</b> очко навыков, талантов, мех-навыков и лицензий. GRIT = LL ÷ 2 (округление вверх) и добавляется к HP меха, спасброску и атакам. CORE-бонус выдаётся на каждом чётном уровне.
@@ -1480,7 +1480,7 @@ function renderHase(){
     const v=state.hase[h.k];
     return `<div class="item ${v?'sel':''}">
       <div class="top">
-        <div class="nm">${h.ru} <span class="mono" style="color:var(--faint);font-size:11px">${h.en}</span></div>
+        <div class="nm">${h.ru} <span class="mono" style="color:var(--faint);font-size:12px">${h.en}</span></div>
         <div class="badge">ранг ${v}/6</div></div>
       <div class="desc">${h.eff}</div>
       <div class="stepper" style="margin-top:12px">
@@ -1515,7 +1515,7 @@ function licenseRanksHTML(f){
     const list = byRank[rank];
     if(!frameHere && !list.length) return "";
     return `<div style="margin-bottom:14px">
-      <h4 style="font-family:'Chakra Petch';font-size:14px;margin-bottom:6px;color:var(--accent)">РАНГ ${rank}</h4>
+      <h4 style="font-family:'Chakra Petch';font-size:15px;margin-bottom:6px;color:var(--accent)">РАНГ ${rank}</h4>
       ${frameHere?`<div class="desc" style="margin-bottom:6px">🔓 Открывает само шасси <b>${esc(dispName(f))}</b>.</div>`:""}
       ${list.length?`<ul class="minilist">${list.map(line).join("")}</ul>`:""}
     </div>`;
@@ -1572,7 +1572,7 @@ function renderLicenses(){
     `Тратьте очки лицензий, чтобы открывать шасси, оружие и системы производителей. Каждый ранг лицензии = 1 очко (макс. 3). GMS доступен бесплатно. Потрачено ${d.b.license.used} из ${d.b.license.cap}. Кликните по карточке, чтобы увидеть, что открывает каждый ранг.`)
     + (over?`<div class="warnbox">⚠ Превышено очков лицензий на ${d.b.license.used-d.b.license.cap}.</div>`:"")
     + Object.entries(groups).map(([src,fr])=>`
-      <h3 style="font-family:'Chakra Petch';font-size:15px;margin:18px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
+      <h3 style="font-family:'Chakra Petch';font-size:16.5px;margin:18px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
       <div class="grid cards">${fr.map(f=>{
         const v=licRank(f.name);
         const nUnlock = [...L.weapons,...L.systems].filter(it=>it.license===f.name && (it.license_level||0)<=v).length;
@@ -1691,9 +1691,9 @@ function renderLoadout(){
   $("#tab").innerHTML = sechead("// 07 · ВООРУЖЕНИЕ",`Снаряжение — ${esc(dispName(d.frame))}`,
     `Установите оружие в крепления и системы в рамках системных очков (SP). Использовано SP: ${d.sp.used} из ${d.sp.cap}.`)
     + (over?`<div class="warnbox">⚠ Превышен лимит системных очков на ${d.sp.used-d.sp.cap} SP.</div>`:"")
-    + `<h3 style="font-family:'Chakra Petch';font-size:16px;margin:6px 0 12px">// КРЕПЛЕНИЯ ОРУЖИЯ</h3>
+    + `<h3 style="font-family:'Chakra Petch';font-size:17.5px;margin:6px 0 12px">// КРЕПЛЕНИЯ ОРУЖИЯ</h3>
        <div id="mounts"></div>
-       <h3 style="font-family:'Chakra Petch';font-size:16px;margin:24px 0 6px">// СИСТЕМЫ <span class="mono" style="font-size:11px;color:var(--faint)">(SP ${d.sp.used}/${d.sp.cap})</span></h3>
+       <h3 style="font-family:'Chakra Petch';font-size:17.5px;margin:24px 0 6px">// СИСТЕМЫ <span class="mono" style="font-size:12px;color:var(--faint)">(SP ${d.sp.used}/${d.sp.cap})</span></h3>
        <div class="spacer-sm"></div>
        <button class="ghostbtn" id="add-system">+ ДОБАВИТЬ СИСТЕМУ</button>
        <div class="grid" id="syslist" style="margin-top:12px"></div>`;
@@ -1919,7 +1919,7 @@ function weaponCardHTML(w){
   const lk=!unlocked(w);
   return `<div class="item static">
     <div class="src" style="background:${srcColor(w.source)}"></div>
-    <div class="top"><div class="nm" style="font-size:19px">${esc(w.name)}</div>
+    <div class="top"><div class="nm" style="font-size:21px">${esc(w.name)}</div>
       <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(w.license)+" "+w.license_level:tr(w.mount)}</div></div>
     <div class="meta" style="margin-top:6px">${tr(w.mount)} · ${tr(w.type)}${w.source?" · "+esc(w.source):""}</div>
     <div style="margin-top:11px">${weaponCardBody(w)}</div>
@@ -1944,7 +1944,7 @@ function systemCardHTML(s){
   const lk=!unlocked(s);
   return `<div class="item static">
     <div class="src" style="background:${srcColor(s.source)}"></div>
-    <div class="top"><div class="nm" style="font-size:19px">${esc(s.name)}</div>
+    <div class="top"><div class="nm" style="font-size:21px">${esc(s.name)}</div>
       <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(s.license)+" "+s.license_level:tr(s.type)}</div></div>
     <div class="meta" style="margin-top:6px">${esc(tr(s.type))}${s.source?" · "+esc(s.source):""}</div>
     <div style="margin-top:11px">${systemCardBody(s)}</div>
@@ -2274,7 +2274,7 @@ function coreCardHTML(c){
   const unl=coreBonusUnlocked(c);
   return `<div class="item static">
     <div class="src" style="background:${srcColor(c.source)}"></div>
-    <div class="top"><div class="nm" style="font-size:19px">${esc(c.name)}</div>
+    <div class="top"><div class="nm" style="font-size:21px">${esc(c.name)}</div>
       <div class="badge ${unl?'':'lock'}">${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
     <div style="margin-top:11px">${coreCardBody(c)}</div>
   </div>`;
