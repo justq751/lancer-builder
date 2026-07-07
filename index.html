@@ -435,16 +435,16 @@ button{font-family:inherit; cursor:pointer}
    of position:absolute — an absolutely-positioned tooltip gets clipped by
    any scrollable ancestor (e.g. the HUD sidebar has overflow:auto for its
    own scrollbar), fixed positioning escapes that entirely. */
-.stattip{position:relative; display:inline-flex; align-items:center; justify-content:center; margin-left:4px; width:14px; height:14px;
-  cursor:help; vertical-align:middle; opacity:.8; transition:.15s; font-size:11px; color:var(--faint)}
+.stattip{position:relative; display:inline-flex; align-items:center; justify-content:center; margin-left:5px; width:16px; height:16px;
+  cursor:help; vertical-align:middle; opacity:.8; transition:.15s; font-size:12px; color:var(--faint)}
 .stattip:hover{opacity:1; color:var(--accent)}
-.stattip.lg{width:26px; height:26px; margin-left:0; flex-shrink:0}
+.stattip.lg{width:38px; height:38px; margin-left:0; flex-shrink:0}
 .stattip-icon{width:100%; height:100%; object-fit:contain; display:block}
 .stattip-box{display:none; position:fixed;
-  width:220px; max-width:62vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:8px;
-  padding:10px 12px; font-family:"Inter",sans-serif; font-size:12.5px; line-height:1.45; color:var(--ink);
+  width:400px; max-width:80vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:9px;
+  padding:16px 18px; font-family:"Inter",sans-serif; font-size:16px; line-height:1.5; color:var(--ink);
   text-align:left; text-transform:none; z-index:1000; box-shadow:0 10px 28px rgba(0,0,0,.45); letter-spacing:normal; font-weight:400}
-.stattip-box b{display:block; margin-bottom:4px; color:var(--accent); font-family:"Chakra Petch"; font-size:13.5px; font-weight:500}
+.stattip-box b{display:block; margin-bottom:6px; color:var(--accent); font-family:"Chakra Petch"; font-size:18px; font-weight:500}
 
 /* ---- tabs ---- */
 .tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px}
