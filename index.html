@@ -488,6 +488,7 @@ button{font-family:inherit; cursor:pointer}
 /* generic item card grid */
 .grid{display:grid; gap:12px}
 .grid.cards{grid-template-columns:repeat(auto-fill,minmax(288px,1fr))}
+.grid.stacked{grid-template-columns:1fr}
 .item{position:relative; background:var(--panel); border:1px solid var(--line);
   border-radius:8px; padding:13px 14px; transition:.15s; cursor:pointer}
 .item:hover{border-color:var(--line-bright)}
@@ -1435,13 +1436,29 @@ function openCustomSkillEditor(id){
 }
 
 /* ============ TALENTS ============ */
+/* view mode toggle for the talents tab: "grid" (multi-column cards, default)
+   or "column" (single column, one talent after another) — persisted like
+   the picker view-mode toggle so the choice survives reloads. */
+let talentsViewMode = localStorage.getItem("talents_view_mode") || "grid";
+function talentsViewToggleHTML(){
+  return `<div class="viewtoggle">
+    <button class="chip ${talentsViewMode==='grid'?'on':''}" data-tvm="grid">▦ Сетка</button>
+    <button class="chip ${talentsViewMode==='column'?'on':''}" data-tvm="column">☰ Одна колонка</button>
+  </div>`;
+}
 function renderTalents(){
   const d=derived();
   const over=d.b.talent.used>d.b.talent.cap;
   $("#tab").innerHTML = sechead("// 03 · ПОДГОТОВКА","Таланты",
     `Каждый ранг таланта стоит 1 очко (макс. ранг 3). Потрачено ${d.b.talent.used} из ${d.b.talent.cap}.`)
     + (over?`<div class="warnbox">⚠ Превышен бюджет талантов на ${d.b.talent.used-d.b.talent.cap}.</div>`:"")
-    + `<div class="grid cards" id="tal-list"></div>`;
+    + talentsViewToggleHTML()
+    + `<div class="grid ${talentsViewMode==='column'?'stacked':'cards'}" id="tal-list"></div>`;
+  $$("#tab [data-tvm]").forEach(b=>b.onclick=()=>{
+    talentsViewMode=b.dataset.tvm;
+    localStorage.setItem("talents_view_mode", talentsViewMode);
+    renderTalents();
+  });
   const remaining=d.b.talent.cap-d.b.talent.used;
   $("#tal-list").innerHTML = L.talents.map(t=>{
     const v=state.talents[t.id]||0;
