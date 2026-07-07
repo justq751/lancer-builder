@@ -1,0 +1,17 @@
+{
+  "_comment": "Numeric, always-on bonuses that CORE bonuses grant to a mech stat. Keyed by the CORE bonus id (same id used in core_bonuses.json / lancer-data.json). Loaded by index.html alongside tags.json/glossary.json/stat_labels.json — if this file is missing or fails to load, the app just skips these bonuses (no crash), so it's safe to edit freely.",
+
+  "_format": "Each entry is either a flat stat bonus, or a 'size_step' bonus (used for the one CORE bonus in the base game that changes Size — see _size_step_comment below). You normally only need the flat form.",
+
+  "_flat_bonus_example": "\"cb_some_homebrew_bonus\": { \"hp\": 3 }  -->  adds +3 to the mech's final HP whenever that CORE bonus is selected. Valid stat keys: hp, armor, evasion, edef, heatcap, save, speed, sensor_range, tech_attack, repcap, sp. (armor is automatically capped at the game's max of 4 no matter how it's reached, so you don't need to handle that cap yourself.)",
+
+  "cb_reinforced_frame":        { "hp": 5 },
+  "cb_sloped_plating":          { "armor": 1 },
+  "cb_full_subjectivity_sync":  { "evasion": 2 },
+  "cb_the_lesson_of_disbelief": { "edef": 2 },
+  "cb_the_lesson_of_the_open_door": { "save": 2 },
+  "cb_superior_by_design":      { "heatcap": 2 },
+
+  "_size_step_comment": "Size in this game only ever sits on one of four values: 0.5, 1, 2, 3 — 'increase Size by one increment' (Fomorian Frame's wording) means move one step along that fixed track, not add a flat number. Mark any CORE bonus that does this with \"size_step\": true instead of a normal stat key; the app applies it by moving the frame's Size one step up that track, capped at 3. Only one CORE bonus in the base game does this, but if you add a homebrew one with the same kind of effect, reuse this flag rather than inventing a new number.",
+  "cb_fomorian_frame": { "size_step": true }
+}

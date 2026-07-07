@@ -743,6 +743,7 @@ async function loadBaseData() {
     core.tags = await fetchJSON("data/tags.json").catch(e => { console.warn("tags.json failed to load:", e); return []; });
     core.glossary = await fetchJSON("data/glossary.json").catch(e => { console.warn("glossary.json failed to load:", e); return {}; });
     core.stat_labels = await fetchJSON("data/stat_labels.json").catch(e => { console.warn("stat_labels.json failed to load:", e); return {}; });
+    core.core_stat_mods = await fetchJSON("data/core_bonus_stat_mods.json").catch(e => { console.warn("core_bonus_stat_mods.json failed to load:", e); return {}; });
     const packs = await Promise.all(
       CONTENT_PACKS.map(p => fetchJSON(p).catch(e => { console.warn("Pack failed to load:", p, e); return null; }))
     );
@@ -1127,6 +1128,31 @@ function systemStatBonusTotal(stat){
   }, 0);
 }
 
+/* CORE bonuses' numeric stat effects live in data/core_bonus_stat_mods.json
+   (loaded as L.core_stat_mods, see loadBaseData()) instead of being
+   hardcoded here — edit that file to add homebrew bonuses, no code changes
+   needed. Most entries are a flat {stat: N} add, read generically below.
+   The one exception is Size: "increase Size by one increment" isn't a flat
+   number, it moves along the fixed 0.5→1→2→3 track — any CORE bonus that
+   does this is marked with "size_step":true in the data file instead of a
+   normal stat key, and applyFomorianSize() below handles the step/cap. */
+function coreStatBonusTotal(stat){
+  const mods = L.core_stat_mods || {};
+  return state.cores.reduce((sum,id)=>{
+    const b=mods[id];
+    return sum + (b && typeof b[stat]==="number" ? b[stat] : 0);
+  }, 0);
+}
+const SIZE_STEPS=[0.5,1,2,3];
+function applyFomorianSize(size){
+  const mods = L.core_stat_mods || {};
+  const stepping = state.cores.some(id=>mods[id] && mods[id].size_step);
+  if(!stepping) return size;
+  const i=SIZE_STEPS.indexOf(size);
+  if(i<0) return Math.min(3,size+1); // unrecognized/custom size value: best-effort +1, still capped
+  return SIZE_STEPS[Math.min(i+1, SIZE_STEPS.length-1)];
+}
+
 function derived(){
   const ll = state.pilot.ll;
   const grit = Math.ceil(ll/2);
@@ -1146,16 +1172,17 @@ function derived(){
   if(f){
     const s=f.stats;
     mech = {
-      size:s.size, structure:s.structure, stress:s.stress, armor:s.armor,
-      hp:s.hp+grit+2*hull+systemStatBonusTotal("hp"),
+      size:applyFomorianSize(s.size), structure:s.structure, stress:s.stress,
+      armor:Math.min(4, s.armor+coreStatBonusTotal("armor")),
+      hp:s.hp+grit+2*hull+systemStatBonusTotal("hp")+coreStatBonusTotal("hp"),
       repcap:s.repcap+Math.floor(hull/2),
-      evasion:s.evasion+agility,
+      evasion:s.evasion+agility+coreStatBonusTotal("evasion"),
       speed:s.speed+Math.floor(agility/2),
-      edef:s.edef+systems,
+      edef:s.edef+systems+coreStatBonusTotal("edef"),
       tech_attack:s.tech_attack+systems,
-      heatcap:s.heatcap+engineering,
+      heatcap:s.heatcap+engineering+coreStatBonusTotal("heatcap"),
       sensor_range:s.sensor_range,
-      save:s.save+grit,
+      save:s.save+grit+coreStatBonusTotal("save"),
       sp:s.sp+Math.floor(systems/2),
       limited_bonus:Math.floor(engineering/2),
       attack:grit,
@@ -1648,8 +1675,14 @@ function frameTraitsCoreHTML(f){
       ${cs.active_name?`<div><b>CORE-актив — ${esc(cs.active_name)}:</b> <span class="desc">${rich(cs.active_effect)}</span></div>`:""}`:"";
   return (traits?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px">ОСОБЕННОСТИ</h3>${traits}`:"") + core;
 }
-/* Full frame detail: meta line + description + stat grid + traits/CORE. */
-function frameDetailBodyHTML(f){
+/* Full frame detail: meta line + description + stat grid + traits/CORE.
+   `computed`, if passed, is the fully-derived mech stat object (grit/HASE/
+   CORE bonuses already folded in) — used when this is the pilot's actual
+   equipped frame, so the numbers here match what's shown elsewhere (HUD,
+   ИТОГ). When browsing a frame that ISN'T equipped yet, `computed` is
+   omitted and this falls back to the frame's plain base stats, since none
+   of those bonuses apply until the frame is actually selected. */
+function frameDetailBodyHTML(f, computed){
   const statRows = [
     ["structure","hp","armor"],
     ["stress","heatcap"],
@@ -1658,10 +1691,11 @@ function frameDetailBodyHTML(f){
     ["sensor_range","repcap"],
     ["save","sp"],
   ];
+  const vals = computed || f.stats;
   const rowsHTML = statRows.map(keys=>{
     const cols = keys.length===3 ? "cols3" : "cols2";
     return `<div class="statrow-line ${cols}">${keys.map(k=>
-      `<div class="statrow">${statIconHTML(k,"lg")}<span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span><span class="v">${f.stats[k]}</span></div>`
+      `<div class="statrow">${statIconHTML(k,"lg")}<span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span><span class="v">${vals[k]}</span></div>`
     ).join("")}</div>`;
   }).join("");
   return `
@@ -1682,7 +1716,7 @@ function renderFrame(){
             <span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.source)}</span>
             <button class="xbtn expand" id="toggle-frame-summary" title="${frameSummaryOpen?'Свернуть':'Развернуть'}">${frameSummaryOpen?'⌄':'›'}</button>
           </span></div>
-        ${frameSummaryOpen?`<div class="body">${frameDetailBodyHTML(d.frame)}</div>`:""}
+        ${frameSummaryOpen?`<div class="body">${frameDetailBodyHTML(d.frame, d.mech)}</div>`:""}
       </div>` : "")
     + `<div class="filters" id="frame-filters">
         ${["ALL","GMS","IPS-N","SSC","HORUS","HA"].map(s=>`<button class="chip ${frameFilter===s?'on':''}" data-ff="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}
@@ -1732,7 +1766,7 @@ function renderFrame(){
 function openFrame(id){
   const f=M.frame[id];
   const isSel=state.mech.frameId===id;
-  modal(dispName(f), frameDetailBodyHTML(f));
+  modal(dispName(f), frameDetailBodyHTML(f, isSel?derived().mech:null));
   const mhd=$("#modal .mhd");
   const btn=document.createElement("button");
   btn.className="toolbtn";
