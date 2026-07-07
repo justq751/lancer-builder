@@ -2418,17 +2418,37 @@ function renderCore(){
     const list=L.core_bonuses
       .filter(c=>!state.cores.includes(c.id))
       .filter(c=>coreFilter==="ALL"||c.source===coreFilter)
-      .filter(c=>!coreSearch||(c.name+" "+c.source).toLowerCase().includes(coreSearch.toLowerCase()))
-      .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(coreBonusUnlocked(b)-coreBonusUnlocked(a))||a.name.localeCompare(b.name));
-    $("#core-list").innerHTML=list.map(c=>{
-      const unl=coreBonusUnlocked(c);
-      return `<div class="item ${!unl?'locked':''}" data-c="${c.id}">
-        <div class="src" style="background:${srcColor(c.source)}"></div>
-        <div class="top"><div class="nm">${esc(c.name)}</div>
-          <div class="badge ${unl?'':'lock'}">${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
-      </div>`;
-    }).join("")||`<div class="hint">// нет доступных CORE-бонусов по этому запросу</div>`;
+      .filter(c=>!coreSearch||(c.name+" "+c.source).toLowerCase().includes(coreSearch.toLowerCase()));
+    // Group by manufacturer (GMS first, then IPS-N/SSC/HORUS/HA/EXOTIC in
+    // that fixed order) — same layout as ШАССИ/ЛИЦЕНЗИИ: each source is its
+    // own <div class="grid cards">, which is what forces the next
+    // manufacturer's bonuses onto a new row instead of interleaving.
+    const groups={};
+    list.forEach(c=>(groups[c.source]=groups[c.source]||[]).push(c));
+    const srcKeys=Object.keys(groups).sort((a,b)=>sourceOrder(a)-sourceOrder(b));
+    const dNow=derived();
+    const slotsFull=state.cores.length>=dNow.b.core.cap;
+    $("#core-list").innerHTML = srcKeys.length ? srcKeys.map(src=>{
+      const fr=groups[src].sort((a,b)=>(coreBonusUnlocked(b)-coreBonusUnlocked(a))||a.name.localeCompare(b.name));
+      return `<h3 style="font-family:'Chakra Petch';font-size:16.5px;margin:20px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
+        <div class="grid cards">${fr.map(c=>{
+          const unl=coreBonusUnlocked(c);
+          return `<div class="item ${!unl?'locked':''}" data-c="${c.id}">
+            <div class="src" style="background:${srcColor(c.source)}"></div>
+            <div class="top"><div class="nm">${esc(c.name)}</div>
+              <div class="badge ${unl?'':'lock'}">${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
+            <button class="ghostbtn ${slotsFull?'':(unl?'':'warn')}" data-pickcore="${c.id}" ${slotsFull?"disabled":""}
+              style="margin-top:11px; width:100%; text-align:center">${slotsFull?`⚠ Лимит исчерпан (${state.cores.length}/${dNow.b.core.cap})`:(unl?"✓ Выбрать этот CORE-бонус":"⚠ Выбрать всё равно")}</button>
+          </div>`;
+        }).join("")}</div>`;
+    }).join("") : `<div class="hint">// нет доступных CORE-бонусов по этому запросу</div>`;
     $$("#core-list .item").forEach(it=>it.onclick=()=>openCoreDetail(it.dataset.c));
+    $$("#core-list [data-pickcore]").forEach(b=>b.onclick=e=>{
+      e.stopPropagation();
+      const id=b.dataset.pickcore, dd=derived();
+      if(state.cores.length>=dd.b.core.cap) return;
+      state.cores.push(id); render();
+    });
   };
   $$("#core-filters .chip").forEach(ch=>ch.onclick=()=>{
     coreFilter=ch.dataset.cf;
