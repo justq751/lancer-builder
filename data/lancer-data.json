@@ -3652,10 +3652,56 @@
    "license": "Barbarossa",
    "license_level": 3,
    "sp": 0,
-   "effect": null,
+   "effect": "The siege cannon is the Armory’s quintessential artillery piece: a howitzer cannon fed by an automated loading system. Typically mounted on long-range mechs deployed in artillery or squad-support roles, siege cannons are capable of both indirect and direct fire as the situation demands with variable ammunition options.",
    "on_hit": null,
-   "on_attack": null,
-   "on_crit": null
+   "on_attack": "Choose to fire in either siege mode or direct fire mode.",
+   "on_crit": null,
+   "profiles": [
+    {
+     "name": "Siege Mode",
+     "damage": [
+      {
+       "type": "Explosive",
+       "val": "3d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 30
+      },
+      {
+       "type": "Blast",
+       "val": 2
+      }
+     ],
+     "tags": [
+      "Arcing",
+      "Ordnance",
+      "Loading",
+      "Heat 4 (Self)"
+     ]
+    },
+    {
+     "name": "Direct Fire Mode",
+     "damage": [
+      {
+       "type": "Explosive",
+       "val": "3d6"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 20
+      }
+     ],
+     "tags": [
+      "Knockback 2",
+      "Heat 2 (Self)"
+     ]
+    }
+   ]
   },
   {
    "id": "mw_krakatoa_thermobaric_flamethrower",

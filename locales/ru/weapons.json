@@ -759,8 +759,26 @@
    "ru": "Осадная пушка"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "The siege cannon is the Armory’s quintessential artillery piece: a howitzer cannon fed by an automated loading system. Typically mounted on long-range mechs deployed in artillery or squad-support roles, siege cannons are capable of both indirect and direct fire as the situation demands with variable ammunition options.",
+   "ru": "Осадная пушка — типичное артиллерийское орудие Арсенала: гаубица с автоматизированной системой заряжания. Обычно устанавливаемая на дальнобойные мехи, развёрнутые в роли артиллерии или поддержки отряда, осадная пушка способна вести как непрямой, так и прямой огонь в зависимости от ситуации, с переменными вариантами боеприпасов."
+  },
+  "on_attack": {
+   "en": "Choose to fire in either siege mode or direct fire mode.",
+   "ru": "Выберите режим стрельбы: осадный или прямой наводки."
+  },
+  "profiles": {
+   "Siege Mode": {
+    "name": {
+     "en": "Siege Mode",
+     "ru": "Осадный режим"
+    }
+   },
+   "Direct Fire Mode": {
+    "name": {
+     "en": "Direct Fire Mode",
+     "ru": "Режим прямой наводки"
+    }
+   }
   }
  },
  "mw_krakatoa_thermobaric_flamethrower": {
