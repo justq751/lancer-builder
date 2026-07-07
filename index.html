@@ -1072,7 +1072,7 @@ function statKeyHTML(k){
   const box=document.getElementById("global-stattip");
   document.addEventListener("mouseover", e=>{
     const tip=e.target.closest(".stattip"); if(!tip) return;
-    box.innerHTML = `<b>${tip.dataset.tipname}</b><br>${tip.dataset.tipdesc}`;
+    box.innerHTML = `<b>${tip.dataset.tipname}</b>${tip.dataset.tipdesc}`;
     box.style.display="block";
     const r=tip.getBoundingClientRect();
     const bw=box.offsetWidth, bh=box.offsetHeight;
