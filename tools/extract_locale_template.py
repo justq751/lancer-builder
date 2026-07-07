@@ -239,6 +239,16 @@ def build_glossary(data, old):
     return out
 
 
+def build_stat_labels(data, old):
+    """stat_labels.json is a flat {key: "TEXT"} map (not {name, description}
+    like most categories) — used for the full-length stat names shown in
+    the ВЫБРАННОЕ ШАССИ row layout."""
+    out = {}
+    for key, text in data.get("stat_labels", {}).items():
+        out[key] = pair(text, old.get(key))
+    return out
+
+
 BUILDERS = {
     "frames.json": build_frames,
     "weapons.json": build_weapons,
@@ -251,6 +261,7 @@ BUILDERS = {
     "manufacturers.json": build_manufacturers,
     "tags.json": build_tags,
     "glossary.json": build_glossary,
+    "stat_labels.json": build_stat_labels,
 }
 
 
@@ -264,6 +275,9 @@ def load_combined_data():
     glossary_file = ROOT / "data" / "glossary.json"
     if glossary_file.exists():
         data["glossary"] = json.loads(glossary_file.read_text(encoding="utf-8"))
+    stat_labels_file = ROOT / "data" / "stat_labels.json"
+    if stat_labels_file.exists():
+        data["stat_labels"] = json.loads(stat_labels_file.read_text(encoding="utf-8"))
     if PACKS_DIR.exists():
         for pack_file in sorted(PACKS_DIR.glob("*.json")):
             pack = json.loads(pack_file.read_text(encoding="utf-8"))

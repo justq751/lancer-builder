@@ -1,0 +1,54 @@
+{
+ "structure": {
+  "en": "STRUCTURE",
+  "ru": "СТРУКТУРА"
+ },
+ "hp": {
+  "en": "HP",
+  "ru": "ОЧКИ ЗДОРОВЬЯ"
+ },
+ "armor": {
+  "en": "ARMOR",
+  "ru": "БРОНЯ"
+ },
+ "stress": {
+  "en": "STRESS",
+  "ru": "СТРЕСС"
+ },
+ "heatcap": {
+  "en": "HEAT CAPACITY",
+  "ru": "ТЕПЛО"
+ },
+ "evasion": {
+  "en": "EVASION",
+  "ru": "УКЛОНЕНИЕ"
+ },
+ "speed": {
+  "en": "SPEED",
+  "ru": "СКОРОСТЬ"
+ },
+ "edef": {
+  "en": "E-DEFENSE",
+  "ru": "Э-ЗАЩИТА"
+ },
+ "tech_attack": {
+  "en": "TECH ATTACK",
+  "ru": "ТЕХ-АТАКА"
+ },
+ "sensor_range": {
+  "en": "SENSORS",
+  "ru": "СЕНСОР"
+ },
+ "repcap": {
+  "en": "REPAIR CAPACITY",
+  "ru": "РЕМОНТ"
+ },
+ "save": {
+  "en": "SAVE TARGET",
+  "ru": "СПАС БРОСОК"
+ },
+ "sp": {
+  "en": "SYSTEM POINTS",
+  "ru": "ОЧКИ СИСТЕМЫ"
+ }
+}

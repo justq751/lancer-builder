@@ -1,0 +1,15 @@
+{
+ "structure": "STRUCTURE",
+ "hp": "HP",
+ "armor": "ARMOR",
+ "stress": "STRESS",
+ "heatcap": "HEAT CAPACITY",
+ "evasion": "EVASION",
+ "speed": "SPEED",
+ "edef": "E-DEFENSE",
+ "tech_attack": "TECH ATTACK",
+ "sensor_range": "SENSORS",
+ "repcap": "REPAIR CAPACITY",
+ "save": "SAVE TARGET",
+ "sp": "SYSTEM POINTS"
+}

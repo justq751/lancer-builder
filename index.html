@@ -716,7 +716,7 @@ let currentLang = localStorage.getItem("lancer_lang") || "ru";
 
 const LOCALE_CATEGORY_FILES = [
   "enums", "frames", "weapons", "systems", "talents",
-  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags", "glossary"
+  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags", "glossary", "stat_labels"
 ];
 
 async function fetchJSON(url) {
@@ -739,6 +739,7 @@ async function loadBaseData() {
     const core = await fetchJSON("data/lancer-data.json");
     core.tags = await fetchJSON("data/tags.json").catch(e => { console.warn("tags.json failed to load:", e); return []; });
     core.glossary = await fetchJSON("data/glossary.json").catch(e => { console.warn("glossary.json failed to load:", e); return {}; });
+    core.stat_labels = await fetchJSON("data/stat_labels.json").catch(e => { console.warn("stat_labels.json failed to load:", e); return {}; });
     const packs = await Promise.all(
       CONTENT_PACKS.map(p => fetchJSON(p).catch(e => { console.warn("Pack failed to load:", p, e); return null; }))
     );
@@ -876,6 +877,17 @@ function localizeData(base, locale) {
     }
   }
 
+  // stat_labels: flat {key: "TEXT"} map (full-length stat names shown in the
+  // ВЫБРАННОЕ ШАССИ row layout) — same overlay idea as glossary, but each
+  // value is a bare string rather than {name, description}.
+  if (L.stat_labels && locale.stat_labels) {
+    for (const key in L.stat_labels) {
+      const t = locale.stat_labels[key];
+      if (!t) continue;
+      L.stat_labels[key] = pickText(L.stat_labels[key], t);
+    }
+  }
+
   return L;
 }
 
@@ -917,7 +929,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-06-stat-layout-redesign";
+const APP_BUILD = "2026-07-06-stat-labels-in-locales";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1033,6 +1045,7 @@ const STAT_ICONS = {
   tech_attack: "assets/icons/stat-tech_attack.png",
   save: "assets/icons/stat-save.png",
   sp: "assets/icons/stat-sp.png",
+  size: "assets/icons/stat-size.png",
 };
 
 /* Just the hoverable tooltip-icon span for a stat — used standalone by the
@@ -1607,7 +1620,7 @@ function frameDetailBodyHTML(f){
   const rowsHTML = statRows.map(keys=>{
     const cols = keys.length===3 ? "cols3" : "cols2";
     return `<div class="statrow-line ${cols}">${keys.map(k=>
-      `<div class="statrow">${statIconHTML(k,"lg")}<span class="k">${STAT_RU[k][0]}</span><span class="v">${f.stats[k]}</span></div>`
+      `<div class="statrow">${statIconHTML(k,"lg")}<span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span><span class="v">${f.stats[k]}</span></div>`
     ).join("")}</div>`;
   }).join("");
   return `
