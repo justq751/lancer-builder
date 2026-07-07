@@ -604,8 +604,9 @@ button{font-family:inherit; cursor:pointer}
 .modal.show{display:flex}
 .modal .panel{background:var(--panel); border:1px solid var(--line-bright); border-radius:10px;
   width:min(880px,94vw); box-shadow:var(--shadow)}
-.modal .mhd{display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid var(--line)}
-.modal .mhd h3{font-size:20px}
+.modal .mhd{display:flex; align-items:center; justify-content:flex-start; gap:14px; padding:16px 20px; border-bottom:1px solid var(--line)}
+.modal .mhd h3{flex:0 1 auto; min-width:0; font-size:20px}
+.modal .mhd .mclose{margin-left:auto; flex-shrink:0}
 .modal .mbd{padding:18px 20px; max-height:70vh; overflow:auto}
 
 /* summary sheet */
@@ -1635,6 +1636,7 @@ function renderLicenses(){
 
 /* ============ FRAME ============ */
 let frameFilter="ALL";
+let frameSummaryOpen=true; // collapse state for the "ВЫБРАННОЕ ШАССИ" summary card
 /* Traits + CORE system markup, shared by the frame detail modal, the
    selected-frame card on the ШАССИ tab, and the ИТОГ (summary) tab. */
 function frameTraitsCoreHTML(f){
@@ -1676,8 +1678,11 @@ function renderFrame(){
     + (d.frame ? `
       <div class="card" style="margin-bottom:20px">
         <div class="head"><span class="lbl"><b>//</b> ВЫБРАННОЕ ШАССИ — ${esc(dispName(d.frame))}</span>
-          <span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.source)}</span></div>
-        <div class="body">${frameDetailBodyHTML(d.frame)}</div>
+          <span style="display:flex; align-items:center; gap:10px">
+            <span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.source)}</span>
+            <button class="xbtn expand" id="toggle-frame-summary" title="${frameSummaryOpen?'Свернуть':'Развернуть'}">${frameSummaryOpen?'⌄':'›'}</button>
+          </span></div>
+        ${frameSummaryOpen?`<div class="body">${frameDetailBodyHTML(d.frame)}</div>`:""}
       </div>` : "")
     + `<div class="filters" id="frame-filters">
         ${["ALL","GMS","IPS-N","SSC","HORUS","HA"].map(s=>`<button class="chip ${frameFilter===s?'on':''}" data-ff="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}
@@ -1708,24 +1713,41 @@ function renderFrame(){
             <span class="tag">СКОР ${s.speed}</span>
           </div>
           <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
+          <button class="ghostbtn" data-pickframe="${f.id}" ${sel?"disabled":""}
+            style="margin-top:11px; width:100%; text-align:center">${sel?"✓ ВЫБРАНО":"▶ ВЫБРАТЬ ЭТО ШАССИ"}</button>
         </div>`;
       }).join("")}</div>`;
   }).join("");
   $$("#frame-filters .chip").forEach(c=>c.onclick=()=>{frameFilter=c.dataset.ff; renderFrame();});
   $$("#frame-list .item").forEach(it=>it.onclick=()=>openFrame(it.dataset.frame));
+  $$("#frame-list [data-pickframe]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
+    const id=b.dataset.pickframe, fr=M.frame[id];
+    if(state.mech.frameId!==id){ state.mech.frameId=id; state.mech.mounts=buildMounts(fr); }
+    render();
+  });
+  const toggleBtn=$("#toggle-frame-summary");
+  if(toggleBtn) toggleBtn.onclick=()=>{ frameSummaryOpen=!frameSummaryOpen; renderFrame(); };
 }
 function openFrame(id){
   const f=M.frame[id];
-  modal(dispName(f), frameDetailBodyHTML(f) + `
-    <div style="margin-top:18px;display:flex;gap:10px">
-      <button class="toolbtn" style="border-color:var(--accent);color:var(--accent)" id="pick-frame">▶ ВЫБРАТЬ ЭТО ШАССИ</button>
-      <button class="toolbtn" id="close-frame">ОТМЕНА</button>
-    </div>`);
-  $("#pick-frame").onclick=()=>{
-    if(state.mech.frameId!==id){ state.mech.frameId=id; state.mech.mounts=buildMounts(f); }
-    closeModal(); render();
-  };
-  $("#close-frame").onclick=closeModal;
+  const isSel=state.mech.frameId===id;
+  modal(dispName(f), frameDetailBodyHTML(f));
+  const mhd=$("#modal .mhd");
+  const btn=document.createElement("button");
+  btn.className="toolbtn";
+  btn.style.borderColor="var(--accent)"; btn.style.color="var(--accent)";
+  if(isSel){
+    btn.textContent="✓ ВЫБРАНО";
+    btn.disabled=true; btn.style.opacity=".6";
+  } else {
+    btn.textContent="▶ ВЫБРАТЬ ЭТО ШАССИ";
+    btn.onclick=()=>{
+      state.mech.frameId=id; state.mech.mounts=buildMounts(f);
+      closeModal(); render();
+    };
+  }
+  mhd.insertBefore(btn, mhd.querySelector(".mclose"));
 }
 
 /* ============ LOADOUT ============ */
