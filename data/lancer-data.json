@@ -2289,10 +2289,53 @@
    "license": "Drake",
    "license_level": 1,
    "sp": 0,
-   "effect": null,
+   "effect": "IPS-N’s assault cannon of choice is a deep-cooled autocannon, fieldable as a mounted weapon or manipulator-operated platform. The cannon, simple in its functionality, can be fed by either box magazine or belt and is a standard inclusion in almost any among IPS-N fleet orders. In micro and zero-gravity environments, Drake pilots commonly employ the assault cannon as an additional propulsion system.",
    "on_hit": null,
    "on_attack": null,
-   "on_crit": null
+   "on_crit": null,
+   "profiles": [
+    {
+     "name": "Standard",
+     "damage": [
+      {
+       "type": "Kinetic",
+       "val": "1d6+2"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 8
+      }
+     ],
+     "tags": [
+      "Overkill",
+      "Heat 1 (Self)"
+     ],
+     "effect": "You can spin up this weapon’s barrels as a quick action.<br><b>Spin Up Assault Cannon</b> — Spin up the barrels of the Assault Cannon, Slowing your mech and allowing use of its “Spin-Up Mode” profile."
+    },
+    {
+     "name": "Spin-Up Mode",
+     "damage": [
+      {
+       "type": "Kinetic",
+       "val": "1d6+2"
+      }
+     ],
+     "range": [
+      {
+       "type": "Range",
+       "val": 8
+      }
+     ],
+     "tags": [
+      "Overkill",
+      "Heat 1 (Self)",
+      "Reliable 3"
+     ],
+     "effect": "While spinning, this weapon gains Reliable 3, but you become Slowed.<br>You can end this effect as a protocol.<br><b>Cease Spin-Up</b> — End the Assault Cannon's “Spin-Up Mode”, ending the Slowed condition and allowing the Assault Cannon to be used with its “Standard” profile."
+    }
+   ]
   },
   {
    "id": "mw_concussion_missiles",

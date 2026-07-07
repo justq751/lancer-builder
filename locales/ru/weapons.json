@@ -249,8 +249,30 @@
    "ru": "Штурмовая пушка"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "IPS-N’s assault cannon of choice is a deep-cooled autocannon, fieldable as a mounted weapon or manipulator-operated platform. The cannon, simple in its functionality, can be fed by either box magazine or belt and is a standard inclusion in almost any among IPS-N fleet orders. In micro and zero-gravity environments, Drake pilots commonly employ the assault cannon as an additional propulsion system.",
+   "ru": "Штурмовая пушка, которую предпочитает IPS-N — глубоко охлаждаемая автопушка, применимая и как установленное на мех оружие, и как платформа с ручным манипулятором. Пушка, простая по своей конструкции, может питаться как из коробчатого магазина, так и лентой, и является стандартным пунктом почти в любом флотском заказе IPS-N. В условиях микро- и нулевой гравитации пилоты «Дрейков» часто используют штурмовую пушку как дополнительную двигательную систему."
+  },
+  "profiles": {
+   "Standard": {
+    "name": {
+     "en": "Standard",
+     "ru": "Стандартный"
+    },
+    "effect": {
+     "en": "You can spin up this weapon’s barrels as a quick action.<br><b>Spin Up Assault Cannon</b> — Spin up the barrels of the Assault Cannon, Slowing your mech and allowing use of its “Spin-Up Mode” profile.",
+     "ru": "Вы можете раскрутить стволы этого оружия как быстрое действие.<br><b>Раскрутить штурмовую пушку</b> — Раскрутите стволы Штурмовой пушки, получая Замедление и открывая доступ к её профилю «Режим раскрутки»."
+    }
+   },
+   "Spin-Up Mode": {
+    "name": {
+     "en": "Spin-Up Mode",
+     "ru": "Режим раскрутки"
+    },
+    "effect": {
+     "en": "While spinning, this weapon gains Reliable 3, but you become Slowed.<br>You can end this effect as a protocol.<br><b>Cease Spin-Up</b> — End the Assault Cannon's “Spin-Up Mode”, ending the Slowed condition and allowing the Assault Cannon to be used with its “Standard” profile.",
+     "ru": "Пока пушка раскручена, это оружие получает Надёжное 3, но вы становитесь Замедлены.<br>Вы можете прекратить этот эффект как протокол.<br><b>Прекратить раскрутку</b> — Завершите «Режим раскрутки» Штурмовой пушки, снимая Замедление и открывая доступ к профилю «Стандартный»."
+    }
+   }
   }
  },
  "mw_concussion_missiles": {
