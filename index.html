@@ -409,6 +409,25 @@ button{font-family:inherit; cursor:pointer}
 .stat .k{font-family:"JetBrains Mono",monospace; font-size:8.5px; letter-spacing:.07em; color:var(--faint); display:block; min-height:2.2em}
 .stat .v{font-family:"Chakra Petch"; font-size:19px; color:var(--ink); line-height:1}
 .stat.hl .v{color:var(--accent)}
+
+/* Compact icon+value tile (no text label) — used in the СВОДКА МЕХА HUD
+   card. Value font size intentionally matches .statrow .v below, so both
+   this and the ВЫБРАННОЕ ШАССИ card read at the same visual scale. */
+.stat.compact{display:flex; align-items:center; justify-content:center; gap:9px; padding:11px 8px}
+.stat.compact .v{font-size:24px}
+
+/* Horizontal [icon] LABEL ... value row — used in the ВЫБРАННОЕ ШАССИ card
+   (frameDetailBodyHTML) instead of the cramped square .stat tiles. */
+.statrows{margin-bottom:16px}
+.statrow-line{display:grid; gap:8px; margin-bottom:8px}
+.statrow-line:last-child{margin-bottom:0}
+.statrow-line.cols3{grid-template-columns:repeat(3,1fr)}
+.statrow-line.cols2{grid-template-columns:repeat(2,1fr)}
+.statrow{display:flex; align-items:center; gap:10px; background:var(--bg-grid); border:1px solid var(--line);
+  border-radius:6px; padding:9px 12px}
+.statrow .k{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.06em; color:var(--mute); flex:1}
+.statrow .v{font-family:"Chakra Petch"; font-size:24px; color:var(--ink); line-height:1; flex-shrink:0}
+.statrow.hl .v{color:var(--accent)}
 .hud .nomech{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); text-align:center; padding:14px 4px; letter-spacing:.05em}
 
 /* stat glossary tooltip (hover icon, compcon.app-style).
@@ -419,6 +438,7 @@ button{font-family:inherit; cursor:pointer}
 .stattip{position:relative; display:inline-flex; align-items:center; justify-content:center; margin-left:4px; width:14px; height:14px;
   cursor:help; vertical-align:middle; opacity:.8; transition:.15s; font-size:10px; color:var(--faint)}
 .stattip:hover{opacity:1; color:var(--accent)}
+.stattip.lg{width:26px; height:26px; margin-left:0; flex-shrink:0}
 .stattip-icon{width:100%; height:100%; object-fit:contain; display:block}
 .stattip-box{display:none; position:fixed;
   width:220px; max-width:62vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:8px;
@@ -897,7 +917,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-05-self-hosted-fonts";
+const APP_BUILD = "2026-07-06-stat-layout-redesign";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1002,6 +1022,8 @@ const STAT_RU = {
 const STAT_ICONS = {
   hp: "assets/icons/stat-hp.png",
   armor: "assets/icons/stat-armor.png",
+  structure: "assets/icons/stat-structure.png",
+  stress: "assets/icons/stat-stress.png",
   heatcap: "assets/icons/stat-heatcap.png",
   repcap: "assets/icons/stat-repcap.png",
   evasion: "assets/icons/stat-evasion.png",
@@ -1013,13 +1035,20 @@ const STAT_ICONS = {
   sp: "assets/icons/stat-sp.png",
 };
 
+/* Just the hoverable tooltip-icon span for a stat — used standalone by the
+   two new bigger stat layouts (statRowHTML / compact HUD tiles). `size`
+   picks the CSS size variant (see .stattip.lg in the stylesheet). */
+function statIconHTML(k, size){
+  const g = L && L.glossary && L.glossary[k];
+  const cls = size ? `stattip ${size}` : "stattip";
+  if(!g) return `<span class="${cls}">ⓘ</span>`;
+  const icon = STAT_ICONS[k] ? `<img class="stattip-icon" src="${STAT_ICONS[k]}" alt="">` : "ⓘ";
+  return `<span class="${cls}" data-tipname="${esc(g.name)}" data-tipdesc="${esc(g.description)}">${icon}</span>`;
+}
 function statKeyHTML(k){
   const g = L && L.glossary && L.glossary[k];
   if(!g) return STAT_RU[k][0];
-  const icon = STAT_ICONS[k]
-    ? `<img class="stattip-icon" src="${STAT_ICONS[k]}" alt="">`
-    : "ⓘ";
-  return `${STAT_RU[k][0]}<span class="stattip" data-tipname="${esc(g.name)}" data-tipdesc="${esc(g.description)}">${icon}</span>`;
+  return `${STAT_RU[k][0]}${statIconHTML(k)}`;
 }
 /* Delegated (registered once, survives re-renders) — shows the stat
    glossary tooltip at a fixed screen position computed from the hovered
@@ -1207,7 +1236,7 @@ function renderHUD(){
     <div class="statgrid">
       ${["hp","evasion","edef","heatcap","speed","armor","sensor_range","tech_attack","save","repcap","size","sp"].map(k=>{
         const hl=["hp","evasion","sp"].includes(k)?"hl":"";
-        return `<div class="stat ${hl}"><span class="k">${statKeyHTML(k)}</span><span class="v">${d.mech[k]}</span></div>`;
+        return `<div class="stat compact ${hl}">${statIconHTML(k,"lg")}<span class="v">${d.mech[k]}</span></div>`;
       }).join("")}
     </div>
     <div class="brow" style="margin-top:10px">
@@ -1567,13 +1596,24 @@ function frameTraitsCoreHTML(f){
 }
 /* Full frame detail: meta line + description + stat grid + traits/CORE. */
 function frameDetailBodyHTML(f){
+  const statRows = [
+    ["structure","hp","armor"],
+    ["stress","heatcap"],
+    ["evasion","speed"],
+    ["edef","tech_attack"],
+    ["sensor_range","repcap"],
+    ["save","sp"],
+  ];
+  const rowsHTML = statRows.map(keys=>{
+    const cols = keys.length===3 ? "cols3" : "cols2";
+    return `<div class="statrow-line ${cols}">${keys.map(k=>
+      `<div class="statrow">${statIconHTML(k,"lg")}<span class="k">${STAT_RU[k][0]}</span><span class="v">${f.stats[k]}</span></div>`
+    ).join("")}</div>`;
+  }).join("");
   return `
     <div class="meta" style="margin-bottom:8px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype.map(tr).join(" / ")} · лицензия LL${f.license_level}</div>
     <div class="desc" style="margin-bottom:14px">${rich(f.description)}</div>
-    <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-bottom:16px">
-      ${["hp","armor","evasion","edef","heatcap","repcap","speed","sensor_range","tech_attack","save","size","sp"].map(k=>
-        `<div class="stat"><span class="k">${statKeyHTML(k)}</span><span class="v">${f.stats[k]}</span></div>`).join("")}
-    </div>
+    <div class="statrows">${rowsHTML}</div>
     ${frameTraitsCoreHTML(f)}`;
 }
 
