@@ -744,6 +744,7 @@ async function loadBaseData() {
     core.glossary = await fetchJSON("data/glossary.json").catch(e => { console.warn("glossary.json failed to load:", e); return {}; });
     core.stat_labels = await fetchJSON("data/stat_labels.json").catch(e => { console.warn("stat_labels.json failed to load:", e); return {}; });
     core.core_stat_mods = await fetchJSON("data/core_bonus_stat_mods.json").catch(e => { console.warn("core_bonus_stat_mods.json failed to load:", e); return {}; });
+    core.core_terse = await fetchJSON("data/core_bonus_terse.json").catch(e => { console.warn("core_bonus_terse.json failed to load:", e); return {}; });
     const packs = await Promise.all(
       CONTENT_PACKS.map(p => fetchJSON(p).catch(e => { console.warn("Pack failed to load:", p, e); return null; }))
     );
@@ -2433,10 +2434,12 @@ function renderCore(){
       return `<h3 style="font-family:'Chakra Petch';font-size:16.5px;margin:20px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
         <div class="grid cards">${fr.map(c=>{
           const unl=coreBonusUnlocked(c);
+          const terse=(L.core_terse?.[c.id]?.[currentLang])||(L.core_terse?.[c.id]?.en)||"";
           return `<div class="item ${!unl?'locked':''}" data-c="${c.id}">
             <div class="src" style="background:${srcColor(c.source)}"></div>
             <div class="top"><div class="nm">${esc(c.name)}</div>
               <div class="badge ${unl?'':'lock'}">${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
+            ${terse?`<div class="desc" style="margin-top:8px">${esc(terse)}</div>`:""}
             <button class="ghostbtn ${slotsFull?'':(unl?'':'warn')}" data-pickcore="${c.id}" ${slotsFull?"disabled":""}
               style="margin-top:11px; width:100%; text-align:center">${slotsFull?`⚠ Лимит исчерпан (${state.cores.length}/${dNow.b.core.cap})`:(unl?"✓ Выбрать этот CORE-бонус":"⚠ Выбрать всё равно")}</button>
           </div>`;
