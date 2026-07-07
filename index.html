@@ -1681,25 +1681,35 @@ function renderFrame(){
       </div>` : "")
     + `<div class="filters" id="frame-filters">
         ${["ALL","GMS","IPS-N","SSC","HORUS","HA"].map(s=>`<button class="chip ${frameFilter===s?'on':''}" data-ff="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}
-       </div><div class="grid cards" id="frame-list"></div>`;
-  const list=L.frames.filter(f=>frameFilter==="ALL"||f.source===frameFilter)
-    .sort((a,b)=>(frameUnlocked(b)-frameUnlocked(a))||(sourceOrder(a.source)-sourceOrder(b.source))||dispName(a).localeCompare(dispName(b)));
-  $("#frame-list").innerHTML=list.map(f=>{
-    const sel=state.mech.frameId===f.id;
-    const lk=!frameUnlocked(f);
-    const s=f.stats;
-    return `<div class="item ${sel?'sel':''} ${lk?'locked':''}" data-frame="${f.id}">
-      <div class="src" style="background:${srcColor(f.source)}"></div>
-      <div class="top"><div class="nm">${esc(dispName(f))}</div>
-        <div class="badge ${lk?'lock':''}">${lk?"🔒 LL"+f.license_level:f.source}</div></div>
-      <div class="meta">${f.mechtype.map(tr).join(" / ")} · РАЗМЕР ${s.size}</div>
-      <div class="tags">
-        <span class="tag">HP ${s.hp}</span><span class="tag">УКЛ ${s.evasion}</span>
-        <span class="tag">БРОНЯ ${s.armor}</span><span class="tag sp">SP ${s.sp}</span>
-        <span class="tag">СКОР ${s.speed}</span>
-      </div>
-      <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
-    </div>`;
+       </div><div id="frame-list"></div>`;
+  const list=L.frames.filter(f=>frameFilter==="ALL"||f.source===frameFilter);
+  // Group by manufacturer (GMS first, then IPS-N/SSC/HORUS/HA in that fixed
+  // order) so each source gets its own row instead of interleaving — each
+  // group is its own <div class="grid cards">, which is what forces the
+  // next manufacturer's frames onto a new line.
+  const groups={};
+  list.forEach(f=>(groups[f.source]=groups[f.source]||[]).push(f));
+  const srcKeys=Object.keys(groups).sort((a,b)=>sourceOrder(a)-sourceOrder(b));
+  $("#frame-list").innerHTML=srcKeys.map(src=>{
+    const fr=groups[src].sort((a,b)=>(frameUnlocked(b)-frameUnlocked(a))||dispName(a).localeCompare(dispName(b)));
+    return `<h3 style="font-family:'Chakra Petch';font-size:16.5px;margin:20px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
+      <div class="grid cards">${fr.map(f=>{
+        const sel=state.mech.frameId===f.id;
+        const lk=!frameUnlocked(f);
+        const s=f.stats;
+        return `<div class="item ${sel?'sel':''} ${lk?'locked':''}" data-frame="${f.id}">
+          <div class="src" style="background:${srcColor(f.source)}"></div>
+          <div class="top"><div class="nm">${esc(dispName(f))}</div>
+            <div class="badge ${lk?'lock':''}">${lk?"🔒 LL"+f.license_level:f.source}</div></div>
+          <div class="meta">${f.mechtype.map(tr).join(" / ")} · РАЗМЕР ${s.size}</div>
+          <div class="tags">
+            <span class="tag">HP ${s.hp}</span><span class="tag">УКЛ ${s.evasion}</span>
+            <span class="tag">БРОНЯ ${s.armor}</span><span class="tag sp">SP ${s.sp}</span>
+            <span class="tag">СКОР ${s.speed}</span>
+          </div>
+          <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
+        </div>`;
+      }).join("")}</div>`;
   }).join("");
   $$("#frame-filters .chip").forEach(c=>c.onclick=()=>{frameFilter=c.dataset.ff; renderFrame();});
   $$("#frame-list .item").forEach(it=>it.onclick=()=>openFrame(it.dataset.frame));
