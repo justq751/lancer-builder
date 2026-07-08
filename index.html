@@ -703,6 +703,11 @@ details.note .body ul{margin:5px 0; padding-left:18px}
        and to match weapons/systems to their unlocking frame
        (item.license === frame.name). Translating it would silently
        break license unlocking, so it is intentionally left in English.
+       Variant frames (frame.variant set, e.g. Enkidu -> "Tokugawa")
+       key off frame.variant instead — see licenseKeyFor() — so they
+       share their base frame's license rank rather than tracking their
+       own; frame.variant is likewise left untranslated for the same
+       reason.
      - mount/type/source/tags/mechtype values (e.g. "Main", "Rifle",
        "GMS", "Reliable 2") are compared literally elsewhere in the
        app logic (mount-matching, filters, source colors). These are
@@ -962,6 +967,22 @@ const eqWeaponTagSets=new Map(), eqWeaponProfIdx=new Map(); // per-item tag/prof
 const eqSystemTagSets=new Map();
 function getMap(map,key,fallback){ if(!map.has(key)) map.set(key,fallback()); return map.get(key); }
 let TAGS = {}, TAG_PATTERNS = [];
+/* One-time migration: variant frames (frame.variant set) now share their
+   base frame's license track (see licenseKeyFor()) instead of tracking
+   their own. If a build has progress stored under a variant's own name
+   (from before this existed, or an older exported save file), fold it into
+   the base key instead of silently losing it. Safe to call repeatedly —
+   a no-op once migrated. */
+function migrateLicenseKeys(){
+  (L.frames||[]).forEach(f=>{
+    if(f.variant && state.licenses[f.name]!==undefined){
+      const migrated=state.licenses[f.name];
+      const cur=state.licenses[f.variant]||0;
+      state.licenses[f.variant]=Math.max(cur, migrated);
+      delete state.licenses[f.name];
+    }
+  });
+}
 function rebuildIndexes(){
   M = {
     frame: byId(L.frames), weapon: byId(L.weapons), system: byId(L.systems),
@@ -970,6 +991,7 @@ function rebuildIndexes(){
   };
   TAGS = byId(L.tags || []);
   TAG_PATTERNS = (L.tags || []).map(t => ({ id: t.id, re: tagTemplateToRegex(t.name) }));
+  migrateLicenseKeys();
 }
 /* Looks up a skill by id among the built-in glossary (M.skill) OR the
    pilot's own custom skills (state.customSkills) — used wherever selected
@@ -1205,6 +1227,13 @@ function talentRankCap(ll){ return Math.min(3, ll+1); }
 
 /* license helpers */
 const licRank = name => state.licenses[name]||0;
+/* Canonical license-track key for a frame. Variant frames (frame.variant
+   set, e.g. Enkidu -> "Tokugawa") share their base frame's license rank
+   instead of tracking their own — ranking up either the base or the variant
+   raises the same counter, and both unlock together. Use this everywhere a
+   frame's license progress is read or written; never key off frame.name
+   directly for licensing (frame.name is still fine for display/traits). */
+function licenseKeyFor(f){ return f.variant || f.name; }
 /* GMS first, then the rest of the manufacturers grouped together in this
    fixed order, unknown sources last — used to sort weapon/system lists so
    items from the same manufacturer stay together instead of interleaving. */
@@ -1215,7 +1244,7 @@ const sourceOrder = src => { const i=SOURCE_ORDER.indexOf(src); return i<0?999:i
    toward HORUS/HA respectively, but neither reaches the 3 needed to unlock
    that manufacturer's CORE Bonuses). GMS has no such requirement. */
 function manufacturerRank(source){
-  const ranks = L.frames.filter(f=>f.source===source).map(f=>licRank(f.name));
+  const ranks = L.frames.filter(f=>f.source===source).map(f=>licRank(licenseKeyFor(f)));
   return ranks.length ? Math.max(...ranks) : 0;
 }
 function coreBonusUnlocked(c){
@@ -1227,7 +1256,7 @@ function unlocked(item){
 }
 function frameUnlocked(f){
   if(f.source==="GMS"||f.license_level===0) return true;
-  return licRank(f.name) >= f.license_level;
+  return licRank(licenseKeyFor(f)) >= f.license_level;
 }
 
 /* ---------------- MOUNTS ---------------- */
@@ -1569,31 +1598,38 @@ function stepLicense(name, dir){
   if(v===0) delete state.licenses[name]; else state.licenses[name]=v;
 }
 
-/* What a rank of this frame's license unlocks: the frame print itself (at
-   f.license_level) and any weapons/systems tied to it at that exact rank. */
+/* What a rank of this license unlocks: every frame that shares this license
+   track (the base frame plus any variants — see licenseKeyFor()) that opens
+   at that exact rank, and any weapons/systems tied to the license at that
+   rank. Passing a variant's own frame in still shows the base frame's
+   unlocks (and vice versa), since they're the same license. */
 function licenseRanksHTML(f){
-  const items=[...L.weapons,...L.systems].filter(it=>it.license===f.name);
+  const key = licenseKeyFor(f);
+  const siblingFrames = L.frames.filter(fr=>licenseKeyFor(fr)===key);
+  const items=[...L.weapons,...L.systems].filter(it=>it.license===key);
   const byRank={1:[],2:[],3:[]};
   items.forEach(it=>{ const r=it.license_level||1; if(byRank[r]) byRank[r].push(it); });
   const line=it=>it.mount
     ? `<li class="clickable" data-viewitem="w:${it.id}"><span class="mk">⚔</span> ${esc(it.name)} <span class="hint">${tr(it.mount)} · ${dmgStr(it)}</span></li>`
     : `<li class="clickable" data-viewitem="s:${it.id}"><span class="mk">⚙</span> ${esc(it.name)} <span class="hint">${it.sp} SP</span></li>`;
   return [1,2,3].map(rank=>{
-    const frameHere = f.license_level===rank;
+    const framesHere = siblingFrames.filter(fr=>fr.license_level===rank);
     const list = byRank[rank];
-    if(!frameHere && !list.length) return "";
+    if(!framesHere.length && !list.length) return "";
     return `<div style="margin-bottom:14px">
       <h4 style="font-family:'Chakra Petch';font-size:15px;margin-bottom:6px;color:var(--accent)">РАНГ ${rank}</h4>
-      ${frameHere?`<div class="desc" style="margin-bottom:6px">🔓 Открывает само шасси <b>${esc(dispName(f))}</b>.</div>`:""}
+      ${framesHere.map(fr=>`<div class="desc" style="margin-bottom:6px">🔓 Открывает само шасси <b>${esc(dispName(fr))}</b>${fr.variant?` <span class="hint">(вариант лицензии ${esc(fr.variant)})</span>`:""}.</div>`).join("")}
       ${list.length?`<ul class="minilist">${list.map(line).join("")}</ul>`:""}
     </div>`;
   }).join("") || `<div class="hint">На эту лицензию не привязано ни оружия, ни систем — только шасси.</div>`;
 }
 function openLicenseDetail(fid){
-  const f=M.frame[fid], v=licRank(f.name), d=derived();
+  const f=M.frame[fid], key=licenseKeyFor(f), v=licRank(key), d=derived();
   const remaining=d.b.license.cap-d.b.license.used;
+  const siblings=L.frames.filter(fr=>licenseKeyFor(fr)===key && fr.id!==f.id).map(fr=>dispName(fr));
   modal(dispName(f), `
     <div class="meta" style="margin-bottom:14px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype?.map(tr).join(" / ")||""}</div>
+    ${siblings.length?`<div class="desc" style="margin-bottom:14px">Эта лицензия общая с ${siblings.map(n=>`<b>${esc(n)}</b>`).join(", ")} — ранг один на всех, поднимая его здесь, вы поднимаете его и там.</div>`:""}
     <div class="stepper" style="margin-bottom:18px">
       <button class="stepbtn" id="lic-minus" ${v<=0?"disabled":""}>−</button>
       <span class="pips">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
@@ -1601,8 +1637,8 @@ function openLicenseDetail(fid){
       <span class="hint" style="margin-left:10px">ранг ${v}/3</span>
     </div>
     ${licenseRanksHTML(f)}`);
-  $("#lic-minus").onclick=()=>{ stepLicense(f.name,-1); render(); openLicenseDetail(fid); };
-  $("#lic-plus").onclick=()=>{ stepLicense(f.name,1); render(); openLicenseDetail(fid); };
+  $("#lic-minus").onclick=()=>{ stepLicense(key,-1); render(); openLicenseDetail(fid); };
+  $("#lic-plus").onclick=()=>{ stepLicense(key,1); render(); openLicenseDetail(fid); };
   $$("#modal [data-viewitem]").forEach(el=>el.onclick=()=>{
     const [kind,id]=el.dataset.viewitem.split(":");
     viewLicenseItemPreview(kind, id, ()=>openLicenseDetail(fid));
@@ -1642,16 +1678,18 @@ function renderLicenses(){
     + Object.entries(groups).map(([src,fr])=>`
       <h3 style="font-family:'Chakra Petch';font-size:16.5px;margin:18px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
       <div class="grid cards">${fr.map(f=>{
-        const v=licRank(f.name);
-        const nUnlock = [...L.weapons,...L.systems].filter(it=>it.license===f.name && (it.license_level||0)<=v).length;
+        const key=licenseKeyFor(f);
+        const v=licRank(key);
+        const nUnlock = [...L.weapons,...L.systems].filter(it=>it.license===key && (it.license_level||0)<=v).length;
         return `<div class="item ${v?'sel':''} clickable" data-openlic="${f.id}">
           <div class="src" style="background:${srcColor(src)}"></div>
           <div class="top"><div class="nm">${esc(dispName(f))}</div><div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
           <div class="meta">ШАССИ открывается на ранге ${f.license_level} · открыто предметов: ${nUnlock}</div>
+          ${f.variant?`<div class="meta" style="color:var(--accent)">↳ общая лицензия с ${esc(f.variant)}</div>`:""}
           <div class="stepper" style="margin-top:11px">
-            <button class="stepbtn" data-lic="${esc(f.name)}" data-d="-1" ${v<=0?"disabled":""}>−</button>
+            <button class="stepbtn" data-lic="${esc(key)}" data-d="-1" ${v<=0?"disabled":""}>−</button>
             <span class="pips">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
-            <button class="stepbtn" data-lic="${esc(f.name)}" data-d="1" ${(v<3&&remaining>=1)?"":"disabled"}>+</button>
+            <button class="stepbtn" data-lic="${esc(key)}" data-d="1" ${(v<3&&remaining>=1)?"":"disabled"}>+</button>
           </div></div>`;
       }).join("")}</div>`).join("");
   $$("#tab .stepbtn[data-lic]").forEach(b=>b.onclick=e=>{
@@ -2512,6 +2550,7 @@ function importBuild(file){
     const d=JSON.parse(r.result);
     if(!d.state) throw 0;
     Object.assign(state,structuredClone(d.state));
+    migrateLicenseKeys();
     // ensure mounts align with frame
     if(state.mech.frameId && (!state.mech.mounts||!state.mech.mounts.length)) state.mech.mounts=buildMounts(M.frame[state.mech.frameId]);
     render();
