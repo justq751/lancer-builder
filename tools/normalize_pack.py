@@ -133,9 +133,18 @@ def norm_system(s):
 
 
 def norm_talent(t):
+    # rank-level actions/active_effects/counters/special_equipment/integrated
+    # are structured "engine hook" metadata for tools that auto-trigger
+    # abilities — in every pack checked so far, "description" already spells
+    # out the same effect in full prose, so these are dropped rather than
+    # folded (unlike frame core_system.passive_actions, which IS extra text
+    # not already in passive_effect). If a future pack turns out to rely on
+    # these for text not present in description, this will need revisiting.
+    t.pop("icon_url", None)
     for r in t.get("ranks", []) or []:
-        r.pop("synergies", None)
-        r.pop("bonuses", None)
+        for k in ("synergies", "bonuses", "actions", "active_effects", "counters",
+                  "special_equipment", "integrated"):
+            r.pop(k, None)
     return t
 
 
@@ -147,12 +156,22 @@ def norm_pilot_gear(g):
     return g
 
 
+def norm_core_bonus(c):
+    # Same redundancy as talents: "effect" already carries the full
+    # mechanical text; actions/active_effects/bonuses are unused engine
+    # hooks the renderer never reads.
+    for k in ("actions", "active_effects", "bonuses", "synergies", "icon_url", "image_url"):
+        c.pop(k, None)
+    return c
+
+
 NORMALIZERS = {
     "frames": norm_frame,
     "weapons": norm_weapon,
     "systems": norm_system,
     "talents": norm_talent,
     "pilot_gear": norm_pilot_gear,
+    "core_bonuses": norm_core_bonus,
 }
 
 

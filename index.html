@@ -737,9 +737,9 @@ async function fetchJSON(url) {
    Each pack file is pre-normalized (see tools/normalize_pack.py) into the
    same flat shape as data/lancer-data.json, so no renderer changes are
    needed. Packs only cover categories the app already has a UI for
-   (frames/weapons/systems/talents/pilot_gear) — pack categories with no
-   app support (e.g. reserves, environments) are intentionally omitted;
-   see README. */
+   (frames/weapons/systems/talents/pilot_gear/core_bonuses) — pack
+   categories with no app support (e.g. reserves, environments) are
+   intentionally omitted; see README. */
 const CONTENT_PACKS = [
   "data/packs/osr-data.json", "data/packs/wallflower-data.json",
   "data/packs/ows-data.json", "data/packs/long-rim-data.json",
@@ -759,7 +759,7 @@ async function loadBaseData() {
     );
     for (const pack of packs) {
       if (!pack) continue;
-      for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear"]) {
+      for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses"]) {
         if (pack[cat] && pack[cat].length) core[cat] = (core[cat] || []).concat(pack[cat]);
       }
     }
