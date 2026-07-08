@@ -2061,7 +2061,10 @@ function weaponCardBody(w, uid, curProfIdx){
     ${prof && prof.effect?`<div class="desc" style="margin-top:9px"><b>${esc(prof.name)}:</b> ${rich(prof.effect)}</div>`:""}
     ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
     ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(w.on_hit))}</div>`:""}
-    ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}`;
+    ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}
+    ${prof && prof.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке (${esc(prof.name)}):</b> ${rich(onHitText(prof.on_attack))}</div>`:""}
+    ${prof && prof.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании (${esc(prof.name)}):</b> ${rich(onHitText(prof.on_hit))}</div>`:""}
+    ${prof && prof.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе (${esc(prof.name)}):</b> ${rich(onHitText(prof.on_crit))}</div>`:""}`;
 }
 function weaponCardHTML(w){
   const lk=!unlocked(w);

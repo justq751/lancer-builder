@@ -116,6 +116,8 @@ def norm_frame(f):
 
 def norm_weapon(w):
     norm_tags(w)
+    for p in w.get("profiles", []) or []:
+        norm_tags(p)
     w.pop("license_id", None)
     w.pop("data_type", None)
     return w
