@@ -740,7 +740,11 @@ async function fetchJSON(url) {
    (frames/weapons/systems/talents/pilot_gear) — pack categories with no
    app support (e.g. reserves, environments) are intentionally omitted;
    see README. */
-const CONTENT_PACKS = ["data/packs/osr-data.json", "data/packs/wallflower-data.json"];
+const CONTENT_PACKS = [
+  "data/packs/osr-data.json", "data/packs/wallflower-data.json",
+  "data/packs/ows-data.json", "data/packs/long-rim-data.json",
+  "data/packs/dustgrave-data.json", "data/packs/ktb-data.json",
+];
 
 async function loadBaseData() {
   try {
