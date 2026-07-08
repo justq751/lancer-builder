@@ -737,7 +737,7 @@ async function fetchJSON(url) {
    Each pack file is pre-normalized (see tools/normalize_pack.py) into the
    same flat shape as data/lancer-data.json, so no renderer changes are
    needed. Packs only cover categories the app already has a UI for
-   (frames/weapons/systems/talents/pilot_gear/core_bonuses) — pack
+   (frames/weapons/systems/talents/pilot_gear/core_bonuses/mods) — pack
    categories with no app support (e.g. reserves, environments) are
    intentionally omitted; see README. */
 const CONTENT_PACKS = [
@@ -759,7 +759,7 @@ async function loadBaseData() {
     );
     for (const pack of packs) {
       if (!pack) continue;
-      for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses"]) {
+      for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses", "mods"]) {
         if (pack[cat] && pack[cat].length) core[cat] = (core[cat] || []).concat(pack[cat]);
       }
     }
@@ -969,6 +969,8 @@ let M = {};
 let eqWeaponExpanded=new Set(), eqSystemExpanded=new Set(); // sets of "mi:wi" / system-index currently expanded inline
 const eqWeaponTagSets=new Map(), eqWeaponProfIdx=new Map(); // per-item tag/profile-stage state, keyed the same way
 const eqSystemTagSets=new Map();
+let eqModExpanded=new Set(); // "mi:wi" whose installed mod's detail is expanded inline
+const eqModTagSets=new Map();
 function getMap(map,key,fallback){ if(!map.has(key)) map.set(key,fallback()); return map.get(key); }
 let TAGS = {}, TAG_PATTERNS = [];
 /* One-time migration: variant frames (frame.variant set) now share their
@@ -987,15 +989,27 @@ function migrateLicenseKeys(){
     }
   });
 }
+/* One-time migration: equipped-weapon mount slots used to be plain weapon-id
+   strings (state.mech.mounts[i].items = ["mw_foo", ...]). Weapon mods need
+   somewhere to live per-slot (a mod is installed on THIS Nelson, not on
+   "Assault Cannon" generically), so each slot is now {id, mod}. Convert any
+   surviving plain-string slots (older saves / imported builds) in place.
+   Safe to call repeatedly — a no-op once migrated. */
+function migrateWeaponSlots(){
+  (state.mech.mounts||[]).forEach(mt=>{
+    mt.items = (mt.items||[]).map(slot=> typeof slot==="string" ? {id:slot, mod:null} : slot);
+  });
+}
 function rebuildIndexes(){
   M = {
     frame: byId(L.frames), weapon: byId(L.weapons), system: byId(L.systems),
     talent: byId(L.talents), skill: byId(L.skills), core: byId(L.core_bonuses),
-    gear: byId(L.pilot_gear), bg: byId(L.backgrounds),
+    gear: byId(L.pilot_gear), bg: byId(L.backgrounds), mod: byId(L.mods || []),
   };
   TAGS = byId(L.tags || []);
   TAG_PATTERNS = (L.tags || []).map(t => ({ id: t.id, re: tagTemplateToRegex(t.name) }));
   migrateLicenseKeys();
+  migrateWeaponSlots();
 }
 /* Looks up a skill by id among the built-in glossary (M.skill) OR the
    pilot's own custom skills (state.customSkills) — used wherever selected
@@ -1217,7 +1231,10 @@ function derived(){
     sp.cap = mech.sp;
     let used=0;
     state.mech.systems.forEach(id=>{ const sy=M.system[id]; if(sy) used+=sy.sp||0; });
-    state.mech.mounts.forEach(mt=>mt.items.forEach(id=>{ const w=M.weapon[id]; if(w) used+=w.sp||0; }));
+    state.mech.mounts.forEach(mt=>mt.items.forEach(slot=>{
+      const w=M.weapon[slot.id]; if(w) used+=w.sp||0;
+      if(slot.mod){ const md=M.mod[slot.mod]; if(md) used+=md.sp||0; }
+    }));
     sp.used=used;
   }
   return {ll,grit,b,mech,sp,frame:f};
@@ -1282,7 +1299,7 @@ function allowedNext(type,sizes){
 function buildMounts(frame){
   const mounts = frame.mounts.map(t=>({type:t,items:[]}));
   const iw = FRAME_INTEGRATED_WEAPON[frame.id];
-  if(iw) mounts.push({type:"Integrated", items:[iw]});
+  if(iw) mounts.push({type:"Integrated", items:[{id:iw, mod:null}]});
   return mounts;
 }
 /* Frames whose CORE system is (or includes) a built-in weapon that doesn't
@@ -1849,21 +1866,41 @@ function renderLoadout(){
   // mounts
   $("#mounts").innerHTML = state.mech.mounts.map((mt,mi)=>{
     const isInt = mt.type==="Integrated";
-    const sizes=mt.items.map(id=>M.weapon[id]?.mount);
+    const sizes=mt.items.map(slot=>M.weapon[slot.id]?.mount);
     const can = isInt ? false : allowedNext(mt.type,sizes).length>0;
-    const slots = mt.items.map((id,wi)=>{
-      const w=M.weapon[id];
+    const slots = mt.items.map((slot,wi)=>{
+      const w=M.weapon[slot.id];
+      const mod = slot.mod ? M.mod[slot.mod] : null;
+      const ew = effectiveWeapon(w, mod); // mod's added_tags/range/damage folded in, for display only
       const key=`${mi}:${wi}`, dk=`${mi}-${wi}`, open=eqWeaponExpanded.has(key);
       const row=`<div class="equipped">
         <div class="ei clickable" data-vieww="${key}"><div class="en">${esc(w.name)}</div>
-          <div class="em">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}${w.sp?` · ${w.sp} SP`:""}</div></div>
+          <div class="em">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(ew)} · ${rngStr(ew)}${w.sp?` · ${w.sp} SP`:""}</div></div>
         <div style="display:flex;align-items:center;gap:8px">
           <button class="xbtn expand" data-expw="${key}" title="Показать подробности">${open?'⌄':'›'}</button>
           <button class="xbtn" data-rmw="${key}">✕</button>
         </div>
       </div>`;
-      const expand=open?`<div class="expand-detail">${weaponCardBody(w, dk, eqWeaponProfIdx.get(key)||0)}</div>`:"";
-      return `<div class="slot">${row}${expand}</div>`;
+      const expand=open?`<div class="expand-detail">${weaponCardBody(ew, dk, eqWeaponProfIdx.get(key)||0)}</div>`:"";
+
+      // mod sub-row: install button if none, else name + expand/remove
+      const compatMods = (L.mods||[]).filter(m=>modCompatible(m,w));
+      const modOpen = eqModExpanded.has(key);
+      let modRow="";
+      if(mod){
+        const mlk=!unlocked(mod);
+        modRow = `<div class="equipped" style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)">
+          <div class="ei clickable" data-viewmod="${key}"><div class="en">🔧 ${esc(mod.name)}</div>
+            <div class="em">${mlk?`🔒 ${esc(mod.license)} ${mod.license_level}`:`${mod.sp||0} SP`}</div></div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <button class="xbtn expand" data-expmod="${key}" title="Показать подробности">${modOpen?'⌄':'›'}</button>
+            <button class="xbtn" data-rmmod="${key}">✕</button>
+          </div>
+        </div>${modOpen?`<div class="expand-detail">${modCardBody(mod, dk+"-mod")}</div>`:""}`;
+      } else if(compatMods.length){
+        modRow = `<button class="ghostbtn" data-addmod="${key}" style="margin-top:10px;width:100%;text-align:center">+ УСТАНОВИТЬ МОД</button>`;
+      }
+      return `<div class="slot">${row}${expand}${modRow}</div>`;
     }).join("");
     const capLine = isInt
       ? `${mt.items.length} / 1 · встроено в шасси`
@@ -1880,12 +1917,21 @@ function renderLoadout(){
   }).join("");
   eqWeaponExpanded.forEach(key=>{
     const [emi,ewi]=key.split(":").map(Number);
-    const mnt=state.mech.mounts[emi], w=mnt && M.weapon[mnt.items[ewi]];
+    const mnt=state.mech.mounts[emi], slot=mnt && mnt.items[ewi], w=slot && M.weapon[slot.id];
     if(!w){ eqWeaponExpanded.delete(key); return; }
+    const ew = effectiveWeapon(w, slot.mod ? M.mod[slot.mod] : null);
     const dk=`${emi}-${ewi}`;
     const tagSet=getMap(eqWeaponTagSets,key,()=>new Set());
-    wireTagGlossary(`#wp-tags-${dk}`,`#wp-tagdesc-${dk}`, weaponDisplayTags(w, eqWeaponProfIdx.get(key)||0), tagSet);
+    wireTagGlossary(`#wp-tags-${dk}`,`#wp-tagdesc-${dk}`, weaponDisplayTags(ew, eqWeaponProfIdx.get(key)||0), tagSet);
     wireProfileChips(`#wp-profiles-${dk}`, renderLoadout, v=>eqWeaponProfIdx.set(key,v));
+  });
+  eqModExpanded.forEach(key=>{
+    const [emi,ewi]=key.split(":").map(Number);
+    const mnt=state.mech.mounts[emi], slot=mnt && mnt.items[ewi], mod=slot && slot.mod && M.mod[slot.mod];
+    if(!mod){ eqModExpanded.delete(key); return; }
+    const dk=`${emi}-${ewi}-mod`;
+    const tagSet=getMap(eqModTagSets,key,()=>new Set());
+    wireTagGlossary(`#md-tags-${dk}`,`#md-tagdesc-${dk}`, mod.tags||[], tagSet);
   });
 
   // systems
@@ -1917,6 +1963,7 @@ function renderLoadout(){
     const key=b.dataset.rmw, [mi,wi]=key.split(":").map(Number);
     state.mech.mounts[mi].items.splice(wi,1);
     eqWeaponExpanded.delete(key); eqWeaponTagSets.delete(key); eqWeaponProfIdx.delete(key);
+    eqModExpanded.delete(key); eqModTagSets.delete(key);
     render();
   });
   $$("#mounts .xbtn[data-expw]").forEach(b=>b.onclick=e=>{
@@ -1928,6 +1975,27 @@ function renderLoadout(){
   $$("#mounts .ei[data-vieww]").forEach(el=>el.onclick=()=>{
     const [mi,wi]=el.dataset.vieww.split(":").map(Number);
     viewEquippedWeapon(mi,wi);
+  });
+  $$("#mounts .ghostbtn[data-addmod]").forEach(b=>b.onclick=()=>{
+    const [mi,wi]=b.dataset.addmod.split(":").map(Number);
+    openModPicker(mi,wi);
+  });
+  $$("#mounts .ei[data-viewmod]").forEach(el=>el.onclick=()=>{
+    const [mi,wi]=el.dataset.viewmod.split(":").map(Number);
+    viewEquippedMod(mi,wi);
+  });
+  $$("#mounts .xbtn[data-expmod]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
+    const key=b.dataset.expmod;
+    if(eqModExpanded.has(key)) eqModExpanded.delete(key); else eqModExpanded.add(key);
+    renderLoadout();
+  });
+  $$("#mounts .xbtn[data-rmmod]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
+    const key=b.dataset.rmmod, [mi,wi]=key.split(":").map(Number);
+    state.mech.mounts[mi].items[wi].mod=null;
+    eqModExpanded.delete(key); eqModTagSets.delete(key);
+    render();
   });
   $("#add-system").onclick=openSystemPicker;
   $$("#syslist .xbtn[data-rms]").forEach(b=>b.onclick=e=>{
@@ -2033,6 +2101,22 @@ function wireProfileChips(sel, redraw, setIdx){
    specific modes) into one array — used for both rendering the chips and
    as the `rawTags` index base for wireTagGlossary, so data-tgi stays
    consistent between the two. */
+/* Merges a mod's added_tags/added_range/added_damage onto a weapon for
+   DISPLAY purposes only — returns a new object, never mutates M.weapon[id]
+   (the same base weapon may be equipped elsewhere unmodified). This is the
+   "simple, mechanically apply-able" half of a mod's effect; anything more
+   involved (on_hit, reroll/reposition mechanics, etc.) stays as text the
+   pilot reads and applies manually, same as every other rich-text effect
+   in this app — nothing here simulates dice or turn-order logic. */
+function effectiveWeapon(w, mod){
+  if(!mod) return w;
+  return {
+    ...w,
+    tags: [...(w.tags||[]), ...(mod.added_tags||[])],
+    range: mod.added_range?.length ? [...(w.range||[]), ...mod.added_range] : (w.range||[]),
+    damage: mod.added_damage?.length ? [...(w.damage||[]), ...mod.added_damage] : (w.damage||[]),
+  };
+}
 function weaponDisplayTags(w, curProfIdx){
   const hasProfiles = w.profiles && w.profiles.length;
   if(!hasProfiles) return w.tags||[];
@@ -2102,6 +2186,48 @@ function systemCardHTML(s){
   </div>`;
 }
 
+/* A mod is compatible with a weapon if the weapon's TYPE (Rifle, Melee, …)
+   is in the mod's allowed_types, and the weapon's MOUNT size isn't one of
+   the mod's restricted_sizes (e.g. UNCLE-Class Comp/Con can't go on
+   Superheavy weapons). */
+function modCompatible(mod, w){
+  return (mod.allowed_types||[]).includes(w.type) && !(mod.restricted_sizes||[]).includes(w.mount);
+}
+/* Mod detail body — same shape as systemCardBody/weaponCardBody. Shows the
+   SP cost, the mod's own tags, and — when present — a one-line summary of
+   the "simple" stat changes (added_tags/added_range/added_damage) that
+   effectiveWeapon() actually applies to the equipped weapon's display,
+   followed by the full effect text (and on_hit/on_attack/on_crit, same
+   pattern as weapons) for everything else the pilot has to apply by hand. */
+function modCardBody(mod, uid){
+  const tagsId = uid?`md-tags-${uid}`:"md-tags", descId = uid?`md-tagdesc-${uid}`:"md-tagdesc";
+  const statBits = [
+    mod.added_range?.length ? mod.added_range.map(r=>`+${r.val} ${tr(r.type)}`).join(", ") : "",
+    mod.added_damage?.length ? mod.added_damage.map(d=>`+${d.val} ${tr(d.type)}`).join(", ") : "",
+    mod.added_tags?.length ? mod.added_tags.map(t=>trTag(t)).join(", ") : "",
+  ].filter(Boolean).join(" · ");
+  return `<div class="tags" id="${tagsId}">
+      <span class="tag sp">${mod.sp||0} SP</span>
+      ${(mod.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+    </div>
+    <div id="${descId}"></div>
+    ${statBits?`<div class="desc" style="margin-top:10px"><b>Изменяет статы оружия:</b> ${esc(statBits)}</div>`:""}
+    ${mod.effect?`<div class="desc" style="margin-top:9px">${rich(mod.effect)}</div>`:""}
+    ${mod.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(mod.on_attack))}</div>`:""}
+    ${mod.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(mod.on_hit))}</div>`:""}
+    ${mod.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(mod.on_crit))}</div>`:""}`;
+}
+function modCardHTML(mod){
+  const lk=!unlocked(mod);
+  return `<div class="item static">
+    <div class="src" style="background:${srcColor(mod.source)}"></div>
+    <div class="top"><div class="nm" style="font-size:21px">${esc(mod.name)}</div>
+      <div class="badge ${lk?'lock':''}">${lk?"🔒 "+esc(mod.license)+" "+mod.license_level:esc(mod.source)}</div></div>
+    <div class="meta" style="margin-top:6px">Крепления: ${(mod.allowed_types||[]).map(tr).join(" / ")}</div>
+    <div style="margin-top:11px">${modCardBody(mod)}</div>
+  </div>`;
+}
+
 /* Opens a read-only-ish detail card for an already-installed weapon, with a
    button to remove it from its mount — triggered by clicking the equipped
    slot in the loadout tab. */
@@ -2113,11 +2239,11 @@ function systemCardHTML(s){
 let wpSearch="", wpFilter="ALL", wpExpanded=null;
 function openWeaponPicker(mi){
   const mt=state.mech.mounts[mi];
-  const sizes=mt.items.map(id=>M.weapon[id]?.mount);
+  const sizes=mt.items.map(slot=>M.weapon[slot.id]?.mount);
   const allow=allowedNext(mt.type,sizes);
   wpSearch=""; wpFilter="ALL"; wpExpanded=null;
 
-  const install=id=>{ state.mech.mounts[mi].items.push(id); closeModal(); render(); };
+  const install=id=>{ state.mech.mounts[mi].items.push({id, mod:null}); closeModal(); render(); };
 
   const drawDetail=(id)=>{
     const w=M.weapon[id], lk=!unlocked(w);
@@ -2197,7 +2323,7 @@ function openIntegratedPicker(mi){
   const w=M.weapon[FRAME_INTEGRATED_WEAPON[state.mech.frameId]];
   wpExpanded=null;
 
-  const install=()=>{ mt.items=[w.id]; closeModal(); render(); };
+  const install=()=>{ mt.items=[{id:w.id, mod:null}]; closeModal(); render(); };
 
   const drawDetail=()=>{
     tagOpenSet=new Set(); profileViewIdx=0;
@@ -2246,17 +2372,80 @@ function openIntegratedPicker(mi){
   drawList();
 }
 
+/* Mod picker for one equipped weapon slot — list of mods whose allowed_types
+   includes this weapon's type and whose restricted_sizes doesn't exclude
+   its mount. Flat inline-expand list (mods have no profiles/stances to
+   switch between, so the fuller weapon-picker machinery isn't needed). */
+let mpExpanded=null;
+function openModPicker(mi, wi){
+  const slot=state.mech.mounts[mi].items[wi], w=M.weapon[slot.id];
+  mpExpanded=null;
+
+  const install=id=>{ slot.mod=id; closeModal(); render(); };
+
+  const draw=()=>{
+    const list=(L.mods||[]).filter(m=>modCompatible(m,w))
+      .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
+    $("#modal .mhd h3").textContent=`Установить мод · ${esc(w.name)}`;
+    $("#modal .mbd").innerHTML=
+      `<div class="hint" style="margin-bottom:10px">Совместимо с типом: ${tr(w.type)}</div>
+       <div class="grid" id="mp-list" style="gap:8px"></div>`;
+    $("#mp-list").innerHTML=list.map(m=>{
+      const lk=!unlocked(m);
+      const open=mpExpanded===m.id;
+      const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-m="${m.id}">
+        <div class="info"><div class="nm">${esc(m.name)}</div>
+          <div class="ds">${esc(m.source)} · ${m.sp||0} SP</div></div>
+        ${lk?`<span class="rowbadge lock">🔒 ${esc(m.license)} ${m.license_level}</span>`:`<span class="chevron">${open?'⌄':'›'}</span>`}
+      </div>`;
+      const expand=open?`<div class="expand-detail">${modCardBody(m)}
+        <button class="ghostbtn ${lk?'warn':''}" id="mp-install-inline" style="margin-top:14px;width:100%;text-align:center">
+          ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить этот мод"}
+        </button></div>`:"";
+      return `<div class="pickitem">${row}${expand}</div>`;
+    }).join("")||`<div class="hint">// нет модов, совместимых с этим оружием</div>`;
+
+    $$("#mp-list .listrow").forEach(it=>it.onclick=()=>{
+      const id=it.dataset.m;
+      mpExpanded = mpExpanded===id?null:id;
+      draw();
+    });
+    if(mpExpanded){
+      const m=M.mod[mpExpanded];
+      wireTagGlossary("#md-tags", "#md-tagdesc", m.tags||[]);
+      $("#mp-install-inline").onclick=()=>install(m.id);
+    }
+  };
+
+  modal(`Установить мод · ${w.name}`, "");
+  draw();
+}
+
+/* Detail view for an already-installed mod — opened by clicking the mod
+   sub-row under an equipped weapon. Mirrors viewEquippedWeapon/System: full
+   card + a single "remove" action, nothing else to manage here. */
+function viewEquippedMod(mi, wi){
+  const slot=state.mech.mounts[mi].items[wi], mod=M.mod[slot.mod];
+  modal(mod.name, modCardHTML(mod) +
+    `<button class="ghostbtn warn" id="md-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать этот мод</button>`);
+  wireTagGlossary("#md-tags", "#md-tagdesc", mod.tags||[]);
+  $("#md-remove").onclick=()=>{ slot.mod=null; closeModal(); render(); };
+}
+
+
 /* Full-card modal view for an already-installed weapon — opened by clicking
    the equipped row itself. The separate accordion toggle button (next to ✕)
    handles inline in-list expansion instead; this modal is for a focused,
    full-screen look with the same tag glossary / profile switching. */
 function viewEquippedWeapon(mi, wi){
-  const w=M.weapon[state.mech.mounts[mi].items[wi]];
+  const slot=state.mech.mounts[mi].items[wi];
+  const w=M.weapon[slot.id];
+  const ew=effectiveWeapon(w, slot.mod ? M.mod[slot.mod] : null);
   tagOpenSet=new Set(); profileViewIdx=0;
   const draw=()=>{
-    modal(w.name, weaponCardHTML(w) +
+    modal(w.name, weaponCardHTML(ew) +
       `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
-    wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
+    wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(ew, profileViewIdx));
     wireProfileChips("#wp-profiles", draw);
     $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
   };
@@ -2366,7 +2555,11 @@ function renderSummary(){
   const hase=HASE.map(h=>`<div class="kv"><span class="k">${h.ru}</span><span>${state.hase[h.k]}</span></div>`).join("");
   let mechBlock=`<div class="hint">// шасси не выбрано</div>`;
   if(d.frame){
-    const wlist=state.mech.mounts.flatMap(mt=>mt.items.map(id=>`<li><span class="mk">[${tr(mt.type)}]</span> ${esc(M.weapon[id].name)} <span class="hint">(${dmgStr(M.weapon[id])})</span></li>`)).join("")||"<li class='hint'>оружие не установлено</li>";
+    const wlist=state.mech.mounts.flatMap(mt=>mt.items.map(slot=>{
+      const w=M.weapon[slot.id], ew=effectiveWeapon(w, slot.mod?M.mod[slot.mod]:null);
+      const modTag=slot.mod?` <span class="hint">+ ${esc(M.mod[slot.mod]?.name||"")}</span>`:"";
+      return `<li><span class="mk">[${tr(mt.type)}]</span> ${esc(w.name)}${modTag} <span class="hint">(${dmgStr(ew)})</span></li>`;
+    })).join("")||"<li class='hint'>оружие не установлено</li>";
     const slist=state.mech.systems.map(id=>`<li><span class="mk">▸</span> ${esc(M.system[id].name)} <span class="hint">(${M.system[id].sp} SP)</span></li>`).join("")||"<li class='hint'>систем нет</li>";
     mechBlock=`
       <div class="kv" style="margin-bottom:12px">
@@ -2561,6 +2754,7 @@ function importBuild(file){
     if(!d.state) throw 0;
     Object.assign(state,structuredClone(d.state));
     migrateLicenseKeys();
+    migrateWeaponSlots();
     // ensure mounts align with frame
     if(state.mech.frameId && (!state.mech.mounts||!state.mech.mounts.length)) state.mech.mounts=buildMounts(M.frame[state.mech.frameId]);
     render();
@@ -2580,7 +2774,7 @@ function buildPrintSheet(d){
     <p><b>CORE-бонусы:</b> ${state.cores.map(id=>esc(M.core[id]?.name)).join(", ")||"—"}</p>
     ${d.frame?`<h2 style="font-family:Arial">МЕХ — ${esc(dispName(d.frame))} (${esc(d.frame.source)})</h2>
       <p>HP ${d.mech.hp} · Armor ${d.mech.armor} · Evasion ${d.mech.evasion} · E-Def ${d.mech.edef} · Heat ${d.mech.heatcap} · Speed ${d.mech.speed} · Save ${d.mech.save} · SP ${d.sp.used}/${d.sp.cap}</p>
-      <p><b>Оружие:</b> ${state.mech.mounts.flatMap(mt=>mt.items.map(id=>"["+tr(mt.type)+"] "+esc(M.weapon[id].name))).join(", ")||"—"}</p>
+      <p><b>Оружие:</b> ${state.mech.mounts.flatMap(mt=>mt.items.map(slot=>"["+tr(mt.type)+"] "+esc(M.weapon[slot.id].name)+(slot.mod?" + "+esc(M.mod[slot.mod]?.name||""):""))).join(", ")||"—"}</p>
       <p><b>Системы:</b> ${state.mech.systems.map(id=>esc(M.system[id].name)).join(", ")||"—"}</p>`:""}`;
 }
 
