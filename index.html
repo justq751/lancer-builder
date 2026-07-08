@@ -2440,11 +2440,14 @@ function renderCore(){
 
   $("#core-selected").innerHTML = state.cores.length ? `<div class="mount">` + state.cores.map((id,ci)=>{
     const c=M.core[id];
-    return `<div class="slot"><div class="equipped">
-      <div class="ei clickable" data-viewcore="${ci}"><div class="en">${esc(c.name)}</div>
-        <div class="em">${esc(c.source)}</div></div>
-      <button class="xbtn" data-rmcore="${ci}">✕</button>
-    </div></div>`;
+    return `<div class="slot">
+      <div class="equipped">
+        <div class="ei clickable" data-viewcore="${ci}"><div class="en">${esc(c.name)}</div>
+          <div class="em">${esc(c.source)}</div></div>
+        <button class="xbtn" data-rmcore="${ci}">✕</button>
+      </div>
+      <div style="margin-top:10px">${coreCardBody(c)}</div>
+    </div>`;
   }).join("") + `</div>` : `<div class="hint">// CORE-бонусы не выбраны</div>`;
 
   $$("#core-selected .ei[data-viewcore]").forEach(el=>el.onclick=()=>viewSelectedCore(+el.dataset.viewcore));
