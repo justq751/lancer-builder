@@ -127,7 +127,7 @@ def norm_system(s):
     norm_tags(s)
     s["effect"] = fold_actions(s.get("effect", ""), s.get("actions"))
     s["effect"] = fold_deployables(s["effect"], s.get("deployables"))
-    for k in ("actions", "deployables", "license_id", "data_type", "aptitude"):
+    for k in ("actions", "deployables", "license_id", "data_type", "aptitude", "bonuses", "synergies"):
         s.pop(k, None)
     return s
 
