@@ -165,6 +165,20 @@ def norm_core_bonus(c):
     return c
 
 
+def norm_mod(m):
+    norm_tags(m)
+    if "added_tags" in m and m["added_tags"]:
+        m["added_tags"] = [tag_to_string(t) for t in m["added_tags"]]
+    # wm_shock_wreath (lancer-data core mods) has "actions" as a bare object
+    # instead of a list like every other mod — normalize the shape so
+    # whatever eventually consumes this category can assume list-or-absent.
+    if isinstance(m.get("actions"), dict):
+        m["actions"] = [m["actions"]]
+    m.pop("license_id", None)
+    m.pop("data_type", None)
+    return m
+
+
 NORMALIZERS = {
     "frames": norm_frame,
     "weapons": norm_weapon,
@@ -172,6 +186,7 @@ NORMALIZERS = {
     "talents": norm_talent,
     "pilot_gear": norm_pilot_gear,
     "core_bonuses": norm_core_bonus,
+    "mods": norm_mod,
 }
 
 
