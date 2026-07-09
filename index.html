@@ -1892,8 +1892,8 @@ function renderFrame(){
             <span class="tag">СКОР ${s.speed}</span>
           </div>
           <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
-          <button class="ghostbtn" data-pickframe="${f.id}" ${sel?"disabled":""}
-            style="margin-top:11px; width:100%; text-align:center">${sel?"✓ ВЫБРАНО":"▶ ВЫБРАТЬ ЭТО ШАССИ"}</button>
+          <button class="ghostbtn ${(!sel&&lk)?'warn':''}" data-pickframe="${f.id}" ${sel?"disabled":""}
+            style="margin-top:11px; width:100%; text-align:center">${sel?"✓ ВЫБРАНО":(lk?"⚠ ВЫБРАТЬ НАСИЛЬНО":"▶ ВЫБРАТЬ ЭТО ШАССИ")}</button>
         </div>`;
       }).join("")}</div>`;
   }).join("");
@@ -1911,16 +1911,19 @@ function renderFrame(){
 function openFrame(id){
   const f=M.frame[id];
   const isSel=state.mech.frameId===id;
+  const lk=!frameUnlocked(f);
   modal(dispName(f), frameDetailBodyHTML(f, isSel?derived().mech:null, frameImageURL(f), 300));
   const mhd=$("#modal .mhd");
   const btn=document.createElement("button");
   btn.className="toolbtn";
-  btn.style.borderColor="var(--accent)"; btn.style.color="var(--accent)";
   if(isSel){
+    btn.style.borderColor="var(--accent)"; btn.style.color="var(--accent)";
     btn.textContent="✓ ВЫБРАНО";
     btn.disabled=true; btn.style.opacity=".6";
   } else {
-    btn.textContent="▶ ВЫБРАТЬ ЭТО ШАССИ";
+    const clr = lk ? "var(--red)" : "var(--accent)";
+    btn.style.borderColor=clr; btn.style.color=clr;
+    btn.textContent = lk ? "⚠ ВЫБРАТЬ НАСИЛЬНО" : "▶ ВЫБРАТЬ ЭТО ШАССИ";
     btn.onclick=()=>{
       state.mech.frameId=id; state.mech.mounts=buildMounts(f);
       closeModal(); render();
