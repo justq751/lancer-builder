@@ -1305,6 +1305,17 @@ function unlocked(item){
   if(item.source==="GMS"||item.license==="GMS"||(item.license_level||0)===0) return true;
   return licRank(item.license) >= (item.license_level||0);
 }
+/* item.license (and licenseKeyFor(frame)) are always the frame's English
+   name/variant — that's the logic key licenses are tracked by, and it must
+   never be swapped for translated text (see the frame.name comment near
+   loadBaseData). This resolves that English key to the matching frame's
+   *localized* display name, purely for showing it in UI text like the
+   weapon/system license badges below — falls back to the raw key if no
+   matching frame is found (shouldn't normally happen). */
+function licenseDisplayName(key){
+  const fr = (L.frames||[]).find(f=>licenseKeyFor(f)===key);
+  return fr ? dispName(fr) : key;
+}
 /* Weapons/systems/mods keep showing which license+rank they're tied to even
    after that requirement is met — closed amber lock while locked, open
    green lock once unlocked — instead of the requirement just disappearing
@@ -1314,7 +1325,7 @@ function unlocked(item){
 function licenseBadge(item, fallback){
   if(!(item.license_level>0)) return {cls:"", text:fallback};
   const lk=!unlocked(item);
-  return {cls: lk?"lock":"unlocked", text:(lk?"🔒 ":"🔓 ")+esc(item.license)+" "+item.license_level};
+  return {cls: lk?"lock":"unlocked", text:(lk?"🔒 ":"🔓 ")+esc(licenseDisplayName(item.license))+" "+item.license_level};
 }
 function frameUnlocked(f){
   if(f.source==="GMS"||f.license_level===0) return true;
@@ -1965,7 +1976,7 @@ function renderLoadout(){
         const mlk=!unlocked(mod);
         modRow = `<div class="equipped" style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)">
           <div class="ei clickable" data-viewmod="${key}"><div class="en">🔧 ${esc(mod.name)}</div>
-            <div class="em">${mlk?`🔒 ${esc(mod.license)} ${mod.license_level}`:`${mod.sp||0} SP`}</div></div>
+            <div class="em">${mlk?`🔒 ${esc(licenseDisplayName(mod.license))} ${mod.license_level}`:`${mod.sp||0} SP`}</div></div>
           <div style="display:flex;align-items:center;gap:8px">
             <button class="xbtn expand" data-expmod="${key}" title="Показать подробности">${modOpen?'⌄':'›'}</button>
             <button class="xbtn" data-rmmod="${key}">✕</button>
@@ -2354,7 +2365,7 @@ function openWeaponPicker(mi){
         <div class="info"><div class="nm">${esc(w.name)}</div>
           <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
         <div style="display:flex; align-items:center; gap:8px">
-          ${w.license_level>0?`<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(w.license)} ${w.license_level}</span>`:""}
+          ${w.license_level>0?`<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(licenseDisplayName(w.license))} ${w.license_level}</span>`:""}
           <span class="chevron">${open?'⌄':'›'}</span>
         </div>
       </div>`;
@@ -2474,7 +2485,7 @@ function openModPicker(mi, wi){
         <div class="info"><div class="nm">${esc(m.name)}</div>
           <div class="ds">${esc(m.source)} · ${m.sp||0} SP</div></div>
         <div style="display:flex; align-items:center; gap:8px">
-          ${m.license_level>0?`<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(m.license)} ${m.license_level}</span>`:""}
+          ${m.license_level>0?`<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(licenseDisplayName(m.license))} ${m.license_level}</span>`:""}
           <span class="chevron">${open?'⌄':'›'}</span>
         </div>
       </div>`;
@@ -2593,7 +2604,7 @@ function openSystemPicker(){
         <div class="info"><div class="nm">${esc(s.name)}</div>
           <div class="ds">${esc(tr(s.type))} · ${s.sp} SP</div></div>
         <div style="display:flex; align-items:center; gap:8px">
-          ${s.license_level>0?`<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(s.license)} ${s.license_level}</span>`:""}
+          ${s.license_level>0?`<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(licenseDisplayName(s.license))} ${s.license_level}</span>`:""}
           <span class="chevron">${open?'⌄':'›'}</span>
         </div>
       </div>`;
