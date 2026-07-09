@@ -1709,7 +1709,7 @@ function openLicenseDetail(fid){
       <button class="stepbtn" id="lic-plus" ${(v<3&&remaining>=1)?"":"disabled"}>+</button>
       <span class="hint" style="margin-left:10px">ранг ${v}/3</span>
     </div>
-    <div style="clear:both">${licenseRanksHTML(f)}</div>`);
+    ${licenseRanksHTML(f)}`);
   $("#lic-minus").onclick=()=>{ stepLicense(key,-1); render(); openLicenseDetail(fid); };
   $("#lic-plus").onclick=()=>{ stepLicense(key,1); render(); openLicenseDetail(fid); };
   $$("#modal [data-viewitem]").forEach(el=>el.onclick=()=>{
@@ -1830,7 +1830,7 @@ function frameDetailBodyHTML(f, computed, imgUrl, imgSize){
     ${imgHTML}
     <div class="meta" style="margin-bottom:8px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype.map(tr).join(" / ")} · лицензия LL${f.license_level}</div>
     <div class="desc" style="margin-bottom:14px">${rich(f.description)}</div>
-    <div class="statrows" style="clear:both">${rowsHTML}</div>
+    <div class="statrows">${rowsHTML}</div>
     ${frameTraitsCoreHTML(f)}`;
 }
 
