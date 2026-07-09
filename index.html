@@ -1641,12 +1641,18 @@ function stepLicense(name, dir){
 function licenseRanksHTML(f){
   const key = licenseKeyFor(f);
   const siblingFrames = L.frames.filter(fr=>licenseKeyFor(fr)===key);
-  const items=[...L.weapons,...L.systems].filter(it=>it.license===key);
+  const items=[
+    ...L.weapons.filter(it=>it.license===key).map(it=>({...it,_kind:"w"})),
+    ...L.systems.filter(it=>it.license===key).map(it=>({...it,_kind:"s"})),
+    ...(L.mods||[]).filter(it=>it.license===key).map(it=>({...it,_kind:"m"})),
+  ];
   const byRank={1:[],2:[],3:[]};
   items.forEach(it=>{ const r=it.license_level||1; if(byRank[r]) byRank[r].push(it); });
-  const line=it=>it.mount
-    ? `<li class="clickable" data-viewitem="w:${it.id}"><span class="mk">⚔</span> ${esc(it.name)} <span class="hint">${tr(it.mount)} · ${dmgStr(it)}</span></li>`
-    : `<li class="clickable" data-viewitem="s:${it.id}"><span class="mk">⚙</span> ${esc(it.name)} <span class="hint">${it.sp} SP</span></li>`;
+  const line=it=>{
+    if(it._kind==="w") return `<li class="clickable" data-viewitem="w:${it.id}"><span class="mk">⚔</span> ${esc(it.name)} <span class="hint">${tr(it.mount)} · ${dmgStr(it)}</span></li>`;
+    if(it._kind==="m") return `<li class="clickable" data-viewitem="m:${it.id}"><span class="mk">🔧</span> ${esc(it.name)} <span class="hint">мод · ${it.sp||0} SP</span></li>`;
+    return `<li class="clickable" data-viewitem="s:${it.id}"><span class="mk">⚙</span> ${esc(it.name)} <span class="hint">${it.sp} SP</span></li>`;
+  };
   return [1,2,3].map(rank=>{
     const framesHere = siblingFrames.filter(fr=>fr.license_level===rank);
     const list = byRank[rank];
@@ -1656,7 +1662,7 @@ function licenseRanksHTML(f){
       ${framesHere.map(fr=>`<div class="desc" style="margin-bottom:6px">🔓 Открывает само шасси <b>${esc(dispName(fr))}</b>${fr.variant?` <span class="hint">(вариант лицензии ${esc(fr.variant)})</span>`:""}.</div>`).join("")}
       ${list.length?`<ul class="minilist">${list.map(line).join("")}</ul>`:""}
     </div>`;
-  }).join("") || `<div class="hint">На эту лицензию не привязано ни оружия, ни систем — только шасси.</div>`;
+  }).join("") || `<div class="hint">На эту лицензию не привязано ни оружия, ни систем, ни модов — только шасси.</div>`;
 }
 function openLicenseDetail(fid){
   const f=M.frame[fid], key=licenseKeyFor(f), v=licRank(key), d=derived();
@@ -1686,14 +1692,16 @@ function openLicenseDetail(fid){
 function viewLicenseItemPreview(kind, id, back){
   tagOpenSet=new Set(); profileViewIdx=0;
   const draw=()=>{
-    const isWeapon = kind==="w";
-    const item = isWeapon ? M.weapon[id] : M.system[id];
+    const item = kind==="w" ? M.weapon[id] : kind==="m" ? M.mod[id] : M.system[id];
+    const html = kind==="w" ? weaponCardHTML(item) : kind==="m" ? modCardHTML(item) : systemCardHTML(item);
     $("#modal .mhd h3").textContent=item.name;
     $("#modal .mbd").innerHTML=
       `<button class="ghostbtn" id="lip-back" style="margin-bottom:14px">← Назад к лицензии</button>`
-      + (isWeapon ? weaponCardHTML(item) : systemCardHTML(item));
-    wireTagGlossary(isWeapon?"#wp-tags":"#sy-tags", isWeapon?"#wp-tagdesc":"#sy-tagdesc", isWeapon?weaponDisplayTags(item, profileViewIdx):(item.tags||[]));
-    if(isWeapon) wireProfileChips("#wp-profiles", draw);
+      + html;
+    if(kind==="w") wireTagGlossary("#wp-tags","#wp-tagdesc",weaponDisplayTags(item, profileViewIdx));
+    else if(kind==="m") wireTagGlossary("#md-tags","#md-tagdesc",item.tags||[]);
+    else wireTagGlossary("#sy-tags","#sy-tagdesc",item.tags||[]);
+    if(kind==="w") wireProfileChips("#wp-profiles", draw);
     $("#lip-back").onclick=back;
   };
   draw();
@@ -1715,7 +1723,7 @@ function renderLicenses(){
       <div class="grid cards">${fr.map(f=>{
         const key=licenseKeyFor(f);
         const v=licRank(key);
-        const nUnlock = [...L.weapons,...L.systems].filter(it=>it.license===key && (it.license_level||0)<=v).length;
+        const nUnlock = [...L.weapons,...L.systems,...(L.mods||[])].filter(it=>it.license===key && (it.license_level||0)<=v).length;
         return `<div class="item ${v?'sel':''} clickable" data-openlic="${f.id}">
           <div class="src" style="background:${srcColor(src)}"></div>
           <div class="top"><div class="nm">${esc(dispName(f))}</div><div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
