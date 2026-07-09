@@ -1693,7 +1693,8 @@ function openLicenseDetail(fid){
   const f=M.frame[fid], key=licenseKeyFor(f), v=licRank(key), d=derived();
   const remaining=d.b.license.cap-d.b.license.used;
   const siblings=L.frames.filter(fr=>licenseKeyFor(fr)===key && fr.id!==f.id).map(fr=>dispName(fr));
-  modal(dispName(f), `
+  const img=frameImageURL(f);
+  const metaBlock=`
     <div class="meta" style="margin-bottom:14px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype?.map(tr).join(" / ")||""}</div>
     ${siblings.length?`<div class="desc" style="margin-bottom:14px">Эта лицензия общая с ${siblings.map(n=>`<b>${esc(n)}</b>`).join(", ")} — ранг один на всех, поднимая его здесь, вы поднимаете его и там.</div>`:""}
     <div class="stepper" style="margin-bottom:18px">
@@ -1701,8 +1702,15 @@ function openLicenseDetail(fid){
       <span class="pips">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
       <button class="stepbtn" id="lic-plus" ${(v<3&&remaining>=1)?"":"disabled"}>+</button>
       <span class="hint" style="margin-left:10px">ранг ${v}/3</span>
-    </div>
-    ${licenseRanksHTML(f)}`);
+    </div>`;
+  modal(dispName(f), img
+    ? `<div style="display:flex; gap:16px; align-items:flex-start">
+         <div style="flex:1; min-width:0">${metaBlock}</div>
+         <img src="${img}" alt="" loading="lazy" onerror="this.remove()"
+           style="width:96px; height:96px; object-fit:contain; border-radius:6px; background:var(--panel-2); flex-shrink:0">
+       </div>
+       ${licenseRanksHTML(f)}`
+    : `${metaBlock}${licenseRanksHTML(f)}`);
   $("#lic-minus").onclick=()=>{ stepLicense(key,-1); render(); openLicenseDetail(fid); };
   $("#lic-plus").onclick=()=>{ stepLicense(key,1); render(); openLicenseDetail(fid); };
   $$("#modal [data-viewitem]").forEach(el=>el.onclick=()=>{
@@ -1751,10 +1759,14 @@ function renderLicenses(){
         const nUnlock = [...L.weapons,...L.systems,...(L.mods||[])].filter(it=>it.license===key && (it.license_level||0)<=v).length;
         return `<div class="item ${v?'sel':''} clickable" data-openlic="${f.id}">
           <div class="src" style="background:${srcColor(src)}"></div>
-          ${frameImageURL(f)?`<img class="frame-thumb" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
-          <div class="top"><div class="nm">${esc(dispName(f))}</div><div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
-          <div class="meta">ШАССИ открывается на ранге ${f.license_level} · открыто предметов: ${nUnlock}</div>
-          ${f.variant?`<div class="meta" style="color:var(--accent)">↳ общая лицензия с ${esc(f.variant)}</div>`:""}
+          <div style="display:flex; gap:12px; align-items:flex-start">
+            <div style="flex:1; min-width:0">
+              <div class="top"><div class="nm">${esc(dispName(f))}</div><div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
+              <div class="meta">ШАССИ открывается на ранге ${f.license_level} · открыто предметов: ${nUnlock}</div>
+              ${f.variant?`<div class="meta" style="color:var(--accent)">↳ общая лицензия с ${esc(f.variant)}</div>`:""}
+            </div>
+            ${frameImageURL(f)?`<img class="frame-thumb" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
+          </div>
           <div class="stepper" style="margin-top:11px">
             <button class="stepbtn" data-lic="${esc(key)}" data-d="-1" ${v<=0?"disabled":""}>−</button>
             <span class="pips">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
@@ -1819,13 +1831,17 @@ function renderFrame(){
     "Выберите рамную платформу (frame). Её базовые статы складываются с вашими мех-навыками и GRIT. Замок означает, что лицензия ещё не открыта — выбрать можно всё, но проверьте требования на вкладке ЛИЦЕНЗИИ.")
     + (d.frame ? `
       <div class="card" style="margin-bottom:20px">
-        ${frameImageURL(d.frame)?`<img class="frame-thumb lg" src="${frameImageURL(d.frame)}" alt="" loading="lazy" onerror="this.remove()">`:""}
-        <div class="head"><span class="lbl"><b>//</b> ВЫБРАННОЕ ШАССИ — ${esc(dispName(d.frame))}</span>
-          <span style="display:flex; align-items:center; gap:10px">
-            <span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.source)}</span>
-            <button class="xbtn expand" id="toggle-frame-summary" title="${frameSummaryOpen?'Свернуть':'Развернуть'}">${frameSummaryOpen?'⌄':'›'}</button>
-          </span></div>
-        ${frameSummaryOpen?`<div class="body">${frameDetailBodyHTML(d.frame, d.mech)}</div>`:""}
+        <div style="display:flex; gap:14px; align-items:flex-start">
+          <div style="flex:1; min-width:0">
+            <div class="head"><span class="lbl"><b>//</b> ВЫБРАННОЕ ШАССИ — ${esc(dispName(d.frame))}</span>
+              <span style="display:flex; align-items:center; gap:10px">
+                <span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.source)}</span>
+                <button class="xbtn expand" id="toggle-frame-summary" title="${frameSummaryOpen?'Свернуть':'Развернуть'}">${frameSummaryOpen?'⌄':'›'}</button>
+              </span></div>
+            ${frameSummaryOpen?`<div class="body">${frameDetailBodyHTML(d.frame, d.mech)}</div>`:""}
+          </div>
+          ${frameImageURL(d.frame)?`<img class="frame-thumb lg" src="${frameImageURL(d.frame)}" alt="" loading="lazy" onerror="this.remove()" style="position:static; margin-top:14px; margin-right:14px">`:""}
+        </div>
       </div>` : "")
     + `<div class="filters" id="frame-filters">
         ${["ALL","GMS","IPS-N","SSC","HORUS","HA"].map(s=>`<button class="chip ${frameFilter===s?'on':''}" data-ff="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}
@@ -1847,16 +1863,20 @@ function renderFrame(){
         const s=f.stats;
         return `<div class="item ${sel?'sel':''} ${lk?'locked':''}" data-frame="${f.id}">
           <div class="src" style="background:${srcColor(f.source)}"></div>
-          ${frameImageURL(f)?`<img class="frame-thumb lg" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
-          <div class="top"><div class="nm">${esc(dispName(f))}</div>
-            <div class="badge ${lk?'lock':''}">${lk?"🔒 LL"+f.license_level:f.source}</div></div>
-          <div class="meta">${f.mechtype.map(tr).join(" / ")} · РАЗМЕР ${s.size}</div>
-          <div class="tags">
-            <span class="tag">HP ${s.hp}</span><span class="tag">УКЛ ${s.evasion}</span>
-            <span class="tag">БРОНЯ ${s.armor}</span><span class="tag sp">SP ${s.sp}</span>
-            <span class="tag">СКОР ${s.speed}</span>
+          <div style="display:flex; gap:12px; align-items:flex-start">
+            <div style="flex:1; min-width:0">
+              <div class="top"><div class="nm">${esc(dispName(f))}</div>
+                <div class="badge ${lk?'lock':''}">${lk?"🔒 LL"+f.license_level:f.source}</div></div>
+              <div class="meta">${f.mechtype.map(tr).join(" / ")} · РАЗМЕР ${s.size}</div>
+              <div class="tags">
+                <span class="tag">HP ${s.hp}</span><span class="tag">УКЛ ${s.evasion}</span>
+                <span class="tag">БРОНЯ ${s.armor}</span><span class="tag sp">SP ${s.sp}</span>
+                <span class="tag">СКОР ${s.speed}</span>
+              </div>
+              <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
+            </div>
+            ${frameImageURL(f)?`<img class="frame-thumb lg" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
           </div>
-          <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
           <button class="ghostbtn" data-pickframe="${f.id}" ${sel?"disabled":""}
             style="margin-top:11px; width:100%; text-align:center">${sel?"✓ ВЫБРАНО":"▶ ВЫБРАТЬ ЭТО ШАССИ"}</button>
         </div>`;
@@ -1876,7 +1896,15 @@ function renderFrame(){
 function openFrame(id){
   const f=M.frame[id];
   const isSel=state.mech.frameId===id;
-  modal(dispName(f), frameDetailBodyHTML(f, isSel?derived().mech:null));
+  const bodyHTML=frameDetailBodyHTML(f, isSel?derived().mech:null);
+  const img=frameImageURL(f);
+  modal(dispName(f), img
+    ? `<div style="display:flex; gap:16px; align-items:flex-start">
+         <div style="flex:1; min-width:0">${bodyHTML}</div>
+         <img src="${img}" alt="" loading="lazy" onerror="this.remove()"
+           style="width:96px; height:96px; object-fit:contain; border-radius:6px; background:var(--panel-2); flex-shrink:0">
+       </div>`
+    : bodyHTML);
   const mhd=$("#modal .mhd");
   const btn=document.createElement("button");
   btn.className="toolbtn";
@@ -2791,7 +2819,16 @@ function openCoreDetail(id){
 
 /* ============ MODAL ============ */
 function modal(title,html){
-  $("#modal .mhd h3").textContent=title;
+  const mhd=$("#modal .mhd");
+  // Reset the header to just [h3, close button] on every open — openFrame(),
+  // openLicenseDetail() etc. inject extra buttons (e.g. "ВЫБРАТЬ ЭТО ШАССИ")
+  // directly into .mhd, and since the modal's DOM persists between opens
+  // (only toggled via a CSS class), those buttons would otherwise pile up
+  // one per open instead of being replaced.
+  [...mhd.children].forEach(el=>{
+    if(el.tagName!=="H3" && !el.classList.contains("mclose")) el.remove();
+  });
+  mhd.querySelector("h3").textContent=title;
   $("#modal .mbd").innerHTML=html;
   $("#modal").classList.add("show");
 }
