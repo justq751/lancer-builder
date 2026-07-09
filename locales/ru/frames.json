@@ -52,8 +52,8 @@
     "ru": "Форсаж"
    },
    "active_effect": {
-    "en": "For the rest of this scene, you gain +1 Accuracy on all attacks, checks, and saves; additionally, 1/turn, you can Boost as a free action.",
-    "ru": "До конца текущей сцены вы получаете +1 к Точности на все атаки, проверки и спасброски; дополнительно, 1/ход вы можете Ускориться как свободное действие."
+    "en": "For the rest of this scene, you gain +1 Accuracy on all attacks, checks, and saves; additionally, 1/turn, you can Boost as a free action.<br><b>Boost (Hyperspec Fuel Injector)</b> — You can Boost as a free action.",
+    "ru": "До конца этой сцены вы получаете +1 Точность на все атаки, проверки и спасброски; кроме того, 1/ход вы можете совершить Boost как свободное действие.<br><b>Boost (Гиперспек-инжектор топлива)</b> — Вы можете совершить Boost как свободное действие."
    }
   }
  },
@@ -120,8 +120,8 @@
     "ru": "Омни-гарпун"
    },
    "active_effect": {
-    "en": "This system fires grappling harpoons at any number of targets within Range 5 and line of sight. Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
-    "ru": "Эта система выстреливает захватными гарпунами по любому числу целей в пределах Дальности 5 и видимости. Поражённые персонажи должны пройти спасбросок Корпуса, иначе получают 2d6 кинетического урона и сбиваются с ног, после чего притягиваются вплотную к вам или как можно ближе. Они становятся Обездвижены до конца своего следующего хода. При успехе они получают половину урона и в остальном не затронуты."
+    "en": "This system fires grappling harpoons at any number of targets within Range 5 and line of sight. Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.<br><b>Omni-harpoon</b> — Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
+    "ru": "Эта система выпускает абордажные гарпуны по любому числу целей в пределах Радиуса 5 и линии видимости. Поражённые персонажи должны пройти спасбросок Корпуса или получить 2d6 кинетического урона и быть опрокинуты, затем притянуты вплотную к вам или как можно ближе. Они становятся Обездвиженными до конца своего следующего хода. При успехе — половину урона, без остальных эффектов.<br><b>Омни-гарпун</b> — Поражённые персонажи должны пройти спасбросок Корпуса или получить 2d6 кинетического урона и быть опрокинуты, затем притянуты вплотную к вам или как можно ближе. Они становятся Обездвиженными до конца своего следующего хода. При успехе — половину урона, без остальных эффектов."
    }
   }
  },
@@ -198,8 +198,8 @@
     "ru": "Протокол «Крепость»"
    },
    "active_effect": {
-    "en": "You deploy heavy stabilizers and your mech becomes more like a fortified emplacement than a vehicle. When activated, two sections of hard cover (line 2, Size 1) unfold from your mech, drawn in any direction. These cover sections have Immunity to all damage.<br>Additionally, the following effects apply while active:<ul><li>You become Immobilized.</li><li>You benefit from hard cover, even in the open, and gain Immunity to Knockback, Prone, and all involuntary movement.</li><li>When you Brace, you may take a full action on your next turn instead of just a quick action.</li><li>Any character that gains hard cover from you or your cover sections gains Immunity to Knockback, Prone, and all involuntary movement, and gains the benefits of Blast Plating.</li></ul>This system can be deactivated as a protocol. Otherwise, it lasts until the end of the current scene.",
-    "ru": "Вы разворачиваете тяжёлые стабилизаторы, и ваш мех становится больше похож на укреплённую огневую точку, чем на транспортное средство. При активации из вашего меха разворачиваются в любом направлении две секции твёрдого укрытия (линия 2, Размер 1). Эти секции укрытия имеют Иммунитет ко всему урону.<br>Дополнительно, пока система активна, действуют следующие эффекты:<ul><li>Вы становитесь Обездвижены.</li><li>Вы получаете выгоду от твёрдого укрытия даже на открытом пространстве и получаете Иммунитет к Отбрасыванию, сбиванию с ног и любому недобровольному перемещению.</li><li>Когда вы Держите оборону, в свой следующий ход вы можете совершить полное действие вместо просто быстрого.</li><li>Любой персонаж, получающий твёрдое укрытие от вас или ваших секций укрытия, получает Иммунитет к Отбрасыванию, сбиванию с ног и любому недобровольному перемещению, а также получает преимущества Взрывозащитной брони.</li></ul>Эту систему можно деактивировать как протокол. В противном случае она действует до конца текущей сцены."
+    "en": "You deploy heavy stabilizers and your mech becomes more like a fortified emplacement than a vehicle. When activated, two sections of hard cover (line 2, Size 1) unfold from your mech, drawn in any direction. These cover sections have Immunity to all damage.<br>Additionally, the following effects apply while active:<ul><li>You become Immobilized.</li><li>You benefit from hard cover, even in the open, and gain Immunity to Knockback, Prone, and all involuntary movement.</li><li>When you Brace, you may take a full action on your next turn instead of just a quick action.</li><li>Any character that gains hard cover from you or your cover sections gains Immunity to Knockback, Prone, and all involuntary movement, and gains the benefits of Blast Plating.</li></ul>This system can be deactivated as a protocol. Otherwise, it lasts until the end of the current scene.<br><b>Deployable — Fortress Cover:</b> ",
+    "ru": "Вы разворачиваете тяжёлые стабилизаторы, и ваш мех становится больше похож на укреплённую позицию, чем на транспорт. При активации из вашего меха разворачиваются две секции жёсткого укрытия (линия 2, Размер 1), направленные в любую сторону. Эти секции укрытия имеют Иммунитет ко всему урону.<br>Кроме того, пока активно, действуют следующие эффекты:<ul><li>Вы становитесь Обездвиженным.</li><li>Вы пользуетесь жёстким укрытием, даже на открытом месте, и получаете Иммунитет к Отбрасыванию, Опрокидыванию и любому недобровольному перемещению.</li><li>Когда вы совершаете Собраться, вы можете совершить полное действие в свой следующий ход вместо просто быстрого.</li><li>Любой персонаж, получающий жёсткое укрытие от вас или ваших секций укрытия, получает Иммунитет к Отбрасыванию, Опрокидыванию и любому недобровольному перемещению, а также преимущества Взрывобойной плитировки.</li></ul>Эту систему можно деактивировать как протокол. Иначе она действует до конца текущей сцены.<br><b>Автономный модуль — Укрытие-крепость:</b>"
    }
   }
  },
@@ -324,8 +324,8 @@
     "ru": "Включить двигатель"
    },
    "active_effect": {
-    "en": "For the rest of the scene, Skirmisher allows you to move 4 spaces at a time instead of 1 space.",
-    "ru": "До конца сцены Застрельщик позволяет вам перемещаться на 4 клетки за раз вместо 1 клетки."
+    "en": "For the rest of the scene, Skirmisher allows you to move 4 spaces at a time instead of 1 space.<br><b>Empowered Skirmisher</b> — Move 4 spaces in any direction as long as you aren't Immobilized or Slowed. This movement ignores engagement and doesn’t provoke reactions.",
+    "ru": "До конца сцены Застрельщик позволяет вам перемещаться на 4 клетки за раз вместо 1 клетки.<br><b>Усиленный застрельщик</b> — Переместитесь на 4 клетки в любом направлении, пока не Обездвижены и не Замедлены. Это перемещение игнорирует связанность боем и не провоцирует реакции."
    }
   }
  },
@@ -614,8 +614,8 @@
     "ru": "Нейрошунт"
    },
    "active_effect": {
-    "en": "For the rest of this scene, you gain the Mark for Death action.",
-    "ru": "До конца текущей сцены вы получаете действие «Отметить на смерть»."
+    "en": "For the rest of this scene, you gain the Mark for Death action.<br><b>Mark for Death</b> — Choose a character within range 30 but further than range 5 to focus on; while focusing, you become Immobilized and can’t take reactions, but you deal bonus damage based on weapon size (aux: 1d6, main: 2d6, heavy or larger: 3d6) on ranged critical hits against them, as long as they aren’t in cover or within range 5.<br>You may only focus on one character at a time. As a protocol, you may cease focusing on a target.<br><b>Cease Focus</b> — End your focus on a <b>Mark for Death</b> target.",
+    "ru": "До конца этой сцены вы получаете действие «Отметить для смерти».<br><b>Отметить для смерти</b> — Выберите персонажа в пределах радиуса 30, но далее радиуса 5, чтобы сфокусироваться на нём; пока фокусировка активна, вы становитесь Обездвиженным и не можете совершать реакции, но наносите бонусный урон в зависимости от размера оружия (вспомогательное: 1d6, основное: 2d6, тяжёлое и крупнее: 3d6) при дальних критических попаданиях по нему, пока он не в укрытии и не в пределах радиуса 5.<br>Вы можете фокусироваться только на одном персонаже одновременно. Как протокол вы можете прекратить фокусировку на цели.<br><b>Прекратить фокусировку</b> — Завершите фокусировку на цели «Отметить для смерти»."
    }
   }
  },
@@ -682,8 +682,8 @@
     "ru": "Зал зеркал"
    },
    "active_effect": {
-    "en": "For the rest of the scene, whenever you start a unique movement during your turn (e.g., a standard move, Boost, or movement granted by talents or systems), you leave a holographic imprint of yourself behind in the space from which you started. These are illusory objects the same Size as you that have Immunity to all damage and effects and aren’t obstructions.<br>When hostile characters start their turn in, move through, or move adjacent to the space occupied by a hologram, it detonates. They must succeed on an Agility save or take 1d6 energy damage. On a success, they take half damage.<br>You also gain the Hologram Teleport Quick Action.",
-    "ru": "До конца сцены, каждый раз, когда вы начинаете уникальное перемещение в свой ход (например, стандартное перемещение, Ускорение или движение, предоставленное талантами или системами), вы оставляете позади себя голографический отпечаток в клетке, откуда начали движение. Это иллюзорные объекты того же Размера, что и вы, имеющие Иммунитет ко всему урону и эффектам и не являющиеся препятствиями.<br>Когда враждебные персонажи начинают ход в клетке, занятой голограммой, проходят через неё или перемещаются рядом с ней, она детонирует. Они должны пройти спасбросок Ловкости, иначе получают 1d6 энергетического урона. При успехе они получают половину урона.<br>Вы также получаете быстрое действие «Голографическая телепортация»."
+    "en": "For the rest of the scene, whenever you start a unique movement during your turn (e.g., a standard move, Boost, or movement granted by talents or systems), you leave a holographic imprint of yourself behind in the space from which you started. These are illusory objects the same Size as you that have Immunity to all damage and effects and aren’t obstructions.<br>When hostile characters start their turn in, move through, or move adjacent to the space occupied by a hologram, it detonates. They must succeed on an Agility save or take 1d6 energy damage. On a success, they take half damage.<br>You also gain the Hologram Teleport Quick Action.<br><b>Hologram Teleport</b> — You may instantly teleport to the location of any hologram within range 50 as a quick action. When you do so, all extant holograms detonate – creating burst 1 explosions that deal 1d6 Energy Damage (Agility save for half) – and you may not create any new holograms until the start of your next turn",
+    "ru": "До конца сцены, всякий раз, начиная уникальное перемещение в свой ход (например, стандартное перемещение, Boost, или перемещение от талантов или систем), вы оставляете голографический отпечаток себя на клетке, с которой начали. Это иллюзорные объекты того же Размера, что и вы, с Иммунитетом ко всему урону и эффектам, не являющиеся препятствиями.<br>Когда враждебные персонажи начинают ход на клетке с голограммой, проходят через неё или оказываются рядом с ней, она детонирует. Они должны пройти спасбросок Ловкости или получить 1d6 энергетического урона. При успехе — половину урона.<br>Вы также получаете быстрое действие «Голо-телепорт».<br><b>Голо-телепорт</b> — Вы можете мгновенно телепортироваться к любой голограмме в пределах радиуса 50 как быстрое действие. При этом все существующие голограммы детонируют — создавая взрывы-всплеск 1, наносящие 1d6 энергетического урона (спасбросок Ловкости на половину) — и вы не можете создавать новые голограммы до начала своего следующего хода."
    }
   }
  },
@@ -798,8 +798,8 @@
     "ru": "Божественное наказание"
    },
    "active_effect": {
-    "en": "Choose any number of characters within range 50: your targets must each succeed on an Agility save or take 1d6+4 explosive. On a success, they take half damage. These self-guiding missiles can reach any target as long as there is a path to do so.",
-    "ru": "Выберите любое количество персонажей в пределах Дальности 50: каждая ваша цель должна пройти спасбросок Ловкости, иначе получает 1d6+4 взрывного урона. При успехе она получает половину урона. Эти самонаводящиеся ракеты могут достичь любой цели, пока есть путь для этого."
+    "en": "Choose any number of characters within range 50: your targets must each succeed on an Agility save or take 1d6+4 explosive. On a success, they take half damage. These self-guiding missiles can reach any target as long as there is a path to do so.<br><b>Divine Punishment</b> — Choose any number of characters within range 50: your targets must each succeed on an Agility save or take 1d6+4 explosive. On a success, they take half damage. These self-guiding missiles can reach any target as long as there is a path to do so.",
+    "ru": "Выберите любое число персонажей в пределах радиуса 50: каждая ваша цель должна пройти спасбросок Ловкости или получить 1d6+4 взрывного урона. При успехе — половину урона. Эти самонаводящиеся ракеты могут достичь любой цели, если есть путь к ней.<br><b>Божественная кара</b> — Выберите любое число персонажей в пределах радиуса 50: каждая ваша цель должна пройти спасбросок Ловкости или получить 1d6+4 взрывного урона. При успехе — половину урона. Эти самонаводящиеся ракеты могут достичь любой цели, если есть путь к ней."
    }
   }
  },
@@ -848,8 +848,8 @@
     "ru": "Блинк-прыжок"
    },
    "passive_effect": {
-    "en": "Gain the Blinkspace Jump Full Action.",
-    "ru": "Получите полное действие «Блинк-прыжок»."
+    "en": "Gain the Blinkspace Jump Full Action.<br><b>Blinkspace Jump</b> — Teleport to a space within range 3d6. You don’t require line of sight, but attempts to teleport to occupied spaces cause you to remain stationary and lose this action. If you roll the same number on all three dice, you disappear until your group rests, at which point you reappear nearby.",
+    "ru": "Получите полное действие «Блинкспейс-прыжок».<br><b>Блинкспейс-прыжок</b> — Телепортируйтесь на клетку в пределах 3d6. Линия видимости не требуется, но попытка телепортироваться на занятую клетку оставляет вас на месте и тратит это действие. Если на всех трёх кубиках выпало одно и то же число, вы исчезаете, пока ваша группа не отдохнёт, после чего вы появляетесь неподалёку."
    },
    "active_name": {
     "en": "Stabilize Singularity",
@@ -857,7 +857,7 @@
    },
    "active_effect": {
     "en": "For the rest of the scene, you teleport when you Boost or make a standard move.",
-    "ru": "До конца сцены вы телепортируетесь, когда Ускоряетесь или совершаете стандартное перемещение."
+    "ru": "До конца сцены вы телепортируетесь, совершая Boost или стандартное перемещение."
    }
   }
  },
@@ -914,8 +914,8 @@
     "ru": "Пророческое вмешательство"
    },
    "active_effect": {
-    "en": "Gain the Tactical Simulation reaction for the rest of the scene.",
-    "ru": "Получите реакцию «Тактическая симуляция» до конца сцены."
+    "en": "Gain the Tactical Simulation reaction for the rest of the scene.<br><b>Tactical Simulation</b> — Effect: Roll 1d6. On 4+, the attack was actually a simulation predicted by your processor - your ally gains Resistance to all damage dealt by the attack and may teleport up to 3 spaces, representing their “true” location. On 3 or less, there’s a glitch – your allied doesn’t gain Resistance, but can teleport up to 6 spaces.",
+    "ru": "Получите реакцию «Тактическая симуляция» до конца сцены.<br><b>Тактическая симуляция</b> — Эффект: бросьте 1d6. При 4+ атака на самом деле была симуляцией, предсказанной вашим процессором — ваш союзник получает Сопротивление всему урону от атаки и может телепортироваться до 3 клеток, представляя своё «истинное» местоположение. При 3 или меньше — произошёл сбой: союзник не получает Сопротивление, но может телепортироваться до 6 клеток."
    }
   }
  },
@@ -1304,8 +1304,8 @@
     "ru": ""
    },
    "passive_effect": {
-    "en": "",
-    "ru": ""
+    "en": "<br><b>Metafold Maze</b> — When you hit with a tech attack, you may activate this system, causing your target to become Slowed until the end of your next turn. If they are already Slowed, they become Immobilized until the end of your next turn; if they are already Immobilized, they become Stunned until the end of your next turn. Each character can only be Stunned by this effect once per combat but can be Slowed or Immobilized any number of times.",
+    "ru": "<br><b>Метафолд-лабиринт</b> — Когда вы попадаете тех-атакой, вы можете активировать эту систему, из-за чего цель становится Замедленной до конца вашего следующего хода. Если она уже Замедлена, она становится Обездвиженной до конца вашего следующего хода; если уже Обездвижена — становится Оглушённой до конца вашего следующего хода. Каждый персонаж может быть Оглушён этим эффектом только раз за бой, но Замедлен или Обездвижен — сколько угодно раз."
    },
    "active_name": {
     "en": "Maze",
@@ -1313,7 +1313,7 @@
    },
    "active_effect": {
     "en": "Choose a character within Sensors: they become Stunned as you hurl their systems into a metaphysical information trap so tangled they can do nothing but try and escape. At the end of their next turn, they can make a Systems save at +3 difficulty. On a success, they are no longer Stunned. This save can be repeated at the end of each of their turns, gaining +1 accuracy each time until successful.",
-    "ru": "Выберите персонажа в пределах Сенсоров: он становится Ошеломлён, пока вы швыряете его системы в метафизическую информационную ловушку, настолько запутанную, что он может только пытаться выбраться. В конце своего следующего хода он может пройти спасбросок Систем с +3 к Сложности. При успехе он больше не Ошеломлён. Этот спасбросок можно повторять в конце каждого его хода, каждый раз получая +1 к Точности, пока не будет пройден."
+    "ru": "Выберите персонажа в пределах Сенсора: он становится Оглушён, пока вы забрасываете его системы в метафизическую информационную ловушку, настолько запутанную, что он ничего не может, кроме как пытаться выбраться. В конце своего следующего хода он может пройти спасбросок Систем со Сложностью +3. При успехе он больше не Оглушён. Этот спасбросок можно повторять в конце каждого своего хода, получая +1 Точность каждый раз, пока не преуспеет."
    }
   }
  },
@@ -1362,8 +1362,8 @@
     "ru": "Всеоружие Ушабти"
    },
    "passive_effect": {
-    "en": "Your mech’s omnigun is a piece of experimental hardware so advanced that it defies physics: it doesn’t require a mount, nor does it have a weapon type or size – meaning that it can’t be modified or benefit from your talents.<br>You can’t attack normally with this weapon. Instead, 1/round, as a free action during your turn, you can use it to deal 1 AP kinetic damage to a character within Range 15 and line of sight. This doesn’t count as an attack, hits automatically, ignores cover, bypasses Immunity, and its damage can’t be reduced or ignored in any way. No rule in this book or any other supersedes this.",
-    "ru": "Всеоружие вашего меха — экспериментальное оборудование настолько продвинутое, что бросает вызов физике: оно не требует крепления и не имеет ни типа оружия, ни размера — а значит, его нельзя модифицировать или получить выгоду от ваших талантов.<br>Вы не можете атаковать этим оружием обычным образом. Вместо этого, 1/раунд, как свободное действие в свой ход, вы можете использовать его, чтобы нанести 1 бронебойного кинетического урона персонажу в пределах Дальности 15 и видимости. Это не считается атакой, попадает автоматически, игнорирует укрытие, обходит Иммунитет, и его урон нельзя уменьшить или проигнорировать никаким образом. Ни одно правило в этой книге или любой другой не имеет приоритета над этим."
+    "en": "Your mech’s omnigun is a piece of experimental hardware so advanced that it defies physics: it doesn’t require a mount, nor does it have a weapon type or size – meaning that it can’t be modified or benefit from your talents.<br>You can’t attack normally with this weapon. Instead, 1/round, as a free action during your turn, you can use it to deal 1 AP kinetic damage to a character within Range 15 and line of sight. This doesn’t count as an attack, hits automatically, ignores cover, bypasses Immunity, and its damage can’t be reduced or ignored in any way. No rule in this book or any other supersedes this.<br><b>Fire Omnigun</b> — 1/round, as a free action during your turn, deal 1 AP kinetic damage to a character within Range 15 and line of sight. This doesn’t count as an attack, hits automatically, ignores cover, bypasses Immunity, and its damage can’t be reduced or ignored in any way. No rule supersedes this.",
+    "ru": "Омнипушка вашего меха — экспериментальное оборудование настолько продвинутое, что бросает вызов физике: она не требует крепления, а также не имеет типа или размера оружия — то есть её нельзя модифицировать, и на неё не влияют ваши таланты.<br>Вы не можете атаковать этим оружием обычным образом. Вместо этого 1/раунд, как свободное действие в свой ход, вы можете использовать его, чтобы нанести 1 пробивающий броню кинетический урон персонажу в пределах Радиуса 15 и линии видимости. Это не считается атакой, попадает автоматически, игнорирует укрытие, обходит Иммунитет, и его урон нельзя снизить или проигнорировать никаким способом. Ни одно правило в этой или любой другой книге не отменяет это.<br><b>Выстрелить из омнипушки</b> — 1/раунд, как свободное действие в свой ход, нанесите 1 пробивающий броню кинетический урон персонажу в пределах Радиуса 15 и линии видимости. Это не считается атакой, попадает автоматически, игнорирует укрытие, обходит Иммунитет, и урон нельзя снизить или проигнорировать никаким способом. Ни одно правило это не отменяет."
    },
    "active_name": {
     "en": "Unshackle Ushabti",
@@ -1371,7 +1371,7 @@
    },
    "active_effect": {
     "en": "For the rest of this scene, you can use the Ushabti Omnigun 3/round, instead of 1/round.",
-    "ru": "До конца текущей сцены вы можете использовать Всеоружие Ушабти 3/раунд вместо 1/раунд."
+    "ru": "До конца этой сцены вы можете использовать омнипушку «Ушабти» 3/раунд вместо 1/раунд."
    }
   }
  },
@@ -1700,8 +1700,8 @@
     "ru": "Тахионный щит"
    },
    "active_effect": {
-    "en": "This system projects an accelerated-tachyon shield over an allied character within Sensors. You may choose a new target as a quick action. Gain the Defensive Pulse reaction for the rest of the scene.<br>Defensive Pulse<br>Reaction, 1/round<br>Trigger: Your target is attacked.<br>Effect: You empower their tachyon shield with a pulse of energy. They gain Resistance to all damage from the attack, and if the attack misses, you may force the attacker to reroll it against a character or object of your choice, checking line of sight and Range from your target instead of from the attacker. If the attack was part of an area of effect, the new target must be inside the same area of effect from the original attack instead.",
-    "ru": "Эта система проецирует ускоренно-тахионный щит на союзного персонажа в пределах Сенсоров. Вы можете выбрать новую цель как быстрое действие. Получите реакцию «Защитный импульс» до конца сцены.<br>Защитный импульс<br>Реакция, 1/раунд<br>Триггер: вашу цель атакуют.<br>Эффект: вы усиливаете её тахионный щит импульсом энергии. Она получает Сопротивление ко всему урону от атаки, и если атака промахивается, вы можете заставить атакующего перебросить её по персонажу или объекту по вашему выбору, проверяя видимость и Дальность от вашей цели, а не от атакующего. Если атака была частью области поражения, новая цель должна находиться внутри той же области поражения исходной атаки."
+    "en": "This system projects an accelerated-tachyon shield over an allied character within Sensors. You may choose a new target as a quick action. Gain the Defensive Pulse reaction for the rest of the scene.<br>Defensive Pulse<br>Reaction, 1/round<br>Trigger: Your target is attacked.<br>Effect: You empower their tachyon shield with a pulse of energy. They gain Resistance to all damage from the attack, and if the attack misses, you may force the attacker to reroll it against a character or object of your choice, checking line of sight and Range from your target instead of from the attacker. If the attack was part of an area of effect, the new target must be inside the same area of effect from the original attack instead.<br><b>Defensive Pulse</b> — You empower their tachyon shield with a pulse of energy. They gain Resistance to all damage from the attack, and if the attack misses, you may force the attacker to reroll it against a character or object of your choice, checking line of sight and Range from your target instead of from the attacker. If the attack was part of an area of effect, the new target must be inside the same area of effect from the original attack instead.<br><b>Retarget Tachyon Shield</b> — Change the target of your Tachyon Shield to another allied character within Sensors.",
+    "ru": "Эта система проецирует ускоренно-тахионный щит над союзным персонажем в пределах Сенсора. Вы можете выбрать новую цель как быстрое действие. Получите реакцию «Защитный импульс» до конца сцены.<br>Защитный импульс<br>Реакция, 1/раунд<br>Триггер: ваша цель атакована.<br>Эффект: вы усиливаете её тахионный щит импульсом энергии. Она получает Сопротивление всему урону от атаки, и если атака промахивается, вы можете заставить атакующего перебросить её против персонажа или объекта по вашему выбору, проверяя линию видимости и Дальность от вашей цели вместо атакующего. Если атака была частью области эффекта, новая цель должна находиться в той же области эффекта исходной атаки.<br><b>Защитный импульс</b> — Вы усиливаете тахионный щит цели импульсом энергии. Она получает Сопротивление всему урону от атаки, и если атака промахивается, вы можете заставить атакующего перебросить её против персонажа или объекта по вашему выбору, проверяя линию видимости и Дальность от вашей цели вместо атакующего. Если атака была частью области эффекта, новая цель должна находиться в той же области эффекта исходной атаки.<br><b>Перенацелить тахионный щит</b> — Смените цель вашего тахионного щита на другого союзного персонажа в пределах Сенсора."
    }
   }
  },
@@ -1818,8 +1818,8 @@
     "ru": "Разгон"
    },
    "passive_effect": {
-    "en": "",
-    "ru": ""
+    "en": "<br><b>Overclock</b> — You cause your mech to become Exposed until the end of your next turn.",
+    "ru": "<br><b>Овердрайв</b> — Вы делаете свой мех Открытым до конца своего следующего хода."
    },
    "active_name": {
     "en": "Radiance",
@@ -1827,7 +1827,7 @@
    },
    "active_effect": {
     "en": "For the rest of this scene, weapons that deal any energy gain +5 range if they are ranged or +2 threat if they are melee.<br>While you’re Exposed, Limit Break stacks with these bonuses for a total increase of +10 range and +3 threat.",
-    "ru": "До конца текущей сцены оружие, наносящее энергетический урон в любом количестве, получает +5 к Дальности, если оно дальнобойное, или +2 к Угрозе, если оно ближнего боя.<br>Пока вы Уязвимы, «Предел на пределе» складывается с этими бонусами, давая суммарное увеличение +10 к Дальности и +3 к Угрозе."
+    "ru": "До конца этой сцены оружие, наносящее энергетический урон, получает +5 Дальность, если оно дальнобойное, или +2 Угрозу, если ближнее.<br>Пока вы Открыты, Предельный рывок суммируется с этими бонусами, давая в сумме +10 Дальность и +3 Угрозу."
    }
   }
  },

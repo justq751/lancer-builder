@@ -145,8 +145,8 @@
    "ru": ""
   },
   "effect": {
-   "en": "As a quick action, pilots wearing stealth hardsuits can become Invisible. They cease to be Invisible if they take any damage.",
-   "ru": "Быстрым действием пилот в скрытном скафандре может стать Невидимым. Невидимость снимается при получении любого урона."
+   "en": "As a quick action, pilots wearing stealth hardsuits can become Invisible. They cease to be Invisible if they take any damage.<br><b>Activate Stealth Hardsuit</b> — Become Invisible. You will cease to be Invisible if you take any damage.",
+   "ru": "Быстрым действием пилот в скрытном скафандре может стать Невидимым. Невидимость снимается при получении любого урона.<br><b>Активировать скрытный скафандр</b> — Станьте Невидимым. Невидимость снимется при получении любого урона."
   }
  },
  "pg_corrective": {
@@ -159,8 +159,8 @@
    "ru": "Этот прозрачный, похожий на пластик лист можно наложить на раны тяжело раненных пилотов. Он немедленно начинает стабилизировать их, вводя лекарства и разворачивая нанитов, чтобы сшить раны."
   },
   "effect": {
-   "en": "Expend a charge to apply correctives to Down and Out pilots, immediately bringing them back to consciousness at 1 HP.",
-   "ru": "Потратьте заряд, чтобы применить кориджент к Поверженному пилоту, немедленно приведя его в сознание с 1 ОЗ."
+   "en": "Expend a charge to apply correctives to Down and Out pilots, immediately bringing them back to consciousness at 1 HP.<br><b>Use Corrective</b> — Expend a charge to apply correctives to Down and Out pilots, immediately bringing them back to consciousness at 1 HP",
+   "ru": "Потратьте заряд, чтобы применить кориджент к Поверженному пилоту, немедленно приведя его в сознание с 1 ОЗ.<br><b>Использовать кориджент</b> — Потратьте заряд, чтобы применить кориджент к Поверженному пилоту, немедленно приведя его в сознание с 1 ОЗ."
   }
  },
  "pg_frag_grenades": {
@@ -173,8 +173,8 @@
    "ru": ""
   },
   "effect": {
-   "en": "Expend a charge for the following effect:<ul><li><b>Frag Grenade</b> (Grenade, Range 5, Blast 1): Affected characters must succeed on an Agility save or take 2 Explosive damage.</li></ul>",
-   "ru": "Потратьте заряд для следующего эффекта:<ul><li><b>Осколочная граната</b> (Граната, Дальность 5, Взрыв 1): Персонажи в поражённой области должны пройти спасбросок Ловкости или получить 2 взрывного урона.</li></ul>"
+   "en": "Expend a charge for the following effect:<ul><li><b>Frag Grenade</b> (Grenade, Range 5, Blast 1): Affected characters must succeed on an Agility save or take 2 Explosive damage.</li></ul><br><b>Use Frag Grenade</b> — Throw a grenade within Range 5. Affected characters within a Blast 1 must succeed on an Agility save or take 2 Explosive damage.",
+   "ru": "Потратьте заряд для следующего эффекта:<ul><li><b>Осколочная граната</b> (Граната, Дальность 5, Взрыв 1): Персонажи в поражённой области должны пройти спасбросок Ловкости или получить 2 взрывного урона.</li></ul><br><b>Использовать осколочную гранату</b> — Бросьте гранату в пределах Дальности 5. Персонажи в области-Взрыв 1 должны пройти спасбросок Ловкости или получить 2 взрывного урона."
   }
  },
  "pg_patch": {
@@ -187,8 +187,8 @@
    "ru": "«Пластырь» — жаргонное название пилотов для любого современного набора первой помощи, включая распыляемый мед-гель и мгновенно действующие медицинские повязки."
   },
   "effect": {
-   "en": "Expend a charge to apply a patch to either yourself or an adjacent pilot, restoring half their maximum HP. Patches have no effect on Down and Out pilots.",
-   "ru": "Потратьте заряд, чтобы наложить пластырь на себя или соседнего пилота, восстановив половину его максимума ОЗ. На Поверженных пилотов пластыри не действуют."
+   "en": "Expend a charge to apply a patch to either yourself or an adjacent pilot, restoring half their maximum HP. Patches have no effect on Down and Out pilots.<br><b>Use Patch</b> — Expend a charge to apply a patch to either yourself or an adjacent pilot, restoring half their maximum HP. Patches have no effect on Down and Out pilots.",
+   "ru": "Потратьте заряд, чтобы наложить пластырь на себя или соседнего пилота, восстановив половину его максимума ОЗ. На Поверженных пилотов пластыри не действуют.<br><b>Использовать пластырь</b> — Потратьте заряд, чтобы наложить пластырь на себя или соседнего пилота, восстановив половину его максимума ОЗ. На Поверженных пилотов пластыри не действуют."
   }
  },
  "pg_stims": {
@@ -201,8 +201,8 @@
    "ru": "Эти химические стимуляторы иногда автоматически вводятся инжекторами, встроенными в костюм пилота, или даже имплантированными в его тело. Неконтролируемое употребление может вызывать зависимость и опасно для здоровья в долгосрочной перспективе, что является проблемой для некоторых пилотов."
   },
   "effect": {
-   "en": "Expend a charge for one of the following effects:<ul><li><b>Kick:</b> Keeps a pilot awake and alert for up to 30 hours.</li><li><b>Freeze:</b> Keeps a pilot calm and emotionally stable; deadens fear and other strong reactions.</li><li><b>Juice:</b> Heighten senses and alertness, reduce fatigue, and shorten reaction times. Juice occasionally provokes rage in some users.</li></ul>",
-   "ru": "Потратьте заряд для одного из следующих эффектов:<ul><li><b>Кик:</b> Держит пилота бодрствующим и настороже до 30 часов.</li><li><b>Фриз:</b> Сохраняет пилота спокойным и эмоционально стабильным; притупляет страх и другие сильные реакции.</li><li><b>Джус:</b> Обостряет чувства и внимательность, снижает усталость и сокращает время реакции. Джус иногда провоцирует ярость у некоторых пользователей.</li></ul>"
+   "en": "Expend a charge for one of the following effects:<ul><li><b>Kick:</b> Keeps a pilot awake and alert for up to 30 hours.</li><li><b>Freeze:</b> Keeps a pilot calm and emotionally stable; deadens fear and other strong reactions.</li><li><b>Juice:</b> Heighten senses and alertness, reduce fatigue, and shorten reaction times. Juice occasionally provokes rage in some users.</li></ul><br><b>Use Stim</b> — Expend a charge for one of the following effects:<ul><li><b>Kick:</b> Keeps a pilot awake and alert for up to 30 hours.</li><li><b>Freeze:</b> Keeps a pilot calm and emotionally stable; deadens fear and other strong reactions.</li><li><b>Juice:</b> Heighten senses and alertness, reduce fatigue, and shorten reaction times. Juice occasionally provokes rage in some users.</li></ul>",
+   "ru": "Потратьте заряд для одного из следующих эффектов:<ul><li><b>Кик:</b> Держит пилота бодрствующим и настороже до 30 часов.</li><li><b>Фриз:</b> Сохраняет пилота спокойным и эмоционально стабильным; притупляет страх и другие сильные реакции.</li><li><b>Джус:</b> Обостряет чувства и внимательность, снижает усталость и сокращает время реакции. Джус иногда провоцирует ярость у некоторых пользователей.</li></ul><br><b>Использовать стимулятор</b> — Потратьте заряд для одного из следующих эффектов:<ul><li><b>Кик:</b> Держит пилота бодрствующим и настороже до 30 часов.</li><li><b>Фриз:</b> Сохраняет пилота спокойным и эмоционально стабильным; притупляет страх и другие сильные реакции.</li><li><b>Джус:</b> Обостряет чувства и внимательность, снижает усталость и сокращает время реакции. Джус иногда провоцирует ярость у некоторых пользователей.</li></ul>"
   }
  },
  "pg_thermite_charge": {
@@ -215,8 +215,8 @@
    "ru": ""
   },
   "effect": {
-   "en": "Expend a charge for the following effect:<ul><li><b>Thermite Charge</b> (Mine, Burst 1): This charge must be remotely detonated as a quick action. Affected characters must succeed on an Engineering save or take 3 Energy AP. Thermal charges automatically hit objects, dealing 10 Energy AP.</li></ul>",
-   "ru": "Потратьте заряд для следующего эффекта:<ul><li><b>Термитный заряд</b> (Мина, Всплеск 1): Этот заряд нужно детонировать удалённо как быстрое действие. Персонажи в поражённой области должны пройти спасбросок Инженерии или получить 3 пробивающего броню энергетического урона. Термитные заряды автоматически поражают объекты, нанося 10 пробивающего броню энергетического урона.</li></ul>"
+   "en": "Expend a charge for the following effect:<ul><li><b>Thermite Charge</b> (Mine, Burst 1): This charge must be remotely detonated as a quick action. Affected characters must succeed on an Engineering save or take 3 Energy AP. Thermal charges automatically hit objects, dealing 10 Energy AP.</li></ul><br><b>Deployable — Thermite Charge:</b> This charge must be remotely detonated as a quick action. Affected characters must succeed on an Engineering save or take 3 Energy AP. Thermal charges automatically hit objects, dealing 10 Energy AP.<br><b>Detonate</b> — Affected characters must succeed on an Engineering save or take 3 Energy AP.<br><b>Detonate (vs. Object)</b> — Thermal charges automatically hit objects, dealing 10 Energy AP.",
+   "ru": "Потратьте заряд для следующего эффекта:<ul><li><b>Термитный заряд</b> (Мина, Всплеск 1): Этот заряд нужно детонировать удалённо как быстрое действие. Персонажи в поражённой области должны пройти спасбросок Инженерии или получить 3 пробивающего броню энергетического урона. Термитные заряды автоматически поражают объекты, нанося 10 пробивающего броню энергетического урона.</li></ul><br><b>Автономный модуль — Термитный заряд:</b> Этот заряд нужно детонировать удалённо как быстрое действие. Персонажи в поражённой области должны пройти спасбросок Инженерии или получить 3 пробивающего броню энергетического урона. Термитные заряды автоматически поражают объекты, нанося 10 пробивающего броню энергетического урона.<br><b>Детонировать</b> — Персонажи в поражённой области должны пройти спасбросок Инженерии или получить 3 пробивающего броню энергетического урона.<br><b>Детонировать (по объекту)</b> — Термитные заряды автоматически поражают объекты, нанося 10 пробивающего броню энергетического урона."
   }
  },
  "pg_antiphoton_visor": {

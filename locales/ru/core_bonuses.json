@@ -19,8 +19,8 @@
    "ru": "Сверхмощный калибр"
   },
   "effect": {
-   "en": "Choose one weapon. 1/round, when you hit with an attack, you can cause it to deal +1d6 bonus damage.",
-   "ru": "Выберите одно оружие. 1/раунд, при попадании атакой, вы можете заставить её нанести +1d6 бонусного урона."
+   "en": "Choose one weapon. 1/round, when you hit with an attack, you can cause it to deal +1d6 bonus damage.<br><b>Overpower Caliber</b> — The attack deals +1d6 bonus damage.",
+   "ru": "Выберите одно оружие. 1/раунд, при попадании атакой, вы можете заставить её нанести +1d6 бонусного урона.<br><b>Сверхмощный калибр</b> — Атака наносит +1d6 бонусного урона."
   },
   "mounted_effect": {
    "en": "One weapon equipped to this mount deals +1d6 bonus damage 1/round on hit.",
@@ -47,8 +47,8 @@
    "ru": "Интегрированное оружие"
   },
   "effect": {
-   "en": "Your mech gains a new integrated mount with capacity for one Auxiliary weapon. This weapon can be fired 1/round as a free action when you fire any other weapon on your mech. It can’t be modified.",
-   "ru": "Ваш мех получает новое интегрированное крепление вместимостью для одного Вспомогательного оружия. Это оружие можно выстрелить 1/раунд как свободное действие, когда вы стреляете из любого другого оружия на своём мехе. Оно не может быть модифицировано."
+   "en": "Your mech gains a new integrated mount with capacity for one Auxiliary weapon. This weapon can be fired 1/round as a free action when you fire any other weapon on your mech. It can’t be modified.<br><b>Integrated Weapon</b> — You can fire the weapon in this mount.",
+   "ru": "Ваш мех получает новое интегрированное крепление вместимостью для одного Вспомогательного оружия. Это оружие можно выстрелить 1/раунд как свободное действие, когда вы стреляете из любого другого оружия на своём мехе. Оно не может быть модифицировано.<br><b>Интегрированное оружие</b> — Вы можете выстрелить из оружия на этом креплении."
   },
   "mounted_effect": {
    "en": "",
@@ -75,8 +75,8 @@
    "ru": "Универсальная совместимость"
   },
   "effect": {
-   "en": "Any time you spend CP to activate a Core System, you may also take a free action to restore all HP, cool all Heat, and roll 1d20: on 20, regain 1 CP.",
-   "ru": "Каждый раз, когда вы тратите CP на активацию CORE-системы, вы можете также совершить свободное действие, чтобы восстановить все ОЗ, охладить всё Тепло и бросить 1d20: при 20 вы восстанавливаете 1 CP."
+   "en": "Any time you spend CP to activate a Core System, you may also take a free action to restore all HP, cool all Heat, and roll 1d20: on 20, regain 1 CP.<br><b>Universal Compatibility</b> — Restore all HP, cool all Heat, and roll 1d20: on 20, regain 1 CP.",
+   "ru": "Каждый раз, когда вы тратите CP на активацию CORE-системы, вы можете также совершить свободное действие, чтобы восстановить все ОЗ, охладить всё Тепло и бросить 1d20: при 20 вы восстанавливаете 1 CP.<br><b>Универсальная совместимость</b> — Восстановите все ОЗ, охладите всё Тепло и бросьте 1d20: при 20 восстановите 1 CP."
   },
   "mounted_effect": {
    "en": "",
@@ -271,8 +271,8 @@
    "ru": "Урок открытой двери"
   },
   "effect": {
-   "en": "Your Save Target increases by +2; additionally, 1/round, when a character fails a save against you, they take 2 heat.",
-   "ru": "Ваша Цель спасброска увеличивается на +2; дополнительно, 1/раунд, когда персонаж проваливает спасбросок против вас, он получает 2 Тепла."
+   "en": "Your Save Target increases by +2; additionally, 1/round, when a character fails a save against you, they take 2 heat.<br><b>The Lesson of the Open Door</b> — That character takes 2 heat.",
+   "ru": "Ваша Цель спасброска увеличивается на +2; дополнительно, 1/раунд, когда персонаж проваливает спасбросок против вас, он получает 2 Тепла.<br><b>Урок открытой двери</b> — Этот персонаж получает 2 тепла."
   },
   "mounted_effect": {
    "en": "",
@@ -285,8 +285,8 @@
    "ru": "Урок удержанного образа"
   },
   "effect": {
-   "en": "1/round, as a reaction at the start of any allied character’s turn, you may make a Lock On tech action against any character within line of sight and Sensors.",
-   "ru": "1/раунд, как реакцию в начале хода любого союзного персонажа, вы можете совершить тех-действие Захват цели против любого персонажа в пределах видимости и Сенсоров."
+   "en": "1/round, as a reaction at the start of any allied character’s turn, you may make a Lock On tech action against any character within line of sight and Sensors.<br><b>Lesson of the Held Image</b> — Make a Lock On tech action against any character within line of sight and Sensors.",
+   "ru": "1/раунд, как реакцию в начале хода любого союзного персонажа, вы можете совершить тех-действие Захват цели против любого персонажа в пределах видимости и Сенсоров.<br><b>Урок удержанного образа</b> — Совершите тех-действие Захват цели против любого персонажа в пределах линии видимости и Сенсоров."
   },
   "mounted_effect": {
    "en": "",
@@ -313,8 +313,8 @@
    "ru": "Урок пресуществления"
   },
   "effect": {
-   "en": "Any time you take structure damage, you disappear into a non-space and cease to be a valid target. You reappear in the same space at the start of your next turn. If that space is occupied, you reappear in the nearest available free space (chosen by you).",
-   "ru": "Каждый раз, когда вы получаете структурный урон, вы исчезаете в не-пространстве и перестаёте быть допустимой целью. Вы появляетесь обратно в той же клетке в начале своего следующего хода. Если эта клетка занята, вы появляетесь в ближайшей свободной клетке (по вашему выбору)."
+   "en": "Any time you take structure damage, you disappear into a non-space and cease to be a valid target. You reappear in the same space at the start of your next turn. If that space is occupied, you reappear in the nearest available free space (chosen by you).<br><b>The Lesson of Transubstantiation</b> — You disappear into a non-space and cease to be a valid target. You reappear in the same space at the start of your next turn. If that space is occupied, you reappear in the nearest available free space (chosen by you).",
+   "ru": "Каждый раз, когда вы получаете структурный урон, вы исчезаете в не-пространстве и перестаёте быть допустимой целью. Вы появляетесь обратно в той же клетке в начале своего следующего хода. Если эта клетка занята, вы появляетесь в ближайшей свободной клетке (по вашему выбору).<br><b>Урок пресуществления</b> — Вы исчезаете в не-пространстве и перестаёте быть допустимой целью. Вы появляетесь на той же клетке в начале своего следующего хода. Если клетка занята, вы появляетесь на ближайшей свободной клетке (по вашему выбору)."
   },
   "mounted_effect": {
    "en": "",

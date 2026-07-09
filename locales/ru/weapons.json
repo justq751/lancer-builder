@@ -647,8 +647,8 @@
    "ru": "Автомодуль"
   },
   "effect": {
-   "en": "Instead of using any kind of trigger mechanism, this weapon automatically scans for target locks, firing spinning, razor-sharp disks upon successful IDs. Gain the Autonomous Assault reaction, which is the only way you can attack with the Autopod",
-   "ru": "Вместо использования какого-либо спускового механизма, это оружие автоматически сканирует захваты цели, открывая огонь вращающимися остро отточенными дисками при успешном опознавании. Получите реакцию «Автономная атака» — единственный способ атаковать этим Автомодулем."
+   "en": "Instead of using any kind of trigger mechanism, this weapon automatically scans for target locks, firing spinning, razor-sharp disks upon successful IDs. Gain the Autonomous Assault reaction, which is the only way you can attack with the Autopod<br><b>Autonomous Assault</b> — You may automatically hit their target with the Autopod.",
+   "ru": "Вместо использования какого-либо спускового механизма это оружие автоматически сканирует захваты целей, выпуская вращающиеся остро заточенные диски при успешном опознании. Получите реакцию «Автономная атака» — единственный способ атаковать этим оружием.<br><b>Автономная атака</b> — Вы можете автоматически попасть по цели из Автопода."
   }
  },
  "mw_vorpal_gun": {
@@ -657,8 +657,8 @@
    "ru": "Смертоносное орудие"
   },
   "effect": {
-   "en": "Gain the Snicker-Snack reaction, which is the only way you can attack with this weapon.",
-   "ru": "Получите реакцию «Хрясь-и-щёлк» — единственный способ атаковать этим оружием."
+   "en": "Gain the Snicker-Snack reaction, which is the only way you can attack with this weapon.<br><b>Snicker-Snack</b> — You may make an attack against the hostile character with the Vorpal Gun.",
+   "ru": "Получите реакцию «Хрустни-щёлкни» — единственный способ атаковать этим оружием.<br><b>Хрустни-щёлкни</b> — Вы можете атаковать враждебного персонажа из Ворпал-пушки."
   }
  },
  "mw_ghoul_nexus": {
@@ -681,8 +681,8 @@
    "ru": "Nexus «Упырь»"
   },
   "effect": {
-   "en": "This weapon may be used to attack as normal, or deployed as a Drone",
-   "ru": "Это оружие можно использовать для атаки как обычно, либо развернуть как Дрон."
+   "en": "This weapon may be used to attack as normal, or deployed as a Drone<br><b>Deployable — Ghast Drone:</b> This Ghast nexus can be deployed to a free space within Sensors and line of sight as a free action, where it becomes a stationary, hovering Drone. Once deployed, you may still use it for Skirmish and Barrage attacks as though it is still a weapon, but with line of sight and Range traced from its location.<br>You may recall or redeploy the Ghast nexus as a quick action. Until recalled or destroyed, it remains deployed until the end of the scene. If destroyed, it follows the rules for destroyed Drones and can’t be used until repaired.",
+   "ru": "Это оружие можно использовать для атаки как обычно, либо развернуть как Дрона.<br><b>Автономный модуль — Дрон «Гаст»:</b> Этот узел «Гаст» можно развернуть на свободной клетке в пределах Сенсора и линии видимости как свободное действие, где он становится неподвижным парящим Дроном. После развёртывания вы всё ещё можете использовать его для Стычки и Шквального огня, как если бы это по-прежнему было оружие, но с линией видимости и Дальностью, отсчитываемыми от его местоположения.<br>Вы можете отозвать или переразвернуть узел «Гаст» как быстрое действие. Пока не отозван или не уничтожен, он остаётся развёрнутым до конца сцены. При уничтожении он подчиняется правилам для уничтоженных Дронов и не может использоваться, пока не будет отремонтирован."
   }
  },
  "mw_annihilation_nexus": {
@@ -691,12 +691,12 @@
    "ru": "Nexus «Аннигиляция»"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Annihilation Nexus Secondary Attack</b> — If you made an attack with the Annihilation Nexus on your last turn, you can make a second attack with this weapon. This secondary attack can’t deal bonus damage, and doesn't trigger additional secondary attacks.<br>You may center this weapon’s attack on either yourself or any of your Drones within Sensors.",
+   "ru": "<br><b>Вторичная атака Аннигиляционного узла</b> — Если вы атаковали Аннигиляционным узлом в свой прошлый ход, вы можете совершить вторую атаку этим оружием. Эта вторичная атака не может наносить бонусный урон и не провоцирует дополнительные вторичные атаки.<br>Вы можете центрировать атаку этого оружия либо на себе, либо на любом из своих Дронов в пределах Сенсора."
   },
   "on_attack": {
    "en": "You can make a second attack with this weapon at the start of your next turn as a protocol. This secondary attack can’t deal bonus damage, and doesn't trigger additional secondary attacks.<br>You may center this weapon’s attack on either yourself or any of your Drones within Sensors.",
-   "ru": "Вы можете совершить вторую атаку этим оружием в начале своего следующего хода как протокол. Эта вторичная атака не может наносить бонусный урон и не провоцирует дополнительные вторичные атаки.<br>Вы можете центрировать атаку этим оружием либо на себе, либо на любом из своих Дронов в пределах Сенсоров."
+   "ru": "Вы можете совершить вторую атаку этим оружием в начале своего следующего хода как протокол. Эта вторичная атака не может наносить бонусный урон и не провоцирует дополнительные вторичные атаки.<br>Вы можете центрировать атаку этого оружия либо на себе, либо на любом из своих Дронов в пределах Сенсора."
   }
  },
  "mw_catalyst_pistol": {
@@ -739,8 +739,8 @@
    "ru": "Оружие-мимик"
   },
   "effect": {
-   "en": "This horrifying weapon has no basic form; it constantly contorts itself into different shapes, mimicking the weapons of other combatants. It counts as all ranged weapon types simultaneously (e.g., CQB, Rifle, etc.), but it can’t take Mods or benefit from core bonuses, although it still benefits from talents as normal.<br>At the start of combat, roll 3d20 and note the results in order: X, Y, and Z. X is its starting base Range (before modifications from talents). At the start of each of your turns after the first, the mimic gun cycles to the next result, taking that as its base Range. After Z, it cycles back to X.<br>The mimic gun does kinetic equal to 1 + half of its current base Range.<br>You may provoke the mimic gun as a full action, rolling a new set of 3d20.",
-   "ru": "У этого жуткого оружия нет базовой формы; оно постоянно принимает разные очертания, подражая оружию других бойцов. Оно считается всеми типами дального оружия одновременно (например, Ближний огневой контакт, Винтовка и т.д.), но не может получать Моды или бонусы CORE, хотя всё равно получает выгоду от талантов как обычно.<br>В начале боя бросьте 3d20 и запишите результаты по порядку: X, Y и Z. X — стартовая базовая Дальность (до модификаций от талантов). В начале каждого своего хода после первого, оружие-мимик переключается на следующий результат, принимая его как базовую Дальность. После Z оно возвращается к X.<br>Оружие-мимик наносит кинетический урон, равный 1 плюс половина его текущей базовой Дальности.<br>Вы можете спровоцировать оружие-мимик как полное действие, бросив новый набор 3d20."
+   "en": "This horrifying weapon has no basic form; it constantly contorts itself into different shapes, mimicking the weapons of other combatants. It counts as all ranged weapon types simultaneously (e.g., CQB, Rifle, etc.), but it can’t take Mods or benefit from core bonuses, although it still benefits from talents as normal.<br>At the start of combat, roll 3d20 and note the results in order: X, Y, and Z. X is its starting base Range (before modifications from talents). At the start of each of your turns after the first, the mimic gun cycles to the next result, taking that as its base Range. After Z, it cycles back to X.<br>The mimic gun does kinetic equal to 1 + half of its current base Range.<br>You may provoke the mimic gun as a full action, rolling a new set of 3d20.<br><b>Provoke Mimic Gun</b> — Roll a new set of 3d20 to set the Mimic Gun's values.",
+   "ru": "Это жуткое оружие не имеет базовой формы; оно постоянно перестраивается в разные формы, имитируя оружие других бойцов. Оно считается всеми типами дальнобойного оружия одновременно (например, CQB, винтовка и т.д.), но на него нельзя устанавливать Моды или применять CORE-бонусы, хотя таланты на него по-прежнему действуют как обычно.<br>В начале боя бросьте 3d20 и запомните результаты по порядку: X, Y и Z. X — его стартовая базовая Дальность (до модификаций от талантов). В начале каждого вашего хода, кроме первого, мимик-пушка переключается на следующий результат, беря его как базовую Дальность. После Z она возвращается к X.<br>Мимик-пушка наносит кинетический урон, равный 1 + половина её текущей базовой Дальности.<br>Вы можете спровоцировать мимик-пушку как полное действие, бросив новый набор 3d20.<br><b>Спровоцировать мимик-пушку</b> — Бросьте новый набор 3d20, чтобы задать значения Мимик-пушки."
   }
  },
  "mw_autogun": {
@@ -749,8 +749,8 @@
    "ru": "Автопушка"
   },
   "effect": {
-   "en": "This weapon can’t make normal attacks. Instead, you can attack with it as a free action at the end of your turn. It doesn’t benefit from or trigger your talents.",
-   "ru": "Это оружие не может совершать обычные атаки. Вместо этого вы можете атаковать им как свободное действие в конце своего хода. Оно не получает выгоду от ваших талантов и не провоцирует их."
+   "en": "This weapon can’t make normal attacks. Instead, you can attack with it as a free action at the end of your turn. It doesn’t benefit from or trigger your talents.<br><b>Fire Autogun</b> — This weapon can’t make normal attacks. Instead, you can attack with it as a free action at the end of your turn. It doesn’t benefit from or trigger your talents.",
+   "ru": "Это оружие не может атаковать обычным образом. Вместо этого вы можете атаковать им как свободное действие в конце своего хода. На него не действуют и его не провоцируют ваши таланты.<br><b>Выстрелить из Автопушки</b> — Это оружие не может атаковать обычным образом. Вместо этого вы можете атаковать им как свободное действие в конце своего хода. На него не действуют и его не провоцируют ваши таланты."
   }
  },
  "mw_siege_cannon": {
@@ -875,12 +875,12 @@
    "ru": "Тахионное копьё"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Tachyon Lance Backblast</b> — Create a cone 3 backblast of burning plasma in the opposite direction to the attack. Characters within the affected area must succeed on an Engineering save or take 4 burn and 2 heat. Until the start of your next turn, the affected area provides soft cover.",
+   "ru": "<br><b>Обратная вспышка Тахионного копья</b> — Создайте обратную вспышку горящей плазмы-конус 3 в направлении, противоположном атаке. Персонажи в поражённой области должны пройти спасбросок Инженерии или получить 4 горения и 2 тепла. До начала вашего следующего хода поражённая область даёт мягкое укрытие."
   },
   "on_attack": {
    "en": "If you’re in the Danger Zone, create a cone 3 backblast of burning plasma in the opposite direction to the attack. Characters within the affected area must succeed on an Engineering save or take 4 burn and 2 heat. Until the start of your next turn, the affected area provides soft cover.",
-   "ru": "Если вы в Опасной зоне, создайте обратный выброс горящей плазмы конусом 3 в направлении, противоположном атаке. Персонажи в поражённой области должны пройти спасбросок Инженерии, иначе получают 4 огня и 2 Тепла. До начала вашего следующего хода поражённая область даёт мягкое укрытие."
+   "ru": "Если вы в Опасной зоне, создайте обратную вспышку горящей плазмы-конус 3 в направлении, противоположном атаке. Персонажи в поражённой области должны пройти спасбросок Инженерии или получить 4 горения и 2 тепла. До начала вашего следующего хода поражённая область даёт мягкое укрытие."
   }
  },
  "mw_annihilator": {
@@ -977,8 +977,8 @@
    "ru": "«Рельса Апокалипсиса»"
   },
   "effect": {
-   "en": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power. This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5. If the value of the Apocalypse Die is 1–3, you can attack on your turn with the Apocalypse Rail as a full action, but can’t move or take any other actions on the same turn. After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
-   "ru": "«Рельса Апокалипсиса» должна быть заряжена перед выстрелом, с помощью CORE-способности «Зарядить рельсу».<br>У этого оружия разные профили, определяемые текущим значением КОСТИ АПОКАЛИПСИСА в момент выстрела. Каждый профиль заменяет предыдущий. «Рельса Апокалипсиса» не может стрелять по целям в пределах Дальности 5.<br>Если значение Кости Апокалипсиса 1–3, вы можете атаковать в свой ход «Рельсой Апокалипсиса» как полное действие, но не можете двигаться или совершать другие действия в этот же ход.<br>После атаки «Рельсой Апокалипсиса» Кость Апокалипсиса сбрасывается на 4."
+   "en": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power.<br>This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5.<br> After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.<br><b>Fire Apocalypse Rail</b> — If the value of the Apocalypse Die is 1–3, you can attack on your turn with the Apocalypse Rail as a full action, but can’t move or take any other actions on the same turn.<br>After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
+   "ru": "«Рельс Апокалипсиса» нужно зарядить, прежде чем стрелять, используя CORE-способность «Зарядить рельс».<br>У этого оружия разные профили в зависимости от текущего значения КОСТИ АПОКАЛИПСИСА в момент выстрела. Каждый профиль заменяет предыдущий. «Рельс Апокалипсиса» нельзя направить на цели в пределах радиуса 5.<br>После атаки «Рельсом Апокалипсиса» Кость Апокалипсиса сбрасывается на 4.<br><b>Выстрелить из Рельса Апокалипсиса</b> — Если значение Кости Апокалипсиса 1–3, вы можете атаковать в свой ход «Рельсом Апокалипсиса» как полное действие, но не можете перемещаться или совершать другие действия в этот же ход.<br>После атаки «Рельсом Апокалипсиса» Кость Апокалипсиса сбрасывается на 4."
   },
   "profiles": {
    "Charge Rail: 4": {

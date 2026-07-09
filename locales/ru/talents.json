@@ -19,8 +19,8 @@
      "ru": "Акробатика"
     },
     "description": {
-     "en": "While flying, you get the following benefits:<ul><li>You make all Agility checks and saves with +1 Accuracy.</li><li>Any time an attack misses you, you may fly up to 2 spaces in any direction as a reaction.</li></ul>",
-     "ru": "Пока вы летите, вы получаете следующие преимущества:<ul><li>Все проверки и спасброски Ловкости вы совершаете с +1 к Точности.</li><li>Каждый раз, когда атака промахивается по вам, вы можете пролететь до 2 клеток в любом направлении как реакцию.</li></ul>"
+     "en": "While flying, you get the following benefits:<ul><li>You make all Agility checks and saves with +1 Accuracy.</li><li>Any time an attack misses you, you may fly up to 2 spaces in any direction as a reaction.</li></ul><br><b>Acrobatics</b> — You may fly up to 2 spaces in any direction.",
+     "ru": "Пока вы летите, вы получаете следующие преимущества:<ul><li>Вы совершаете все проверки и спасброски Ловкости с +1 Точность.</li><li>Каждый раз, когда атака промахивается по вам, вы можете пролететь до 2 клеток в любом направлении как реакцию.</li></ul><br><b>Акробатика</b> — Вы можете пролететь до 2 клеток в любом направлении."
     }
    },
    "Afterburners": {
@@ -39,8 +39,8 @@
      "ru": "Сверхзвук"
     },
     "description": {
-     "en": "As a quick action on your turn, you may <b>spin up your thrusters</b>. If you end your turn flying, you may nominate a character within a Range equal to your Speed and within line of sight, and gain the <b>Supersonic</b> Reaction.",
-     "ru": "Как быстрое действие в свой ход, вы можете <b>раскрутить двигатели</b>. Если вы закончите ход в полёте, вы можете назначить персонажа в пределах Дальности, равной вашей Скорости, и в пределах видимости, и получить реакцию <b>Сверхзвук</b>."
+     "en": "As a quick action on your turn, you may <b>spin up your thrusters</b>. If you end your turn flying, you may nominate a character within a Range equal to your Speed and within line of sight, and gain the <b>Supersonic</b> Reaction.<br><b>Spin Up Thrusters</b> — As a quick action on your turn, you may spin up your thrusters. If you end your turn flying, you may nominate a character within a Range equal to your Speed and within line of sight, and gain the Supersonic reaction.<br><b>Supersonic</b> — You fly to a space free and adjacent to them. There must be a path to do so but you can move even if the nominated character is no longer within your movement range or line of sight. This ignores engagement and does not provoke reactions.",
+     "ru": "Как быстрое действие в свой ход вы можете <b>раскрутить двигатели</b>. Если вы заканчиваете ход в полёте, вы можете назначить персонажа в пределах Дальности, равной вашей Скорости, и в пределах линии видимости, и получить реакцию <b>«Сверхзвук»</b>.<br><b>Раскрутить двигатели</b> — Как быстрое действие в свой ход вы можете раскрутить двигатели. Если вы заканчиваете ход в полёте, вы можете назначить персонажа в пределах Дальности, равной вашей Скорости, и в пределах линии видимости, и получить реакцию «Сверхзвук».<br><b>Сверхзвук</b> — Вы летите на свободную клетку рядом с назначенным персонажем. Должен существовать путь для этого, но вы можете переместиться, даже если назначенный персонаж вышел из радиуса вашего перемещения или линии видимости. Это игнорирует связанность боем и не провоцирует реакции."
     }
    }
   }
@@ -75,8 +75,8 @@
      "ru": "Сандэнс"
     },
     "description": {
-     "en": "Gain the <b>Intercede</b> Reaction.",
-     "ru": "Получите реакцию <b>Вмешательство</b>."
+     "en": "Gain the <b>Intercede</b> Reaction.<br><b>Intercede</b> — You may take the damage instead.",
+     "ru": "Получите реакцию <b>«Заступиться»</b>.<br><b>Заступиться</b> — Вы можете получить урон вместо цели."
     }
    },
    "Cover Me!": {
@@ -131,8 +131,8 @@
      "ru": "Нокаутирующий удар"
     },
     "description": {
-     "en": "Gain a Brawler Die, 1d6 starting at 6. Each time you Grapple, Ram, or make an Improvised Attack, lower the value of the Brawler Die by 1. When the Brawler Die reaches 1, you may reset it to 6 and, as a full action, make a Knockout Blow against an adjacent character. The value of your Brawler Die persists between scenes, but it resets to 6 when you rest or perform a Full Repair.",
-     "ru": "Получите Кость Драчуна, 1d6, начинающуюся с 6. Каждый раз, когда вы Захватываете, Таранните или совершаете Импровизированную атаку, уменьшайте значение Кости Драчуна на 1. Когда Кость Драчуна достигает 1, вы можете сбросить её на 6 и, как полное действие, нанести Нокаутирующий удар по соседнему персонажу. Значение вашей Кости Драчуна сохраняется между сценами, но сбрасывается на 6, когда вы отдыхаете или проводите Полный ремонт."
+     "en": "Gain a Brawler Die, 1d6 starting at 6. Each time you Grapple, Ram, or make an Improvised Attack, lower the value of the Brawler Die by 1. When the Brawler Die reaches 1, you may reset it to 6 and, as a full action, make a Knockout Blow against an adjacent character. The value of your Brawler Die persists between scenes, but it resets to 6 when you rest or perform a Full Repair.<br><b>Knockout Blow</b> — Reset your Brawler Die to 6 and, as a full action, make a Knockout Blow against an adjacent character. They must pass a Hull save, or take 2d6+2 Kinetic damage and become Stunned until the end of their next turn.<br>This action can only be taken when the value of your Brawler Die is 1.",
+     "ru": "Получите Кость драчуна, 1d6, начинающуюся с 6. Каждый раз, когда вы совершаете Захват, Таран или Импровизированную атаку, уменьшайте значение Кости драчуна на 1. Когда Кость драчуна достигает 1, вы можете сбросить её на 6 и, как полное действие, совершить Нокаутирующий удар по соседнему персонажу. Значение Кости драчуна сохраняется между сценами, но сбрасывается на 6 при отдыхе или Полном ремонте.<br><b>Нокаутирующий удар</b> — Сбросьте Кость драчуна на 6 и, как полное действие, совершите Нокаутирующий удар по соседнему персонажу. Он должен пройти спасбросок Корпуса, иначе получит 2d6+2 кинетического урона и станет Оглушён до конца своего следующего хода.<br>Это действие можно совершить только когда значение Кости драчуна равно 1."
     }
    }
   }
@@ -203,8 +203,8 @@
      "ru": "Твёрдо, устойчиво"
     },
     "description": {
-     "en": "As a protocol, you may <b>steady your aim</b>. If you do, you become Immobilized until the start of your next turn but gain +1 Accuracy on all attacks you make with Rifles.",
-     "ru": "Как протокол, вы можете <b>стабилизировать прицел</b>. Если вы делаете это, вы становитесь Обездвижены до начала своего следующего хода, но получаете +1 к Точности на все атаки, совершаемые Винтовками."
+     "en": "As a protocol, you may <b>steady your aim</b>. If you do, you become Immobilized until the start of your next turn but gain +1 Accuracy on all attacks you make with Rifles.<br><b>Steady Aim</b> — Become Immobilized until the start of your next turn but gain +1 Accuracy on all attacks you make with Rifles.",
+     "ru": "Как протокол вы можете <b>стабилизировать прицел</b>. Если вы это делаете, вы становитесь Обездвиженным до начала своего следующего хода, но получаете +1 Точность на все атаки винтовками.<br><b>Стабилизировать прицел</b> — Станьте Обездвиженным до начала своего следующего хода, но получите +1 Точность на все атаки винтовками."
     }
    },
    "Zero In": {
@@ -351,8 +351,8 @@
      "ru": "Мастер клинка"
     },
     "description": {
-     "en": "1/round, when you hit with a Main Melee weapon, you gain 1 Blademaster Die – a d6 – up to a maximum of 3 Blademaster Die. They last until expended or the current scene ends. You can expend Blademaster Dice 1-for-1 for the following:<ul><li><b>Parry:</b> As a reaction when you’re hit by a melee attack, you gain Resistance to all damage, heat, and burn dealt by the attack.</li><li><b>Deflect:</b> As a reaction when you’re hit by a ranged attack, you may roll any number of Blademaster Dice, expending them: if you roll a 5+ on any of these dice, you gain Resistance to all damage, heat, and burn dealt by the attack.</li><li><b>Feint:</b> As a free action, choose an adjacent character: when moving, you ignore engagement and don’t provoke reactions from your target until the start of your next turn.</li><li><b>Trip:</b> As a quick action, choose an adjacent character: they must pass an Agility save or fall Prone. Whatever the result, you may freely pass through their space until the end of your current turn, although you can’t end your turn in their space.</li></ul>",
-     "ru": "1/раунд, когда вы попадаете Основным оружием ближнего боя, вы получаете 1 Кость Мастера клинка — d6 — до максимума 3 Костей Мастера клинка. Они действуют до траты или до конца текущей сцены. Вы можете тратить Кости Мастера клинка 1 к 1 на следующее:<ul><li><b>Отбить:</b> Как реакцию, когда вас поражает атака в ближнем бою, вы получаете Сопротивление ко всему урону, теплу и огню от этой атаки.</li><li><b>Отклонить:</b> Как реакцию, когда вас поражает дальняя атака, вы можете бросить любое количество Костей Мастера клинка, тратя их: если хотя бы на одной из них выпадет 5+, вы получаете Сопротивление ко всему урону, теплу и огню от этой атаки.</li><li><b>Обман:</b> Как свободное действие, выберите соседнего персонажа: при движении вы игнорируете вовлечённость и не провоцируете его реакции до начала своего следующего хода.</li><li><b>Подсечка:</b> Как быстрое действие, выберите соседнего персонажа: он должен пройти спасбросок Ловкости, иначе падает Ничком. В любом случае вы можете свободно пройти через его клетку до конца текущего хода, хотя не можете закончить ход в его клетке.</li></ul>"
+     "en": "1/round, when you hit with a Main Melee weapon, you gain 1 Blademaster Die – a d6 – up to a maximum of 3 Blademaster Die. They last until expended or the current scene ends. You can expend Blademaster Dice 1-for-1 for the following:<ul><li><b>Parry:</b> As a reaction when you’re hit by a melee attack, you gain Resistance to all damage, heat, and burn dealt by the attack.</li><li><b>Deflect:</b> As a reaction when you’re hit by a ranged attack, you may roll any number of Blademaster Dice, expending them: if you roll a 5+ on any of these dice, you gain Resistance to all damage, heat, and burn dealt by the attack.</li><li><b>Feint:</b> As a free action, choose an adjacent character: when moving, you ignore engagement and don’t provoke reactions from your target until the start of your next turn.</li><li><b>Trip:</b> As a quick action, choose an adjacent character: they must pass an Agility save or fall Prone. Whatever the result, you may freely pass through their space until the end of your current turn, although you can’t end your turn in their space.</li></ul><br><b>Blademaster: Parry</b> — Expend 1 Blademaster die. You gain Resistance to all damage, heat, and burn dealt by the attack.<br><b>Blademaster: Deflect</b> — You may roll any number of Blademaster Dice, expending them: if you roll a 5+ on any of these dice, you gain Resistance to all damage, heat, and burn dealt by the attack.<br><b>Blademaster: Feint</b> — Expend 1 Blademaster die. Choose an adjacent character: when moving, you ignore engagement and don’t provoke reactions from your target until the start of your next turn.<br><b>Blademaster: Trip</b> — Expend 1 Blademaster die. Choose an adjacent character: they must pass an Agility save or fall Prone. Whatever the result, you may freely pass through their space until the end of your current turn, although you can’t end your turn in their space.",
+     "ru": "1/раунд, попадая основным ближним оружием, вы получаете 1 Кость мастера клинка — d6 — максимум до 3 Костей. Они действуют, пока не потрачены или пока не закончится текущая сцена. Вы можете тратить Кости мастера клинка 1-к-1 на следующее:<ul><li><b>Парировать:</b> как реакцию, когда вы поражены ближней атакой, получите Сопротивление всему урону, теплу и горению от атаки.</li><li><b>Отразить:</b> как реакцию, когда вы поражены дальней атакой, вы можете бросить любое число Костей мастера клинка, потратив их: если хотя бы на одной выпало 5+, вы получаете Сопротивление всему урону, теплу и горению от атаки.</li><li><b>Финт:</b> как свободное действие выберите соседнего персонажа: перемещаясь, вы игнорируете связанность боем и не провоцируете его реакции до начала своего следующего хода.</li><li><b>Подсечка:</b> как быстрое действие выберите соседнего персонажа: он должен пройти спасбросок Ловкости или упасть Опрокинутым. В любом случае вы можете свободно пройти через его клетку до конца текущего хода, хотя не можете закончить ход на ней.</li></ul><br><b>Мастер клинка: Парировать</b> — Потратьте 1 Кость мастера клинка. Получите Сопротивление всему урону, теплу и горению от атаки.<br><b>Мастер клинка: Отразить</b> — Бросьте любое число Костей мастера клинка, потратив их: если хотя бы на одной выпало 5+, получите Сопротивление всему урону, теплу и горению от атаки.<br><b>Мастер клинка: Финт</b> — Потратьте 1 Кость мастера клинка. Выберите соседнего персонажа: перемещаясь, вы игнорируете связанность боем и не провоцируете его реакции до начала своего следующего хода.<br><b>Мастер клинка: Подсечка</b> — Потратьте 1 Кость мастера клинка. Выберите соседнего персонажа: он должен пройти спасбросок Ловкости или упасть Опрокинутым. В любом случае вы можете свободно пройти через его клетку до конца текущего хода, хотя не можете закончить ход на ней."
     }
    },
    "Unstoppable": {
@@ -387,8 +387,8 @@
      "ru": "Пастух"
     },
     "description": {
-     "en": "Your Drone systems gain +5 HP. Additionally, gain the <b>Shepherd Drone</b> Protocol.",
-     "ru": "Ваши Системы-дроны получают +5 ОЗ. Дополнительно получите протокол <b>Пастуший дрон</b>."
+     "en": "Your Drone systems gain +5 HP. Additionally, gain the <b>Shepherd Drone</b> Protocol.<br><b>Shepherd Drone</b> — Move a drone you control up to 4 spaces if it is within Sensors.",
+     "ru": "Ваши системы-Дроны получают +5 ОЗ. Кроме того, получите протокол <b>«Дрон-пастух»</b>.<br><b>Дрон-пастух</b> — Переместите контролируемый вами дрон до 4 клеток, если он в пределах Сенсора."
     }
    },
    "Energized Swarm": {
@@ -407,8 +407,8 @@
      "ru": "Взбодрить"
     },
     "description": {
-     "en": "Gain the <b>Invigorate</b> Quick Action.",
-     "ru": "Получите быстрое действие <b>Взбодрить</b>."
+     "en": "Gain the <b>Invigorate</b> Quick Action.<br><b>Invigorate</b> — Send a pulse of energy to an allied character (including Drones) within Range 3, drawing a Line to them. You may extend the pulse from your target to another allied character, extending the Line to them, as long as they are within Range 3, and you may continue extending the pulse (and Line) like this as long as you don’t target the same character twice. Allied characters who are used as pulse targets or are in the Line’s path gain 4 Overshield; hostile characters in the Line’s path take 2 Energy damage instead.",
+     "ru": "Получите быстрое действие <b>«Взбодрить»</b>.<br><b>Взбодрить</b> — Пошлите импульс энергии союзному персонажу (включая Дронов) в пределах Дальности 3, проведя к нему Линию. Вы можете продлить импульс от цели к другому союзному персонажу, продлив Линию к нему, пока он в пределах Дальности 3, и можете продолжать так продлевать импульс (и Линию), пока не выберете одного и того же персонажа дважды. Союзные персонажи, ставшие целями импульса или оказавшиеся на пути Линии, получают Овершилд 4; враждебные персонажи на пути Линии вместо этого получают 2 энергетического урона."
     }
    }
   }
@@ -525,8 +525,8 @@
      "ru": "Почётный вызов"
     },
     "description": {
-     "en": "The first time on your turn that you attack a hostile character within Range 3, hit or miss, you may give them the Exemplar’s Mark as a free action. Characters can only have one Exemplar’s Mark at a time – new marks from any character replace existing marks.<br>The character has the Exemplar’s Mark until the start of your next turn, and while they have it, you gain the <b>Valiant Aid</b> Reaction.",
-     "ru": "В первый раз за ваш ход, когда вы атакуете враждебного персонажа в пределах Дальности 3, попав или промахнувшись, вы можете как свободное действие наложить на него Метку Образца. У персонажа может быть только одна Метка Образца одновременно — новые метки от любого персонажа заменяют существующие.<br>Персонаж несёт Метку Образца до начала вашего следующего хода, и пока она на нём, вы получаете реакцию <b>Доблестная помощь</b>."
+     "en": "The first time on your turn that you attack a hostile character within Range 3, hit or miss, you may give them the Exemplar’s Mark as a free action. Characters can only have one Exemplar’s Mark at a time – new marks from any character replace existing marks.<br>The character has the Exemplar’s Mark until the start of your next turn, and while they have it, you gain the <b>Valiant Aid</b> Reaction.<br><b>Valiant Aid</b> — Your ally may reroll the attack. They must use the second result, even if it’s worse.",
+     "ru": "Первый раз за ваш ход, атакуя враждебного персонажа в пределах Дальности 3, попадание или промах, вы можете дать ему Метку Образца как свободное действие. У персонажа может быть только одна Метка Образца одновременно — новые метки от любого персонажа заменяют существующие.<br>Персонаж носит Метку Образца до начала вашего следующего хода, и пока она у него есть, вы получаете реакцию <b>«Доблестная помощь»</b>.<br><b>Доблестная помощь</b> — Ваш союзник может перебросить атаку. Он должен использовать второй результат, даже если он хуже."
     }
    },
    "Punishment": {
@@ -545,8 +545,8 @@
      "ru": "До смерти"
     },
     "description": {
-     "en": "As a free action when you mark a character, you may challenge them in a duel to the death: you and the character with your Mark receive +3 Difficulty on attacks against characters or objects other than each other until either the end of the current scene or one of your mechs are destroyed. If they take any action that includes an attack roll against you, hit or miss, this effect ceases for them until the start of your next turn.<br>While To The Death is active, you cannot voluntarily move away from the character with your Mark; additionally, your Mark lasts either until the end of the current scene or one of your mechs are destroyed, and you cannot Mark any new characters.",
-     "ru": "Как свободное действие при наложении метки на персонажа, вы можете вызвать его на дуэль до смерти: вы и персонаж с вашей Меткой получаете +3 к Сложности атак по любым персонажам или объектам, кроме друг друга, до конца текущей сцены или до уничтожения одного из ваших мехов. Если он совершает любое действие, включающее бросок атаки по вам, попав или промахнувшись, этот эффект прекращается для него до начала его следующего хода.<br>Пока «До смерти» активно, вы не можете добровольно отдаляться от персонажа с вашей Меткой; дополнительно, ваша Метка действует до конца текущей сцены или до уничтожения одного из ваших мехов, и вы не можете наложить Метку на новых персонажей."
+     "en": "As a free action when you mark a character, you may challenge them in a duel to the death: you and the character with your Mark receive +3 Difficulty on attacks against characters or objects other than each other until either the end of the current scene or one of your mechs are destroyed. If they take any action that includes an attack roll against you, hit or miss, this effect ceases for them until the start of your next turn.<br>While To The Death is active, you cannot voluntarily move away from the character with your Mark; additionally, your Mark lasts either until the end of the current scene or one of your mechs are destroyed, and you cannot Mark any new characters.<br><b>Duel To The Death</b> — Challenge your marked target to a duel to the death: you and the character with your Mark receive +3 Difficulty on attacks against characters or objects other than each other until either the end of the current scene or one of your mechs are destroyed. If they take any action that includes an attack roll against you, hit or miss, this effect ceases for them until the start of your next turn.<br>While To The Death is active, you cannot voluntarily move away from the character with your Mark; additionally, your Mark lasts either until the end of the current scene or one of your mechs are destroyed, and you cannot Mark any new characters.",
+     "ru": "Как свободное действие, когда вы ставите метку на персонажа, вы можете вызвать его на дуэль насмерть: вы и персонаж с вашей Меткой получаете +3 Сложности на атаки против персонажей или объектов, кроме друг друга, до конца текущей сцены или пока один из ваших мехов не будет уничтожен. Если он совершает действие с броском атаки против вас, попадание или промах, этот эффект прекращается для него до начала вашего следующего хода.<br>Пока «Насмерть» активно, вы не можете добровольно удаляться от персонажа с вашей Меткой; кроме того, ваша Метка длится до конца текущей сцены или пока один из ваших мехов не уничтожен, и вы не можете ставить метки на новых персонажей.<br><b>Дуэль насмерть</b> — Вызовите отмеченную цель на дуэль насмерть: вы и персонаж с вашей Меткой получаете +3 Сложности на атаки против персонажей или объектов, кроме друг друга, до конца текущей сцены или пока один из ваших мехов не уничтожен. Если он совершает действие с броском атаки против вас, попадание или промах, этот эффект прекращается для него до начала вашего следующего хода.<br>Пока «Насмерть» активно, вы не можете добровольно удаляться от персонажа с вашей Меткой; кроме того, ваша Метка длится до конца текущей сцены или пока один из ваших мехов не уничтожен, и вы не можете ставить метки на новых персонажей."
     }
    }
   }
@@ -581,8 +581,8 @@
      "ru": "От бедра"
     },
     "description": {
-     "en": "Gain the <b>Return Fire</b> Reaction.",
-     "ru": "Получите реакцию <b>Ответный огонь</b>."
+     "en": "Gain the <b>Return Fire</b> Reaction.<br><b>Return Fire</b> — You may immediately attack them with a single Auxiliary ranged weapon if they are within Range.",
+     "ru": "Получите реакцию <b>«Ответный огонь»</b>.<br><b>Ответный огонь</b> — Вы можете немедленно атаковать их одним вспомогательным дальнобойным оружием, если они в пределах Дальности."
     }
    },
    "I Kill With My Heart": {
@@ -673,8 +673,8 @@
      "ru": "SAFE_CRACKER"
     },
     "description": {
-     "en": "Gain the following options for Invade:",
-     "ru": "Получите следующие варианты для Вторжения:"
+     "en": "Gain the following options for Invade:<br><b>Jam Cockpit</b> — Characters may not Mount or Dismount your target until the cockpit is fixed with a successful Engineering check as a full action.<br><b>Disable Life Support</b> — Your target receives +1 Difficulty on all saves until the life-support system is rebooted with a successful Systems check as a quick action.<br><b>Hack./Slash</b> — Your target cannot benefit from or take Quick or Full Tech actions until the mech is either Shut Down or its core computer is rebooted with a successful Systems check as a quick action.",
+     "ru": "Получите следующие варианты для Вторжения:<br><b>Заклинить кабину</b> — Персонажи не могут Сесть в мех или Выйти из цели, пока кабина не будет починена успешной проверкой Инженерии как полное действие.<br><b>Отключить жизнеобеспечение</b> — Цель получает +1 Сложность на все спасброски, пока система жизнеобеспечения не перезагружена успешной проверкой Систем как быстрое действие.<br><b>Взлом/Разруб</b> — Цель не может пользоваться или совершать быстрые или полные тех-действия, пока мех не будет Выключен или его центральный компьютер не перезагружен успешной проверкой Систем как быстрое действие."
     }
    },
    "Last Argument of Kings": {
@@ -683,8 +683,8 @@
      "ru": "Последний аргумент королей"
     },
     "description": {
-     "en": "Gain the <b>Last Argument of Kings</b> Full Tech option.",
-     "ru": "Получите полный тех-вариант <b>Последний аргумент королей</b>."
+     "en": "Gain the <b>Last Argument of Kings</b> Full Tech option.<br><b>Last Argument of Kings</b> — Make a tech attack against a target within Sensors and line of sight. On a success, you implant a virus that triggers a minor meltdown in your target’s reactor: they immediately take Burn equal to their current Heat. If this action causes your target to overheat, it resolves before they reset their Heat Cap.",
+     "ru": "Получите вариант полного тех-действия <b>«Последний довод королей»</b>.<br><b>Последний довод королей</b> — Совершите тех-атаку по цели в пределах Сенсора и линии видимости. При успехе вы внедряете вирус, вызывающий небольшое расплавление реактора цели: она немедленно получает Горение, равное её текущему Теплу. Если это действие вызывает перегрев цели, оно разрешается до сброса её Теплоёмкости."
     }
    }
   }
@@ -709,8 +709,8 @@
      "ru": "Огонь на подавление"
     },
     "description": {
-     "en": "Gain the <b>Covering Fire</b> Quick Action.",
-     "ru": "Получите быстрое действие <b>Огонь на подавление</b>."
+     "en": "Gain the <b>Covering Fire</b> Quick Action.<br><b>Covering Fire</b> — Choose a character within line of sight and Range of one of your Heavy ranged weapons, and within 10 spaces: they are Impaired until the start of your next turn. For the duration, if your target moves more than 1 space, they clear Impaired, but you may attack them as a reaction with a Heavy ranged weapon for half damage, Heat, or Burn, and then this effect ends. You can make this attack at any point during their movement (e.g., waiting until they exit cover).<br>Covering Fire can only affect one character at a time – subsequent uses replace previous ones – and it immediately ends if your target damages you.<br><b>Covering Fire Attack</b> — You may attack the target with a Heavy ranged weapon for half damage, Heat, or Burn. You can make this attack at any point during their movement (e.g., waiting until they exit cover).",
+     "ru": "Получите быстрое действие <b>«Прикрывающий огонь»</b>.<br><b>Прикрывающий огонь</b> — Выберите персонажа в пределах линии видимости и Дальности одного из ваших тяжёлых дальнобойных оружий, и в пределах 10 клеток: он становится Ослабленным до начала вашего следующего хода. Пока это действует, если цель перемещается больше чем на 1 клетку, она снимает Ослабленность, но вы можете атаковать её как реакцию тяжёлым дальнобойным оружием на половину урона, тепла или горения, после чего этот эффект заканчивается. Вы можете совершить эту атаку в любой момент её перемещения (например, дождавшись, пока она выйдет из укрытия).<br>«Прикрывающий огонь» может затрагивать только одного персонажа одновременно — повторное использование заменяет предыдущее — и немедленно заканчивается, если цель наносит вам урон.<br><b>Атака прикрывающего огня</b> — Вы можете атаковать цель тяжёлым дальнобойным оружием на половину урона, тепла или горения. Вы можете совершить эту атаку в любой момент её перемещения (например, дождавшись, пока она выйдет из укрытия)."
     }
    },
    "Hammerbeat": {
@@ -893,8 +893,8 @@
      "ru": "Полевой командир"
     },
     "description": {
-     "en": "Gain 3 Leadership Dice, which are d6s, and gain the Issue Order Free Action.<br>You can’t use Leadership Dice from other characters as long as you have any remaining. If you have none, you regain 1 Leadership Die when you rest or regain all when you perform a Full Repair.<br>Leadership dice are consumed when expended.",
-     "ru": "Получите 3 Кости Лидерства — это d6 — и получите свободное действие Отдать приказ.<br>Вы не можете использовать Кости Лидерства других персонажей, пока у вас остаются свои. Если у вас их нет, вы получаете 1 Кость Лидерства при отдыхе или все — при Полном ремонте.<br>Кости Лидерства расходуются при использовании."
+     "en": "Gain 3 Leadership Dice, which are d6s, and gain the Issue Order Free Action.<br>You can’t use Leadership Dice from other characters as long as you have any remaining. If you have none, you regain 1 Leadership Die when you rest or regain all when you perform a Full Repair.<br>Leadership dice are consumed when expended.<br><b>Issue Order</b> — 1/turn, on your turn as a free action, you may issue an order to an allied PC you can communicate with, describing a course of action, and give them a Leadership Die. They may either expend the Leadership Die to gain +1 Accuracy on any action that directly follows from that order, or they may return it to you as a free action. Allies can have one Leadership Die at a time, which lasts until used or until the end of the current scene.",
+     "ru": "Получите 3 Кости лидерства (d6) и быстрое действие «Отдать приказ».<br>Вы не можете использовать Кости лидерства других персонажей, пока у вас остаются свои. Если их не осталось, вы восстанавливаете 1 Кость лидерства при отдыхе, или все — при Полном ремонте.<br>Кости лидерства расходуются при использовании.<br><b>Отдать приказ</b> — 1/ход, в свой ход, как свободное действие, вы можете отдать приказ союзному ИП, с которым можете связаться, описав план действий, и дать ему Кость лидерства. Он может либо потратить Кость лидерства, чтобы получить +1 Точность на любое действие, прямо следующее из этого приказа, либо вернуть её вам как свободное действие. У союзника может быть только одна Кость лидерства одновременно, действующая, пока не использована или до конца текущей сцены."
     }
    },
    "Open Channels": {
@@ -903,8 +903,8 @@
      "ru": "Открытые каналы"
     },
     "description": {
-     "en": "Gain 5 Leadership Dice instead of 3; additionally, you can now issue a command as a reaction at the start of any other player’s turn, any number of times per round.",
-     "ru": "Получите 5 Костей Лидерства вместо 3; дополнительно, теперь вы можете отдавать приказ как реакцию в начале хода любого другого игрока, любое количество раз за раунд."
+     "en": "Gain 5 Leadership Dice instead of 3; additionally, you can now issue a command as a reaction at the start of any other player’s turn, any number of times per round.<br><b>Issue Command</b> — You may issue a command to an allied PC you can communicate with, describing a course of action, and give them a Leadership Die. They may either expend the Leadership Die to gain +1 Accuracy on any action that directly follows from that order, or they may return it to you as a free action. Allies can have one Leadership Die at a time, which lasts until used or until the end of the current scene.",
+     "ru": "Получите 5 Костей лидерства вместо 3; кроме того, теперь вы можете отдавать приказ как реакцию в начале хода любого другого игрока, сколько угодно раз за раунд.<br><b>Отдать приказ</b> — Вы можете отдать приказ союзному ИП, с которым можете связаться, описав план действий, и дать ему Кость лидерства. Он может либо потратить Кость лидерства, чтобы получить +1 Точность на любое действие, прямо следующее из этого приказа, либо вернуть её вам как свободное действие. У союзника может быть только одна Кость лидерства одновременно, действующая, пока не использована или до конца текущей сцены."
     }
    },
    "Inspiring Presence": {
@@ -985,8 +985,8 @@
      "ru": "Отбойный молоток"
     },
     "description": {
-     "en": "If you have a Cannon, as a quick action, you can fire a jackhammer round from an underslung launcher, automatically dealing 10 AP Kinetic damage to a Size 1 section of any object within Range (e.g., cover, deployable equipment, buildings, or terrain). Any characters adjacent to your target are knocked back from it by 2 spaces and take 2 Kinetic damage.",
-     "ru": "Если у вас есть Пушка, как быстрое действие вы можете выстрелить снарядом-отбойником из подствольного пускателя, автоматически нанося 10 бронебойного кинетического урона по участку Размера 1 любого объекта в пределах Дальности (например, укрытие, разворачиваемое снаряжение, здания или местность). Любые персонажи рядом с вашей целью отбрасываются от неё на 2 клетки и получают 2 кинетического урона."
+     "en": "If you have a Cannon, as a quick action, you can fire a jackhammer round from an underslung launcher, automatically dealing 10 AP Kinetic damage to a Size 1 section of any object within Range (e.g., cover, deployable equipment, buildings, or terrain). Any characters adjacent to your target are knocked back from it by 2 spaces and take 2 Kinetic damage.<br><b>Jackhammer Round</b> — Fire a jackhammer round from an underslung launcher, automatically dealing 10 AP Kinetic damage to a Size 1 section of any object within Range (e.g., cover, deployable equipment, buildings, or terrain). Any characters adjacent to your target are knocked back from it by 2 spaces and take 2 Kinetic damage.",
+     "ru": "Если у вас есть Пушка, вы можете как быстрое действие выстрелить пневмопробойным снарядом из подствольного launcher'а, автоматически нанося 10 пробивающего броню кинетического урона секции Размера 1 любого объекта в пределах Дальности (например, укрытию, развёртываемому оборудованию, зданиям или рельефу). Все персонажи рядом с целью отбрасываются от неё на 2 клетки и получают 2 кинетического урона.<br><b>Пневмопробойный выстрел</b> — Выстрелите пневмопробойным снарядом из подствольного launcher'а, автоматически нанося 10 пробивающего броню кинетического урона секции Размера 1 любого объекта в пределах Дальности (например, укрытию, развёртываемому оборудованию, зданиям или рельефу). Все персонажи рядом с целью отбрасываются от неё на 2 клетки и получают 2 кинетического урона."
     }
    },
    "Impact": {
@@ -1097,8 +1097,8 @@
      "ru": "Устранение по Бентаму/Фуко"
     },
     "description": {
-     "en": "As a quick action when you Lock On, you may nominate an allied character adjacent to you: they may immediately make any quick action as a reaction, consuming your target’s Lock On condition. Their action does not need to be an attack, but they benefit from consuming the Lock On condition if they do choose to attack.",
-     "ru": "Как быстрое действие при наложении Захвата цели, вы можете назначить союзного персонажа рядом с вами: он может немедленно совершить любое быстрое действие как реакцию, расходуя условие Захват цели вашей цели. Его действие не обязательно должно быть атакой, но он получает выгоду от расхода Захвата цели, если всё же атакует."
+     "en": "As a quick action when you Lock On, you may nominate an allied character adjacent to you: they may immediately make any quick action as a reaction, consuming your target’s Lock On condition. Their action does not need to be an attack, but they benefit from consuming the Lock On condition if they do choose to attack.<br><b>Bentham/Foucault Elimination</b> — When you Lock On, nominate an allied character adjacent to you: they may immediately make any quick action as a reaction, consuming your target’s Lock On condition. Their action does not need to be an attack, but they benefit from consuming the Lock On condition if they do choose to attack.",
+     "ru": "Как быстрое действие, когда вы накладываете Lock On, вы можете назначить соседнего союзного персонажа: он может немедленно совершить любое быстрое действие как реакцию, расходуя состояние Lock On вашей цели. Его действие не обязано быть атакой, но он получает преимущества от расходования Lock On, если всё же атакует.<br><b>Устранение Бентама/Фуко</b> — Когда вы накладываете Lock On, назначьте соседнего союзного персонажа: он может немедленно совершить любое быстрое действие как реакцию, расходуя состояние Lock On вашей цели. Его действие не обязано быть атакой, но он получает преимущества от расходования Lock On, если всё же атакует."
     }
    }
   }
@@ -1143,8 +1143,8 @@
      "ru": "Поток"
     },
     "description": {
-     "en": "Gain a Torrent Die, 1d6 starting at 6. Whenever you use Stormbending, lower the value of the Torrent Die by 1, to a minimum of 1.<br>When the Torrent Die reaches 1, you may reset it to 6 and make a Massive Attack as a full action.<br>The value of your Torrent Die persists between scenes, but it resets when you rest or perform a Full Repair.",
-     "ru": "Получите Кость потока, 1d6, начинающуюся с 6. Каждый раз, когда вы используете Управление бурей, уменьшайте значение Кости потока на 1, минимум до 1.<br>Когда Кость потока достигает 1, вы можете сбросить её на 6 и совершить Массивную атаку как полное действие.<br>Значение вашей Кости потока сохраняется между сценами, но сбрасывается, когда вы отдыхаете или проводите Полный ремонт."
+     "en": "Gain a Torrent Die, 1d6 starting at 6. Whenever you use Stormbending, lower the value of the Torrent Die by 1, to a minimum of 1.<br>When the Torrent Die reaches 1, you may reset it to 6 and make a Massive Attack as a full action.<br>The value of your Torrent Die persists between scenes, but it resets when you rest or perform a Full Repair.<br><b>Massive Attack</b> — Reset your Torrent Die to 6, then target a character within line of sight and Range 15: they must succeed on an Agility save or take 2d6 Explosive damage, become Stunned until the end of their next turn, and be knocked Prone. On a success, they take half damage and are knocked Prone but not Stunned.<br>This action can only be taken when the value of your Torrent Die is 1.",
+     "ru": "Получите Кость потока, 1d6, начинающуюся с 6. Всякий раз, используя Штормовое искажение, уменьшайте значение Кости потока на 1, минимум до 1.<br>Когда Кость потока достигает 1, вы можете сбросить её на 6 и совершить Массированную атаку как полное действие.<br>Значение Кости потока сохраняется между сценами, но сбрасывается при отдыхе или Полном ремонте.<br><b>Массированная атака</b> — Сбросьте Кость потока на 6, затем выберите персонажа в пределах линии видимости и Дальности 15: он должен пройти спасбросок Ловкости или получить 2d6 взрывного урона, стать Оглушён до конца своего следующего хода и быть опрокинут. При успехе — половину урона и опрокидывание, но без Оглушения.<br>Это действие можно совершить только когда значение Кости потока равно 1."
     }
    }
   }
@@ -1189,8 +1189,8 @@
      "ru": "Перекрёстный огонь"
     },
     "description": {
-     "en": "Gain the <b>Flank</b> Reaction.",
-     "ru": "Получите реакцию <b>Фланг</b>."
+     "en": "Gain the <b>Flank</b> Reaction.<br><b>Flank</b> — You may target them with Overwatch, dealing half damage, heat or burn on a hit",
+     "ru": "Получите реакцию <b>«Фланг»</b>.<br><b>Фланг</b> — Вы можете нацелиться на них Overwatch, нанося половину урона, тепла или горения при попадании."
     }
    }
   }
