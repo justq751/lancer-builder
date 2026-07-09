@@ -2350,6 +2350,8 @@ function openWeaponPicker(mi){
   };
 
   const drawList=(keepScroll)=>{
+    const mbd=$("#modal .mbd");
+    const savedScroll = keepScroll ? mbd.scrollTop : null;
     const list=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???" && w.source)
       .filter(w=>wpFilter==="ALL"?w.source!=="EXOTIC":w.source===wpFilter)
       .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
@@ -2360,7 +2362,7 @@ function openWeaponPicker(mi){
        ${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
-       <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
+       <div class="grid" id="wp-list" style="gap:8px"></div>`);
     $("#wp-list").innerHTML=list.map(w=>{
       const lk=!unlocked(w);
       const open=pickerViewMode==="inline" && wpExpanded===w.id;
@@ -2378,6 +2380,7 @@ function openWeaponPicker(mi){
         </button></div>`:"";
       return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет подходящего оружия</div>`;
+    if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     wireViewToggle(drawList);
     $$(".modal .chip[data-wpf]").forEach(c=>c.onclick=()=>{wpFilter=c.dataset.wpf; drawList();});
@@ -2430,12 +2433,14 @@ function openIntegratedPicker(mi){
   };
 
   const drawList=(keepScroll)=>{
+    const mbd=$("#modal .mbd");
+    const savedScroll = keepScroll ? mbd.scrollTop : null;
     const open=pickerViewMode==="inline" && wpExpanded===w.id;
     $("#modal .mhd h3").textContent="Восстановить интегрированное оружие";
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Это оружие встроено в шасси — заменить его нельзя, можно только вернуть на место.</div>
        ${viewToggleHTML()}
-       <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
+       <div class="grid" id="wp-list" style="gap:8px"></div>`);
     const row=`<div class="listrow clickable ${open?'open':''}" data-w="${w.id}">
       <div class="info"><div class="nm">${esc(w.name)}</div>
         <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
@@ -2444,6 +2449,7 @@ function openIntegratedPicker(mi){
     const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
       <button class="ghostbtn" id="wp-install-inline" style="margin-top:14px;width:100%;text-align:center">✓ Восстановить это оружие</button></div>`:"";
     $("#wp-list").innerHTML=`<div class="pickitem">${row}${expand}</div>`;
+    if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     wireViewToggle(drawList);
     $$("#wp-list .listrow").forEach(it=>it.onclick=()=>{
@@ -2490,6 +2496,8 @@ function openModPicker(mi, wi){
   };
 
   const drawList=(keepScroll)=>{
+    const mbd=$("#modal .mbd");
+    const savedScroll = keepScroll ? mbd.scrollTop : null;
     const list=(L.mods||[]).filter(m=>modCompatible(m,w))
       .filter(m=>mpFilter==="ALL"?m.source!=="EXOTIC":m.source===mpFilter)
       .filter(m=>!mpSearch||(m.name+" "+m.source+" "+(m.tags||[]).map(trTag).join(" ")).toLowerCase().includes(mpSearch.toLowerCase()))
@@ -2500,7 +2508,7 @@ function openModPicker(mi, wi){
        ${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${mpFilter===s?'on':''}" data-mpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="mp-search" placeholder="поиск модов…" style="margin-bottom:14px" value="${esc(mpSearch)}">
-       <div class="grid" id="mp-list" style="gap:8px"></div>`, keepScroll);
+       <div class="grid" id="mp-list" style="gap:8px"></div>`);
     $("#mp-list").innerHTML=list.map(m=>{
       const lk=!unlocked(m);
       const open=pickerViewMode==="inline" && mpExpanded===m.id;
@@ -2518,6 +2526,7 @@ function openModPicker(mi, wi){
         </button></div>`:"";
       return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет модов, совместимых с этим оружием</div>`;
+    if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     wireViewToggle(drawList);
     $$(".modal .chip[data-mpf]").forEach(c=>c.onclick=()=>{mpFilter=c.dataset.mpf; drawList();});
@@ -2615,6 +2624,8 @@ function openSystemPicker(){
   };
 
   const drawList=(keepScroll)=>{
+    const mbd=$("#modal .mbd");
+    const savedScroll = keepScroll ? mbd.scrollTop : null;
     const list=L.systems
       .filter(s=>s.source)
       .filter(s=>syFilter==="ALL"?s.source!=="EXOTIC":s.source===syFilter)
@@ -2626,7 +2637,7 @@ function openSystemPicker(){
       `${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="sy-search" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
-       <div class="grid" id="sy-list" style="gap:8px"></div>`, keepScroll);
+       <div class="grid" id="sy-list" style="gap:8px"></div>`);
     $("#sy-list").innerHTML=list.map(s=>{
       const lk=!unlocked(s);
       const open=pickerViewMode==="inline" && syExpanded===s.id;
@@ -2644,6 +2655,7 @@ function openSystemPicker(){
         </button></div>`:"";
       return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет систем</div>`;
+    if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     wireViewToggle(drawList);
     $$(".modal .chip[data-syf]").forEach(c=>c.onclick=()=>{syFilter=c.dataset.syf; drawList();});
