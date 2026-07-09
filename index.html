@@ -1738,9 +1738,9 @@ function viewLicenseItemPreview(kind, id, back){
     const item = kind==="w" ? M.weapon[id] : kind==="m" ? M.mod[id] : M.system[id];
     const html = kind==="w" ? weaponCardHTML(item) : kind==="m" ? modCardHTML(item) : systemCardHTML(item);
     $("#modal .mhd h3").textContent=item.name;
-    $("#modal .mbd").innerHTML=
+    setModalBody(
       `<button class="ghostbtn" id="lip-back" style="margin-bottom:14px">← Назад к лицензии</button>`
-      + html;
+      + html);
     if(kind==="w") wireTagGlossary("#wp-tags","#wp-tagdesc",weaponDisplayTags(item, profileViewIdx));
     else if(kind==="m") wireTagGlossary("#md-tags","#md-tagdesc",item.tags||[]);
     else wireTagGlossary("#sy-tags","#sy-tagdesc",item.tags||[]);
@@ -2334,12 +2334,12 @@ function openWeaponPicker(mi){
     const w=M.weapon[id], lk=!unlocked(w);
     tagOpenSet=new Set(); profileViewIdx=0;
     $("#modal .mhd h3").textContent=w.name;
-    $("#modal .mbd").innerHTML=
+    setModalBody(
       `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
       + weaponCardHTML(w) +
       `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
-      </button>`;
+      </button>`);
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", ()=>drawDetail(id));
     $("#wp-back").onclick=drawList;
@@ -2352,12 +2352,12 @@ function openWeaponPicker(mi){
       .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
       .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent=`Установить оружие · ${tr(mt.type)}`;
-    $("#modal .mbd").innerHTML=
+    setModalBody(
       `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
        ${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
-       <div class="grid" id="wp-list" style="gap:8px"></div>`;
+       <div class="grid" id="wp-list" style="gap:8px"></div>`);
     $("#wp-list").innerHTML=list.map(w=>{
       const lk=!unlocked(w);
       const open=pickerViewMode==="inline" && wpExpanded===w.id;
@@ -2416,10 +2416,10 @@ function openIntegratedPicker(mi){
   const drawDetail=()=>{
     tagOpenSet=new Set(); profileViewIdx=0;
     $("#modal .mhd h3").textContent=w.name;
-    $("#modal .mbd").innerHTML=
+    setModalBody(
       `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
       + weaponCardHTML(w) +
-      `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">✓ Восстановить это оружие</button>`;
+      `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">✓ Восстановить это оружие</button>`);
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", drawDetail);
     $("#wp-back").onclick=drawList;
@@ -2429,10 +2429,10 @@ function openIntegratedPicker(mi){
   const drawList=()=>{
     const open=pickerViewMode==="inline" && wpExpanded===w.id;
     $("#modal .mhd h3").textContent="Восстановить интегрированное оружие";
-    $("#modal .mbd").innerHTML=
+    setModalBody(
       `<div class="hint" style="margin-bottom:10px">Это оружие встроено в шасси — заменить его нельзя, можно только вернуть на место.</div>
        ${viewToggleHTML()}
-       <div class="grid" id="wp-list" style="gap:8px"></div>`;
+       <div class="grid" id="wp-list" style="gap:8px"></div>`);
     const row=`<div class="listrow clickable ${open?'open':''}" data-w="${w.id}">
       <div class="info"><div class="nm">${esc(w.name)}</div>
         <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
@@ -2475,9 +2475,9 @@ function openModPicker(mi, wi){
     const list=(L.mods||[]).filter(m=>modCompatible(m,w))
       .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent=`Установить мод · ${esc(w.name)}`;
-    $("#modal .mbd").innerHTML=
+    setModalBody(
       `<div class="hint" style="margin-bottom:10px">Совместимо с типом: ${tr(w.type)}</div>
-       <div class="grid" id="mp-list" style="gap:8px"></div>`;
+       <div class="grid" id="mp-list" style="gap:8px"></div>`);
     $("#mp-list").innerHTML=list.map(m=>{
       const lk=!unlocked(m);
       const open=mpExpanded===m.id;
@@ -2573,12 +2573,12 @@ function openSystemPicker(){
     const s=M.system[id], lk=!unlocked(s);
     tagOpenSet=new Set();
     $("#modal .mhd h3").textContent=s.name;
-    $("#modal .mbd").innerHTML=
+    setModalBody(
       `<button class="ghostbtn" id="sy-back" style="margin-bottom:14px">← Назад к списку</button>`
       + systemCardHTML(s) +
       `<button class="ghostbtn" id="sy-install" style="margin-top:16px;width:100%;text-align:center">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
-      </button>`;
+      </button>`);
     wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
     $("#sy-back").onclick=drawList;
     $("#sy-install").onclick=()=>install(s.id);
@@ -2592,11 +2592,11 @@ function openSystemPicker(){
       .filter(s=>!sySearch||(s.name+" "+tr(s.type)+" "+s.source+" "+(s.tags||[]).map(trTag).join(" ")).toLowerCase().includes(sySearch.toLowerCase()))
       .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent="Добавить систему";
-    $("#modal .mbd").innerHTML=
+    setModalBody(
       `${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="sy-search" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
-       <div class="grid" id="sy-list" style="gap:8px"></div>`;
+       <div class="grid" id="sy-list" style="gap:8px"></div>`);
     $("#sy-list").innerHTML=list.map(s=>{
       const lk=!unlocked(s);
       const open=pickerViewMode==="inline" && syExpanded===s.id;
@@ -2825,6 +2825,18 @@ function openCoreDetail(id){
 }
 
 /* ============ MODAL ============ */
+/* Every place that redraws the modal body (picker lists, "back to list",
+   detail views, profile-chip re-renders, etc.) must reset scroll — not just
+   the initial modal() call. Those redraws bypass modal() and write to
+   .mbd.innerHTML directly (see openWeaponPicker/openSystemPicker/
+   openModPicker/viewLicenseItemPreview), so scroll position from whatever
+   was previously shown there would otherwise carry over. Use this instead
+   of touching #modal .mbd innerHTML by hand. */
+function setModalBody(html){
+  const mbd=$("#modal .mbd");
+  mbd.innerHTML=html;
+  mbd.scrollTop=0;
+}
 function modal(title,html){
   const mhd=$("#modal .mhd");
   // Reset the header to just [h3, close button] on every open — openFrame(),
@@ -2836,9 +2848,7 @@ function modal(title,html){
     if(el.tagName!=="H3" && !el.classList.contains("mclose")) el.remove();
   });
   mhd.querySelector("h3").textContent=title;
-  const mbd=$("#modal .mbd");
-  mbd.innerHTML=html;
-  mbd.scrollTop=0;
+  setModalBody(html);
   $("#modal").scrollTop=0;
   $("#modal").classList.add("show");
 }
