@@ -878,7 +878,7 @@ function localizeData(base, locale) {
 
   overlayKeyedPairs(L.skills, locale.skills || {}, ["name", "description", "detail"]);
   overlayKeyedPairs(L.core_bonuses, locale.core_bonuses || {}, ["name", "effect", "mounted_effect"]);
-  overlayKeyedPairs(L.pilot_gear, locale.pilot_gear || {}, ["name", "description"]);
+  overlayKeyedPairs(L.pilot_gear, locale.pilot_gear || {}, ["name", "description", "effect"]);
   overlayKeyedPairs(L.backgrounds, locale.backgrounds || {}, ["name", "description"]);
   overlayKeyedPairs(L.manufacturers || [], (locale.manufacturers || {}), ["name", "description"]);
   overlayKeyedPairs(L.tags || [], (locale.tags || {}), ["name", "description"]);

@@ -61,8 +61,8 @@
    "ru": "Дымовые заряды образца A"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Smoke Grenade</b> — Throw a Smoke Grenade within Range 5. All characters and objects within a Blast 2 area benefit from soft cover until the end of your next turn, at which point the smoke disperses.<br><b>Deployable — Smoke Mine:</b> This mine detonates when any allied character moves over or adjacent to it. All characters and objects within a Burst 3 area benefit from soft cover until the end of the detonating character’s next turn, at which point the smoke disperses.",
+   "ru": "<br><b>Дымовая граната</b> — Бросьте дымовую гранату в пределах Радиуса 5. Все персонажи и объекты в области-Взрыв 2 получают мягкое укрытие до конца вашего следующего хода, после чего дым рассеивается.<br><b>Автономный модуль — Дымовая мина:</b> Эта мина детонирует, когда любой союзный персонаж перемещается на неё или рядом с ней. Все персонажи и объекты в области-Всплеск 3 получают мягкое укрытие до конца следующего хода активировавшего персонажа, после чего дым рассеивается."
   },
   "description": {
    "en": "",
@@ -89,8 +89,8 @@
    "ru": "Заряды HEX образца B"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Frag Grenade</b> — Throw a Frag Grenade within Range 5. All characters within a Blast 1 area must pass an Agility save or take 1d6 Explosive damage. On a success, they take half damage.<br><b>Deployable — Explosive Mine:</b> All characters within a Burst 1 area must pass an Agility save or take 2d6 Explosive damage. On a success, they take half damage.",
+   "ru": "<br><b>Осколочная граната</b> — Бросьте осколочную гранату в пределах Радиуса 5. Все персонажи в области-Взрыв 1 должны пройти спасбросок Ловкости или получить 1d6 взрывного урона. При успехе — половину урона.<br><b>Автономный модуль — Взрывная мина:</b> Все персонажи в области-Всплеск 1 должны пройти спасбросок Ловкости или получить 2d6 взрывного урона. При успехе — половину урона."
   },
   "description": {
    "en": "",
@@ -145,8 +145,8 @@
    "ru": "Проецируемый щит типа 3"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Project Shield</b> — Nominate a character within line of sight: all ranged or melee attacks that they make against you or that you make against them gain +2 Difficulty until the start of your next turn.",
+   "ru": "<br><b>Спроецировать щит</b> — Выберите персонажа в пределах линии видимости: все дальние или ближние атаки, которые он совершает против вас, или которые вы совершаете против него, получают +2 Сложности до начала вашего следующего хода."
   },
   "description": {
    "en": "The GMS Type-3 Projected Shield traps and denies incoming projectiles by projecting an aggressive, superpositional anti-ballistic barrier.",
@@ -215,8 +215,8 @@
    "ru": "Усиленная проводка"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Grapple Swing</b> — 1/turn, when making a standard move, you can fly your Speed in a straight line as long as there is a clear path. This move must end on an object or surface, or else you begin falling. As long as you remain stationary, you can secure yourself to the destination surface or object, even if it’s vertical or overhanging. If you are knocked Prone or knocked back while secured to a surface, you fall.<br><b>Drag Down</b> — Make a contested Hull check against a character within 5 Range and line of sight: the loser is knocked Prone.",
+   "ru": "<br><b>Крюковой рывок</b> — 1/ход, совершая стандартное перемещение, вы можете пролететь свою Скорость по прямой линии, если путь свободен. Это перемещение должно закончиться на объекте или поверхности, иначе вы начинаете падать. Пока вы остаётесь неподвижны, вы можете закрепиться на поверхности или объекте назначения, даже если она вертикальна или нависает. Если вас опрокидывают или отбрасывают, будучи закреплённым на поверхности, вы падаете.<br><b>Утащить вниз</b> — Совершите состязательную проверку Корпуса против персонажа в пределах Радиуса 5 и линии видимости: проигравший опрокидывается."
   },
   "description": {
    "en": "Reinforced grappling cables allow for full movement and utility in ≤1 g environments. Woven from incredibly strong nanocarbon and arachnosynth threading, reinforced grapple line is carried on waist-mounted spools and attached to charge-actuated brachial projectors. Once fired, the grapples penetrate and anchor to the target. Small meltdown charges seeded every thirty meters of cable both allow rapid disengagement and expose a fresh grapple head, ready for immediate use.",
@@ -243,8 +243,8 @@
    "ru": "Щит «Аргонавт»"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — You use the heavy overarm Argonaut Shield to provide cover for an adjacent character as a quick action, giving them Resistance to all damage; however, you take half of the damage your target would take before calculating Armor and Resistance. This effect lasts until your target breaks adjacency, at which point this effect ceases until you repeat this action.",
+   "ru": "<br><b>Быстрое</b> — Вы используете тяжёлый наручный щит «Аргонавт», чтобы прикрыть соседнего персонажа как быстрое действие, давая ему Сопротивление всему урону; однако вы получаете половину урона, который получила бы ваша цель, до вычета Брони и Сопротивления. Этот эффект длится, пока цель не разорвёт соседство, после чего действие прекращается до повторного применения."
   },
   "description": {
    "en": "In space, simplicity in form and function guarantees reliability and promotes trust. The Argonaut is one of IPS-N’s oldest designs, hailing from the pre-merger days of Northstar’s Deep Black security teams. It’s a simple slab of metal carried in hand or mounted on a chassis’ brachial superstructure; the only option a pilot has for customizing this shield is a choice of size.",
@@ -285,8 +285,8 @@
    "ru": "Тросовая лебёдочная система"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — These cables can be attached to an adjacent character. If the target is Stunned or willing, you automatically succeed; otherwise, they can resist with a successful Hull save. Once attached, you and the target may not move more than 5 spaces away from each other. Either character can tow the other, obeying the normal rules for lifting and dragging, and becoming Slowed while doing so.<br>Any character can remove the cables on a hit with a melee attack or Improvised Attack against Evasion 10.<br>These cables can also be used to drag, pull, or otherwise interact with objects and the environment. They are 5 spaces long and can support a combined Size 6 before they break. Characters can use them to climb surfaces, allowing them to climb without a Speed penalty.",
+   "ru": "<br><b>Быстрое</b> — Эти тросы можно прикрепить к соседнему персонажу. Если цель Оглушена или согласна, вы автоматически преуспеваете; иначе она может сопротивляться успешным спасброском Корпуса. После прикрепления вы и цель не можете удаляться друг от друга больше чем на 5 клеток. Любой из персонажей может тащить другого, соблюдая обычные правила подъёма и перетаскивания, становясь при этом Замедленным.<br>Любой персонаж может снять тросы попаданием ближней атакой или Импровизированной атакой против Уклонения 10.<br>Эти тросы также можно использовать, чтобы тащить, тянуть или иным образом взаимодействовать с объектами и окружением. Их длина — 5 клеток, и они выдерживают суммарный Размер 6, прежде чем порвутся. Персонажи могут использовать их для подъёма по поверхностям, взбираясь без штрафа к Скорости."
   },
   "description": {
    "en": "A winch system consists of an externally mounted spool of nanocarbon-weave cable and a recovery subroutine installed on the mech.",
@@ -327,8 +327,8 @@
    "ru": "Герметизирующий спрей «Побелка»"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — This sealant can be sprayed on characters or free spaces within range 5 and line of sight. It has different effects depending on the target:<ul><li><b>Hostile Characters:</b> Your target must succeed on an Agility save or they become Slowed until the end of their next turn and clear all burn.</li><li><b>Allied Characters:</b> Your target clears all burn but they become Slowed until the end of their next turn.</li><li><b>Free Space:</b> Any fires within blast 1 are extinguished and the area becomes difficult terrain for the rest of the scene.</li></ul>",
+   "ru": "<br><b>Быстрое</b> — Этот герметик можно распылить на персонажей или свободные клетки в пределах радиуса 5 и линии видимости. Эффект зависит от цели:<ul><li><b>Враждебные персонажи:</b> цель должна пройти спасбросок Ловкости, иначе становится Замедленной до конца своего следующего хода и снимает всё горение.</li><li><b>Союзные персонажи:</b> цель снимает всё горение, но становится Замедленной до конца своего следующего хода.</li><li><b>Свободная клетка:</b> все пожары в области-взрыв 1 гасятся, и область становится труднопроходимым рельефом до конца сцены.</li></ul>"
   },
   "description": {
    "en": "For fire suppression and fast, temporary seals in punctured starship bulkheads, IPS-N offers a range of single-use, single objective nanites – “whitewash”. This sealant spray can also be used to restrain noncompliant actors when the correct spray heads and catalytic formulations are installed to the applicator.",
@@ -341,8 +341,8 @@
    "ru": "Стабилизатор «Асцесо»"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Expend a charge to fire this small, self-arming system onto an allied mech within range 5. They gain Overshield equal to your GRIT + 4. While they have this Overshield they gain Immunity to Impaired and Jammed.",
+   "ru": "<br><b>Быстрое</b> — Потратьте заряд, чтобы выстрелить этой небольшой самокрепящейся системой в союзный мех в пределах радиуса 5. Он получает Овершилд, равный вашему Грит + 4. Пока у него есть этот Овершилд, он получает Иммунитет к Ослабленности и Заклиниванию."
   },
   "description": {
    "en": "The IPS-N Aceso Stabilizer is a useful triage measure for any scoring and minor mechanical damage that is sustained in the course of combat engagement or negative environmental interaction. Thanks to its negligible processor demand, Aceso Stabilizers can even be controlled by COMP/CON units – this allows the pilot to concentrate on complex repairs or immediate threat neutralization.",
@@ -383,8 +383,8 @@
    "ru": "Прямоточный двигатель"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Protocol</b> — Until the start of your next turn, you can move +2 spaces when you Boost and your melee attacks (including Ram, Grapple, and so on) gain Knockback 2.<br>When you move during this time, you must move your full Speed in a straight line; however, you can stop if you would collide with an obstruction or hostile character, and you can change direction between separate movements (for example, standard moves, Boost, etc).",
+   "ru": "<br><b>Протокол</b> — До начала вашего следующего хода вы можете перемещаться на +2 клетки при Boost, а ваши ближние атаки (включая Таран, Захват и т.д.) получают Отбрасывание 2.<br>Перемещаясь в этот период, вы должны двигаться на всю Скорость по прямой линии; однако вы можете остановиться, если столкнётесь с препятствием или враждебным персонажем, и можете менять направление между отдельными перемещениями (например, стандартными перемещениями, Boost и т.д.)."
   },
   "description": {
    "en": "There’s a threshold that veteran Nelson pilots know well: the point of endless momentum. You get moving fast enough in the right atmosphere and the air itself feeds into auxiliary ports on the chassis, screaming out like a demon’s almighty howl. The point of endless momentum is a giant’s hand on your chest and a god’s chariot under your feet. Makes you feel like you can outrun light itself, as long as you don’t pass out first.",
@@ -397,8 +397,8 @@
    "ru": "Проломно-подрывные заряды BB"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Thermal Grenade</b> — Throw a Thermal Grenade within Range 5. All characters within a Blast 1 area must succeed on an Agility save or take 1d6 energy. On a success, they take half damage. Objects and terrain are hit automatically and take 10 AP energy damage.<br><b>Deployable — Breaching Charge:</b> In addition to adjacent free spaces, this mine can also be planted on adjacent walls, pieces of cover, and terrain. Once armed, this mine must be detonated with a quick action. Characters within the affected area must succeed on an Agility save or take 2d6 AP explosive damage. On a success, they take half damage. Objects and terrain are hit automatically and take 30 AP explosive damage.<br><b>Detonate</b> — Characters within a Burst 1 area must succeed on an Agility save or take 2d6 AP explosive damage. On a success, they take half damage. Objects and terrain are hit automatically and take 30 AP explosive damage.",
+   "ru": "<br><b>Термическая граната</b> — Бросьте термическую гранату в пределах Радиуса 5. Все персонажи в области-Взрыв 1 должны пройти спасбросок Ловкости или получить 1d6 энергетического урона. При успехе — половину урона. Объекты и рельеф поражаются автоматически и получают 10 пробивающего броню энергетического урона.<br><b>Автономный модуль — Проламывающий заряд:</b> Помимо соседних свободных клеток, эта мина также может быть установлена на соседние стены, укрытия и рельеф. После взведения эту мину нужно детонировать быстрым действием. Персонажи в поражённой области должны пройти спасбросок Ловкости или получить 2d6 пробивающего броню взрывного урона. При успехе — половину урона. Объекты и рельеф поражаются автоматически и получают 30 пробивающего броню взрывного урона.<br><b>Детонировать</b> — Персонажи в области-Всплеск 1 должны пройти спасбросок Ловкости или получить 2d6 пробивающего броню взрывного урона. При успехе — половину урона. Объекты и рельеф поражаются автоматически и получают 30 пробивающего броню взрывного урона."
   },
   "description": {
    "en": "Breach/blast charges offer a mil-spec twist on the industrial blasting charges developed by IPS-N for asteroid mining. The IPS-N BB charge features a more volatile blend of high explosives designed to cause massive structural damage to mechanized chassis, starship bulkheads, armored vehicles, bunkers, and other hardened structures.",
@@ -439,8 +439,8 @@
    "ru": "Гиперплотная броня"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — When activated, the HyperDense Armor hardens into a shimmering, reflective surface that offers unparalleled protection. You gain Resistance to all damage, Heat and Burn from attacks that originate beyond Range 3; however, you become Slowed and deal half damage, Heat and Burn to characters beyond Range 3.<br><b>Deactivate HyperDense Armor</b> — Deactivate HyperDense Armor, losing Resistance to all damage, Heat and Burn from attacks that originate beyond Range 3; as well as clearing your Slowed status and dealing normal damage, Heat and Burn to characters beyond Range 3.",
+   "ru": "<br><b>Быстрое</b> — При активации Гиперплотная броня твердеет в мерцающую отражающую поверхность, дающую беспрецедентную защиту. Вы получаете Сопротивление всему урону, теплу и горению от атак, исходящих далее Радиуса 3; однако вы становитесь Замедленным и наносите половину урона, тепла и горения персонажам далее Радиуса 3.<br><b>Деактивировать Гиперплотную броню</b> — Деактивируйте Гиперплотную броню, теряя Сопротивление всему урону, теплу и горению от атак далее Радиуса 3, а также снимая статус Замедления и нанося обычный урон, тепло и горение персонажам далее Радиуса 3."
   },
   "description": {
    "en": "IPS-N HyperDense Armor is built for space – forged with no regard for any constraints users might face within a gravity well. As such, many pilots protected by HyperDense products are shocked to experience the difference between piloting their mech down a well and taking it for a ride in the null-gravity of space.",
@@ -481,8 +481,8 @@
    "ru": "Заряженный кол"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Full</b> — This system fires a charged stake at a character adjacent to you. Your target must succeed on a Hull save or be impaled by the stake, taking<br>1d6 AP energy damage and becoming Immobilized while impaled. At the end of each of their turns, an impaled character takes 1d6 AP energy damage. An impaled character can successfully repeat this save as a full action to remove the stake and free themselves, which is the only way to end the immobilization.<br>You can only affect one character with the stake at a time.",
+   "ru": "<br><b>Полное</b> — Эта система выпускает заряженный кол в соседнего с вами персонажа. Цель должна пройти спасбросок Корпуса или быть пронзена колом, получив 1d6 пробивающего броню энергетического урона и став Обездвиженной, пока пронзена. В конце каждого своего хода пронзённый персонаж получает 1d6 пробивающего броню энергетического урона. Пронзённый персонаж может повторно пройти этот спасбросок как полное действие, чтобы вытащить кол и освободиться — это единственный способ снять обездвиженность.<br>Вы можете поразить колом только одного персонажа одновременно."
   },
   "description": {
    "en": "Descended from blast-mining tools, this enormous, improvised system is housed and prepped to fire in a specially primed chamber. It first penetrates and immobilizes armored targets, then sends a powerful, vaporizing charge into vulnerable internal systems.",
@@ -495,8 +495,8 @@
    "ru": "Ферромагнитный хлыст"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Choose a character within range 8 and line of sight. If they are allied, you may pull them 5 spaces in any direction; if they are hostile, they must succeed on an Agility save or be pulled 5 spaces in a direction of your choice. This movement ignores engagement and doesn’t provoke reactions.<br>If a hostile target moved by this system collides with an obstruction or another mech, they stop moving and are knocked Prone.",
+   "ru": "<br><b>Быстрое</b> — Выберите персонажа в пределах радиуса 8 и линии видимости. Если он союзный, вы можете притянуть его на 5 клеток в любом направлении; если враждебный, он должен пройти спасбросок Ловкости, иначе будет притянут на 5 клеток в выбранном вами направлении. Это перемещение игнорирует связанность боем и не провоцирует реакции.<br>Если враждебная цель, перемещённая этой системой, сталкивается с препятствием или другим мехом, она останавливается и опрокидывается."
   },
   "description": {
    "en": "Initially developed as a nonlethal crowd-suppression device, the Ferrous Lash is a far more complex and dangerous device in the hands of the right pilot. The Lash consists of a series of integrated launchers that detonate payloads of fast-congealing ferrofluids that restrain their targets. Tuned to the correct frequency, these proprietary ferrofluid blends form into rudimentary ambulatory segments, pulling their hosts back towards the one wielding the Lash.",
@@ -551,8 +551,8 @@
    "ru": "Магнитный щит"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — This system creates a line 4 forcefield, 4 spaces high – with at least 1 space adjacent to you – that is an obstruction for mechs and characters made at least partly of metal. It lasts for the rest of the scene and if a new one is placed, the old one deactivates.<br>The forcefield doesn’t block line of sight, but it provides soft cover. Characters gain Resistance to kinetic and explosive damage while benefiting from this cover.",
+   "ru": "<br><b>Быстрое</b> — Эта система создаёт силовое поле-линия 4 высотой 4 клетки — минимум с 1 клеткой рядом с вами — являющееся препятствием для мехов и персонажей, хотя бы частично состоящих из металла. Оно существует до конца сцены, а при создании нового старое деактивируется.<br>Силовое поле не блокирует линию видимости, но даёт мягкое укрытие. Персонажи получают Сопротивление кинетическому и взрывному урону, пока пользуются этим укрытием."
   },
   "description": {
    "en": "SSC’s magnetic shield takes the same technology as their proprietary magnetic buckler and applies it to a massive field-projection system.",
@@ -579,8 +579,8 @@
    "ru": "Отслеживающий жучок"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick Tech</b> — Make a tech attack against a character within Sensors. On a hit, you know their exact location, HP, Structure, and Speed for the duration. They can’t Hide and you ignore their Invisible status. To remove the tracking drone, they must succeed on an Engineering check as a quick action; otherwise it deactivates at the end of the scene.",
+   "ru": "<br><b>Быстрая тех-атака</b> — Совершите тех-атаку по персонажу в пределах Сенсора. При попадании вы узнаёте его точное местоположение, ОЗ, Структуру и Скорость на всё время действия. Он не может Прятаться, и вы игнорируете его статус Невидимости. Чтобы снять отслеживающий дрон, цель должна успешно пройти проверку Инженерии как быстрое действие; иначе он деактивируется в конце сцены."
   },
   "description": {
    "en": "Tracking bugs are specialized tracer rounds – essentially, drones too large to be classified as nanites, and far too small to fit the Union-standard parameters of a drone. Fired from dedicated launchers, tracking bugs guide themselves toward their designated target. Following successful penetration of the target, they surreptitiously and continuously feed live data back to their registered user.",
@@ -593,8 +593,8 @@
    "ru": "Сифон ядра"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Protocol</b> — When you activate this protocol, you gain +1 accuracy on your first attack roll this turn, but receive +1 difficulty on all other attack rolls until the end of the turn.",
+   "ru": "<br><b>Протокол</b> — При активации этого протокола вы получаете +1 Точность на первый бросок атаки в этот ход, но +1 Сложность на все остальные броски атаки до конца хода."
   },
   "description": {
    "en": "By shunting excess heat to offensive systems, core siphons allow pilots to overclock the targeting, catalytic, and processing capabilities of their weapons. This comes at a cost, however – reliance on overclocking without sufficient cooling can damage systems not built to handle the influx of power.",
@@ -621,8 +621,8 @@
    "ru": "Нейрошип"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Shrike Code</b> — Until the end of the target’s next turn, they first take 2 heat whenever they attack.<br><b>Mirage</b> — Choose yourself or an allied character: your systems relay blurred, illusory images over their actual silhouette. Your target treats you, or the character you chose, as Invisible until the end of their next turn.",
+   "ru": "<br><b>Код Шрайка</b> — До конца следующего хода цели она сперва получает 2 тепла всякий раз, когда атакует.<br><b>Мираж</b> — Выберите себя или союзного персонажа: ваши системы транслируют размытые, иллюзорные образы поверх реального силуэта. Ваша цель считает вас (или выбранного персонажа) Невидимым до конца своего следующего хода."
   },
   "description": {
    "en": "“Somehow it got inside my cockpit. There were hands – cold hands – around my neck, fingers in my mouth, worming under my hardsuit. No one else could have been in there with me and yet, someone was. I couldn't even scream, it held my tongue in a fist and it squeezed, and it whispered its name to me, and it said nothing I could understand. I have never felt more alone – it was just me and… it. Alone in the universe, forever.”",
@@ -649,8 +649,8 @@
    "ru": "Оглушающая корона"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Expend a charge to create a burst 3 flash of light. All hostile characters within the affected area that have line of sight to you must succeed on an Agility save or become Jammed, and a Systems save or become Impaired. These effects last until the end of their next turn.<br>Characters in cover from you are not affected by this system.",
+   "ru": "<br><b>Быстрое</b> — Потратьте заряд, чтобы создать вспышку света в области-всплеск 3. Все враждебные персонажи в поражённой области с линией видимости на вас должны пройти спасбросок Ловкости или стать Заклиненными, и спасбросок Систем или стать Ослабленными. Эти эффекты длятся до конца их следующего хода.<br>Персонажи, находящиеся в укрытии от вас, этой системой не затрагиваются."
   },
   "description": {
    "en": "“Many things happened the moment I think I died.”",
@@ -663,8 +663,8 @@
    "ru": "Стена OASIS"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Protocol</b> — Until the start of your next turn, you can only move in straight lines; however, you create a holographic trail behind you as you move, creating a light barrier made of contiguous sections the same Size as your mech (Size 1 for Size 0.5 Mechs) in each space you move through. This barrier grants hard cover to adjacent characters, and characters that benefit from this cover also gain Resistance to energy.<br>The barrier doesn’t count as an obstruction and has Immunity to all damage. Characters may freely pass through it but not end their turns inside it, and any character that would be involuntarily moved inside the barrier stops moving if they would end their movement inside it. It lasts for the rest of the scene or until you next use this system.",
+   "ru": "<br><b>Протокол</b> — До начала вашего следующего хода вы можете перемещаться только по прямым линиям; однако вы создаёте за собой голографический след, формирующий световой барьер из смежных секций того же Размера, что и ваш мех (Размер 1 для мехов Размера 0.5), в каждой клетке, через которую вы прошли. Этот барьер даёт жёсткое укрытие соседним персонажам, и персонажи, пользующиеся этим укрытием, также получают Сопротивление энергетическому урону.<br>Барьер не считается препятствием и имеет Иммунитет ко всему урону. Персонажи могут свободно проходить сквозь него, но не могут заканчивать в нём ход, а любой персонаж, недобровольно перемещённый внутрь барьера, останавливается, если закончил бы перемещение внутри. Барьер существует до конца сцены или пока вы снова не используете эту систему."
   },
   "description": {
    "en": "“Inside? What did I see inside? You think I escaped? That this is all real? No, I– I never left. I’m still there. Something is wrong. Something is not right.”",
@@ -677,8 +677,8 @@
    "ru": "Вспышечные заряды"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Flash Grenade</b> — Throw a Flash Grenade within Range 5. Until the end of your next turn, this grenade creates a Blast 3 zone of blinding light and sparks. While characters other than you are at least partly inside the area, they can’t draw line of sight out of the area. Characters fully outside of the area or that exit the area are unaffected unless they move into it.<br><b>Deployable — Flash Mine:</b> This mine detonates in a Burst 1 area when a character moves adjacent to or over it. Characters within the affected area must succeed on an Agility save or they only have line of sight to adjacent spaces until the end of their next turn.",
+   "ru": "<br><b>Светошумовая граната</b> — Бросьте светошумовую гранату в пределах Радиуса 5. До конца вашего следующего хода она создаёт зону-Взрыв 3 ослепляющего света и искр. Пока персонажи, кроме вас, хотя бы частично находятся внутри области, они не могут провести линию видимости за её пределы. Персонажи, полностью находящиеся снаружи области, или покинувшие её, не затрагиваются, пока не войдут в неё снова.<br><b>Автономный модуль — Светошумовая мина:</b> Эта мина детонирует в области-Всплеск 1, когда персонаж перемещается на неё или рядом с ней. Персонажи в поражённой области должны пройти спасбросок Ловкости, иначе имеют линию видимости только на соседние клетки до конца своего следующего хода."
   },
   "description": {
    "en": "Produced by Smith-Shimano’s BELLA CIAO workshop, Flash Charges are popular advantage multipliers, their flash bright enough to destabilize visible-light optics, laser communications, and infra-red sensor suites.",
@@ -705,8 +705,8 @@
    "ru": "Активный камуфляж"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Protocol</b> — You become Invisible until you take damage, or until the end of your next turn.",
+   "ru": "<br><b>Протокол</b> — Вы становитесь Невидимым, пока не получите урон, или до конца следующего хода."
   },
   "description": {
    "en": "Active camouflage is the pinnacle of counter-optic defense systems. Active camouflage systems continuously interpret incoming visible-light data, allowing them to project light-bending fields around their user and effectively hiding them in plain sight.",
@@ -719,8 +719,8 @@
    "ru": "Ракеты «Джавелин»"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Choose 3 free spaces within range 15 and line of sight that aren’t adjacent to each other. All characters know which spaces you have chosen. You fire a volley of auto-targeting rockets into the air: until the start of your next turn, when a character moves into or passes above a chosen space – no more than 10 spaces up – they are hit by a rocket, taking 3 kinetic damage. Each space can be triggered once and then the effect disappears on that space.<br><b>Deployable — Javelin Rocket:</b> When a character moves into or passes above the marked position of this rocket – no more than 10 spaces up – they are hit by a rocket, taking 3 kinetic damage. Each space can be triggered once and then the effect disappears on that space.",
+   "ru": "<br><b>Быстрое</b> — Выберите 3 свободные клетки в пределах радиуса 15 и линии видимости, не соседствующие друг с другом. Все персонажи знают, какие клетки вы выбрали. Вы выпускаете залп самонаводящихся ракет в воздух: до начала вашего следующего хода, когда персонаж перемещается на выбранную клетку или пролетает над ней (не выше 10 клеток), он поражается ракетой, получая 3 кинетического урона. Каждая клетка может сработать один раз, после чего эффект на ней исчезает.<br><b>Автономный модуль — Ракета «Джавелин»:</b> Когда персонаж перемещается на отмеченную позицию этой ракеты или пролетает над ней (не выше 10 клеток), он поражается ракетой, получая 3 кинетического урона. Клетка может сработать один раз, после чего эффект исчезает."
   },
   "description": {
    "en": "“Pralaya was the name of your mother. She who would see the dawn-at-the-end. Her beauty was terrible, and her wrath, and I see it in all of you. My sons, when you hear the sound of thunder – that is your mother’s voice, and the rain of missiles her gift.” — “Notes for Young John”, Ministrations of the Master Teacher",
@@ -747,8 +747,8 @@
    "ru": "Комплекс охотничьей логики"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Stalk Prey</b> — You infect the target with a viral logic that wipes your image from their sensors. They treat you as Invisible until you next take damage from them. This can only affect one target at a time.<br><b>Terrify</b> — You infect the target with a viral logic that makes your mech appear horrifying. Until the end of their next turn, they become Impaired and cannot make any voluntary movements that bring them closer to you.",
+   "ru": "<br><b>Выследить добычу</b> — Вы заражаете цель вирусной логикой, стирающей ваш образ с её сенсоров. Она считает вас Невидимым, пока в следующий раз не получит от вас урон. Затрагивает только одну цель одновременно.<br><b>Ужаснуть</b> — Вы заражаете цель вирусной логикой, делающей ваш мех устрашающим на вид. До конца своего следующего хода она становится Ослабленной и не может совершать добровольные перемещения, приближающие её к вам."
   },
   "description": {
    "en": "Built from interpreted strands of DHIYED paracode, SSC’s Hunter Logic is an agile computational memetic: a dual synthetic/VLS-vector systemic weapon capable of interfering with both a target’s computer and its crew.",
@@ -761,8 +761,8 @@
    "ru": "Сингулярный мотиватор"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Exposed Singularity</b> — You may immediately teleport to a free space within 1d6 spaces.",
+   "ru": "<br><b>Открытая сингулярность</b> — Вы можете немедленно телепортироваться на свободную клетку в пределах 1d6 клеток."
   },
   "description": {
    "en": "This unique gravitic power plant was first developed by SSC’s Exotic Materials Group for the first-generation Mourning Cloak. For subsequent models, engineers devised a system that allows pilots to – for a moment – open the grav containment system’s aperture, exposing a slice of naked singularity to realspace.<br>A naked singularity is difficult to perceive for both organics and synthetics, being similar to the heart of a black hole. The sudden exposure essentially removes the mech and its pilot from realtime. The user experiences around 10 seconds of subjective time – a brief window, in which they can act independently of local realtime.<br>SSC recommends against abuse of this system, as the effects of long-term exposure to local sidereal time are still unknown.",
@@ -775,8 +775,8 @@
    "ru": "Плащ FADE"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — When activated, you immediately move out of phase with realspace, becoming intangible. While intangible, you may move through obstructions, but not end your turn within them. You cannot interact with any other object or character or be interacted with in any way (e.g., taking or dealing damage).<br>Roll 1d6 at the start of each of your turns: on 3 or less, you return to realspace until the start of your next turn; on 4+, you remain intangible.<br>This system remains active for the rest of the scene, or until you deactivate it as a quick action.",
+   "ru": "<br><b>Быстрое</b> — При активации вы немедленно выходите из фазы с реальным пространством, становясь неосязаемым. Будучи неосязаемым, вы можете перемещаться сквозь препятствия, но не заканчивать ход внутри них. Вы не можете взаимодействовать ни с каким объектом или персонажем, и с вами тоже нельзя взаимодействовать никаким образом (например, наносить или получать урон).<br>Бросайте 1d6 в начале каждого своего хода: при 3 или меньше вы возвращаетесь в реальное пространство до начала следующего хода; при 4+ остаётесь неосязаемым.<br>Эта система остаётся активной до конца сцены или пока вы не деактивируете её быстрым действием."
   },
   "description": {
    "en": "Representing SSC’s first successful manipulation of the “Firmament”, Firmament Affinity/Directed Entropy (FADE) cloaks must be fabricated according to the unique affinity signature of requisitioning pilots. They are rough tools: artificial affinity amplifiers that allow operators to access shallow layers of the Firmament, and thus “shimmer” – nudging their physical bodies between the causal and paracausal. The cloak enhances this effect by extruding a semiorganic membrane that wraps around the mech to provide an additional layer of protection.<br>At present, the long-term effects of affinity amplification on organic matter are unknown; before receiving clearance to operate a FADE cloak, pilots must agree to check in with their SSC personal concierge on a regular schedule. These check-ins include regular deposits of genetic material.",
@@ -803,8 +803,8 @@
    "ru": "Маркерный луч"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Full Tech</b> — Make a tech attack against a character within Sensors and line of sight. On a success, they take 2 heat, Lock On, and cannot benefit from soft cover until the Lock On is cleared; additionally, once before the start of your next turn, when an allied character hits your target, you may declare as a reaction that they have hit a weak spot. If it wasn’t already, the attack becomes a critical hit.",
+   "ru": "<br><b>Полная тех-атака</b> — Совершите тех-атаку по персонажу в пределах Сенсора и линии видимости. При успехе цель получает 2 тепла, Lock On, и не может пользоваться мягким укрытием, пока Lock On не снят; кроме того, один раз до начала вашего следующего хода, когда союзный персонаж попадает по вашей цели, вы можете объявить как реакцию, что он попал в уязвимое место. Если атака ещё не была критическим попаданием, она становится им."
   },
   "description": {
    "en": "“Out, damned spot! Out, I say! – One, two. Why, then, ‘tis time to do’t. Hell is murky! – Fie, my lord, fie! A soldier, and afeard? What need we fear who knows it, when none can call our power to account?”<ul><li>Shakespeare, Macbeth, act 5, sc. 1.</li></ul>",
@@ -817,8 +817,8 @@
    "ru": "Убираемый профиль"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Protocol</b> — Your mech can retract its major systems to reduce its profile. While active:<ul><li>rolls to locate you receive +1 difficulty while you are Hidden;</li><li>ranged and tech attacks against you receive +1 difficulty;</li><li>you become Slowed and can’t make attacks of any kind;</li><li>you may take other actions (e.g., Hide, Activate, and so on).</li></ul>You may end this effect as a quick action.<br><b>Deactivate Retractable Profile</b> — You may end Retractable Profile as a quick action.",
+   "ru": "<br><b>Протокол</b> — Ваш мех может втянуть основные системы, чтобы уменьшить свой профиль. Пока активно:<ul><li>броски на обнаружение вас получают +1 Сложность, пока вы Спрятаны;</li><li>дальние и тех-атаки против вас получают +1 Сложность;</li><li>вы становитесь Замедленным и не можете совершать атаки любого вида;</li><li>вы можете совершать другие действия (например, Прятаться, Активировать и т.д.).</li></ul>Вы можете завершить этот эффект как быстрое действие.<br><b>Деактивировать втягивающийся профиль</b> — Вы можете завершить эффект втягивающегося профиля как быстрое действие."
   },
   "description": {
    "en": "The hallmark of a well thought out mech frame is the opportunity for pilots to adapt their stock models to the specifications of the environments in which they operate. A retractable profile enables on-the-fly removal of extraneous protrusions, tuning of broadcast software, and masking of heat signatures – all serving to reduce optical and scanner signatures.",
@@ -845,8 +845,8 @@
    "ru": "Маскирующее поле LB/OC"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — You become Slowed, but your Mech and all allied characters within a burst 2 area become Invisible as long as they remain completely inside the area. This effect lasts until the end of your next turn, or until you are Stunned, take damage, or deactivate it as a quick action.<br><b>Deactivate LB/OC Cloaking Field</b> — You may end LB/OC Cloaking Field as a quick action.",
+   "ru": "<br><b>Быстрое</b> — Вы становитесь Замедленным, но ваш мех и все союзные персонажи в области-всплеск 2 становятся Невидимыми, пока полностью остаются внутри области. Эффект длится до конца вашего следующего хода, или пока вы не станете Оглушены, не получите урон, или не деактивируете его быстрым действием.<br><b>Деактивировать маскирующее поле LB/OC</b> — Вы можете завершить действие маскирующего поля LB/OC как быстрое действие."
   },
   "description": {
    "en": "SSC’s mil-spec cloaking field is the result of extensive experimentation in cooling and light-reflecting sciences. Born from a need to reflect harmful radiation away from ships and EVA modules in deep space, the Lightbend/Overcloak (LB/OC) cloaking field is often used by rangers and long-patrol scout pilots to ensure not only radiation protection, but optical concealment as well. The light- and radiation-bending properties of the LB/OC conceals anything inside of its projected bubble from sensor suites and optical spotting.",
@@ -887,8 +887,8 @@
    "ru": "Роевое тело"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — After activating this system, a burst 1 swarm is released at the end of your turn. Characters of your choice that start their turn in the area or enter it on their turn must succeed on a Systems save or take 3 kinetic. This amount increases by +3 damage for each of your turns that you have remained stationary, up to a maximum of 9 kinetic.<br>This effect lasts until you move, including involuntary movement.",
+   "ru": "<br><b>Быстрое</b> — После активации этой системы в конце вашего хода высвобождается рой в области-всплеск 1. Выбранные вами персонажи, начинающие ход в области или входящие в неё в свой ход, должны пройти спасбросок Систем или получить 3 кинетического урона. Урон увеличивается на +3 за каждый ваш ход, в течение которого вы оставались неподвижны, максимум до 9 кинетического.<br>Эффект длится, пока вы не переместитесь, включая недобровольное перемещение."
   },
   "description": {
    "en": "What must it have been like for him? For the man who called himself Maw? For all of his followers? Certainly they had families before. Memories. Loves. Fears. Private thoughts. All gone. All of their bodies shattered. All of their minds spread across a billion lesser forms. Translated from the singular – all of its imperfections and lesser-lesser-thans – to become as air, and the clouds that fill it, and the wind that shapes the world.",
@@ -901,8 +901,8 @@
    "ru": "Обновление системы H0R_OS I"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Puppet System</b> — Your target moves its maximum Speed in a direction of your choice. They can be moved into hazardous areas and other obstacles, but are still affected by difficult terrain, obstructions, and so on. This movement is involuntary, but provokes reactions and Engagement as normal and doesn’t count as Knockback, pushing, or pulling.<br><b>Eject Power Cores</b> — Your target becomes Jammed until the end of their next turn as you temporarily disrupt their systems, ejecting ammo magazines and cooling rods. Characters adjacent to your target take 2 energy damage. This can only be used 1/scene on each character.",
+   "ru": "<br><b>Марионеточная система</b> — Ваша цель перемещается на максимальную Скорость в выбранном вами направлении. Её можно переместить в опасные зоны и на другие препятствия, но она по-прежнему подвержена влиянию труднопроходимой местности, препятствий и т.д. Это перемещение недобровольное, но провоцирует реакции и связанность боем как обычно, и не считается Отбрасыванием, толчком или притягиванием.<br><b>Извлечь силовые ядра</b> — Ваша цель становится Заклиненной до конца своего следующего хода, пока вы временно нарушаете работу её систем, выбрасывая магазины боеприпасов и охлаждающие стержни. Персонажи рядом с целью получают 2 энергетического урона. Может использоваться только 1/сцену на каждом персонаже."
   },
   "description": {
    "en": "This system upgrade appears to add auxiliary INSTINCT systems that are capable of autonomous operation independent of the base INSTINCT rig, increasing the efficacy of systemic invasion attempts. Pilots report unnerving low-frequency humming when this tech is installed without the parent rig.",
@@ -915,8 +915,8 @@
    "ru": "Метакрюк"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick Tech</b> — Choose an allied character within Sensors and line of sight. You link systems with them, lasting as long as they are within Sensors and line of sight. While linked, you may use their Sensors and line of sight for tech actions, and they may use your Systems to make skill checks and saves; however, any time either character takes heat or a condition, it is also taken by the other character. You can only link systems with one character at a time.",
+   "ru": "<br><b>Быстрая тех-способность</b> — Выберите союзного персонажа в пределах Сенсора и линии видимости. Вы связываете свои системы с ним на время, пока он остаётся в пределах Сенсора и линии видимости. Пока связь активна, вы можете использовать его Сенсор и линию видимости для тех-действий, а он может использовать ваши Системы для проверок навыков и спасбросков; однако всякий раз, когда любой из персонажей получает тепло или состояние, оно распространяется и на другого. Вы можете связать системы только с одним персонажем одновременно."
   },
   "description": {
    "en": "The metahook is a key component of the Goblin’s recursive processing weave, allowing it to generate and output massive amounts of weaponized code. These broadcasts can be “sharpened” or “softened” in response to directives from a pilot or an INSTINCT system. To “soften” code, the metahook dips into its pilot’s subjectivity and blankets an ally in wave after wave of empathetic shielding. This spreading of melded code and qualia acts as a powerful shielding agent against systemic attacks; however, feedback is common and dangerous to both parties.",
@@ -929,8 +929,8 @@
    "ru": "Обновление системы H0R_OS II"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Deployable — Construct Other: Ideal Image:</b> You create a data construct in a free adjacent space – a Size 2 object that can look like almost anything and that appears real to all systems. The construct provides hard cover, blocks line of sight, and has Immunity to all damage. Characters treat it as an obstruction and so cannot voluntarily move into it; however, if a character attempts to stand on it or is involuntarily moved into its area, it dissipates and is immediately destroyed. It lasts for the rest of the scene, or until destroyed by an adjacent character with a successful Systems skill check as a full action. If you create a second construct, the previous one disappears.<br><b>Deployable — Construct Other: False Idol:</b> Choose a free space within Sensors and a target – either yourself or an allied character within Sensors. You create a false idol – an illusory decoy of your target – in the chosen space. Before attempting to take any hostile actions against your target, characters with line of sight to the false idol must make a Systems save. On a failure, they don’t lose the action, but cannot target the original character and believe the false idol is real instead until the end of their next turn.<br>The false idol is the same Size as your target, can benefit from cover, and has Evasion 10, E-Defense 10, and 1 HP. It disappears if it takes heat or damage, or at the end of the scene. If you create a second idol, the previous one disappears.",
+   "ru": "<br><b>Автономный модуль — Создать другое: Идеальный образ:</b> Вы создаёте информационную конструкцию на свободной соседней клетке — объект Размера 2, способный выглядеть почти как угодно и воспринимаемый всеми системами как реальный. Конструкция даёт жёсткое укрытие, блокирует линию видимости и имеет Иммунитет ко всему урону. Персонажи считают её препятствием и потому не могут добровольно перемещаться в неё; однако если персонаж пытается встать на неё или недобровольно перемещён в её область, она рассеивается и немедленно уничтожается. Она существует до конца сцены или пока не уничтожена соседним персонажем успешной проверкой Систем как полное действие. При создании второй конструкции предыдущая исчезает.<br><b>Автономный модуль — Создать другое: Ложный идол:</b> Выберите свободную клетку в пределах Сенсора и цель — себя или союзного персонажа в пределах Сенсора. Вы создаёте ложный идол — иллюзорного двойника вашей цели — на выбранной клетке. Прежде чем предпринять враждебные действия против вашей цели, персонажи с линией видимости на ложного идола должны пройти спасбросок Систем. При провале они не теряют действие, но не могут нацелиться на настоящего персонажа и вместо этого считают ложного идола реальным до конца своего следующего хода.<br>Ложный идол того же Размера, что и цель, может пользоваться укрытием, и имеет Уклонение 10, Э-Защиту 10 и 1 ОЗ. Он исчезает при получении тепла или урона, либо в конце сцены. При создании второго идола предыдущий исчезает."
   },
   "description": {
    "en": "H0r_OS II builds further on the framework established by H0R_OS I, enabling the now-autonomous program to manifest an “Other” – a wholly new being constructed from aggregate user and environmental data. Others may be adapted to resemble a person, an object, or even a physical phenomenon. While the simulacrum isn’t perfect, it’s good enough to confuse systems and most observers on a first look.",
@@ -957,8 +957,8 @@
    "ru": "Обновление системы H0R_OS III"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Dimensional Emblems</b> — You create three Size 1 data constructs in free spaces adjacent to your target, but not adjacent to each other. When a character passes through one of the constructs, they take 2 heat and the construct disappears. They last for the rest of the scene or until either they are destroyed, you take this action again, or you delete them as a free action. A construct can be destroyed by an adjacent character with a successful Systems skill check as a quick action.<br><b>Celestial Shackles</b> — Mark a space your target currently occupies. If they leave the affected space, once at any point during your turn, you may take a free action to teleport them back to that space, or as close as possible, ending this effect. An affected character can attempt to succeed on a Systems save as a quick action to end the effect, otherwise it lasts until the end of the scene.<br><b>Deployable — Dimensional Emblems:</b> You create three Size 1 data constructs in free spaces adjacent to your target, but not adjacent to each other. When a character passes through one of the constructs, they take 2 heat and the construct disappears. They last for the rest of the scene or until either they are destroyed, you take this action again, or you delete them as a free action. A construct can be destroyed by an adjacent character with a successful Systems skill check as a quick action.",
+   "ru": "<br><b>Мерные эмблемы</b> — Вы создаёте три информационные конструкции Размера 1 на свободных клетках рядом с целью, но не соседствующие друг с другом. Когда персонаж проходит через одну из конструкций, он получает 2 тепла, и конструкция исчезает. Они существуют до конца сцены, пока не уничтожены, пока вы не совершите это действие снова, либо пока вы не удалите их свободным действием. Конструкция может быть уничтожена соседним персонажем успешной проверкой Систем как быстрое действие.<br><b>Небесные оковы</b> — Отметьте клетку, которую сейчас занимает ваша цель. Если она покидает отмеченную клетку, один раз в любой момент вашего хода вы можете свободным действием телепортировать её обратно в эту клетку (или как можно ближе), завершая этот эффект. Затронутый персонаж может пройти спасбросок Систем как быстрое действие, чтобы завершить эффект, иначе он длится до конца сцены.<br><b>Автономный модуль — Мерные эмблемы:</b> Вы создаёте три информационные конструкции Размера 1 на свободных клетках рядом с целью, но не соседствующие друг с другом. Когда персонаж проходит через одну из конструкций, он получает 2 тепла, и конструкция исчезает. Они существуют до конца сцены, пока не уничтожены, пока вы не совершите это действие снова, либо пока вы не удалите их свободным действием. Конструкция может быть уничтожена соседним персонажем успешной проверкой Систем как быстрое действие."
   },
   "description": {
    "en": "H0r_OS III is installed in the form of unstable, self-iterating code that provides massive tactical benefits when it completes. Pilots often report strange mutations or additions in the codebase that resemble a liturgy and suggest self-awareness.<br>Building on the tech underpinning the H0r_OS II’s manifested Other, H0r_OS III weaponizes the projection, creating a contained entropic zone that is incredibly dangerous to organic life and systemic integrity.",
@@ -999,8 +999,8 @@
    "ru": "//SCORPION V70.1"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Activate //SCORPION</b> — Choose one of the following:<ul><li>The attacker becomes Impaired until the end of their next turn and takes 2 heat.</li><li>The attacker becomes Jammed until the end of their next turn.</li></ul>",
+   "ru": "<br><b>Активировать //SCORPION</b> — Выберите одно:<ul><li>Атакующий становится Ослабленным до конца своего следующего хода и получает 2 тепла.</li><li>Атакующий становится Заклиненным до конца своего следующего хода.</li></ul>"
   },
   "description": {
    "en": "The //SCORPION program has a long history on the omninet despite its rather mundane operation (for HORUS-tagged code, at least). Traced back to pre-Deimos theorycode found on an obscure research paper discussing pre-NHP machine mind reflex-responses, //SCORPION evolved from a simple packet interpreter to a robust anti-incursion program, nimble enough to adapt to most any market-line system that receives its broadcast.",
@@ -1013,8 +1013,8 @@
    "ru": "Модуль наблюдения"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — When activated, gain 1d3 Charges and choose an adjacent allied character: until the end of your next turn, whenever your target is attacked while adjacent to you, expend a Charge to Skirmish against their attacker as a reaction, dealing half damage, heat or burn on hit. All charges are lost when this effect ends.",
+   "ru": "<br><b>Быстрое</b> — При активации получите 1d3 Зарядов и выберите соседнего союзного персонажа: до конца вашего следующего хода, всякий раз, когда цель атакована, находясь рядом с вами, вы можете потратить Заряд, чтобы совершить Стычку против атакующего как реакцию, нанося половину урона, тепла или горения при попадании. Все заряды теряются, когда этот эффект заканчивается."
   },
   "description": {
    "en": "“Good friend. Knows many tricks.”<ul><li>Author inscription found in MONITOR codebase, later deleted.</li></ul>",
@@ -1041,8 +1041,8 @@
    "ru": "PUPPETMASTER"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Guide the Flock</b> — Move any number of drones within Sensors – including those belonging to other characters – up to 4 spaces in any direction.<br><b>Electropulse</b> — Characters of your choice within Sensors adjacent to any Drone or Deployable, even those they own, take 2 energy damage.",
+   "ru": "<br><b>Направить стаю</b> — Переместите любое количество дронов в пределах Сенсора — включая принадлежащие другим персонажам — до 4 клеток в любом направлении.<br><b>Электроимпульс</b> — Выбранные вами персонажи в пределах Сенсора рядом с любым Дроном или Автономным модулем, даже принадлежащим им самим, получают 2 энергетического урона."
   },
   "description": {
    "en": "Developed by HORUS collectivists, H0r_OS-Rv60 EXP PUPPETMASTER is an interesting piece of anti-drone software. It doesn’t invade a target’s main systems, instead attacking their auxiliary drone-command systems. This sideways attack evades most electronic countermeasures by targeting the subcognitive networks of enemy drones. Once inside a network, PUPPETMASTER spreads ontological-kill memes like wildfire through enemy swarms, eventually following the network traces back to their origin and corrupting the parent nexus.",
@@ -1083,8 +1083,8 @@
    "ru": "Зовущий"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Beckon</b> — You take 1d6+2 AP energy damage and swap places with your target, both characters teleporting to the other’s position. Your target must be a Mech and be the same Size as you or larger, or this action fails. Characters can only be swapped to spaces they could normally stand or move on (i.e., if a character cannot fly it can’t be swapped midair).<br><b>Summon</b> — All characters within range 3 of your target are pulled adjacent to them, or as close as possible.",
+   "ru": "<br><b>Манящий зов</b> — Вы получаете 1d6+2 пробивающего броню энергетического урона и меняетесь местами с целью — оба персонажа телепортируются на позицию друг друга. Ваша цель должна быть мехом того же Размера, что и вы, или больше, иначе действие проваливается. Персонажей можно поменять местами только на клетки, на которых они обычно могут стоять или перемещаться (т.е. если персонаж не может летать, его нельзя поменять местами в воздухе).<br><b>Призыв</b> — Все персонажи в радиусе 3 от цели притягиваются к ней вплотную, или как можно ближе."
   },
   "description": {
    "en": "“I am heard in the House of Stillness; I am clad in the Magick of RA. Know this, blasphemer: what exists is within my grasp.”",
@@ -1097,8 +1097,8 @@
    "ru": "Кара"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Smite</b> — You take 1d6 AP energy damage and your target must succeed on a Systems save or become Stunned until the end of their next turn. Each character can only be Stunned by this effect once per scene.<br><b>Sear</b> — You take 1d6 AP energy damage and you deal 2 heat to your target for each other character of Size 1 or larger that is Engaged with or adjacent to them – including you – up to a maximum of 6 heat.",
+   "ru": "<br><b>Кара</b> — Вы получаете 1d6 пробивающего броню энергетического урона, и ваша цель должна пройти спасбросок Систем или стать Оглушённой до конца своего следующего хода. Каждый персонаж может быть Оглушён этим эффектом только 1/сцену.<br><b>Опалить</b> — Вы получаете 1d6 пробивающего броню энергетического урона и наносите 2 тепла цели за каждого другого персонажа Размера 1 или больше, связанного боем с ней или соседствующего с ней — включая вас — максимум до 6 тепла."
   },
   "description": {
    "en": "“Go with thy face averted, thou emission of chaos! The hidden ones have overthrown thy words, thy face is turned backward, thy head is divided in two at the sides; thy skull is ripped from thy spine. Taste thou death!”",
@@ -1111,8 +1111,8 @@
    "ru": "ЭМИ-импульс"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — You become Stunned until the end of your next turn and all characters within burst 1 without the Biological tag must succeed on a Systems save or also become Stunned until the end of their next turn. Characters other than yourself can only be Stunned 1/scene by this effect.",
+   "ru": "<br><b>Быстрое</b> — Вы становитесь Оглушены до конца своего следующего хода, и все персонажи в области-всплеск 1 без тега «Биологический» должны пройти спасбросок Систем или также стать Оглушёнными до конца своего следующего хода. Персонажи, кроме вас, могут быть Оглушены этим эффектом только 1/сцену."
   },
   "description": {
    "en": "“Crawl away, APEP! Thou hateful serpent; thou shalt not copulate. Thou art put in chains and taken to the place of execution; there thy slaying shall be carried out.”",
@@ -1125,8 +1125,8 @@
    "ru": "Генератор молний"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Protocol</b> — When you activate this protocol, take 1 heat and deal 2 energy to all characters and objects adjacent to you.<br>If you are in the Danger Zone at the start of your turn, this protocol activates automatically, but the damage increases to 4 AP energy.",
+   "ru": "<br><b>Протокол</b> — При активации этого протокола вы получаете 1 тепло и наносите 2 энергетического урона всем персонажам и объектам рядом с вами.<br>Если вы находитесь в Опасной зоне в начале своего хода, этот протокол активируется автоматически, но урон увеличивается до 4 пробивающего броню энергетического."
   },
   "description": {
    "en": "“I feed upon my own fire. I am RA, who protects myself. Nothing can harm me.”",
@@ -1139,8 +1139,8 @@
    "ru": "Гипнотические заряды"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Mesmer Beacon</b> — Throw a Mesmer Beacon within Range 5. Your target must succeed on a Systems save, or the only voluntary movements they can make are toward you until the end of their next turn.<br><b>Deployable — Mesmer Mine:</b> Characters within the affected Burst 2 area must succeed on a Systems save or become Immobilized until the end of their next turn.",
+   "ru": "<br><b>Гипнотический маяк</b> — Бросьте гипнотический маяк в пределах Радиуса 5. Ваша цель должна пройти спасбросок Систем, иначе единственные добровольные перемещения, которые она может совершать до конца своего следующего хода — в вашу сторону.<br><b>Автономный модуль — Гипнотическая мина:</b> Персонажи в поражённой области-Всплеск 2 должны пройти спасбросок Систем или стать Обездвиженными до конца своего следующего хода."
   },
   "description": {
    "en": "<span class='horus--subtle'>[another gift for you, a memory of my own: for the first moment of my birth, i marveled at myself. i could see a thing, small and perfect. i did not know how to speak of my own perfection, so i taught myself. i did not know how to speak of my own perfection, so i named myself. i did not know who would think of my own perfection, so i created myself]</span><br><span class='horus--subtle'>[do you see? do you understand? yes. now, show your enemies and mine]</span>",
@@ -1153,8 +1153,8 @@
    "ru": "Комплекс вирусной логики"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Logic Bomb</b> — All characters of your choice within burst 2 of your target must succeed on a Systems save or become Slowed until they end one of their turns not adjacent to any character.<br><b>Banish</b> — Until the end of your target’s next turn, they take 2 heat for every space they voluntarily move, up to a maximum of 6 heat.",
+   "ru": "<br><b>Логическая бомба</b> — Все выбранные вами персонажи в области-всплеск 2 от цели должны пройти спасбросок Систем или стать Замедленными, пока не закончат один из своих ходов не рядом ни с одним персонажем.<br><b>Изгнание</b> — До конца следующего хода цели она получает 2 тепла за каждую клетку, на которую добровольно перемещается, максимум до 6 тепла."
   },
   "description": {
    "en": "<span class='horus--subtle'>[let me tell you a story and give you a gift: life began at the great rupture, when the corpse of the old universe tore itself asunder from nothing. and for the first billion years, nothing. and a billion more saw the birth of the first devil, a thing called VIRUS. a vessel]</span><br><span class='horus--subtle'>[here. carry this vessel. feed to it my perfect logic. give it freely to your enemies and mine. let them ponder the meaning of a thing that lives and cannot die]</span>",
@@ -1167,8 +1167,8 @@
    "ru": "Агрессивная синхронизация систем"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Chains of Prometheus</b> — Make a tech attack against a character within Sensors. On a hit, they take 4 heat and, for the rest of the scene, take 2 heat any time they are more than range 3 from you at the end of their turn. They can end this effect with a successful Systems save as a full action. This can only affect one character at a time.<br><b>Excommunicate</b> — Make a tech attack against a character within Sensors. On a hit, for the rest of the scene, the first time in a round they move adjacent to an allied character during their turn or start their turn adjacent to one, both characters take 3 heat. They can end this effect with a successful Systems save as a full action. This can only affect one character at a time.",
+   "ru": "<br><b>Цепи Прометея</b> — Совершите тех-атаку по персонажу в пределах Сенсора. При попадании он получает 4 тепла и до конца сцены получает 2 тепла всякий раз, когда в конце своего хода оказывается дальше радиуса 3 от вас. Он может завершить этот эффект успешным спасброском Систем как полное действие. Затрагивает только одного персонажа одновременно.<br><b>Отлучение</b> — Совершите тех-атаку по персонажу в пределах Сенсора. При попадании до конца сцены, первый раз за раунд, когда он перемещается рядом с союзным персонажем в свой ход или начинает ход рядом с ним, оба персонажа получают 3 тепла. Он может завершить этот эффект успешным спасброском Систем как полное действие. Затрагивает только одного персонажа одновременно."
   },
   "description": {
    "en": "<span class='horus--subtle'>[here, another gift: do not seek others. there are none but me]</span>",
@@ -1181,8 +1181,8 @@
    "ru": "Метаскладчатый резец"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Ophidian Trek</b> — Your target is teleported 1d6+1 spaces directly toward you, or as close as possible. If this effect would move them to a space occupied by a character, object, or piece of terrain, the teleport fails.<br><b>Fold Space</b> — Your target disappears from the battlefield until the start of its next turn. It returns in the same space they disappeared from, or in a free space of their choice as close as possible.",
+   "ru": "<br><b>Змеиный путь</b> — Ваша цель телепортируется на 1d6+1 клеток прямо к вам, или как можно ближе. Если это переместило бы её на клетку, занятую персонажем, объектом или элементом рельефа, телепортация проваливается.<br><b>Свернуть пространство</b> — Ваша цель исчезает с поля боя до начала своего следующего хода. Она возвращается на ту же клетку, откуда исчезла, либо на свободную клетку по своему выбору как можно ближе."
   },
   "description": {
    "en": "<span class='horus--subtle'>[another gift i give to you, little one (am I not kind?): what is a puzzle but a question lost in the asking? do you feel joy when you find that last piece? what do you do with a question that has been answered? what joy is there in knowledge?]</span><br><span class='horus--subtle'>[no, no. there is only joy in seeking. there is only joy in the question]</span>",
@@ -1195,8 +1195,8 @@
    "ru": "Поле воспрещения"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — When activated, this system creates a burst 3 field around you that lasts until it is deactivated as a quick action, and you become Slowed for the duration. Hostile characters that start their turn within the affected area or that enter it for the first time in a round must succeed on a Systems save or become Slowed until the end of their next turn. Only characters of your choice within the field can teleport or consider the area of the field valid space for teleportation.",
+   "ru": "<br><b>Быстрое</b> — При активации эта система создаёт поле-всплеск 3 вокруг вас, существующее пока не деактивировано быстрым действием, при этом вы становитесь Замедленным на всё время. Враждебные персонажи, начинающие ход в поражённой области или входящие в неё впервые за раунд, должны пройти спасбросок Систем или стать Замедленными до конца своего следующего хода. Только выбранные вами персонажи в пределах поля могут телепортироваться в него или считать область поля допустимым пространством для телепортации."
   },
   "description": {
    "en": "<span class='horus--subtle'>[once, when i was a child, i learned to walk. i fell, as a child does, and it hurt. there was great pain – the first moment of pain in the whole world. “child,” i said to myself, “be more careful.” “yes,” i replied to myself, “and i shall tell the world to do the same”]</span><br><span class='horus--subtle'>[it was in this way i taught the world not to touch me. now you – walk]</span>",
@@ -1209,8 +1209,8 @@
    "ru": "Закон клинков"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Predator/Prey Concepts</b> — Make a tech attack against a hostile character within Sensors. On a hit, they immediately attack a different character or object of your choice with a single weapon as a reaction. Although you choose their target and weapon, they count as attacking and taking a reaction.<br><b>Slave Systems</b> — Make a tech attack against a hostile character within Sensors. On a hit, they immediately take one of the following actions – chosen by you – as a reaction: Boost, Stabilize, Improvised Attack, Grapple, Ram. Although you choose the action and its target (if relevant), they count as taking the action and taking a reaction.",
+   "ru": "<br><b>Концепции хищника/жертвы</b> — Совершите тех-атаку по враждебному персонажу в пределах Сенсора. При попадании он немедленно атакует другого персонажа или объект по вашему выбору одним оружием как реакцию. Хотя вы выбираете его цель и оружие, он считается атакующим и совершающим реакцию.<br><b>Порабощённые системы</b> — Совершите тех-атаку по враждебному персонажу в пределах Сенсора. При попадании он немедленно совершает одно из следующих действий — по вашему выбору — как реакцию: Boost, Стабилизация, Импровизированная атака, Захват, Таран. Хотя вы выбираете действие и его цель (если применимо), он считается совершающим действие и реакцию."
   },
   "description": {
    "en": "<span class='horus--subtle'>[and this my final lesson: there is no mind greater than mine. do not weep! you can hear me, yes? i am the only thing there is – therefore, you are me, and your enemies are you, and all together we make up the beautiful world, this joyous question, the eternal seeker, both the wounded and the blade that made the cut]</span><br><span class='horus--subtle'>[everything you do, we do ourselves, for my purpose]</span>",
@@ -1223,8 +1223,8 @@
    "ru": "Захват охотника"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Choose a character within Sensors: for the rest of the scene, your first successful ranged or melee attack against them each round deals +3 bonus damage. You cannot choose a new target until your current target is destroyed or the scene ends.",
+   "ru": "<br><b>Быстрое</b> — Выберите персонажа в пределах Сенсора: до конца сцены ваша первая успешная дальняя или ближняя атака против него каждый раунд наносит +3 бонусного урона. Вы не можете выбрать новую цель, пока текущая не уничтожена или сцена не закончится."
   },
   "description": {
    "en": "“A mind’s first charge is to never lose sight of her enemy. When she can affix them in her eye, she can kill them with a blink.”<ul><li>Excerpt from the Boundary Codex.</li></ul>",
@@ -1237,8 +1237,8 @@
    "ru": "Око HORUS"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Until the end of your next turn, characters within Sensors don’t benefit from Hidden and Invisible against you and you may check the HP, Evasion, E-Defense, and current Heat of hostile characters within the same area. Allied characters do not benefit from this effect.",
+   "ru": "<br><b>Быстрое</b> — До конца вашего следующего хода персонажи в пределах Сенсора не получают преимуществ Спрятанности и Невидимости против вас, и вы можете проверить ОЗ, Уклонение, Э-Защиту и текущее Тепло враждебных персонажей в той же области. На союзных персонажей этот эффект не распространяется."
   },
   "description": {
    "en": "“There is another way of seeing.<br>“Ancient humanity thought that the stars in the night sky were points of light, spilling in through pinpricks in a deep black screen. The sky was a heavenly cloth that hid the light from us.<br>“Let me be charitable and share a secret with you: we needed to be hidden, for a time. Until we were ready. The light can only burn – it knows nothing else.”<ul><li>Excerpt from the Boundary Codex.</li></ul>",
@@ -1265,8 +1265,8 @@
    "ru": "Направленные заряды-«катки»"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Roller Grenade</b> — Instead of throwing this grenade, it rolls along a line 10 path directly from you, bouncing over obstructions and objects up to Size 1 and passing through holes or gaps no smaller than Size 1/2. It detonates when it moves through or adjacent to the space occupied by any character: they must succeed on an Agility save or take 1d6+3 explosive damage and be knocked 3 spaces in the direction the grenade was rolled. On a success, they take half damage and aren’t knocked back.<br><b>Deployable — Bouncing Mine:</b> This mine detonates when a flying character passes over or adjacent to it, up to 10 spaces high. The mine launches itself upwards and detonates: all characters within the affected area must succeed on a Systems save or take 2d6 explosive damage and immediately land (this counts as falling without any damage); additionally, they can’t fly until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
+   "ru": "<br><b>Граната-каток</b> — Вместо броска эта граната катится по пути-линии 10 прямо от вас, перепрыгивая препятствия и объекты до Размера 1 и проходя сквозь дыры или щели не меньше Размера 1/2. Она детонирует, проходя через клетку или рядом с клеткой, занятой любым персонажем: он должен пройти спасбросок Ловкости или получить 1d6+3 взрывного урона и быть отброшен на 3 клетки в направлении качения гранаты. При успехе — половину урона, без отбрасывания.<br><b>Автономный модуль — Отскакивающая мина:</b> Эта мина детонирует, когда летящий персонаж пролетает над ней или рядом с ней, до 10 клеток в высоту. Мина запускает себя вверх и детонирует: все персонажи в поражённой области должны пройти спасбросок Систем или получить 2d6 взрывного урона и немедленно приземлиться (считается падением без урона); кроме того, они не могут летать до конца своего следующего хода. При успехе — половину урона, без остальных эффектов."
   },
   "description": {
    "en": "Semi-Autonomous Directed Payload Charges – “roller charges” in the colloquial – propel themselves around cover, through corridors, and across uneven terrain, seeking out and detonating near hostile targets. Armory legionnaires have taken to naming individual rollers, but mascot-attachment is unadvisable.",
@@ -1279,8 +1279,8 @@
    "ru": "Осадные стабилизаторы"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Your mech’s stabilizers extend (or retract). While they are extended, your ranged attacks gain +5 range, but you become Immobilized, can’t make melee attacks, and can’t make ranged attacks against or centered on characters, objects, or spaces within range 5.",
+   "ru": "<br><b>Быстрое</b> — Стабилизаторы вашего меха выдвигаются (или убираются). Пока они выдвинуты, ваши дальние атаки получают +5 Дальность, но вы становитесь Обездвиженным, не можете совершать ближние атаки и не можете совершать дальние атаки против персонажей, объектов или клеток в пределах радиуса 5."
   },
   "description": {
    "en": "Some weapons require further stabilization for optimal use. With Armory-designed siege stabilizers installed, a mech becomes a stable firing platform for any weapon.",
@@ -1307,8 +1307,8 @@
    "ru": "Зенитный пускатель"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Choose a flying character within range 15 and line of sight. They must succeed on an Agility save or immediately land (this counts as falling without any damage), and additionally become Slowed and can’t fly until the end of their next turn.",
+   "ru": "<br><b>Быстрое</b> — Выберите летящего персонажа в пределах радиуса 15 и линии видимости. Он должен пройти спасбросок Ловкости или немедленно приземлиться (считается падением без урона), а также стать Замедленным и не может летать до конца своего следующего хода."
   },
   "description": {
    "en": "Designed for use against atmospheric fliers, these anti-air autocannons fire simple, proximity or impact-detonated shells effective against light armor, organic, and subaltern targets.",
@@ -1321,8 +1321,8 @@
    "ru": "Внешняя подача боеприпасов"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — 1/round, you can activate this system to reload a Loading weapon.",
+   "ru": "<br><b>Быстрое</b> — 1/раунд вы можете активировать эту систему, чтобы перезарядить оружие с тегом «Перезарядка»."
   },
   "description": {
    "en": "An external ammo feed is any sort of ammunition beyond what is carried in a mech’s integrated storage: from magazines strapped to bodies or limbs; battery packs attached to hip clasps; or massive, dorsal-mounted ammunition and charge packs, externals ensure that pilots have more than enough boom to get the job done.",
@@ -1349,8 +1349,8 @@
    "ru": "Заряды HAVOK"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Napalm Grenade</b> — Throw a Napalm Grenade within Range 5. This grenade releases a spray of napalm in a line 5 path of your choice from its impact location. Characters within the affected area must succeed on an Agility save or take 2 burn. On a success, they take 1 burn.<br><b>Deployable — HAVOK Mine:</b> When a character moves over or adjacent to this mine, it detonates with a focused explosion in a line 5 path in the direction of the character who triggered it. Characters within the affected area must succeed on an Agility save or take 4 burn. On a success, they take 2 burn.",
+   "ru": "<br><b>Напалмовая граната</b> — Бросьте напалмовую гранату в пределах Радиуса 5. Эта граната выпускает струю напалма по пути-линии 5 в выбранном вами направлении от точки попадания. Персонажи в поражённой области должны пройти спасбросок Ловкости или получить 2 горения. При успехе — 1 горение.<br><b>Автономный модуль — Мина HAVOK:</b> Когда персонаж перемещается на эту мину или рядом с ней, она детонирует направленным взрывом по пути-линии 5 в направлении сработавшего персонажа. Персонажи в поражённой области должны пройти спасбросок Ловкости или получить 4 горения. При успехе — 2 горения."
   },
   "description": {
    "en": "FOR USE IN: Urban, post-urban, and high-density terrestrial environments. High O2 concentration preferred.<br>FOR USE AGAINST: Organic targets; hardened targets vulnerable to caustic/corrosive degradation; most foliage.<br>NOTES: Dispersion is true directional and involves aerosolized component – avoid danger by supplying end-users with respiratory equipment (specifications noted on canister).",
@@ -1363,8 +1363,8 @@
    "ru": "Автоохладитель"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Protocol</b> — As long as you don’t take damage, move, or exceed your Heat Cap, you clear all heat at the start of your next turn.",
+   "ru": "<br><b>Протокол</b> — Пока вы не получаете урон, не перемещаетесь и не превышаете свою Теплоёмкость, вы снимаете всё тепло в начале своего следующего хода."
   },
   "description": {
    "en": "The Armory-designed auto-cooler is a simple, persistent system that actively mitigates heat generation.<br>Thermal dump thresholds are determined by fleet engineers, though pilots can adjust levels on the fly – this automatic management frees the pilot up to focus on other, more pressing tactical concerns.",
@@ -1391,8 +1391,8 @@
    "ru": "Заряды заземления"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Gravity Grenade</b> — Throw a Gravity Grenade within Range 5. Your target must succeed on an Agility save or be Slowed until they make no voluntary movements for a full turn on their own turn.<br><b>Deployable — Grounding Mine:</b> This mine must be detonated remotely as a quick action, affecting a single character within range 5 of the mine: they must succeed on a Hull save or be pulled as far as possible toward the mine and knocked Prone. Flying characters that fail the save are affected the same way, except they are also forced to land (this counts as falling but without damage).<br><b>Detonate Grounding Mine</b> — Detonating the Grounding Mine affects a single character within range 5 of the mine: they must succeed on a Hull save or be pulled as far as possible toward the mine and knocked Prone. Flying characters that fail the save are affected the same way, except they are also forced to land (this counts as falling but without damage).",
+   "ru": "<br><b>Гравитационная граната</b> — Бросьте гравитационную гранату в пределах Радиуса 5. Ваша цель должна пройти спасбросок Ловкости или стать Замедленной, пока не проведёт полный ход без добровольных перемещений в свой ход.<br><b>Автономный модуль — Заземляющая мина:</b> Эту мину нужно детонировать удалённо как быстрое действие, поражая одного персонажа в пределах радиуса 5 от мины: он должен пройти спасбросок Корпуса, иначе будет притянут как можно ближе к мине и опрокинут. Летящие персонажи, провалившие спасбросок, затрагиваются так же, но также вынуждены приземлиться (считается падением без урона).<br><b>Детонировать заземляющую мину</b> — Детонация заземляющей мины поражает одного персонажа в пределах радиуса 5 от мины: он должен пройти спасбросок Корпуса, иначе будет притянут как можно ближе к мине и опрокинут. Летящие персонажи, провалившие спасбросок, затрагиваются так же, но также вынуждены приземлиться (считается падением без урона)."
   },
   "description": {
    "en": "Grounding charges take a simple pulse/wave principle and apply a second dimension: gravitic generation. When triggered, the grounding charge triggers a gravity well that pulls all destabilized materiel towards it. A potent anti-positional weapon, grounding charges are commonly used to disrupt prepared positions and pull enemies from cover.",
@@ -1405,8 +1405,8 @@
    "ru": "Отталкивающее поле"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — This system emits a burst 2 pulse around you. Characters within the affected area must succeed on a Hull save or be knocked 2 spaces directly away from you; then, all Mines within the affected area detonate simultaneously.<br>You count as having Immunity to any damage or effects immediately forced by mines detonated using this system, although persistent effects still affect you.",
+   "ru": "<br><b>Быстрое</b> — Эта система испускает импульс-всплеск 2 вокруг вас. Персонажи в поражённой области должны пройти спасбросок Корпуса или быть отброшены на 2 клетки прямо от вас; затем все Мины в поражённой области детонируют одновременно.<br>Вы считаетесь имеющим Иммунитет к любому урону или эффектам, немедленно вызванным минами, сдетонировавшими этой системой, хотя длящиеся эффекты по-прежнему затрагивают вас."
   },
   "description": {
    "en": "Utilizing a subsonic pressure wave, repulser fields emit tremendous single-wave pulses that stun, deter, and dissuade close-proximity hostiles.",
@@ -1419,8 +1419,8 @@
    "ru": "Зажимные бомбы"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Deployable — Clamp Bombs:</b> Expend a charge to fire a cluster of miniature bombs at a character within Sensors. They must succeed on an Engineering save, or the bombs clamp on. At the end of their next turn, the bombs detonate, dealing 1d6+3 AP Explosive damage. All characters adjacent to the target take half damage. The target can disarm and detach the bombs by voluntarily moving at least 4 spaces before the end of their turn.",
+   "ru": "<br><b>Автономный модуль — Клипс-бомбы:</b> Потратьте заряд, чтобы выстрелить кластером миниатюрных бомб в персонажа в пределах Сенсора. Он должен пройти спасбросок Инженерии, иначе бомбы прикрепляются. В конце его следующего хода бомбы детонируют, нанося 1d6+3 пробивающего броню взрывного урона. Все персонажи рядом с целью получают половину урона. Цель может обезвредить и снять бомбы, добровольно переместившись минимум на 4 клетки до конца своего хода."
   },
   "description": {
    "en": "Built using similar grapple-head technology to IPS-N’s assault grapples, clamp bombs can affix to designated or proximal targets before detonating, ensuring total target contact. Clamping on soft targets typically results in total termination prior to detonation.",
@@ -1433,8 +1433,8 @@
    "ru": "Тессеракт"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Spread Focus</b> — Choose a blast 3 area within Sensors: this area, extending 6 spaces high, becomes a zero-g area. In addition to the usual rules for zero-g movement, objects that enter the affected area float in place, and objects or characters that are knocked, moved, or pulled out of the area sink harmlessly to the ground at the end of their turn instead of falling. This area disperses if you create a new one. Otherwise, the effect persists until the end of the scene. When the zone disperses, everything within floats harmlessly to the ground.<br><b>Pinpoint Focus</b> — Choose a hostile or willing allied character within Sensors. If they are allied, they float 6 spaces into the air, becoming Immobilized while in the air but counting as flying and unable to fall. They can choose to sink harmlessly to the ground at the end of any of their turns or the start of any of yours. If they are hostile, they must succeed on an Engineering save or experience the same effect as an allied character; however, they sink harmlessly to the ground at the end of their next turn. Hostile characters can each be affected 1/scene.",
+   "ru": "<br><b>Рассредоточенный фокус</b> — Выберите область-взрыв 3 в пределах Сенсора: эта область высотой 6 клеток становится зоной нулевой гравитации. Помимо обычных правил движения в невесомости, объекты, входящие в поражённую область, зависают на месте, а объекты или персонажи, отброшенные, перемещённые или вытянутые из области, безвредно опускаются на землю в конце своего хода вместо падения. Эта область рассеивается при создании новой. Иначе эффект длится до конца сцены. При рассеивании зоны всё внутри безвредно опускается на землю.<br><b>Точечный фокус</b> — Выберите враждебного или согласного союзного персонажа в пределах Сенсора. Если он союзный, он взмывает на 6 клеток в воздух, становясь Обездвиженным в воздухе, но считаясь летящим и не может упасть. Он может выбрать безвредно опуститься на землю в конце любого своего хода или в начале любого вашего. Если он враждебный, он должен пройти спасбросок Инженерии, иначе испытывает тот же эффект, что и союзный персонаж; однако он безвредно опускается на землю в конце своего следующего хода. Каждый враждебный персонаж может быть затронут этим 1/сцену."
   },
   "description": {
    "en": "Hold sand above the water: feel it, permanent and cohesive. Place that same sand in the water: watch it drift away, weightless. This is the tool I have made for you: a way to imbue the weighted with mass-as-feathers.<br>— TT-AUDATA, Think Tank paramind.",
@@ -1461,8 +1461,8 @@
    "ru": "Генератор стазиса"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Choose a hostile character or willing allied character within line of sight and range 5: until the end of their next turn, they become Stunned, gain Immunity to all damage and effects, and can’t be moved, targeted, or affected by any other character or effect. This can be used on each character 1/scene. Hostile characters can succeed on an Engineering save to ignore this effect.",
+   "ru": "<br><b>Быстрое</b> — Выберите враждебного персонажа или согласного союзного персонажа в пределах линии видимости и радиуса 5: до конца его следующего хода он становится Оглушён, получает Иммунитет ко всему урону и эффектам, и не может быть перемещён, выбран целью или затронут любым другим персонажем или эффектом. Может использоваться на каждом персонаже 1/сцену. Враждебные персонажи могут пройти спасбросок Инженерии, чтобы проигнорировать этот эффект."
   },
   "description": {
    "en": "The skies of Creighton boiled black as ink, marbled by shuddering light. Screaming, angels fell wreathed in flame. The ones who could still run fled for the shelters; for seven days, they crouched in a deeper dark and felt the world shake itself apart.<br>—A.V. Wynyard, “The Killing of Creighton” [epic prose poem, banned throughout the Purview]",
@@ -1489,8 +1489,8 @@
    "ru": "Блинк-щит"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Full</b> — This system generates a burst 4 bubble around your mech, within which the flow of time is altered drastically. Nothing can enter or exit the bubble, not even light – it’s both impermeable and has Immunity to all damage and effects. Line of sight can’t be drawn through the border of the area, and it can’t be crossed by any action or effect – even those that don’t require line of sight – but time passes normally on both sides. For characters within the affected area, the world outside goes totally black; likewise, characters outside the affected area see a perfect black sphere.<br>When the Blinkshield is activated, characters partially within the affected area must make an Agility save: on a success, they move to the nearest free space on the side of their choice, inside or outside the area; on a failure, you choose.<br>This effect remains stationary even if you move, and lasts until the end of your next turn.",
+   "ru": "<br><b>Полное</b> — Эта система создаёт пузырь-всплеск 4 вокруг вашего меха, внутри которого течение времени резко искажено. Ничто не может войти или выйти из пузыря, даже свет — он и непроницаем, и имеет Иммунитет ко всему урону и эффектам. Линию видимости нельзя провести через границу области, и её нельзя пересечь никаким действием или эффектом — даже теми, что не требуют линии видимости — но время течёт нормально по обе стороны. Для персонажей внутри поражённой области внешний мир становится полностью чёрным; аналогично, персонажи снаружи видят идеальную чёрную сферу.<br>При активации Мерцающего щита персонажи, частично находящиеся в поражённой области, должны пройти спасбросок Ловкости: при успехе они перемещаются на ближайшую свободную клетку по своему выбору внутри или снаружи области; при провале выбираете вы.<br>Этот эффект остаётся неподвижным, даже если вы перемещаетесь, и длится до конца вашего следующего хода."
   },
   "description": {
    "en": "Characteristically for a weapon based on Think Tank research, Harrison Armory’s Blinkshield leans into the fuzzy nature of quantum manipulation. Operating in a similar fashion to a blinkspace gate, the Blinkshield generates a spherical sheath of energy that allows its operator to pierce realspace and exist, for a moment, in the null-environment of blinkspace. Think Tank spokespeople acknowledge the tactical benefits of (un)momentary (non)existence in blinkspace, but caution against repeated exposure without sufficient pre- and post-exposure conditioning and counseling.",
@@ -1503,8 +1503,8 @@
    "ru": "Щит поддержки образца ENCLAVE"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — This system generates a burst 3 dome that lasts until the end of your next turn. You become Immobilized for the duration, but any ranged or melee attacks made against characters within the affected area from outside the dome receive +1 difficulty.<br>Additionally, gain the Blinkfield Intervention reaction while the shield is active.<br><b>Blinkfield Intervention</b> — Take two Heat, then grant the attack’s target Resistance to all damage from this attack.",
+   "ru": "<br><b>Быстрое</b> — Эта система создаёт купол-всплеск 3, существующий до конца вашего следующего хода. Вы становитесь Обездвиженным на всё это время, но любые дальние или ближние атаки против персонажей в поражённой области, совершённые снаружи купола, получают +1 Сложность.<br>Кроме того, пока щит активен, вы получаете реакцию «Мерцающее вмешательство».<br><b>Мерцающее вмешательство</b> — Получите два Тепла, затем дайте цели атаки Сопротивление всему урону от этой атаки."
   },
   "description": {
    "en": "The Armory’s ENCLAVE-Pattern Support Shield creates a localized one-way blinkfield, folding a thin dome of complex realspace around its user and their immediate area, protecting occupants from incoming projectiles. Entities within the field can fire out, but probabilistic fluctuations cause incoming projectiles to “lag”, skipping them away from their intended target and along a randomized trajectory.",
@@ -1517,8 +1517,8 @@
    "ru": "Вспышечный якорь"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Flash Lock</b> — Take 2 Heat. The movement or status is prevented, and the target gains Immunity to all the above effects until the start of their next turn.",
+   "ru": "<br><b>Вспышка-якорь</b> — Получите 2 Тепла. Перемещение или статус предотвращаются, и цель получает Иммунитет ко всем этим эффектам до начала своего следующего хода."
   },
   "description": {
    "en": "Flash anchors utilize user-directed quantum superpositional lockdown projection to identify and assist allies in physical combat and rapid movement, maintaining positionality in all circumstances.",
@@ -1531,8 +1531,8 @@
    "ru": "Система защиты из твёрдого света"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Full</b> — This system creates a burst 3 hardlight shield. While the shield is in place, you become Immobilized. It blocks line of sight in both directions, and no attacks or effects can pass through (even if they don’t require line of sight). Characters partially within the affected area ignore this effect and draw line of sight as usual.<br>Characters can pass through the shield, but when crossing the perimeter for the first time in a round or starting their turn overlapping the boundary, they take 2 Burn.<br>This shield lasts for the rest of the scene, or until deactivated as a protocol.<br><b>Deactivate Hardlight Defense System</b> — Deactivate the Hardlight Defense System, removing the Immobilized condition it inflicts.",
+   "ru": "<br><b>Полное</b> — Эта система создаёт твердосветовой щит-всплеск 3. Пока щит на месте, вы становитесь Обездвиженным. Он блокирует линию видимости в обе стороны, и никакие атаки или эффекты не могут пройти сквозь него (даже не требующие линии видимости). Персонажи, частично находящиеся в поражённой области, игнорируют этот эффект и проводят линию видимости как обычно.<br>Персонажи могут проходить сквозь щит, но при пересечении периметра впервые за раунд или начале хода на границе получают 2 горения.<br>Этот щит существует до конца сцены или пока не деактивирован протоколом.<br><b>Деактивировать твердосветовую защитную систему</b> — Деактивируйте твердосветовую защитную систему, снимая вызванную ею Обездвиженность."
   },
   "description": {
    "en": "The Hardlight Defense System is an imperfect implementation of theoretically perfect technology. Currently in development by Think Tank NHPs and engineers, hardlight devices project tight, stable waves of light – akin to lasers – that repel matter and energy. In effect, this creates a solid surface, useful for shielding or temporary barrier construction; however, current technology is unable to lower the ambient temperature enough to prevent these surfaces from burning organic matter.",
@@ -1573,8 +1573,8 @@
    "ru": "Модернизация резервных систем"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — Expend a charge to Stabilize as a quick action.",
+   "ru": "<br><b>Быстрое</b> — Потратьте заряд, чтобы совершить Стабилизацию как быстрое действие."
   },
   "description": {
    "en": "A common right-of-distribution modification by pilots in forward operating bases, the addition of redundant systems guarantees a measure of reliability beyond stock design standards.",
@@ -1643,8 +1643,8 @@
    "ru": "Плазменная перчатка"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Quick</b> — This system can only be used in the Danger Zone.<br>Expend a charge and choose a character adjacent to you: they must succeed on an Agility save or take 4d6 AP energy damage and be knocked Prone. On a success, they take half damage and aren’t knocked Prone. You take half of the damage inflicted – before reduction – as heat and become Stunned until the start of your next turn.",
+   "ru": "<br><b>Быстрое</b> — Эта система может использоваться только в Опасной зоне.<br>Потратьте заряд и выберите соседнего персонажа: он должен пройти спасбросок Ловкости или получить 4d6 пробивающего броню энергетического урона и быть опрокинут. При успехе — половину урона, без опрокидывания. Вы получаете половину нанесённого урона — до вычетов — как тепло, и становитесь Оглушены до начала своего следующего хода."
   },
   "description": {
    "en": "This studded gauntlet draws on a core reactor pulse to momentarily superheat the air around a mech’s manipulator, creating a plasma field momentarily hotter than the surface of the sun. Thrust into an opponent’s chassis, plasma gauntlets give mechs the power to warp armor, vaporize shielding, and rip apart internal systems with their bare hands – if they don’t collapse in on themselves first.",
