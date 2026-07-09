@@ -2349,7 +2349,7 @@ function openWeaponPicker(mi){
     $("#wp-install").onclick=()=>install(w.id);
   };
 
-  const drawList=()=>{
+  const drawList=(keepScroll)=>{
     const list=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???" && w.source)
       .filter(w=>wpFilter==="ALL"?w.source!=="EXOTIC":w.source===wpFilter)
       .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
@@ -2360,7 +2360,7 @@ function openWeaponPicker(mi){
        ${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
-       <div class="grid" id="wp-list" style="gap:8px"></div>`);
+       <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
     $("#wp-list").innerHTML=list.map(w=>{
       const lk=!unlocked(w);
       const open=pickerViewMode==="inline" && wpExpanded===w.id;
@@ -2390,12 +2390,12 @@ function openWeaponPicker(mi){
       if(pickerViewMode==="card"){ drawDetail(id); return; }
       wpExpanded = wpExpanded===id?null:id;
       tagOpenSet=new Set(); profileViewIdx=0;
-      drawList();
+      drawList(true);
     });
     if(pickerViewMode==="inline" && wpExpanded){
       const w=M.weapon[wpExpanded];
       wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
-      wireProfileChips("#wp-profiles", drawList);
+      wireProfileChips("#wp-profiles", ()=>drawList(true));
       $("#wp-install-inline").onclick=()=>install(w.id);
     }
   };
@@ -2429,13 +2429,13 @@ function openIntegratedPicker(mi){
     $("#wp-install").onclick=install;
   };
 
-  const drawList=()=>{
+  const drawList=(keepScroll)=>{
     const open=pickerViewMode==="inline" && wpExpanded===w.id;
     $("#modal .mhd h3").textContent="Восстановить интегрированное оружие";
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Это оружие встроено в шасси — заменить его нельзя, можно только вернуть на место.</div>
        ${viewToggleHTML()}
-       <div class="grid" id="wp-list" style="gap:8px"></div>`);
+       <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
     const row=`<div class="listrow clickable ${open?'open':''}" data-w="${w.id}">
       <div class="info"><div class="nm">${esc(w.name)}</div>
         <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
@@ -2450,11 +2450,11 @@ function openIntegratedPicker(mi){
       if(pickerViewMode==="card"){ drawDetail(); return; }
       wpExpanded = wpExpanded===w.id?null:w.id;
       tagOpenSet=new Set(); profileViewIdx=0;
-      drawList();
+      drawList(true);
     });
     if(pickerViewMode==="inline" && wpExpanded){
       wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
-      wireProfileChips("#wp-profiles", drawList);
+      wireProfileChips("#wp-profiles", ()=>drawList(true));
       $("#wp-install-inline").onclick=install;
     }
   };
@@ -2474,13 +2474,13 @@ function openModPicker(mi, wi){
 
   const install=id=>{ slot.mod=id; closeModal(); render(); };
 
-  const draw=()=>{
+  const draw=(keepScroll)=>{
     const list=(L.mods||[]).filter(m=>modCompatible(m,w))
       .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent=`Установить мод · ${esc(w.name)}`;
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Совместимо с типом: ${tr(w.type)}</div>
-       <div class="grid" id="mp-list" style="gap:8px"></div>`);
+       <div class="grid" id="mp-list" style="gap:8px"></div>`, keepScroll);
     $("#mp-list").innerHTML=list.map(m=>{
       const lk=!unlocked(m);
       const open=mpExpanded===m.id;
@@ -2502,7 +2502,7 @@ function openModPicker(mi, wi){
     $$("#mp-list .listrow").forEach(it=>it.onclick=()=>{
       const id=it.dataset.m;
       mpExpanded = mpExpanded===id?null:id;
-      draw();
+      draw(true);
     });
     if(mpExpanded){
       const m=M.mod[mpExpanded];
@@ -2587,7 +2587,7 @@ function openSystemPicker(){
     $("#sy-install").onclick=()=>install(s.id);
   };
 
-  const drawList=()=>{
+  const drawList=(keepScroll)=>{
     const list=L.systems
       .filter(s=>s.source)
       .filter(s=>syFilter==="ALL"?s.source!=="EXOTIC":s.source===syFilter)
@@ -2599,7 +2599,7 @@ function openSystemPicker(){
       `${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="sy-search" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
-       <div class="grid" id="sy-list" style="gap:8px"></div>`);
+       <div class="grid" id="sy-list" style="gap:8px"></div>`, keepScroll);
     $("#sy-list").innerHTML=list.map(s=>{
       const lk=!unlocked(s);
       const open=pickerViewMode==="inline" && syExpanded===s.id;
@@ -2629,7 +2629,7 @@ function openSystemPicker(){
       if(pickerViewMode==="card"){ drawDetail(id); return; }
       syExpanded = syExpanded===id?null:id;
       tagOpenSet=new Set();
-      drawList();
+      drawList(true);
     });
     if(pickerViewMode==="inline" && syExpanded){
       const s=M.system[syExpanded];
@@ -2835,10 +2835,21 @@ function openCoreDetail(id){
    openModPicker/viewLicenseItemPreview), so scroll position from whatever
    was previously shown there would otherwise carry over. Use this instead
    of touching #modal .mbd innerHTML by hand. */
-function setModalBody(html){
+/* keepScroll=true is for redraws that stay conceptually "in place" — e.g.
+   toggling one row open/closed in the inline-expand list, or switching a
+   weapon's profile chip while expanded. Those must NOT jump back to the
+   top; only genuine navigation (opening the modal, switching list/detail
+   view, changing filters or search) should reset scroll. */
+function setModalBody(html, keepScroll){
   const mbd=$("#modal .mbd");
-  mbd.innerHTML=html;
-  resetModalScroll();
+  if(keepScroll){
+    const prev=mbd.scrollTop;
+    mbd.innerHTML=html;
+    mbd.scrollTop=prev;
+  } else {
+    mbd.innerHTML=html;
+    resetModalScroll();
+  }
 }
 /* Plain synchronous scrollTop=0 isn't always enough: openFrame() etc. still
    mutate .mhd (inserting the "ВЫБРАТЬ..." button) *after* modal()/
