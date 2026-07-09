@@ -1696,8 +1696,9 @@ function openLicenseDetail(fid){
   const remaining=d.b.license.cap-d.b.license.used;
   const siblings=L.frames.filter(fr=>licenseKeyFor(fr)===key && fr.id!==f.id).map(fr=>dispName(fr));
   const img=frameImageURL(f);
-  const imgHTML = img ? `<img src="${img}" alt="" loading="lazy" onerror="this.remove()"
-    style="float:right; width:150px; height:150px; object-fit:contain; margin:0 0 12px 16px; border-radius:8px; background:var(--panel-2)">` : "";
+  const imgHTML = img ? `<a href="${img}" target="_blank" rel="noopener" title="Открыть источник изображения">
+    <img src="${img}" alt="" loading="lazy" onerror="this.closest('a').remove()"
+      style="float:right; width:300px; height:300px; object-fit:contain; margin:0 0 12px 16px; border-radius:8px; background:var(--panel-2); cursor:zoom-in"></a>` : "";
   modal(dispName(f), `
     ${imgHTML}
     <div class="meta" style="margin-bottom:14px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype?.map(tr).join(" / ")||""}</div>
@@ -1800,7 +1801,7 @@ function frameTraitsCoreHTML(f){
    ИТОГ). When browsing a frame that ISN'T equipped yet, `computed` is
    omitted and this falls back to the frame's plain base stats, since none
    of those bonuses apply until the frame is actually selected. */
-function frameDetailBodyHTML(f, computed, imgUrl){
+function frameDetailBodyHTML(f, computed, imgUrl, imgSize){
   const statRows = [
     ["structure","hp","armor"],
     ["stress","heatcap"],
@@ -1819,9 +1820,12 @@ function frameDetailBodyHTML(f, computed, imgUrl){
   // Image floats at the top, roughly matched in size to the stat table's
   // height — description text wraps around it, then the stat grid is
   // force-cleared onto its own full-width line below, so it never gets
-  // squeezed into the narrow space beside the float.
-  const imgHTML = imgUrl ? `<img src="${imgUrl}" alt="" loading="lazy" onerror="this.remove()"
-    style="float:right; width:150px; height:150px; object-fit:contain; margin:0 0 12px 16px; border-radius:8px; background:var(--panel-2)">` : "";
+  // squeezed into the narrow space beside the float. Wrapped in a link to
+  // the same hotlinked source so people can open/save the original art.
+  const sz = imgSize || 150;
+  const imgHTML = imgUrl ? `<a href="${imgUrl}" target="_blank" rel="noopener" title="Открыть источник изображения">
+    <img src="${imgUrl}" alt="" loading="lazy" onerror="this.closest('a').remove()"
+      style="float:right; width:${sz}px; height:${sz}px; object-fit:contain; margin:0 0 12px 16px; border-radius:8px; background:var(--panel-2); cursor:zoom-in"></a>` : "";
   return `
     ${imgHTML}
     <div class="meta" style="margin-bottom:8px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype.map(tr).join(" / ")} · лицензия LL${f.license_level}</div>
@@ -1896,7 +1900,7 @@ function renderFrame(){
 function openFrame(id){
   const f=M.frame[id];
   const isSel=state.mech.frameId===id;
-  modal(dispName(f), frameDetailBodyHTML(f, isSel?derived().mech:null, frameImageURL(f)));
+  modal(dispName(f), frameDetailBodyHTML(f, isSel?derived().mech:null, frameImageURL(f), 300));
   const mhd=$("#modal .mhd");
   const btn=document.createElement("button");
   btn.className="toolbtn";
