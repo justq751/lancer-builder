@@ -2467,23 +2467,43 @@ function openIntegratedPicker(mi){
    includes this weapon's type and whose restricted_sizes doesn't exclude
    its mount. Flat inline-expand list (mods have no profiles/stances to
    switch between, so the fuller weapon-picker machinery isn't needed). */
-let mpExpanded=null;
+let mpFilter="ALL", mpSearch="", mpExpanded=null;
 function openModPicker(mi, wi){
   const slot=state.mech.mounts[mi].items[wi], w=M.weapon[slot.id];
-  mpExpanded=null;
+  mpFilter="ALL"; mpSearch=""; mpExpanded=null;
 
   const install=id=>{ slot.mod=id; closeModal(); render(); };
 
-  const draw=(keepScroll)=>{
+  const drawDetail=(id)=>{
+    const m=M.mod[id], lk=!unlocked(m);
+    tagOpenSet=new Set();
+    $("#modal .mhd h3").textContent=m.name;
+    setModalBody(
+      `<button class="ghostbtn" id="mp-back" style="margin-bottom:14px">← Назад к списку</button>`
+      + modCardHTML(m) +
+      `<button class="ghostbtn ${lk?'warn':''}" id="mp-install" style="margin-top:16px;width:100%;text-align:center">
+        ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить этот мод"}
+      </button>`);
+    wireTagGlossary("#md-tags", "#md-tagdesc", m.tags||[]);
+    $("#mp-back").onclick=drawList;
+    $("#mp-install").onclick=()=>install(m.id);
+  };
+
+  const drawList=(keepScroll)=>{
     const list=(L.mods||[]).filter(m=>modCompatible(m,w))
+      .filter(m=>mpFilter==="ALL"?m.source!=="EXOTIC":m.source===mpFilter)
+      .filter(m=>!mpSearch||(m.name+" "+m.source+" "+(m.tags||[]).map(trTag).join(" ")).toLowerCase().includes(mpSearch.toLowerCase()))
       .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent=`Установить мод · ${esc(w.name)}`;
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Совместимо с типом: ${tr(w.type)}</div>
+       ${viewToggleHTML()}
+       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${mpFilter===s?'on':''}" data-mpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
+       <input class="input" id="mp-search" placeholder="поиск модов…" style="margin-bottom:14px" value="${esc(mpSearch)}">
        <div class="grid" id="mp-list" style="gap:8px"></div>`, keepScroll);
     $("#mp-list").innerHTML=list.map(m=>{
       const lk=!unlocked(m);
-      const open=mpExpanded===m.id;
+      const open=pickerViewMode==="inline" && mpExpanded===m.id;
       const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-m="${m.id}">
         <div class="info"><div class="nm">${esc(m.name)}</div>
           <div class="ds">${esc(m.source)} · ${m.sp||0} SP</div></div>
@@ -2499,12 +2519,19 @@ function openModPicker(mi, wi){
       return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет модов, совместимых с этим оружием</div>`;
 
+    wireViewToggle(drawList);
+    $$(".modal .chip[data-mpf]").forEach(c=>c.onclick=()=>{mpFilter=c.dataset.mpf; drawList();});
+    const input=$("#mp-search");
+    input.oninput=e=>{mpSearch=e.target.value; drawList(); $("#mp-search").focus();};
+    if(mpSearch) input.setSelectionRange(input.value.length,input.value.length);
+
     $$("#mp-list .listrow").forEach(it=>it.onclick=()=>{
       const id=it.dataset.m;
+      if(pickerViewMode==="card"){ drawDetail(id); return; }
       mpExpanded = mpExpanded===id?null:id;
-      draw(true);
+      drawList(true);
     });
-    if(mpExpanded){
+    if(pickerViewMode==="inline" && mpExpanded){
       const m=M.mod[mpExpanded];
       wireTagGlossary("#md-tags", "#md-tagdesc", m.tags||[]);
       $("#mp-install-inline").onclick=()=>install(m.id);
@@ -2512,7 +2539,7 @@ function openModPicker(mi, wi){
   };
 
   modal(`Установить мод · ${w.name}`, "");
-  draw();
+  drawList();
 }
 
 /* Detail view for an already-installed mod — opened by clicking the mod
