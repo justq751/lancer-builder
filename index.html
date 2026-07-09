@@ -2836,7 +2836,10 @@ function modal(title,html){
     if(el.tagName!=="H3" && !el.classList.contains("mclose")) el.remove();
   });
   mhd.querySelector("h3").textContent=title;
-  $("#modal .mbd").innerHTML=html;
+  const mbd=$("#modal .mbd");
+  mbd.innerHTML=html;
+  mbd.scrollTop=0;
+  $("#modal").scrollTop=0;
   $("#modal").classList.add("show");
 }
 function closeModal(){ $("#modal").classList.remove("show"); }
