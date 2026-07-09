@@ -498,6 +498,12 @@ button{font-family:inherit; cursor:pointer}
 .item.static{cursor:default}
 .item.static:hover{border-color:var(--line)}
 .item .src{position:absolute; top:0; left:0; bottom:0; width:3px; border-radius:8px 0 0 8px}
+/* Frame portrait thumbnail, hotlinked (never downloaded/stored) — top-right
+   corner of license cards (small) and shasi cards / selected-frame block
+   (large, .lg). object-fit:contain keeps the art's own aspect ratio. */
+.frame-thumb{position:absolute; top:10px; right:10px; width:46px; height:46px;
+  object-fit:contain; border-radius:6px; opacity:.95; pointer-events:none; background:var(--panel-2)}
+.frame-thumb.lg{width:92px; height:92px; top:12px; right:12px}
 .item .top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
 .item .nm{font-family:"Chakra Petch"; font-size:17.5px; line-height:1.2}
 .item .badge{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
@@ -757,6 +763,10 @@ async function loadBaseData() {
     core.stat_labels = await fetchJSON("data/stat_labels.json").catch(e => { console.warn("stat_labels.json failed to load:", e); return {}; });
     core.core_stat_mods = await fetchJSON("data/core_bonus_stat_mods.json").catch(e => { console.warn("core_bonus_stat_mods.json failed to load:", e); return {}; });
     core.core_terse = await fetchJSON("data/core_bonus_terse.json").catch(e => { console.warn("core_bonus_terse.json failed to load:", e); return {}; });
+    // Map of frame id -> official portrait URL (hosted on Massif Press's own
+    // CDN, not bundled in this project — see data/frame_images.json for why
+    // these are linked rather than downloaded).
+    core.frame_images = await fetchJSON("data/frame_images.json").catch(e => { console.warn("frame_images.json failed to load:", e); return {}; });
     const packs = await Promise.all(
       CONTENT_PACKS.map(p => fetchJSON(p).catch(e => { console.warn("Pack failed to load:", p, e); return null; }))
     );
@@ -1074,6 +1084,10 @@ const SRC_NAME_EN = {GMS:"GENERAL MASSIVE SYSTEMS","IPS-N":"IPS-NORTHSTAR",SSC:"
    falling back to English automatically — every other call site (SRC_NAME[x.source]) is untouched. */
 const SRC_NAME = new Proxy({}, { get: (_,k) => tr(SRC_NAME_EN[k] || k) });
 const srcColor = s => SRC[s]||"var(--line-bright)";
+/* Frame portrait — hotlinked to Massif Press's own asset CDN via
+   data/frame_images.json (id -> URL), never downloaded/stored locally.
+   Returns "" if this frame has no known image (safe to check falsy). */
+const frameImageURL = f => (L.frame_images && L.frame_images[f.id]) || "";
 
 /* RU stat labels */
 const STAT_RU = {
@@ -1737,6 +1751,7 @@ function renderLicenses(){
         const nUnlock = [...L.weapons,...L.systems,...(L.mods||[])].filter(it=>it.license===key && (it.license_level||0)<=v).length;
         return `<div class="item ${v?'sel':''} clickable" data-openlic="${f.id}">
           <div class="src" style="background:${srcColor(src)}"></div>
+          ${frameImageURL(f)?`<img class="frame-thumb" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
           <div class="top"><div class="nm">${esc(dispName(f))}</div><div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
           <div class="meta">ШАССИ открывается на ранге ${f.license_level} · открыто предметов: ${nUnlock}</div>
           ${f.variant?`<div class="meta" style="color:var(--accent)">↳ общая лицензия с ${esc(f.variant)}</div>`:""}
@@ -1804,6 +1819,7 @@ function renderFrame(){
     "Выберите рамную платформу (frame). Её базовые статы складываются с вашими мех-навыками и GRIT. Замок означает, что лицензия ещё не открыта — выбрать можно всё, но проверьте требования на вкладке ЛИЦЕНЗИИ.")
     + (d.frame ? `
       <div class="card" style="margin-bottom:20px">
+        ${frameImageURL(d.frame)?`<img class="frame-thumb lg" src="${frameImageURL(d.frame)}" alt="" loading="lazy" onerror="this.remove()">`:""}
         <div class="head"><span class="lbl"><b>//</b> ВЫБРАННОЕ ШАССИ — ${esc(dispName(d.frame))}</span>
           <span style="display:flex; align-items:center; gap:10px">
             <span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.source)}</span>
@@ -1831,6 +1847,7 @@ function renderFrame(){
         const s=f.stats;
         return `<div class="item ${sel?'sel':''} ${lk?'locked':''}" data-frame="${f.id}">
           <div class="src" style="background:${srcColor(f.source)}"></div>
+          ${frameImageURL(f)?`<img class="frame-thumb lg" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
           <div class="top"><div class="nm">${esc(dispName(f))}</div>
             <div class="badge ${lk?'lock':''}">${lk?"🔒 LL"+f.license_level:f.source}</div></div>
           <div class="meta">${f.mechtype.map(tr).join(" / ")} · РАЗМЕР ${s.size}</div>
