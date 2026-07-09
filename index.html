@@ -727,7 +727,7 @@ let currentLang = localStorage.getItem("lancer_lang") || "ru";
 
 const LOCALE_CATEGORY_FILES = [
   "enums", "frames", "weapons", "systems", "talents",
-  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags", "glossary", "stat_labels"
+  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags", "glossary", "stat_labels", "mods"
 ];
 
 async function fetchJSON(url) {
@@ -862,6 +862,17 @@ function localizeData(base, locale) {
         if (p.effect !== undefined && tp.effect) p.effect = pickText(p.effect, tp.effect);
       });
     }
+  });
+
+  // mods: weapon-mod cards read name/effect/description + on_hit/on_attack/
+  // on_crit exactly like weapons — same overlay shape, see modCardBody().
+  overlayKeyedPairs(L.mods || [], locale.mods || {}, ["name", "effect", "description"]);
+  (locale.mods ? (L.mods || []) : []).forEach(m => {
+    const t = (locale.mods || {})[m.id];
+    if (!t) return;
+    overlayOnField(m, "on_hit", t.on_hit);
+    overlayOnField(m, "on_attack", t.on_attack);
+    overlayOnField(m, "on_crit", t.on_crit);
   });
 
   overlayKeyedPairs(L.systems, locale.systems || {}, ["name", "effect", "description"]);
