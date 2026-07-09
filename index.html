@@ -611,14 +611,14 @@ button{font-family:inherit; cursor:pointer}
 
 /* modal */
 .modal{position:fixed; inset:0; z-index:120; display:none; align-items:flex-start; justify-content:center;
-  background:rgba(4,6,10,.74); backdrop-filter:blur(3px); padding:5vh 16px; overflow:auto}
+  background:rgba(4,6,10,.74); backdrop-filter:blur(3px); padding:5vh 16px; overflow:auto; overflow-anchor:none}
 .modal.show{display:flex}
 .modal .panel{background:var(--panel); border:1px solid var(--line-bright); border-radius:10px;
   width:min(880px,94vw); box-shadow:var(--shadow)}
 .modal .mhd{display:flex; align-items:center; justify-content:flex-start; gap:14px; padding:16px 20px; border-bottom:1px solid var(--line)}
 .modal .mhd h3{flex:0 1 auto; min-width:0; font-size:20px}
 .modal .mhd .mclose{margin-left:auto; flex-shrink:0}
-.modal .mbd{padding:18px 20px; max-height:70vh; overflow:auto}
+.modal .mbd{padding:18px 20px; max-height:70vh; overflow:auto; overflow-anchor:none}
 
 /* summary sheet */
 .sheet{display:grid; grid-template-columns:1fr 1fr; gap:16px}
@@ -2835,7 +2835,21 @@ function openCoreDetail(id){
 function setModalBody(html){
   const mbd=$("#modal .mbd");
   mbd.innerHTML=html;
-  mbd.scrollTop=0;
+  resetModalScroll();
+}
+/* Plain synchronous scrollTop=0 isn't always enough: openFrame() etc. still
+   mutate .mhd (inserting the "ВЫБРАТЬ..." button) *after* modal()/
+   setModalBody() already ran, and floated portrait images can resize the
+   layout once they finish loading — either can nudge scroll back down a
+   moment later, including via the browser's own scroll-anchoring trying to
+   "helpfully" preserve visual position across that layout shift. Resetting
+   again on the next frame (after all of that has settled) closes both
+   gaps; overflow-anchor:none on the containers (see CSS) belts-and-braces
+   it by turning off anchoring for these two entirely. */
+function resetModalScroll(){
+  const mbd=$("#modal .mbd"), mo=$("#modal");
+  mbd.scrollTop=0; mo.scrollTop=0;
+  requestAnimationFrame(()=>{ mbd.scrollTop=0; mo.scrollTop=0; });
 }
 function modal(title,html){
   const mhd=$("#modal .mhd");
@@ -2849,7 +2863,6 @@ function modal(title,html){
   });
   mhd.querySelector("h3").textContent=title;
   setModalBody(html);
-  $("#modal").scrollTop=0;
   $("#modal").classList.add("show");
 }
 function closeModal(){ $("#modal").classList.remove("show"); }
