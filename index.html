@@ -872,6 +872,9 @@ function localizeData(base, locale) {
         if (!tp) return;
         if (tp.name) p.name = pickText(p.name, tp.name);
         if (p.effect !== undefined && tp.effect) p.effect = pickText(p.effect, tp.effect);
+        overlayOnField(p, "on_hit", tp.on_hit);
+        overlayOnField(p, "on_attack", tp.on_attack);
+        overlayOnField(p, "on_crit", tp.on_crit);
       });
     }
   });
