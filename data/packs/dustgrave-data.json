@@ -56,7 +56,19 @@
      }
     ],
     "passive_name": "Hopkins Doctrine",
-    "passive_effect": "You may only take this action if you took the skirmish action this turn. Pick one of the following effects:<br><b>Reprise</b> — Skirmish with a weapon that was reloaded via DYNAMIC RELOAD this turn.<br><b>Renewal</b> — All weapons not used to attack this turn are reloaded at the end of the turn.",
+    "passive_effect": "You may only take this action if you took the skirmish action this turn. Pick one of the following effects:",
+    "passive_actions": [
+     {
+      "name": "Reprise",
+      "activation": "Quick",
+      "detail": "Skirmish with a weapon that was reloaded via DYNAMIC RELOAD this turn."
+     },
+     {
+      "name": "Renewal",
+      "activation": "Quick",
+      "detail": "All weapons not used to attack this turn are reloaded at the end of the turn."
+     }
+    ],
     "use": "Encounter"
    }
   },
@@ -150,7 +162,8 @@
        }
       ]
      }
-    ]
+    ],
+    "passive_effect": null
    }
   }
  ],

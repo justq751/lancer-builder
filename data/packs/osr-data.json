@@ -50,7 +50,23 @@
     "active_effect": "Choose any number of hostile characters within Sensors and make a special Invade tech attack against them, ignoring Invisible and line of sight. On hit, apply the effects of Invade as normal, choosing options for each target. On miss, targets become Impaired until the end of their next turn.",
     "activation": "Full",
     "passive_name": "Advanced Intrusion Package",
-    "passive_effect": "Gain the following options for Invade:<br><b>Balance Control Lockout</b> — Push your target 2 spaces in any direction and knock them Prone. If they are already Prone, they become Immobilized until the end of their next turn. You may only Immobilize each character this way 1/scene.<br><b>System Crusher</b> — Your target takes an additional 2 heat, for a total of 4 heat. If this Invade causes them to exceed their Heat Cap, they take 4 burn as well. This can only be used 1/scene on each character."
+    "passive_effect": "Gain the following options for Invade:",
+    "passive_actions": [
+     {
+      "name": "Balance Control Lockout",
+      "activation": "Invade",
+      "detail": "Push your target 2 spaces in any direction and knock them Prone. If they are already Prone, they become Immobilized until the end of their next turn. You may only Immobilize each character this way 1/scene.",
+      "cost": 0,
+      "tech_attack": true
+     },
+     {
+      "name": "System Crusher",
+      "activation": "Invade",
+      "detail": "Your target takes an additional 2 heat, for a total of 4 heat. If this Invade causes them to exceed their Heat Cap, they take 4 burn as well. This can only be used 1/scene on each character.",
+      "cost": 0,
+      "tech_attack": true
+     }
+    ]
    }
   }
  ],

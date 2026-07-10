@@ -60,7 +60,8 @@
     "description": "The ATLAS extends microneedles into the musculature and ancillary nervous system of its pilot, melding flesh, machine, and the memory of all who wore it before.",
     "active_name": "Final Hunt",
     "active_effect": "<p>For the rest of the scene, you:</p> <ul> <li>Move an additional 1 space when you voluntarily move for any reason (e.g. standard moves, BOOST, movement from systems or talents).</li> <li>Benefits from soft cover at all times, no matter where you are.</li> <li>Can HIDE even in the open, without requiring cover.</li> </ul> <p> The only way to reveal you is for another character to SEARCH for you or for you to lose Hidden as usual &ndash; by using BOOST, attacking, forcing a save, and so on. When active, 1/round, when you make a melee or ranged attack while HIDDEN, your target must also succeed on a HULL save or be knocked PRONE. This takes place before the attack is rolled </p>",
-    "activation": "Quick"
+    "activation": "Quick",
+    "passive_effect": null
    },
    "license_id": "mf_atlas"
   },
@@ -119,7 +120,8 @@
     "activation": "Protocol",
     "integrated": [
      "mw_caliban_integrated"
-    ]
+    ],
+    "passive_effect": null
    },
    "license_id": "mf_caliban"
   },
@@ -181,7 +183,8 @@
     "description": "Screeching and venting steam, the Kobold digs into the earth. Moments later, the very ground bends to the pilot’s will and the air shrieks with agony — the cry of every dead Ungrateful, martyred or taken by the Dustmen",
     "active_name": "Terraform",
     "active_effect": "Your mech extrudes a massive amount of polymer, creating up to 10 SIZE 1 cubes in free spaces within Range 5. These cubes can be separate or connected and can be stacked up to 5 spaces high. If connected, they form a contiguous surface that can block line of sight. During the turn in which they are extruded, the cubes grant soft cover and each has EVASION 5 and 10 HP. At the start of your next turn, they harden, each cube granting hard cover and gaining +10 HP (but retaining any damage they had taken).",
-    "activation": "Full"
+    "activation": "Full",
+    "passive_effect": null
    },
    "license_id": "mf_kobold"
   },
@@ -228,7 +231,8 @@
     "description": "“Drink Deep, and Descend.”",
     "active_name": "Glitch time",
     "active_effect": "<p>You gain the ability to disrupt time for the rest of this scene. 1/round, when any character successfully attacks, effects, or takes an action against another character within SENSORS, you may interrupt it before it resolves, with the following effects:</p> <ul> <li>The character taking the action is pushed up to 3 spaces in a direction of your choice, even if they have IMMUNITY to involuntary movement</li> <li>You teleport to one of the spaces originally occupied by that character, or as close as possible, no matter how far away it was.</li> <li>The initial attack, effect, or action resolves with you as its target. </li> </ul> <p>You receive all damage, conditions, statuses, and effects, and the action must be carried out without changes. For example, if the effect was to teleport an allied character to a certain space, you are teleported to that space instead; if the effect was to repair an allied character, you are repaired instead; if the effect was to deal damage and KNOCKBACK, you take the damage (using your ARMOR, RESISTANCE, etc.) and are knocked back in the same direction as the original target would be; if the effect was to inflict a condition or status, you receive that condition or status instead. Initiating this interruption does not count as a reaction. Effects that target the self cannot be interrupted this way </p>",
-    "activation": "Quick"
+    "activation": "Quick",
+    "passive_effect": null
    },
    "license_id": "mf_lich"
   },
@@ -361,6 +365,13 @@
     "active_effect": "For the rest of the scene, this system gains 6 charges (you can use a die to track this). Expend a charge to use XIAOLI’S TENACITY again, ignoring the 1/Turn limit. You may spend any number of charges a turn. At the end of each turn, you regain a charge for each unique target (character, object, or piece of terrain) you damaged with this action, to a maximum of 6.",
     "activation": "Protocol",
     "passive_name": "Xiaoli's Tenacity",
+    "passive_actions": [
+     {
+      "name": "Xiaoli's Tenacity",
+      "activation": "Free",
+      "detail": "1/turn as a free action, you may move up to 3 spaces then deal 2 Kinetic to any adjacent character or 10 Kinetic AP to an object or piece of terrain. This movement prompts engagement and does not ignore reactions.<br>If this damage destroys an object or piece of terrain, it explodes, dealing 1d6 Kinetic to all adjacent characters other than you and knocking them back 1 space."
+     }
+    ],
     "counters": [
      {
       "id": "ctr_xiaoli_type_cqb_suite",
@@ -370,7 +381,7 @@
       "max": 6
      }
     ],
-    "passive_effect": "<br><b>Xiaoli's Tenacity</b> — 1/turn as a free action, you may move up to 3 spaces then deal 2 Kinetic to any adjacent character or 10 Kinetic AP to an object or piece of terrain. This movement prompts engagement and does not ignore reactions.<br>If this damage destroys an object or piece of terrain, it explodes, dealing 1d6 Kinetic to all adjacent characters other than you and knocking them back 1 space."
+    "passive_effect": ""
    },
    "license_id": "mf_zheng"
   }

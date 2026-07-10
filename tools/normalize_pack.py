@@ -100,19 +100,39 @@ def norm_tags(item):
         item["tags"] = [tag_to_string(t) for t in item["tags"]]
 
 
+def _strip_duplicated_action_tail(effect_text, actions):
+    """Some upstream frame data already bakes a '<br><b>ActionName</b> —
+    detail' tail onto the end of passive_effect/active_effect, duplicating
+    what's also present as a structured entry in passive_actions/
+    active_actions. Since the renderer shows the structured action as its
+    own stat-block right below this text, keeping the baked-in tail would
+    show the same detail twice. Trim the text at the first such tail that
+    matches one of this ability's own actions by name."""
+    if not effect_text or not actions:
+        return effect_text
+    for act in actions:
+        name = act.get("name")
+        if not name:
+            continue
+        marker = f"<br><b>{name}</b>"
+        idx = effect_text.find(marker)
+        if idx != -1:
+            return effect_text[:idx]
+    return effect_text
+
+
 def norm_frame(f):
     norm_tags(f)
     cs = f.get("core_system")
     if cs:
-        for key, actkey in (("passive_effect", "passive_actions"), ("active_effect", "active_actions")):
-            acts = cs.get(actkey)
-            if acts:
-                cs[key] = fold_actions(cs.get(key, ""), acts)
-                # Keep the raw structured actions (name/activation/trigger/
-                # detail/damage/range) alongside the folded prose — the
-                # renderer uses these to draw a proper stat-block instead of
-                # a flat paragraph. Only strip the fields the raw action
-                # objects don't need (nothing to strip currently).
+        # Do NOT fold passive_actions/active_actions into the prose fields —
+        # the app's renderer (frameTraitsCoreHTML/actionBlockHTML) shows the
+        # effect text AND a structured stat-block for each action side by
+        # side, so folding (or leaving an already-folded tail baked in by
+        # the source) would duplicate the action's own detail text a second
+        # time. Strip any such tail and leave the rest of the prose as-is.
+        cs["passive_effect"] = _strip_duplicated_action_tail(cs.get("passive_effect"), cs.get("passive_actions"))
+        cs["active_effect"] = _strip_duplicated_action_tail(cs.get("active_effect"), cs.get("active_actions"))
     for tr in f.get("traits", []) or []:
         tr.pop("bonuses", None)
         tr.pop("synergies", None)

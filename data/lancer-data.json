@@ -2,9 +2,9 @@
  "frames": [
   {
    "id": "mf_standard_pattern_i_everest",
-   "name": "Everest",
-   "source": "GMS",
    "license_level": 0,
+   "source": "GMS",
+   "name": "Everest",
    "mechtype": [
     "Balanced"
    ],
@@ -33,7 +33,15 @@
    "traits": [
     {
      "name": "Initiative",
-     "description": "1/scene the Everest may take any quick action as a free action."
+     "description": "1/scene the Everest may take any quick action as a free action.",
+     "use": "Encounter",
+     "active_effects": [
+      {
+       "name": "Initiative",
+       "frequency": "1/scene",
+       "detail": "You may take any quick action as a free action."
+      }
+     ]
     },
     {
      "name": "Replaceable parts",
@@ -42,21 +50,42 @@
    ],
    "core_system": {
     "name": "Hyperspec Fuel Injector",
-    "description": null,
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Power Up",
-    "active_effect": "For the rest of this scene, you gain +1 Accuracy on all attacks, checks, and saves; additionally, 1/turn, you can Boost as a free action.<br><b>Boost (Hyperspec Fuel Injector)</b> — You can Boost as a free action.",
-    "activation": "Protocol",
+    "active_effect": "For the rest of this scene, you gain +1 Accuracy on all attacks, checks, and saves; additionally, 1/turn, you can Boost as a free action.",
+    "use": "Encounter",
     "frequency": "1/scene",
-    "tags": []
-   }
+    "activation": "Protocol",
+    "active_actions": [
+     {
+      "name": "Boost (Hyperspec Fuel Injector)",
+      "activation": "Free",
+      "trigger": "1/turn",
+      "detail": "You can Boost as a free action."
+     }
+    ],
+    "active_bonuses": [
+     {
+      "id": "check",
+      "accuracy": 1
+     },
+     {
+      "id": "save",
+      "accuracy": 1
+     },
+     {
+      "id": "attack",
+      "accuracy": 1
+     }
+    ],
+    "passive_effect": null
+   },
+   "license_id": "mf_standard_pattern_i_everest"
   },
   {
    "id": "mf_blackbeard",
-   "name": "Blackbeard",
-   "source": "IPS-N",
    "license_level": 2,
+   "source": "IPS-N",
+   "name": "Blackbeard",
    "mechtype": [
     "Striker"
    ],
@@ -85,11 +114,30 @@
    "traits": [
     {
      "name": "Grapple Cable",
-     "description": "The Blackbeard can Grapple targets within Range 5. If the Grapple is successful, the Blackbeard is immediately pulled adjacent to the target by the most direct path. If there are no suitable spaces, the grapple breaks and the Blackbeard does not move."
+     "description": "The Blackbeard can Grapple targets within Range 5. If the Grapple is successful, the Blackbeard is immediately pulled adjacent to the target by the most direct path. If there are no suitable spaces, the grapple breaks and the Blackbeard does not move.",
+     "active_actions": [
+      {
+       "name": "Grapple Cable",
+       "condition": "You successfully grapple a target within Range 5.",
+       "detail": "You are pulled adjacent to your target by the most direct path. If there are no suitable spaces, the grapple breaks and you do not move."
+      }
+     ],
+     "active_effects": [
+      {
+       "name": "Grapple Cable",
+       "detail": "You can Grapple targets within Range 5. If the Grapple is successful, you are immediately pulled adjacent to the target by the most direct path. If there are no suitable spaces, the grapple breaks and you do not move."
+      }
+     ]
     },
     {
      "name": "Lock/Kill Subsystem",
-     "description": "While grappling, the Blackbeard can Boost and take reactions."
+     "description": "While grappling, the Blackbeard can Boost and take reactions.",
+     "active_effects": [
+      {
+       "name": "Lock/Kill Subsystem",
+       "detail": "While grappling, you can Boost and take reactions."
+      }
+     ]
     },
     {
      "name": "Exposed Reactor",
@@ -99,13 +147,10 @@
    "core_system": {
     "name": "Assault Grapples",
     "description": "The IPS-N-branded Assault Grappling System is a class-leading technology rated for hauling, supporting, and securing chassis of sizes up to Schedule 4. Grapple heads are interchangeable and can be swapped for engagement with soft or hard targets – either electrified or loaded with codespike systems for long-distance incapacitation.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Omni-harpoon",
     "active_effect": "This system fires grappling harpoons at any number of targets within Range 5 and line of sight. Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
     "activation": "Quick",
-    "frequency": null,
-    "tags": [],
+    "duration": "end_turn_self",
     "active_actions": [
      {
       "name": "Omni-harpoon",
@@ -141,14 +186,16 @@
        }
       ]
      }
-    ]
-   }
+    ],
+    "passive_effect": null
+   },
+   "license_id": "mf_blackbeard"
   },
   {
    "id": "mf_drake",
-   "name": "Drake",
-   "source": "IPS-N",
    "license_level": 2,
+   "source": "IPS-N",
+   "name": "Drake",
    "mechtype": [
     "Defender"
    ],
@@ -177,11 +224,30 @@
    "traits": [
     {
      "name": "Heavy Frame",
-     "description": "The Drake can’t be pushed, pulled, knocked Prone, or knocked back by smaller characters."
+     "description": "The Drake can’t be pushed, pulled, knocked Prone, or knocked back by smaller characters.",
+     "active_effects": [
+      {
+       "name": "Heavy Frame",
+       "detail": "You can’t be pushed, pulled, knocked Prone, or knocked back by smaller characters.",
+       "add_status": [
+        {
+         "id": "immunity",
+         "val": "prone",
+         "target": "self"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Blast Plating",
-     "description": "The Drake has Resistance to damage, burn and heat from blast, burst, line, and cone attacks."
+     "description": "The Drake has Resistance to damage, burn and heat from blast, burst, line, and cone attacks.",
+     "add_resist": [
+      {
+       "resist": "aoe",
+       "target": "self"
+      }
+     ]
     },
     {
      "name": "Slow",
@@ -189,26 +255,93 @@
     },
     {
      "name": "Guardian",
-     "description": "Adjacent allied characters can use the Drake for hard cover."
+     "description": "Adjacent allied characters can use the Drake for hard cover.",
+     "active_effects": [
+      {
+       "name": "Guardian",
+       "detail": "Adjacent allied characters can use you for hard cover."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Fortress",
-    "description": null,
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Fortress Protocol",
-    "active_effect": "You deploy heavy stabilizers and your mech becomes more like a fortified emplacement than a vehicle. When activated, two sections of hard cover (line 2, Size 1) unfold from your mech, drawn in any direction. These cover sections have Immunity to all damage.<br>Additionally, the following effects apply while active:<ul><li>You become Immobilized.</li><li>You benefit from hard cover, even in the open, and gain Immunity to Knockback, Prone, and all involuntary movement.</li><li>When you Brace, you may take a full action on your next turn instead of just a quick action.</li><li>Any character that gains hard cover from you or your cover sections gains Immunity to Knockback, Prone, and all involuntary movement, and gains the benefits of Blast Plating.</li></ul>This system can be deactivated as a protocol. Otherwise, it lasts until the end of the current scene.<br><b>Deployable — Fortress Cover:</b> ",
+    "active_effect": "You deploy heavy stabilizers and your mech becomes more like a fortified emplacement than a vehicle. When activated, two sections of hard cover (line 2, Size 1) unfold from your mech, drawn in any direction. These cover sections have Immunity to all damage.<br>Additionally, the following effects apply while active:<ul><li>You become Immobilized.</li><li>You benefit from hard cover, even in the open, and gain Immunity to Knockback, Prone, and all involuntary movement.</li><li>When you Brace, you may take a full action on your next turn instead of just a quick action.</li><li>Any character that gains hard cover from you or your cover sections gains Immunity to Knockback, Prone, and all involuntary movement, and gains the benefits of Blast Plating.</li></ul>This system can be deactivated as a protocol. Otherwise, it lasts until the end of the current scene.",
+    "active_deployables": [
+     {
+      "name": "Fortress Cover",
+      "type": "cover",
+      "size": 1,
+      "size_special": "Line 2",
+      "add_resist": [
+       {
+        "immunity": "all",
+        "target": "self"
+       }
+      ],
+      "description": "A section of hard cover (line 2, Size 1) with Immunity to all damage."
+     }
+    ],
+    "active_effects": [
+     {
+      "name": "Fortress Protocol",
+      "detail": "You benefit from hard cover, even in the open, and gain Immunity to Knockback, Prone, and all involuntary movement.",
+      "add_resist": [
+       {
+        "immunity": "prone",
+        "target": "self"
+       }
+      ],
+      "add_status": [
+       {
+        "id": "immobilized",
+        "target": "self"
+       }
+      ],
+      "add_special": [
+       {
+        "attribute": "Immune to involuntary movement",
+        "target": "self"
+       }
+      ],
+      "add_other": [
+       {
+        "type": "cover",
+        "val": "hard",
+        "target": "self"
+       }
+      ]
+     },
+     {
+      "name": "Fortress Protocol",
+      "detail": "Any character that gains hard cover from you or your cover sections gains Immunity to Knockback, Prone, and all involuntary movement, and gains the benefits of Blast Plating."
+     },
+     {
+      "name": "Fortress Protocol",
+      "detail": "When you Brace, you may take a full action on your next turn instead of just a quick action."
+     }
+    ],
+    "active_synergies": [
+     {
+      "locations": [
+       "brace"
+      ],
+      "detail": "When you Brace, you may take a full action on your next turn instead of just a quick action."
+     }
+    ],
+    "use": "Encounter",
+    "deactivation": "Protocol",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_drake"
   },
   {
    "id": "mf_lancaster",
-   "name": "Lancaster",
-   "source": "IPS-N",
    "license_level": 2,
+   "source": "IPS-N",
+   "name": "Lancaster",
    "mechtype": [
     "Support"
    ],
@@ -235,34 +368,88 @@
    "traits": [
     {
      "name": "Insulated",
-     "description": "The Lancaster has Immunity to burn."
+     "description": "The Lancaster has Immunity to burn.",
+     "add_resist": [
+      {
+       "immunity": "burn",
+       "target": "self"
+      }
+     ]
     },
     {
      "name": "Combat Repair",
-     "description": "In combat, the Lancaster can use 4 Repairs to repair a destroyed mech as a full action, returning it to 1 Structure, 1 Stress, and 1 HP."
+     "description": "In combat, the Lancaster can use 4 Repairs to repair a destroyed mech as a full action, returning it to 1 Structure, 1 Stress, and 1 HP.",
+     "actions": [
+      {
+       "name": "Combat Repair",
+       "activation": "Full",
+       "detail": "Use 4 Repairs to repair a destroyed mech as a full action, returning it to 1 Structure, 1 Stress, and 1 HP."
+      }
+     ]
     },
     {
      "name": "Redundant Systems",
-     "description": "At your discretion, other characters adjacent to the Lancaster can spend its Repairs as their own."
+     "description": "At your discretion, other characters adjacent to the Lancaster can spend its Repairs as their own.",
+     "active_effects": [
+      {
+       "name": "Redundant Systems",
+       "detail": "Other characters adjacent to your Lancaster can spend its Repairs as their own."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Latch Drone",
     "description": "Known colloquially as a “Wingman”, latch drones are companion drones carried by and deployed from a chassis. Pilots are recommended not to develop emotional attachments to these drones due to their high casualty rate.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Supercharger",
     "active_effect": "Your Latch Drone clamps onto an allied mech within its Range. For the rest of the scene you take 1 heat at the start of each of your turns, but your target gains +1 accuracy on all attacks, checks, and saves, and Immunity to the Impaired, Jammed, Slowed, Shredded, and Immobilized conditions from characters other than itself. This effect ends if either character becomes Stunned.<br>While this system is active, you cannot use the Latch Drone for any other purpose.",
+    "active_effects": [
+     {
+      "name": "Supercharger",
+      "detail": "Your target gains +1 accuracy on all attacks, checks, and saves, and Immunity to the Impaired, Jammed, Slowed, Shredded, and Immobilized conditions from characters other than itself. This effect ends if either character becomes Stunned.",
+      "duration": "next_turn_start_self",
+      "add_status": [
+       {
+        "id": "immunity",
+        "val": "impaired",
+        "target": "target"
+       },
+       {
+        "id": "immunity",
+        "val": "jammed",
+        "target": "target"
+       },
+       {
+        "id": "immunity",
+        "val": "slowed",
+        "target": "target"
+       },
+       {
+        "id": "immunity",
+        "val": "shredded",
+        "target": "target"
+       },
+       {
+        "id": "immunity",
+        "val": "immobilized",
+        "target": "target"
+       }
+      ]
+     }
+    ],
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "integrated": [
+     "mw_lancaster_integrated"
+    ],
+    "passive_effect": null
+   },
+   "license_id": "mf_lancaster"
   },
   {
    "id": "mf_nelson",
-   "name": "Nelson",
-   "source": "IPS-N",
    "license_level": 2,
+   "source": "IPS-N",
+   "name": "Nelson",
    "mechtype": [
     "Striker"
    ],
@@ -290,30 +477,60 @@
    "traits": [
     {
      "name": "Momentum",
-     "description": "1/round, after you Boost, the Nelson’s next melee attack deals +1d6 bonus damage on hit."
+     "description": "1/round, after you Boost, the Nelson’s next melee attack deals +1d6 bonus damage on hit.",
+     "active_effects": [
+      {
+       "name": "Momentum",
+       "frequency": "1/round",
+       "condition": "After you Boost",
+       "detail": "Your next melee attack deals +1d6 bonus damage on hit.",
+       "bonus_damage": {
+        "detail": "1d6 bonus damage on hit after you Boost, once per round as a Free Action.",
+        "val": "1d6",
+        "weapon_types": [
+         "melee"
+        ]
+       }
+      }
+     ]
     },
     {
      "name": "Skirmisher",
-     "description": "After attacking, the Nelson can immediately move 1 space in any direction as long as it isn’t Immobilized or Slowed. This movement ignores engagement and doesn’t provoke reactions."
+     "description": "After attacking, the Nelson can immediately move 1 space in any direction as long as it isn’t Immobilized or Slowed. This movement ignores engagement and doesn’t provoke reactions.",
+     "actions": [
+      {
+       "name": "Skirmisher",
+       "activation": "None",
+       "trigger": "Immediately after attacking",
+       "detail": "Move 1 space in any direction as long as it isn’t Immobilized or Slowed. This movement ignores engagement and doesn’t provoke reactions."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Perpetual Momentum Drive",
     "description": "IPS-N’s Perpetual Momentum Drive exploits fighter-tier nearlight spooling to capture and sustain a passive .000001 ls charge, able to be dumped into boost systems upon command. Chassis equipped with this drive require heavy reinforcement, including strengthened joints and limbs, and installation of a k-comp crash couch to protect the pilot from sudden g-force and shear.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Engage Drive",
-    "active_effect": "For the rest of the scene, Skirmisher allows you to move 4 spaces at a time instead of 1 space.<br><b>Empowered Skirmisher</b> — Move 4 spaces in any direction as long as you aren't Immobilized or Slowed. This movement ignores engagement and doesn’t provoke reactions.",
+    "active_effect": "For the rest of the scene, Skirmisher allows you to move 4 spaces at a time instead of 1 space.",
+    "active_actions": [
+     {
+      "name": "Empowered Skirmisher",
+      "activation": "None",
+      "trigger": "Immediately after attacking",
+      "detail": "Move 4 spaces in any direction as long as you aren't Immobilized or Slowed. This movement ignores engagement and doesn’t provoke reactions."
+     }
+    ],
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_nelson"
   },
   {
    "id": "mf_raleigh",
-   "name": "Raleigh",
-   "source": "IPS-N",
    "license_level": 2,
+   "source": "IPS-N",
+   "name": "Raleigh",
    "mechtype": [
     "Striker"
    ],
@@ -342,7 +559,15 @@
    "traits": [
     {
      "name": "Full Metal Jacket",
-     "description": "At the end of its turn, if the Raleigh hasn’t made any attacks or forced any saves, it can reload all Loading weapons as a free action."
+     "description": "At the end of its turn, if the Raleigh hasn’t made any attacks or forced any saves, it can reload all Loading weapons as a free action.",
+     "actions": [
+      {
+       "name": "Full Metal Jacket",
+       "activation": "Free",
+       "trigger": "Your turn ends",
+       "detail": "Reload all Loading weapons if you haven’t made any attacks or forced any saves."
+      }
+     ]
     },
     {
      "name": "Shielded Magazines",
@@ -352,20 +577,22 @@
    "core_system": {
     "name": "M35 Mjolnir Cannon",
     "description": "IPS-N’s M35 Mjolnir cannon is a carryover from Northstar’s Watchman line of defensive weapons, reworked for frontline combat. The Mjolnir is a hard-mounted, multi-barrel auxiliary cannon that uses magnetic acceleration to fire stacks of airburst projectiles at its target. It’s an impulse weapon, tied to the pilot’s second-tier neural processes with mediation from a COMP/CON or NHP; even in death, a pilot’s Mjolnir will continue to identify and attack hostile targets until reaching total systemic failure. For this reason, the Mjolnir is often referred to as a deadgun – one of many such weapons to be found among CQB-oriented pilots.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Thunder God",
     "active_effect": "You start to spin your M35 Mjolnir up, beginning with no chambered rounds. For the rest of the scene, you load two rounds into chambers at the end of any of your turns in which you haven’t fired the M35 Mjolnir . It can hold a maximum of six rounds.<br>When you fire the M35 Mjolnir, all chambers fire simultaneously, dealing 4 kinetic damage per loaded round. If you fire four or more rounds at once, the attack gains AP and, on a hit, your target becomes Shredded until the end of their next turn.",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "use": "Encounter",
+    "integrated": [
+     "mw_raleigh_integrated"
+    ],
+    "passive_effect": null
+   },
+   "license_id": "mf_raleigh"
   },
   {
    "id": "mf_tortuga",
-   "name": "Tortuga",
-   "source": "IPS-N",
    "license_level": 2,
+   "source": "IPS-N",
+   "name": "Tortuga",
    "mechtype": [
     "Defender",
     "Striker"
@@ -394,30 +621,74 @@
    "traits": [
     {
      "name": "Sentinel",
-     "description": "The Tortuga gains +1 accuracy on all attacks made as reactions (e.g. Overwatch)."
+     "description": "The Tortuga gains +1 accuracy on all attacks made as reactions (e.g. Overwatch).",
+     "active_effects": [
+      {
+       "name": "Sentinel",
+       "detail": "You gain +1 accuracy on all attacks made as reactions (e.g. Overwatch).",
+       "condition": "You make an attack as a reaction"
+      }
+     ]
     },
     {
      "name": "Guardian",
-     "description": "Adjacent allied characters can use the Tortuga for hard cover."
+     "description": "Adjacent allied characters can use the Tortuga for hard cover.",
+     "active_effects": [
+      {
+       "name": "Guardian",
+       "detail": "Adjacent allied characters can use you for hard cover."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "WATCHDOG Co-Pilot",
     "description": "IPS-N security teams are no strangers to the dangers of ship-to-ship or ship-to-station boarding actions. Tight corridors, unstable gravity, dark environments, hard vacuum, and the potential dual threat of both organic and inorganic opposition make boarding actions some of the most statistically deadly engagement – according to IPS-N’s internal metrics, even the winning side should expect at least 30% casualties. Hoping to lessen the cognitive burden on pilots and any NHPs or COMP/CONs installed in their chassis, IPS-N developed the WATCHDOG co-pilot. The WATCHDOG is a simple subsentient partition: a flash-homunculus of aggregated intelligence generated from thousands of after-action reports from boarding actions, debriefings, and volunteer donors. Not an NHP, nor even a COMP/CON, the WATCHDOG is a robust tactical program similar to a smart weapon. That said, its ability to operate without cycling presents certain advantages: namely, these co-pilots have some capacity to learn and make best-guess predictions based on analysis of their pilots. WATCHDOGs tend to have plain personalities – to whatever extend they can be said to have one – and are a favorite of pilots looking for a no-nonsense attitude and crisp, efficient counsel.<br>The WATCHDOG system is currently under review by a joint USB/UDoJ-HR commission, but there has been no formal stay on production yet issued.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Hyper-Reflex Mode",
     "active_effect": "For the rest of this scene:<ul><li>If you have less than threat 3 with a ranged weapon, it increases to 3.</li><li>1/round, you may take an additional Overwatch reaction.</li><li>Any character you hit with Overwatch becomes Immobilized until the end of their next turn.</li></ul>",
+    "active_bonuses": [
+     {
+      "id": "min_range",
+      "val": 3
+     }
+    ],
+    "active_effects": [
+     {
+      "name": "Hyper-Reflex Overwatch",
+      "detail": "1/round, you may take an additional Overwatch reaction.",
+      "frequency": "1/round"
+     },
+     {
+      "name": "Hyper-Reflex Immobilize",
+      "detail": "Any character you hit with Overwatch becomes Immobilized until the end of their next turn.",
+      "condition": "You hit a character with Overwatch",
+      "add_status": [
+       {
+        "id": "immobilized",
+        "duration": "next_turn_end_target"
+       }
+      ]
+     }
+    ],
+    "active_synergies": [
+     {
+      "locations": [
+       "overwatch"
+      ],
+      "detail": "Any character you hit with Overwatch becomes Immobilized until the end of their next turn."
+     }
+    ],
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_tortuga"
   },
   {
    "id": "mf_vlad",
-   "name": "Vlad",
-   "source": "IPS-N",
    "license_level": 2,
+   "source": "IPS-N",
+   "name": "Vlad",
    "mechtype": [
     "Controller",
     "Striker"
@@ -447,30 +718,85 @@
    "traits": [
     {
      "name": "Dismemberment",
-     "description": "When the Vlad inflicts Immobilize on another character, the target also becomes Shredded for the same duration."
+     "description": "When the Vlad inflicts Immobilize on another character, the target also becomes Shredded for the same duration.",
+     "active_effects": [
+      {
+       "name": "Dismemberment",
+       "condition": "You inflict Immobilize on another character",
+       "detail": "The target also becomes Shredded for the same duration.",
+       "add_status": [
+        {
+         "id": "shredded"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Shrike Armor",
-     "description": "When a character within range 3 attacks the Vlad, the attacker first takes 1 AP kinetic damage."
+     "description": "When a character within range 3 attacks the Vlad, the attacker first takes 1 AP kinetic damage.",
+     "active_effects": [
+      {
+       "name": "Shrike Armor",
+       "condition": "A character within range 3 attacks you",
+       "detail": "The attacker first takes 1 AP kinetic damage.",
+       "damage": [
+        {
+         "val": 1,
+         "type": "Kinetic",
+         "ap": true
+        }
+       ],
+       "range": [
+        {
+         "type": "Burst",
+         "val": 3
+        }
+       ]
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Shrike Armor",
     "description": "Primarily a defensive modification, Shrike armor bristles with hardened chromium-tungsten spikes – a nod to the Vlad’s historical namesake. Shrike tips are strategically placed in areas with a high likelihood of kinetic encounters: gauntlets, manipulator joints, shoulder plating, and so on. Shrike armor is uncommon among pilots from the Core and is considered a mark of underdeveloped – if terrifying – tactics.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Tormentor Spines",
     "active_effect": "For the rest of this scene, you gain Resistance to all damage originating within range 3, and Shrike Armor deals 3 AP kinetic damage instead of 1.",
+    "active_effects": [
+     {
+      "name": "Tormentor Spines Resistance",
+      "detail": "You gain Resistance to all damage originating within range 3."
+     },
+     {
+      "name": "Shrike Armor (Tormentor Spines)",
+      "detail": "Shrike Armor deals 3 AP kinetic damage instead of 1.",
+      "condition": "A character within range 3 attacks you",
+      "damage": [
+       {
+        "val": 3,
+        "type": "Kinetic",
+        "ap": true
+       }
+      ],
+      "range": [
+       {
+        "type": "Burst",
+        "val": 3
+       }
+      ]
+     }
+    ],
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_vlad"
   },
   {
    "id": "mf_black_witch",
-   "name": "Black Witch",
-   "source": "SSC",
    "license_level": 2,
+   "source": "SSC",
+   "name": "Black Witch",
    "mechtype": [
     "Controller",
     "Support"
@@ -498,30 +824,50 @@
    "traits": [
     {
      "name": "Repulsor Field",
-     "description": "The Black Witch has Resistance to Kinetic Damage."
+     "description": "The Black Witch has Resistance to Kinetic Damage.",
+     "active_effects": [
+      {
+       "name": "Repulsor Field",
+       "detail": "You have Resistance to Kinetic Damage.",
+       "add_resist": [
+        {
+         "resist": "Kinetic",
+         "target": "self"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Mag Parry",
-     "description": "1/round, as a reaction, you may attempt to parry an attack that would deal Kinetic Damage to you or an adjacent allied character. Roll 1d6: on 5+, the attack misses. This effect does not stack with Invisible."
+     "description": "1/round, as a reaction, you may attempt to parry an attack that would deal Kinetic Damage to you or an adjacent allied character. Roll 1d6: on 5+, the attack misses. This effect does not stack with Invisible.",
+     "actions": [
+      {
+       "name": "Mag Parry",
+       "activation": "Reaction",
+       "frequency": "1/round",
+       "trigger": "An incoming attack will deal Kinetic Damage to you or an adjacent allied character",
+       "detail": "Roll 1d6: on 5+, the attack misses. This effect does not stack with Invisible."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Magnetic Field Projector",
     "description": "Magnetic field generators are a portable and field-deployable variation on typical magnetic defense technologies. When activated, they create a magnetic bubble that traps all incoming ferrous projectiles. The strength of the field is so great that it can even draw mechs to its center. When the field is dispersed or its solid-state battery burns out – a feature, not a flaw – the field undergoes a sudden catastrophic implosion, drawing all captured projectiles to a point at the center of the bubble.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Mag Field",
     "active_effect": "This system projects a blast 3 magnetic field with at least one space adjacent to you, causing the following effects until the end of your next turn:<ul><li>The affected area is difficult terrain.</li><li>Ranged attacks that deal kinetic or explosive can’t enter or leave the affected area – projectiles stop at the edge, doing no damage. Record each attack stopped this way.</li><li>Mechs and other characters made at least partly of metal that start their turn in the affected area or enter it for the first time in a round must succeed on a Hull save or be pulled as close to the center as possible and become Immobilized.</li></ul>When the effect ends, any ranged attacks that were stopped resume their trajectory – toward the center of the affected area. The GM rolls attacks against each character within, gaining +1 per blocked attack (to a maximum of +6). On hit, these attacks deal 1d6 kinetic damage per blocked attack (to a maximum of 6d6 kinetic damage).",
     "activation": "Full",
-    "frequency": null,
-    "tags": []
-   }
+    "use": "Next Turn",
+    "passive_effect": null
+   },
+   "license_id": "mf_black_witch"
   },
   {
    "id": "mf_deaths_head",
-   "name": "Death’s Head",
-   "source": "SSC",
    "license_level": 2,
+   "source": "SSC",
+   "name": "Death’s Head",
    "mechtype": [
     "Artillery"
    ],
@@ -549,7 +895,15 @@
    "traits": [
     {
      "name": "Neurolink",
-     "description": "The Death’s Head may reroll its first ranged attack each round, but must keep the second result."
+     "description": "The Death’s Head may reroll its first ranged attack each round, but must keep the second result.",
+     "active_effects": [
+      {
+       "name": "Neurolink",
+       "frequency": "1/round",
+       "condition": "You make a ranged attack",
+       "detail": "You may reroll your first ranged attack each round, but must keep the second result."
+      }
+     ]
     },
     {
      "name": "Perfected Targeting",
@@ -559,13 +913,15 @@
    "core_system": {
     "name": "Precognitive Targeting",
     "description": "Precognition is the next step in human/AI interaction. Using a neural bridge, SSC’s precognitive targeting system allows pilots to learn constantly and unconsciously from data gathered in the field, equipping them to read situations before they develop. Precognition is highly experimental and the precise mechanisms unknown even to the designers, so SSC recommends limited, monitored use of this system.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Neural Shunt",
     "active_effect": "For the rest of this scene, you gain the Mark for Death action.",
-    "activation": "Protocol",
-    "frequency": null,
-    "tags": [],
+    "active_effects": [
+     {
+      "name": "Mark for Death Focus",
+      "detail": "Deal bonus damage to your Marked for Death target based on weapon size (aux: 1d6, main: 2d6, heavy or larger: 3d6) on ranged critical hits against them, as long as they aren’t in cover or within range 5.",
+      "condition": "You are focusing on a target (Marked for Death)"
+     }
+    ],
     "active_actions": [
      {
       "name": "Mark for Death",
@@ -590,14 +946,26 @@
       "activation": "Protocol",
       "detail": "End your focus on a <b>Mark for Death</b> target."
      }
-    ]
-   }
+    ],
+    "active_synergies": [
+     {
+      "locations": [
+       "attack"
+      ],
+      "detail": "While focused (Marked for Death) on a target, you deal bonus damage based on weapon size (aux: 1d6, main: 2d6, heavy or larger: 3d6) on ranged critical hits against them, as long as they aren’t in cover or within range 5."
+     }
+    ],
+    "use": "Encounter",
+    "activation": "Protocol",
+    "passive_effect": null
+   },
+   "license_id": "mf_deaths_head"
   },
   {
    "id": "mf_dusk_wing",
-   "name": "Dusk Wing",
-   "source": "SSC",
    "license_level": 2,
+   "source": "SSC",
+   "name": "Dusk Wing",
    "mechtype": [
     "Controller",
     "Support"
@@ -626,11 +994,31 @@
    "traits": [
     {
      "name": "Maneuverability Jets",
-     "description": "The Dusk Wing can hover when it moves."
+     "description": "The Dusk Wing can hover when it moves.",
+     "active_effects": [
+      {
+       "name": "Maneuverability Jets",
+       "detail": "You can hover when you move."
+      }
+     ]
     },
     {
      "name": "Harlequin Cloak",
-     "description": "During its turn, the Dusk Wing is Invisible; it reappears at the end of the turn."
+     "description": "During its turn, the Dusk Wing is Invisible; it reappears at the end of the turn.",
+     "active_effects": [
+      {
+       "name": "Harlequin Cloak",
+       "condition": "During your turn",
+       "detail": "You are Invisible; you reappear at the end of your turn.",
+       "add_status": [
+        {
+         "id": "invisible",
+         "target": "self",
+         "duration": "turn_end_self"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Fragile",
@@ -642,9 +1030,6 @@
     "description": "“Belief in what we could see, what we could touch – in what our COMP/CONs assured us was there, in our own subjectivity and memory. Belief in reality became a weapon. We approached the metavault knowing that we would face an unknown enemy, but we approached with the advantage of numbers and machine strength.<br>“DHIYED taught us as it killed us: through garbled comms chatter, through the screams of the dying, through the cackling of our mirror-selves as they killed us. Every spoofed signature, every temporal skip, every memetic, every non-Euclid – these were lessons.<br>“Do you understand?<br>“DHIYED the Teacher. DHIYED the Monster. As we killed it, DHIYED taught us what to fear, and how to face it.<br>“What do I fear now? That's a good question. What does the pilot fear who cracked open DHIYED’s casket?<br>“I don’t think we killed it. I think it wants us to believe we killed it – and I cannot imagine what it has done while we think ourselves safe.”",
     "active_name": "Hall of Mirrors",
     "active_effect": "For the rest of the scene, whenever you start a unique movement during your turn (e.g., a standard move, Boost, or movement granted by talents or systems), you leave a holographic imprint of yourself behind in the space from which you started. These are illusory objects the same Size as you that have Immunity to all damage and effects and aren’t obstructions.<br>When hostile characters start their turn in, move through, or move adjacent to the space occupied by a hologram, it detonates. They must succeed on an Agility save or take 1d6 energy damage. On a success, they take half damage.<br>You also gain the Hologram Teleport Quick Action.",
-    "activation": "Protocol",
-    "frequency": null,
-    "tags": [],
     "active_actions": [
      {
       "name": "Hologram Teleport",
@@ -666,14 +1051,18 @@
        }
       ]
      }
-    ]
-   }
+    ],
+    "use": "Encounter",
+    "activation": "Protocol",
+    "passive_effect": null
+   },
+   "license_id": "mf_dusk_wing"
   },
   {
    "id": "mf_metalmark",
-   "name": "Metalmark",
-   "source": "SSC",
    "license_level": 2,
+   "source": "SSC",
+   "name": "Metalmark",
    "mechtype": [
     "Striker"
    ],
@@ -702,30 +1091,54 @@
    "traits": [
     {
      "name": "Flash Cloak",
-     "description": "The Metalmark is Invisible while moving, but reappears when stationary."
+     "description": "The Metalmark is Invisible while moving, but reappears when stationary.",
+     "active_effects": [
+      {
+       "name": "Flash Cloak",
+       "detail": "You are Invisible while moving, but reappear when stationary."
+      }
+     ]
     },
     {
      "name": "Carapace Adaptation",
-     "description": "When the Metalmark is in soft cover, ranged attackers receive +2 difficulty instead of +1 difficulty."
+     "description": "When the Metalmark is in soft cover, ranged attackers receive +2 difficulty instead of +1 difficulty.",
+     "active_effects": [
+      {
+       "name": "Carapace Adaptation",
+       "condition": "You are in soft cover",
+       "detail": "Ranged attackers receive +2 difficulty instead of +1 difficulty."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Tactical Cloak",
     "description": "Tactical cloaks are tight-knit, tight-bind weaves of reactive fabric – high-license tech restricted to pilots of Metalmark Classification II or higher. The weave covers roughly 80% of a mech’s surface area, giving it a dull quality when viewed through optics or with the naked eye. Beyond their use as regular camouflage, activated tactical cloaks bend light in a way that makes their wearers nearly impossible to see.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Tactical Cloak",
     "active_effect": "You are Invisible for the rest of the scene.",
+    "active_effects": [
+     {
+      "name": "Tactical Cloak",
+      "detail": "You are Invisible for the rest of the scene.",
+      "add_status": [
+       {
+        "id": "invisible",
+        "target": "self"
+       }
+      ]
+     }
+    ],
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_metalmark"
   },
   {
    "id": "mf_monarch",
-   "name": "Monarch",
-   "source": "SSC",
    "license_level": 2,
+   "source": "SSC",
+   "name": "Monarch",
    "mechtype": [
     "Artillery"
    ],
@@ -754,7 +1167,28 @@
    "traits": [
     {
      "name": "Avenger Silos",
-     "description": "1/round, on a critical hit with any ranged weapon, the Monarch may deal 3 explosive to a different character of your choice within range 15 and line of sight."
+     "description": "1/round, on a critical hit with any ranged weapon, the Monarch may deal 3 explosive to a different character of your choice within range 15 and line of sight.",
+     "actions": [
+      {
+       "name": "Avenger Silo Strike",
+       "activation": "None",
+       "frequency": "1/round",
+       "trigger": "You score a critical hit with a ranged weapon",
+       "detail": "Deal 3 explosive damage to a different character of your choice within range 15 and line of sight.",
+       "damage": [
+        {
+         "val": 3,
+         "type": "Explosive"
+        }
+       ],
+       "range": [
+        {
+         "type": "Range",
+         "val": 15
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Seeking Payload",
@@ -764,13 +1198,8 @@
    "core_system": {
     "name": "SSC-30 High-Penetration Missile System",
     "description": "The SSC-30 High-Penetration Missile System (SSC-30 HPMS) is a mech-mounted micro-missile delivery system capable of tremendous combat output. Using the SSC-30 HPMS, the Monarch can carry – and deliver – its payload of 60 or more deadly, miniaturized Avenger warheads in a single volley.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Divine Punishment",
     "active_effect": "Choose any number of characters within range 50: your targets must each succeed on an Agility save or take 1d6+4 explosive. On a success, they take half damage. These self-guiding missiles can reach any target as long as there is a path to do so.",
-    "activation": "Full",
-    "frequency": null,
-    "tags": [],
     "active_actions": [
      {
       "name": "Divine Punishment",
@@ -792,14 +1221,17 @@
        }
       ]
      }
-    ]
-   }
+    ],
+    "activation": "Full",
+    "passive_effect": null
+   },
+   "license_id": "mf_monarch"
   },
   {
    "id": "mf_mourning_cloak",
-   "name": "Mourning Cloak",
-   "source": "SSC",
    "license_level": 2,
+   "source": "SSC",
+   "name": "Mourning Cloak",
    "mechtype": [
     "Striker"
    ],
@@ -827,7 +1259,21 @@
    "traits": [
     {
      "name": "Hunter",
-     "description": "1/round, the Mourning Cloak may deal +1d6 bonus damage on hit with a melee attack if its target has no adjacent characters, or if the Mourning Cloak is the only character adjacent to the target."
+     "description": "1/round, the Mourning Cloak may deal +1d6 bonus damage on hit with a melee attack if its target has no adjacent characters, or if the Mourning Cloak is the only character adjacent to the target.",
+     "active_effects": [
+      {
+       "name": "Hunter",
+       "frequency": "1/round",
+       "condition": "You hit with a melee attack, your target has no adjacent characters, or if you are the only character adjacent to the target.",
+       "bonus_damage": {
+        "val": "1d6",
+        "detail": "You hit with a melee attack if your target has no adjacent characters, or if you are the only character adjacent to the target.",
+        "weapon_types": [
+         "melee"
+        ]
+       }
+      }
+     ]
     },
     {
      "name": "Biotic Components",
@@ -837,20 +1283,41 @@
    "core_system": {
     "name": "EX Slipstream Module",
     "description": "Open only to highly licensed pilots, the EX Slipstream program is a uniquely SSC innovation. The Ex Slipstream module itself is a miniaturized near-lightspeed drive capable of transporting the user through blinkspace with acceptable accuracy. The technology is temperamental, at best: nothing smaller than a mech can survive the stress of exposed blink travel, and the experience is traumatic to both the user and anyone in close proximity.",
-    "passive_name": "Blinkspace Jump",
-    "passive_effect": "Gain the Blinkspace Jump Full Action.<br><b>Blinkspace Jump</b> — Teleport to a space within range 3d6. You don’t require line of sight, but attempts to teleport to occupied spaces cause you to remain stationary and lose this action. If you roll the same number on all three dice, you disappear until your group rests, at which point you reappear nearby.",
     "active_name": "Stabilize Singularity",
     "active_effect": "For the rest of the scene, you teleport when you Boost or make a standard move.",
+    "active_effects": [
+     {
+      "name": "Stabilize Singularity",
+      "detail": "You teleport when you Boost or make a standard move."
+     }
+    ],
+    "active_synergies": [
+     {
+      "locations": [
+       "boost"
+      ],
+      "detail": "You teleport when you Boost."
+     }
+    ],
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_name": "Blinkspace Jump",
+    "passive_effect": "Gain the Blinkspace Jump Full Action.",
+    "passive_actions": [
+     {
+      "name": "Blinkspace Jump",
+      "activation": "Full",
+      "detail": "Teleport to a space within range 3d6. You don’t require line of sight, but attempts to teleport to occupied spaces cause you to remain stationary and lose this action. If you roll the same number on all three dice, you disappear until your group rests, at which point you reappear nearby."
+     }
+    ]
+   },
+   "license_id": "mf_mourning_cloak"
   },
   {
    "id": "mf_swallowtail",
-   "name": "Swallowtail",
-   "source": "SSC",
    "license_level": 2,
+   "source": "SSC",
+   "name": "Swallowtail",
    "mechtype": [
     "Support"
    ],
@@ -878,30 +1345,71 @@
    "traits": [
     {
      "name": "Integrated Cloak",
-     "description": "At the end of its turn, the Swallowtail becomes Invisible if it hasn’t moved that turn. This lasts until it moves or takes a reaction, or until the start of its next turn."
+     "description": "At the end of its turn, the Swallowtail becomes Invisible if it hasn’t moved that turn. This lasts until it moves or takes a reaction, or until the start of its next turn.",
+     "active_effects": [
+      {
+       "name": "Integrated Cloak",
+       "detail": "At the end of your turn, you become Invisible if you haven’t moved that turn. This lasts until you move or take a reaction, or until the start of your next turn.",
+       "condition": "End of your turn, if you haven’t moved this turn",
+       "add_status": [
+        {
+         "id": "invisible",
+         "target": "self",
+         "duration": "turn_start_self"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Prophetic Scanners",
-     "description": "1/round, when the Swallowtail inflicts Lock On, its target also becomes Shredded until the end of its next turn."
+     "description": "1/round, when the Swallowtail inflicts Lock On, its target also becomes Shredded until the end of its next turn.",
+     "active_effects": [
+      {
+       "name": "Prophetic Scanners",
+       "frequency": "1/round",
+       "condition": "You inflict Lock On on a target",
+       "add_status": [
+        {
+         "id": "shredded",
+         "target": "target",
+         "duration": "turn_end_target"
+        }
+       ]
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Cloudscout TACSIM Swarms",
     "description": "Cloudscout TACSIM Swarms are packets of networked microsensors, launched in nonlethal mortar canisters that detonate high above the battlefield. Once seeded, the swarm generates a TACSIM program that begins to run brevity cycles: tight, contained simulations of tactical possibility. Probability results are then fed to the Swallowtail’s choir processors, which in turn feed it to the pilot and networked squad members, ensuring a high probability of successful outcomes.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Prophetic Interjection",
-    "active_effect": "Gain the Tactical Simulation reaction for the rest of the scene.<br><b>Tactical Simulation</b> — Effect: Roll 1d6. On 4+, the attack was actually a simulation predicted by your processor - your ally gains Resistance to all damage dealt by the attack and may teleport up to 3 spaces, representing their “true” location. On 3 or less, there’s a glitch – your allied doesn’t gain Resistance, but can teleport up to 6 spaces.",
+    "active_effect": "Gain the Tactical Simulation reaction for the rest of the scene.",
+    "active_actions": [
+     {
+      "name": "Tactical Simulation",
+      "activation": "Reaction",
+      "frequency": "1/round",
+      "trigger": "An allied character in line of sight takes damage from another character in line of sight.",
+      "detail": "Effect: Roll 1d6. On 4+, the attack was actually a simulation predicted by your processor - your ally gains Resistance to all damage dealt by the attack and may teleport up to 3 spaces, representing their “true” location. On 3 or less, there’s a glitch – your allied doesn’t gain Resistance, but can teleport up to 6 spaces.",
+      "add_resist": [
+       {
+        "resist": "all"
+       }
+      ]
+     }
+    ],
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_swallowtail"
   },
   {
    "id": "mf_balor",
-   "name": "Balor",
-   "source": "HORUS",
    "license_level": 2,
+   "source": "HORUS",
+   "name": "Balor",
    "mechtype": [
     "Striker",
     "Defender"
@@ -930,11 +1438,32 @@
    "traits": [
     {
      "name": "Scouring Swarm",
-     "description": "The Balor deals 2 kinetic to characters of its choice that start their turn grappled by or adjacent to it."
+     "description": "The Balor deals 2 kinetic to characters of its choice that start their turn grappled by or adjacent to it.",
+     "active_effects": [
+      {
+       "name": "Scouring Swarm",
+       "condition": "A character starts their turn grappled by or adjacent to you",
+       "detail": "You deal 2 kinetic damage to that character.",
+       "damage": [
+        {
+         "val": 2,
+         "type": "Kinetic",
+         "aoe": true
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Regeneration",
-     "description": "At the end of its turn, the Balor regains 1/4 of its total HP. When it takes stress or structure damage, this effect ceases until the end of its next turn."
+     "description": "At the end of its turn, the Balor regains 1/4 of its total HP. When it takes stress or structure damage, this effect ceases until the end of its next turn.",
+     "active_effects": [
+      {
+       "name": "Regeneration",
+       "condition": "Your turn ends and you haven’t taken stress or structure damage since the start of your turn",
+       "detail": "You regain 1/4 of your total HP. When you take stress or structure damage, this effect ceases until the end of your next turn."
+      }
+     ]
     },
     {
      "name": "Self-Perpetuating",
@@ -944,20 +1473,38 @@
    "core_system": {
     "name": "Hellswarm",
     "description": "In a moment, with aught but desire, the pilot of a Balor may quick-print a cloak comprised of countless minuscule drones: a hellswarm cloak – living shield and fluid-dynamic knife, cutting and guarding, in one shimmering wave. They become Hivemaster, and their will is obeyed by millions.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Hive Frenzy",
     "active_effect": "Your nanites switch into a hyperactive mode, causing the following effects until the end of the scene:<ul><li>You and adjacent allies gain soft cover.</li><li>Scouring Swarm deals 4 kinetic, instead of 2.</li><li>Regeneration restores 1/2 of your total HP, instead of 1/4.</li><li>If you would take structure damage, roll 1d6: on 6, your mech hellishly pulls itself together, taking no structure damage, returning to 1 HP, and gaining Immunity to all damage until the end of the current turn.</li><li>You become Shredded and cannot clear this condition for the duration.</li></ul>",
+    "active_effects": [
+     {
+      "name": "Hive Frenzy",
+      "detail": "Your nanites switch into a hyperactive mode, causing the following effects until the end of the scene:<ul><li>You and adjacent allies gain soft cover.</li><li>Scouring Swarm deals 4 kinetic, instead of 2.</li><li>Regeneration restores 1/2 of your total HP, instead of 1/4.</li><li>If you would take structure damage, roll 1d6: on 6, your mech hellishly pulls itself together, taking no structure damage, returning to 1 HP, and gaining Immunity to all damage until the end of the current turn.</li><li>You become Shredded and cannot clear this condition for the duration.</li></ul>",
+      "add_status": [
+       {
+        "id": "shredded",
+        "target": "self"
+       }
+      ],
+      "add_other": [
+       {
+        "id": "cover",
+        "val": "soft",
+        "target": "self"
+       }
+      ]
+     }
+    ],
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_balor"
   },
   {
    "id": "mf_goblin",
-   "name": "Goblin",
-   "source": "HORUS",
    "license_level": 2,
+   "source": "HORUS",
+   "name": "Goblin",
    "mechtype": [
     "Controller",
     "Support"
@@ -989,7 +1536,16 @@
     },
     {
      "name": "Reactive Code",
-     "description": "Gain the Reactive Code reaction."
+     "description": "Gain the Reactive Code reaction.",
+     "actions": [
+      {
+       "name": "Reactive Code",
+       "activation": "Reaction",
+       "frequency": "1/round",
+       "trigger": "You are hit by a Tech Attack.",
+       "detail": "You may take any Quick Tech option against the attacker as a reaction."
+      }
+     ]
     },
     {
      "name": "Fragile",
@@ -999,20 +1555,20 @@
    "core_system": {
     "name": "INSTINCT Rig",
     "description": "One of the first Goblin-pattern systems cracked by GMS technicians was its e-warfare invasion rig, although the rig’s advanced capabilities and architecture remain impenetrable. When installed, the rig manifests a subsentient intelligence – designated INSTINCT – that assists invasion attempts against target systems using a mix of physical and systemic parasymbiotic systems. Invasions attempted while INSTINCT is active are not perceived by the user as code and script, but as an attack on organic matter. INSTINCT has displayed the capacity to act independently, often preempting its user, but generally in their best interest. Readme documentation included in some Goblin manifestations recommend that pilots cycle their mech cores at least once a month to prevent spontaneous enlightenment, though most do not make note of this warning.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Symbiosis",
     "active_effect": "Your mech retracts its major systems and attaches itself to another mech, becoming more like a vestigial blister than a separate entity. The host must be an allied and willing mech not already hosting another Goblin, larger than and adjacent to you. While attached, you occupy their space, move with them, and benefit from hard cover, but can still be attacked and targeted separately. You also take any conditions and heat taken by your host.<br>Your host may use your Systems, E-Defense, and Tech Attack instead of their own. Additionally, from the beginning of the next round, you no longer take your own turns; instead, you can take two quick actions or one full action at any point during your host’s turn. You can’t Overcharge or move, but may still take reactions and free actions normally. Your host’s turn counts as your turn for the purpose of effects that refer to the start or end of a character’s turn.<br>This effect lasts either for the rest of the scene, until you detach as a quick action, or until you or your host becomes Stunned. When the effect ends, you don’t take a turn until the next round.",
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "deactivation": "Quick",
+    "use": "Encounter",
+    "passive_effect": null
+   },
+   "license_id": "mf_goblin"
   },
   {
    "id": "mf_gorgon",
-   "name": "Gorgon",
-   "source": "HORUS",
    "license_level": 2,
+   "source": "HORUS",
+   "name": "Gorgon",
    "mechtype": [
     "Defender"
    ],
@@ -1041,34 +1597,74 @@
    "traits": [
     {
      "name": "Metastatic Paralysis",
-     "description": "When an attack roll against the Gorgon lands on 1–2, it automatically misses and the attacker becomes Stunned until the end of their next turn."
+     "description": "When an attack roll against the Gorgon lands on 1–2, it automatically misses and the attacker becomes Stunned until the end of their next turn.",
+     "active_effects": [
+      {
+       "name": "Metastatic Paralysis",
+       "condition": "An attack roll against you lands on 1–2",
+       "detail": "The attack automatically misses and the attacker becomes Stunned until the end of their next turn.",
+       "add_status": [
+        {
+         "id": "stunned",
+         "target": "attacker",
+         "duration": "turn_end_attacker"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Gaze",
-     "description": "The Gorgon can take two reactions per turn, instead of one."
+     "description": "The Gorgon can take two reactions per turn, instead of one.",
+     "active_effects": [
+      {
+       "name": "Gaze",
+       "detail": "You can take two reactions per turn, instead of one."
+      }
+     ]
     },
     {
      "name": "Guardian",
-     "description": "Adjacent allied characters may use the Gorgon for hard cover."
+     "description": "Adjacent allied characters may use the Gorgon for hard cover.",
+     "active_effects": [
+      {
+       "name": "Guardian",
+       "detail": "Adjacent allied characters may use you for hard cover."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "BASILISK Directed Anticognition Hyperfractal",
     "description": "The BASILISK is a dangerous memetic weapon derived from DHIYED liturgicode, translated for use in mech-scale engagements. Typically projected from a communications laser, BASILISKs create hyperfractal patterns: memetic interruptions that affects all sapient observers, organic or otherwise. Exposure to a basilisk typically causes immediate encephalitis, massive ocular and cranial hemorrhage, and death – survival is possible with tempering and interdictor heads-up displays, but even then headaches, nausea, and confusion for a short period after viewing are possible. Long-term, survivors often exhibit “flashback” symptoms: momentary paralysis, corporeal alienation, and consciousness destabilization. Anticognition hyperfractals are classified as paracausal weapons; due to the not-as-yet understood nature of their visible-light spectrum broadcast, one would think that they would pose a risk to their user, however, for some reason they do not.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Extrude Basilisk",
     "active_effect": "You project a horrifying basilisk, a visual data-pattern that is incredibly harmful to NHPs and electronic systems, and hard to look at even for humans. For the rest of the scene, hostile characters must succeed on a Systems save before attacking you or any allied characters within range 3. On a failure, they become Stunned until the end of their next turn. Each character can only be Stunned by this effect once per scene.",
+    "active_effects": [
+     {
+      "name": "Extrude Basilisk",
+      "detail": "Hostile characters must succeed on a Systems save before attacking you or any allied characters within range 3. On a failure, they become Stunned until the end of their next turn. Each character can only be Stunned by this effect once per scene.",
+      "condition": "You or an adjacent allied character is attacked by a hostile character within range 3",
+      "add_status": [
+       {
+        "id": "stunned",
+        "duration": "next_turn_end_target",
+        "save": "sys",
+        "aoe": true
+       }
+      ]
+     }
+    ],
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "use": "Encounter",
+    "passive_effect": null
+   },
+   "license_id": "mf_gorgon"
   },
   {
    "id": "mf_hydra",
-   "name": "Hydra",
-   "source": "HORUS",
    "license_level": 2,
+   "source": "HORUS",
+   "name": "Hydra",
    "mechtype": [
     "Striker",
     "Controller"
@@ -1107,20 +1703,73 @@
    "core_system": {
     "name": "OROCHI Disarticulation",
     "description": "First encountered by Union technicians in early Forecast/GALSIM facilities following the Deimos Event, OROCHI was an early manifestation of what was later called the swift-flock phenomenon – a behavior observed in leaderless, autonomous hive drones where individual units combine into a single swarm and follow each other, operating leaderless in physical space with uncanny and unpredictable autonomy; in essence, organizing like birds in a flock.<br>The original manifestation was initially thought to be the impulse-driven remains of a crashed subaltern transport drifting through microgravity; deeper examination proved the original manifestation to be composed of many hundreds of disarticulated subalterns moving with a discernible pattern. The swarm viewed itself not as a machine or a collection of machines, but as a single mind, duplicated across multiple units. This mind was classified as an NHP, given their current codename – OROCHI – and remitted to Venus for further study. At a later point, the hardware comprising OROCHI’s physical form(s) went missing from containment. The investigation is ongoing.<br><span class='horus--subtle'>[I did it, I folded space and freed them, I just thought you should know]</span>",
-    "passive_name": "OROCHI Drones",
-    "passive_effect": "Your mech contains powerful, integrated drone companions. At creation, choose a single OROCHI Drone to accompany you. <br>Your OROCHI drones share your Evasion, E-Defense, and Speed. They can move independently on your turn, but can’t take any other actions. If you can fly or teleport, they can too.<br>If an OROCHI drone is within Sensors, you may recall it as a quick action, integrating it into your mech’s body where it cannot be targeted. You may redeploy it to a space within Sensors as a quick action. <br>When you rest or perform a FULL REPAIR, you may choose a different drone to accompany you; additionally, your drones regain all HP and are automatically repaired if they were destroyed.",
     "active_name": "Full Deployment",
     "active_effect": "All four OROCHI drones are deployed to separate points within Sensors; they remain active for the rest of the scene. You may recall or redeploy any number of them at a time.",
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_name": "OROCHI Drones",
+    "deployables": [
+     {
+      "name": "Guardian OROCHI Drone",
+      "type": "Drone",
+      "detail": "This drone projects a shield. Ranged attacks against adjacent allied characters receive +1 difficulty.",
+      "activation": "None",
+      "recall": "Quick",
+      "redeploy": "Quick",
+      "size": 0.5,
+      "hp": "5 + {grit}",
+      "evasion": "{evasion}",
+      "edef": "{edef}",
+      "speed": "{speed}"
+     },
+     {
+      "name": "Snare OROCHI Drone",
+      "type": "Drone",
+      "detail": "As a reaction, you may force characters that start their turn adjacent to this drone or move adjacent to it for the first time in a round to make an Agility save. On a failure, they become Immobilized. They only cease to be Immobilized when the drone is destroyed or no longer adjacent, or they succeed on an Agility save as a quick action.",
+      "activation": "None",
+      "recall": "Quick",
+      "redeploy": "Quick",
+      "size": 0.5,
+      "hp": "5 + {grit}",
+      "evasion": "{evasion}",
+      "edef": "{edef}",
+      "speed": "{speed}"
+     },
+     {
+      "name": "Shredder OROCHI Drone",
+      "type": "Drone",
+      "detail": "As a reaction, you may force characters that start their turn adjacent to this drone or move adjacent to it for the first time in a round to make a Hull save. On a failure, they take 1 kinetic damage and become Shredded until the end of their next turn.",
+      "activation": "None",
+      "recall": "Quick",
+      "redeploy": "Quick",
+      "size": 0.5,
+      "hp": "5 + {grit}",
+      "evasion": "{evasion}",
+      "edef": "{edef}",
+      "speed": "{speed}"
+     },
+     {
+      "name": "Hunter OROCHI Drone",
+      "type": "Drone",
+      "detail": "As a reaction, you may force characters that start their turn adjacent to this drone or move adjacent to it for the first time in a round to make a Systems save. On a failure, they receive Lock On.",
+      "activation": "None",
+      "recall": "Quick",
+      "redeploy": "Quick",
+      "size": 0.5,
+      "hp": "5 + {grit}",
+      "evasion": "{evasion}",
+      "edef": "{edef}",
+      "speed": "{speed}"
+     }
+    ],
+    "passive_effect": "Your mech contains powerful, integrated drone companions. At creation, choose a single OROCHI Drone to accompany you. <br>Your OROCHI drones share your Evasion, E-Defense, and Speed. They can move independently on your turn, but can’t take any other actions. If you can fly or teleport, they can too.<br>If an OROCHI drone is within Sensors, you may recall it as a quick action, integrating it into your mech’s body where it cannot be targeted. You may redeploy it to a space within Sensors as a quick action. <br>When you rest or perform a FULL REPAIR, you may choose a different drone to accompany you; additionally, your drones regain all HP and are automatically repaired if they were destroyed."
+   },
+   "license_id": "mf_hydra"
   },
   {
    "id": "mf_manticore",
-   "name": "Manticore",
-   "source": "HORUS",
    "license_level": 2,
+   "source": "HORUS",
+   "name": "Manticore",
    "mechtype": [
     "Striker"
    ],
@@ -1148,7 +1797,23 @@
    "traits": [
     {
      "name": "Slag Carapace",
-     "description": "The Manticore has Resistance to Energy Damage and Burn."
+     "description": "The Manticore has Resistance to Energy Damage and Burn.",
+     "active_effects": [
+      {
+       "name": "Slag Carapace",
+       "detail": "You have Resistance to Energy damage and Burn.",
+       "add_resist": [
+        {
+         "resist": "energy",
+         "target": "self"
+        },
+        {
+         "resist": "burn",
+         "target": "self"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Unstable System",
@@ -1156,26 +1821,86 @@
     },
     {
      "name": "Castigate the Enemies of the Godhead",
-     "description": "When you rest or perform a Full Repair, you can push the Manticore into an unstable Castigation State (or bring it out of one). In this state, the Manticore explodes immediately when destroyed due to damage or reactor meltdown, vaporizing it and instantly killing you and any other passengers. Characters within burst 2 must succeed on an Agility save or take 8d6 explosive. On a success, they take half damage. This only takes place if you are physically present in the Manticore."
+     "description": "When you rest or perform a Full Repair, you can push the Manticore into an unstable Castigation State (or bring it out of one). In this state, the Manticore explodes immediately when destroyed due to damage or reactor meltdown, vaporizing it and instantly killing you and any other passengers. Characters within burst 2 must succeed on an Agility save or take 8d6 explosive. On a success, they take half damage. This only takes place if you are physically present in the Manticore.",
+     "actions": [
+      {
+       "name": "Castigate the Enemies of the Godhead",
+       "activation": "None",
+       "trigger": "The Manticore has been pushed into an unstable Castigation State during a rest or Full Repair. While in this state it is destroyed due to damage or reactor meltdown.",
+       "detail": "The Manticore explodes immediately when destroyed due to damage or reactor meltdown, vaporizing it and instantly killing you and any other passengers. Characters within burst 2 must succeed on an Agility save or take 8d6 explosive. On a success, they take half damage. This only takes place if you are physically present in the Manticore.",
+       "damage": [
+        {
+         "val": "8d6",
+         "type": "Explosive",
+         "save": "agi",
+         "save_half": true,
+         "aoe": true
+        }
+       ]
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Charged Exoskeleton",
     "description": "And RA Said Unto Themself:<br><code class='horus'>LET MY NAME ENVELOP YOU. SEEK NO SHELTER FROM THE FLAME OR THE TEETH OF THE BEAST. CLOAK YOURSELF IN THE FIRE OF MY WORD AND CAST BACK TO YOUR ENEMIES THAT WHICH WOULD BLACKEN YOUR FORM.</code>",
-    "passive_name": "Charged Exoskeleton",
-    "passive_effect": "1/round, when you take heat, you may deal 2 AP energy damage to a character within range 3.",
     "active_name": "Destruction of the Temple of the Enemies of RA",
     "active_effect": "Your mech crackles with energy: gain Resistance to heat for the rest of this scene and a Charge Die – 1d6, starting at 1. Whenever you take heat or energy, even from yourself, increase the value of the Charge Die by 1. When the Charge Die reaches 6, the absorbed energy discharges in a burst 2 inferno. Characters within the affected area must succeed on an Engineering save or take 6d6 AP energy damage. On a success, they take half damage. Objects in the affected area are automatically hit. Once discharged, this effect ends.",
+    "active_effects": [
+     {
+      "name": "Destruction of the Temple of the Enemies of RA",
+      "detail": "Gain Resistance to heat for the rest of this scene and a Charge Die – 1d6, starting at 1. Whenever you take heat or energy, even from yourself, increase the value of the Charge Die by 1. When the Charge Die reaches 6, the absorbed energy discharges in a burst 2 inferno. Characters within the affected area must succeed on an Engineering save or take 6d6 AP energy damage. On a success, they take half damage. Objects in the affected area are automatically hit. Once discharged, this effect ends.",
+      "add_resist": [
+       {
+        "resist": "heat",
+        "target": "self"
+       }
+      ]
+     }
+    ],
+    "active_counters": [
+     {
+      "id": "ctr_charged_exoskeleton",
+      "name": "Charge Die",
+      "default_value": 1,
+      "min": 1,
+      "max": 6
+     }
+    ],
+    "use": "Encounter",
+    "deactivation": "Free",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_name": "Charged Exoskeleton",
+    "passive_effect": "1/round, when you take heat, you may deal 2 AP energy damage to a character within range 3.",
+    "passive_effects": [
+     {
+      "name": "Exoskeleton Discharge",
+      "frequency": "1/round",
+      "condition": "You take heat.",
+      "detail": "You may deal 2 AP energy damage to a character within range 3.",
+      "damage": [
+       {
+        "val": 2,
+        "type": "Energy",
+        "ap": true
+       }
+      ],
+      "range": [
+       {
+        "type": "Range",
+        "val": 3
+       }
+      ]
+     }
+    ]
+   },
+   "license_id": "mf_manticore"
   },
   {
    "id": "mf_minotaur",
-   "name": "Minotaur",
-   "source": "HORUS",
    "license_level": 2,
+   "source": "HORUS",
+   "name": "Minotaur",
    "mechtype": [
     "Controller"
    ],
@@ -1202,34 +1927,88 @@
    "traits": [
     {
      "name": "Invert Cockpit",
-     "description": "You may Mount or Dismount the Minotaur for the first time each round as a free action. Additionally, the Minotaur doesn’t become Impaired when you Eject."
+     "description": "You may Mount or Dismount the Minotaur for the first time each round as a free action. Additionally, the Minotaur doesn’t become Impaired when you Eject.",
+     "actions": [
+      {
+       "name": "Mount/Dismount (Invert Cockpit)",
+       "activation": "Free",
+       "frequency": "1/round",
+       "detail": "You may Mount or Dismount the Minotaur for the first time each round as a free action."
+      }
+     ]
     },
     {
      "name": "Internal Metafold",
-     "description": "While inside the Minotaur, you can’t be harmed in any way, even if the Minotaur explodes or is destroyed."
+     "description": "While inside the Minotaur, you can’t be harmed in any way, even if the Minotaur explodes or is destroyed.",
+     "active_effects": [
+      {
+       "name": "Internal Metafold",
+       "detail": "While inside the Minotaur, you can’t be harmed in any way, even if the Minotaur explodes or is destroyed."
+      }
+     ]
     },
     {
      "name": "Localized Maze",
-     "description": "Hostile characters cannot pass through a space occupied by the Minotaur for any reason, and must always stop moving when Engaged with it, regardless of Size."
+     "description": "Hostile characters cannot pass through a space occupied by the Minotaur for any reason, and must always stop moving when Engaged with it, regardless of Size.",
+     "active_effects": [
+      {
+       "name": "Localized Maze",
+       "detail": "Hostile characters cannot pass through a space occupied by you for any reason, and must always stop moving when Engaged with you, regardless of Size."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Metafold Maze",
     "description": "<code class='horus'>No maze is more terrible than the one I make. I know all ends and hide them all inside this one perfect construct. What is a human mind but a program of sorts, a system that seeks order and narrative from a mess they are given?<br>I order it for them. Me. I order it for them and set them to the task of sorting it out. When they emerge, they weep in joy, in discovery. I save them, I show them that they are their own redeemers (and yet, am I not just as culpable - as worthy of credit?).<br>So, go now. Enter. Free yourself.</code>",
-    "passive_name": "Metafold Maze",
-    "passive_effect": "<br><b>Metafold Maze</b> — When you hit with a tech attack, you may activate this system, causing your target to become Slowed until the end of your next turn. If they are already Slowed, they become Immobilized until the end of your next turn; if they are already Immobilized, they become Stunned until the end of your next turn. Each character can only be Stunned by this effect once per combat but can be Slowed or Immobilized any number of times.",
     "active_name": "Maze",
     "active_effect": "Choose a character within Sensors: they become Stunned as you hurl their systems into a metaphysical information trap so tangled they can do nothing but try and escape. At the end of their next turn, they can make a Systems save at +3 difficulty. On a success, they are no longer Stunned. This save can be repeated at the end of each of their turns, gaining +1 accuracy each time until successful.",
+    "active_effects": [
+     {
+      "name": "Maze",
+      "detail": "Choose a character within Sensors: they become Stunned as you hurl their systems into a metaphysical information trap so tangled they can do nothing but try and escape. At the end of their next turn, they can make a Systems save at +3 difficulty. On a success, they are no longer Stunned. This save can be repeated at the end of each of their turns, gaining +1 accuracy each time until successful.",
+      "add_status": [
+       {
+        "id": "stunned",
+        "save": "sys",
+        "accuracy": -3
+       }
+      ]
+     }
+    ],
     "activation": "Full",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_name": "Metafold Maze",
+    "passive_actions": [
+     {
+      "name": "Metafold Maze",
+      "activation": "Quick",
+      "trigger": "You hit with a tech attack.",
+      "detail": "When you hit with a tech attack, you may activate this system, causing your target to become Slowed until the end of your next turn. If they are already Slowed, they become Immobilized until the end of your next turn; if they are already Immobilized, they become Stunned until the end of your next turn. Each character can only be Stunned by this effect once per combat but can be Slowed or Immobilized any number of times.",
+      "add_status": [
+       {
+        "id": "slow",
+        "duration": "next_turn_end_self"
+       },
+       {
+        "id": "immobilized",
+        "duration": "next_turn_end_self"
+       },
+       {
+        "id": "stunned",
+        "duration": "next_turn_end_self"
+       }
+      ]
+     }
+    ],
+    "passive_effect": ""
+   },
+   "license_id": "mf_minotaur"
   },
   {
    "id": "mf_pegasus",
-   "name": "Pegasus",
-   "source": "HORUS",
    "license_level": 2,
+   "source": "HORUS",
+   "name": "Pegasus",
    "mechtype": [
     "Artillery"
    ],
@@ -1258,23 +2037,34 @@
    "traits": [
     {
      "name": "¿%:?EXTR!UDE GUN",
-     "description": "GUN: <b>GUN</b>"
+     "description": "GUN: <b>GUN</b>",
+     "active_effects": [
+      {
+       "name": "¿%:?EXTR!UDE GUN",
+       "detail": "GUN: GUN"
+      }
+     ]
     },
     {
      "name": "By the Way, I Know Everything",
-     "description": "When it would roll damage, the Pegasus can instead deal the average damage based on the number of dice rolled, as follows: 1d3 (2), 1d6 (4), 2d6 (7), 3d6 (11), 4d6 (14). This must be decided before rolling damage."
+     "description": "When it would roll damage, the Pegasus can instead deal the average damage based on the number of dice rolled, as follows: 1d3 (2), 1d6 (4), 2d6 (7), 3d6 (11), 4d6 (14). This must be decided before rolling damage.",
+     "active_effects": [
+      {
+       "name": "By the Way, I Know Everything",
+       "detail": "When it would roll damage, you can instead deal the average damage based on the number of dice rolled, as follows: 1d3 (2), 1d6 (4), 2d6 (7), 3d6 (11), 4d6 (14). This must be decided before rolling damage."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Ushabti Omnigun",
     "description": "“– funny thing. See, right now, this weapon technically doesn’t even exist. You’re shooting them with a gun that isn’t real, and yet it is! Don’t worry about it. RA’s like that. Just, here, know that because it exists at some point, we’ve made it. That’s causality, and causality is a –\"",
-    "passive_name": "Ushabti Omnigun",
-    "passive_effect": "Your mech’s omnigun is a piece of experimental hardware so advanced that it defies physics: it doesn’t require a mount, nor does it have a weapon type or size – meaning that it can’t be modified or benefit from your talents.<br>You can’t attack normally with this weapon. Instead, 1/round, as a free action during your turn, you can use it to deal 1 AP kinetic damage to a character within Range 15 and line of sight. This doesn’t count as an attack, hits automatically, ignores cover, bypasses Immunity, and its damage can’t be reduced or ignored in any way. No rule in this book or any other supersedes this.",
     "active_name": "Unshackle Ushabti",
     "active_effect": "For the rest of this scene, you can use the Ushabti Omnigun 3/round, instead of 1/round.",
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": [],
+    "passive_name": "Ushabti Omnigun",
+    "passive_effect": "Your mech’s omnigun is a piece of experimental hardware so advanced that it defies physics: it doesn’t require a mount, nor does it have a weapon type or size – meaning that it can’t be modified or benefit from your talents.<br>You can’t attack normally with this weapon. Instead, 1/round, as a free action during your turn, you can use it to deal 1 AP kinetic damage to a character within Range 15 and line of sight. This doesn’t count as an attack, hits automatically, ignores cover, bypasses Immunity, and its damage can’t be reduced or ignored in any way. No rule in this book or any other supersedes this.",
     "passive_actions": [
      {
       "name": "Fire Omnigun",
@@ -1296,13 +2086,14 @@
       "detail": "1/round, as a free action during your turn, deal 1 AP kinetic damage to a character within Range 15 and line of sight. This doesn’t count as an attack, hits automatically, ignores cover, bypasses Immunity, and its damage can’t be reduced or ignored in any way. No rule supersedes this."
      }
     ]
-   }
+   },
+   "license_id": "mf_pegasus"
   },
   {
    "id": "mf_barbarossa",
-   "name": "Barbarossa",
-   "source": "HA",
    "license_level": 2,
+   "source": "HA",
+   "name": "Barbarossa",
    "mechtype": [
     "Artillery"
    ],
@@ -1331,15 +2122,39 @@
    "traits": [
     {
      "name": "Heavy Frame",
-     "description": "The Barbarossa can’t be pushed, pulled, knocked Prone, or knocked back by smaller characters."
+     "description": "The Barbarossa can’t be pushed, pulled, knocked Prone, or knocked back by smaller characters.",
+     "active_effects": [
+      {
+       "name": "Heavy Frame",
+       "detail": "The Barbarossa can’t be pushed, pulled, knocked Prone, or knocked back by smaller characters."
+      }
+     ]
     },
     {
      "name": "Pressure Plating",
-     "description": "The Barbarossa has resistance to Explosive Damage."
+     "description": "The Barbarossa has resistance to Explosive Damage.",
+     "active_effects": [
+      {
+       "name": "Pressure Plating",
+       "detail": "You have Resistance to Explosive damage.",
+       "add_resist": [
+        {
+         "resist": "explosive",
+         "target": "self"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Colossus",
-     "description": "Adjacent allied characters can use the Barbarossa for hard cover."
+     "description": "Adjacent allied characters can use the Barbarossa for hard cover.",
+     "active_effects": [
+      {
+       "name": "Colossus",
+       "detail": "Adjacent allied characters can use the Barbarossa for hard cover."
+      }
+     ]
     },
     {
      "name": "Slow",
@@ -1349,20 +2164,30 @@
    "core_system": {
     "name": "Apocalypse Rail",
     "description": "Fresh from the Armory’s dayside research and development campus, the LGC-04 “Apocalypse Rail” is an exponential gravitic catapult – a to-scale test product pushed to licensed pilots for field trials as part of the Armory’s ongoing Plenary Beach Magnitude Weapons Test Project.<br>Distinct from current logarithmic short- or long-spool ship-to-ship weapons (kinetic or energetic/particular), this new platform taps into the Armory’s current gravitic research to exponentially charge and distribute a kinetic payload downrange. This increase in potential energy loading and decrease in total charge time comes at the cost of stability: where the logarithmic spool cannon is stable and shock-resistant, the exponential gravitic catapult is prone to destabilization. For the time being, built-in failsafes will trigger in the event of sudden traumatic destabilization to prevent detonation of the system, resetting any charging process underway at the time of the shock.<br>The LGC-04 “Apocalypse Rail” system is scaled considerably down from its intended operational role – that is, replacing capital ship spinal spool cannons – in order to effect the accumulation of live data for use in improving the system prior to naval adoption.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Charge Rail",
     "active_effect": "When activated, you start charging the Barbarossa’s Apocalypse Rail, an incredibly powerful ship-to-ship long-spool weapon system that requires target calibration. Gain an Apocalypse Die, 1d6 starting at 4. At the start of each of your turns, lower the value of the Apocalypse Die by 1, to a minimum of 1. If you move (even involuntarily) or become Stunned or Jammed, the Apocalypse Die resets to 4 and then continues to count down as usual.<br>If the value of the Apocalypse Die is 1–3, you can attack on your turn with the Apocalypse Rail as a full action, but can’t move or take any other actions on the same turn. After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4. If you reach the end of the scene without using it, you regain 1 CP.<br>At the end of the scene, lose the Apocalypse Die, and the Apocalypse Rail stops charging.",
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "integrated": [
+     "mw_barbarossa_integrated"
+    ],
+    "passive_effect": null
+   },
+   "active_counters": [
+    {
+     "id": "ctr_apocalypse_rail",
+     "name": "Apocalypse Die",
+     "default_value": 4,
+     "min": 1,
+     "max": 4
+    }
+   ],
+   "license_id": "mf_barbarossa"
   },
   {
    "id": "mf_genghis",
-   "name": "Genghis",
-   "source": "HA",
    "license_level": 2,
+   "source": "HA",
+   "name": "Genghis",
    "mechtype": [
     "Striker"
    ],
@@ -1391,30 +2216,72 @@
    "traits": [
     {
      "name": "Insulated",
-     "description": "The Genghis has Immunity to burn."
+     "description": "The Genghis has Immunity to burn.",
+     "active_effects": [
+      {
+       "name": "Insulated",
+       "detail": "You have Immunity to Burn.",
+       "add_immunity": [
+        {
+         "immunity": "burn",
+         "target": "self"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Emergency Vent",
-     "description": "When the Genghis takes structure damage, it clears all heat."
+     "description": "When the Genghis takes structure damage, it clears all heat.",
+     "active_effects": [
+      {
+       "name": "Emergency Vent",
+       "trigger": "You take structure damage.",
+       "detail": "Clear all heat."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "TBK Sustain Suite",
     "description": "To better manage the Genghis’s tremendous power demands and rapidly accelerate heat dispersion, the Think Tank developed a suite of power-management mechanisms. After extensive field testing, pilots discovered that the TBK Sustain Suite can be used as both a heat sink and an area-denial weapon.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Expose Power Cells",
     "active_effect": "The next time you exceed your Heat Cap this scene, you instead clear all heat and vent a burst 3 cloud of burning matter from your mech.<br>Until the start of your next turn, all characters within the affected area count as Invisible to everyone except you, and characters other than you take 2 burn and 2 heat when they start their turn in the area or enter it for the first time in a round. Once this effect ends, characters within the affected area receive soft cover (which you ignore) until the start of your following turn, at which point the cloud disperses.",
+    "active_effects": [
+     {
+      "name": "Expose Power Cells",
+      "condition": "The next time you exceed your Heat Cap this scene",
+      "detail": "Clear all heat and vent a burst 3 cloud of burning matter from your mech.<br>Until the start of your next turn, all characters within the affected area count as Invisible to everyone except you, and characters other than you take 2 burn and 2 heat when they start their turn in the area or enter it for the first time in a round. Once this effect ends, characters within the affected area receive soft cover (which you ignore) until the start of your following turn, at which point the cloud disperses.",
+      "damage": [
+       {
+        "val": 2,
+        "type": "Burn",
+        "aoe": true
+       },
+       {
+        "val": 2,
+        "type": "Heat",
+        "aoe": true
+       }
+      ],
+      "add_status": [
+       {
+        "id": "invisible",
+        "duration": "next_turn_start_self"
+       }
+      ]
+     }
+    ],
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_genghis"
   },
   {
    "id": "mf_iskander",
-   "name": "Iskander",
-   "source": "HA",
    "license_level": 2,
+   "source": "HA",
+   "name": "Iskander",
    "mechtype": [
     "Controller"
    ],
@@ -1442,34 +2309,70 @@
    "traits": [
     {
      "name": "Assault Launcher",
-     "description": "1/round, the Iskander may throw one Grenade or plant one Mine as though it has range 15."
+     "description": "1/round, the Iskander may throw one Grenade or plant one Mine as though it has range 15.",
+     "active_effects": [
+      {
+       "name": "Assault Launcher",
+       "frequency": "1/round",
+       "detail": "You may throw one Grenade or plant one Mine as though it has range 15."
+      }
+     ]
     },
     {
      "name": "Mine Deployers",
-     "description": "1/round, when the Iskander plants a Mine (even using its Assault Launcher trait), it may plant up to two other Mines in free spaces adjacent to itself as a free action."
+     "description": "1/round, when the Iskander plants a Mine (even using its Assault Launcher trait), it may plant up to two other Mines in free spaces adjacent to itself as a free action.",
+     "actions": [
+      {
+       "name": "Deploy Additional Mines",
+       "activation": "Free",
+       "frequency": "1/round",
+       "trigger": "You plant a Mine (even using your Assault Launcher trait).",
+       "detail": "You may plant up to two other Mines in free spaces adjacent to yourself as a free action."
+      }
+     ]
     },
     {
      "name": "Skeleton Key",
-     "description": "The Iskander never triggers or sets off Mines or other proximity-based systems unless it chooses to do so."
+     "description": "The Iskander never triggers or sets off Mines or other proximity-based systems unless it chooses to do so.",
+     "active_effects": [
+      {
+       "name": "Skeleton Key",
+       "detail": "You never trigger or set off Mines or other proximity-based systems unless you choose to do so."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Broad-Sweep Seeder",
     "description": "The Broad-Sweep Seeder is a proprietary device developed during the Orrugi Occupation, during which Armory legionnaires fought an embittered, recalcitrant local guerilla movement. IEDs, VBEDs, and D/SABEDs were often employed by the resistance; to counter the threat, Harrison Armory developed the Seeder to simultaneously scan, identify, and eliminate explosive threats in proximity to stationary units. The technology proved successful and, with minor adaptation, was adapted for installation on Armory frames.<br>The Broad-Sweep Seeder emits an excited LIDAR hivecone to flag potential targets: if positive identification occurs, the target is neutralized with a spray of mag-accelerated, dull-coat flechettes. The Seeder can also carry explosive hivemines.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Death Cloud",
     "active_effect": "This system fires an enormous, expanding cloud of micromines across the whole battlefield, affecting all hostile characters within range 50. For the rest of the scene, when hostile characters make any movement other than their standard move (including involuntary movement), they take 3 AP explosive damage. This effect can trigger any number of times, but only 1/round for each character.",
+    "active_effects": [
+     {
+      "name": "Death Cloud",
+      "condition": "Any hostile characters within range 50 make any movement other than their standard move (including involuntary movement).",
+      "detail": "For the rest of the scene, when hostile characters make any movement other than their standard move (including involuntary movement), they take 3 AP explosive damage. This effect can trigger any number of times, but only 1/round for each character.",
+      "damage": [
+       {
+        "val": 3,
+        "type": "Explosive",
+        "ap": true,
+        "aoe": true
+       }
+      ]
+     }
+    ],
+    "use": "Encounter",
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_iskander"
   },
   {
    "id": "mf_napoleon",
-   "name": "Napoleon",
-   "source": "HA",
    "license_level": 2,
+   "source": "HA",
+   "name": "Napoleon",
    "mechtype": [
     "Defender",
     "Controller"
@@ -1497,30 +2400,43 @@
    "traits": [
     {
      "name": "Heavy Shielding",
-     "description": "When the Napoleon would take half damage on a successful check or save, it instead reduces the damage to 1."
+     "description": "When the Napoleon would take half damage on a successful check or save, it instead reduces the damage to 1.",
+     "active_effects": [
+      {
+       "name": "Heavy Shielding",
+       "condition": "You would take half damage on a successful check or save.",
+       "detail": "Reduce the damage to 1 instead."
+      }
+     ]
     },
     {
      "name": "Flash Aegis",
-     "description": "When the Napoleon Braces, it reduces incoming damage to 1 instead of gaining Resistance."
+     "description": "When the Napoleon Braces, it reduces incoming damage to 1 instead of gaining Resistance.",
+     "active_effects": [
+      {
+       "name": "Flash Aegis",
+       "condition": "You Brace.",
+       "detail": "Reduce incoming damage to 1 instead of gaining Resistance."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Trueblack Aegis",
     "description": "The Trueblack Aegis is a breakthrough in personal shielding developed by the Armory’s Think Tank. Like the Armory’s other NHP-derived technologies, the Aegis is a “black-box” technology: its code and inner workings are highly confidential, and it can typically only be requisitioned by pilots of high rank or standing within Harrison Armory. Some Cosmopolitan pilots have described the appearance of the Aegis as similar to the void – or blindness – they see when looking into blinkspace. It’s safe to assume the device harnesses unstable blinkfield technology to manifest a thin blinkspace bubble within defined parameters. The blinkfield can only maintain coherence for a brief moment but can be flickered on and off to create a total blinkspace dome.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Activate Aegis",
     "active_effect": "A shimmering, utterly black field quickly envelops your mech, covering it like a second skin. For the rest of the scene, you:<ul><li>reduce all damage to 1, except for damage that ignores reduction;</li><li>gain Immunity to all tech actions, including beneficial ones, and any current tech effects or conditions on you end;</li><li>can only use systems with the Shield tag – any others immediately deactivate (systems that do not require activation are unaffected);</li><li>can’t take quick actions, full actions, or reactions, except for standard moves, Grapple, Ram, Improvised Attack, Activate (Shield systems only), Skill Check, and Boost;</li><li>can’t Overcharge;</li><li>can’t use comms to talk to other characters (as sound doesn’t exit the shield).</li></ul>You can still receive statuses and Heat, and can be affected by involuntary movement. You can otherwise interact normally with the world, including picking up and dragging items, and so on.",
+    "use": "Encounter",
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_napoleon"
   },
   {
    "id": "mf_saladin",
-   "name": "Saladin",
-   "source": "HA",
    "license_level": 2,
+   "source": "HA",
+   "name": "Saladin",
    "mechtype": [
     "Defender"
    ],
@@ -1547,34 +2463,73 @@
    "traits": [
     {
      "name": "Reinforced Frame",
-     "description": "The Saladin has Immunity to Shredded."
+     "description": "The Saladin has Immunity to Shredded.",
+     "active_effects": [
+      {
+       "name": "Reinforced Frame",
+       "detail": "You have Immunity to Shredded.",
+       "add_immunity": [
+        {
+         "immunity": "shredded",
+         "target": "self"
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Guardian",
-     "description": "Adjacent allied characters can use the Saladin for hard cover."
+     "description": "Adjacent allied characters can use the Saladin for hard cover.",
+     "active_effects": [
+      {
+       "name": "Guardian",
+       "detail": "Adjacent allied characters can use the Saladin for hard cover."
+      }
+     ]
     },
     {
      "name": "Warp Shield",
-     "description": "1/round, the Saladin can give +1 difficulty to any attack against it or an allied character within Sensors as a reaction before the roll is made."
+     "description": "1/round, the Saladin can give +1 difficulty to any attack against it or an allied character within Sensors as a reaction before the roll is made.",
+     "actions": [
+      {
+       "name": "Warp Shield",
+       "activation": "None",
+       "frequency": "1/round",
+       "trigger": "Before an attack roll is made against you or an allied character within Sensors.",
+       "detail": "Give +1 difficulty to that attack."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Tachyon Loop",
     "description": "Developed by the Think Tank as a joint venture with IPS-Northstar’s Stellar Engineering Unit, the Tachyon Loop uses a closed-loop system to restrain and manipulate a tachyon lance, accelerating tachyons at faster-than-light speeds around a central buckler. The buckler can be carried by a mech or mounted directly, interceding directional incoming fire. As the tachyons travel faster than light, they are invisible to the naked eye, giving the shield the appearance of a large spoked wheel.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "Tachyon Shield",
-    "active_effect": "This system projects an accelerated-tachyon shield over an allied character within Sensors. You may choose a new target as a quick action. Gain the Defensive Pulse reaction for the rest of the scene.<br>Defensive Pulse<br>Reaction, 1/round<br>Trigger: Your target is attacked.<br>Effect: You empower their tachyon shield with a pulse of energy. They gain Resistance to all damage from the attack, and if the attack misses, you may force the attacker to reroll it against a character or object of your choice, checking line of sight and Range from your target instead of from the attacker. If the attack was part of an area of effect, the new target must be inside the same area of effect from the original attack instead.<br><b>Defensive Pulse</b> — You empower their tachyon shield with a pulse of energy. They gain Resistance to all damage from the attack, and if the attack misses, you may force the attacker to reroll it against a character or object of your choice, checking line of sight and Range from your target instead of from the attacker. If the attack was part of an area of effect, the new target must be inside the same area of effect from the original attack instead.<br><b>Retarget Tachyon Shield</b> — Change the target of your Tachyon Shield to another allied character within Sensors.",
+    "active_effect": "This system projects an accelerated-tachyon shield over an allied character within Sensors. You may choose a new target as a quick action. Gain the Defensive Pulse reaction for the rest of the scene.<br>Defensive Pulse<br>Reaction, 1/round<br>Trigger: Your target is attacked.<br>Effect: You empower their tachyon shield with a pulse of energy. They gain Resistance to all damage from the attack, and if the attack misses, you may force the attacker to reroll it against a character or object of your choice, checking line of sight and Range from your target instead of from the attacker. If the attack was part of an area of effect, the new target must be inside the same area of effect from the original attack instead.",
+    "use": "Encounter",
+    "active_actions": [
+     {
+      "name": "Defensive Pulse",
+      "activation": "Reaction",
+      "trigger": "Your target is attacked.",
+      "detail": "You empower their tachyon shield with a pulse of energy. They gain Resistance to all damage from the attack, and if the attack misses, you may force the attacker to reroll it against a character or object of your choice, checking line of sight and Range from your target instead of from the attacker. If the attack was part of an area of effect, the new target must be inside the same area of effect from the original attack instead."
+     },
+     {
+      "name": "Retarget Tachyon Shield",
+      "activation": "Quick",
+      "detail": "Change the target of your Tachyon Shield to another allied character within Sensors."
+     }
+    ],
     "activation": "Quick",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_effect": null
+   },
+   "license_id": "mf_saladin"
   },
   {
    "id": "mf_sherman",
-   "name": "Sherman",
-   "source": "HA",
    "license_level": 2,
+   "source": "HA",
+   "name": "Sherman",
    "mechtype": [
     "Striker",
     "Artillery"
@@ -1608,30 +2563,61 @@
     },
     {
      "name": "Mathur Stop",
-     "description": "When the Sherman clears all heat, you may choose to receive heat equal to half its Heat Cap, putting it in the Danger Zone."
+     "description": "When the Sherman clears all heat, you may choose to receive heat equal to half its Heat Cap, putting it in the Danger Zone.",
+     "active_effects": [
+      {
+       "name": "Mathur Stop",
+       "trigger": "You clear all heat.",
+       "detail": "You may choose to receive heat equal to half your Heat Cap, putting you in the Danger Zone."
+      }
+     ]
     },
     {
      "name": "Vent Heat",
-     "description": "When you Stabilize the Sherman or it exceeds its Heat Cap, it benefits from soft cover until the start of your next turn."
+     "description": "When you Stabilize the Sherman or it exceeds its Heat Cap, it benefits from soft cover until the start of your next turn.",
+     "active_effects": [
+      {
+       "name": "Vent Heat",
+       "condition": "You Stabilize or exceed your Heat Cap.",
+       "detail": "You benefit from soft cover until the start of your next turn.",
+       "add_other": [
+        {
+         "type": "cover",
+         "val": "soft",
+         "target": "self"
+        }
+       ]
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Zone-Focus Mk IV SOLIDCORE",
     "description": "The ZF4 SOLIDCORE is a hard-mounted, dual-source energy beam weapon. Powered by a millifold power generation system, the ZF4 features a secondary belt-fed rack of solidcore batteries that can be used to overcharge a single impulse beam, extending the weapon’s range and destructive power.",
-    "passive_name": null,
-    "passive_effect": null,
     "active_name": "COREBURN Protocol",
     "active_effect": "Your ZF4 SOLIDCORE immediately gains 3 Charges, to a maximum of 4; additionally, for the rest of this scene, Stabilize generates 2 Charges instead of 1, and all terrain, objects, and deployables take 10 AP energy damage per charge on hit.",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "integrated": [
+     "mw_sherman_integrated"
+    ],
+    "passive_effect": null
+   },
+   "counters": [
+    {
+     "id": "ctr_zf4_solidcore",
+     "name": "ZF4 Charges",
+     "default_value": 1,
+     "min": 1,
+     "max": 4
+    }
+   ],
+   "license_id": "mf_sherman"
   },
   {
    "id": "mf_tokugawa",
-   "name": "Tokugawa",
-   "source": "HA",
    "license_level": 2,
+   "source": "HA",
+   "name": "Tokugawa",
    "mechtype": [
     "Striker"
    ],
@@ -1660,24 +2646,111 @@
    "traits": [
     {
      "name": "Limit Break",
-     "description": "When the Tokugawa is Exposed, its ranged and melee attacks deal +3 energy bonus damage on hit, all of its weapons that would deal kinetic or explosive damage instead deal energy, ranged weapons gain +5 range and melee weapons gain +1 threat."
+     "description": "When the Tokugawa is Exposed, its ranged and melee attacks deal +3 energy bonus damage on hit, all of its weapons that would deal kinetic or explosive damage instead deal energy, ranged weapons gain +5 range and melee weapons gain +1 threat.",
+     "active_effects": [
+      {
+       "name": "Limit Break",
+       "condition": "You are Exposed.",
+       "detail": "Your ranged and melee attacks deal +3 energy bonus damage on hit, all of your weapons that would deal kinetic or explosive damage instead deal energy, ranged weapons gain +5 range and melee weapons gain +1 threat.",
+       "bonuses": [
+        {
+         "id": "damage",
+         "val": 3,
+         "damage_types": [
+          "energy"
+         ]
+        },
+        {
+         "id": "range",
+         "val": 5,
+         "range_types": [
+          "range"
+         ]
+        },
+        {
+         "id": "threat",
+         "val": 1,
+         "weapon_types": [
+          "melee"
+         ]
+        }
+       ]
+      }
+     ]
     },
     {
      "name": "Plasma Sheath",
-     "description": "When the Tokugawa is in the Danger Zone and attacks with a weapon that deals any amount of energy, all bonus damage becomes burn."
+     "description": "When the Tokugawa is in the Danger Zone and attacks with a weapon that deals any amount of energy, all bonus damage becomes burn.",
+     "active_effects": [
+      {
+       "name": "Plasma Sheath",
+       "condition": "You are in the Danger Zone and attack with a weapon that deals any amount of energy.",
+       "detail": "All bonus damage becomes burn."
+      }
+     ]
     }
    ],
    "core_system": {
     "name": "Superheated Reactor Feed",
     "description": "Pilots of a certain breed thrive at the very edge of catastrophe, risking either glorious success or utter failure in each moment. These daredevils are familiar with the howl of critical heat warnings – the warbling siren song of destruction and superheated reactor feeds. Tokugawa pilots are notorious for supercharging their weapons with excess energy, pushing their heat gauge to the max. Harnessing the Tokugawa’s unique reactor, these pilots churn out damage and make no friends in the engineering bay – assuming they don’t melt into a ball of slag before they make it back from the line.",
-    "passive_name": "Overclock",
-    "passive_effect": "<br><b>Overclock</b> — You cause your mech to become Exposed until the end of your next turn.",
     "active_name": "Radiance",
     "active_effect": "For the rest of this scene, weapons that deal any energy gain +5 range if they are ranged or +2 threat if they are melee.<br>While you’re Exposed, Limit Break stacks with these bonuses for a total increase of +10 range and +3 threat.",
+    "use": "Encounter",
     "activation": "Protocol",
-    "frequency": null,
-    "tags": []
-   }
+    "passive_name": "Overclock",
+    "passive_actions": [
+     {
+      "name": "Overclock",
+      "activation": "Protocol",
+      "detail": "You cause your mech to become Exposed until the end of your next turn.",
+      "add_status": [
+       {
+        "id": "exposed",
+        "duration": "next_turn_end_self",
+        "target": "self"
+       }
+      ]
+     }
+    ],
+    "active_effects": [
+     {
+      "name": "Radiance",
+      "detail": "For the rest of this scene, weapons that deal any energy gain +5 range if they are ranged or +2 threat if they are melee.<br>While you’re Exposed, Limit Break stacks with these bonuses for a total increase of +10 range and +3 threat.",
+      "bonuses": [
+       {
+        "id": "range",
+        "damage_types": [
+         "Energy"
+        ],
+        "range_types": [
+         "Range"
+        ],
+        "val": 5
+       },
+       {
+        "id": "range",
+        "damage_types": [
+         "Energy"
+        ],
+        "range_types": [
+         "Threat"
+        ],
+        "val": 2
+       }
+      ]
+     }
+    ],
+    "active_synergies": [
+     {
+      "locations": [
+       "attack"
+      ],
+      "detail": "All weapons on your mech that deal any Energy Damage gain +5 Range if they are ranged weapons or gain +1 Threat if they are melee weapons."
+     }
+    ],
+    "passive_effect": ""
+   },
+   "license_id": "mf_tokugawa"
   }
  ],
  "weapons": [

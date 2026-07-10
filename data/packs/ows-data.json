@@ -60,7 +60,15 @@
     "name": "Exoframe Engineering",
     "description": "The Gilgamesh was designed from the ground up to be easy and inexpensive to both construct and maintain, but to Harrison Armory \"inexpensive\" does not equal shoddy or inefficient. Instead, the Gilgamesh utilizes a unique two-stage chassis design in which an inner \"core chassis\" is first created before a secondary outer \"exoframe\" is built upon that core, including additional armor, brachial/limb extensions, and hardpoints. The end result is a deceptively elegant design capable of not only extensive customization but also exceptionally simple field repairs. A series of interlocking clamps and explosive bolts anchor various exoframe components and appendages in place, and when sufficient structural integrity is compromised these sections can be swiftly jettisoned and just as quickly replaced, allowing Legionnaires to continue fighting through catastrophic damage that would render other chassis inoperable.<br><br>This construction also allows power to be selectively rerouted between the core chassis and exoframe components, bypassing system failures and even enhancing overall performance for brief periods, though the strain this puts on the exoframe necessarily limits its use to critical situations only.",
     "passive_name": "Exoframe Engineering",
-    "passive_effect": "The Gilgamesh has a modular construction framework which allows it to easily make in-field repairs by blowing off and replacing damaged limbs and components with spares. 1/scene as a free action, you may choose one of the following:<ul><li>Regain 1/2 of your total HP.</li><li>Repair a destroyed weapon or system.</li></ul>If you don't use this ability during combat, then when you next rest you may either regain all HP or automatically repair a destroyed weapon or system.<br><br>Using this ability during combat counts as expending a Limited charge.<br><b>Field Strip</b> — Choose one: Regain 1/2 of your total HP, or repair a destroyed weapon or system. Using this ability counts as expending a Limited charge.",
+    "passive_effect": "The Gilgamesh has a modular construction framework which allows it to easily make in-field repairs by blowing off and replacing damaged limbs and components with spares. 1/scene as a free action, you may choose one of the following:<ul><li>Regain 1/2 of your total HP.</li><li>Repair a destroyed weapon or system.</li></ul>If you don't use this ability during combat, then when you next rest you may either regain all HP or automatically repair a destroyed weapon or system.<br><br>Using this ability during combat counts as expending a Limited charge.",
+    "passive_actions": [
+     {
+      "name": "Field Strip",
+      "activation": "Free",
+      "frequency": "1/scene",
+      "detail": "Choose one: Regain 1/2 of your total HP, or repair a destroyed weapon or system. Using this ability counts as expending a Limited charge."
+     }
+    ],
     "active_name": "Exo Amplification",
     "activation": "Protocol",
     "active_effect": "You gain Immunity to all conditions not caused by your own systems, talents, etc, until the end of your next turn, and clear all such conditions you already have (including that that can't be cleared normally). You also clear Exposed, stand from Prone, and gain Grit+4 Overshield. At the end of your next turn, clear this Overshield. This ability can be used even if you would not normally be able to take this action (e.g., if you are Stunned).<br><br>Using this ability during combat counts as expending a Limited charge.",
@@ -269,7 +277,8 @@
     ],
     "integrated": [
      "mw_integrated_shock_claws"
-    ]
+    ],
+    "passive_effect": null
    }
   },
   {

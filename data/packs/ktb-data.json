@@ -304,7 +304,8 @@
     ],
     "integrated": [
      "mw_emperor_integrated"
-    ]
+    ],
+    "passive_effect": null
    },
    "license_id": "mf_emperor"
   },
