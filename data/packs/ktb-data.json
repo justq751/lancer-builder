@@ -724,24 +724,54 @@
    "name": "Marathon Arc Bow",
    "mount": "Main",
    "type": "Launcher",
-   "on_attack": {
-    "detail": "Allied characters caught in the area are not attacked, but instead have any Overshield supercharged, increasing it by +4, but clearing all Overshield at the end of their next turn. If they have no Overshield, they instead gain Overshield 2."
-   },
-   "range": [
-    {
-     "type": "Line",
-     "val": 15
-    }
-   ],
-   "damage": [
-    {
-     "type": "Energy",
-     "val": "1d6"
-    }
-   ],
    "description": "“Directed Subjective Convergence Weapon, Pattern 3. Or as Visual calls it, the ‘Marathon Arc’. I suppose it is a better name. Imposing. Inaccurate but Visual has never been accurate. The Arc forces realignment along a superpositional plane, destabilizing targets without the correct pineal hash while imparting sympathetic lensing on those with the correct hash; a simple ‘weapon’ that emulates an Overmind’s corrective/imperative push.”",
    "tags": [
     "Armor-Piercing (AP)"
+   ],
+   "profiles": [
+    {
+     "name": "Default",
+     "range": [
+      {
+       "type": "Line",
+       "val": 10
+      }
+     ],
+     "damage": [
+      {
+       "type": "Energy",
+       "val": "1d6"
+      }
+     ],
+     "on_attack": {
+      "detail": "Allied characters caught in the area are not attacked, but instead gain overshield +2. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 2)."
+     }
+    },
+    {
+     "name": "Drawn Back",
+     "range": [
+      {
+       "type": "Line",
+       "val": 20
+      }
+     ],
+     "damage": [
+      {
+       "type": "Energy",
+       "val": "1d6"
+      }
+     ],
+     "on_attack": {
+      "detail": "Allied characters caught in the area are not attacked, but instead gain overshield +4. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 4)."
+     }
+    }
+   ],
+   "actions": [
+    {
+     "name": "Draw Back",
+     "activation": "Quick",
+     "detail": "This weapon can be drawn back with a quick action to use the Drawn Back profile on its next attack. This effect is lost if you move for any reason."
+    }
    ]
   }
  ],
