@@ -565,7 +565,32 @@
     "active_effect": "For the rest of this scene, you gain the Mark for Death action.<br><b>Mark for Death</b> — Choose a character within range 30 but further than range 5 to focus on; while focusing, you become Immobilized and can’t take reactions, but you deal bonus damage based on weapon size (aux: 1d6, main: 2d6, heavy or larger: 3d6) on ranged critical hits against them, as long as they aren’t in cover or within range 5.<br>You may only focus on one character at a time. As a protocol, you may cease focusing on a target.<br><b>Cease Focus</b> — End your focus on a <b>Mark for Death</b> target.",
     "activation": "Protocol",
     "frequency": null,
-    "tags": []
+    "tags": [],
+    "active_actions": [
+     {
+      "name": "Mark for Death",
+      "activation": "Full",
+      "detail": "Choose a character within range 30 but further than range 5 to focus on; while focusing, you become Immobilized and can’t take reactions, but you deal bonus damage based on weapon size (aux: 1d6, main: 2d6, heavy or larger: 3d6) on ranged critical hits against them, as long as they aren’t in cover or within range 5.<br>You may only focus on one character at a time. As a protocol, you may cease focusing on a target.",
+      "range": [
+       {
+        "type": "Burst",
+        "val": 30,
+        "min": 5
+       }
+      ],
+      "add_status": [
+       {
+        "id": "immobilized",
+        "target": "self"
+       }
+      ]
+     },
+     {
+      "name": "Cease Focus",
+      "activation": "Protocol",
+      "detail": "End your focus on a <b>Mark for Death</b> target."
+     }
+    ]
    }
   },
   {
@@ -621,7 +646,29 @@
     "active_effect": "For the rest of the scene, whenever you start a unique movement during your turn (e.g., a standard move, Boost, or movement granted by talents or systems), you leave a holographic imprint of yourself behind in the space from which you started. These are illusory objects the same Size as you that have Immunity to all damage and effects and aren’t obstructions.<br>When hostile characters start their turn in, move through, or move adjacent to the space occupied by a hologram, it detonates. They must succeed on an Agility save or take 1d6 energy damage. On a success, they take half damage.<br>You also gain the Hologram Teleport Quick Action.<br><b>Hologram Teleport</b> — You may instantly teleport to the location of any hologram within range 50 as a quick action. When you do so, all extant holograms detonate – creating burst 1 explosions that deal 1d6 Energy Damage (Agility save for half) – and you may not create any new holograms until the start of your next turn",
     "activation": "Protocol",
     "frequency": null,
-    "tags": []
+    "tags": [],
+    "active_actions": [
+     {
+      "name": "Hologram Teleport",
+      "activation": "Quick",
+      "detail": "You may instantly teleport to the location of any hologram within range 50 as a quick action. When you do so, all extant holograms detonate – creating burst 1 explosions that deal 1d6 Energy Damage (Agility save for half) – and you may not create any new holograms until the start of your next turn",
+      "damage": [
+       {
+        "val": "1d6",
+        "type": "Energy",
+        "save": "agi",
+        "save_half": true,
+        "aoe": true
+       }
+      ],
+      "range": [
+       {
+        "type": "Range",
+        "val": 50
+       }
+      ]
+     }
+    ]
    }
   },
   {
@@ -725,7 +772,29 @@
     "active_effect": "Choose any number of characters within range 50: your targets must each succeed on an Agility save or take 1d6+4 explosive. On a success, they take half damage. These self-guiding missiles can reach any target as long as there is a path to do so.<br><b>Divine Punishment</b> — Choose any number of characters within range 50: your targets must each succeed on an Agility save or take 1d6+4 explosive. On a success, they take half damage. These self-guiding missiles can reach any target as long as there is a path to do so.",
     "activation": "Full",
     "frequency": null,
-    "tags": []
+    "tags": [],
+    "active_actions": [
+     {
+      "name": "Divine Punishment",
+      "activation": "Full",
+      "detail": "Choose any number of characters within range 50: your targets must each succeed on an Agility save or take 1d6+4 explosive. On a success, they take half damage. These self-guiding missiles can reach any target as long as there is a path to do so.",
+      "damage": [
+       {
+        "val": "1d6+4",
+        "type": "Explosive",
+        "save": "agi",
+        "save_half": true,
+        "aoe": true
+       }
+      ],
+      "range": [
+       {
+        "type": "Range",
+        "val": 50
+       }
+      ]
+     }
+    ]
    }
   },
   {
@@ -1207,7 +1276,28 @@
     "active_effect": "For the rest of this scene, you can use the Ushabti Omnigun 3/round, instead of 1/round.",
     "activation": "Protocol",
     "frequency": null,
-    "tags": []
+    "tags": [],
+    "passive_actions": [
+     {
+      "name": "Fire Omnigun",
+      "activation": "Free",
+      "frequency": "1/round",
+      "damage": [
+       {
+        "val": 1,
+        "type": "Kinetic",
+        "ap": true
+       }
+      ],
+      "range": [
+       {
+        "type": "Range",
+        "val": 15
+       }
+      ],
+      "detail": "1/round, as a free action during your turn, deal 1 AP kinetic damage to a character within Range 15 and line of sight. This doesn’t count as an attack, hits automatically, ignores cover, bypasses Immunity, and its damage can’t be reduced or ignored in any way. No rule supersedes this."
+     }
+    ]
    }
   },
   {

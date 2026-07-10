@@ -384,7 +384,27 @@
      }
     ],
     "passive_name": "Hunting Eagle",
-    "passive_effect": "1/round when the Orchis causes a character to collide with another obstacle or character, you can - in addition to any other effects - throw your mech's scuta shield at that character, dealing 3 kinetic damage and rendering them unable to take reactions until the end of their next turn. The shield then returns to you. This effect doesn’t take an action or reaction to activate.<br><b>Hunting Eagle</b> — 1/round when you cause a character to collide with another obstacle or character, you can - in addition to any other effects - throw your mech's scuta shield at that character, dealing 3 kinetic damage and rendering them unable to take reactions until the end of their next turn. The shield then returns to you. This effect doesn’t take an action or reaction to activate."
+    "passive_effect": "1/round when the Orchis causes a character to collide with another obstacle or character, you can - in addition to any other effects - throw your mech's scuta shield at that character, dealing 3 kinetic damage and rendering them unable to take reactions until the end of their next turn. The shield then returns to you. This effect doesn’t take an action or reaction to activate.<br><b>Hunting Eagle</b> — 1/round when you cause a character to collide with another obstacle or character, you can - in addition to any other effects - throw your mech's scuta shield at that character, dealing 3 kinetic damage and rendering them unable to take reactions until the end of their next turn. The shield then returns to you. This effect doesn’t take an action or reaction to activate.",
+    "passive_actions": [
+     {
+      "name": "Hunting Eagle",
+      "activation": "None",
+      "frequency": "1/round",
+      "detail": "1/round when you cause a character to collide with another obstacle or character, you can - in addition to any other effects - throw your mech's scuta shield at that character, dealing 3 kinetic damage and rendering them unable to take reactions until the end of their next turn. The shield then returns to you. This effect doesn’t take an action or reaction to activate.",
+      "damage": [
+       {
+        "type": "Kinetic",
+        "val": 3
+       }
+      ],
+      "add_special": [
+       {
+        "attribute": "Cannot take Reactions (Hunting Eagle)",
+        "duration": "next_turn_end_target"
+       }
+      ]
+     }
+    ]
    },
    "license_id": "mf_black_witch"
   },
@@ -513,7 +533,27 @@
      }
     ],
     "passive_name": "Execrate",
-    "passive_effect": "Gain the Execrate Quick Tech action.<br><b>Execrate</b> — 1/round You may target another character in line of sight within Range 3 of a void husk, banishing them to an interstitial space. Allied characters can choose whether or not to be affected, and hostile characters can avoid being affected by succeeding on a SYSTEMS save. Banished characters exist in a shadowy gray realm, making them INTANGIBLE.<br>This effect lasts until the banished character moves adjacent or starts their turn adjacent to a void husk, either of which returns them to physical space and clears INTANGIBLE."
+    "passive_effect": "Gain the Execrate Quick Tech action.<br><b>Execrate</b> — 1/round You may target another character in line of sight within Range 3 of a void husk, banishing them to an interstitial space. Allied characters can choose whether or not to be affected, and hostile characters can avoid being affected by succeeding on a SYSTEMS save. Banished characters exist in a shadowy gray realm, making them INTANGIBLE.<br>This effect lasts until the banished character moves adjacent or starts their turn adjacent to a void husk, either of which returns them to physical space and clears INTANGIBLE.",
+    "passive_actions": [
+     {
+      "name": "Execrate",
+      "activation": "Quick Tech",
+      "frequency": "1/round",
+      "detail": "1/round You may target another character in line of sight within Range 3 of a void husk, banishing them to an interstitial space. Allied characters can choose whether or not to be affected, and hostile characters can avoid being affected by succeeding on a SYSTEMS save. Banished characters exist in a shadowy gray realm, making them INTANGIBLE.<br>This effect lasts until the banished character moves adjacent or starts their turn adjacent to a void husk, either of which returns them to physical space and clears INTANGIBLE.",
+      "add_status": [
+       {
+        "id": "intangible"
+       }
+      ],
+      "save": "systems",
+      "range": [
+       {
+        "type": "range",
+        "val": 3
+       }
+      ]
+     }
+    ]
    },
    "license_id": "mf_minotaur"
   }
