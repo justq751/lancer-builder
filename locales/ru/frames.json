@@ -122,6 +122,19 @@
    "active_effect": {
     "en": "This system fires grappling harpoons at any number of targets within Range 5 and line of sight. Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.<br><b>Omni-harpoon</b> — Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
     "ru": "Эта система выпускает абордажные гарпуны по любому числу целей в пределах Радиуса 5 и линии видимости. Поражённые персонажи должны пройти спасбросок Корпуса или получить 2d6 кинетического урона и быть опрокинуты, затем притянуты вплотную к вам или как можно ближе. Они становятся Обездвиженными до конца своего следующего хода. При успехе — половину урона, без остальных эффектов.<br><b>Омни-гарпун</b> — Поражённые персонажи должны пройти спасбросок Корпуса или получить 2d6 кинетического урона и быть опрокинуты, затем притянуты вплотную к вам или как можно ближе. Они становятся Обездвиженными до конца своего следующего хода. При успехе — половину урона, без остальных эффектов."
+   },
+   "active_actions": {
+    "Omni-harpoon": {
+     "name": {
+      "ru": "Омни-гарпун"
+     },
+     "trigger": {
+      "ru": "Вы выпускаете абордажные гарпуны по любому числу целей в пределах Радиуса 5 и линии видимости."
+     },
+     "detail": {
+      "ru": "Поражённые персонажи должны пройти спасбросок Корпуса или получить 2d6 кинетического урона и быть опрокинуты, затем притянуты вплотную к вам или как можно ближе. Они становятся Обездвиженными до конца своего следующего хода. При успехе — половину урона, без остальных эффектов."
+     }
+    }
    }
   }
  },

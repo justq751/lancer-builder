@@ -103,9 +103,16 @@ def norm_tags(item):
 def norm_frame(f):
     norm_tags(f)
     cs = f.get("core_system")
-    if cs and cs.get("passive_actions"):
-        cs["passive_effect"] = fold_actions(cs.get("passive_effect", ""), cs["passive_actions"])
-        del cs["passive_actions"]
+    if cs:
+        for key, actkey in (("passive_effect", "passive_actions"), ("active_effect", "active_actions")):
+            acts = cs.get(actkey)
+            if acts:
+                cs[key] = fold_actions(cs.get(key, ""), acts)
+                # Keep the raw structured actions (name/activation/trigger/
+                # detail/damage/range) alongside the folded prose — the
+                # renderer uses these to draw a proper stat-block instead of
+                # a flat paragraph. Only strip the fields the raw action
+                # objects don't need (nothing to strip currently).
     for tr in f.get("traits", []) or []:
         tr.pop("bonuses", None)
         tr.pop("synergies", None)

@@ -105,7 +105,43 @@
     "active_effect": "This system fires grappling harpoons at any number of targets within Range 5 and line of sight. Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.<br><b>Omni-harpoon</b> — Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
     "activation": "Quick",
     "frequency": null,
-    "tags": []
+    "tags": [],
+    "active_actions": [
+     {
+      "name": "Omni-harpoon",
+      "activation": "Quick",
+      "trigger": "You fire grappling harpoons at any number of targets within Range 5 and line of sight.",
+      "detail": "Affected characters must succeed on a Hull save or take 2d6 Kinetic damage and be knocked Prone, then pulled adjacent to you, or as close as possible. They become Immobilized until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
+      "range": [
+       {
+        "type": "Burst",
+        "val": 5
+       }
+      ],
+      "damage": [
+       {
+        "val": "2d6",
+        "type": "Kinetic",
+        "save": "hull",
+        "save_half": true,
+        "aoe": true
+       }
+      ],
+      "add_status": [
+       {
+        "id": "prone",
+        "save": "hull",
+        "aoe": true
+       },
+       {
+        "id": "immobilized",
+        "duration": "next_turn_end_target",
+        "save": "hull",
+        "aoe": true
+       }
+      ]
+     }
+    ]
    }
   },
   {

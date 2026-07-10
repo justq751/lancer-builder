@@ -525,6 +525,26 @@ button{font-family:inherit; cursor:pointer}
   padding:10px 12px; margin-top:9px; font-size:13.5px; color:var(--mute)}
 .tagdesc b{color:var(--ink); font-family:"Chakra Petch"; font-size:14px}
 .desc{color:var(--mute); font-size:13.5px; margin-top:9px}
+/* Structured action block — CORE powers and weapon "actions" that have real
+   mechanical shape (an activation cost, sometimes a trigger, sometimes
+   attack stats) instead of just flowing prose. Left border + badge colored
+   per activation type so Quick/Protocol/Full read apart at a glance. */
+.action-block{background:var(--panel-2); border:1px solid var(--line); border-left:3px solid var(--line-bright);
+  border-radius:8px; padding:12px 14px; margin-top:10px}
+.action-block.act-quick{border-left-color:#8b7fe8}
+.action-block.act-protocol{border-left-color:var(--accent)}
+.action-block.act-full{border-left-color:var(--amber)}
+.action-block.act-reaction{border-left-color:#e87f9e}
+.action-block.act-free{border-left-color:var(--faint)}
+.action-head{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.action-nm{font-family:"Chakra Petch"; font-size:14.5px; letter-spacing:.02em}
+.action-badge{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.08em; color:var(--mute);
+  border:1px solid var(--line-bright); border-radius:4px; padding:2px 7px; flex-shrink:0}
+.action-stats{display:flex; gap:16px; margin-top:9px; flex-wrap:wrap}
+.action-stat{font-family:"Chakra Petch"; font-size:15px; display:flex; align-items:center; gap:5px}
+.action-stat .u{font-family:"JetBrains Mono",monospace; font-size:10px; color:var(--faint); letter-spacing:.05em; margin-left:2px}
+.action-row{margin-top:8px}
+.action-lbl{display:block; font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.1em; color:var(--faint); margin-bottom:2px}
 .item .meta{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
   letter-spacing:.05em; margin-top:8px; display:flex; gap:10px; flex-wrap:wrap}
 
@@ -856,6 +876,17 @@ function localizeData(base, locale) {
       const cs = fr.core_system, tcs = t.core_system;
       ["name", "description", "passive_name", "passive_effect", "active_name", "active_effect"]
         .forEach(k => { if (tcs[k] !== undefined) cs[k] = pickText(cs[k], tcs[k]); });
+      ["passive_actions", "active_actions"].forEach(actKey => {
+        const acts = cs[actKey], tacts = tcs[actKey];
+        if (!acts || !tacts) return;
+        acts.forEach(a => {
+          const ta = tacts[a.name];
+          if (!ta) return;
+          if (ta.name) a.name = pickText(a.name, ta.name);
+          overlayOnField(a, "trigger", ta.trigger);
+          overlayOnField(a, "detail", ta.detail);
+        });
+      });
     }
   });
 
@@ -1801,13 +1832,54 @@ let frameFilter="ALL";
 let frameSummaryOpen=true; // collapse state for the "ВЫБРАННОЕ ШАССИ" summary card
 /* Traits + CORE system markup, shared by the frame detail modal, the
    selected-frame card on the ШАССИ tab, and the ИТОГ (summary) tab. */
+/* Renders one structured action (CORE power sub-action, or eventually a
+   weapon's own top-level "actions" entries — same shape) as a proper
+   stat-block: name + activation badge, then a stats row ONLY when the
+   action actually deals damage or has its own range/burst (a lot of CORE
+   actions are pure buffs/utility and have neither — in that case the row
+   is simply omitted rather than shown empty), then TRIGGER and EFFECT as
+   separate labeled lines. This is what fold_actions() used to flatten away
+   into one paragraph; this reads the same source shape without discarding
+   the structure. `act.detail` is already locale-overlaid the same way
+   weapon on_hit/on_attack are (string or {detail} — see onHitText). */
+function actionBlockHTML(act){
+  if(!act) return "";
+  const av=(act.activation||"").toLowerCase();
+  const rangeStr=(act.range||[]).map(r=>`${tr(r.type)} ${r.val}`).join(", ");
+  const dmgStr=(act.damage||[]).map(d=>`${d.val} ${tr(d.type)}`).join(", ");
+  return `<div class="action-block act-${esc(av)||'free'}">
+    <div class="action-head">
+      <span class="action-nm">${esc(act.name||"")}</span>
+      ${act.activation?`<span class="action-badge">${esc(tr(act.activation))}</span>`:""}
+    </div>
+    ${(rangeStr||dmgStr)?`<div class="action-stats">
+      ${rangeStr?`<span class="action-stat">🎯 ${esc(rangeStr)}</span>`:""}
+      ${dmgStr?`<span class="action-stat">💥 ${esc(dmgStr)}</span>`:""}
+    </div>`:""}
+    ${act.trigger?`<div class="action-row"><span class="action-lbl">Триггер</span>${rich(onHitText(act.trigger))}</div>`:""}
+    ${act.detail!==undefined?`<div class="action-row"><span class="action-lbl">Эффект</span>${rich(onHitText(act.detail))}</div>`:""}
+  </div>`;
+}
 function frameTraitsCoreHTML(f){
   const cs=f.core_system;
   const traits=f.traits.map(t=>`<div style="margin-bottom:10px"><b style="font-family:'Chakra Petch'">${esc(t.name)}</b><div class="desc" style="margin-top:3px">${rich(t.description)}</div></div>`).join("");
-  const core = cs?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px;color:var(--accent)">CORE-СИСТЕМА — ${esc(cs.name)}</h3>
-      ${cs.description?`<div class="desc" style="margin-bottom:8px">${rich(cs.description)}</div>`:""}
-      ${cs.passive_name?`<div style="margin-bottom:8px"><b>Пассивно — ${esc(cs.passive_name)}:</b> <span class="desc">${rich(cs.passive_effect)}</span></div>`:""}
-      ${cs.active_name?`<div><b>CORE-актив — ${esc(cs.active_name)}:</b> <span class="desc">${rich(cs.active_effect)}</span></div>`:""}`:"";
+  let core="";
+  if(cs){
+    core=`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px;color:var(--accent)">CORE-СИСТЕМА — ${esc(cs.name)}</h3>
+      ${cs.description?`<div class="desc" style="margin-bottom:8px">${rich(cs.description)}</div>`:""}`;
+    if(cs.passive_name){
+      core+=`<div style="margin-bottom:8px"><b>Пассивно — ${esc(cs.passive_name)}:</b></div>`;
+      core+=(cs.passive_actions&&cs.passive_actions.length)
+        ? cs.passive_actions.map(actionBlockHTML).join("")
+        : `<span class="desc">${rich(cs.passive_effect)}</span>`;
+    }
+    if(cs.active_name){
+      core+=`<div style="margin-bottom:8px; margin-top:12px"><b>CORE-актив — ${esc(cs.active_name)}${cs.activation?` <span class="action-badge">${esc(tr(cs.activation))}</span>`:""}:</b></div>`;
+      core+=(cs.active_actions&&cs.active_actions.length)
+        ? cs.active_actions.map(actionBlockHTML).join("")
+        : `<span class="desc">${rich(cs.active_effect)}</span>`;
+    }
+  }
   return (traits?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px">ОСОБЕННОСТИ</h3>${traits}`:"") + core;
 }
 /* Full frame detail: meta line + description + stat grid + traits/CORE.
