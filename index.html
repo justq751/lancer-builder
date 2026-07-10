@@ -1869,15 +1869,13 @@ function frameTraitsCoreHTML(f){
       ${cs.description?`<div class="desc" style="margin-bottom:8px">${rich(cs.description)}</div>`:""}`;
     if(cs.passive_name){
       core+=`<div style="margin-bottom:8px"><b>Пассивно — ${esc(cs.passive_name)}:</b></div>`;
-      core+=(cs.passive_actions&&cs.passive_actions.length)
-        ? cs.passive_actions.map(actionBlockHTML).join("")
-        : `<span class="desc">${rich(cs.passive_effect)}</span>`;
+      core+=cs.passive_effect?`<span class="desc">${rich(cs.passive_effect)}</span>`:"";
+      if(cs.passive_actions&&cs.passive_actions.length) core+=cs.passive_actions.map(actionBlockHTML).join("");
     }
     if(cs.active_name){
       core+=`<div style="margin-bottom:8px; margin-top:12px"><b>CORE-актив — ${esc(cs.active_name)}${cs.activation?` <span class="action-badge">${esc(tr(cs.activation))}</span>`:""}:</b></div>`;
-      core+=(cs.active_actions&&cs.active_actions.length)
-        ? cs.active_actions.map(actionBlockHTML).join("")
-        : `<span class="desc">${rich(cs.active_effect)}</span>`;
+      core+=cs.active_effect?`<span class="desc">${rich(cs.active_effect)}</span>`:"";
+      if(cs.active_actions&&cs.active_actions.length) core+=cs.active_actions.map(actionBlockHTML).join("");
     }
   }
   return (traits?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px">ОСОБЕННОСТИ</h3>${traits}`:"") + core;
