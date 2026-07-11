@@ -1,0 +1,195 @@
+{
+ "frames": [
+  {
+   "id": "mf_Empakaai_alt_blackbeard",
+   "source": "IPS-N",
+   "variant": "Blackbeard",
+   "name": "Empakaai",
+   "mechtype": [
+    "Striker"
+   ],
+   "license_level": 2,
+   "description": "<i><p>“I am thinking now!</p><p>To a mountain I climbed, to a pond I ventured;</p><p>I am thinking now!</p><p>My reflection I saw, hideous and jagged;</p><p>I am thinking now!</p><p>To a hell I created, to a man I slain;</p><p>I am thinking now!</p><p>A victory it gave, glorious and valiant</p><p>I am thinking now!</p></i><p>The Empakaai, a machination of the infamous poet and mech artisan Ololade Omatanwa, was found drenched in hell.</p><p>Popular rumor whispers that upon the tallest of mountain and through the reflection of lake Empakaai Ololade saw in his reflection, Kalunga. Hell - fire - dark ash and staring back at him was not his eyes, but the eyes of the damned and desolate clasped in the hand of Iku.</p><p>As the waters danced in rhythm, Ololade remained fixated. His thoughts wondering why Lake Empakaai- a place renowned for its untenable beauty, would show him a tragedy so visceral. In his reflection he saw thousands plummet from the gaps in Iku’s hand- falling to the pit of Klunga where they’d only be welcomed by death and soot. A portrayal in contradiction within the soothing and pristine waters stretching out to the extents of Ololade’s vision. Rumor would tell that, when he did come down from the tallest of mountains he would scream the words “I am thinking now!” - “ A victory it gave, glorious and valiant”.</p><p>Years later, a painting would circulate throughout the local omninet, affectionately titled- The Descent to Klunga, it was a masterpiece and also a foreshadowing of something that should have only existed in the delirious mind of a lonely SSC citizen and renowned virtuoso.</p><p>Sometime later- another rumor would surface, one that whispered SSC braved Kalunga, stole Iku’s Hand and painted it in fire’s colors and ashe’s hues. They sought to give it a body and called to any who would listen, the first to answer their call was IPS-N. They would offer up a frame, the Blackbeard, in effigy to The Descent to Klunga and from that gift a partnership between SSC and IPS-N would birth the Empakaai.</p><p>The Empakaai is primarily distinguished by its cold core reactor powered and oversized independent comp/con controlled sleeve, Iku’s Hand, that features a 50/50 weight distribution with the rest of the frame. The juxtaposition of SSC elegance and IPS-N artistic sterility have led many to deem the frame a hideous sight. Though to Ololade- it is a living reflection of what he saw atop the tallest of mountains and through his reflection in Lake Empakaai.</p>",
+   "mounts": [
+    "Heavy",
+    "Flex"
+   ],
+   "stats": {
+    "size": 1,
+    "stress": 4,
+    "structure": 4,
+    "armor": 2,
+    "hp": 10,
+    "evasion": 7,
+    "edef": 6,
+    "heatcap": 6,
+    "repcap": 4,
+    "sensor_range": 5,
+    "tech_attack": -2,
+    "save": 10,
+    "speed": 4,
+    "sp": 5
+   },
+   "traits": [
+    {
+     "name": "Untenable Power",
+     "description": "1/round. the Empakaai may give a Hull check or save it forced +1 difficulty."
+    },
+    {
+     "name": "Indomitable Force",
+     "description": "The Empakaai gains RESISTANCE to damage and HEAT dealt from characters it is GRAPPLING."
+    }
+   ],
+   "core_system": {
+    "name": "The Descent to Kalunga",
+    "description": "<i><p>Upon Ololade Omotanwa’s sculpted mountain a message is inscribed under the cold-span limiters of Iku’s Hand.</p><p>“I gift to you a mountain.</p><p> Rolling hills, curvilinear egresses, a shattered spine, and a crown glazed in voluminous spires. Let this be a treaty to your foes. Your promise is that their eyes will witness the beauty that is Iku’s hands before they descend to Kalunga. Hell, fire and dark ash, together they will burn cavities in souls.</p><p>I gift you my mountain.”</p></i>",
+    "active_name": "Marrow Anchors",
+    "use": "Mission",
+    "active_effect": "For the rest of the scene, while Grappling you count as 1 Size larger than the combined size of all targets you’re currently Grappling. Additionally, you gain these benefits for the rest of the scene:",
+    "active_actions": [
+     {
+      "name": "Iku’s Hand",
+      "activation": "Free",
+      "detail": " After successfully hitting a character with a melee weapon attack, the Empakaai may Grapple the target as a free action. On a success, the target is pulled adjacent to you and Grappled."
+     },
+     {
+      "name": "Catalytic Infusor",
+      "activation": "Free",
+      "detail": "At the end of the Empakaai's turn, it deals [its current Heat] in energy AP damage to a character of its choice it is Grappled with. It may also instead choose to divide this total amongst any characters it's currently Grappling."
+     }
+    ],
+    "activation": "Protocol",
+    "integrated": [
+     "mw_empakaai_alt_blackbeard_integrated"
+    ],
+    "passive_effect": null
+   }
+  }
+ ],
+ "weapons": [
+  {
+   "id": "mw_empakaai_alt_blackbeard_integrated",
+   "name": "Colossus Termo-Unguis",
+   "mount": "Superheavy",
+   "type": "Melee",
+   "effect": "The Empakaai’s COLOSSUS TERMO-UNGUIS can be used even while Jammed. <br/> Before rolling, you may force your target and any characters of your choice adjacent to it to make a Hull save or be pulled adjacent and automatically Grappled.",
+   "damage": [
+    {
+     "type": "Kinetic",
+     "val": "2d6"
+    },
+    {
+     "type": "Heat",
+     "val": 4
+    },
+    {
+     "type": "Burn",
+     "val": 3
+    }
+   ],
+   "range": [
+    {
+     "type": "Threat",
+     "val": 4
+    }
+   ],
+   "tags": [
+    "Heat Self 2"
+   ]
+  }
+ ],
+ "systems": [
+  {
+   "id": "ms_exo_kinesthetic_suit_upgrade",
+   "name": "Kinesthetic Suit Upgrade",
+   "type": "System",
+   "sp": 2,
+   "tags": [
+    "Reaction",
+    "Exotic Gear"
+   ],
+   "source": "EXOTIC",
+   "effect": "You gain the Spatial Awareness reaction<br><b>Spatial Awareness</b> — You may Boost, ignoring reactions and engagement. After doing so, attacks against you receive +1 Difficulty until the end of your next turn.",
+   "description": "<p><em>&ldquo;I chose life.&rdquo;<br>&ldquo;Listen, the fact is that you didn&rsquo;t. How many times must we go through this? Let the record show, the culprit is noncompliant and remorseless. Their actions are in breach of contract; hereby, SSC retains the rights and authority to apply all punitive actions as it sees fit&rdquo;<br>&ldquo;I chose life&rdquo;<br>&ldquo;You did not. That is a fact. Please take this one away. They will face decommissioning in the morning for the crimes of early termination of in-field biological SSC assets. The subject has noted they were compelled by another&rsquo;s intent; record this for later investigation by the incoming extrastellar security assets.&rdquo;<br>&ldquo;I choose life!&rdquo;<br>&ldquo;Yes, and tomorrow chose death.&rdquo;<br> &ndash; an excerpt of the interrogation of the singer </em></p> <p>A cybernetic apparatus anchored via spinal tap, the kinesthetic suit upgrade is a full neurological surrogate. Upon installation the apparatus anchors into the spinal cord, lacing machine and biology and allowing the user to relinquish cognitive allotments, related to the maintenance of biological homeostasis. It acts as a twin temporal processor that grants the user the ability to focus excess cognition on a great range of tasks. In recent years SSC has explored the enhancement of kinesthetic awareness, specifically for spaceborne mech pilots.</p>"
+  },
+  {
+   "id": "ms_exo_emi_theater",
+   "name": "Emi Theater",
+   "type": "System",
+   "sp": 3,
+   "tags": [
+    "Limited 1",
+    "Heat Self 4",
+    "Exotic Gear",
+    "Quick Action"
+   ],
+   "source": "EXOTIC",
+   "effect": "Choose a destroyed mech in line of sight. It is immediately restored as an allied Grunt NPC with 5 Overshield and afterwards takes all Heat as energy damage. The target loses any other templates it had previously but retains all other features, including regaining all destroyed weapons and systems. The target gains its own turn each round starting this round, and can otherwise perform all the actions available to a normal NPC. At the end of the scene, the target is destroyed and becomes a wreck.",
+   "description": "<p><em>&ldquo;An army of the dead. Let H0RUS feed on this, leak the history across the omninet, see what bites &ndash; Oni will no longer selfishly covet their secrets.&rdquo;&nbsp;<br>&ndash; An Arushan Constellar Bureaucrat </em></p> <p>The &ldquo;spirit theater&rdquo;, as it is often referred to, was discovered in [REDACTED], as was the pilot called Oni, who was formerly thought to have vanished on deployment. After recovery, Oni was determined to be functionally defunct and was discarded. It was determined, however, that their mech components shared no identifiable ancestry with known Union technologies. Field tests implied the Emi Theater&rsquo;s purpose was to employ necromantic ambush tactics in mass warfare entanglements; however, discernible records of it&rsquo;s use from Oni&rsquo;s mech were [REDACTED]. First employed in the Asset Rebellion in Kibo&rsquo;s 14th operational chrono-chain, the system has proven most effective when used in sequence with adjunct orbital kinetic-kill bombardments. The system projects a wide area para-resonant subjectivity wave that can reanimate functionally destroyed non-biological masses, enabling them to be used and disposed of one last time. While not widely adopted across the Constellar, the Emi Theater has seen use in the more illicit operations undertaken by SSC&rsquo;s Constellar Midnights.</p>"
+  },
+  {
+   "id": "ms_exo_upgraded_network_array",
+   "name": "Upgraded Network Array",
+   "type": "System",
+   "sp": 2,
+   "tags": [
+    "Exotic Gear",
+    "Free Action"
+   ],
+   "source": "EXOTIC",
+   "effect": "1/scene, choose an allied character. Until the end of your next turn, you may use their Systems in place of your own for the purposes of checks and saves, and make tech actions using their Sensors, drawing line of sight from their position.",
+   "description": "<p><em>&ldquo;This is the place? You sure Pettenouk said it was here?&rdquo;</em></p> <p><em>&ldquo;Yes, I&rsquo;m sure. By the way, switch over to atmospheric level two. As you know, the air here on Kibo is noxious to us. Without proper adjustments, you&rsquo;ll enter a coma in hours... Shou! Dammit, someone get Shou, he&rsquo;s gone and passed out. Pack it up team, we&rsquo;ll start again tomorrow.&rdquo;</em></p> <p><em>&ldquo;Bass Harbor, ma&rsquo;am, I&rsquo;m catching several bodies approaching our position from the foothills to the northeast.&rdquo;</em></p> <p><em>&ldquo;Ah, I&rsquo;m reading it, got you loud and clear. Damn, I love doing these missions for those SSC toads. They always spare no expense and the network arrays are like having God&rsquo;s eyes. Topside Lighthouse, we got company.&rdquo;</em></p>"
+  },
+  {
+   "id": "ms_exo_mist_feathers",
+   "name": "Mist Feathers",
+   "type": "System",
+   "sp": 2,
+   "tags": [
+    "Quick Action",
+    "Exotic Gear"
+   ],
+   "source": "EXOTIC",
+   "effect": "<p>1/scene, when activated, you gain the following effects until the end of your next turn:</p> <ul> <li>Your mech is considered hovering</li> <li>You may Boost as a free action, 1/turn.</li> <li>When Invisible or benefiting from cover at the end of your turn, you may choose to become Hidden without taking an action</li> </ul>",
+   "description": "<p><em>&ldquo;Have you ever wondered how the mist flies? ... Hmm, fine. Well I do, I do every day. I envy it. It bends endlessly with joins of vapor effervescent and naked. I&rsquo;m not dreaming &ndash; stop, don&rsquo;t be like Grandmother &ndash; her hands were always so pressed and firm. You see&ndash; I want to fly &ndash; fly so high that the mist becomes jealous. Think of it, what if I could bring you too? Things would be better for the both of us. Better than tilling these lands day in and out, laughed at by the mist. I promise one day I&rsquo;ll grow mist feathers and be the queen of the Kimawense Range. Are you even paying attention? I said I&rsquo;ll be the Queen!------huh? You know I can hear you walking up behind me, right? Quit fooling around, these hills need tilling. Didn't you hear me!? I know you&rsquo;re there... Give it a rest, it&rsquo;s cree---pe---&rdquo;</em><br><em>&ldquo;</em><em>Scarlet soil, sowed in crimson hues.&rdquo;</em></p> <p>Extensions effervescent and endless. The Mist Feather is a specialty licensed float apparatus specifically designed for thin atmospheres. The flight system &ndash; if you can call it that &ndash; is not simple aeronautic manipulation. Designed by the illustrious artisan Ololade Omatanwa, the Mist Feathers in fact do not fly; instead, they induce forced molecular bonds between trillions upon trillions of atmospheric particulates. This bonding process instead pulls rather than propels the user forward as with each molecular bond the user is tugged a millionth of an inch. When powered by cold-core reactors the Mist Feather&rsquo;s output is exponentially multiplied, enabling mechs to hover indefinitely in non-vacuum environments.</p>"
+  }
+ ],
+ "talents": [
+  {
+   "id": "mf_orator",
+   "name": "Orator",
+   "icon": "ORATOR",
+   "terse": "The power of your words is undeniable, and can incapacitate your opponents more readily than any weapon could.",
+   "description": "Only the fool sees war as a means to and end; you know the integrity of any give human is far easier to penetrate than a chassis's exterior hull plating. So let fools be fools, and speak your truth. Tell them the gods they worship die a quiet death; tell them the manna they covet invites despondency, and the voices they follow lead nowhere. They will hear you – this is undeniable – and in doing so will even begin to question the motives of the hands they use to hold and the feet they use to walk. Your power is that of the orator, and in years to come your histories will paint war a bygone remembrance.",
+   "ranks": [
+    {
+     "name": "Convincing Rhetoric",
+     "description": "Gain the <b>Convincing Rhetoric</b> reaction."
+    },
+    {
+     "name": "Voice of Reason",
+     "description": "<div>You start combat with 1 Orator die - a d6 - representing your power of speech. At the end of your turn when you do not attack or force any saves from hostile characters that turn, you gain +1 Orator die up to a maximum of 3 Orator Die. They last until expended or the current scene ends.</div> <div>1/round as a free action you can expend Orator Dice for one of the following effects as long as you can communicate with your target</div> <ul> <li><strong>Encourage (1 Die):</strong> An ally in line of sight may make a systems check against any non-self inflicted conditions affecting them, using the Orator Die at accuracy, ending that condition on a successful check.</li> <li><strong>Investigate (2 Dice):</strong> Choose a hostile character in line of sight. The next time you or an allied character makes an attack against them it is rolled twice, taking the highest result as final.</li> <li><strong>Cast Doubt (2 Dice):</strong> Choose a hostile character in line of sight. They cannot benefit from or be targeted by their allies' systems or traits until the end of their next turn.</li> </ul>"
+    },
+    {
+     "name": "The March of the Ten Thousand",
+     "description": "<p>Start combat with +1 additional Orator Dice. Additionally, gain an additional option for Voice of Reason</p> <ul> <li><strong>Demoralize (3 Dice):</strong> Choose a hostile character in line of sight. They cannot move, attack, force saves or take tech actions until the end of their next turn. They then gain Immunity to this effect until the end of the scene.</li>"
+    }
+   ]
+  }
+ ],
+ "pilot_gear": [
+  {
+   "id": "pg_Psionic_Piston",
+   "name": "Psionic Piston",
+   "type": "Gear",
+   "effect": "</i></p><p>1/mission, when you make eye contact with a character in arm’s reach you may telepathically converse and share your consciousness with them in complete clarity, conveying your rational and emotional subjectivity. This device effectively becomes a bridge between minds without the assistance of conventional comms-based neural laces. This effect persists as long as any characters linked remain close to each other.</p><p>When you use this device, roll a d20. If you roll 5 or lower, gain a personality quirk for the remainder of the mission, determined by you and your GM, as memories of the tool’s previous user flood your mind.</p>",
+   "description": "<i><p>“Carry me, please carry me – your soul and mind, oh so delightfully fine. Twice I’ve filled your bowl so we shall dine. Carry me, please carry me – my soul and mind.” [LISTEN]. Walk the path with me and see our footsteps blend. [WALK]. The creases in your grandmother’s hand – so folded and neat, pressed and firm. [CLINCH]. Oh so she plowed those lands, diligent and stern. [SWING]. Woman with graceful purpose, look what we’ve done. [PEER]. Scarlet soil, sowed in crimson hues. [RELEASE].”</p><p>– a song and suggestion from one mind to another</i></p><p>The psionic piston is a vibrant octagonal jewel worn just above the glabella and embedded in the wearer’s frontal lobe. A tool for oversight and understanding created by a consortium of long-buried minds with silent intent. Few pistons exist today. Fewer still continue to bridge minds. Those that do, do so without witness. Instruments with no mother nor father any longer they seek partnership with the willing and ambitious. Do them a favor and carve on yourself a pocket for their presence.</p>",
+   "tags": [
+    "Exotic Gear",
+    "Gear"
+   ]
+  }
+ ],
+ "core_bonuses": [],
+ "mods": []
+}

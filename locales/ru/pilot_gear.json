@@ -482,5 +482,33 @@
    "en": "<p>While Hercynian society is far from primitive, the HUC lacks the advanced industrial manufacturing base required to easily fabricate the large quantities of composite materials needed for modern armor. As a result, the personal combat armor worn by rangers and other combatants is typically made from interlocking and overlapping layers of molted Egregorian carapace, donated by willing volunteers. Distinctly insectile in appearance, treatment allows the carapace to be molded into a variety of shapes and styles suitable for numerous occupational specialties ranging from long-range reconnaissance to heavy assault. While many examples of carapace armor are unpowered, ranger pilots and special forces units use carapace hardsuits created by marrying the plates to various strength-amplification exoskeletons and fitting them with upgraded power sources, interface systems, and environmental seals.</p><p>Acquiring a carapace hardsuit isn't a simple matter. Such suits don’t tend to be available for sale in currency or barter, instead being either handed down from pilot to pilot or custom-made according to a number of formal traditions. These traditions include seeking permission from a willing Egregorian donor to use their carapace and the personal participation of the wearer in the crafting, a process that can take weeks depending on the complexity of the suit. Should a PC manage to obtain one of these hardsuits, you may represent it with the following stats.</p>",
    "ru": "<p>Хотя герцинское общество далеко не примитивно, ОГК не хватает развитой промышленной производственной базы, необходимой для лёгкого изготовления больших количеств композитных материалов, нужных для современной брони. В результате личная боевая броня, которую носят рейнджеры и другие бойцы, обычно изготавливается из сцепленных и перекрывающихся слоёв сброшенного панциря Эгрегориан, пожертвованного добровольцами. Отличающийся заметно насекомоподобным видом, после обработки панцирь можно формовать в разнообразные формы и стили, подходящие для многочисленных специализаций — от дальней разведки до тяжёлого штурма. Хотя многие образцы панцирной брони без питания, пилоты-рейнджеры и спецназ используют панцирные скафандры, созданные путём соединения плит с различными усиливающими сила экзоскелетами и оснащением улучшенными источниками питания, интерфейсными системами и герметичными уплотнениями.</p><p>Получить панцирный скафандр — не простое дело. Такие костюмы обычно не продаются за валюту или обмен, а передаются от пилота к пилоту или изготавливаются на заказ согласно ряду формальных традиций. Эти традиции включают получение разрешения от добровольного донора-Эгрегорианина на использование его панциря и личное участие носителя в изготовлении — процесс, который может занять недели в зависимости от сложности костюма. Если у ИП удастся получить один из этих скафандров, вы можете представить его следующими характеристиками.</p><br>Множественные абляционные слои обработанного хитина делают панцирные скафандры особенно эффективными в рассеивании воздействия энергетического оружия, и в результате вся такая броня имеет Сопротивление к энергетическому урону."
   }
+ },
+ "pg_personal_shielding": {
+  "name": {
+   "ru": "Персональная кинетическая защита"
+  },
+  "effect": {
+   "ru": "Пока эта броня активна, вы не можете совершать дальние атаки. При попадании дальнобойным оружием снизьте урон на 1d6. Если урон не снижен до нуля, щит перегорает и становится непригоден до следующего Отдыха или Полного ремонта."
+  }
+ },
+ "pg_monofilament_rapier": {
+  "name": {
+   "ru": "Монофиламентная рапира"
+  }
+ },
+ "pg_hardlight_knives": {
+  "name": {
+   "ru": "Клинки волка"
+  }
+ },
+ "pg_blue_blood": {
+  "name": {
+   "ru": "Голубая кровь Панглосса"
+  }
+ },
+ "pg_Psionic_Piston": {
+  "name": {
+   "ru": "Псионический поршень"
+  }
  }
 }
