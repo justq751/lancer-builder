@@ -180,7 +180,10 @@ def norm_pilot_gear(g):
     g["effect"] = fold_actions(g.get("effect", ""), g.get("actions"))
     g.pop("actions", None)
     g.pop("data_type", None)
-    g.pop("bonuses", None)
+    # NOTE: do NOT strip "bonuses" here — unlike the unused "bonuses"/
+    # "synergies" fields on frame traits/systems/etc., pilot_gear.bonuses is
+    # the actual mechanical data for Armor-type gear (pilot_hp, pilot_armor,
+    # pilot_evasion, pilot_edef, pilot_speed) and is read by the renderer.
     return g
 
 

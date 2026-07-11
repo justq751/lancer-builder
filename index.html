@@ -430,6 +430,16 @@ button{font-family:inherit; cursor:pointer}
 .statrow .v{font-family:"Chakra Petch"; font-size:26px; color:var(--ink); line-height:1; flex-shrink:0}
 .statrow.hl .v{color:var(--accent)}
 .hud .nomech{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--faint); text-align:center; padding:14px 4px; letter-spacing:.05em}
+/* Pilot armor stat tiles (Armor/HP Bonus/E-Defense/Evasion/Speed) shown on
+   a pilot_gear card when it's Armor-type with a bonuses[] array — mirrors
+   the reference layout: a row of equal tiles, icon + label above a big
+   accent-colored number. */
+.pgstats{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.pgstat{flex:1; min-width:84px; background:var(--panel-2); border:1px solid var(--line); border-radius:8px;
+  padding:10px 8px; text-align:center}
+.pgstat .ico{font-size:16px; margin-bottom:2px; opacity:.85}
+.pgstat .lbl{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.08em; color:var(--faint)}
+.pgstat .val{font-family:"Chakra Petch"; font-size:19px; color:var(--accent); line-height:1.3}
 
 /* stat glossary tooltip (hover icon, compcon.app-style).
    position:fixed + JS-computed coordinates (see wireStatTooltips()) instead
@@ -2357,6 +2367,41 @@ function weaponDisplayTags(w, curProfIdx){
   const prof = w.profiles[idx];
   return [...(w.tags||[]), ...((prof&&prof.tags)||[])];
 }
+/* Default unarmored pilot stats (Lancer core rules) — Armor-type pilot_gear
+   overrides some of these via its bonuses[] array. Each bonus entry has an
+   id (pilot_armor/pilot_hp/pilot_evasion/pilot_edef/pilot_speed), a val,
+   and sometimes replace:true (the value REPLACES the base stat rather than
+   adding to it — used for Evasion/E-Defense/Speed, since hardsuits set a
+   fixed value rather than stacking). HP never replaces, only adds (shown
+   as a "+N" bonus rather than an absolute total, matching the reference
+   layout). A handful of items (e.g. the Madrigal boarding carapace) use a
+   formula string like "7 + {grit}" instead of a plain number — those are
+   shown as-is rather than evaluated, since this card has no pilot context. */
+const PILOT_BASE_STATS = {armor:0, evasion:10, edef:10, speed:4};
+const PILOT_BONUS_KEY = {pilot_armor:"armor", pilot_hp:"hp", pilot_evasion:"evasion", pilot_edef:"edef", pilot_speed:"speed"};
+function pilotGearStatValues(g){
+  const out = {...PILOT_BASE_STATS, hp:0};
+  (g.bonuses||[]).forEach(b=>{
+    const key = PILOT_BONUS_KEY[b.id];
+    if(!key) return;
+    if(key==="hp"){ out.hp = (typeof b.val==="number" && typeof out.hp==="number") ? out.hp+b.val : b.val; return; }
+    if(b.replace) out[key] = b.val;
+    else out[key] = (typeof b.val==="number" && typeof out[key]==="number") ? out[key]+b.val : b.val;
+  });
+  return out;
+}
+function pilotGearStatsHTML(g){
+  if(g.type!=="Armor" || !(g.bonuses&&g.bonuses.length)) return "";
+  const s = pilotGearStatValues(g);
+  const tile=(ico,lbl,val)=>`<div class="pgstat"><div class="ico">${ico}</div><div class="lbl">${lbl}</div><div class="val">${esc(String(val))}</div></div>`;
+  return `<div class="pgstats">
+    ${tile("🛡","БРОНЯ",s.armor)}
+    ${tile("♥","БОНУС ОЗ","+"+s.hp)}
+    ${tile("🛡️","Э-ЗАЩИТА",s.edef)}
+    ${tile("◈","УКЛОНЕНИЕ",s.evasion)}
+    ${tile("➜","СКОРОСТЬ",s.speed)}
+  </div>`;
+}
 /* Pilot gear card — same shape as weaponCardBody/systemCardBody, but pilot
    gear has no license (Lancer's own rules don't gate pilot loadout by
    license) and no profiles, so this is the simple subset of that pattern:
@@ -2364,7 +2409,7 @@ function weaponDisplayTags(w, curProfIdx){
 function pilotGearCardBody(g, uid){
   const tagsId = uid?`pg-tags-${uid}`:"pg-tags", descId = uid?`pg-tagdesc-${uid}`:"pg-tagdesc";
   const hasStats = (g.damage&&g.damage.length) || (g.range&&g.range.length);
-  return `<div class="tags" id="${tagsId}">
+  return `${pilotGearStatsHTML(g)}<div class="tags" id="${tagsId}">
       ${g.damage&&g.damage.length?`<span class="tag dmg">${dmgStr(g)}</span>`:""}
       ${g.range&&g.range.length?`<span class="tag rng">${rngStr(g)}</span>`:""}
       ${(g.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}

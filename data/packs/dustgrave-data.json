@@ -799,6 +799,31 @@
    "tags": [
     "Exotic Gear",
     "Personal Armor"
+   ],
+   "bonuses": [
+    {
+     "id": "pilot_hp",
+     "val": 3
+    },
+    {
+     "id": "pilot_armor",
+     "val": 3
+    },
+    {
+     "id": "pilot_evasion",
+     "val": "7 + {grit}",
+     "replace": true
+    },
+    {
+     "id": "pilot_edef",
+     "val": "7 + {grit}",
+     "replace": true
+    },
+    {
+     "id": "pilot_speed",
+     "val": 4,
+     "replace": true
+    }
    ]
   }
  ],
