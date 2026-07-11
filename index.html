@@ -1527,7 +1527,11 @@ function renderPilot(){
       <details class="note"><summary>Как считается бюджет?</summary><div class="body">
         На каждом LL вы получаете: <b>+1</b> очко навыков, талантов, мех-навыков и лицензий. GRIT = LL ÷ 2 (округление вверх) и добавляется к HP меха, спасброску и атакам. CORE-бонус выдаётся на каждом чётном уровне.
         <ul><li>Очки навыков: 4 + LL</li><li>Очки талантов: 3 + LL</li><li>Мех-навыки: 2 + LL</li><li>Лицензии: LL</li><li>CORE-бонусы: LL ÷ 2 (вниз)</li></ul>
-      </div></details>`;
+      </div></details>
+      <h3 style="font-family:'Chakra Petch';font-size:17.5px;margin:28px 0 6px">// СНАРЯЖЕНИЕ ПИЛОТА (GEAR LOADOUT)</h3>
+      <p class="hint" style="margin-bottom:14px">Личное снаряжение пилота — отдельно от снаряжения меха. 1 слот брони, 2 слота оружия, 3 слота прочего снаряжения.</p>
+      <div id="pilot-gear-loadout"></div>`;
+  renderPilotGearLoadout();
 
   $("#f-name").oninput=e=>{state.pilot.name=e.target.value; renderHUD();};
   $("#f-call").oninput=e=>{state.pilot.callsign=e.target.value; renderHUD();};
@@ -1541,6 +1545,70 @@ function renderPilot(){
     $(".field>label").textContent=`ЛИЦЕНЗИОННЫЙ УРОВЕНЬ — LL ${e.target.value}`;
     renderHUD(); renderTabBar(); };
   ll.onchange=()=>render();
+}
+
+function renderPilotGearLoadout(){
+  const g=state.gear;
+  const slotGroup=(label, kind, items, max, isArmorSingle)=>{
+    const slots=[];
+    for(let i=0;i<max;i++){
+      const id = isArmorSingle ? (i===0?items:null) : (items[i]||null);
+      if(id){
+        const item=M.gear[id];
+        const key=`${kind}:${i}`, open=pilotGearOpenSet.has(key);
+        slots.push(`<div class="slot">
+          <div class="equipped">
+            <div class="ei clickable" data-viewpg="${key}"><div class="en">${esc(item.name)}</div>
+              <div class="em">${tr(item.type)}${item.damage||item.range?` · ${dmgStr(item)} · ${rngStr(item)}`:""}</div></div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <button class="xbtn expand" data-exppg="${key}" title="Показать подробности">${open?'⌄':'›'}</button>
+              <button class="xbtn" data-rmpg="${key}">✕</button>
+            </div>
+          </div>
+          ${open?`<div class="expand-detail">${pilotGearCardBody(item, key)}</div>`:""}
+        </div>`);
+      } else {
+        slots.push(`<div class="slot"><button class="ghostbtn" data-addpg="${kind}:${i}" style="width:100%;text-align:center">+ УСТАНОВИТЬ ${label.toUpperCase()}</button></div>`);
+      }
+    }
+    return `<div class="mount"><div class="mhead"><span class="mt">${label}</span><span class="cap">${isArmorSingle?(items?1:0):items.length} / ${max}</span></div>${slots.join("")}</div>`;
+  };
+
+  $("#pilot-gear-loadout").innerHTML =
+    slotGroup("Броня", "armor", g.armor, 1, true) +
+    slotGroup("Оружие", "weapon", g.weapons, 2, false) +
+    slotGroup("Снаряжение", "gear", g.gear, 3, false);
+
+  $$("#pilot-gear-loadout [data-addpg]").forEach(b=>b.onclick=()=>{
+    const [kind,idxStr]=b.dataset.addpg.split(":"), idx=+idxStr;
+    const slotKind = kind==="armor"?"Armor":kind==="weapon"?"Weapon":"Gear";
+    openPilotGearPicker(slotKind, id=>{
+      if(kind==="armor") state.gear.armor=id;
+      else if(kind==="weapon") state.gear.weapons[idx]=id;
+      else state.gear.gear[idx]=id;
+    });
+  });
+  $$("#pilot-gear-loadout [data-rmpg]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
+    const [kind,idxStr]=b.dataset.rmpg.split(":"), idx=+idxStr;
+    if(kind==="armor") state.gear.armor=null;
+    else if(kind==="weapon") state.gear.weapons.splice(idx,1);
+    else state.gear.gear.splice(idx,1);
+    render();
+  });
+  $$("#pilot-gear-loadout [data-exppg]").forEach(b=>b.onclick=e=>{
+    e.stopPropagation();
+    const key=b.dataset.exppg;
+    if(pilotGearOpenSet.has(key)) pilotGearOpenSet.delete(key); else pilotGearOpenSet.add(key);
+    renderPilotGearLoadout();
+  });
+  $$("#pilot-gear-loadout [data-viewpg]").forEach(el=>el.onclick=()=>{
+    const [kind,idxStr]=el.dataset.viewpg.split(":"), idx=+idxStr;
+    const id = kind==="armor"?state.gear.armor:kind==="weapon"?state.gear.weapons[idx]:state.gear.gear[idx];
+    const item=M.gear[id];
+    modal(item.name, pilotGearCardHTML(item));
+    wireTagGlossary("#pg-tags","#pg-tagdesc",item.tags||[]);
+  });
 }
 
 /* ============ SKILLS ============ */
@@ -2289,6 +2357,31 @@ function weaponDisplayTags(w, curProfIdx){
   const prof = w.profiles[idx];
   return [...(w.tags||[]), ...((prof&&prof.tags)||[])];
 }
+/* Pilot gear card — same shape as weaponCardBody/systemCardBody, but pilot
+   gear has no license (Lancer's own rules don't gate pilot loadout by
+   license) and no profiles, so this is the simple subset of that pattern:
+   tags row (with damage/range for Weapon-type gear) + effect text. */
+function pilotGearCardBody(g, uid){
+  const tagsId = uid?`pg-tags-${uid}`:"pg-tags", descId = uid?`pg-tagdesc-${uid}`:"pg-tagdesc";
+  const hasStats = (g.damage&&g.damage.length) || (g.range&&g.range.length);
+  return `<div class="tags" id="${tagsId}">
+      ${g.damage&&g.damage.length?`<span class="tag dmg">${dmgStr(g)}</span>`:""}
+      ${g.range&&g.range.length?`<span class="tag rng">${rngStr(g)}</span>`:""}
+      ${(g.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+    </div>
+    <div id="${descId}"></div>
+    ${g.effect?`<div class="desc" style="margin-top:${hasStats?12:0}px">${rich(g.effect)}</div>`:""}
+    ${g.description?`<div class="desc" style="margin-top:9px; font-style:italic">${rich(g.description)}</div>`:""}`;
+}
+function pilotGearCardHTML(g){
+  return `<div class="item static">
+    <div class="src" style="background:var(--line-bright)"></div>
+    <div class="top"><div class="nm" style="font-size:21px">${esc(g.name)}</div>
+      <div class="badge">${tr(g.type)}</div></div>
+    <div style="margin-top:11px">${pilotGearCardBody(g)}</div>
+  </div>`;
+}
+
 function weaponCardBody(w, uid, curProfIdx){
   const tagsId = uid?`wp-tags-${uid}`:"wp-tags", descId = uid?`wp-tagdesc-${uid}`:"wp-tagdesc", profId = uid?`wp-profiles-${uid}`:"wp-profiles";
   const hasProfiles = w.profiles && w.profiles.length;
@@ -2402,6 +2495,8 @@ function modCardHTML(mod){
 /* weapon picker — inline-expand list (default) or separate detail card,
    toggled via viewToggleHTML()/wireViewToggle(). */
 let wpSearch="", wpFilter="ALL", wpExpanded=null;
+let pgExpanded=null; // pilot-gear picker: "mi:wi"-style expand state, but keyed by slot type + index
+let pilotGearOpenSet=new Set(); // separate from eqWeaponExpanded — that Set is cleaned up by renderLoadout's own loop, which would wrongly delete pilot-gear keys
 function openWeaponPicker(mi){
   const mt=state.mech.mounts[mi];
   const sizes=mt.items.map(slot=>M.weapon[slot.id]?.mount);
@@ -2489,6 +2584,73 @@ function openWeaponPicker(mi){
    weapon picker (view toggle, inline expand, tag glossary, profile
    switching all work identically) — the only difference is the list
    contains exactly one weapon: the one built into this frame. */
+/* Pilot gear picker — one shared function for all three slot kinds (armor/
+   weapon/gear), filtered by pilot_gear's own "type" field. No license gate
+   (pilot loadout isn't license-restricted in Lancer) and no profiles, so
+   this is simpler than openWeaponPicker: just a searchable list -> install.
+   `slotKind` is "Armor"|"Weapon"|"Gear"; `onInstall(id)` does the actual
+   state write for whichever of the three arrays/slot it came from. */
+function openPilotGearPicker(slotKind, onInstall){
+  pgExpanded=null;
+  let pgSearch="";
+
+  const install=id=>{ onInstall(id); closeModal(); render(); };
+
+  const drawDetail=(id)=>{
+    const g=M.gear[id];
+    setModalBody(
+      `<button class="ghostbtn" id="pg-back" style="margin-bottom:14px">← Назад к списку</button>`
+      + pilotGearCardHTML(g) +
+      `<button class="ghostbtn" id="pg-install" style="margin-top:16px;width:100%;text-align:center">✓ Установить это снаряжение</button>`);
+    wireTagGlossary("#pg-tags", "#pg-tagdesc", g.tags||[]);
+    $("#pg-back").onclick=drawList;
+    $("#pg-install").onclick=()=>install(g.id);
+  };
+
+  const drawList=(keepScroll)=>{
+    const mbd=$("#modal .mbd");
+    const savedScroll = keepScroll ? mbd.scrollTop : null;
+    const list=L.pilot_gear.filter(g=>g.type===slotKind)
+      .filter(g=>!pgSearch||(g.name+" "+(g.tags||[]).map(trTag).join(" ")).toLowerCase().includes(pgSearch.toLowerCase()))
+      .sort((a,b)=>a.name.localeCompare(b.name));
+    const label = slotKind==="Armor"?"броню":slotKind==="Weapon"?"оружие":"снаряжение";
+    $("#modal .mhd h3").textContent=`Установить ${label}`;
+    setModalBody(
+      `<input class="input" id="pg-search" placeholder="поиск…" style="margin-bottom:14px" value="${esc(pgSearch)}">
+       <div class="grid" id="pg-list" style="gap:8px"></div>`, keepScroll);
+    $("#pg-list").innerHTML=list.map(g=>{
+      const open=pgExpanded===g.id;
+      const hint = g.damage||g.range ? `${dmgStr(g)} · ${rngStr(g)}` : tr(g.type);
+      const row=`<div class="listrow clickable ${open?'open':''}" data-g="${g.id}">
+        <div class="info"><div class="nm">${esc(g.name)}</div><div class="ds">${hint}</div></div>
+        <span class="chevron">${open?'⌄':'›'}</span>
+      </div>`;
+      const expand=open?`<div class="expand-detail">${pilotGearCardBody(g)}
+        <button class="ghostbtn" id="pg-install-inline" style="margin-top:14px;width:100%;text-align:center">✓ Установить это снаряжение</button></div>`:"";
+      return `<div class="pickitem">${row}${expand}</div>`;
+    }).join("")||`<div class="hint">// нет подходящего снаряжения</div>`;
+    if(savedScroll!==null) mbd.scrollTop=savedScroll;
+
+    const input=$("#pg-search");
+    input.oninput=e=>{pgSearch=e.target.value; drawList(true); $("#pg-search").focus();};
+    if(pgSearch) input.setSelectionRange(input.value.length,input.value.length);
+
+    $$("#pg-list .listrow").forEach(it=>it.onclick=()=>{
+      const id=it.dataset.g;
+      pgExpanded = pgExpanded===id?null:id;
+      drawList(true);
+    });
+    if(pgExpanded){
+      const g=M.gear[pgExpanded];
+      wireTagGlossary("#pg-tags", "#pg-tagdesc", g.tags||[]);
+      $("#pg-install-inline").onclick=()=>install(g.id);
+    }
+  };
+
+  modal("", "");
+  drawList();
+}
+
 function openIntegratedPicker(mi){
   const mt=state.mech.mounts[mi];
   const w=M.weapon[FRAME_INTEGRATED_WEAPON[state.mech.frameId]];

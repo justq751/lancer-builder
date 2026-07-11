@@ -180,6 +180,7 @@ def norm_pilot_gear(g):
     g["effect"] = fold_actions(g.get("effect", ""), g.get("actions"))
     g.pop("actions", None)
     g.pop("data_type", None)
+    g.pop("bonuses", None)
     return g
 
 

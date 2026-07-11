@@ -415,72 +415,70 @@
  },
  "ms_exo_anti_armor_signature_weapon": {
   "name": {
-   "en": "Anti-Armor Signature Weapon",
-   "ru": "Фирменное противобронное оружие пилота"
+   "ru": "Противоброневое именное оружие"
   },
-  "description": {
-   "en": "",
-   "ru": "Если пилот берёт на миссию Фирменное противобронное оружие, он не может брать никакое другое оружие пилота."
+  "effect": {
+   "ru": "Если пилот берёт Противоброневое именное оружие на задание, он не может брать никакое другое оружие пилота."
   }
  },
  "ms_exo_bahadurs_reserve": {
   "name": {
-   "en": "Bahadur's Reserve",
-   "ru": "Запас Бахадура"
+   "ru": "Заначка Бахадура"
+  },
+  "effect": {
+   "ru": "Потратьте заряд для следующего эффекта:<ul><li><b>Коктейль Молотова</b> (Граната, Дальность 5, Взрыв 1): Персонажи в поражённой области должны пройти спасбросок Ловкости или получить 2 горения.</li></ul>"
   },
   "description": {
-   "en": "A remarkably potent spirit distilled by Mir Bahadur, this moonshine is served to discerning customers and traded for favors within Evergreen's informal barter networks. It goes down surprisingly smooth with notes of vanilla and spices and is responsible for a truly impressive number of hangovers and bad decisions. While piloting under the influence is highly inadvisable, a bottle of good alcohol can be a boon to morale as well as a valuable trade commodity. Bahadur’s homebrew can even serve as a disinfectant or crude (if effective) anesthetic, and it is high enough proof to run a biofuel generator or even be repurposed into a makeshift incendiary device in a pinch.",
-   "ru": "Удивительно крепкий спирт, дистиллированный Миром Бахадуром — этот самогон подают избранным клиентам и обменивают на услуги в неформальных сетях обмена Эвергрина. Он на удивление мягко идёт, с нотками ванили и специй, и является причиной поистине впечатляющего количества похмелий и плохих решений. Хотя пилотировать под воздействием крайне не рекомендуется, бутылка хорошего алкоголя может поднять боевой дух, а также быть ценным товаром для обмена. Самогон Бахадура может даже служить дезинфицирующим средством или грубым (хоть и действенным) анестетиком, и он достаточно крепок, чтобы работать в биотопливном генераторе или, в крайнем случае, быть переделан в самодельное зажигательное устройство.<br>Потратьте заряд для следующего эффекта:<ul><li><b>Коктейль Молотова</b> (Граната, Дальность 5, Взрыв 1): Поражённые персонажи должны пройти спасбросок Ловкости, иначе получают 2 Огня.</li></ul>"
+   "ru": "Крепкий самогон местного розлива — ходовой товар и валюта неформальных бартерных сетей. Помимо застолья годится как дезинфектант, грубая анестезия, топливо для генератора или, в крайнем случае, — самодельная зажигательная смесь."
   }
  },
  "ms_exo_hercynian_rations": {
   "name": {
-   "en": "Hercynian Rations",
    "ru": "Герцинский паёк"
   },
   "description": {
-   "en": "HUC rations rely heavily on fish, either smoked or tinned in spiced oil; dried mushrooms which can be reconstituted with water; sealed packs of flatbread or crackers; pickled macroalgae; dried fruits; rice; oats; and tea and freeze-dried coffee. In some ways, these rations are familiar to anyone who's ever subsisted on military fare. In others, they're a reminder of just how far from home you are.",
-   "ru": "Пайки ОГК в значительной степени состоят из рыбы, копчёной или консервированной в пряном масле; сушёных грибов, восстанавливаемых водой; герметичных упаковок лепёшек или крекеров; маринованных макроводорослей; сухофруктов; риса; овса; а также чая и растворимого кофе. В чём-то эти пайки знакомы любому, кто хоть раз питался военным рационом. В другом — они напоминание о том, насколько вы далеко от дома."
+   "ru": "Стандартный полевой рацион: рыба (копчёная или консервированная в масле со специями), сушёные грибы для регидратации, лепёшки, маринованные водоросли, сухофрукты, рис, овёс, чай и растворимый кофе — знакомая любому, кто питался армейским пайком, но с явным местным колоритом."
   }
  },
  "ms_exo_locus": {
   "name": {
-   "en": "Locus",
    "ru": "Локус"
   },
   "description": {
-   "en": "<p>For those humans attempting to cultivate an affinity for Witness, the learning process can be frustrating at times. Over the centuries, a variety of tools and techniques have been developed to assist with this. One of these techniques involves the consumption of a native species of psychedelic fungus, either dried or brewed as tea. This substance, commonly called locus, induces feelings of opennness, euphoria, enhanced empathy, and altered sensory perceptions including mild hallucinations and synaesthesia. Locus is not habit-forming nor does it have any harmful long-term effects, though some users experience headaches and fatigue after use. That said, overdosing can lead to bouts of “empathic overload”, dissociation, and more severe hallucinatory episodes.</p><p>In humans, ingestion of locus induces a state of enhanced affinity for Witness, though it does not necessarily grant a deeper understanding of its use. The effects last from three to six hours depending on the strength of the dose, the user’s metabolism, and other factors. Locus also has a variety of other therapeutic uses.</p>",
-   "ru": "<p>Для людей, пытающихся развить сродство со Свидетелем, процесс обучения может временами быть утомительным. За века было разработано множество инструментов и техник, помогающих в этом. Одна из таких техник включает употребление местного вида психоделического грибка, сушёного или заваренного как чай. Это вещество, обычно называемое локусом, вызывает чувства открытости, эйфории, усиленной эмпатии и изменённого сенсорного восприятия, включая лёгкие галлюцинации и синестезию. Локус не вызывает зависимости и не имеет вредных долгосрочных эффектов, хотя некоторые пользователи испытывают головные боли и усталость после употребления. При этом передозировка может привести к приступам «эмпатической перегрузки», диссоциации и более тяжёлым галлюцинаторным эпизодам.</p><p>У людей приём локуса вызывает состояние усиленного сродства со Свидетелем, хотя не обязательно даёт более глубокое понимание его использования. Эффекты длятся от трёх до шести часов, в зависимости от силы дозы, метаболизма пользователя и других факторов. Локус также имеет ряд других терапевтических применений.</p>"
+   "ru": "Психоактивный гриб, употребляемый теми, кто пытается развить восприимчивость к Свидетелю — вызывает открытость, эйфорию, обострённую эмпатию и лёгкие искажения восприятия. Не вызывает привыкания и не даёт долгосрочного вреда, хотя передозировка чревата эмпатической перегрузкой и более тяжёлыми галлюцинациями. У людей усиливает восприимчивость к Свидетелю на несколько часов, не обязательно углубляя понимание того, как его использовать."
   }
  },
  "ms_exo_light_carapace_armor": {
   "name": {
-   "en": "Light Carapace Hardsuit",
    "ru": "Лёгкий панцирный скафандр"
   },
+  "effect": {
+   "ru": "Многослойная обработанная хитиновая структура особенно эффективно рассеивает энергетическое оружие — поэтому вся такая броня даёт Сопротивление энергетическому урону."
+  },
   "description": {
-   "en": "<p>While Hercynian society is far from primitive, the HUC lacks the advanced industrial manufacturing base required to easily fabricate the large quantities of composite materials needed for modern armor. As a result, the personal combat armor worn by rangers and other combatants is typically made from interlocking and overlapping layers of molted Egregorian carapace, donated by willing volunteers. Distinctly insectile in appearance, treatment allows the carapace to be molded into a variety of shapes and styles suitable for numerous occupational specialties ranging from long-range reconnaissance to heavy assault. While many examples of carapace armor are unpowered, ranger pilots and special forces units use carapace hardsuits created by marrying the plates to various strength-amplification exoskeletons and fitting them with upgraded power sources, interface systems, and environmental seals.</p><p>Acquiring a carapace hardsuit isn't a simple matter. Such suits don’t tend to be available for sale in currency or barter, instead being either handed down from pilot to pilot or custom-made according to a number of formal traditions. These traditions include seeking permission from a willing Egregorian donor to use their carapace and the personal participation of the wearer in the crafting, a process that can take weeks depending on the complexity of the suit. Should a PC manage to obtain one of these hardsuits, you may represent it with the following stats.</p>",
-   "ru": "<p>Хотя герцинское общество далеко не примитивно, ОГК не хватает развитой промышленной производственной базы, необходимой для лёгкого изготовления больших количеств композитных материалов, нужных для современной брони. В результате личная боевая броня, которую носят рейнджеры и другие бойцы, обычно изготавливается из сцепленных и перекрывающихся слоёв сброшенного панциря Эгрегориан, пожертвованного добровольцами. Отличающийся заметно насекомоподобным видом, после обработки панцирь можно формовать в разнообразные формы и стили, подходящие для многочисленных специализаций — от дальней разведки до тяжёлого штурма. Хотя многие образцы панцирной брони без питания, пилоты-рейнджеры и спецназ используют панцирные скафандры, созданные путём соединения плит с различными усиливающими сила экзоскелетами и оснащением улучшенными источниками питания, интерфейсными системами и герметичными уплотнениями.</p><p>Получить панцирный скафандр — не простое дело. Такие костюмы обычно не продаются за валюту или обмен, а передаются от пилота к пилоту или изготавливаются на заказ согласно ряду формальных традиций. Эти традиции включают получение разрешения от добровольного донора-Эгрегорианина на использование его панциря и личное участие носителя в изготовлении — процесс, который может занять недели в зависимости от сложности костюма. Если у ИП удастся получить один из этих скафандров, вы можете представить его следующими характеристиками.</p><br>Множественные абляционные слои обработанного хитина делают панцирные скафандры особенно эффективными в рассеивании воздействия энергетического оружия, и в результате вся такая броня имеет Сопротивление к энергетическому урону."
+   "ru": "Из-за нехватки промышленной базы для производства современной брони, боевые доспехи герцинских рейнджеров традиционно делают из наслоённых панцирей эгрегорианцев, добровольно пожертвованных донорами. Получить такой скафандр непросто — обычно он переходит от пилота к пилоту или изготавливается на заказ по традиционным ритуалам, требующим согласия донора-эгрегорианца и личного участия будущего владельца в изготовлении, которое может занимать недели."
   }
  },
  "ms_exo_assault_carapace_armor": {
   "name": {
-   "en": "Assault Carapace Hardsuit",
    "ru": "Штурмовой панцирный скафандр"
   },
+  "effect": {
+   "ru": "Многослойная обработанная хитиновая структура особенно эффективно рассеивает энергетическое оружие — поэтому вся такая броня даёт Сопротивление энергетическому урону."
+  },
   "description": {
-   "en": "<p>While Hercynian society is far from primitive, the HUC lacks the advanced industrial manufacturing base required to easily fabricate the large quantities of composite materials needed for modern armor. As a result, the personal combat armor worn by rangers and other combatants is typically made from interlocking and overlapping layers of molted Egregorian carapace, donated by willing volunteers. Distinctly insectile in appearance, treatment allows the carapace to be molded into a variety of shapes and styles suitable for numerous occupational specialties ranging from long-range reconnaissance to heavy assault. While many examples of carapace armor are unpowered, ranger pilots and special forces units use carapace hardsuits created by marrying the plates to various strength-amplification exoskeletons and fitting them with upgraded power sources, interface systems, and environmental seals.</p><p>Acquiring a carapace hardsuit isn't a simple matter. Such suits don’t tend to be available for sale in currency or barter, instead being either handed down from pilot to pilot or custom-made according to a number of formal traditions. These traditions include seeking permission from a willing Egregorian donor to use their carapace and the personal participation of the wearer in the crafting, a process that can take weeks depending on the complexity of the suit. Should a PC manage to obtain one of these hardsuits, you may represent it with the following stats.</p>",
-   "ru": "<p>Хотя герцинское общество далеко не примитивно, ОГК не хватает развитой промышленной производственной базы, необходимой для лёгкого изготовления больших количеств композитных материалов, нужных для современной брони. В результате личная боевая броня, которую носят рейнджеры и другие бойцы, обычно изготавливается из сцепленных и перекрывающихся слоёв сброшенного панциря Эгрегориан, пожертвованного добровольцами. Отличающийся заметно насекомоподобным видом, после обработки панцирь можно формовать в разнообразные формы и стили, подходящие для многочисленных специализаций — от дальней разведки до тяжёлого штурма. Хотя многие образцы панцирной брони без питания, пилоты-рейнджеры и спецназ используют панцирные скафандры, созданные путём соединения плит с различными усиливающими сила экзоскелетами и оснащением улучшенными источниками питания, интерфейсными системами и герметичными уплотнениями.</p><p>Получить панцирный скафандр — не простое дело. Такие костюмы обычно не продаются за валюту или обмен, а передаются от пилота к пилоту или изготавливаются на заказ согласно ряду формальных традиций. Эти традиции включают получение разрешения от добровольного донора-Эгрегорианина на использование его панциря и личное участие носителя в изготовлении — процесс, который может занять недели в зависимости от сложности костюма. Если у ИП удастся получить один из этих скафандров, вы можете представить его следующими характеристиками.</p><br>Множественные абляционные слои обработанного хитина делают панцирные скафандры особенно эффективными в рассеивании воздействия энергетического оружия, и в результате вся такая броня имеет Сопротивление к энергетическому урону."
+   "ru": "Из-за нехватки промышленной базы для производства современной брони, боевые доспехи герцинских рейнджеров традиционно делают из наслоённых панцирей эгрегорианцев, добровольно пожертвованных донорами. Получить такой скафандр непросто — обычно он переходит от пилота к пилоту или изготавливается на заказ по традиционным ритуалам, требующим согласия донора-эгрегорианца и личного участия будущего владельца в изготовлении, которое может занимать недели."
   }
  },
  "ms_exo_heavy_carapace_armor": {
   "name": {
-   "en": "Heavy Carapace Hardsuit",
    "ru": "Тяжёлый панцирный скафандр"
   },
+  "effect": {
+   "ru": "Многослойная обработанная хитиновая структура особенно эффективно рассеивает энергетическое оружие — поэтому вся такая броня даёт Сопротивление энергетическому урону."
+  },
   "description": {
-   "en": "<p>While Hercynian society is far from primitive, the HUC lacks the advanced industrial manufacturing base required to easily fabricate the large quantities of composite materials needed for modern armor. As a result, the personal combat armor worn by rangers and other combatants is typically made from interlocking and overlapping layers of molted Egregorian carapace, donated by willing volunteers. Distinctly insectile in appearance, treatment allows the carapace to be molded into a variety of shapes and styles suitable for numerous occupational specialties ranging from long-range reconnaissance to heavy assault. While many examples of carapace armor are unpowered, ranger pilots and special forces units use carapace hardsuits created by marrying the plates to various strength-amplification exoskeletons and fitting them with upgraded power sources, interface systems, and environmental seals.</p><p>Acquiring a carapace hardsuit isn't a simple matter. Such suits don’t tend to be available for sale in currency or barter, instead being either handed down from pilot to pilot or custom-made according to a number of formal traditions. These traditions include seeking permission from a willing Egregorian donor to use their carapace and the personal participation of the wearer in the crafting, a process that can take weeks depending on the complexity of the suit. Should a PC manage to obtain one of these hardsuits, you may represent it with the following stats.</p>",
-   "ru": "<p>Хотя герцинское общество далеко не примитивно, ОГК не хватает развитой промышленной производственной базы, необходимой для лёгкого изготовления больших количеств композитных материалов, нужных для современной брони. В результате личная боевая броня, которую носят рейнджеры и другие бойцы, обычно изготавливается из сцепленных и перекрывающихся слоёв сброшенного панциря Эгрегориан, пожертвованного добровольцами. Отличающийся заметно насекомоподобным видом, после обработки панцирь можно формовать в разнообразные формы и стили, подходящие для многочисленных специализаций — от дальней разведки до тяжёлого штурма. Хотя многие образцы панцирной брони без питания, пилоты-рейнджеры и спецназ используют панцирные скафандры, созданные путём соединения плит с различными усиливающими сила экзоскелетами и оснащением улучшенными источниками питания, интерфейсными системами и герметичными уплотнениями.</p><p>Получить панцирный скафандр — не простое дело. Такие костюмы обычно не продаются за валюту или обмен, а передаются от пилота к пилоту или изготавливаются на заказ согласно ряду формальных традиций. Эти традиции включают получение разрешения от добровольного донора-Эгрегорианина на использование его панциря и личное участие носителя в изготовлении — процесс, который может занять недели в зависимости от сложности костюма. Если у ИП удастся получить один из этих скафандров, вы можете представить его следующими характеристиками.</p><br>Множественные абляционные слои обработанного хитина делают панцирные скафандры особенно эффективными в рассеивании воздействия энергетического оружия, и в результате вся такая броня имеет Сопротивление к энергетическому урону."
+   "ru": "Из-за нехватки промышленной базы для производства современной брони, боевые доспехи герцинских рейнджеров традиционно делают из наслоённых панцирей эгрегорианцев, добровольно пожертвованных донорами. Получить такой скафандр непросто — обычно он переходит от пилота к пилоту или изготавливается на заказ по традиционным ритуалам, требующим согласия донора-эгрегорианца и личного участия будущего владельца в изготовлении, которое может занимать недели."
   }
  },
  "pg_personal_shielding": {
@@ -524,6 +522,105 @@
   },
   "description": {
    "ru": "Яркий восьмигранный кристалл, вживляемый в лобную долю чуть выше переносицы — инструмент для связи и понимания, созданный давно исчезнувшим консорциумом умов с молчаливыми намерениями. Таких артефактов осталось немного, ещё меньше по-прежнему способны соединять разумы; те, что действуют — действуют без свидетелей. Не имея больше создателей, они сами ищут себе носителя среди готовых и амбициозных. (Оригинал открывается песней-посланием от одного разума другому — здесь пересказана по смыслу, не процитирована построчно.)"
+  }
+ },
+ "ms_madrigal_precision_rifle": {
+  "name": {
+   "ru": "Снайперская винтовка Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal»."
+  }
+ },
+ "ms_madrigal_shoulder_launcher": {
+  "name": {
+   "ru": "Наплечная пусковая установка Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal»."
+  }
+ },
+ "ms_madrigal_boarding_shotgun": {
+  "name": {
+   "ru": "Абордажный дробовик Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal»."
+  }
+ },
+ "ms_madrigal_power_crusher": {
+  "name": {
+   "ru": "Силовой дробитель Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br><b>При попадании:</b> цель становится Обездвиженной и Ослабленной до конца своего следующего хода.<br>Это оружие автоматически попадает по Рельефу, нанося 10 пробивающего броню кинетического урона."
+  }
+ },
+ "ms_madrigal_railgun": {
+  "name": {
+   "ru": "Рельсотрон Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal»."
+  }
+ },
+ "ms_madrigal_disruptor_grenades": {
+  "name": {
+   "ru": "Дизраптор-граната Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br>Если ваш пилот вне меха, вы получаете быстрое действие «Дизраптор-граната».<br><b>Дизраптор-граната</b> — Потратьте заряд, чтобы бросить дизраптор-гранату в пределах Дальности 5. Персонажи в области-Взрыв 1 становятся Замедленными и Ослабленными до конца своего следующего хода."
+  }
+ },
+ "ms_madrigal_jump_system": {
+  "name": {
+   "ru": "Прыжковая система Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br>Если ваш пилот вне меха, вы можете Лететь, совершая Boost. Вы должны закончить это перемещение на твёрдой поверхности, иначе начинаете падать."
+  }
+ },
+ "ms_madrigal_thermal_visor": {
+  "name": {
+   "ru": "Тепловизор Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br>Если ваш пилот вне меха, ваши атаки игнорируют укрытие."
+  }
+ },
+ "ms_madrigal_active_camo": {
+  "name": {
+   "ru": "Активный камуфляж Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br>Если ваш пилот вне меха, дальние атаки с дистанции более Радиуса 3 считают вас находящимся в жёстком укрытии."
+  }
+ },
+ "ms_madrigal_personal_shield": {
+  "name": {
+   "ru": "Персональный щит Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br>Если ваш пилот вне меха, вы получаете реакцию «Защищён».<br><b>Защищён</b> — Вы можете потратить заряд, чтобы получить Сопротивление этому урону."
+  }
+ },
+ "ms_madrigal_shock_field": {
+  "name": {
+   "ru": "Шоковое поле Madrigal"
+  },
+  "effect": {
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br>Если ваш пилот вне меха, вы получаете быстрое действие «Шоковое поле».<br><b>Шоковое поле</b> — Вы можете нанести 3 энергетического урона всем персонажам рядом с собой и завершить все Захваты, действующие на вас."
+  }
+ },
+ "ms_madrigal_boarding_carapace_armor": {
+  "name": {
+   "ru": "Абордажный панцирь Madrigal"
+  },
+  "effect": {
+   "ru": "Если пилот берёт Абордажный панцирь Madrigal, он не может брать оружие или снаряжение пилота без «Madrigal» в названии. Оружие и снаряжение Madrigal можно надеть только вместе с этим панцирем.<br>Нося панцирь, вы можете Высадиться или Катапультироваться только до того, как ваш мех совершил ход (не считая протоколов).<br>Если вы вне меха, а им управляет другой персонаж или ИИ, он может совершать только одно быстрое действие и стандартное перемещение за ход (протоколы и реакции — как обычно). Если ваш мех в это время Собирается, он также теряет оставшееся быстрое действие. Эти эффекты длятся, пока вы не вернёте управление как протокол.<br>Абордажный панцирь Madrigal считается одной из двух систем Экзотического снаряжения, доступных одновременно — а вот оружие и снаряжение Madrigal в этот лимit не входят."
+  },
+  "description": {
+   "ru": "Линейка личных защитных скафандров Madrigal от Cyprian Industries — одни из лучших вакуум-совместимых боевых костюмов на рынке, созданные для абордажных операций. Модульная система уступает по мощи специализированным абордажным мехам вроде «Калибана» IPS-N или «Кутузова» Harrison Armory, но даёт впечатляющий уровень защиты, не жертвуя подвижностью — и достаточно компактна, чтобы носить её прямо в кабине меха."
   }
  }
 }
