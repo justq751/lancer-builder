@@ -2390,6 +2390,13 @@ function pilotGearStatValues(g){
   });
   return out;
 }
+/* Compact one-line version of pilotGearStatsHTML() for the picker's list
+   row (no room there for the full tile grid) — same icon+value pairs,
+   just inline text instead of boxes. */
+function pilotGearStatsInlineHTML(g){
+  const s = pilotGearStatValues(g);
+  return `🛡${esc(String(s.armor))} · ♥+${esc(String(s.hp))} · 🛡️${esc(String(s.edef))} · ◈${esc(String(s.evasion))} · ➜${esc(String(s.speed))}`;
+}
 function pilotGearStatsHTML(g){
   if(g.type!=="Armor" || !(g.bonuses&&g.bonuses.length)) return "";
   const s = pilotGearStatValues(g);
@@ -2665,7 +2672,8 @@ function openPilotGearPicker(slotKind, onInstall){
        <div class="grid" id="pg-list" style="gap:8px"></div>`, keepScroll);
     $("#pg-list").innerHTML=list.map(g=>{
       const open=pgExpanded===g.id;
-      const hint = g.damage||g.range ? `${dmgStr(g)} · ${rngStr(g)}` : tr(g.type);
+      const hasArmorStats = g.type==="Armor" && g.bonuses && g.bonuses.length;
+      const hint = g.damage||g.range ? `${dmgStr(g)} · ${rngStr(g)}` : hasArmorStats ? pilotGearStatsInlineHTML(g) : tr(g.type);
       const row=`<div class="listrow clickable ${open?'open':''}" data-g="${g.id}">
         <div class="info"><div class="nm">${esc(g.name)}</div><div class="ds">${hint}</div></div>
         <span class="chevron">${open?'⌄':'›'}</span>
