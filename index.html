@@ -2610,7 +2610,7 @@ function openPilotGearPicker(slotKind, onInstall){
   const drawList=(keepScroll)=>{
     const mbd=$("#modal .mbd");
     const savedScroll = keepScroll ? mbd.scrollTop : null;
-    const list=L.pilot_gear.filter(g=>g.type===slotKind)
+    const list=L.pilot_gear.filter(g=>g.type===slotKind && !(g.tags||[]).includes("Exotic Gear"))
       .filter(g=>!pgSearch||(g.name+" "+(g.tags||[]).map(trTag).join(" ")).toLowerCase().includes(pgSearch.toLowerCase()))
       .sort((a,b)=>a.name.localeCompare(b.name));
     const label = slotKind==="Armor"?"броню":slotKind==="Weapon"?"оружие":"снаряжение";
