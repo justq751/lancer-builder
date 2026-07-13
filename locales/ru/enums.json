@@ -208,6 +208,10 @@
   "Free": {
    "en": "Free",
    "ru": "Свободное"
+  },
+  "Invade": {
+   "en": "Invade",
+   "ru": "Вторжение"
   }
  },
  "source_names": {
