@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Python (tools/*.py)
+__pycache__/
+*.pyc
+
+# Backups written by tools/merge_frames.py before overwriting a data file
+*.bak
+
+# Node (used only by the `skills` CLI / npx tooling)
+node_modules/
+npm-debug.log*
+
+# Claude Code local/personal settings (machine-specific, not shared)
+.claude/settings.local.json
