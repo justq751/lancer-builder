@@ -305,7 +305,7 @@
   --line-bright:#36485e;
   --ink:#dbe4f0;
   --mute:#7d8ca0;
-  --faint:#54637a;
+  --faint:#6b7c94;
   --accent:#37e0c0;      /* COMP/CON teal */
   --accent-deep:#0f4f45;
   --accent-glow:rgba(55,224,192,.16);
@@ -332,6 +332,7 @@ h1,h2,h3,h4{font-family:"Chakra Petch",sans-serif; font-weight:600; letter-spaci
 a{color:var(--accent)}
 button{font-family:inherit; cursor:pointer}
 ::selection{background:var(--accent); color:#04130f}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 
 /* ---- boot overlay ---- */
 #boot{position:fixed; inset:0; z-index:200; background:var(--bg);
@@ -709,15 +710,15 @@ details.note .body ul{margin:5px 0; padding-left:18px}
 <div class="shell">
   <aside class="hud" id="hud"></aside>
   <main>
-    <nav class="tabs" id="tabs"></nav>
-    <div id="tab" class="section show"></div>
+    <nav class="tabs" id="tabs" role="tablist"></nav>
+    <div id="tab" class="section show" role="tabpanel"></div>
   </main>
 </div>
 
 <div id="print-sheet" style="display:none"></div>
 
 <div class="modal" id="modal">
-  <div class="panel">
+  <div class="panel" role="dialog" aria-modal="true">
     <div class="mhd"><h3></h3><button class="toolbtn mclose">✕ ЗАКРЫТЬ</button></div>
     <div class="mbd"></div>
   </div>
@@ -1174,9 +1175,10 @@ const STAT_ICONS = {
 function statIconHTML(k, size){
   const g = L && L.glossary && L.glossary[k];
   const cls = size ? `stattip ${size}` : "stattip";
-  if(!g) return `<span class="${cls}">ⓘ</span>`;
+  if(!g) return `<span class="${cls}" tabindex="0" role="button" aria-label="Справка">ⓘ</span>`;
   const icon = STAT_ICONS[k] ? `<img class="stattip-icon" src="${STAT_ICONS[k]}" alt="">` : "ⓘ";
-  return `<span class="${cls}" data-tipname="${esc(g.name)}" data-tipdesc="${esc(g.description)}">${icon}</span>`;
+  return `<span class="${cls}" tabindex="0" role="button" aria-label="${esc(g.name)}: справка"
+    data-tipname="${esc(g.name)}" data-tipdesc="${esc(g.description)}">${icon}</span>`;
 }
 function statKeyHTML(k){
   const g = L && L.glossary && L.glossary[k];
@@ -1188,8 +1190,7 @@ function statKeyHTML(k){
    icon's own bounding box, flipping below if there isn't room above. */
 (function wireStatTooltips(){
   const box=document.getElementById("global-stattip");
-  document.addEventListener("mouseover", e=>{
-    const tip=e.target.closest(".stattip"); if(!tip) return;
+  const show=tip=>{
     box.innerHTML = `<b>${tip.dataset.tipname}</b>${tip.dataset.tipdesc}`;
     box.style.display="block";
     const r=tip.getBoundingClientRect();
@@ -1200,10 +1201,26 @@ function statKeyHTML(k){
     if(top<6) top=r.bottom+8;
     box.style.left=left+"px";
     box.style.top=top+"px";
+  };
+  const hide=()=>{ box.style.display="none"; };
+  document.addEventListener("mouseover", e=>{
+    const tip=e.target.closest(".stattip"); if(!tip) return;
+    show(tip);
   });
   document.addEventListener("mouseout", e=>{
     const tip=e.target.closest(".stattip"); if(!tip) return;
-    box.style.display="none";
+    hide();
+  });
+  document.addEventListener("focus", e=>{
+    const tip=e.target.closest && e.target.closest(".stattip"); if(!tip) return;
+    show(tip);
+  }, true);
+  document.addEventListener("blur", e=>{
+    const tip=e.target.closest && e.target.closest(".stattip"); if(!tip) return;
+    hide();
+  }, true);
+  document.addEventListener("keydown", e=>{
+    if(e.key==="Escape" && box.style.display==="block") hide();
   });
 })();
 const HASE = [
@@ -1495,18 +1512,34 @@ function tabWarn(id){
 function renderTabBar(){
   $("#tabs").innerHTML = TABS.map(([id,nm],i)=>{
     const warn=tabWarn(id);
-    return `<button class="tab ${activeTab===id?'active':''}" data-tab="${id}">
+    const sel=activeTab===id;
+    return `<button class="tab ${sel?'active':''}" data-tab="${id}" role="tab"
+      aria-selected="${sel}" aria-controls="tab" id="tab-btn-${id}" tabindex="${sel?0:-1}">
       <span class="ix mono">${String(i+1).padStart(2,"0")}</span>${nm}
       ${warn?'<span class="dot warn"></span>':''}</button>`;
   }).join("");
-  $$("#tabs .tab").forEach(b=>b.onclick=()=>{activeTab=b.dataset.tab; render(); window.scrollTo({top:0,behavior:"smooth"});});
+  const btns=$$("#tabs .tab");
+  const activate=b=>{activeTab=b.dataset.tab; render(); window.scrollTo({top:0,behavior:"smooth"}); $(`#tab-btn-${activeTab}`).focus();};
+  btns.forEach((b,i)=>{
+    b.onclick=()=>activate(b);
+    b.onkeydown=e=>{
+      let ni=null;
+      if(e.key==="ArrowRight") ni=(i+1)%btns.length;
+      else if(e.key==="ArrowLeft") ni=(i-1+btns.length)%btns.length;
+      else if(e.key==="Home") ni=0;
+      else if(e.key==="End") ni=btns.length-1;
+      if(ni!==null){ e.preventDefault(); activate(btns[ni]); }
+    };
+  });
 }
 
 /* ============ TAB ROUTER ============ */
 function renderTab(){
   const fn={pilot:renderPilot,skills:renderSkills,talents:renderTalents,hase:renderHase,
     licenses:renderLicenses,frame:renderFrame,loadout:renderLoadout,core:renderCore,summary:renderSummary}[activeTab];
-  $("#tab").innerHTML=""; fn();
+  const tabEl=$("#tab");
+  tabEl.setAttribute("aria-labelledby",`tab-btn-${activeTab}`);
+  tabEl.innerHTML=""; fn();
 }
 function sechead(mk,h,p){ return `<div class="sechead"><div class="mk">${mk}</div><h2>${h}</h2><p>${p}</p></div>`; }
 
@@ -3195,6 +3228,7 @@ function resetModalScroll(){
   mbd.scrollTop=0; mo.scrollTop=0;
   requestAnimationFrame(()=>{ mbd.scrollTop=0; mo.scrollTop=0; });
 }
+let modalReturnFocus=null;
 function modal(title,html){
   const mhd=$("#modal .mhd");
   // Reset the header to just [h3, close button] on every open — openFrame(),
@@ -3207,9 +3241,29 @@ function modal(title,html){
   });
   mhd.querySelector("h3").textContent=title;
   setModalBody(html);
+  modalReturnFocus=document.activeElement;
   $("#modal").classList.add("show");
+  const panel=$("#modal .panel");
+  const focusable=panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+  (focusable[0]||panel).focus();
 }
-function closeModal(){ $("#modal").classList.remove("show"); }
+function closeModal(){
+  $("#modal").classList.remove("show");
+  if(modalReturnFocus){ modalReturnFocus.focus(); modalReturnFocus=null; }
+}
+document.addEventListener("keydown", e=>{
+  if(!$("#modal").classList.contains("show")) return;
+  if(e.key==="Escape"){ closeModal(); return; }
+  if(e.key==="Tab"){
+    const panel=$("#modal .panel");
+    const focusable=[...panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')]
+      .filter(el=>!el.disabled && el.offsetParent!==null);
+    if(!focusable.length) return;
+    const first=focusable[0], last=focusable[focusable.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+});
 
 /* ============ EXPORT / IMPORT ============ */
 function exportBuild(){
