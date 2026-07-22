@@ -21,3 +21,10 @@ npm-debug.log*
 
 # Claude Code local/personal settings (machine-specific, not shared)
 .claude/settings.local.json
+
+# Wrangler (Cloudflare) local cache and secrets
+.wrangler/
+.dev.vars
+
+# playwright-cli session artifacts (screenshots, snapshots, console logs)
+.playwright-cli/
