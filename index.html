@@ -538,6 +538,11 @@ button{font-family:inherit; cursor:pointer}
 .item .badge.lock{color:var(--amber); border-color:var(--amber)}
 .item .badge.unlocked{color:var(--ok); border-color:var(--ok)}
 .item .tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:9px}
+/* 3-per-row stat grid — frame-list quick stats only (renderFrame()), forces
+   a stable 2-row/3-col layout regardless of pill content width, unlike the
+   plain flex-wrap .tags used for variable-length glossary tag rows. */
+.tags.stat-grid{display:grid; grid-template-columns:repeat(3,1fr)}
+.tags.stat-grid .tag{text-align:center}
 .tag{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em;
   color:var(--accent); background:var(--accent-deep); border-radius:4px; padding:2px 6px}
 /* Headline-stat variant — used for the 2-3 stats worth comparing at a glance
@@ -2097,14 +2102,15 @@ function renderFrame(){
             <div class="badge ${lk?'lock':''}">${lk?"🔒 LL"+f.license_level:f.source}</div></div>
           <div style="display:flex; gap:12px; align-items:flex-start; margin-top:6px">
             <div style="flex:1; min-width:0">
-              <div class="meta">${f.mechtype.map(tr).join(" / ")} · РАЗМЕР ${s.size}</div>
+              <div class="meta">${f.mechtype.map(tr).join(" / ")}</div>
             </div>
             ${frameImageURL(f)?`<img class="frame-thumb lg" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
           </div>
-          <div class="tags" style="margin-top:9px">
+          <div class="tags stat-grid" style="margin-top:9px">
             <span class="tag stat">HP ${s.hp}</span><span class="tag stat">УКЛ ${s.evasion}</span>
-            <span class="tag stat">БРОНЯ ${s.armor}</span><span class="tag sp">SP ${s.sp}</span>
-            <span class="tag">СКОР ${s.speed}</span>
+            <span class="tag stat">БРОНЯ ${s.armor}</span>
+            <span class="tag stat sp">SP ${s.sp}</span><span class="tag stat">СКОР ${s.speed}</span>
+            <span class="tag stat">РАЗМЕР ${s.size}</span>
           </div>
           <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
           <button class="ghostbtn ${(!sel&&lk)?'warn':''}" data-pickframe="${f.id}" ${sel?"disabled":""}
