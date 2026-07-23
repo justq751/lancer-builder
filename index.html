@@ -540,6 +540,10 @@ button{font-family:inherit; cursor:pointer}
 .item .tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:9px}
 .tag{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em;
   color:var(--accent); background:var(--accent-deep); border-radius:4px; padding:2px 6px}
+/* Headline-stat variant — used for the 2-3 stats worth comparing at a glance
+   in a dense card grid (currently only the ШАССИ list, see renderFrame()),
+   so they read as a tier above secondary tags (SP, mount type, flavor). */
+.tag.stat{font-size:13px; font-weight:600; padding:3px 8px}
 .tag.sp{color:var(--amber); background:var(--amber-glow)}
 .tag.dmg{color:#ffcaa0; background:rgba(229,96,79,.16)}
 .tag.rng{color:#a9c9ff; background:rgba(63,143,214,.16)}
@@ -2098,8 +2102,8 @@ function renderFrame(){
             ${frameImageURL(f)?`<img class="frame-thumb lg" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
           </div>
           <div class="tags" style="margin-top:9px">
-            <span class="tag">HP ${s.hp}</span><span class="tag">УКЛ ${s.evasion}</span>
-            <span class="tag">БРОНЯ ${s.armor}</span><span class="tag sp">SP ${s.sp}</span>
+            <span class="tag stat">HP ${s.hp}</span><span class="tag stat">УКЛ ${s.evasion}</span>
+            <span class="tag stat">БРОНЯ ${s.armor}</span><span class="tag sp">SP ${s.sp}</span>
             <span class="tag">СКОР ${s.speed}</span>
           </div>
           <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
