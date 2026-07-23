@@ -674,6 +674,17 @@ button{font-family:inherit; cursor:pointer}
 
 /* filters */
 .filters{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; align-items:center}
+/* Labeled filter row — wraps a .filters chip row with a small caption
+   (e.g. "ТИП:") so multiple filter dimensions stacked in one picker read
+   as distinct categories instead of one undifferentiated wall of chips. */
+.filter-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.filter-row .filter-lbl{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.08em; color:var(--faint); flex-shrink:0}
+.filter-row .filters{margin-bottom:0}
+/* Sticks a picker's stack of filter rows to the top of the scrolling modal
+   body (.modal .mbd) so they stay reachable while the results list below
+   scrolls — needs its own opaque background or the list would show through. */
+.picker-sticky-filters{position:sticky; top:-18px; z-index:5; background:var(--panel);
+  margin:0 -20px 2px; padding:20px 20px 12px; border-bottom:1px solid var(--line)}
 .chip{background:var(--panel); border:1px solid var(--line); color:var(--mute);
   font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; padding:7px 13px;
   border-radius:20px; transition:.15s}
@@ -686,7 +697,7 @@ button{font-family:inherit; cursor:pointer}
   background:rgba(4,6,10,.74); backdrop-filter:blur(3px); padding:5vh 16px; overflow:auto; overflow-anchor:none}
 .modal.show{display:flex}
 .modal .panel{background:var(--panel); border:1px solid var(--line-bright); border-radius:10px;
-  width:min(880px,94vw); box-shadow:var(--shadow)}
+  width:clamp(880px,65vw,1200px); max-width:94vw; box-shadow:var(--shadow)}
 .modal .mhd{display:flex; align-items:center; justify-content:flex-start; gap:14px; padding:16px 20px; border-bottom:1px solid var(--line)}
 .modal .mhd h3{flex:0 1 auto; min-width:0; font-size:20px}
 .modal .mhd .mclose{margin-left:auto; flex-shrink:0}
@@ -2375,6 +2386,14 @@ function wireTagGlossary(tagsSel, boxSel, rawTags, tagSet){
   draw();
 }
 const rngStr=w=>(w.range||[]).map(x=>`${tr(x.type)} ${x.val}`).join(", ")||"—";
+/* Distinct damage-type strings for a weapon, used by the weapon-picker's
+   damage filter. Multi-profile weapons (w.profiles[]) can carry damage per
+   profile instead of on the top-level w.damage, so fall back to
+   aggregating across profiles when the top-level array is empty. */
+const weaponDamageTypes=w=>{
+  const dmg=(w.damage&&w.damage.length)?w.damage:(w.profiles||[]).flatMap(p=>p.damage||[]);
+  return [...new Set(dmg.map(d=>d.type))];
+};
 const onHitText=v=>v==null?"":(typeof v==="string"?v:v.detail);
 
 /* Full weapon detail card markup, shared by the weapon picker's detail view
@@ -2622,14 +2641,14 @@ function modCardHTML(mod){
 
 /* weapon picker — inline-expand list (default) or separate detail card,
    toggled via viewToggleHTML()/wireViewToggle(). */
-let wpSearch="", wpFilter="ALL", wpExpanded=null;
+let wpSearch="", wpFilter="ALL", wpSizeFilter="ALL", wpTypeFilter="ALL", wpDmgFilter="ALL", wpExpanded=null;
 let pgExpanded=null; // pilot-gear picker: "mi:wi"-style expand state, but keyed by slot type + index
 let pilotGearOpenSet=new Set(); // separate from eqWeaponExpanded — that Set is cleaned up by renderLoadout's own loop, which would wrongly delete pilot-gear keys
 function openWeaponPicker(mi){
   const mt=state.mech.mounts[mi];
   const sizes=mt.items.map(slot=>M.weapon[slot.id]?.mount);
   const allow=allowedNext(mt.type,sizes);
-  wpSearch=""; wpFilter="ALL"; wpExpanded=null;
+  wpSearch=""; wpFilter="ALL"; wpSizeFilter="ALL"; wpTypeFilter="ALL"; wpDmgFilter="ALL"; wpExpanded=null;
 
   const install=id=>{ state.mech.mounts[mi].items.push({id, mod:null}); closeModal(); render(); };
 
@@ -2652,15 +2671,35 @@ function openWeaponPicker(mi){
   const drawList=(keepScroll)=>{
     const mbd=$("#modal .mbd");
     const savedScroll = keepScroll ? mbd.scrollTop : null;
-    const list=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???" && w.source)
-      .filter(w=>wpFilter==="ALL"?w.source!=="EXOTIC":w.source===wpFilter)
+    const base=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???" && w.source)
+      .filter(w=>wpFilter==="ALL"?w.source!=="EXOTIC":w.source===wpFilter);
+    // Facet options are derived from `base` (post mount-size + source, pre
+    // everything else) and intentionally don't narrow each other further —
+    // picking a type filter won't shrink the damage-type chip row, mirroring
+    // how the source chips already behave. Keeps chips from disappearing
+    // out from under the user mid-selection.
+    const typeOptions=[...new Set(base.map(w=>w.type))].sort();
+    const dmgOptions=[...new Set(base.flatMap(weaponDamageTypes))].sort();
+    const list=base
+      .filter(w=>wpSizeFilter==="ALL"||w.mount===wpSizeFilter)
+      .filter(w=>wpTypeFilter==="ALL"||w.type===wpTypeFilter)
+      .filter(w=>wpDmgFilter==="ALL"||weaponDamageTypes(w).includes(wpDmgFilter))
       .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
       .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
     $("#modal .mhd h3").textContent=`Установить оружие · ${tr(mt.type)}`;
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
        ${viewToggleHTML()}
-       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
+       <div class="picker-sticky-filters">
+         <div class="filter-row"><span class="filter-lbl">ПРОИЗВОДИТЕЛЬ:</span>
+           <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div></div>
+         ${allow.length>1?`<div class="filter-row"><span class="filter-lbl">КРЕПЛЕНИЕ:</span>
+           <div class="filters">${["ALL",...allow].map(sz=>`<button class="chip ${wpSizeFilter===sz?'on':''}" data-wpsz="${sz}">${sz==="ALL"?"ВСЕ":tr(sz)}</button>`).join("")}</div></div>`:""}
+         <div class="filter-row"><span class="filter-lbl">ТИП:</span>
+           <div class="filters">${["ALL",...typeOptions].map(t=>`<button class="chip ${wpTypeFilter===t?'on':''}" data-wpty="${t}">${t==="ALL"?"ВСЕ":tr(t)}</button>`).join("")}</div></div>
+         <div class="filter-row"><span class="filter-lbl">УРОН:</span>
+           <div class="filters">${["ALL",...dmgOptions].map(d=>`<button class="chip ${wpDmgFilter===d?'on':''}" data-wpdm="${d}">${d==="ALL"?"ВСЕ":tr(d)}</button>`).join("")}</div></div>
+       </div>
        <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
        <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
     $("#wp-list").innerHTML=list.map(w=>{
@@ -2684,6 +2723,9 @@ function openWeaponPicker(mi){
 
     wireViewToggle(drawList);
     $$(".modal .chip[data-wpf]").forEach(c=>c.onclick=()=>{wpFilter=c.dataset.wpf; drawList();});
+    $$(".modal .chip[data-wpsz]").forEach(c=>c.onclick=()=>{wpSizeFilter=c.dataset.wpsz; drawList();});
+    $$(".modal .chip[data-wpty]").forEach(c=>c.onclick=()=>{wpTypeFilter=c.dataset.wpty; drawList();});
+    $$(".modal .chip[data-wpdm]").forEach(c=>c.onclick=()=>{wpDmgFilter=c.dataset.wpdm; drawList();});
     const input=$("#wp-search");
     input.oninput=e=>{wpSearch=e.target.value; drawList(); $("#wp-search").focus();};
     if(wpSearch) input.setSelectionRange(input.value.length,input.value.length);
