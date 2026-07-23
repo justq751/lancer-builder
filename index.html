@@ -407,42 +407,47 @@ button{font-family:inherit; cursor:pointer}
 /* mech stat grid in HUD */
 .statgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:7px}
 @media(max-width:680px){.statgrid{grid-template-columns:repeat(2,1fr)}}
-.stat{position:relative; background:var(--bg-grid); border:1px solid var(--line); border-radius:5px;
-  padding:7px 6px 6px; text-align:center}
-.stat .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.07em; color:var(--faint); display:block; min-height:2.2em}
-.stat .v{font-family:"Chakra Petch"; font-size:21px; color:var(--ink); line-height:1}
-.stat.hl .v{color:var(--accent)}
 
-/* Compact icon+value tile (no text label) — used in the СВОДКА МЕХА HUD
-   card. Value font size intentionally matches .statrow .v below, so both
-   this and the ВЫБРАННОЕ ШАССИ card read at the same visual scale. */
-.stat.compact{display:flex; align-items:center; justify-content:center; gap:9px; padding:11px 8px}
-.stat.compact .v{font-size:26px}
+/* Unified stat-display tile — a bordered box showing a key/icon and a value.
+   Four call sites share this one base via modifier classes instead of four
+   near-duplicate rule blocks: the plain vertical tile (СВОДКА/CORE tabs),
+   .compact (icon+value only, no text key — СВОДКА МЕХА HUD card), .row
+   (horizontal icon+key+value — ВЫБРАННОЕ ШАССИ frame detail), and .pg
+   (pilot-gear armor tile, its own icon/label/value class names since it
+   already had them before consolidation). */
+.stattile{position:relative; background:var(--bg-grid); border:1px solid var(--line); border-radius:5px;
+  padding:7px 6px 6px; text-align:center}
+.stattile .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.07em; color:var(--faint); display:block; min-height:2.2em}
+.stattile .v{font-family:"Chakra Petch"; font-size:21px; color:var(--ink); line-height:1}
+.stattile.hl .v{color:var(--accent)}
+
+/* Compact icon+value tile (no text label). Value font size intentionally
+   matches .stattile.row .v below, so both this and the ВЫБРАННОЕ ШАССИ card
+   read at the same visual scale. */
+.stattile.compact{display:flex; align-items:center; justify-content:center; gap:9px; padding:11px 8px}
+.stattile.compact .v{font-size:26px}
 
 /* Horizontal [icon] LABEL ... value row — used in the ВЫБРАННОЕ ШАССИ card
-   (frameDetailBodyHTML) instead of the cramped square .stat tiles. */
+   (frameDetailBodyHTML) instead of the cramped square vertical tiles. */
 .statrows{margin-bottom:16px}
 .statrow-line{display:grid; gap:8px; margin-bottom:8px}
 .statrow-line:last-child{margin-bottom:0}
 .statrow-line.cols3{grid-template-columns:repeat(3,1fr)}
 .statrow-line.cols2{grid-template-columns:repeat(2,1fr)}
-.statrow{display:flex; align-items:center; gap:10px; background:var(--bg-grid); border:1px solid var(--line);
-  border-radius:6px; padding:9px 12px}
-.statrow .k{font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.06em; color:var(--mute); flex:1}
-.statrow .v{font-family:"Chakra Petch"; font-size:26px; color:var(--ink); line-height:1; flex-shrink:0}
-.statrow.hl .v{color:var(--accent)}
+.stattile.row{display:flex; align-items:center; gap:10px; border-radius:6px; padding:9px 12px; text-align:left}
+.stattile.row .k{font-size:13px; letter-spacing:.06em; color:var(--mute); flex:1; display:inline; min-height:0}
+.stattile.row .v{font-size:26px; flex-shrink:0}
 .hud .nomech{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--faint); text-align:center; padding:14px 4px; letter-spacing:.05em}
 /* Pilot armor stat tiles (Armor/HP Bonus/E-Defense/Evasion/Speed) shown on
    a pilot_gear card when it's Armor-type with a bonuses[] array — mirrors
    the reference layout: a row of equal tiles, icon + label above a big
    accent-colored number. */
 .pgstats{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
-.pgstat{flex:1; min-width:84px; background:var(--panel-2); border:1px solid var(--line); border-radius:8px;
-  padding:10px 8px; text-align:center}
-@media(max-width:480px){.pgstat{min-width:64px}}
-.pgstat .ico{font-size:16px; margin-bottom:2px; opacity:.85}
-.pgstat .lbl{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.08em; color:var(--faint)}
-.pgstat .val{font-family:"Chakra Petch"; font-size:19px; color:var(--accent); line-height:1.3}
+.stattile.pg{flex:1; min-width:84px; background:var(--panel-2); border-radius:8px; padding:10px 8px}
+@media(max-width:480px){.stattile.pg{min-width:64px}}
+.stattile.pg .ico{font-size:16px; margin-bottom:2px; opacity:.85}
+.stattile.pg .lbl{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.08em; color:var(--faint)}
+.stattile.pg .val{font-family:"Chakra Petch"; font-size:19px; color:var(--accent); line-height:1.3}
 
 /* stat glossary tooltip (hover icon, compcon.app-style).
    position:fixed + JS-computed coordinates (see wireStatTooltips()) instead
@@ -481,6 +486,10 @@ button{font-family:inherit; cursor:pointer}
 .sechead .mk{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--accent); letter-spacing:.16em}
 .sechead h2{font-size:27px; margin-top:3px}
 .sechead p{color:var(--mute); font-size:14.5px; margin:6px 0 0; max-width:62ch}
+
+/* Recurring in-content sub-heading (e.g. "// СНАРЯЖЕНИЕ ПИЛОТА") — margin
+   varies by context so it stays a small inline style alongside this class. */
+.subhead{font-family:"Chakra Petch"; font-size:17.5px}
 
 /* form fields */
 .field{margin-bottom:14px}
@@ -629,6 +638,13 @@ button{font-family:inherit; cursor:pointer}
 .ghostbtn:hover{border-style:solid; box-shadow:0 0 0 3px var(--accent-glow)}
 .ghostbtn.warn{border-color:var(--red); color:var(--red)}
 .ghostbtn.warn:hover{box-shadow:0 0 0 3px rgba(229,96,79,.22)}
+/* Full-width centered variant — the recurring install/remove/back action
+   button at the bottom (or top) of a modal panel. Margin-top varies by
+   context, so it stays a small utility class alongside .block rather than
+   being baked into one fixed value. */
+.ghostbtn.block{width:100%; text-align:center}
+.mt-10{margin-top:10px} .mt-12{margin-top:12px} .mt-14{margin-top:14px} .mt-16{margin-top:16px}
+.mb-14{margin-bottom:14px}
 .xbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--mute);
   width:32px;height:32px; border-radius:6px; font-size:15px; transition:.12s}
 .xbtn:hover{border-color:var(--red); color:var(--red)}
@@ -1457,7 +1473,7 @@ function renderHUD(){
     <div class="statgrid">
       ${["hp","evasion","edef","heatcap","speed","armor","sensor_range","tech_attack","save","repcap","size","sp"].map(k=>{
         const hl=["hp","evasion","sp"].includes(k)?"hl":"";
-        return `<div class="stat compact ${hl}">${statIconHTML(k,"lg")}<span class="v">${d.mech[k]}</span></div>`;
+        return `<div class="stattile compact ${hl}">${statIconHTML(k,"lg")}<span class="v">${d.mech[k]}</span></div>`;
       }).join("")}
     </div>
     <div class="brow" style="margin-top:10px">
@@ -1575,7 +1591,7 @@ function renderPilot(){
         На каждом LL вы получаете: <b>+1</b> очко навыков, талантов, мех-навыков и лицензий. GRIT = LL ÷ 2 (округление вверх) и добавляется к HP меха, спасброску и атакам. CORE-бонус выдаётся на каждом чётном уровне.
         <ul><li>Очки навыков: 4 + LL</li><li>Очки талантов: 3 + LL</li><li>Мех-навыки: 2 + LL</li><li>Лицензии: LL</li><li>CORE-бонусы: LL ÷ 2 (вниз)</li></ul>
       </div></details>
-      <h3 style="font-family:'Chakra Petch';font-size:17.5px;margin:28px 0 6px">// СНАРЯЖЕНИЕ ПИЛОТА (GEAR LOADOUT)</h3>
+      <h3 class="subhead" style="margin:28px 0 6px">// СНАРЯЖЕНИЕ ПИЛОТА (GEAR LOADOUT)</h3>
       <p class="hint" style="margin-bottom:14px">Личное снаряжение пилота — отдельно от снаряжения меха. 1 слот брони, 2 слота оружия, 3 слота прочего снаряжения.</p>
       <div id="pilot-gear-loadout"></div>`;
   renderPilotGearLoadout();
@@ -1615,7 +1631,7 @@ function renderPilotGearLoadout(){
           ${open?`<div class="expand-detail">${pilotGearCardBody(item, key)}</div>`:""}
         </div>`);
       } else {
-        slots.push(`<div class="slot"><button class="ghostbtn" data-addpg="${kind}:${i}" style="width:100%;text-align:center">+ УСТАНОВИТЬ ${label.toUpperCase()}</button></div>`);
+        slots.push(`<div class="slot"><button class="ghostbtn block" data-addpg="${kind}:${i}">+ УСТАНОВИТЬ ${label.toUpperCase()}</button></div>`);
       }
     }
     return `<div class="mount"><div class="mhead"><span class="mt">${label}</span><span class="cap">${isArmorSingle?(items?1:0):items.length} / ${max}</span></div>${slots.join("")}</div>`;
@@ -1666,7 +1682,7 @@ function renderSkills(){
     `Распределите очки между триггерами навыков. Каждый шаг даёт +2 (максимум +6 на триггер). Потрачено ${(+d.b.skill.used)} из ${d.b.skill.cap}.`)
     + (over?`<div class="warnbox">⚠ Превышен бюджет навыков на ${d.b.skill.used-d.b.skill.cap}. Уменьшите ранги.</div>`:"")
     + `<div class="grid" id="skill-list"></div>
-       <button class="ghostbtn" id="add-custom-skill" style="margin-top:12px">+ СВОЙ НАВЫК</button>`;
+       <button class="ghostbtn mt-12" id="add-custom-skill">+ СВОЙ НАВЫК</button>`;
   const allSkills = [...L.skills, ...(state.customSkills||[])];
   $("#skill-list").innerHTML = allSkills.map(s=>{
     const custom = !L.skills.includes(s) && (state.customSkills||[]).some(cs=>cs.id===s.id);
@@ -1892,7 +1908,7 @@ function viewLicenseItemPreview(kind, id, back){
     const html = kind==="w" ? weaponCardHTML(item) : kind==="m" ? modCardHTML(item) : systemCardHTML(item);
     $("#modal .mhd h3").textContent=item.name;
     setModalBody(
-      `<button class="ghostbtn" id="lip-back" style="margin-bottom:14px">← Назад к лицензии</button>`
+      `<button class="ghostbtn mb-14" id="lip-back">← Назад к лицензии</button>`
       + html);
     if(kind==="w") wireTagGlossary("#wp-tags","#wp-tagdesc",weaponDisplayTags(item, profileViewIdx));
     else if(kind==="m") wireTagGlossary("#md-tags","#md-tagdesc",item.tags||[]);
@@ -2017,7 +2033,7 @@ function frameDetailBodyHTML(f, computed, imgUrl, imgSize){
   const rowsHTML = statRows.map(keys=>{
     const cols = keys.length===3 ? "cols3" : "cols2";
     return `<div class="statrow-line ${cols}">${keys.map(k=>
-      `<div class="statrow">${statIconHTML(k,"lg")}<span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span><span class="v">${vals[k]}</span></div>`
+      `<div class="stattile row">${statIconHTML(k,"lg")}<span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span><span class="v">${vals[k]}</span></div>`
     ).join("")}</div>`;
   }).join("");
   // Image floats at the top, roughly matched in size to the stat table's
@@ -2136,9 +2152,9 @@ function renderLoadout(){
   $("#tab").innerHTML = sechead("// 07 · ВООРУЖЕНИЕ",`Снаряжение — ${esc(dispName(d.frame))}`,
     `Установите оружие в крепления и системы в рамках системных очков (SP). Использовано SP: ${d.sp.used} из ${d.sp.cap}.`)
     + (over?`<div class="warnbox">⚠ Превышен лимит системных очков на ${d.sp.used-d.sp.cap} SP.</div>`:"")
-    + `<h3 style="font-family:'Chakra Petch';font-size:17.5px;margin:6px 0 12px">// КРЕПЛЕНИЯ ОРУЖИЯ</h3>
+    + `<h3 class="subhead" style="margin:6px 0 12px">// КРЕПЛЕНИЯ ОРУЖИЯ</h3>
        <div id="mounts"></div>
-       <h3 style="font-family:'Chakra Petch';font-size:17.5px;margin:24px 0 6px">// СИСТЕМЫ <span class="mono" style="font-size:12px;color:var(--faint)">(SP ${d.sp.used}/${d.sp.cap})</span></h3>
+       <h3 class="subhead" style="margin:24px 0 6px">// СИСТЕМЫ <span class="mono" style="font-size:12px;color:var(--faint)">(SP ${d.sp.used}/${d.sp.cap})</span></h3>
        <div class="spacer-sm"></div>
        <button class="ghostbtn" id="add-system">+ ДОБАВИТЬ СИСТЕМУ</button>
        <div class="grid" id="syslist" style="margin-top:12px"></div>`;
@@ -2178,7 +2194,7 @@ function renderLoadout(){
           </div>
         </div>${modOpen?`<div class="expand-detail">${modCardBody(mod, dk+"-mod")}</div>`:""}`;
       } else if(compatMods.length){
-        modRow = `<button class="ghostbtn" data-addmod="${key}" style="margin-top:10px;width:100%;text-align:center">+ УСТАНОВИТЬ МОД</button>`;
+        modRow = `<button class="ghostbtn block mt-10" data-addmod="${key}">+ УСТАНОВИТЬ МОД</button>`;
       }
       return `<div class="slot">${row}${expand}${modRow}</div>`;
     }).join("");
@@ -2437,7 +2453,7 @@ function pilotGearStatsInlineHTML(g){
 function pilotGearStatsHTML(g){
   if(g.type!=="Armor" || !(g.bonuses&&g.bonuses.length)) return "";
   const s = pilotGearStatValues(g);
-  const tile=(ico,lbl,val)=>`<div class="pgstat"><div class="ico">${ico}</div><div class="lbl">${lbl}</div><div class="val">${esc(String(val))}</div></div>`;
+  const tile=(ico,lbl,val)=>`<div class="stattile pg"><div class="ico">${ico}</div><div class="lbl">${lbl}</div><div class="val">${esc(String(val))}</div></div>`;
   return `<div class="pgstats">
     ${tile("🛡","БРОНЯ",s.armor)}
     ${tile("♥","БОНУС ОЗ","+"+s.hp)}
@@ -2599,9 +2615,9 @@ function openWeaponPicker(mi){
     tagOpenSet=new Set(); profileViewIdx=0;
     $("#modal .mhd h3").textContent=w.name;
     setModalBody(
-      `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="wp-back">← Назад к списку</button>`
       + weaponCardHTML(w) +
-      `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">
+      `<button class="ghostbtn block mt-16" id="wp-install">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
       </button>`);
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
@@ -2636,7 +2652,7 @@ function openWeaponPicker(mi){
         </div>
       </div>`;
       const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
-        <button class="ghostbtn" id="wp-install-inline" style="margin-top:14px;width:100%;text-align:center">
+        <button class="ghostbtn block mt-14" id="wp-install-inline">
           ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
         </button></div>`:"";
       return `<div class="pickitem">${row}${expand}</div>`;
@@ -2688,9 +2704,9 @@ function openPilotGearPicker(slotKind, onInstall){
   const drawDetail=(id)=>{
     const g=M.gear[id];
     setModalBody(
-      `<button class="ghostbtn" id="pg-back" style="margin-bottom:14px">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="pg-back">← Назад к списку</button>`
       + pilotGearCardHTML(g) +
-      `<button class="ghostbtn" id="pg-install" style="margin-top:16px;width:100%;text-align:center">✓ Установить это снаряжение</button>`);
+      `<button class="ghostbtn block mt-16" id="pg-install">✓ Установить это снаряжение</button>`);
     wireTagGlossary("#pg-tags", "#pg-tagdesc", g.tags||[]);
     $("#pg-back").onclick=drawList;
     $("#pg-install").onclick=()=>install(g.id);
@@ -2716,7 +2732,7 @@ function openPilotGearPicker(slotKind, onInstall){
         <span class="chevron">${open?'⌄':'›'}</span>
       </div>`;
       const expand=open?`<div class="expand-detail">${pilotGearCardBody(g)}
-        <button class="ghostbtn" id="pg-install-inline" style="margin-top:14px;width:100%;text-align:center">✓ Установить это снаряжение</button></div>`:"";
+        <button class="ghostbtn block mt-14" id="pg-install-inline">✓ Установить это снаряжение</button></div>`:"";
       return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет подходящего снаряжения</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
@@ -2752,9 +2768,9 @@ function openIntegratedPicker(mi){
     tagOpenSet=new Set(); profileViewIdx=0;
     $("#modal .mhd h3").textContent=w.name;
     setModalBody(
-      `<button class="ghostbtn" id="wp-back" style="margin-bottom:14px">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="wp-back">← Назад к списку</button>`
       + weaponCardHTML(w) +
-      `<button class="ghostbtn" id="wp-install" style="margin-top:16px;width:100%;text-align:center">✓ Восстановить это оружие</button>`);
+      `<button class="ghostbtn block mt-16" id="wp-install">✓ Восстановить это оружие</button>`);
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", drawDetail);
     $("#wp-back").onclick=drawList;
@@ -2776,7 +2792,7 @@ function openIntegratedPicker(mi){
       <span class="chevron">${open?'⌄':'›'}</span>
     </div>`;
     const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
-      <button class="ghostbtn" id="wp-install-inline" style="margin-top:14px;width:100%;text-align:center">✓ Восстановить это оружие</button></div>`:"";
+      <button class="ghostbtn block mt-14" id="wp-install-inline">✓ Восстановить это оружие</button></div>`:"";
     $("#wp-list").innerHTML=`<div class="pickitem">${row}${expand}</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
@@ -2814,9 +2830,9 @@ function openModPicker(mi, wi){
     tagOpenSet=new Set();
     $("#modal .mhd h3").textContent=m.name;
     setModalBody(
-      `<button class="ghostbtn" id="mp-back" style="margin-bottom:14px">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="mp-back">← Назад к списку</button>`
       + modCardHTML(m) +
-      `<button class="ghostbtn ${lk?'warn':''}" id="mp-install" style="margin-top:16px;width:100%;text-align:center">
+      `<button class="ghostbtn ${lk?'warn':''} block mt-16" id="mp-install">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить этот мод"}
       </button>`);
     wireTagGlossary("#md-tags", "#md-tagdesc", m.tags||[]);
@@ -2850,7 +2866,7 @@ function openModPicker(mi, wi){
         </div>
       </div>`;
       const expand=open?`<div class="expand-detail">${modCardBody(m)}
-        <button class="ghostbtn ${lk?'warn':''}" id="mp-install-inline" style="margin-top:14px;width:100%;text-align:center">
+        <button class="ghostbtn ${lk?'warn':''} block mt-14" id="mp-install-inline">
           ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить этот мод"}
         </button></div>`:"";
       return `<div class="pickitem">${row}${expand}</div>`;
@@ -2886,7 +2902,7 @@ function openModPicker(mi, wi){
 function viewEquippedMod(mi, wi){
   const slot=state.mech.mounts[mi].items[wi], mod=M.mod[slot.mod];
   modal(mod.name, modCardHTML(mod) +
-    `<button class="ghostbtn warn" id="md-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать этот мод</button>`);
+    `<button class="ghostbtn warn block mt-16" id="md-remove">✕ Убрать этот мод</button>`);
   wireTagGlossary("#md-tags", "#md-tagdesc", mod.tags||[]);
   $("#md-remove").onclick=()=>{ slot.mod=null; closeModal(); render(); };
 }
@@ -2903,7 +2919,7 @@ function viewEquippedWeapon(mi, wi){
   tagOpenSet=new Set(); profileViewIdx=0;
   const draw=()=>{
     modal(w.name, weaponCardHTML(ew) +
-      `<button class="ghostbtn warn" id="wp-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать это оружие с крепления</button>`);
+      `<button class="ghostbtn warn block mt-16" id="wp-remove">✕ Убрать это оружие с крепления</button>`);
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(ew, profileViewIdx));
     wireProfileChips("#wp-profiles", draw);
     $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
@@ -2916,7 +2932,7 @@ function viewEquippedSystem(si){
   const s=M.system[state.mech.systems[si]];
   tagOpenSet=new Set();
   modal(s.name, systemCardHTML(s) +
-    `<button class="ghostbtn warn" id="sy-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать эту систему</button>`);
+    `<button class="ghostbtn warn block mt-16" id="sy-remove">✕ Убрать эту систему</button>`);
   wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
   $("#sy-remove").onclick=()=>{ state.mech.systems.splice(si,1); closeModal(); render(); };
 }
@@ -2942,9 +2958,9 @@ function openSystemPicker(){
     tagOpenSet=new Set();
     $("#modal .mhd h3").textContent=s.name;
     setModalBody(
-      `<button class="ghostbtn" id="sy-back" style="margin-bottom:14px">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="sy-back">← Назад к списку</button>`
       + systemCardHTML(s) +
-      `<button class="ghostbtn" id="sy-install" style="margin-top:16px;width:100%;text-align:center">
+      `<button class="ghostbtn block mt-16" id="sy-install">
         ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
       </button>`);
     wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
@@ -2979,7 +2995,7 @@ function openSystemPicker(){
         </div>
       </div>`;
       const expand=open?`<div class="expand-detail">${systemCardBody(s)}
-        <button class="ghostbtn" id="sy-install-inline" style="margin-top:14px;width:100%;text-align:center">
+        <button class="ghostbtn block mt-14" id="sy-install-inline">
           ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
         </button></div>`:"";
       return `<div class="pickitem">${row}${expand}</div>`;
@@ -3032,7 +3048,7 @@ function renderSummary(){
         <span class="k">ТИП</span><span>${d.frame.mechtype.join(" / ")}</span></div>
       <div class="statgrid" style="grid-template-columns:repeat(4,1fr);margin-bottom:14px">
         ${["hp","armor","evasion","edef","heatcap","repcap","speed","sensor_range","tech_attack","save","size","sp"].map(k=>
-          `<div class="stat"><span class="k">${statKeyHTML(k)}</span><span class="v">${d.mech[k]}</span></div>`).join("")}
+          `<div class="stattile"><span class="k">${statKeyHTML(k)}</span><span class="v">${d.mech[k]}</span></div>`).join("")}
       </div>
       <h3 style="margin-top:6px"><span class="hash">//</span> ОРУЖИЕ</h3><ul class="minilist">${wlist}</ul>
       <h3 style="margin-top:14px"><span class="hash">//</span> СИСТЕМЫ <span class="hint mono">SP ${d.sp.used}/${d.sp.cap}</span></h3><ul class="minilist">${slist}</ul>
@@ -3174,7 +3190,7 @@ function renderCore(){
 function viewSelectedCore(ci){
   const c=M.core[state.cores[ci]];
   modal(c.name, coreCardHTML(c) +
-    `<button class="ghostbtn warn" id="core-remove" style="margin-top:16px;width:100%;text-align:center">✕ Убрать этот CORE-бонус</button>`);
+    `<button class="ghostbtn warn block mt-16" id="core-remove">✕ Убрать этот CORE-бонус</button>`);
   $("#core-remove").onclick=()=>{ state.cores.splice(ci,1); closeModal(); render(); };
 }
 
@@ -3186,7 +3202,7 @@ function openCoreDetail(id){
   const full=state.cores.length>=d.b.core.cap;
   const unl=coreBonusUnlocked(c);
   modal(c.name, coreCardHTML(c) +
-    `<button class="ghostbtn ${full?'':(unl?'':'warn')}" id="core-select" style="margin-top:16px;width:100%;text-align:center" ${full?"disabled":""}>
+    `<button class="ghostbtn ${full?'':(unl?'':'warn')} block mt-16" id="core-select" ${full?"disabled":""}>
       ${full?`⚠ Лимит исчерпан (${state.cores.length}/${d.b.core.cap})`:(unl?"✓ Выбрать этот CORE-бонус":`⚠ Выбрать всё равно (лицензия ${esc(c.source)} не открыта)`)}
     </button>`);
   $("#core-select").onclick=()=>{
