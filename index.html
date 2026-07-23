@@ -542,7 +542,7 @@ button{font-family:inherit; cursor:pointer}
    one rule covers every manufacturer hue without per-source CSS. Low-alpha
    fill keeps text legible across all 6 source colors, including the
    lighter SSC yellow / HORUS green against the dark panel background. */
-.item .badge.src{font-weight:600; color:var(--src); border-color:var(--src);
+.item .badge.mfg{font-weight:600; color:var(--src); border-color:var(--src);
   background:color-mix(in srgb, var(--src) 22%, transparent)}
 .item .tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:9px}
 /* 3-per-row stat grid — frame-list quick stats only (renderFrame()), forces
@@ -2106,7 +2106,7 @@ function renderFrame(){
         return `<div class="item ${sel?'sel':''} ${lk?'locked':''}" data-frame="${f.id}">
           <div class="src" style="background:${srcColor(f.source)}"></div>
           <div class="top"><div class="nm">${esc(dispName(f))}</div>
-            <div class="badge ${lk?'lock':'src'}" ${lk?'':`style="--src:${srcColor(f.source)}"`}>${lk?"🔒 LL"+f.license_level:f.source}</div></div>
+            <div class="badge ${lk?'lock':'mfg'}" ${lk?'':`style="--src:${srcColor(f.source)}"`}>${lk?"🔒 LL"+f.license_level:f.source}</div></div>
           <div style="display:flex; gap:12px; align-items:flex-start; margin-top:6px">
             <div style="flex:1; min-width:0">
               <div class="meta">${f.mechtype.map(tr).join(" / ")}</div>
@@ -3120,7 +3120,7 @@ function coreCardHTML(c){
   return `<div class="item static">
     <div class="src" style="background:${srcColor(c.source)}"></div>
     <div class="top"><div class="nm" style="font-size:21px">${esc(c.name)}</div>
-      <div class="badge ${unl?'src':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
+      <div class="badge ${unl?'mfg':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
     <div style="margin-top:11px">${coreCardBody(c)}</div>
   </div>`;
 }
@@ -3180,7 +3180,7 @@ function renderCore(){
           return `<div class="item ${!unl?'locked':''}" data-c="${c.id}">
             <div class="src" style="background:${srcColor(c.source)}"></div>
             <div class="top"><div class="nm">${esc(c.name)}</div>
-              <div class="badge ${unl?'src':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
+              <div class="badge ${unl?'mfg':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
             ${terse?`<div class="desc" style="margin-top:8px">${esc(terse)}</div>`:""}
             <button class="ghostbtn ${slotsFull?'':(unl?'':'warn')}" data-pickcore="${c.id}" ${slotsFull?"disabled":""}
               style="margin-top:11px; width:100%; text-align:center">${slotsFull?`⚠ Лимит исчерпан (${state.cores.length}/${dNow.b.core.cap})`:(unl?"✓ Выбрать этот CORE-бонус":"⚠ Выбрать всё равно")}</button>
