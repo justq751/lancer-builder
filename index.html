@@ -683,8 +683,8 @@ button{font-family:inherit; cursor:pointer}
 /* Sticks a picker's stack of filter rows to the top of the scrolling modal
    body (.modal .mbd) so they stay reachable while the results list below
    scrolls — needs its own opaque background or the list would show through. */
-.picker-sticky-filters{position:sticky; top:0; z-index:5; background:var(--panel);
-  padding-top:2px; padding-bottom:12px; margin-bottom:2px; border-bottom:1px solid var(--line)}
+.picker-sticky-filters{position:sticky; top:-18px; z-index:5; background:var(--panel);
+  margin:0 -20px 2px; padding:20px 20px 12px; border-bottom:1px solid var(--line)}
 .chip{background:var(--panel); border:1px solid var(--line); color:var(--mute);
   font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; padding:7px 13px;
   border-radius:20px; transition:.15s}
