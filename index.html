@@ -309,9 +309,12 @@
   --ink:#dbe4f0;
   --mute:#7d8ca0;
   --faint:#6b7c94;
-  --accent:#37e0c0;      /* COMP/CON teal */
+  --accent:#37e0c0;      /* COMP/CON teal — brand, focus, positive stat values */
   --accent-deep:#0f4f45;
   --accent-glow:rgba(55,224,192,.16);
+  --select:#ffb020;      /* selection/active state — separate from --accent so
+                            "chosen" reads distinctly from "brand/positive" */
+  --select-glow:rgba(255,176,32,.16);
   --amber:#f4a93a;       /* warning / over-budget */
   --ok:#4fae6e;          /* unlocked license requirement met */
   --amber-glow:rgba(244,169,58,.14);
@@ -475,9 +478,9 @@ button{font-family:inherit; cursor:pointer}
   padding:10px 15px; border-radius:6px; display:flex; align-items:center; gap:8px; transition:.15s}
 .tab .ix{color:var(--faint); font-size:11px}
 .tab:hover{color:var(--ink); border-color:var(--line-bright)}
-.tab.active{color:var(--accent); border-color:var(--accent); background:var(--panel-2);
-  box-shadow:inset 0 0 0 1px var(--accent-glow)}
-.tab.active .ix{color:var(--accent)}
+.tab.active{color:var(--select); border-color:var(--select); background:var(--panel-2);
+  box-shadow:inset 0 0 0 1px var(--select-glow)}
+.tab.active .ix{color:var(--select)}
 .tab .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .tab .dot.warn{background:var(--amber)}
 
@@ -518,7 +521,7 @@ button{font-family:inherit; cursor:pointer}
 .item{position:relative; background:var(--panel); border:1px solid var(--line);
   border-radius:8px; padding:13px 14px; transition:.15s; cursor:pointer}
 .item:hover{border-color:var(--line-bright)}
-.item.sel{border-color:var(--accent); box-shadow:inset 0 0 0 1px var(--accent-glow)}
+.item.sel{border-color:var(--select); box-shadow:inset 0 0 0 1px var(--select-glow)}
 .item.locked{opacity:.78}
 .item.static{cursor:default}
 .item.static:hover{border-color:var(--line)}
@@ -599,7 +602,7 @@ button{font-family:inherit; cursor:pointer}
 .stepval{font-family:"Chakra Petch"; font-size:19.5px; min-width:48px; text-align:center; color:var(--accent)}
 .pips{display:flex; gap:3px}
 .pip{width:13px;height:6px;border-radius:2px;background:var(--panel-3); border:1px solid var(--line)}
-.pip.on{background:var(--accent); border-color:var(--accent)}
+.pip.on{background:var(--select); border-color:var(--select)}
 .pip.locked{border-style:dashed; opacity:.45}
 
 .listrow{display:flex; justify-content:space-between; align-items:center; gap:14px;
@@ -607,7 +610,7 @@ button{font-family:inherit; cursor:pointer}
 .listrow .info{min-width:0}
 .listrow .info .nm{font-family:"Chakra Petch"; font-size:17.5px}
 .listrow .info .ds{color:var(--mute); font-size:13.5px; margin-top:3px}
-.listrow.maxed{border-color:var(--accent)}
+.listrow.maxed{border-color:var(--select)}
 .listrow.clickable{cursor:pointer; transition:.12s}
 .listrow.clickable:hover{border-color:var(--line-bright); background:var(--panel-2)}
 .listrow.locked{opacity:.68}
@@ -619,7 +622,7 @@ button{font-family:inherit; cursor:pointer}
 .viewtoggle{display:flex; gap:8px; margin-bottom:12px}
 .profiles{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:11px}
 .pickitem{display:block}
-.listrow.open{border-color:var(--accent); border-bottom-left-radius:0; border-bottom-right-radius:0}
+.listrow.open{border-color:var(--select); border-bottom-left-radius:0; border-bottom-right-radius:0}
 .expand-detail{background:var(--panel-2); border:1px solid var(--accent); border-top:0;
   border-radius:0 0 8px 8px; padding:14px; margin-top:-1px}
 
@@ -629,7 +632,7 @@ button{font-family:inherit; cursor:pointer}
 .rankline .rk{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
   border:1px solid var(--line); border-radius:4px; padding:1px 6px; height:fit-content}
 .rankline.active{color:var(--ink)}
-.rankline.active .rk{color:var(--accent); border-color:var(--accent)}
+.rankline.active .rk{color:var(--select); border-color:var(--select)}
 
 /* mount blocks */
 .mount{background:var(--panel); border:1px solid var(--line); border-radius:9px; margin-bottom:14px; overflow:hidden}
@@ -675,7 +678,7 @@ button{font-family:inherit; cursor:pointer}
   font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; padding:7px 13px;
   border-radius:20px; transition:.15s}
 .chip:hover{color:var(--ink)}
-.chip.on{color:#06140f; background:var(--accent); border-color:var(--accent); font-weight:600}
+.chip.on{color:#06140f; background:var(--select); border-color:var(--select); font-weight:600}
 .searchwrap{flex:1; min-width:160px}
 
 /* modal */
