@@ -680,6 +680,11 @@ button{font-family:inherit; cursor:pointer}
 .filter-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px}
 .filter-row .filter-lbl{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.08em; color:var(--faint); flex-shrink:0}
 .filter-row .filters{margin-bottom:0}
+/* Sticks a picker's stack of filter rows to the top of the scrolling modal
+   body (.modal .mbd) so they stay reachable while the results list below
+   scrolls — needs its own opaque background or the list would show through. */
+.picker-sticky-filters{position:sticky; top:0; z-index:5; background:var(--panel);
+  padding-top:2px; padding-bottom:12px; margin-bottom:2px; border-bottom:1px solid var(--line)}
 .chip{background:var(--panel); border:1px solid var(--line); color:var(--mute);
   font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; padding:7px 13px;
   border-radius:20px; transition:.15s}
@@ -692,7 +697,7 @@ button{font-family:inherit; cursor:pointer}
   background:rgba(4,6,10,.74); backdrop-filter:blur(3px); padding:5vh 16px; overflow:auto; overflow-anchor:none}
 .modal.show{display:flex}
 .modal .panel{background:var(--panel); border:1px solid var(--line-bright); border-radius:10px;
-  width:min(880px,94vw); box-shadow:var(--shadow)}
+  width:clamp(880px,65vw,1200px); max-width:94vw; box-shadow:var(--shadow)}
 .modal .mhd{display:flex; align-items:center; justify-content:flex-start; gap:14px; padding:16px 20px; border-bottom:1px solid var(--line)}
 .modal .mhd h3{flex:0 1 auto; min-width:0; font-size:20px}
 .modal .mhd .mclose{margin-left:auto; flex-shrink:0}
@@ -2685,14 +2690,16 @@ function openWeaponPicker(mi){
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
        ${viewToggleHTML()}
-       <div class="filter-row"><span class="filter-lbl">ПРОИЗВОДИТЕЛЬ:</span>
-         <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div></div>
-       ${allow.length>1?`<div class="filter-row"><span class="filter-lbl">КРЕПЛЕНИЕ:</span>
-         <div class="filters">${["ALL",...allow].map(sz=>`<button class="chip ${wpSizeFilter===sz?'on':''}" data-wpsz="${sz}">${sz==="ALL"?"ВСЕ":tr(sz)}</button>`).join("")}</div></div>`:""}
-       <div class="filter-row"><span class="filter-lbl">ТИП:</span>
-         <div class="filters">${["ALL",...typeOptions].map(t=>`<button class="chip ${wpTypeFilter===t?'on':''}" data-wpty="${t}">${t==="ALL"?"ВСЕ":tr(t)}</button>`).join("")}</div></div>
-       <div class="filter-row"><span class="filter-lbl">УРОН:</span>
-         <div class="filters">${["ALL",...dmgOptions].map(d=>`<button class="chip ${wpDmgFilter===d?'on':''}" data-wpdm="${d}">${d==="ALL"?"ВСЕ":tr(d)}</button>`).join("")}</div></div>
+       <div class="picker-sticky-filters">
+         <div class="filter-row"><span class="filter-lbl">ПРОИЗВОДИТЕЛЬ:</span>
+           <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div></div>
+         ${allow.length>1?`<div class="filter-row"><span class="filter-lbl">КРЕПЛЕНИЕ:</span>
+           <div class="filters">${["ALL",...allow].map(sz=>`<button class="chip ${wpSizeFilter===sz?'on':''}" data-wpsz="${sz}">${sz==="ALL"?"ВСЕ":tr(sz)}</button>`).join("")}</div></div>`:""}
+         <div class="filter-row"><span class="filter-lbl">ТИП:</span>
+           <div class="filters">${["ALL",...typeOptions].map(t=>`<button class="chip ${wpTypeFilter===t?'on':''}" data-wpty="${t}">${t==="ALL"?"ВСЕ":tr(t)}</button>`).join("")}</div></div>
+         <div class="filter-row"><span class="filter-lbl">УРОН:</span>
+           <div class="filters">${["ALL",...dmgOptions].map(d=>`<button class="chip ${wpDmgFilter===d?'on':''}" data-wpdm="${d}">${d==="ALL"?"ВСЕ":tr(d)}</button>`).join("")}</div></div>
+       </div>
        <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
        <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
     $("#wp-list").innerHTML=list.map(w=>{
