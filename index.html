@@ -295,6 +295,9 @@
 }
 </style>
 <style>/* ============ LANCER // REGISTRY ============ */
+/* z-index scale in use across this file (documented, not enforced):
+   60 .topbar · 120 .modal · 200 #boot · 1000 .stattip-box (must clear the
+   modal, since tooltips inside modal content need to sit above it). */
 :root{
   --bg:#080b11;
   --bg-grid:#0b0f17;
@@ -573,7 +576,7 @@ button{font-family:inherit; cursor:pointer}
 
 /* stepper for skills/talents/hase */
 .stepper{display:flex; align-items:center; gap:8px}
-.stepbtn{width:34px; height:34px; border-radius:6px; background:var(--panel-2);
+.stepbtn{width:44px; height:44px; border-radius:6px; background:var(--panel-2);
   border:1px solid var(--line); color:var(--ink); font-size:18px; line-height:1; display:grid; place-items:center; transition:.12s}
 .stepbtn:hover{border-color:var(--accent); color:var(--accent)}
 .stepbtn:disabled{opacity:.32; cursor:not-allowed; border-color:var(--line); color:var(--faint)}
@@ -646,7 +649,7 @@ button{font-family:inherit; cursor:pointer}
 .mt-10{margin-top:10px} .mt-12{margin-top:12px} .mt-14{margin-top:14px} .mt-16{margin-top:16px}
 .mb-14{margin-bottom:14px}
 .xbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--mute);
-  width:32px;height:32px; border-radius:6px; font-size:15px; transition:.12s}
+  width:44px;height:44px; border-radius:6px; font-size:15px; display:grid; place-items:center; transition:.12s}
 .xbtn:hover{border-color:var(--red); color:var(--red)}
 .xbtn.expand:hover{border-color:var(--accent); color:var(--accent)}
 
