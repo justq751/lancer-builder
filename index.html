@@ -1627,8 +1627,8 @@ function renderPilotGearLoadout(){
             <div class="ei clickable" data-viewpg="${key}"><div class="en">${esc(item.name)}</div>
               <div class="em">${tr(item.type)}${item.damage||item.range?` · ${dmgStr(item)} · ${rngStr(item)}`:""}</div></div>
             <div style="display:flex;align-items:center;gap:8px">
-              <button class="xbtn expand" data-exppg="${key}" title="Показать подробности">${open?'⌄':'›'}</button>
-              <button class="xbtn" data-rmpg="${key}">✕</button>
+              <button class="xbtn expand" data-exppg="${key}" title="Показать подробности" aria-label="${open?'Свернуть':'Развернуть'} подробности">${open?'⌄':'›'}</button>
+              <button class="xbtn" data-rmpg="${key}" aria-label="Убрать снаряжение">✕</button>
             </div>
           </div>
           ${open?`<div class="expand-detail">${pilotGearCardBody(item, key)}</div>`:""}
@@ -1698,8 +1698,8 @@ function renderSkills(){
         <button class="stepbtn" data-sk="${s.id}" data-d="-1" ${v<=0?"disabled":""}>−</button>
         <span class="stepval">${v?"+"+v:"—"}</span>
         <button class="stepbtn" data-sk="${s.id}" data-d="1" ${canInc?"":"disabled"}>+</button>
-        ${custom?`<button class="xbtn" data-editsk="${s.id}" title="Редактировать" style="margin-left:8px">✎</button>
-                  <button class="xbtn" data-rmsk="${s.id}" title="Удалить">✕</button>`:""}
+        ${custom?`<button class="xbtn" data-editsk="${s.id}" title="Редактировать" aria-label="Редактировать навык" style="margin-left:8px">✎</button>
+                  <button class="xbtn" data-rmsk="${s.id}" title="Удалить" aria-label="Удалить навык">✕</button>`:""}
       </div></div>`;
   }).join("");
   $$("#skill-list .stepbtn").forEach(b=>b.onclick=()=>{
@@ -2065,7 +2065,7 @@ function renderFrame(){
         <div class="head"><span class="lbl"><b>//</b> ВЫБРАННОЕ ШАССИ — ${esc(dispName(d.frame))}</span>
           <span style="display:flex; align-items:center; gap:10px">
             <span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(d.frame.source)}</span>
-            <button class="xbtn expand" id="toggle-frame-summary" title="${frameSummaryOpen?'Свернуть':'Развернуть'}">${frameSummaryOpen?'⌄':'›'}</button>
+            <button class="xbtn expand" id="toggle-frame-summary" title="${frameSummaryOpen?'Свернуть':'Развернуть'}" aria-label="${frameSummaryOpen?'Свернуть':'Развернуть'} сводку шасси">${frameSummaryOpen?'⌄':'›'}</button>
           </span></div>
         ${frameSummaryOpen?`<div class="body">${frameDetailBodyHTML(d.frame, d.mech, frameImageURL(d.frame))}</div>`:""}
       </div>` : "")
@@ -2176,8 +2176,8 @@ function renderLoadout(){
         <div class="ei clickable" data-vieww="${key}"><div class="en">${esc(w.name)}</div>
           <div class="em">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(ew)} · ${rngStr(ew)}${w.sp?` · ${w.sp} SP`:""}</div></div>
         <div style="display:flex;align-items:center;gap:8px">
-          <button class="xbtn expand" data-expw="${key}" title="Показать подробности">${open?'⌄':'›'}</button>
-          <button class="xbtn" data-rmw="${key}">✕</button>
+          <button class="xbtn expand" data-expw="${key}" title="Показать подробности" aria-label="${open?'Свернуть':'Развернуть'} подробности">${open?'⌄':'›'}</button>
+          <button class="xbtn" data-rmw="${key}" aria-label="Убрать оружие">✕</button>
         </div>
       </div>`;
       const expand=open?`<div class="expand-detail">${weaponCardBody(ew, dk, eqWeaponProfIdx.get(key)||0)}</div>`:"";
@@ -2192,8 +2192,8 @@ function renderLoadout(){
           <div class="ei clickable" data-viewmod="${key}"><div class="en">🔧 ${esc(mod.name)}</div>
             <div class="em">${mlk?`🔒 ${esc(licenseDisplayName(mod.license))} ${mod.license_level}`:`${mod.sp||0} SP`}</div></div>
           <div style="display:flex;align-items:center;gap:8px">
-            <button class="xbtn expand" data-expmod="${key}" title="Показать подробности">${modOpen?'⌄':'›'}</button>
-            <button class="xbtn" data-rmmod="${key}">✕</button>
+            <button class="xbtn expand" data-expmod="${key}" title="Показать подробности" aria-label="${modOpen?'Свернуть':'Развернуть'} подробности">${modOpen?'⌄':'›'}</button>
+            <button class="xbtn" data-rmmod="${key}" aria-label="Убрать мод">✕</button>
           </div>
         </div>${modOpen?`<div class="expand-detail">${modCardBody(mod, dk+"-mod")}</div>`:""}`;
       } else if(compatMods.length){
@@ -2241,8 +2241,8 @@ function renderLoadout(){
       <div class="info clickable" data-views="${si}"><div class="nm">${esc(sy.name)} <span class="tag sp">${sy.sp} SP</span></div>
         <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+esc(truncateWords(stripHTML(sy.effect),140)):""}</div></div>
       <div style="display:flex;align-items:center;gap:8px">
-        <button class="xbtn expand" data-exps="${si}" title="Показать подробности">${open?'⌄':'›'}</button>
-        <button class="xbtn" data-rms="${si}">✕</button>
+        <button class="xbtn expand" data-exps="${si}" title="Показать подробности" aria-label="${open?'Свернуть':'Развернуть'} подробности">${open?'⌄':'›'}</button>
+        <button class="xbtn" data-rms="${si}" aria-label="Убрать систему">✕</button>
       </div>
     </div>`;
     const expand=open?`<div class="expand-detail">${systemCardBody(sy, String(si))}</div>`:"";
@@ -3128,7 +3128,7 @@ function renderCore(){
       <div class="equipped">
         <div class="ei clickable" data-viewcore="${ci}"><div class="en">${esc(c.name)}</div>
           <div class="em">${esc(c.source)}</div></div>
-        <button class="xbtn" data-rmcore="${ci}">✕</button>
+        <button class="xbtn" data-rmcore="${ci}" aria-label="Убрать CORE-бонус">✕</button>
       </div>
       <div style="margin-top:10px">${coreCardBody(c)}</div>
     </div>`;
