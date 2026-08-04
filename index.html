@@ -857,6 +857,14 @@ body.sheetmode .shell{display:none}
   letter-spacing:.06em; color:var(--faint)}
 .statstrip .cell .v{font-family:"Chakra Petch",sans-serif; font-size:27px; line-height:1.1; color:var(--ink)}
 .statstrip .cell.up .v{color:var(--accent)}
+/* Pilot's own four numbers, in the same component as the mech's — the
+   dossier states the pilot, then the machine, in one visual grammar. */
+.statstrip.pilot{grid-template-columns:repeat(4,1fr)}
+@media(max-width:560px){.statstrip.pilot{grid-template-columns:repeat(2,1fr)}}
+.dossier-line{display:flex; gap:10px; align-items:baseline; margin-top:10px;
+  font-size:16.5px; line-height:1.5; color:var(--ink)}
+.dossier-line .k{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.1em;
+  color:var(--faint); flex-shrink:0}
 
 /* Clearance stamp — the registry's verdict on this build. The product already
    knows every violation; this is where it finally says so. */
@@ -910,6 +918,10 @@ body.sheetmode .shell{display:none}
   .shell{grid-template-columns:1fr; max-width:none; padding:0}
   .section{display:none!important}
   #print-sheet{display:block!important}
+  /* The editor's legacy print block is for the editor. In sheet mode the deck
+     already carries every fact it holds, in the product's own typography, so
+     printing both put an Arial summary underneath a finished sheet. */
+  body.sheetmode #print-sheet{display:none!important}
 
   /* A4 layout for the sheet: its own denser composition, not the screen
      shrunk. Two columns of cards with cut lines; nothing splits across a
@@ -921,6 +933,12 @@ body.sheetmode .shell{display:none}
   .dossier{position:static; border-bottom:1.5pt solid var(--print-ink); padding-bottom:6pt; margin-bottom:8pt}
   .dossier-id .cs{font-size:20pt}
   .statstrip{grid-template-columns:repeat(6,1fr); gap:4pt; margin-top:6pt}
+  /* On paper both strips share one column rhythm, so the rules line up down
+     the page and the header reads as a form rather than two unrelated rows.
+     The pilot has four fields, so the last two columns stay blank. */
+  .statstrip.pilot{grid-template-columns:repeat(6,1fr)}
+  .dossier-line{margin-top:5pt; font-size:9pt; gap:6pt}
+  .dossier-line .k{font-size:6.5pt}
   .statstrip .cell{border:.5pt solid var(--print-rule); border-radius:0; padding:3pt 2pt}
   .statstrip .cell .k{font-size:6.5pt}
   .statstrip .cell .v{font-size:13pt}
@@ -4116,6 +4134,20 @@ function renderSheet(){
   const viol=buildViolations();
   const bg=p.background&&M.bg[p.background];
 
+  const skillLines=Object.entries(state.skills).map(([id,v])=>{
+    const s=skillInfo(id); return s?`${esc(s.name)} +${v}`:null;
+  }).filter(Boolean);
+
+  // Pilot data used to arrive as a separate Arial block after the deck, which
+  // on paper read as a different document stapled to the sheet. It belongs
+  // here: the dossier states who the pilot is, then what they are piloting.
+  // Mech-skills print even at zero — on a paper sheet those are fields you
+  // track between missions, not facts you only mention when non-empty.
+  const pilotStrip=`<div class="statstrip pilot">
+    ${HASE.map(h=>`<div class="cell ${state.hase[h.k]?"up":""}">
+      <span class="k">${esc(h.ru)}</span><span class="v">${state.hase[h.k]}</span></div>`).join("")}
+  </div>`;
+
   const head=`
     ${sheetSource==="shared"?`<div class="foreign">// ЧУЖАЯ СБОРКА — открыта по ссылке и не сохраняется в этом браузере</div>`:""}
     <div class="dossier">
@@ -4124,6 +4156,8 @@ function renderSheet(){
         <span class="nm">${esc(p.name||"имя не задано")}${bg?" · "+esc(bg.name):""}</span>
         <span class="ll">LL${d.ll} · GRIT +${d.grit}</span>
       </h1>
+      ${pilotStrip}
+      ${skillLines.length?`<div class="dossier-line"><span class="k">ТРИГГЕРЫ</span>${skillLines.join(" · ")}</div>`:""}
       ${d.frame?`<div class="dossier-frame">ШАССИ <b>${esc(dispName(d.frame))}</b> · ${esc(SRC_NAME[d.frame.source]||d.frame.source)} · ${d.frame.mechtype.map(tr).join(" / ")}</div>
         ${statStripHTML(d)}`:`<div class="dossier-frame">ШАССИ НЕ ВЫБРАНО</div>`}
       <div class="stamp ${viol.length?"dev":""}">
@@ -4139,25 +4173,13 @@ function renderSheet(){
     if(w) weaponCards.push(weaponCardHTML(w, mt.type, s.mod?M.mod[s.mod]:null));
   }));
 
-  const skillLines=Object.entries(state.skills).map(([id,v])=>{
-    const s=skillInfo(id); return s?`${esc(s.name)} +${v}`:null;
-  }).filter(Boolean);
-  const haseLines=HASE.filter(h=>state.hase[h.k]).map(h=>`${h.ru} ${state.hase[h.k]} — ${h.eff}`);
-  const pilotCard=(skillLines.length||haseLines.length)?`<article class="dcard">
-    <div class="src" style="background:var(--accent)"></div>
-    <div class="hd"><span class="nm">Пилот и мех-навыки</span><span class="slot">СВОДКА</span></div>
-    ${haseLines.length?`<div class="eff"><b>МЕХ-НАВЫКИ</b>${haseLines.map(esc).join("<br>")}</div>`:""}
-    ${skillLines.length?`<div class="eff"><b>ТРИГГЕРЫ НАВЫКОВ</b>${skillLines.join(" · ")}</div>`:""}
-  </article>`:"";
-
-  const body = (!d.frame && !skillLines.length && !haseLines.length && !state.gear.armor)
+  const body = (!d.frame && !skillLines.length && !HASE.some(h=>state.hase[h.k]) && !state.gear.armor)
     ? `<div class="sheet-empty">// СБОРКА ПУСТА<br>вернитесь в редактор и начните с уровня лицензии</div>`
     : deckSection("ВООРУЖЕНИЕ", weaponCards)
       + deckSection("СИСТЕМЫ", (state.mech.systems||[]).map(id=>M.system[id]?systemCardHTML(M.system[id]):null))
       + deckSection("CORE", [d.frame?coreSystemCardHTML(d.frame):null, ...state.cores.map(coreBonusCardHTML)])
       + deckSection("ТАЛАНТЫ", Object.entries(state.talents).map(([id,v])=>talentCardHTML(id,v)))
-      + deckSection("СНАРЯЖЕНИЕ ПИЛОТА", [state.gear.armor, ...state.gear.weapons, ...state.gear.gear].map(gearCardHTML))
-      + deckSection("ПИЛОТ", [pilotCard]);
+      + deckSection("СНАРЯЖЕНИЕ ПИЛОТА", [state.gear.armor, ...state.gear.weapons, ...state.gear.gear].map(gearCardHTML));
 
   $("#sheet").innerHTML = head + body;
 }
