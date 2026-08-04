@@ -368,6 +368,21 @@ button{font-family:inherit; cursor:pointer}
   padding:9px 14px; border-radius:5px; display:inline-flex; gap:7px; align-items:center; transition:.15s}
 .toolbtn:hover{border-color:var(--accent); color:var(--accent); box-shadow:0 0 0 1px var(--accent-glow)}
 .toolbtn.warn:hover{border-color:var(--amber); color:var(--amber); box-shadow:none}
+/* Save-state readout — the product's only ambient proof that work is kept.
+   Sits left of the tool buttons as a plain mono label, never as a badge; it
+   goes amber only when a write actually failed (private mode, full quota),
+   because that is the one case where the user must reach for СОХРАНИТЬ. */
+.savestate{font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.06em;
+  color:var(--mute); white-space:nowrap}
+.savestate .pfx{font-style:normal}
+.savestate.err{color:var(--amber)}
+/* The header already wraps to several rows on a phone; the word СОХРАНЕНО is
+   what pushes it over. The timestamp alone still answers "is my work kept?",
+   so only the label goes. The failure state keeps its full wording — that one
+   has to be readable at a glance. */
+@media(max-width:560px){
+  .savestate:not(.err) .pfx{display:none}
+}
 
 /* ---- layout ---- */
 .shell{display:grid; grid-template-columns:344px 1fr; gap:clamp(16px,2.4vw,32px);
@@ -702,6 +717,26 @@ button{font-family:inherit; cursor:pointer}
 .modal .mhd h3{flex:0 1 auto; min-width:0; font-size:20px}
 .modal .mhd .mclose{margin-left:auto; flex-shrink:0}
 .modal .mbd{padding:18px 20px; max-height:70vh; overflow:auto; overflow-anchor:none}
+/* Narrow panel for confirmations and notices — the wide picker width would
+   make a four-line question look like an empty page. */
+.modal .panel.narrow{width:clamp(320px,46vw,620px)}
+
+/* Confirmation dialog. The loss list is the whole point of this component:
+   a destructive action must name what disappears before it happens, which is
+   exactly what the native confirm() it replaces could never do. */
+.dialog p{margin:0 0 12px; font-size:16.5px; line-height:1.55}
+.dialog p:last-of-type{margin-bottom:0}
+.dialog .losslist{list-style:none; margin:0; padding:12px 14px; background:var(--bg-grid);
+  border:1px solid var(--line); border-radius:8px; display:flex; flex-direction:column; gap:6px}
+.dialog .losslist li{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--mute);
+  letter-spacing:.03em; display:flex; gap:8px}
+.dialog .losslist li::before{content:"—"; color:var(--faint); flex-shrink:0}
+.dialog .losslist li.keep{color:var(--accent)}
+.dialog .losslist li.keep::before{content:"↳"; color:var(--accent)}
+.dialog .losslist li.drop::before{content:"✕"; color:var(--amber)}
+.dialog .losslist.scroll{max-height:34vh; overflow:auto}
+.dialog-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px}
+.dialog-actions .ghostbtn{flex:1 1 200px; text-align:center}
 
 /* summary sheet */
 .sheet{display:grid; grid-template-columns:1fr 1fr; gap:16px}
@@ -752,6 +787,7 @@ details.note .body ul{margin:5px 0; padding-left:18px}
     <span class="ver mono">COMP/CON v1</span>
   </div>
   <div class="spacer"></div>
+  <span class="savestate" id="savestate" aria-live="polite"></span>
   <button class="toolbtn" id="t-lang" title="Переключить язык контента / Toggle content language">RU / EN</button>
   <button class="toolbtn" id="t-import">⬆ ЗАГРУЗИТЬ</button>
   <button class="toolbtn" id="t-export">⬇ СОХРАНИТЬ</button>
@@ -1283,18 +1319,210 @@ const HASE = [
 ];
 
 /* ---------------- STATE ---------------- */
-const state = {
-  pilot:{ name:"", callsign:"", background:"", ll:0 },
-  skills:{},        // id -> 0/2/4/6
-  customSkills:[],  // [{id,name,description}] — user-created skill triggers, ranked the same as state.skills
-  talents:{},       // id -> 1..3
-  hase:{hull:0,agility:0,systems:0,engineering:0},
-  licenses:{},      // frameName -> 0..3
-  gear:{ armor:null, weapons:[], gear:[] },
-  cores:[],         // core bonus ids
-  mech:{ frameId:null, mounts:[], systems:[] },
-};
+function defaultState(){
+  return {
+    pilot:{ name:"", callsign:"", background:"", ll:0 },
+    skills:{},        // id -> 0/2/4/6
+    customSkills:[],  // [{id,name,description}] — user-created skill triggers, ranked the same as state.skills
+    talents:{},       // id -> 1..3
+    hase:{hull:0,agility:0,systems:0,engineering:0},
+    licenses:{},      // frameName -> 0..3
+    gear:{ armor:null, weapons:[], gear:[] },
+    cores:[],         // core bonus ids
+    mech:{ frameId:null, mounts:[], systems:[] },
+  };
+}
+const state = defaultState();
 let activeTab = "pilot";
+
+/* ---------------- PERSISTENCE ----------------
+   There is no server and no account: the tab IS the storage. Every mutation
+   in this file ends in render(), so render() is where the build is written —
+   debounced, because a held-down stepper would otherwise write on every
+   frame. The file export stays the way to move a build between devices. */
+const BUILD_KEY = "lancer_build";
+const BUILD_V = 1;
+let saveTimer = null, lastSaveAt = null, saveFailed = false;
+
+function buildIsEmpty(){
+  const p=state.pilot;
+  return !p.name && !p.callsign && !p.background && !p.ll
+    && !Object.keys(state.skills).length && !state.customSkills.length
+    && !Object.keys(state.talents).length && !Object.keys(state.licenses).length
+    && !HASE.some(h=>state.hase[h.k]) && !state.cores.length
+    && !state.gear.armor && !state.gear.weapons.length && !state.gear.gear.length
+    && !state.mech.frameId;
+}
+function saveBuildNow(){
+  clearTimeout(saveTimer); saveTimer=null;
+  try{
+    // A first visit that touched nothing has nothing worth claiming to have
+    // saved; once anything is stored, an emptied build is a real change.
+    if(buildIsEmpty() && !localStorage.getItem(BUILD_KEY)) return;
+    localStorage.setItem(BUILD_KEY, JSON.stringify(
+      {_app:"lancer-registry", v:BUILD_V, savedAt:new Date().toISOString(), state}));
+    lastSaveAt=new Date(); saveFailed=false;
+  }catch(e){
+    // Private browsing and a full quota both land here. Losing the autosave is
+    // survivable; losing it silently is not — the header goes amber.
+    saveFailed=true;
+    console.error("[Lancer Registry] не удалось сохранить сборку:", e);
+  }
+  renderSaveState();
+}
+function scheduleSave(){ clearTimeout(saveTimer); saveTimer=setTimeout(saveBuildNow, 400); }
+function renderSaveState(){
+  const el=document.getElementById("savestate"); if(!el) return;
+  if(saveFailed){
+    el.className="savestate err";
+    el.textContent="⚠ НЕ СОХРАНЯЕТСЯ";
+    el.title="Браузер не даёт сохранить сборку (приватный режим или переполнено хранилище). Выгрузите её кнопкой СОХРАНИТЬ.";
+    return;
+  }
+  el.className="savestate";
+  if(!lastSaveAt){ el.textContent=""; el.removeAttribute("title"); return; }
+  const hh=String(lastSaveAt.getHours()).padStart(2,"0");
+  const mm=String(lastSaveAt.getMinutes()).padStart(2,"0");
+  el.innerHTML=`<i class="pfx">// СОХРАНЕНО </i>${hh}:${mm}`;
+  el.title="Сборка автоматически сохраняется в этом браузере. Кнопка СОХРАНИТЬ выгружает её файлом.";
+}
+function loadSavedBuild(){
+  let raw=null;
+  try{ raw=localStorage.getItem(BUILD_KEY); }catch(e){ return null; }
+  if(!raw) return null;
+  try{
+    const d=JSON.parse(raw);
+    return (d && typeof d==="object" && d.state) ? d : null;
+  }catch(e){
+    console.warn("[Lancer Registry] сохранённая сборка повреждена, игнорирую");
+    return null;
+  }
+}
+
+/* Copies an untrusted build object — restored autosave or an imported file —
+   into `state`, keeping only what the currently loaded dataset can render.
+   Anything pointing at an id we don't have (a pack that isn't loaded, someone
+   else's homebrew, a renamed frame) is dropped and named, instead of crashing
+   the renderer on `M.weapon[id].name` several screens later.
+   Returns the list of dropped things, in the product's own words. */
+function applyBuildState(raw){
+  const dropped=[];
+  const next=defaultState();
+  const s=(raw && typeof raw==="object") ? raw : {};
+  const int=(v,lo,hi)=>{ const n=Math.round(Number(v)); return Number.isFinite(n)?Math.min(hi,Math.max(lo,n)):lo; };
+  const str=v=>typeof v==="string"?v:"";
+  const obj=v=>(v && typeof v==="object" && !Array.isArray(v))?v:{};
+  const arr=v=>Array.isArray(v)?v:[];
+
+  const p=obj(s.pilot);
+  next.pilot.name=str(p.name).slice(0,120);
+  next.pilot.callsign=str(p.callsign).slice(0,120);
+  next.pilot.ll=int(p.ll,0,12);
+  if(p.background && !M.bg[p.background]) dropped.push(`происхождение «${p.background}»`);
+  next.pilot.background=M.bg[p.background]?p.background:"";
+
+  // Custom skills are user-authored, so they validate by shape, not by id —
+  // and they must land before the skills map, which accepts their ids.
+  next.customSkills=arr(s.customSkills)
+    .filter(c=>c && typeof c==="object" && typeof c.id==="string")
+    .map(c=>({id:c.id, name:str(c.name).slice(0,160), description:str(c.description).slice(0,4000)}));
+  const customIds=new Set(next.customSkills.map(c=>c.id));
+
+  Object.entries(obj(s.skills)).forEach(([id,v])=>{
+    if(M.skill[id]||customIds.has(id)) next.skills[id]=int(v,0,6);
+    else dropped.push(`навык «${id}»`);
+  });
+  Object.entries(obj(s.talents)).forEach(([id,v])=>{
+    if(M.talent[id]) next.talents[id]=int(v,1,3);
+    else dropped.push(`талант «${id}»`);
+  });
+  const h=obj(s.hase);
+  HASE.forEach(x=>{ next.hase[x.k]=int(h[x.k],0,6); });
+
+  // License keys are frame names, not ids; accept both the own name and the
+  // base-frame name, since migrateLicenseKeys() folds one into the other.
+  const licKeys=new Set();
+  (L.frames||[]).forEach(f=>{ if(f.name) licKeys.add(f.name); if(f.variant) licKeys.add(f.variant); });
+  Object.entries(obj(s.licenses)).forEach(([k,v])=>{
+    if(licKeys.has(k)) next.licenses[k]=int(v,0,3);
+    else dropped.push(`лицензия «${k}»`);
+  });
+
+  const g=obj(s.gear);
+  if(g.armor && !M.gear[g.armor]) dropped.push(`броня «${g.armor}»`);
+  next.gear.armor=M.gear[g.armor]?g.armor:null;
+  const keepGear=list=>arr(list).filter(id=>{
+    if(M.gear[id]) return true;
+    dropped.push(`снаряжение «${id}»`); return false;
+  });
+  next.gear.weapons=keepGear(g.weapons);
+  next.gear.gear=keepGear(g.gear);
+
+  next.cores=arr(s.cores).filter(id=>{
+    if(M.core[id]) return true;
+    dropped.push(`CORE-бонус «${id}»`); return false;
+  });
+
+  const m=obj(s.mech);
+  if(m.frameId && !M.frame[m.frameId]) dropped.push(`шасси «${m.frameId}»`);
+  next.mech.frameId=M.frame[m.frameId]?m.frameId:null;
+  next.mech.systems=arr(m.systems).filter(id=>{
+    if(M.system[id]) return true;
+    dropped.push(`система «${id}»`); return false;
+  });
+  if(next.mech.frameId){
+    next.mech.mounts=arr(m.mounts).map(mt=>({
+      type: typeof (mt&&mt.type)==="string" ? mt.type : "Main",
+      items: arr(mt&&mt.items).map(slot=>{
+        const id = typeof slot==="string" ? slot : (slot && slot.id);
+        if(!M.weapon[id]){ if(id) dropped.push(`оружие «${id}»`); return null; }
+        const mod = slot && slot.mod;
+        if(mod && !M.mod[mod]){ dropped.push(`мод «${mod}»`); return {id, mod:null}; }
+        return {id, mod: mod||null};
+      }).filter(Boolean),
+    }));
+    if(!next.mech.mounts.length) next.mech.mounts=buildMounts(M.frame[next.mech.frameId]);
+  } else if(m.mounts && arr(m.mounts).length){
+    // Frame is gone, so its mounts have nothing to hang on.
+    arr(m.mounts).forEach(mt=>arr(mt&&mt.items).forEach(slot=>{
+      const id = typeof slot==="string" ? slot : (slot && slot.id);
+      if(id && M.weapon[id]) dropped.push(`оружие «${M.weapon[id].name}» (нет шасси)`);
+    }));
+  }
+
+  Object.assign(state, next);
+  migrateLicenseKeys();
+  migrateWeaponSlots();
+  return dropped;
+}
+
+/* One line per non-empty part of the current build, for the "this is what
+   disappears" list in every destructive dialog. */
+function buildLossSummary(){
+  const out=[];
+  const n=(x,one,few,many)=>{ const m=x%100, k=x%10;
+    if(m>=11&&m<=14) return `${x} ${many}`;
+    if(k===1) return `${x} ${one}`;
+    if(k>=2&&k<=4) return `${x} ${few}`;
+    return `${x} ${many}`; };
+  const p=state.pilot;
+  if(p.callsign||p.name) out.push(`пилот ${p.callsign||p.name}`);
+  if(p.ll) out.push(`лицензионный уровень LL${p.ll}`);
+  const sk=Object.keys(state.skills).length; if(sk) out.push(n(sk,"навык","навыка","навыков"));
+  const tl=Object.keys(state.talents).length; if(tl) out.push(n(tl,"талант","таланта","талантов"));
+  const hs=HASE.filter(h=>state.hase[h.k]).length; if(hs) out.push(n(hs,"мех-навык","мех-навыка","мех-навыков"));
+  const lc=Object.keys(state.licenses).filter(k=>state.licenses[k]).length;
+  if(lc) out.push(n(lc,"лицензия","лицензии","лицензий"));
+  const gr=(state.gear.armor?1:0)+state.gear.weapons.length+state.gear.gear.length;
+  if(gr) out.push(n(gr,"предмет снаряжения","предмета снаряжения","предметов снаряжения"));
+  if(state.cores.length) out.push(n(state.cores.length,"CORE-бонус","CORE-бонуса","CORE-бонусов"));
+  const fr=state.mech.frameId&&M.frame[state.mech.frameId];
+  if(fr) out.push(`шасси ${dispName(fr)}`);
+  const wp=(state.mech.mounts||[]).reduce((a,mt)=>a+(mt.items||[]).length,0);
+  if(wp) out.push(n(wp,"единица оружия","единицы оружия","единиц оружия"));
+  if(state.mech.systems.length) out.push(n(state.mech.systems.length,"система","системы","систем"));
+  return out;
+}
 
 /* ---------------- DERIVED ---------------- */
 /* Systems whose effect grants a flat, always-on bonus to a mech stat
@@ -1485,8 +1713,62 @@ const FRAME_INTEGRATED_WEAPON = {
   "mf_lycan": "mw_integrated_shock_claws",
 };
 
+/* ---------------- FRAME SWAP ----------------
+   Choosing a frame rebuilds its mount layout, and that is where an existing
+   loadout used to vanish without a word. Weapons that still fit the new
+   frame's mounts are carried across; the rest are named before anything is
+   destroyed, so the choice is made with the cost visible. */
+function equippedSlots(){
+  return (state.mech.mounts||[]).flatMap(mt=>mt.items||[]).filter(s=>s&&M.weapon[s.id]);
+}
+function planFrameSwap(newFrame){
+  const mounts=buildMounts(newFrame);
+  const integrated=new Set(mounts.filter(m=>m.type==="Integrated").flatMap(m=>(m.items||[]).map(s=>s.id)));
+  const carried=[], leftBehind=[];
+  equippedSlots().forEach(slot=>{
+    const w=M.weapon[slot.id];
+    // The new frame's own integrated weapon is already in place.
+    if(integrated.has(slot.id)) return;
+    const target=mounts.find(mt=>mt.type!=="Integrated"
+      && allowedNext(mt.type, mt.items.map(s=>M.weapon[s.id]&&M.weapon[s.id].mount)).includes(w.mount));
+    if(target){ target.items.push({id:slot.id, mod:slot.mod||null}); carried.push({w, mount:target.type}); }
+    else leftBehind.push(w);
+  });
+  return {mounts, carried, leftBehind};
+}
+function pickFrame(id){
+  const fr=M.frame[id];
+  if(!fr || state.mech.frameId===id) return;
+  const commit=mounts=>{ state.mech.frameId=id; state.mech.mounts=mounts; render(); };
+  if(!equippedSlots().length){ commit(buildMounts(fr)); return; }
+
+  const plan=planFrameSwap(fr);
+  const losses=[
+    ...plan.carried.map(c=>({kind:"keep", text:`${c.w.name} → ${tr(c.mount)}`})),
+    ...plan.leftBehind.map(w=>({kind:"drop", text:`${w.name} — нет подходящего крепления`})),
+  ];
+  const actions=[];
+  if(plan.carried.length) actions.push({
+    label:`↳ Перенести совместимое (${plan.carried.length})`,
+    run:()=>commit(plan.mounts),
+  });
+  actions.push({label:"✕ Снять всё", danger:true, run:()=>commit(buildMounts(fr))});
+
+  const tail = !plan.leftBehind.length ? "Всё вооружение переносится:"
+             : !plan.carried.length    ? "Перенести не получится ничего:"
+             :                           "Переносится не всё:";
+  confirmDialog({
+    title:"Смена шасси",
+    lead:`У <b>${esc(dispName(fr))}</b> другой набор креплений, поэтому вооружение придётся переставить. ${tail}`,
+    losses,
+    actions,
+  });
+}
+
 /* ---------------- RENDER ROOT ---------------- */
-function render(){ renderHUD(); renderTab(); renderTabBar(); }
+/* Every state mutation in this file ends here, which makes render() the one
+   honest place to persist from — no mutation site can forget to. */
+function render(){ renderHUD(); renderTab(); renderTabBar(); scheduleSave(); }
 
 function setState(fn){ fn(); render(); }
 
@@ -2143,9 +2425,7 @@ function renderFrame(){
   $$("#frame-list .item").forEach(it=>it.onclick=()=>openFrame(it.dataset.frame));
   $$("#frame-list [data-pickframe]").forEach(b=>b.onclick=e=>{
     e.stopPropagation();
-    const id=b.dataset.pickframe, fr=M.frame[id];
-    if(state.mech.frameId!==id){ state.mech.frameId=id; state.mech.mounts=buildMounts(fr); }
-    render();
+    pickFrame(b.dataset.pickframe);
   });
   const toggleBtn=$("#toggle-frame-summary");
   if(toggleBtn) toggleBtn.onclick=()=>{ frameSummaryOpen=!frameSummaryOpen; renderFrame(); };
@@ -2166,10 +2446,8 @@ function openFrame(id){
     const clr = lk ? "var(--red)" : "var(--accent)";
     btn.style.borderColor=clr; btn.style.color=clr;
     btn.textContent = lk ? "⚠ ВЫБРАТЬ НАСИЛЬНО" : "▶ ВЫБРАТЬ ЭТО ШАССИ";
-    btn.onclick=()=>{
-      state.mech.frameId=id; state.mech.mounts=buildMounts(f);
-      closeModal(); render();
-    };
+    // Close first: pickFrame() may need the modal for its own confirmation.
+    btn.onclick=()=>{ closeModal(); pickFrame(id); };
   }
   mhd.insertBefore(btn, mhd.querySelector(".mclose"));
 }
@@ -3333,7 +3611,55 @@ function modal(title,html){
 }
 function closeModal(){
   $("#modal").classList.remove("show");
+  $("#modal .panel").classList.remove("narrow");
   if(modalReturnFocus){ modalReturnFocus.focus(); modalReturnFocus=null; }
+}
+
+/* ============ DIALOGS ============ */
+/* Confirmation for anything that destroys work. It replaces confirm(), which
+   could neither name what disappears nor look like it belongs to this
+   product. Actions run least-destructive first — that ordering is also the
+   focus order, since modal() focuses the first control. Escape, the close
+   button and Отмена all cancel. */
+function confirmDialog({title, lead, losses, actions}){
+  const list=(losses&&losses.length)
+    ? `<ul class="losslist ${losses.length>8?"scroll":""}">${losses.map(t=>
+        typeof t==="string" ? `<li>${esc(t)}</li>` : `<li class="${t.kind||""}">${esc(t.text)}</li>`
+      ).join("")}</ul>` : "";
+  modal(title, `<div class="dialog">
+    <p>${rich(lead)}</p>
+    ${list}
+    <div class="dialog-actions">
+      ${actions.map((a,i)=>`<button class="ghostbtn ${a.danger?"warn":""}" data-act="${i}">${esc(a.label)}</button>`).join("")}
+      <button class="ghostbtn" data-act="cancel">Отмена</button>
+    </div>
+  </div>`);
+  $("#modal .panel").classList.add("narrow");
+  $$("#modal [data-act]").forEach(b=>{
+    b.onclick=()=>{
+      const k=b.dataset.act;
+      closeModal();
+      if(k!=="cancel") actions[+k].run();
+    };
+  });
+}
+/* Non-destructive report: something already happened, the user only needs to
+   know what. Same shell as confirmDialog so the two read as one component. */
+function notice(title, lead, items){
+  const list=(items&&items.length)
+    ? `<ul class="losslist ${items.length>8?"scroll":""}">${items.map(t=>`<li class="drop">${esc(t)}</li>`).join("")}</ul>` : "";
+  modal(title, `<div class="dialog">
+    <p>${rich(lead)}</p>
+    ${list}
+    <div class="dialog-actions"><button class="ghostbtn" data-act="ok">Понятно</button></div>
+  </div>`);
+  $("#modal .panel").classList.add("narrow");
+  $("#modal [data-act=ok]").onclick=closeModal;
+}
+function reportDropped(title, dropped){
+  notice(title,
+    `Часть сборки не удалось восстановить: этих записей нет в загруженных данных. Обычно это значит, что сборка сделана с другим набором контент-паков или в другой версии реестра. Остальное на месте.`,
+    dropped);
 }
 document.addEventListener("keydown", e=>{
   if(!$("#modal").classList.contains("show")) return;
@@ -3360,16 +3686,34 @@ function exportBuild(){
 }
 function importBuild(file){
   const r=new FileReader();
-  r.onload=()=>{ try{
-    const d=JSON.parse(r.result);
-    if(!d.state) throw 0;
-    Object.assign(state,structuredClone(d.state));
-    migrateLicenseKeys();
-    migrateWeaponSlots();
-    // ensure mounts align with frame
-    if(state.mech.frameId && (!state.mech.mounts||!state.mech.mounts.length)) state.mech.mounts=buildMounts(M.frame[state.mech.frameId]);
-    render();
-  }catch(e){ alert("Не удалось загрузить файл сборки."); } };
+  r.onerror=()=>notice("Файл не прочитан",
+    "Браузер не смог прочитать этот файл. Проверьте, что он не удалён и не открыт в другой программе.");
+  r.onload=()=>{
+    let d=null;
+    try{ d=JSON.parse(r.result); }catch(e){ d=null; }
+    if(!d || typeof d!=="object" || !d.state){
+      notice("Файл не распознан",
+        "Это не файл сборки реестра. Загрузите файл, который выгружает кнопка <b>⬇ СОХРАНИТЬ</b> — обычно это что-то вроде <b>ПОЗЫВНОЙ_lancer.json</b>.");
+      return;
+    }
+    const apply=()=>{
+      const dropped=applyBuildState(d.state);
+      activeTab="pilot";
+      render();
+      if(dropped.length) reportDropped("Сборка загружена частично", dropped);
+    };
+    // Overwriting an empty build costs nothing; overwriting real work does.
+    if(buildIsEmpty()){ apply(); return; }
+    confirmDialog({
+      title:"Загрузка сборки",
+      lead:"Загруженная сборка заменит текущую. Текущая сборка не сохранится нигде, кроме уже выгруженных файлов.",
+      losses:buildLossSummary(),
+      actions:[
+        {label:"⬇ Сначала выгрузить текущую", run:exportBuild},
+        {label:"⬆ Заменить сборку", danger:true, run:apply},
+      ],
+    });
+  };
   r.readAsText(file);
 }
 
@@ -3393,23 +3737,42 @@ function buildPrintSheet(d){
 function wireTopbar(){
   $("#t-export").onclick=exportBuild;
   $("#t-import").onclick=()=>$("#import-file").click();
-  $("#import-file").onchange=e=>{ if(e.target.files[0]) importBuild(e.target.files[0]); e.target.value=""; };
-  $("#t-reset").onclick=()=>{ if(confirm("Сбросить всю сборку?")){
-    Object.assign(state,{pilot:{name:"",callsign:"",background:"",ll:0},skills:{},customSkills:[],talents:{},
-      hase:{hull:0,agility:0,systems:0,engineering:0},licenses:{},gear:{armor:null,weapons:[],gear:[]},
-      cores:[],mech:{frameId:null,mounts:[],systems:[]}}); activeTab="pilot"; render();
-  }};
+  $("#import-file").onchange=e=>{ const f=e.target.files[0]; e.target.value=""; if(f) importBuild(f); };
+  $("#t-reset").onclick=()=>{
+    if(buildIsEmpty()){
+      notice("Сбрасывать нечего", "Сборка и так пуста.");
+      return;
+    }
+    confirmDialog({
+      title:"Сброс сборки",
+      lead:"Сброс очистит всё и перезапишет автосохранение в этом браузере. Отменить это будет нельзя.",
+      losses:buildLossSummary(),
+      actions:[
+        {label:"⬇ Сначала выгрузить в файл", run:exportBuild},
+        {label:"⟲ Сбросить всё", danger:true, run:()=>{
+          Object.assign(state, defaultState());
+          activeTab="pilot";
+          render();
+        }},
+      ],
+    });
+  };
   $("#modal").onclick=e=>{ if(e.target.id==="modal"||e.target.classList.contains("mclose")) closeModal(); };
 }
 
 /* ============ BOOT ============ */
-function boot(){
+function boot(onDone){
   const lines=["ИНИЦИАЛИЗАЦИЯ COMP/CON…","ЗАГРУЗКА РЕЕСТРА UNION…",
     `СИНХРОНИЗАЦИЯ: ${L.frames.length} ШАССИ · ${L.weapons.length} ОРУЖИЯ · ${L.systems.length} СИСТЕМ`,
     "ДОСТУП РАЗРЕШЁН ▸"];
   const el=$("#boot .blog"); let i=0;
   const tick=()=>{ if(i<lines.length){ el.textContent=lines[i++]; setTimeout(tick,360); }
-    else setTimeout(()=>$("#boot").classList.add("done"),320); };
+    else setTimeout(()=>{
+      $("#boot").classList.add("done");
+      // The overlay sits at z-index 200, above the modal — anything that has
+      // to be said about the restored build waits until it has faded out.
+      if(onDone) setTimeout(onDone, 520);
+    },320); };
   tick();
 }
 
@@ -3439,10 +3802,23 @@ function wireLangSwitch(){
     return; // loadBaseData() already showed an error message in the DOM
   }
   rebuildIndexes();
+
+  // Restore before the first render, so the app never flashes an empty build
+  // over work that is actually still there.
+  let restoreReport=null;
+  const saved=loadSavedBuild();
+  if(saved){
+    const dropped=applyBuildState(saved.state);
+    lastSaveAt = saved.savedAt ? new Date(saved.savedAt) : null;
+    if(isNaN(lastSaveAt)) lastSaveAt=null;
+    if(dropped.length) restoreReport=dropped;
+  }
+
   wireTopbar();
   wireLangSwitch();
   render();
-  boot();
+  renderSaveState();
+  boot(()=>{ if(restoreReport) reportDropped("Сборка восстановлена частично", restoreReport); });
 })();
 </script>
 </body>
