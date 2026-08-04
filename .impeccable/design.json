@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-04T00:00:00.000Z",
+  "generatedAt": "2026-08-04T10:40:00.000Z",
   "title": "Design System: LANCER // РЕЕСТР",
   "extensions": {
     "colorMeta": {
@@ -120,7 +120,10 @@
       "src-ssc": { "role": "tertiary", "displayName": "SSC — латунный", "canonical": "#d8c160" },
       "src-horus": { "role": "tertiary", "displayName": "HORUS — фосфорный зелёный", "canonical": "#52b585" },
       "src-ha": { "role": "tertiary", "displayName": "HA — пурпурный", "canonical": "#9d6fdd" },
-      "src-exotic": { "role": "tertiary", "displayName": "Экзотика — маджента", "canonical": "#e8398a" }
+      "src-exotic": { "role": "tertiary", "displayName": "Экзотика — маджента", "canonical": "#e8398a" },
+      "print-paper": { "role": "neutral", "displayName": "Бумага", "canonical": "#fff" },
+      "print-ink": { "role": "neutral", "displayName": "Краска", "canonical": "#000" },
+      "print-rule": { "role": "neutral", "displayName": "Линейка", "canonical": "#666" }
     },
     "typographyMeta": {
       "display": { "displayName": "Display", "purpose": "Только два места: номер уровня лицензии в HUD (33px) и число в слайдере LL (37px)." },
@@ -165,7 +168,7 @@
       "refersTo": "toolbtn",
       "description": "Кнопка шапки: сохранить, загрузить, переключить язык. Никакой заливки акцентом — реакция только рамкой и цветом текста.",
       "html": "<button class=\"ds-toolbtn\">⬇ СОХРАНИТЬ</button> <button class=\"ds-toolbtn ds-toolbtn-warn\">⟲ СБРОС</button>",
-      "css": ".ds-toolbtn { background: #161d28; border: 1px solid #243040; color: #dbe4f0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 9px 14px; border-radius: 5px; display: inline-flex; gap: 7px; align-items: center; cursor: pointer; transition: .15s; } .ds-toolbtn:hover { border-color: #37e0c0; color: #37e0c0; box-shadow: 0 0 0 1px rgba(55,224,192,.16); } .ds-toolbtn:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-toolbtn-warn:hover { border-color: #f4a93a; color: #f4a93a; box-shadow: none; }"
+      "css": ".ds-toolbtn { background: #161d28; border: 1px solid #243040; color: #dbe4f0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 9px 14px; border-radius: 5px; display: inline-flex; gap: 7px; align-items: center; justify-content: center; min-height: 44px; cursor: pointer; transition: .15s; } .ds-toolbtn[hidden] { display: none; } .ds-toolbtn:hover { border-color: #37e0c0; color: #37e0c0; box-shadow: 0 0 0 1px rgba(55,224,192,.16); } .ds-toolbtn:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-toolbtn-warn:hover { border-color: #f4a93a; color: #f4a93a; box-shadow: none; }"
     },
     {
       "name": "Ghost Button",
@@ -248,6 +251,46 @@
       "css": ".ds-stepper { display: flex; align-items: center; gap: 8px; } .ds-stepbtn { width: 44px; height: 44px; border-radius: 6px; background: #161d28; border: 1px solid #243040; color: #dbe4f0; font-size: 18px; line-height: 1; display: grid; place-items: center; cursor: pointer; transition: .12s; } .ds-stepbtn:hover { border-color: #37e0c0; color: #37e0c0; } .ds-stepbtn:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-stepbtn:disabled { opacity: .32; cursor: not-allowed; border-color: #243040; color: #6b7c94; } .ds-stepval { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 19.5px; min-width: 48px; text-align: center; color: #37e0c0; } .ds-pips { display: flex; gap: 3px; } .ds-pip { width: 13px; height: 6px; border-radius: 2px; background: #1c2532; border: 1px solid #243040; } .ds-pip-on { background: #ffb020; border-color: #ffb020; }"
     },
     {
+      "name": "Confirmation Dialog",
+      "kind": "custom",
+      "refersTo": "losslist",
+      "description": "Единственная форма разговора о разрушительном действии. Список потерь — суть компонента: диалог обязан назвать, что исчезнет, до того как это исчезнет.",
+      "html": "<div class=\"ds-dialog\"><p>У <b>Ланкастер</b> другой набор креплений, поэтому вооружение придётся переставить. Переносится не всё:</p><ul class=\"ds-losslist\"><li class=\"keep\">Заряженный клинок → Гибкий</li><li class=\"drop\">Противоматериальная винтовка — нет подходящего крепления</li></ul><div class=\"ds-dialog-actions\"><button class=\"ds-ghostbtn\">↳ Перенести совместимое (1)</button><button class=\"ds-ghostbtn ds-ghostbtn-warn\">✕ Снять всё</button><button class=\"ds-ghostbtn\">Отмена</button></div></div>",
+      "css": ".ds-dialog { color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-dialog p { margin: 0 0 12px; font-size: 16.5px; line-height: 1.55; } .ds-losslist { list-style: none; margin: 0; padding: 12px 14px; background: #0b0f17; border: 1px solid #243040; border-radius: 8px; display: flex; flex-direction: column; gap: 6px; } .ds-losslist li { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; color: #7d8ca0; letter-spacing: .03em; display: flex; gap: 8px; } .ds-losslist li::before { content: '—'; color: #6b7c94; flex-shrink: 0; } .ds-losslist li.keep { color: #37e0c0; } .ds-losslist li.keep::before { content: '↳'; color: #37e0c0; } .ds-losslist li.drop::before { content: '✕'; color: #f4a93a; } .ds-dialog-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; } .ds-dialog-actions .ds-ghostbtn { flex: 1 1 200px; text-align: center; } .ds-ghostbtn { background: transparent; border: 1px dashed #36485e; color: #37e0c0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 9px 14px; border-radius: 6px; cursor: pointer; transition: .15s; } .ds-ghostbtn:hover { border-style: solid; box-shadow: 0 0 0 3px rgba(55,224,192,.16); } .ds-ghostbtn-warn { border-color: #e5604f; color: #e5604f; }"
+    },
+    {
+      "name": "Reference Card",
+      "kind": "card",
+      "refersTo": "dcard",
+      "description": "Единица колоды в режиме листа. Отвечает «что делает эта штука» без чтения соседей; на бумаге вырезается по пунктирному контуру. Модификатор .void — лицензия не открыта.",
+      "html": "<article class=\"ds-dcard\" style=\"--src:#d8604c\"><i class=\"ds-dcard-src\"></i><div class=\"ds-dcard-hd\"><span class=\"ds-dcard-nm\">Противоматериальная винтовка</span><span class=\"ds-dcard-slot\">Тяжёлый</span></div><div class=\"ds-keyline\"><span class=\"ds-keystat\"><span class=\"k\">УРОН</span>2d6 Кинетический</span><span class=\"ds-keystat\"><span class=\"k\">ДИСТ</span>Дальность 20</span></div><div class=\"ds-dcard-slot\">Тяжёлый · Винтовка</div><div class=\"ds-dcard-row\"><span class=\"ds-tag\">Точное</span><span class=\"ds-tag\">Бронебойное (AP)</span></div><div class=\"ds-dcard-eff\"><b>ПРИ ПОПАДАНИИ</b>Цель получает Пробитие до конца следующего хода.</div></article>",
+      "css": ".ds-dcard { position: relative; background: #0f141d; border: 1px solid #243040; border-radius: 8px; padding: 12px 14px 12px 18px; display: flex; flex-direction: column; gap: 8px; color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-dcard-src { position: absolute; top: 0; left: 0; bottom: 0; width: 5px; border-radius: 8px 0 0 8px; background: var(--src); } .ds-dcard-hd { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; } .ds-dcard-nm { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 17.5px; line-height: 1.2; } .ds-dcard-slot { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; color: #6b7c94; } .ds-keyline { display: flex; gap: 16px; flex-wrap: wrap; } .ds-keystat { display: inline-flex; align-items: baseline; gap: 5px; font-family: 'Chakra Petch', sans-serif; font-size: 17.5px; } .ds-keystat .k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #6b7c94; letter-spacing: .08em; } .ds-dcard-row { display: flex; flex-wrap: wrap; gap: 5px; } .ds-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #37e0c0; background: #0f4f45; border-radius: 4px; padding: 2px 6px; } .ds-dcard-eff { font-size: 16.5px; line-height: 1.5; } .ds-dcard-eff b { color: #37e0c0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .1em; display: block; margin-bottom: 2px; font-weight: 400; }"
+    },
+    {
+      "name": "Stat Strip",
+      "kind": "custom",
+      "refersTo": "stat-cell",
+      "description": "Лента статов меха в шапке листа. Каждое число несёт моноширинную метку — именно то, чего не делают иконочные плитки HUD. Бирюзой только те статы, что реально отличаются от базовых статов шасси.",
+      "html": "<div class=\"ds-statstrip\"><div class=\"ds-cell up\"><span class=\"k\">ОЧКИ ЗДОРОВЬЯ</span><span class=\"v\">17</span></div><div class=\"ds-cell\"><span class=\"k\">БРОНЯ</span><span class=\"v\">1</span></div><div class=\"ds-cell up\"><span class=\"k\">УКЛОНЕНИЕ</span><span class=\"v\">10</span></div><div class=\"ds-cell\"><span class=\"k\">SP</span><span class=\"v\">4/5</span></div></div>",
+      "css": ".ds-statstrip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; } .ds-cell { background: #0b0f17; border: 1px solid #243040; border-radius: 6px; padding: 8px 6px; text-align: center; } .ds-cell .k { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; color: #6b7c94; } .ds-cell .v { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 27px; line-height: 1.1; color: #dbe4f0; } .ds-cell.up .v { color: #37e0c0; }"
+    },
+    {
+      "name": "Clearance Stamp",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "Вердикт реестра о легальности сборки. Продукт знал все нарушения восемь вкладок; здесь он наконец их произносит.",
+      "html": "<div class=\"ds-stamp\"><span>✓</span><div class=\"b\">ДОПУСК ПОДТВЕРЖДЁН — сборка в пределах правил</div></div><div class=\"ds-stamp dev\"><span>⚠</span><div class=\"b\">ДОПУСК: С ОТКЛОНЕНИЯМИ (2)<ul><li>Перебор лицензий: 2 из 1</li><li>Ас: ранг III выше доступного на LL1</li></ul></div></div>",
+      "css": ".ds-stamp { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; padding: 10px 14px; border: 1px solid #4fae6e; border-radius: 8px; color: #4fae6e; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .06em; } .ds-stamp.dev { border-color: #f4a93a; color: #f4a93a; background: rgba(244,169,58,.14); } .ds-stamp .b { flex: 1; min-width: 0; } .ds-stamp ul { list-style: none; margin: 7px 0 0; padding: 0; display: flex; flex-direction: column; gap: 4px; } .ds-stamp li { color: #dbe4f0; letter-spacing: .03em; }"
+    },
+    {
+      "name": "Save State",
+      "kind": "custom",
+      "refersTo": "savestate",
+      "description": "Единственное фоновое подтверждение, что работа сохранена. Повышает голос до янтаря только когда браузер отказал в записи.",
+      "html": "<span class=\"ds-savestate\"><i class=\"pfx\">// СОХРАНЕНО </i>14:32</span> <span class=\"ds-savestate err\">⚠ НЕ СОХРАНЯЕТСЯ</span>",
+      "css": ".ds-savestate { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: .06em; color: #7d8ca0; white-space: nowrap; margin-right: 16px; } .ds-savestate .pfx { font-style: normal; } .ds-savestate.err { color: #f4a93a; }"
+    },
+    {
       "name": "Glossary Tooltip",
       "kind": "custom",
       "refersTo": "stattip-box",
@@ -282,6 +325,16 @@
         "name": "Правило одного фона",
         "body": "Сетка 46×46px нарисована на body и никогда не повторяется внутри компонентов. Панели её перекрывают, а не воспроизводят.",
         "section": "layout"
+      },
+      {
+        "name": "Правило трёх значений на бумаге",
+        "body": "Печать использует ровно print-paper, print-ink и print-rule — и ничего больше. Ни один экранный токен не протекает на лист: цвет производителя, бирюза и янтарь на бумаге исчезают, а их работу берут на себя вес, рамка и порядок.",
+        "section": "colors"
+      },
+      {
+        "name": "Правило именования потерь",
+        "body": "Диалог обязан назвать, что именно исчезнет, до того как это исчезнет. Вопрос без списка — это confirm() в новой одежде.",
+        "section": "components"
       }
     ],
     "dos": [
@@ -290,8 +343,11 @@
       "Do строить контейнеры рамкой в 1px и ступенью тона, а не заливкой.",
       "Do держать переходы на 120–250мс и менять в них цвет рамки, цвет текста и кольцо-свечение.",
       "Do брать цвет источника из инлайновой --src и заливать через color-mix(... 22%, transparent) — одно правило на все шесть производителей.",
-      "Do проверять новый экран в печатном виде: печать скрывает всю навигацию и переключает страницу на чёрное по белому.",
-      "Do помнить, что русский текст длиннее английского, а размеры шрифтов здесь заданы в фиксированных px."
+      "Do проверять новый экран в печатном виде: печать скрывает всю навигацию и переключает страницу на бумажную тройку значений.",
+      "Do задавать печатные размеры в пунктах, а не в пикселях.",
+      "Do писать font-family:\"Chakra Petch\",sans-serif — без запасного семейства кириллица падает в засечный шрифт браузера.",
+      "Do помнить, что русский текст длиннее английского, а размеры шрифтов здесь заданы в фиксированных px.",
+      "Do дублировать [hidden] в CSS для компонентов с явным display (.toolbtn[hidden]{display:none}): правило класса перебивает браузерное, и элемент, которому поставили атрибут, продолжает показываться."
     ],
     "donts": [
       "Don't заливать акцентом крупные площади. Единственное исключение в системе — включённый фильтр-чип.",
@@ -300,7 +356,9 @@
       "Don't повторять фоновую сетку внутри компонентов — она живёт только на body.",
       "Don't ставить уголковые скобки куда-либо кроме .card; их редкость и есть их смысл.",
       "Don't смешивать янтарь выбора (#ffb020) и предупреждающий янтарь (#f4a93a) в одном контейнере — они слишком близки, чтобы читаться как разные сообщения рядом.",
-      "Don't делать интерактивный элемент меньше 44×44px: шаговые и закрывающие кнопки уже приведены к этому размеру."
+      "Don't делать интерактивный элемент меньше 44×44px: шаговые, закрывающие и все кнопки шапки уже приведены к этому размеру. Не приведены пока фильтр-чипы (~30px), вкладки (~38px) и триггер тултипа (16px).",
+      "Don't пускать экранные акценты на бумагу: цвет производителя, бирюза и янтарь в печати не существуют.",
+      "Don't спрашивать о разрушительном действии, не перечислив потери."
     ]
   }
 }
