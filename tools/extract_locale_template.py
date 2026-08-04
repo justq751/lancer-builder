@@ -119,6 +119,23 @@ def build_weapons(data, old):
                 pp = {"name": pair(p.get("name"), old_p.get("name"))}
                 if p.get("effect"):
                     pp["effect"] = pair(p.get("effect"), old_p.get("effect"))
+                # Actions nested in a profile (e.g. a stance's reaction). The
+                # sheet view renders these, so they need translating too;
+                # keyed by the English action name like every other sublist.
+                if p.get("actions"):
+                    old_acts = old_p.get("actions", {})
+                    acts = {}
+                    for a in p["actions"]:
+                        akey = a.get("name") or ""
+                        old_a = old_acts.get(akey, {})
+                        aentry = {}
+                        for field in ("name", "trigger", "detail"):
+                            if a.get(field):
+                                aentry[field] = pair(a.get(field), old_a.get(field))
+                        if aentry:
+                            acts[akey] = aentry
+                    if acts:
+                        pp["actions"] = acts
                 pentry[key] = pp
             entry["profiles"] = pentry
         out[w["id"]] = entry

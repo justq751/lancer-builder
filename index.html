@@ -884,6 +884,11 @@ body.sheetmode .shell{display:none}
   letter-spacing:.1em; margin-left:8px}
 .deck{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:12px}
 @media(max-width:560px){.deck{grid-template-columns:1fr}}
+/* A card with three or more modes takes two columns, so its stances read as
+   rows instead of a narrow tower. Below two columns there is nothing to span. */
+.deck > .dcard.wide{grid-column:span 2}
+@media(max-width:719px){.deck > .dcard.wide{grid-column:auto}}
+.dcard.wide .prof-hd{gap:5px 24px}
 
 .dcard{position:relative; background:var(--panel); border:1px solid var(--line);
   border-radius:8px; padding:12px 14px 12px 18px; display:flex; flex-direction:column; gap:8px}
@@ -897,6 +902,19 @@ body.sheetmode .shell{display:none}
 .dcard .eff b{color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:12px;
   letter-spacing:.1em; display:block; margin-bottom:2px; font-weight:400}
 .dcard .sub{border-top:1px solid var(--line); padding-top:8px}
+/* Modes of a multi-stage weapon. A hairline rail down the left says "these
+   belong to the card above" without turning each mode into its own card —
+   nested cards would be the lazy answer and would break the deck's rhythm. */
+.dcard .profs{border-top:1px solid var(--line); padding-top:9px;
+  display:flex; flex-direction:column; gap:10px}
+.dcard .profs-hd{font-family:"JetBrains Mono",monospace; font-size:12px;
+  letter-spacing:.1em; color:var(--faint)}
+.dcard .prof{display:flex; flex-direction:column; gap:5px;
+  padding-left:10px; border-left:1px solid var(--line)}
+.dcard .prof-hd{display:flex; flex-wrap:wrap; align-items:baseline; gap:5px 14px}
+.dcard .prof .pname{font-family:"JetBrains Mono",monospace; font-size:12px;
+  letter-spacing:.08em; color:var(--accent); flex-shrink:0}
+.dcard .trig{display:block; color:var(--mute); margin-bottom:3px}
 .dcard.void{border-color:var(--amber)}
 /* Numbers a player reads mid-turn get the display face, not the body face. */
 .keystat{display:inline-flex; align-items:baseline; gap:5px; font-family:"Chakra Petch",sans-serif; font-size:17.5px}
@@ -952,6 +970,18 @@ body.sheetmode .shell{display:none}
   .dcard .src{display:none}
   .dcard .nm{font-size:10.5pt}
   .dcard .slot,.dcard .row,.dcard .eff b,.keystat .k{font-size:6.5pt}
+  /* Modes stay together on paper: a stance split across a column break is a
+     stance the player will misread mid-turn. */
+  /* On paper the same card takes the full page width instead of one column:
+     five stances squeezed into half an A4 is a table nobody reads in a fight. */
+  .dcard.wide{column-span:all; margin-bottom:5mm}
+  .dcard .profs{padding-top:4pt; gap:4pt}
+  .dcard .profs-hd{font-size:6.5pt}
+  .dcard .prof{padding-left:4pt; border-left:.5pt solid var(--print-rule)!important;
+    break-inside:avoid; page-break-inside:avoid; gap:2pt}
+  .dcard .prof .pname{font-size:7pt}
+  .dcard .prof-hd{gap:2pt 8pt}
+  .dcard .trig{margin-bottom:1pt}
   .dcard .eff{font-size:8.5pt; line-height:1.35; margin-top:3pt}
   .dcard .row{margin-top:2pt}
   .keystat{font-size:10pt}
@@ -1152,6 +1182,20 @@ function overlayNamedSublist(list, overlayNamedMap) {
   });
 }
 
+/* Actions nested inside a weapon profile — a stance's reaction, for example.
+   Keyed by the English action name, like every other nested list here. The
+   sheet renders these, so without this overlay they show up in English in an
+   otherwise translated card. */
+function overlayActionList(list, overlayNamedMap) {
+  (list || []).forEach(a => {
+    const t = (overlayNamedMap || {})[a.name];
+    if (!t) return;
+    ["trigger", "detail", "name"].forEach(k => {
+      if (t[k] !== undefined && a[k] != null) a[k] = pickText(a[k], t[k]);
+    });
+  });
+}
+
 /* weapons: on_hit/on_attack/on_crit can be null | string | {detail,...} */
 function overlayOnField(item, key, pair) {
   const val = item[key];
@@ -1210,6 +1254,7 @@ function localizeData(base, locale) {
         overlayOnField(p, "on_hit", tp.on_hit);
         overlayOnField(p, "on_attack", tp.on_attack);
         overlayOnField(p, "on_crit", tp.on_crit);
+        overlayActionList(p.actions, tp.actions);
       });
     }
   });
@@ -4037,13 +4082,60 @@ function statStripHTML(d){
   return `<div class="statstrip">${cells}${sp}</div>`;
 }
 
+/* A profile action — currently one in the whole dataset (Storm Stance's
+   reaction), but its effect line is meaningless without it: "you gain the
+   Storm Stance Reaction" and then no reaction anywhere. */
+function profActionHTML(a){
+  // trTag handles the "N/Round" shape, so frequency needs no per-item locale
+  // work — but the data writes "1/round" while the dictionary is keyed
+  // "Round", so the word is capitalised before the lookup.
+  const freq = a.frequency
+    ? trTag(String(a.frequency).replace(/\/(\w)/, (m, c) => "/" + c.toUpperCase()))
+    : "";
+  const head=[tr(a.activation||""), freq].filter(Boolean).join(" · ").toUpperCase();
+  return `<div class="eff"><b>${esc(head)}${a.name?" — "+esc(a.name):""}</b>
+    ${a.trigger?`<span class="trig">Триггер: ${rich(a.trigger)}</span>`:""}${rich(a.detail||"")}</div>`;
+}
+/* Multi-stage weapons — stances, charge levels, firing modes — carry their
+   real numbers per profile, not on the weapon. The editor shows one at a time
+   behind a toggle, which is right for browsing and wrong here: paper has no
+   toggle, and a player mid-turn needs to compare stances, not click through
+   them. Every mode is laid out at once, each with its own damage, range,
+   tags and rules. */
+function profilesHTML(w){
+  const profs=w.profiles||[];
+  if(!profs.length) return "";
+  return `<div class="profs">
+    <div class="profs-hd">РЕЖИМЫ · ${profs.length}</div>
+    ${profs.map(p=>`<div class="prof">
+      <div class="prof-hd">
+        <span class="pname">${esc(p.name)}</span>
+        ${(p.damage&&p.damage.length)?shKey("УРОН",profDmgStr(p)):""}
+        ${(p.range&&p.range.length)?shKey("ДИСТ",profRngStr(p)):""}
+      </div>
+      ${shTags(p.tags)}
+      ${p.effect?`<div class="eff">${rich(p.effect)}</div>`:""}
+      ${(p.actions||[]).map(profActionHTML).join("")}
+      ${p.on_attack?shEff("ПРИ АТАКЕ", onHitText(p.on_attack)):""}
+      ${p.on_hit?shEff("ПРИ ПОПАДАНИИ", onHitText(p.on_hit)):""}
+      ${p.on_crit?shEff("ПРИ КРИТЕ", onHitText(p.on_crit)):""}
+    </div>`).join("")}
+  </div>`;
+}
 function weaponCardHTML(w, mountType, mod){
   const eff=effectiveWeapon(w, mod);
-  const prof=(w.profiles&&w.profiles.length)?w.profiles[0]:null;
-  const dmg=prof?profDmgStr(prof):shDmg(eff);
-  const rng=prof?profRngStr(prof):shRng(eff);
+  const hasProfs=!!(w.profiles&&w.profiles.length);
   const lk=!unlocked(w);
-  return `<article class="dcard ${lk?"void":""}">
+  // With profiles, damage and range belong to the modes, not to the weapon:
+  // printing one profile's numbers in the header states them as the weapon's
+  // own and is simply false. The header keeps what is genuinely shared.
+  // Three or more modes is several cards' worth of content in one card; at a
+  // single column width it becomes a tower nobody scans. It earns two.
+  const wide=(w.profiles||[]).length>=3 ? " wide" : "";
+  const dmg=hasProfs?"":shDmg(eff), rng=hasProfs?"":shRng(eff);
+  const modDmg=hasProfs&&mod&&(mod.added_damage||[]).length ? shDmg({damage:mod.added_damage}) : "";
+  const modRng=hasProfs&&mod&&(mod.added_range||[]).length ? shRng({range:mod.added_range}) : "";
+  return `<article class="dcard${wide} ${lk?"void":""}">
     <div class="src" style="background:${srcColor(w.source)}"></div>
     <div class="hd">
       <span class="nm">${esc(w.name)}</span>
@@ -4052,14 +4144,17 @@ function weaponCardHTML(w, mountType, mod){
     <div class="keyline">
       ${dmg?shKey("УРОН",dmg):""}
       ${rng?shKey("ДИСТ",rng):""}
+      ${modDmg?shKey("ОТ МОДА",'+'+modDmg):""}
+      ${modRng?shKey("ОТ МОДА",'+'+modRng):""}
       ${w.sp?shKey("SP",w.sp):""}
     </div>
     <div class="slot">${esc(tr(w.mount))} · ${esc(tr(w.type))}</div>
-    ${shTags(weaponDisplayTags(eff,0))}
+    ${shTags(hasProfs?(eff.tags||[]):weaponDisplayTags(eff,0))}
     ${shEff("ЭФФЕКТ", w.effect)}
     ${shEff("ПРИ АТАКЕ", w.on_attack)}
     ${shEff("ПРИ ПОПАДАНИИ", w.on_hit)}
     ${shEff("ПРИ КРИТЕ", w.on_crit)}
+    ${profilesHTML(w)}
     ${mod?`<div class="sub">
       <div class="hd"><span class="nm" style="font-size:16.5px">+ ${esc(mod.name)}</span>
         <span class="slot">МОД${mod.sp?" · SP "+mod.sp:""}</span></div>
