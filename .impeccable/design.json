@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-04T10:40:00.000Z",
+  "generatedAt": "2026-08-04T11:15:27.903Z",
   "title": "Design System: LANCER // РЕЕСТР",
   "extensions": {
     "colorMeta": {
@@ -8,73 +8,181 @@
         "role": "neutral",
         "displayName": "Пустота",
         "canonical": "#080b11",
-        "tonalRamp": ["#04060a", "#080b11", "#0e131c", "#151c28", "#1e2734", "#33404f", "#5b6a7c", "#9aa8b8"]
+        "tonalRamp": [
+          "#04060a",
+          "#080b11",
+          "#0e131c",
+          "#151c28",
+          "#1e2734",
+          "#33404f",
+          "#5b6a7c",
+          "#9aa8b8"
+        ]
       },
       "grid-line": {
         "role": "neutral",
         "displayName": "Линия сетки",
         "canonical": "#0b0f17",
-        "tonalRamp": ["#05070b", "#0b0f17", "#111722", "#18202d", "#212b39", "#374454", "#5f6e80", "#9dabbb"]
+        "tonalRamp": [
+          "#05070b",
+          "#0b0f17",
+          "#111722",
+          "#18202d",
+          "#212b39",
+          "#374454",
+          "#5f6e80",
+          "#9dabbb"
+        ]
       },
       "panel": {
         "role": "neutral",
         "displayName": "Панель",
         "canonical": "#0f141d",
-        "tonalRamp": ["#070a0f", "#0f141d", "#161d28", "#1c2532", "#25303f", "#3b4859", "#637284", "#a0aebd"]
+        "tonalRamp": [
+          "#070a0f",
+          "#0f141d",
+          "#161d28",
+          "#1c2532",
+          "#25303f",
+          "#3b4859",
+          "#637284",
+          "#a0aebd"
+        ]
       },
       "panel-raised": {
         "role": "neutral",
         "displayName": "Панель приподнятая",
         "canonical": "#161d28",
-        "tonalRamp": ["#0a0e14", "#101620", "#161d28", "#1e2734", "#283342", "#3e4c5d", "#667588", "#a3b1c0"]
+        "tonalRamp": [
+          "#0a0e14",
+          "#101620",
+          "#161d28",
+          "#1e2734",
+          "#283342",
+          "#3e4c5d",
+          "#667588",
+          "#a3b1c0"
+        ]
       },
       "panel-inset": {
         "role": "neutral",
         "displayName": "Панель утопленная",
         "canonical": "#1c2532",
-        "tonalRamp": ["#0c1017", "#131a24", "#1c2532", "#242f3e", "#2e3b4b", "#445265", "#6b7a8d", "#a7b5c3"]
+        "tonalRamp": [
+          "#0c1017",
+          "#131a24",
+          "#1c2532",
+          "#242f3e",
+          "#2e3b4b",
+          "#445265",
+          "#6b7a8d",
+          "#a7b5c3"
+        ]
       },
       "hairline": {
         "role": "neutral",
         "displayName": "Волосяная линия",
         "canonical": "#243040",
-        "tonalRamp": ["#0e131a", "#182029", "#243040", "#2e3c4e", "#3a4a5e", "#4f6076", "#7686a0", "#aebbcc"]
+        "tonalRamp": [
+          "#0e131a",
+          "#182029",
+          "#243040",
+          "#2e3c4e",
+          "#3a4a5e",
+          "#4f6076",
+          "#7686a0",
+          "#aebbcc"
+        ]
       },
       "hairline-bright": {
         "role": "neutral",
         "displayName": "Волосяная яркая",
         "canonical": "#36485e",
-        "tonalRamp": ["#141b24", "#212c3a", "#2c3a4c", "#36485e", "#445872", "#5b7291", "#8398b5", "#b6c5d8"]
+        "tonalRamp": [
+          "#141b24",
+          "#212c3a",
+          "#2c3a4c",
+          "#36485e",
+          "#445872",
+          "#5b7291",
+          "#8398b5",
+          "#b6c5d8"
+        ]
       },
       "ink": {
         "role": "neutral",
         "displayName": "Текст",
         "canonical": "#dbe4f0",
-        "tonalRamp": ["#1b222c", "#2a3542", "#414f60", "#5c6c80", "#7d8ca0", "#a3b0c1", "#c4cfdd", "#dbe4f0"]
+        "tonalRamp": [
+          "#1b222c",
+          "#2a3542",
+          "#414f60",
+          "#5c6c80",
+          "#7d8ca0",
+          "#a3b0c1",
+          "#c4cfdd",
+          "#dbe4f0"
+        ]
       },
       "mute": {
         "role": "neutral",
         "displayName": "Приглушённый",
         "canonical": "#7d8ca0",
-        "tonalRamp": ["#161b21", "#242c36", "#36414f", "#4b596b", "#647285", "#7d8ca0", "#a5b1c0", "#cdd5df"]
+        "tonalRamp": [
+          "#161b21",
+          "#242c36",
+          "#36414f",
+          "#4b596b",
+          "#647285",
+          "#7d8ca0",
+          "#a5b1c0",
+          "#cdd5df"
+        ]
       },
       "faint": {
         "role": "neutral",
         "displayName": "Едва видимый",
-        "canonical": "#6b7c94",
-        "tonalRamp": ["#12171d", "#1e2631", "#2e3947", "#414f61", "#56667c", "#6b7c94", "#96a4b7", "#c2cbd8"]
+        "canonical": "#77869c",
+        "tonalRamp": [
+          "#12171d",
+          "#1e2631",
+          "#2e3947",
+          "#414f61",
+          "#5a6a80",
+          "#77869c",
+          "#9dabbf",
+          "#c8d1dc"
+        ]
       },
       "system-teal": {
         "role": "primary",
         "displayName": "Системная бирюза",
         "canonical": "#37e0c0",
-        "tonalRamp": ["#04211c", "#073830", "#0f4f45", "#14705f", "#1b9a83", "#25c0a4", "#37e0c0", "#a4f2e4"]
+        "tonalRamp": [
+          "#04211c",
+          "#073830",
+          "#0f4f45",
+          "#14705f",
+          "#1b9a83",
+          "#25c0a4",
+          "#37e0c0",
+          "#a4f2e4"
+        ]
       },
       "system-teal-deep": {
         "role": "primary",
         "displayName": "Бирюза глубокая",
         "canonical": "#0f4f45",
-        "tonalRamp": ["#04211c", "#073830", "#0f4f45", "#14705f", "#1b9a83", "#25c0a4", "#37e0c0", "#a4f2e4"]
+        "tonalRamp": [
+          "#04211c",
+          "#073830",
+          "#0f4f45",
+          "#14705f",
+          "#1b9a83",
+          "#25c0a4",
+          "#37e0c0",
+          "#a4f2e4"
+        ]
       },
       "system-teal-glow": {
         "role": "primary",
@@ -85,7 +193,16 @@
         "role": "secondary",
         "displayName": "Янтарь выбора",
         "canonical": "#ffb020",
-        "tonalRamp": ["#2a1c02", "#452e04", "#654307", "#8a5c0a", "#b2770d", "#dc9412", "#ffb020", "#ffd894"]
+        "tonalRamp": [
+          "#2a1c02",
+          "#452e04",
+          "#654307",
+          "#8a5c0a",
+          "#b2770d",
+          "#dc9412",
+          "#ffb020",
+          "#ffd894"
+        ]
       },
       "chosen-amber-glow": {
         "role": "secondary",
@@ -96,7 +213,16 @@
         "role": "tertiary",
         "displayName": "Предупреждающий янтарь",
         "canonical": "#f4a93a",
-        "tonalRamp": ["#281a05", "#412a08", "#5e3d0c", "#805211", "#a66a17", "#cd851f", "#f4a93a", "#fbd79b"]
+        "tonalRamp": [
+          "#281a05",
+          "#412a08",
+          "#5e3d0c",
+          "#805211",
+          "#a66a17",
+          "#cd851f",
+          "#f4a93a",
+          "#fbd79b"
+        ]
       },
       "warning-amber-glow": {
         "role": "tertiary",
@@ -107,58 +233,207 @@
         "role": "tertiary",
         "displayName": "Зелёный допуска",
         "canonical": "#4fae6e",
-        "tonalRamp": ["#0a1e12", "#12321e", "#1b492c", "#25623b", "#317e4d", "#3f9760", "#4fae6e", "#9ad3ad"]
+        "tonalRamp": [
+          "#0a1e12",
+          "#12321e",
+          "#1b492c",
+          "#25623b",
+          "#317e4d",
+          "#3f9760",
+          "#4fae6e",
+          "#9ad3ad"
+        ]
       },
       "alert-red": {
         "role": "tertiary",
         "displayName": "Красный тревоги",
         "canonical": "#e5604f",
-        "tonalRamp": ["#2a0d09", "#451610", "#63211a", "#852e24", "#a83e31", "#c74d3f", "#e5604f", "#f3a89e"]
+        "tonalRamp": [
+          "#2a0d09",
+          "#451610",
+          "#63211a",
+          "#852e24",
+          "#a83e31",
+          "#c74d3f",
+          "#e5604f",
+          "#f3a89e"
+        ]
       },
-      "src-gms": { "role": "tertiary", "displayName": "GMS — кирпичный", "canonical": "#d8604c" },
-      "src-ipsn": { "role": "tertiary", "displayName": "IPS-N — стальной синий", "canonical": "#3f8fd6" },
-      "src-ssc": { "role": "tertiary", "displayName": "SSC — латунный", "canonical": "#d8c160" },
-      "src-horus": { "role": "tertiary", "displayName": "HORUS — фосфорный зелёный", "canonical": "#52b585" },
-      "src-ha": { "role": "tertiary", "displayName": "HA — пурпурный", "canonical": "#9d6fdd" },
-      "src-exotic": { "role": "tertiary", "displayName": "Экзотика — маджента", "canonical": "#e8398a" },
-      "print-paper": { "role": "neutral", "displayName": "Бумага", "canonical": "#fff" },
-      "print-ink": { "role": "neutral", "displayName": "Краска", "canonical": "#000" },
-      "print-rule": { "role": "neutral", "displayName": "Линейка", "canonical": "#666" }
+      "src-gms": {
+        "role": "tertiary",
+        "displayName": "GMS — кирпичный",
+        "canonical": "#d8604c"
+      },
+      "src-ipsn": {
+        "role": "tertiary",
+        "displayName": "IPS-N — стальной синий",
+        "canonical": "#3f8fd6"
+      },
+      "src-ssc": {
+        "role": "tertiary",
+        "displayName": "SSC — латунный",
+        "canonical": "#d8c160"
+      },
+      "src-horus": {
+        "role": "tertiary",
+        "displayName": "HORUS — фосфорный зелёный",
+        "canonical": "#52b585"
+      },
+      "src-ha": {
+        "role": "tertiary",
+        "displayName": "HA — пурпурный",
+        "canonical": "#9d6fdd"
+      },
+      "src-exotic": {
+        "role": "tertiary",
+        "displayName": "Экзотика — маджента",
+        "canonical": "#e8398a"
+      },
+      "print-paper": {
+        "role": "neutral",
+        "displayName": "Бумага",
+        "canonical": "#fff"
+      },
+      "print-ink": {
+        "role": "neutral",
+        "displayName": "Краска",
+        "canonical": "#000"
+      },
+      "print-rule": {
+        "role": "neutral",
+        "displayName": "Линейка",
+        "canonical": "#666"
+      }
     },
     "typographyMeta": {
-      "display": { "displayName": "Display", "purpose": "Только два места: номер уровня лицензии в HUD (33px) и число в слайдере LL (37px)." },
-      "headline": { "displayName": "Headline", "purpose": "Заголовок вкладки в .sechead." },
-      "title": { "displayName": "Title", "purpose": "Имя предмета, заголовок крепления, имя строки списка; 20px в шапке модалки." },
-      "body": { "displayName": "Body", "purpose": "Текст правил и описаний. Вводный абзац раздела ограничен 62ch." },
-      "label": { "displayName": "Label", "purpose": "Метки полей, бейджи, коды, теги, единицы. Трекинг 0.04–0.16em растёт по мере уменьшения кегля." }
+      "display": {
+        "displayName": "Display",
+        "purpose": "Только два места: номер уровня лицензии в HUD (33px) и число в слайдере LL (37px)."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Заголовок вкладки в .sechead."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Имя предмета, заголовок крепления, имя строки списка; 20px в шапке модалки."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Текст правил и описаний. Вводный абзац раздела ограничен 62ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Метки полей, бейджи, коды, теги, единицы. Трекинг 0.04–0.16em растёт по мере уменьшения кегля."
+      }
     },
     "shadows": [
-      { "name": "panel", "value": "0 18px 50px -20px rgba(0,0,0,.8)", "purpose": "Карточки HUD и панель модалки. Карточки предметов теней не несут." },
-      { "name": "tooltip", "value": "0 10px 28px rgba(0,0,0,.45)", "purpose": "Всплывающий глоссарий поверх всего (z-index 1000)." },
-      { "name": "focus-ring", "value": "0 0 0 3px rgba(55,224,192,.16)", "purpose": "Поле в фокусе и кнопка-призрак при наведении. Подсветка, не подъём." },
-      { "name": "focus-ring-tight", "value": "0 0 0 1px rgba(55,224,192,.16)", "purpose": "Инструментальная кнопка шапки при наведении." },
-      { "name": "selected-inset", "value": "inset 0 0 0 1px rgba(255,176,32,.16)", "purpose": "Внутреннее кольцо выбранной карточки и активной вкладки." }
+      {
+        "name": "panel",
+        "value": "0 18px 50px -20px rgba(0,0,0,.8)",
+        "purpose": "Карточки HUD и панель модалки. Карточки предметов теней не несут."
+      },
+      {
+        "name": "tooltip",
+        "value": "0 10px 28px rgba(0,0,0,.45)",
+        "purpose": "Всплывающий глоссарий поверх всего (z-index 1000)."
+      },
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 3px rgba(55,224,192,.16)",
+        "purpose": "Поле в фокусе и кнопка-призрак при наведении. Подсветка, не подъём."
+      },
+      {
+        "name": "focus-ring-tight",
+        "value": "0 0 0 1px rgba(55,224,192,.16)",
+        "purpose": "Инструментальная кнопка шапки при наведении."
+      },
+      {
+        "name": "selected-inset",
+        "value": "inset 0 0 0 1px rgba(255,176,32,.16)",
+        "purpose": "Внутреннее кольцо выбранной карточки и активной вкладки."
+      }
     ],
     "motion": [
-      { "name": "state", "value": "150ms", "purpose": "Смена цвета рамки/текста у кнопок, вкладок, полей, чипов." },
-      { "name": "state-fast", "value": "120ms", "purpose": "Плотные интерактивные элементы: шаговые и закрывающие кнопки, кликабельные строки." },
-      { "name": "bar-fill", "value": "250ms", "purpose": "Анимация ширины полосы бюджета." },
-      { "name": "section-enter", "value": "300ms ease", "purpose": "Появление вкладки: opacity 0→1 + translateY(6px)→0." },
-      { "name": "boot-fade", "value": "500ms ease", "purpose": "Затухание загрузочного экрана." },
-      { "name": "spin", "value": "800ms linear infinite", "purpose": "Кольцо загрузки на boot-экране." }
+      {
+        "name": "state",
+        "value": "150ms",
+        "purpose": "Смена цвета рамки/текста у кнопок, вкладок, полей, чипов."
+      },
+      {
+        "name": "state-fast",
+        "value": "120ms",
+        "purpose": "Плотные интерактивные элементы: шаговые и закрывающие кнопки, кликабельные строки."
+      },
+      {
+        "name": "bar-fill",
+        "value": "250ms",
+        "purpose": "Анимация ширины полосы бюджета."
+      },
+      {
+        "name": "section-enter",
+        "value": "300ms ease",
+        "purpose": "Появление вкладки: opacity 0→1 + translateY(6px)→0."
+      },
+      {
+        "name": "boot-fade",
+        "value": "500ms ease",
+        "purpose": "Затухание загрузочного экрана."
+      },
+      {
+        "name": "spin",
+        "value": "800ms linear infinite",
+        "purpose": "Кольцо загрузки на boot-экране."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "@media(prefers-reduced-motion:reduce)",
+        "purpose": "Все анимации и переходы сводятся к .01ms, scroll-behavior к auto. Ничего из движения здесь не несёт смысла, которого нет в статичном кадре."
+      }
     ],
     "breakpoints": [
-      { "name": "shell-collapse", "value": "1020px" },
-      { "name": "statgrid", "value": "680px" },
-      { "name": "sheet", "value": "760px" },
-      { "name": "row2", "value": "560px" },
-      { "name": "tight", "value": "480px" }
+      {
+        "name": "shell-collapse",
+        "value": "1020px"
+      },
+      {
+        "name": "sheet",
+        "value": "760px"
+      },
+      {
+        "name": "row2",
+        "value": "560px"
+      },
+      {
+        "name": "tight",
+        "value": "480px"
+      },
+      {
+        "name": "sheet-dossier",
+        "value": "760px"
+      },
+      {
+        "name": "statstrip-wide",
+        "value": "900px"
+      }
     ],
     "zIndex": [
-      { "name": "topbar", "value": 60 },
-      { "name": "modal", "value": 120 },
-      { "name": "boot", "value": 200 },
-      { "name": "tooltip", "value": 1000 }
+      {
+        "name": "topbar",
+        "value": 60
+      },
+      {
+        "name": "modal",
+        "value": 120
+      },
+      {
+        "name": "boot",
+        "value": 200
+      },
+      {
+        "name": "tooltip",
+        "value": 1000
+      }
     ]
   },
   "components": [
@@ -184,7 +459,7 @@
       "refersTo": "tab",
       "description": "Основная навигация по девяти этапам сборки. Порядковый индекс слева, точка-индикатор справа; янтарь = активная, янтарная предупреждающая точка = перебор бюджета в этой вкладке.",
       "html": "<nav class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\"><span class=\"ds-tab-ix\">01</span>ПИЛОТ</button><button class=\"ds-tab ds-tab-active\" role=\"tab\" aria-selected=\"true\"><span class=\"ds-tab-ix\">07</span>ВООРУЖЕНИЕ<i class=\"ds-tab-dot\"></i></button><button class=\"ds-tab\" role=\"tab\"><span class=\"ds-tab-ix\">08</span>CORE<i class=\"ds-tab-dot ds-tab-dot-warn\"></i></button></nav>",
-      "css": ".ds-tabs { display: flex; gap: 6px; flex-wrap: wrap; } .ds-tab { background: #0f141d; border: 1px solid #243040; color: #7d8ca0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 10px 15px; border-radius: 6px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: .15s; } .ds-tab-ix { color: #6b7c94; font-size: 11px; } .ds-tab:hover { color: #dbe4f0; border-color: #36485e; } .ds-tab:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-tab-active { color: #ffb020; border-color: #ffb020; background: #161d28; box-shadow: inset 0 0 0 1px rgba(255,176,32,.16); } .ds-tab-active .ds-tab-ix { color: #ffb020; } .ds-tab-dot { width: 6px; height: 6px; border-radius: 50%; background: #37e0c0; } .ds-tab-dot-warn { background: #f4a93a; }"
+      "css": ".ds-tabs { display: flex; gap: 6px; flex-wrap: wrap; } .ds-tab { background: #0f141d; border: 1px solid #243040; color: #7d8ca0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 10px 15px; border-radius: 6px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: .15s; } .ds-tab-ix { color: #77869c; font-size: 11px; } .ds-tab:hover { color: #dbe4f0; border-color: #36485e; } .ds-tab:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-tab-active { color: #ffb020; border-color: #ffb020; background: #161d28; box-shadow: inset 0 0 0 1px rgba(255,176,32,.16); } .ds-tab-active .ds-tab-ix { color: #ffb020; } .ds-tab-dot { width: 6px; height: 6px; border-radius: 50%; background: #37e0c0; } .ds-tab-dot-warn { background: #f4a93a; }"
     },
     {
       "name": "Item Card",
@@ -224,7 +499,7 @@
       "refersTo": "stattile",
       "description": "Базовая единица интерфейса: моноширинная метка над числом Chakra Petch. Один класс покрывает четыре роли модификаторами; .hl означает «стат отличается от базового».",
       "html": "<div class=\"ds-statgrid\"><div class=\"ds-stattile\"><span class=\"ds-stattile-k\">СТРУКТУРА</span><span class=\"ds-stattile-v\">4</span></div><div class=\"ds-stattile ds-stattile-hl\"><span class=\"ds-stattile-k\">HP</span><span class=\"ds-stattile-v\">18</span></div><div class=\"ds-stattile\"><span class=\"ds-stattile-k\">БРОНЯ</span><span class=\"ds-stattile-v\">2</span></div></div>",
-      "css": ".ds-statgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; } .ds-stattile { position: relative; background: #0b0f17; border: 1px solid #243040; border-radius: 5px; padding: 7px 6px 6px; text-align: center; } .ds-stattile-k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .07em; color: #6b7c94; display: block; min-height: 2.2em; } .ds-stattile-v { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 21px; color: #dbe4f0; line-height: 1; } .ds-stattile-hl .ds-stattile-v { color: #37e0c0; }"
+      "css": ".ds-statgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; } .ds-stattile { position: relative; background: #0b0f17; border: 1px solid #243040; border-radius: 5px; padding: 7px 6px 6px; text-align: center; } .ds-stattile-k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .07em; color: #77869c; display: block; min-height: 2.2em; } .ds-stattile-v { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 21px; color: #dbe4f0; line-height: 1; } .ds-stattile-hl .ds-stattile-v { color: #37e0c0; }"
     },
     {
       "name": "Budget Row",
@@ -240,7 +515,7 @@
       "refersTo": "action-block",
       "description": "Способность с механической формой: цветная левая грань 3px кодирует тип активации, чтобы Quick/Protocol/Full различались периферийным зрением.",
       "html": "<div class=\"ds-action ds-action-quick\"><div class=\"ds-action-head\"><span class=\"ds-action-nm\">Абордажный крюк</span><span class=\"ds-action-badge\">БЫСТРОЕ</span></div><div class=\"ds-action-stats\"><span class=\"ds-action-stat\">+1<span class=\"ds-action-u\">АТАКА</span></span><span class=\"ds-action-stat\">5<span class=\"ds-action-u\">ДИСТ</span></span></div><div class=\"ds-action-row\"><span class=\"ds-action-lbl\">ЭФФЕКТ</span>Притяните цель на 3 клетки.</div></div>",
-      "css": ".ds-action { background: #161d28; border: 1px solid #243040; border-left: 3px solid #36485e; border-radius: 8px; padding: 12px 14px; color: #dbe4f0; font-family: Inter, system-ui, sans-serif; font-size: 14px; } .ds-action-quick { border-left-color: #8b7fe8; } .ds-action-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; } .ds-action-nm { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 14.5px; letter-spacing: .02em; } .ds-action-badge { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: .08em; color: #7d8ca0; border: 1px solid #36485e; border-radius: 4px; padding: 2px 7px; flex-shrink: 0; } .ds-action-stats { display: flex; gap: 16px; margin-top: 9px; flex-wrap: wrap; } .ds-action-stat { font-family: 'Chakra Petch', sans-serif; font-size: 15px; display: flex; align-items: center; gap: 5px; } .ds-action-u { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #6b7c94; letter-spacing: .05em; margin-left: 2px; } .ds-action-row { margin-top: 8px; } .ds-action-lbl { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .1em; color: #6b7c94; margin-bottom: 2px; }"
+      "css": ".ds-action { background: #161d28; border: 1px solid #243040; border-left: 3px solid #36485e; border-radius: 8px; padding: 12px 14px; color: #dbe4f0; font-family: Inter, system-ui, sans-serif; font-size: 14px; } .ds-action-quick { border-left-color: #8b7fe8; } .ds-action-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; } .ds-action-nm { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 14.5px; letter-spacing: .02em; } .ds-action-badge { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: .08em; color: #7d8ca0; border: 1px solid #36485e; border-radius: 4px; padding: 2px 7px; flex-shrink: 0; } .ds-action-stats { display: flex; gap: 16px; margin-top: 9px; flex-wrap: wrap; } .ds-action-stat { font-family: 'Chakra Petch', sans-serif; font-size: 15px; display: flex; align-items: center; gap: 5px; } .ds-action-u { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #77869c; letter-spacing: .05em; margin-left: 2px; } .ds-action-row { margin-top: 8px; } .ds-action-lbl { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .1em; color: #77869c; margin-bottom: 2px; }"
     },
     {
       "name": "Stepper",
@@ -248,7 +523,7 @@
       "refersTo": "stepbtn",
       "description": "Распределение очков навыков, талантов и мех-навыков. Кнопки 44×44px, значение Chakra Petch бирюзой, пипы показывают потраченные ранги янтарём выбора.",
       "html": "<div class=\"ds-stepper\"><button class=\"ds-stepbtn\">−</button><span class=\"ds-stepval\">2</span><button class=\"ds-stepbtn\">+</button><span class=\"ds-pips\"><i class=\"ds-pip ds-pip-on\"></i><i class=\"ds-pip ds-pip-on\"></i><i class=\"ds-pip\"></i></span></div>",
-      "css": ".ds-stepper { display: flex; align-items: center; gap: 8px; } .ds-stepbtn { width: 44px; height: 44px; border-radius: 6px; background: #161d28; border: 1px solid #243040; color: #dbe4f0; font-size: 18px; line-height: 1; display: grid; place-items: center; cursor: pointer; transition: .12s; } .ds-stepbtn:hover { border-color: #37e0c0; color: #37e0c0; } .ds-stepbtn:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-stepbtn:disabled { opacity: .32; cursor: not-allowed; border-color: #243040; color: #6b7c94; } .ds-stepval { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 19.5px; min-width: 48px; text-align: center; color: #37e0c0; } .ds-pips { display: flex; gap: 3px; } .ds-pip { width: 13px; height: 6px; border-radius: 2px; background: #1c2532; border: 1px solid #243040; } .ds-pip-on { background: #ffb020; border-color: #ffb020; }"
+      "css": ".ds-stepper { display: flex; align-items: center; gap: 8px; } .ds-stepbtn { width: 44px; height: 44px; border-radius: 6px; background: #161d28; border: 1px solid #243040; color: #dbe4f0; font-size: 18px; line-height: 1; display: grid; place-items: center; cursor: pointer; transition: .12s; } .ds-stepbtn:hover { border-color: #37e0c0; color: #37e0c0; } .ds-stepbtn:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-stepbtn:disabled { opacity: .32; cursor: not-allowed; border-color: #243040; color: #77869c; } .ds-stepval { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 19.5px; min-width: 48px; text-align: center; color: #37e0c0; } .ds-pips { display: flex; gap: 3px; } .ds-pip { width: 13px; height: 6px; border-radius: 2px; background: #1c2532; border: 1px solid #243040; } .ds-pip-on { background: #ffb020; border-color: #ffb020; }"
     },
     {
       "name": "Confirmation Dialog",
@@ -256,7 +531,7 @@
       "refersTo": "losslist",
       "description": "Единственная форма разговора о разрушительном действии. Список потерь — суть компонента: диалог обязан назвать, что исчезнет, до того как это исчезнет.",
       "html": "<div class=\"ds-dialog\"><p>У <b>Ланкастер</b> другой набор креплений, поэтому вооружение придётся переставить. Переносится не всё:</p><ul class=\"ds-losslist\"><li class=\"keep\">Заряженный клинок → Гибкий</li><li class=\"drop\">Противоматериальная винтовка — нет подходящего крепления</li></ul><div class=\"ds-dialog-actions\"><button class=\"ds-ghostbtn\">↳ Перенести совместимое (1)</button><button class=\"ds-ghostbtn ds-ghostbtn-warn\">✕ Снять всё</button><button class=\"ds-ghostbtn\">Отмена</button></div></div>",
-      "css": ".ds-dialog { color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-dialog p { margin: 0 0 12px; font-size: 16.5px; line-height: 1.55; } .ds-losslist { list-style: none; margin: 0; padding: 12px 14px; background: #0b0f17; border: 1px solid #243040; border-radius: 8px; display: flex; flex-direction: column; gap: 6px; } .ds-losslist li { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; color: #7d8ca0; letter-spacing: .03em; display: flex; gap: 8px; } .ds-losslist li::before { content: '—'; color: #6b7c94; flex-shrink: 0; } .ds-losslist li.keep { color: #37e0c0; } .ds-losslist li.keep::before { content: '↳'; color: #37e0c0; } .ds-losslist li.drop::before { content: '✕'; color: #f4a93a; } .ds-dialog-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; } .ds-dialog-actions .ds-ghostbtn { flex: 1 1 200px; text-align: center; } .ds-ghostbtn { background: transparent; border: 1px dashed #36485e; color: #37e0c0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 9px 14px; border-radius: 6px; cursor: pointer; transition: .15s; } .ds-ghostbtn:hover { border-style: solid; box-shadow: 0 0 0 3px rgba(55,224,192,.16); } .ds-ghostbtn-warn { border-color: #e5604f; color: #e5604f; }"
+      "css": ".ds-dialog { color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-dialog p { margin: 0 0 12px; font-size: 16.5px; line-height: 1.55; } .ds-losslist { list-style: none; margin: 0; padding: 12px 14px; background: #0b0f17; border: 1px solid #243040; border-radius: 8px; display: flex; flex-direction: column; gap: 6px; } .ds-losslist li { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; color: #7d8ca0; letter-spacing: .03em; display: flex; gap: 8px; } .ds-losslist li::before { content: '—'; color: #77869c; flex-shrink: 0; } .ds-losslist li.keep { color: #37e0c0; } .ds-losslist li.keep::before { content: '↳'; color: #37e0c0; } .ds-losslist li.drop::before { content: '✕'; color: #f4a93a; } .ds-dialog-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; } .ds-dialog-actions .ds-ghostbtn { flex: 1 1 200px; text-align: center; } .ds-ghostbtn { background: transparent; border: 1px dashed #36485e; color: #37e0c0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 9px 14px; border-radius: 6px; cursor: pointer; transition: .15s; } .ds-ghostbtn:hover { border-style: solid; box-shadow: 0 0 0 3px rgba(55,224,192,.16); } .ds-ghostbtn-warn { border-color: #e5604f; color: #e5604f; }"
     },
     {
       "name": "Reference Card",
@@ -264,7 +539,7 @@
       "refersTo": "dcard",
       "description": "Единица колоды в режиме листа. Отвечает «что делает эта штука» без чтения соседей; на бумаге вырезается по пунктирному контуру. Модификатор .void — лицензия не открыта.",
       "html": "<article class=\"ds-dcard\" style=\"--src:#d8604c\"><i class=\"ds-dcard-src\"></i><div class=\"ds-dcard-hd\"><span class=\"ds-dcard-nm\">Противоматериальная винтовка</span><span class=\"ds-dcard-slot\">Тяжёлый</span></div><div class=\"ds-keyline\"><span class=\"ds-keystat\"><span class=\"k\">УРОН</span>2d6 Кинетический</span><span class=\"ds-keystat\"><span class=\"k\">ДИСТ</span>Дальность 20</span></div><div class=\"ds-dcard-slot\">Тяжёлый · Винтовка</div><div class=\"ds-dcard-row\"><span class=\"ds-tag\">Точное</span><span class=\"ds-tag\">Бронебойное (AP)</span></div><div class=\"ds-dcard-eff\"><b>ПРИ ПОПАДАНИИ</b>Цель получает Пробитие до конца следующего хода.</div></article>",
-      "css": ".ds-dcard { position: relative; background: #0f141d; border: 1px solid #243040; border-radius: 8px; padding: 12px 14px 12px 18px; display: flex; flex-direction: column; gap: 8px; color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-dcard-src { position: absolute; top: 0; left: 0; bottom: 0; width: 5px; border-radius: 8px 0 0 8px; background: var(--src); } .ds-dcard-hd { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; } .ds-dcard-nm { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 17.5px; line-height: 1.2; } .ds-dcard-slot { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; color: #6b7c94; } .ds-keyline { display: flex; gap: 16px; flex-wrap: wrap; } .ds-keystat { display: inline-flex; align-items: baseline; gap: 5px; font-family: 'Chakra Petch', sans-serif; font-size: 17.5px; } .ds-keystat .k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #6b7c94; letter-spacing: .08em; } .ds-dcard-row { display: flex; flex-wrap: wrap; gap: 5px; } .ds-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #37e0c0; background: #0f4f45; border-radius: 4px; padding: 2px 6px; } .ds-dcard-eff { font-size: 16.5px; line-height: 1.5; } .ds-dcard-eff b { color: #37e0c0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .1em; display: block; margin-bottom: 2px; font-weight: 400; }"
+      "css": ".ds-dcard { position: relative; background: #0f141d; border: 1px solid #243040; border-radius: 8px; padding: 12px 14px 12px 18px; display: flex; flex-direction: column; gap: 8px; color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-dcard-src { position: absolute; top: 0; left: 0; bottom: 0; width: 5px; border-radius: 8px 0 0 8px; background: var(--src); } .ds-dcard-hd { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; } .ds-dcard-nm { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 17.5px; line-height: 1.2; } .ds-dcard-slot { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; color: #77869c; } .ds-keyline { display: flex; gap: 16px; flex-wrap: wrap; } .ds-keystat { display: inline-flex; align-items: baseline; gap: 5px; font-family: 'Chakra Petch', sans-serif; font-size: 17.5px; } .ds-keystat .k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #77869c; letter-spacing: .08em; } .ds-dcard-row { display: flex; flex-wrap: wrap; gap: 5px; } .ds-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #37e0c0; background: #0f4f45; border-radius: 4px; padding: 2px 6px; } .ds-dcard-eff { font-size: 16.5px; line-height: 1.5; } .ds-dcard-eff b { color: #37e0c0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .1em; display: block; margin-bottom: 2px; font-weight: 400; }"
     },
     {
       "name": "Stat Strip",
@@ -272,7 +547,7 @@
       "refersTo": "stat-cell",
       "description": "Лента статов меха в шапке листа. Каждое число несёт моноширинную метку — именно то, чего не делают иконочные плитки HUD. Бирюзой только те статы, что реально отличаются от базовых статов шасси.",
       "html": "<div class=\"ds-statstrip\"><div class=\"ds-cell up\"><span class=\"k\">ОЧКИ ЗДОРОВЬЯ</span><span class=\"v\">17</span></div><div class=\"ds-cell\"><span class=\"k\">БРОНЯ</span><span class=\"v\">1</span></div><div class=\"ds-cell up\"><span class=\"k\">УКЛОНЕНИЕ</span><span class=\"v\">10</span></div><div class=\"ds-cell\"><span class=\"k\">SP</span><span class=\"v\">4/5</span></div></div>",
-      "css": ".ds-statstrip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; } .ds-cell { background: #0b0f17; border: 1px solid #243040; border-radius: 6px; padding: 8px 6px; text-align: center; } .ds-cell .k { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; color: #6b7c94; } .ds-cell .v { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 27px; line-height: 1.1; color: #dbe4f0; } .ds-cell.up .v { color: #37e0c0; }"
+      "css": ".ds-statstrip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; } .ds-cell { background: #0b0f17; border: 1px solid #243040; border-radius: 6px; padding: 8px 6px; text-align: center; } .ds-cell .k { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; color: #77869c; } .ds-cell .v { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 27px; line-height: 1.1; color: #dbe4f0; } .ds-cell.up .v { color: #37e0c0; }"
     },
     {
       "name": "Clearance Stamp",

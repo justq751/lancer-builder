@@ -308,7 +308,10 @@
   --line-bright:#36485e;
   --ink:#dbe4f0;
   --mute:#7d8ca0;
-  --faint:#6b7c94;
+  /* Lifted from #6b7c94, which measured 4.34:1 on --panel and so failed AA
+     for the 10-12px mono labels this colour actually carries. It now clears
+     4.5:1 on every surface except the --panel-3 hover fill. */
+  --faint:#77869c;
   --accent:#37e0c0;      /* COMP/CON teal — brand, focus, positive stat values */
   --accent-deep:#0f4f45;
   --accent-glow:rgba(55,224,192,.16);
@@ -327,6 +330,16 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* Motion here is all state feedback — bar fills, tab entrances, the boot
+   ring. None of it carries meaning that the still frame doesn't, so honouring
+   the OS switch costs the product nothing and costs a vestibular-sensitive
+   player a great deal to ignore. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important; animation-iteration-count:1!important;
+    transition-duration:.01ms!important; scroll-behavior:auto!important}
+}
 body{
   margin:0; background:var(--bg); color:var(--ink);
   font-family:"Inter",system-ui,sans-serif; font-size:16.5px; line-height:1.55;
@@ -361,7 +374,7 @@ button{font-family:inherit; cursor:pointer}
   display:flex; align-items:center; gap:16px; flex-wrap:wrap}
 .brand{display:flex; align-items:baseline; gap:11px}
 .brand .sig{font-family:"JetBrains Mono",monospace; color:var(--accent); font-size:14px; letter-spacing:.12em}
-.brand .name{font-family:"Chakra Petch"; font-size:clamp(17px,5vw,21px); letter-spacing:.06em}
+.brand .name{font-family:"Chakra Petch",sans-serif; font-size:clamp(17px,5vw,21px); letter-spacing:.06em}
 .brand .name b{color:var(--accent)}
 .brand .ver{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
   border:1px solid var(--line); padding:1px 6px; border-radius:3px; align-self:center}
@@ -403,9 +416,8 @@ button{font-family:inherit; cursor:pointer}
 .hud::-webkit-scrollbar{width:7px}
 .hud::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px}
 
-.card{position:relative; background:
-    linear-gradient(180deg,var(--panel),var(--panel) 38px,var(--bg-grid) 38px,var(--panel));
-  background:var(--panel); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow)}
+.card{position:relative; background:var(--panel);
+  border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow)}
 .card::before,.card::after{content:""; position:absolute; width:9px; height:9px; pointer-events:none}
 .card::before{top:-1px; left:-1px; border-top:2px solid var(--accent); border-left:2px solid var(--accent); border-radius:2px 0 0 0}
 .card::after{bottom:-1px; right:-1px; border-bottom:2px solid var(--accent); border-right:2px solid var(--accent); border-radius:0 0 2px 0}
@@ -415,11 +427,11 @@ button{font-family:inherit; cursor:pointer}
 .card .head .lbl b{color:var(--accent); font-weight:400}
 .card .body{padding:14px}
 
-.hud .pid{font-family:"Chakra Petch"; font-size:23px; line-height:1.15}
+.hud .pid{font-family:"Chakra Petch",sans-serif; font-size:23px; line-height:1.15}
 .hud .pid small{display:block; font-family:"JetBrains Mono",monospace; font-size:12px;
   color:var(--accent); letter-spacing:.12em; margin-top:3px}
 .hud .ll{margin-top:12px; display:flex; align-items:center; gap:10px}
-.hud .ll .big{font-family:"Chakra Petch"; font-size:33px; color:var(--accent); line-height:1}
+.hud .ll .big{font-family:"Chakra Petch",sans-serif; font-size:33px; color:var(--accent); line-height:1}
 .hud .ll .meta{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); letter-spacing:.08em}
 
 /* budget rows */
@@ -433,8 +445,10 @@ button{font-family:inherit; cursor:pointer}
 .brow .bar i.over{background:var(--amber)}
 
 /* mech stat grid in HUD */
-.statgrid{display:grid; grid-template-columns:repeat(3,1fr); gap:7px}
-@media(max-width:680px){.statgrid{grid-template-columns:repeat(2,1fr)}}
+/* Two columns, not three: the sidebar is 344px and each tile now carries a
+   written key, which is what makes it readable at all. Three columns fitted
+   only while the tiles were unlabelled icons nobody could read. */
+.statgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:7px}
 
 /* Unified stat-display tile — a bordered box showing a key/icon and a value.
    Four call sites share this one base via modifier classes instead of four
@@ -446,13 +460,17 @@ button{font-family:inherit; cursor:pointer}
 .stattile{position:relative; background:var(--bg-grid); border:1px solid var(--line); border-radius:5px;
   padding:7px 6px 6px; text-align:center}
 .stattile .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.07em; color:var(--faint); display:block; min-height:2.2em}
-.stattile .v{font-family:"Chakra Petch"; font-size:21px; color:var(--ink); line-height:1}
+.stattile .v{font-family:"Chakra Petch",sans-serif; font-size:21px; color:var(--ink); line-height:1}
 .stattile.hl .v{color:var(--accent)}
 
 /* Compact icon+value tile (no text label). Value font size intentionally
    matches .stattile.row .v below, so both this and the ВЫБРАННОЕ ШАССИ card
    read at the same visual scale. */
-.stattile.compact{display:flex; align-items:center; justify-content:center; gap:9px; padding:11px 8px}
+.stattile.compact{display:flex; align-items:center; justify-content:flex-start; gap:9px; padding:9px 8px}
+.stattile.compact .col{display:flex; flex-direction:column; align-items:flex-start; min-width:0; text-align:left}
+.stattile.compact .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.06em;
+  color:var(--faint); min-height:0; line-height:1.25; overflow:hidden; text-overflow:ellipsis;
+  white-space:nowrap; max-width:100%}
 .stattile.compact .v{font-size:26px}
 
 /* Horizontal [icon] LABEL ... value row — used in the ВЫБРАННОЕ ШАССИ card
@@ -473,9 +491,10 @@ button{font-family:inherit; cursor:pointer}
 .pgstats{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
 .stattile.pg{flex:1; min-width:84px; background:var(--panel-2); border-radius:8px; padding:10px 8px}
 @media(max-width:480px){.stattile.pg{min-width:64px}}
-.stattile.pg .ico{font-size:16px; margin-bottom:2px; opacity:.85}
+.stattile.pg .ico{margin-bottom:2px; opacity:.85; min-height:20px}
+.pgicon{width:20px; height:20px; object-fit:contain; display:inline-block}
 .stattile.pg .lbl{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.08em; color:var(--faint)}
-.stattile.pg .val{font-family:"Chakra Petch"; font-size:19px; color:var(--accent); line-height:1.3}
+.stattile.pg .val{font-family:"Chakra Petch",sans-serif; font-size:19px; color:var(--accent); line-height:1.3}
 
 /* stat glossary tooltip (hover icon, compcon.app-style).
    position:fixed + JS-computed coordinates (see wireStatTooltips()) instead
@@ -484,27 +503,39 @@ button{font-family:inherit; cursor:pointer}
    own scrollbar), fixed positioning escapes that entirely. */
 .stattip{position:relative; display:inline-flex; align-items:center; justify-content:center; margin-left:5px; width:16px; height:16px;
   cursor:help; vertical-align:middle; opacity:.8; transition:.15s; font-size:12px; color:var(--faint)}
+/* The glyph stays 16px so the label it sits beside keeps its rhythm, but the
+   thing a finger has to hit is 44px: a transparent pseudo-element centred on
+   it, outside the flow so no layout moves. */
+.stattip::after{content:""; position:absolute; top:50%; left:50%;
+  width:44px; height:44px; transform:translate(-50%,-50%)}
 .stattip:hover{opacity:1; color:var(--accent)}
 .stattip.lg{width:38px; height:38px; margin-left:0; flex-shrink:0}
+/* Inside a HUD tile the icon shares the row with a key and a value, so it
+   gives up the width the key needs; it stays the glossary handle. */
+.stattile.compact .stattip.lg{width:26px; height:26px}
 .stattip-icon{width:100%; height:100%; object-fit:contain; display:block}
 .stattip-box{display:none; position:fixed;
   width:400px; max-width:80vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:9px;
   padding:16px 18px; font-family:"Inter",sans-serif; font-size:16px; line-height:1.5; color:var(--ink);
   text-align:left; text-transform:none; z-index:1000; box-shadow:0 10px 28px rgba(0,0,0,.45); letter-spacing:normal; font-weight:400}
-.stattip-box b{display:block; margin-bottom:6px; color:var(--accent); font-family:"Chakra Petch"; font-size:18px; font-weight:500}
+.stattip-box b{display:block; margin-bottom:6px; color:var(--accent); font-family:"Chakra Petch",sans-serif; font-size:18px; font-weight:500}
 
 /* ---- tabs ---- */
 .tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px}
 .tab{background:var(--panel); border:1px solid var(--line); color:var(--mute);
   font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
-  padding:10px 15px; border-radius:6px; display:flex; align-items:center; gap:8px; transition:.15s}
+  padding:10px 15px; border-radius:6px; display:flex; align-items:center; gap:8px; transition:.15s;
+  min-height:44px}
 .tab .ix{color:var(--faint); font-size:11px}
 .tab:hover{color:var(--ink); border-color:var(--line-bright)}
 .tab.active{color:var(--select); border-color:var(--select); background:var(--panel-2);
   box-shadow:inset 0 0 0 1px var(--select-glow)}
 .tab.active .ix{color:var(--select)}
-.tab .dot{width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.tab .dot{width:6px;height:6px;border-radius:50%;background:var(--accent); flex-shrink:0}
 .tab .dot.warn{background:var(--amber)}
+/* Visually hidden but read aloud — the dots carry meaning colour alone can't. */
+.sr{position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden;
+  clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0}
 
 /* ---- section ---- */
 .section{display:none}
@@ -517,7 +548,7 @@ button{font-family:inherit; cursor:pointer}
 
 /* Recurring in-content sub-heading (e.g. "// СНАРЯЖЕНИЕ ПИЛОТА") — margin
    varies by context so it stays a small inline style alongside this class. */
-.subhead{font-family:"Chakra Petch"; font-size:17.5px}
+.subhead{font-family:"Chakra Petch",sans-serif; font-size:17.5px}
 
 /* form fields */
 .field{margin-bottom:14px}
@@ -533,7 +564,7 @@ button{font-family:inherit; cursor:pointer}
 .llpick{display:flex; align-items:center; gap:14px; background:var(--bg-grid);
   border:1px solid var(--line); border-radius:8px; padding:14px 16px}
 .llpick input[type=range]{flex:1; accent-color:var(--accent)}
-.llpick .num{font-family:"Chakra Petch"; font-size:37px; color:var(--accent); min-width:54px; text-align:center}
+.llpick .num{font-family:"Chakra Petch",sans-serif; font-size:37px; color:var(--accent); min-width:54px; text-align:center}
 .llpick .lab{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--faint); letter-spacing:.08em}
 
 /* generic item card grid */
@@ -557,7 +588,7 @@ button{font-family:inherit; cursor:pointer}
   opacity:.95; flex-shrink:0; background:var(--panel-2)}
 .frame-thumb.lg{width:100px; height:100px}
 .item .top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
-.item .nm{font-family:"Chakra Petch"; font-size:17.5px; line-height:1.2}
+.item .nm{font-family:"Chakra Petch",sans-serif; font-size:17.5px; line-height:1.2}
 .item .badge{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
   color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap}
 .item .badge.lock{color:var(--amber); border-color:var(--amber)}
@@ -589,7 +620,7 @@ button{font-family:inherit; cursor:pointer}
 .tag.glossary.open{outline:1px solid currentColor}
 .tagdesc{background:var(--panel-2); border:1px solid var(--line-bright); border-radius:7px;
   padding:10px 12px; margin-top:9px; font-size:13.5px; color:var(--mute)}
-.tagdesc b{color:var(--ink); font-family:"Chakra Petch"; font-size:14px}
+.tagdesc b{color:var(--ink); font-family:"Chakra Petch",sans-serif; font-size:14px}
 .desc{color:var(--mute); font-size:13.5px; margin-top:9px}
 /* Structured action block — CORE powers and weapon "actions" that have real
    mechanical shape (an activation cost, sometimes a trigger, sometimes
@@ -603,12 +634,12 @@ button{font-family:inherit; cursor:pointer}
 .action-block.act-reaction{border-left-color:#e87f9e}
 .action-block.act-free{border-left-color:var(--faint)}
 .action-head{display:flex; align-items:center; justify-content:space-between; gap:10px}
-.action-nm{font-family:"Chakra Petch"; font-size:14.5px; letter-spacing:.02em}
+.action-nm{font-family:"Chakra Petch",sans-serif; font-size:14.5px; letter-spacing:.02em}
 .action-badge{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.08em; color:var(--mute);
   border:1px solid var(--line-bright); border-radius:4px; padding:2px 7px; flex-shrink:0}
 .action-stats{display:flex; gap:16px; margin-top:9px; flex-wrap:wrap}
 @media(max-width:480px){.action-stats{gap:10px}}
-.action-stat{font-family:"Chakra Petch"; font-size:15px; display:flex; align-items:center; gap:5px}
+.action-stat{font-family:"Chakra Petch",sans-serif; font-size:15px; display:flex; align-items:center; gap:5px}
 .action-stat .u{font-family:"JetBrains Mono",monospace; font-size:10px; color:var(--faint); letter-spacing:.05em; margin-left:2px}
 .action-row{margin-top:8px}
 .action-lbl{display:block; font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.1em; color:var(--faint); margin-bottom:2px}
@@ -621,7 +652,7 @@ button{font-family:inherit; cursor:pointer}
   border:1px solid var(--line); color:var(--ink); font-size:18px; line-height:1; display:grid; place-items:center; transition:.12s}
 .stepbtn:hover{border-color:var(--accent); color:var(--accent)}
 .stepbtn:disabled{opacity:.32; cursor:not-allowed; border-color:var(--line); color:var(--faint)}
-.stepval{font-family:"Chakra Petch"; font-size:19.5px; min-width:48px; text-align:center; color:var(--accent)}
+.stepval{font-family:"Chakra Petch",sans-serif; font-size:19.5px; min-width:48px; text-align:center; color:var(--accent)}
 .pips{display:flex; gap:3px}
 .pip{width:13px;height:6px;border-radius:2px;background:var(--panel-3); border:1px solid var(--line)}
 .pip.on{background:var(--select); border-color:var(--select)}
@@ -630,7 +661,7 @@ button{font-family:inherit; cursor:pointer}
 .listrow{display:flex; justify-content:space-between; align-items:center; gap:14px;
   background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px 14px}
 .listrow .info{min-width:0}
-.listrow .info .nm{font-family:"Chakra Petch"; font-size:17.5px}
+.listrow .info .nm{font-family:"Chakra Petch",sans-serif; font-size:17.5px}
 .listrow .info .ds{color:var(--mute); font-size:13.5px; margin-top:3px}
 .listrow.maxed{border-color:var(--select)}
 .listrow.clickable{cursor:pointer; transition:.12s}
@@ -640,7 +671,7 @@ button{font-family:inherit; cursor:pointer}
   color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap; flex-shrink:0}
 .rowbadge.lock{color:var(--amber); border-color:var(--amber)}
 .rowbadge.unlocked{color:var(--ok); border-color:var(--ok)}
-.chevron{color:var(--faint); font-size:19px; flex-shrink:0; font-family:"Chakra Petch"}
+.chevron{color:var(--faint); font-size:19px; flex-shrink:0; font-family:"Chakra Petch",sans-serif}
 .viewtoggle{display:flex; gap:8px; margin-bottom:12px}
 .profiles{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:11px}
 .pickitem{display:block}
@@ -661,7 +692,7 @@ button{font-family:inherit; cursor:pointer}
 .mount.integrated{border-color:var(--line-bright)}
 .mount .mhead{display:flex; align-items:center; justify-content:space-between; gap:10px;
   padding:11px 14px; background:var(--panel-2); border-bottom:1px solid var(--line)}
-.mount .mhead .mt{font-family:"Chakra Petch"; font-size:17.5px}
+.mount .mhead .mt{font-family:"Chakra Petch",sans-serif; font-size:17.5px}
 .mount .mhead .cap{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); letter-spacing:.06em}
 .mount .slot{padding:15px 16px; border-bottom:1px solid var(--line-bright)}
 .mount .slot:last-child{border-bottom:0}
@@ -671,7 +702,7 @@ button{font-family:inherit; cursor:pointer}
 .equipped .ei.clickable:hover{background:var(--panel-3)}
 .listrow .info.clickable{cursor:pointer; border-radius:6px; padding:2px 4px; margin:-2px -4px; transition:.12s}
 .listrow .info.clickable:hover{background:var(--panel-3)}
-.equipped .ei .en{font-family:"Chakra Petch"; font-size:16.5px}
+.equipped .ei .en{font-family:"Chakra Petch",sans-serif; font-size:16.5px}
 .equipped .ei .em{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); margin-top:2px}
 .empty-slot{display:flex; align-items:center; gap:10px; color:var(--faint);
   font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.04em}
@@ -755,7 +786,7 @@ button{font-family:inherit; cursor:pointer}
 .sheet .full{grid-column:1/-1}
 .kv{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:14.5px}
 .kv .k{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--mute); letter-spacing:.04em}
-.sheet h3{font-family:"Chakra Petch"; font-size:18.5px; margin-bottom:10px;
+.sheet h3{font-family:"Chakra Petch",sans-serif; font-size:18.5px; margin-bottom:10px;
   padding-bottom:7px; border-bottom:1px solid var(--line)}
 .sheet h3 .hash{color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:13.5px}
 .minilist{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px}
@@ -1227,7 +1258,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-07-06-stat-labels-in-locales";
+const APP_BUILD = "2026-08-04-sheet-view-autosave-a11y";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1919,11 +1950,18 @@ function bar(b,label){
 }
 function renderHUD(){
   const d=derived(); const p=state.pilot;
+  // Every number carries its key. An icon-only tile needs a hover to be read,
+  // and half this product's audience is on a phone, where hover does not
+  // exist. `hl` marks a stat the build actually changed — teal has to answer
+  // "what is happening here", not decorate three fixed keys.
   const stats = d.mech ? `
     <div class="statgrid">
       ${["hp","evasion","edef","heatcap","speed","armor","sensor_range","tech_attack","save","repcap","size","sp"].map(k=>{
-        const hl=["hp","evasion","sp"].includes(k)?"hl":"";
-        return `<div class="stattile compact ${hl}">${statIconHTML(k,"lg")}<span class="v">${d.mech[k]}</span></div>`;
+        const base = d.frame && d.frame.stats ? d.frame.stats[k] : null;
+        const hl = base!=null && d.mech[k]!==base ? "hl" : "";
+        return `<div class="stattile compact ${hl}">${statIconHTML(k,"lg")}
+          <span class="col"><span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span>
+          <span class="v">${d.mech[k]}</span></span></div>`;
       }).join("")}
     </div>
     <div class="brow" style="margin-top:10px">
@@ -1978,14 +2016,34 @@ function tabWarn(id){
   if(id==="core")     return d.b.core.cap>0 && state.cores.length>d.b.core.cap;
   return false;
 }
+/* The other half of the dot the CSS always had and the markup never produced:
+   teal means "there is budget left here". Levelling up is the moment this
+   answers the only question the pilot has — where did my new points go? */
+function tabSpare(id){
+  const d=derived();
+  const spare=b=>b.cap>b.used;
+  if(id==="skills")   return spare(d.b.skill);
+  if(id==="talents")  return spare(d.b.talent) && Object.values(state.talents).every(v=>v<=talentRankCap(d.ll));
+  if(id==="hase")     return spare(d.b.hase);
+  if(id==="licenses") return spare(d.b.license);
+  if(id==="core")     return d.b.core.cap>state.cores.length;
+  return false;
+}
 function renderTabBar(){
   $("#tabs").innerHTML = TABS.map(([id,nm],i)=>{
     const warn=tabWarn(id);
+    const spare=!warn && tabSpare(id);
     const sel=activeTab===id;
+    // The dot is never colour alone: it carries a title and an accessible
+    // name, because "amber vs teal" is not a distinction a screen reader or
+    // a colour-blind player can make.
+    const dot = warn ? `<span class="dot warn" title="Перебор бюджета"><span class="sr">перебор бюджета</span></span>`
+              : spare ? `<span class="dot" title="Остались нераспределённые очки"><span class="sr">остались очки</span></span>`
+              : "";
     return `<button class="tab ${sel?'active':''}" data-tab="${id}" role="tab"
       aria-selected="${sel}" aria-controls="tab" id="tab-btn-${id}" tabindex="${sel?0:-1}">
       <span class="ix mono">${String(i+1).padStart(2,"0")}</span>${nm}
-      ${warn?'<span class="dot warn"></span>':''}</button>`;
+      ${dot}</button>`;
   }).join("");
   const btns=$$("#tabs .tab");
   const activate=b=>{activeTab=b.dataset.tab; render(); window.scrollTo({top:0,behavior:"smooth"}); $(`#tab-btn-${activeTab}`).focus();};
@@ -2315,7 +2373,7 @@ function licenseRanksHTML(f){
     const list = byRank[rank];
     if(!framesHere.length && !list.length) return "";
     return `<div style="margin-bottom:14px">
-      <h4 style="font-family:'Chakra Petch';font-size:15px;margin-bottom:6px;color:var(--accent)">РАНГ ${rank}</h4>
+      <h4 style="font-family:'Chakra Petch',sans-serif;font-size:15px;margin-bottom:6px;color:var(--accent)">РАНГ ${rank}</h4>
       ${framesHere.map(fr=>`<div class="desc" style="margin-bottom:6px">🔓 Открывает само шасси <b>${esc(dispName(fr))}</b>${fr.variant?` <span class="hint">(вариант лицензии ${esc(fr.variant)})</span>`:""}.</div>`).join("")}
       ${list.length?`<ul class="minilist">${list.map(line).join("")}</ul>`:""}
     </div>`;
@@ -2381,7 +2439,7 @@ function renderLicenses(){
     `Тратьте очки лицензий, чтобы открывать шасси, оружие и системы производителей. Каждый ранг лицензии = 1 очко (макс. 3). GMS доступен бесплатно. Потрачено ${d.b.license.used} из ${d.b.license.cap}. Кликните по карточке, чтобы увидеть, что открывает каждый ранг.`)
     + (over?`<div class="warnbox">⚠ Превышено очков лицензий на ${d.b.license.used-d.b.license.cap}.</div>`:"")
     + Object.entries(groups).map(([src,fr])=>`
-      <h3 style="font-family:'Chakra Petch';font-size:16.5px;margin:18px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
+      <h3 style="font-family:'Chakra Petch',sans-serif;font-size:16.5px;margin:18px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
       <div class="grid cards">${fr.map(f=>{
         const key=licenseKeyFor(f);
         const v=licRank(key);
@@ -2394,7 +2452,7 @@ function renderLicenses(){
               <div class="meta">ШАССИ открывается на ранге ${f.license_level} · открыто предметов: ${nUnlock}</div>
               ${f.variant?`<div class="meta" style="color:var(--accent)">↳ общая лицензия с ${esc(f.variant)}</div>`:""}
             </div>
-            ${frameImageURL(f)?`<img class="frame-thumb" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
+            ${frameImageURL(f)?`<img class="frame-thumb" src="${frameImageURL(f)}" alt="Портрет шасси ${esc(dispName(f))}" loading="lazy" onerror="this.remove()">`:""}
           </div>
           <div class="stepper" style="margin-top:11px">
             <button class="stepbtn" data-lic="${esc(key)}" data-d="-1" ${v<=0?"disabled":""}>−</button>
@@ -2445,10 +2503,10 @@ function actionBlockHTML(act){
 }
 function frameTraitsCoreHTML(f){
   const cs=f.core_system;
-  const traits=f.traits.map(t=>`<div style="margin-bottom:10px"><b style="font-family:'Chakra Petch'">${esc(t.name)}</b><div class="desc" style="margin-top:3px">${rich(t.description)}</div></div>`).join("");
+  const traits=f.traits.map(t=>`<div style="margin-bottom:10px"><b style="font-family:'Chakra Petch',sans-serif">${esc(t.name)}</b><div class="desc" style="margin-top:3px">${rich(t.description)}</div></div>`).join("");
   let core="";
   if(cs){
-    core=`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px;color:var(--accent)">CORE-СИСТЕМА — ${esc(cs.name)}</h3>
+    core=`<h3 style="font-family:'Chakra Petch',sans-serif;margin:6px 0 8px;color:var(--accent)">CORE-СИСТЕМА — ${esc(cs.name)}</h3>
       ${cs.description?`<div class="desc" style="margin-bottom:8px">${rich(cs.description)}</div>`:""}`;
     if(cs.passive_name){
       core+=`<div style="margin-bottom:8px"><b>Пассивно — ${esc(cs.passive_name)}:</b></div>`;
@@ -2461,7 +2519,7 @@ function frameTraitsCoreHTML(f){
       if(cs.active_actions&&cs.active_actions.length) core+=cs.active_actions.map(actionBlockHTML).join("");
     }
   }
-  return (traits?`<h3 style="font-family:'Chakra Petch';margin:6px 0 8px">ОСОБЕННОСТИ</h3>${traits}`:"") + core;
+  return (traits?`<h3 style="font-family:'Chakra Petch',sans-serif;margin:6px 0 8px">ОСОБЕННОСТИ</h3>${traits}`:"") + core;
 }
 /* Full frame detail: meta line + description + stat grid + traits/CORE.
    `computed`, if passed, is the fully-derived mech stat object (grit/HASE/
@@ -2529,7 +2587,7 @@ function renderFrame(){
   const srcKeys=Object.keys(groups).sort((a,b)=>sourceOrder(a)-sourceOrder(b));
   $("#frame-list").innerHTML=srcKeys.map(src=>{
     const fr=groups[src].sort((a,b)=>(frameUnlocked(b)-frameUnlocked(a))||dispName(a).localeCompare(dispName(b)));
-    return `<h3 style="font-family:'Chakra Petch';font-size:16.5px;margin:20px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
+    return `<h3 style="font-family:'Chakra Petch',sans-serif;font-size:16.5px;margin:20px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
       <div class="grid cards">${fr.map(f=>{
         const sel=state.mech.frameId===f.id;
         const lk=!frameUnlocked(f);
@@ -2542,7 +2600,7 @@ function renderFrame(){
             <div style="flex:1; min-width:0">
               <div class="meta">${f.mechtype.map(tr).join(" / ")}</div>
             </div>
-            ${frameImageURL(f)?`<img class="frame-thumb lg" src="${frameImageURL(f)}" alt="" loading="lazy" onerror="this.remove()">`:""}
+            ${frameImageURL(f)?`<img class="frame-thumb lg" src="${frameImageURL(f)}" alt="Портрет шасси ${esc(dispName(f))}" loading="lazy" onerror="this.remove()">`:""}
           </div>
           <div class="tags stat-grid" style="margin-top:9px">
             <span class="tag stat">HP ${s.hp}</span><span class="tag stat">УКЛ ${s.evasion}</span>
@@ -2799,6 +2857,15 @@ function wireTagGlossary(tagsSel, boxSel, rawTags, tagSet){
   draw();
 }
 const rngStr=w=>(w.range||[]).map(x=>`${tr(x.type)} ${x.val}`).join(", ")||"—";
+/* Every keystroke in a picker redraws the modal body, which destroys and
+   recreates the search input. Restoring focus alone parks the caret at the
+   end, so a typo in the middle of a query could never be corrected — the
+   caret position has to travel across the redraw with it. */
+function restoreCaret(sel, pos){
+  const el=$(sel); if(!el) return;
+  el.focus();
+  try{ el.setSelectionRange(pos, pos); }catch(e){}
+}
 /* Distinct damage-type strings for a weapon, used by the weapon-picker's
    damage filter. Multi-profile weapons (w.profiles[]) can carry damage per
    profile instead of on the top-level w.damage, so fall back to
@@ -2901,20 +2968,27 @@ function pilotGearStatValues(g){
 /* Compact one-line version of pilotGearStatsHTML() for the picker's list
    row (no room there for the full tile grid) — same icon+value pairs,
    just inline text instead of boxes. */
+/* Armour and E-Defense used to be 🛡 and 🛡️ — the same shield twice, told
+   apart only by a variation selector, which is to say not told apart at all.
+   The product already ships drawn icons for these stats; use them, and let
+   the label do the naming where no icon exists. */
+const pgIcon = k => STAT_ICONS[k]
+  ? `<img class="pgicon" src="${STAT_ICONS[k]}" alt="" loading="lazy">` : "";
 function pilotGearStatsInlineHTML(g){
   const s = pilotGearStatValues(g);
-  return `🛡${esc(String(s.armor))} · ♥+${esc(String(s.hp))} · 🛡️${esc(String(s.edef))} · ◈${esc(String(s.evasion))} · ➜${esc(String(s.speed))}`;
+  return `БРОНЯ ${esc(String(s.armor))} · ОЗ +${esc(String(s.hp))} · Э-ЗАЩ ${esc(String(s.edef))}`
+    + ` · УКЛ ${esc(String(s.evasion))} · СКОР ${esc(String(s.speed))}`;
 }
 function pilotGearStatsHTML(g){
   if(g.type!=="Armor" || !(g.bonuses&&g.bonuses.length)) return "";
   const s = pilotGearStatValues(g);
-  const tile=(ico,lbl,val)=>`<div class="stattile pg"><div class="ico">${ico}</div><div class="lbl">${lbl}</div><div class="val">${esc(String(val))}</div></div>`;
+  const tile=(k,lbl,val)=>`<div class="stattile pg"><div class="ico">${pgIcon(k)}</div><div class="lbl">${lbl}</div><div class="val">${esc(String(val))}</div></div>`;
   return `<div class="pgstats">
-    ${tile("🛡","БРОНЯ",s.armor)}
-    ${tile("♥","БОНУС ОЗ","+"+s.hp)}
-    ${tile("🛡️","Э-ЗАЩИТА",s.edef)}
-    ${tile("◈","УКЛОНЕНИЕ",s.evasion)}
-    ${tile("➜","СКОРОСТЬ",s.speed)}
+    ${tile("armor","БРОНЯ",s.armor)}
+    ${tile("hp","БОНУС ОЗ","+"+s.hp)}
+    ${tile("edef","Э-ЗАЩИТА",s.edef)}
+    ${tile("evasion","УКЛОНЕНИЕ",s.evasion)}
+    ${tile("speed","СКОРОСТЬ",s.speed)}
   </div>`;
 }
 /* Pilot gear card — same shape as weaponCardBody/systemCardBody, but pilot
@@ -3140,7 +3214,7 @@ function openWeaponPicker(mi){
     $$(".modal .chip[data-wpty]").forEach(c=>c.onclick=()=>{wpTypeFilter=c.dataset.wpty; drawList();});
     $$(".modal .chip[data-wpdm]").forEach(c=>c.onclick=()=>{wpDmgFilter=c.dataset.wpdm; drawList();});
     const input=$("#wp-search");
-    input.oninput=e=>{wpSearch=e.target.value; drawList(); $("#wp-search").focus();};
+    input.oninput=e=>{ const pos=e.target.selectionStart; wpSearch=e.target.value; drawList(); restoreCaret("#wp-search", pos); };
     if(wpSearch) input.setSelectionRange(input.value.length,input.value.length);
 
     $$("#wp-list .listrow").forEach(it=>it.onclick=()=>{
@@ -3216,7 +3290,7 @@ function openPilotGearPicker(slotKind, onInstall){
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     const input=$("#pg-search");
-    input.oninput=e=>{pgSearch=e.target.value; drawList(true); $("#pg-search").focus();};
+    input.oninput=e=>{ const pos=e.target.selectionStart; pgSearch=e.target.value; drawList(true); restoreCaret("#pg-search", pos); };
     if(pgSearch) input.setSelectionRange(input.value.length,input.value.length);
 
     $$("#pg-list .listrow").forEach(it=>it.onclick=()=>{
@@ -3354,7 +3428,7 @@ function openModPicker(mi, wi){
     wireViewToggle(drawList);
     $$(".modal .chip[data-mpf]").forEach(c=>c.onclick=()=>{mpFilter=c.dataset.mpf; drawList();});
     const input=$("#mp-search");
-    input.oninput=e=>{mpSearch=e.target.value; drawList(); $("#mp-search").focus();};
+    input.oninput=e=>{ const pos=e.target.selectionStart; mpSearch=e.target.value; drawList(); restoreCaret("#mp-search", pos); };
     if(mpSearch) input.setSelectionRange(input.value.length,input.value.length);
 
     $$("#mp-list .listrow").forEach(it=>it.onclick=()=>{
@@ -3483,7 +3557,7 @@ function openSystemPicker(){
     wireViewToggle(drawList);
     $$(".modal .chip[data-syf]").forEach(c=>c.onclick=()=>{syFilter=c.dataset.syf; drawList();});
     const input=$("#sy-search");
-    input.oninput=e=>{sySearch=e.target.value; drawList(); $("#sy-search").focus();};
+    input.oninput=e=>{ const pos=e.target.selectionStart; sySearch=e.target.value; drawList(); restoreCaret("#sy-search", pos); };
     if(sySearch) input.setSelectionRange(input.value.length,input.value.length);
 
     $$("#sy-list .listrow").forEach(it=>it.onclick=()=>{
@@ -3631,7 +3705,7 @@ function renderCore(){
     const slotsFull=state.cores.length>=dNow.b.core.cap;
     $("#core-list").innerHTML = srcKeys.length ? srcKeys.map(src=>{
       const fr=groups[src].sort((a,b)=>(coreBonusUnlocked(b)-coreBonusUnlocked(a))||a.name.localeCompare(b.name));
-      return `<h3 style="font-family:'Chakra Petch';font-size:16.5px;margin:20px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
+      return `<h3 style="font-family:'Chakra Petch',sans-serif;font-size:16.5px;margin:20px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
         <div class="grid cards">${fr.map(c=>{
           const unl=coreBonusUnlocked(c);
           const terse=(L.core_terse?.[c.id]?.[currentLang])||(L.core_terse?.[c.id]?.en)||"";
