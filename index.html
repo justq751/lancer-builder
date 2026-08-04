@@ -685,8 +685,19 @@ button{font-family:inherit; cursor:pointer}
 .profiles{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:11px}
 .pickitem{display:block}
 .listrow.open{border-color:var(--select); border-bottom-left-radius:0; border-bottom-right-radius:0}
+/* Picker default: the row above is a .listrow.open whose bottom corners are
+   squared off, so the detail finishes that box — no top edge, negative margin,
+   one shape. */
 .expand-detail{background:var(--panel-2); border:1px solid var(--accent); border-top:0;
   border-radius:0 0 8px 8px; padding:14px; margin-top:-1px}
+/* Loadout: here the row above is either borderless (.equipped inside a slot)
+   or a closed .listrow, so there is nothing for the detail to finish — the
+   picker's treatment reads as a box someone cut the top off. In these places
+   the detail is a complete block of its own, set off from the row instead of
+   fused to it. */
+.slot > .expand-detail,
+#syslist .expand-detail{
+  border:1px solid var(--line); border-radius:8px; margin-top:10px}
 
 /* talent rank descriptions */
 .rankbox{margin-top:10px; display:flex; flex-direction:column; gap:7px}
@@ -3521,8 +3532,11 @@ function openSystemPicker(){
   const install=id=>{
     state.mech.systems.push(id);
     syExpanded=null;
-    render();    // updates the loadout tab/HUD (SP counters) behind the modal
-    drawList();  // refresh the picker itself; installed item drops out of the list
+    render();       // updates the loadout tab/HUD (SP counters) behind the modal
+    // Refresh the picker in place: the installed system drops out of the list
+    // and everything else stays where the eye left it. Redrawing from the top
+    // would throw away the scroll position someone spent reading to reach.
+    drawList(true);
   };
 
   const drawDetail=(id)=>{
