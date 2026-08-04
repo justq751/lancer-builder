@@ -5,6 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LANCER // РЕЕСТР — конструктор меха и пилота</title>
 <meta name="description" content="Конструктор пилота и меха для настольной ролевой игры Lancer. Данные: massif-press/lancer-data.">
+<!-- The loader lives in an inline script at the bottom of a ~200KB document,
+     so on a slow device nothing is requested until the whole thing is parsed.
+     These four files are 1.5MB of the 2.2MB payload and are always needed;
+     starting them during parse overlaps network with parsing instead of
+     queueing behind it. The rest are small enough to ride the same wave. -->
+<link rel="preload" as="fetch" type="application/json" href="data/lancer-data.json" crossorigin>
+<link rel="preload" as="fetch" type="application/json" href="locales/ru/systems.json" crossorigin>
+<link rel="preload" as="fetch" type="application/json" href="locales/ru/frames.json" crossorigin>
+<link rel="preload" as="fetch" type="application/json" href="locales/ru/talents.json" crossorigin>
 <style>
 /* Self-hosted fonts (assets/fonts/) — replaces the Google Fonts <link>,
    so the site no longer depends on fonts.googleapis.com/fonts.gstatic.com
@@ -1034,19 +1043,30 @@ const CONTENT_PACKS = [
 
 async function loadBaseData() {
   try {
-    const core = await fetchJSON("data/lancer-data.json");
-    core.tags = await fetchJSON("data/tags.json").catch(e => { console.warn("tags.json failed to load:", e); return []; });
-    core.glossary = await fetchJSON("data/glossary.json").catch(e => { console.warn("glossary.json failed to load:", e); return {}; });
-    core.stat_labels = await fetchJSON("data/stat_labels.json").catch(e => { console.warn("stat_labels.json failed to load:", e); return {}; });
-    core.core_stat_mods = await fetchJSON("data/core_bonus_stat_mods.json").catch(e => { console.warn("core_bonus_stat_mods.json failed to load:", e); return {}; });
-    core.core_terse = await fetchJSON("data/core_bonus_terse.json").catch(e => { console.warn("core_bonus_terse.json failed to load:", e); return {}; });
-    // Map of frame id -> official portrait URL (hosted on Massif Press's own
-    // CDN, not bundled in this project — see data/frame_images.json for why
-    // these are linked rather than downloaded).
-    core.frame_images = await fetchJSON("data/frame_images.json").catch(e => { console.warn("frame_images.json failed to load:", e); return {}; });
-    const packs = await Promise.all(
-      CONTENT_PACKS.map(p => fetchJSON(p).catch(e => { console.warn("Pack failed to load:", p, e); return null; }))
-    );
+    // One wave, not fifteen. These files do not depend on each other, and
+    // awaiting them in sequence cost eight round-trips before the packs even
+    // started — invisible on localhost, roughly a second on mobile data.
+    // Only lancer-data.json is allowed to reject: without it there is no app,
+    // and the catch below explains the file:// case. Everything else degrades
+    // to an empty default the way it always did.
+    const soft = (url, fallback) => fetchJSON(url).catch(e => {
+      console.warn(url + " failed to load:", e); return fallback;
+    });
+    const [core, tags, glossary, stat_labels, core_stat_mods, core_terse, frame_images, ...packs] =
+      await Promise.all([
+        fetchJSON("data/lancer-data.json"),
+        soft("data/tags.json", []),
+        soft("data/glossary.json", {}),
+        soft("data/stat_labels.json", {}),
+        soft("data/core_bonus_stat_mods.json", {}),
+        soft("data/core_bonus_terse.json", {}),
+        // Map of frame id -> official portrait URL (hosted on Massif Press's
+        // own CDN, not bundled here — see data/frame_images.json for why
+        // these are linked rather than downloaded).
+        soft("data/frame_images.json", {}),
+        ...CONTENT_PACKS.map(p => soft(p, null)),
+      ]);
+    Object.assign(core, { tags, glossary, stat_labels, core_stat_mods, core_terse, frame_images });
     for (const pack of packs) {
       if (!pack) continue;
       for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses", "mods"]) {
@@ -4329,19 +4349,33 @@ function wireTopbar(){
 }
 
 /* ============ BOOT ============ */
-function boot(onDone){
-  const lines=["ИНИЦИАЛИЗАЦИЯ COMP/CON…","ЗАГРУЗКА РЕЕСТРА UNION…",
-    `СИНХРОНИЗАЦИЯ: ${L.frames.length} ШАССИ · ${L.weapons.length} ОРУЖИЯ · ${L.systems.length} СИСТЕМ`,
-    "ДОСТУП РАЗРЕШЁН ▸"];
-  const el=$("#boot .blog"); let i=0;
-  const tick=()=>{ if(i<lines.length){ el.textContent=lines[i++]; setTimeout(tick,360); }
-    else setTimeout(()=>{
-      $("#boot").classList.add("done");
-      // The overlay sits at z-index 200, above the modal — anything that has
-      // to be said about the restored build waits until it has faded out.
-      if(onDone) setTimeout(onDone, 520);
-    },320); };
-  tick();
+/* The boot overlay used to cost a fixed 1760ms while the work behind it took
+   44ms on a warm connection — 97% theatre, charged on every single load, to
+   every user, forever. It now follows the real pipeline: a line appears when
+   its stage actually completes, held only long enough to be read, and the
+   overlay leaves the moment the registry is ready. On a slow connection it
+   finally becomes what it always pretended to be — a progress indicator. */
+const BOOT_MIN_LINE = 120;   // short enough not to be a toll, long enough to read
+const BOOT_MIN_SYNC = 300;   // the one line carrying real information
+// The first line ("ИНИЦИАЛИЗАЦИЯ…") ships in the markup, so the clock starts
+// when this script parses — that is when the overlay became readable.
+let bootLastAt = performance.now();
+function bootSay(text, hold){
+  const el=$("#boot .blog");
+  if(!el) return Promise.resolve();
+  const wait=Math.max(0, (hold||BOOT_MIN_LINE)-(performance.now()-bootLastAt));
+  return new Promise(done=>setTimeout(()=>{
+    el.textContent=text; bootLastAt=performance.now(); done();
+  }, wait));
+}
+function bootFinish(onDone){
+  const wait=Math.max(0, BOOT_MIN_LINE-(performance.now()-bootLastAt));
+  setTimeout(()=>{
+    $("#boot").classList.add("done");
+    // The overlay sits at z-index 200, above the modal — anything that has to
+    // be said about the restored build waits until it has faded out.
+    if(onDone) setTimeout(onDone, 520);
+  }, wait);
 }
 
 /* ============ LANGUAGE SWITCH ============ */
@@ -4363,12 +4397,14 @@ function wireLangSwitch(){
 
 /* ============ INIT ============ */
 (async function startApp(){
+  bootSay("ЗАГРУЗКА РЕЕСТРА UNION…"); // not awaited: the fetch must start now
   try{
     L = await fetchAndLocalize(currentLang);
   }catch(e){
     console.error(e);
     return; // loadBaseData() already showed an error message in the DOM
   }
+  await bootSay(`СИНХРОНИЗАЦИЯ: ${L.frames.length} ШАССИ · ${L.weapons.length} ОРУЖИЯ · ${L.systems.length} СИСТЕМ`, BOOT_MIN_SYNC);
   rebuildIndexes();
 
   // A share link wins over the stored build: the reader asked to see that
@@ -4394,7 +4430,8 @@ function wireLangSwitch(){
   wireLangSwitch();
   render();
   renderSaveState();
-  boot(()=>{
+  await bootSay("ДОСТУП РАЗРЕШЁН ▸");
+  bootFinish(()=>{
     if(linkFailed) notice("Ссылка не прочитана",
       "Адрес повреждён или собран другой версией реестра. Попросите прислать ссылку заново или файл сборки.");
     else if(restoreReport) reportDropped(sheetSource==="shared"?"Сборка открыта частично":"Сборка восстановлена частично", restoreReport);
