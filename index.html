@@ -321,6 +321,9 @@
   --red:#e5604f;
   --gms:#d8604c; --ipsn:#3f8fd6; --ssc:#d8c160; --horus:#52b585; --ha:#9d6fdd; --exotic:#e8398a;
   --shadow:0 18px 50px -20px rgba(0,0,0,.8);
+  /* Paper is its own surface, not the dark UI inverted: printed output has
+     exactly three values — ink, rule, and the sheet itself. */
+  --print-paper:#fff; --print-ink:#000; --print-rule:#666;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -365,7 +368,11 @@ button{font-family:inherit; cursor:pointer}
 .topbar .spacer{flex:1}
 .toolbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
   font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
-  padding:9px 14px; border-radius:5px; display:inline-flex; gap:7px; align-items:center; transition:.15s}
+  padding:9px 14px; border-radius:5px; display:inline-flex; gap:7px; align-items:center; transition:.15s;
+  min-height:44px; justify-content:center}
+/* display:inline-flex above outranks the UA's [hidden]{display:none}, so the
+   attribute needs saying again here or nothing ever hides. */
+.toolbtn[hidden]{display:none}
 .toolbtn:hover{border-color:var(--accent); color:var(--accent); box-shadow:0 0 0 1px var(--accent-glow)}
 .toolbtn.warn:hover{border-color:var(--amber); color:var(--amber); box-shadow:none}
 /* Save-state readout — the product's only ambient proof that work is kept.
@@ -734,6 +741,10 @@ button{font-family:inherit; cursor:pointer}
 .dialog .losslist li.keep{color:var(--accent)}
 .dialog .losslist li.keep::before{content:"↳"; color:var(--accent)}
 .dialog .losslist li.drop::before{content:"✕"; color:var(--amber)}
+/* A share URL is data to copy, not a loss to mourn: no marker, and it has to
+   be allowed to break anywhere or it pushes the dialog wider than the panel. */
+.dialog .losslist li.plain{color:var(--ink); word-break:break-all}
+.dialog .losslist li.plain::before{content:none}
 .dialog .losslist.scroll{max-height:34vh; overflow:auto}
 .dialog-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px}
 .dialog-actions .ghostbtn{flex:1 1 200px; text-align:center}
@@ -762,13 +773,121 @@ details.note summary{cursor:pointer; color:var(--accent); font-family:"JetBrains
 details.note .body{color:var(--mute); font-size:13.5px; margin-top:7px}
 details.note .body ul{margin:5px 0; padding-left:18px}
 
+/* ============ SHEET VIEW ============
+   The reading mode: a deck of reference cards, not a document of lists. A
+   card is the unit a tabletop player already owns — it answers "what does
+   this thing do" without reading its neighbours, and on paper it cuts out.
+   Nothing in here edits: there is not one control that changes the build. */
+body.sheetmode .shell{display:none}
+.sheetview{max-width:1680px; margin:0 auto; padding:clamp(18px,2.6vw,34px)}
+
+/* Dossier — the one place the whole build is stated at once. Sticky, because
+   the stats are what a player looks back at between cards. */
+.dossier{position:sticky; top:60px; z-index:40; background:var(--bg);
+  border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:18px}
+@media(max-width:760px){.dossier{position:static}}
+.dossier-id{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap}
+.dossier-id .cs{font-family:"Chakra Petch",sans-serif; font-size:27px; line-height:1.15}
+.dossier-id .nm{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--mute); letter-spacing:.06em}
+.dossier-id .ll{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--accent); letter-spacing:.08em}
+.dossier-frame{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.1em;
+  color:var(--faint); margin-top:4px}
+.dossier-frame b{color:var(--ink); font-weight:400}
+
+/* Stat strip — every number carries its monospace key, which is exactly what
+   the HUD's icon-only tiles fail to do. This is the reading surface; a number
+   nobody can name is not readable. */
+.statstrip{display:grid; grid-template-columns:repeat(6,1fr); gap:8px; margin-top:14px}
+@media(max-width:900px){.statstrip{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:560px){.statstrip{grid-template-columns:repeat(3,1fr)}}
+.statstrip .cell{background:var(--bg-grid); border:1px solid var(--line); border-radius:6px;
+  padding:8px 6px; text-align:center}
+.statstrip .cell .k{display:block; font-family:"JetBrains Mono",monospace; font-size:12px;
+  letter-spacing:.06em; color:var(--faint)}
+.statstrip .cell .v{font-family:"Chakra Petch",sans-serif; font-size:27px; line-height:1.1; color:var(--ink)}
+.statstrip .cell.up .v{color:var(--accent)}
+
+/* Clearance stamp — the registry's verdict on this build. The product already
+   knows every violation; this is where it finally says so. */
+.stamp{display:flex; align-items:flex-start; gap:10px; margin-top:14px; padding:10px 14px;
+  border:1px solid var(--ok); border-radius:8px; color:var(--ok);
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.06em}
+.stamp.dev{border-color:var(--amber); color:var(--amber); background:var(--amber-glow)}
+.stamp .body{flex:1; min-width:0}
+.stamp ul{list-style:none; margin:7px 0 0; padding:0; display:flex; flex-direction:column; gap:4px}
+.stamp li{color:var(--ink); letter-spacing:.03em}
+
+/* Deck */
+.decksec{margin-top:24px}
+.decksec > h2{font-family:"Chakra Petch",sans-serif; font-size:17.5px; letter-spacing:.06em; color:var(--ink);
+  padding-bottom:7px; border-bottom:1px solid var(--line); margin-bottom:14px}
+.decksec > h2 .n{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--faint);
+  letter-spacing:.1em; margin-left:8px}
+.deck{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:12px}
+@media(max-width:560px){.deck{grid-template-columns:1fr}}
+
+.dcard{position:relative; background:var(--panel); border:1px solid var(--line);
+  border-radius:8px; padding:12px 14px 12px 18px; display:flex; flex-direction:column; gap:8px}
+.dcard .src{position:absolute; top:0; left:0; bottom:0; width:5px; border-radius:8px 0 0 8px}
+.dcard .hd{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
+.dcard .nm{font-family:"Chakra Petch",sans-serif; font-size:17.5px; line-height:1.2}
+.dcard .slot{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.06em;
+  color:var(--faint); white-space:nowrap; flex-shrink:0}
+.dcard .row{display:flex; flex-wrap:wrap; gap:5px}
+.dcard .eff{font-size:16.5px; line-height:1.5; color:var(--ink)}
+.dcard .eff b{color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:12px;
+  letter-spacing:.1em; display:block; margin-bottom:2px; font-weight:400}
+.dcard .sub{border-top:1px solid var(--line); padding-top:8px}
+.dcard.void{border-color:var(--amber)}
+/* Numbers a player reads mid-turn get the display face, not the body face. */
+.keystat{display:inline-flex; align-items:baseline; gap:5px; font-family:"Chakra Petch",sans-serif; font-size:17.5px}
+.keystat .k{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--faint); letter-spacing:.08em}
+.keyline{display:flex; gap:16px; flex-wrap:wrap}
+
+.sheet-empty{border:1px dashed var(--line-bright); border-radius:8px; padding:24px;
+  text-align:center; color:var(--faint); font-family:"JetBrains Mono",monospace;
+  font-size:12.5px; letter-spacing:.05em}
+/* Reading someone else's build: it is not yours and is not being saved. */
+.foreign{background:var(--panel-2); border:1px solid var(--line-bright); border-radius:8px;
+  padding:10px 14px; margin-bottom:16px; font-family:"JetBrains Mono",monospace;
+  font-size:12.5px; color:var(--mute); letter-spacing:.04em}
+
 /* print */
 @media print{
-  body{background:#fff; color:#000}
+  body{background:var(--print-paper); color:var(--print-ink)}
   .topbar,.hud,.tabs,#boot,.filters,.toolbtn{display:none!important}
   .shell{grid-template-columns:1fr; max-width:none; padding:0}
   .section{display:none!important}
   #print-sheet{display:block!important}
+
+  /* A4 layout for the sheet: its own denser composition, not the screen
+     shrunk. Two columns of cards with cut lines; nothing splits across a
+     page, and the dossier repeats as a running head. */
+  @page{size:A4; margin:12mm}
+  body.sheetmode{background:var(--print-paper)}
+  body.sheetmode .sheetview{display:block!important; max-width:none; padding:0; color:var(--print-ink)}
+  .sheetview *{color:var(--print-ink)!important; background:transparent!important}
+  .dossier{position:static; border-bottom:1.5pt solid var(--print-ink); padding-bottom:6pt; margin-bottom:8pt}
+  .dossier-id .cs{font-size:20pt}
+  .statstrip{grid-template-columns:repeat(6,1fr); gap:4pt; margin-top:6pt}
+  .statstrip .cell{border:.5pt solid var(--print-rule); border-radius:0; padding:3pt 2pt}
+  .statstrip .cell .k{font-size:6.5pt}
+  .statstrip .cell .v{font-size:13pt}
+  .stamp{border:1pt solid var(--print-ink)!important; border-radius:0; font-size:8pt; padding:4pt 6pt}
+  .decksec{margin-top:10pt; break-inside:auto}
+  .decksec > h2{font-size:11pt; border-bottom:.5pt solid var(--print-ink); break-after:avoid}
+  .deck{display:block; column-count:2; column-gap:6mm}
+  .dcard{break-inside:avoid; page-break-inside:avoid; display:block;
+    border:.5pt dashed var(--print-rule)!important; border-radius:0; padding:4pt 5pt; margin:0 0 4mm;
+    -webkit-column-break-inside:avoid}
+  .dcard .src{display:none}
+  .dcard .nm{font-size:10.5pt}
+  .dcard .slot,.dcard .row,.dcard .eff b,.keystat .k{font-size:6.5pt}
+  .dcard .eff{font-size:8.5pt; line-height:1.35; margin-top:3pt}
+  .dcard .row{margin-top:2pt}
+  .keystat{font-size:10pt}
+  .tag{border:.5pt solid var(--print-rule); border-radius:0; padding:0 2pt; font-size:6.5pt}
+  .foreign,.sheet-empty{border:.5pt solid var(--print-rule); font-size:8pt}
 }
 </style>
 </head>
@@ -788,6 +907,9 @@ details.note .body ul{margin:5px 0; padding-left:18px}
   </div>
   <div class="spacer"></div>
   <span class="savestate" id="savestate" aria-live="polite"></span>
+  <button class="toolbtn mode" id="t-sheet">▤ ЛИСТ</button>
+  <button class="toolbtn" id="t-link" hidden>🔗 ССЫЛКА</button>
+  <button class="toolbtn" id="t-print" hidden>🖨 ПЕЧАТЬ</button>
   <button class="toolbtn" id="t-lang" title="Переключить язык контента / Toggle content language">RU / EN</button>
   <button class="toolbtn" id="t-import">⬆ ЗАГРУЗИТЬ</button>
   <button class="toolbtn" id="t-export">⬇ СОХРАНИТЬ</button>
@@ -802,6 +924,8 @@ details.note .body ul{margin:5px 0; padding-left:18px}
     <div id="tab" class="section show" role="tabpanel"></div>
   </main>
 </div>
+
+<div id="sheet" class="sheetview" hidden></div>
 
 <div id="print-sheet" style="display:none"></div>
 
@@ -1343,6 +1467,11 @@ let activeTab = "pilot";
 const BUILD_KEY = "lancer_build";
 const BUILD_V = 1;
 let saveTimer = null, lastSaveAt = null, saveFailed = false;
+/* "build" = the editor, "sheet" = the read-only reference deck. sheetSource
+   is "shared" when the build came in through a link: someone else's build
+   must never overwrite the reader's own autosave. */
+let viewMode = (localStorage.getItem("view_mode")==="sheet") ? "sheet" : "build";
+let sheetSource = "own";
 
 function buildIsEmpty(){
   const p=state.pilot;
@@ -1355,6 +1484,7 @@ function buildIsEmpty(){
 }
 function saveBuildNow(){
   clearTimeout(saveTimer); saveTimer=null;
+  if(sheetSource==="shared") return; // reading someone else's build
   try{
     // A first visit that touched nothing has nothing worth claiming to have
     // saved; once anything is stored, an emptied build is a real change.
@@ -1768,7 +1898,12 @@ function pickFrame(id){
 /* ---------------- RENDER ROOT ---------------- */
 /* Every state mutation in this file ends here, which makes render() the one
    honest place to persist from — no mutation site can forget to. */
-function render(){ renderHUD(); renderTab(); renderTabBar(); scheduleSave(); }
+function render(){
+  syncModeChrome();
+  if(viewMode==="sheet") renderSheet();
+  else { renderHUD(); renderTab(); renderTabBar(); }
+  scheduleSave();
+}
 
 function setState(fn){ fn(); render(); }
 
@@ -3645,9 +3780,10 @@ function confirmDialog({title, lead, losses, actions}){
 }
 /* Non-destructive report: something already happened, the user only needs to
    know what. Same shell as confirmDialog so the two read as one component. */
-function notice(title, lead, items){
+function notice(title, lead, items, kind){
+  const cls = kind==="plain" ? "plain" : "drop";
   const list=(items&&items.length)
-    ? `<ul class="losslist ${items.length>8?"scroll":""}">${items.map(t=>`<li class="drop">${esc(t)}</li>`).join("")}</ul>` : "";
+    ? `<ul class="losslist ${items.length>8?"scroll":""}">${items.map(t=>`<li class="${cls}">${esc(t)}</li>`).join("")}</ul>` : "";
   modal(title, `<div class="dialog">
     <p>${rich(lead)}</p>
     ${list}
@@ -3717,6 +3853,361 @@ function importBuild(file){
   r.readAsText(file);
 }
 
+/* ============ SHEET VIEW ============
+   A deck of reference cards. The editor answers "what can I take"; this
+   answers "what does the thing I took do", mid-combat, without a single
+   control that could change the build. Mechanics only — flavour and
+   descriptions stay in the editor, where there is time to read them. */
+const shDmg = w => (w.damage||[]).map(x=>`${x.val} ${trTag(x.type)}`).join(" + ");
+const shRng = w => (w.range||[]).map(x=>`${tr(x.type)} ${x.val}`).join(" · ");
+const shTags = tags => (tags||[]).length
+  ? `<div class="row">${tags.map(t=>`<span class="tag">${esc(trTag(t))}</span>`).join("")}</div>` : "";
+function shEff(label, html){
+  return html ? `<div class="eff"><b>${label}</b>${rich(html)}</div>` : "";
+}
+function shKey(k, v){ return `<span class="keystat"><span class="k">${k}</span>${esc(String(v))}</span>`; }
+
+/* Every rule the build breaks. The app already knows all of this — tabWarn(),
+   unlocked() and talentRankCap() have known it for eight tabs — the sheet is
+   simply where it finally gets said out loud. */
+function buildViolations(){
+  const d=derived(), out=[];
+  const over=(b,label)=>{ if(b.used>b.cap) out.push(`${label}: ${(+b.used.toFixed(1))} из ${b.cap}`); };
+  over(d.b.skill,"Перебор навыков");
+  over(d.b.talent,"Перебор талантов");
+  over(d.b.hase,"Перебор мех-навыков");
+  over(d.b.license,"Перебор лицензий");
+  if(d.b.core.cap>0 && state.cores.length>d.b.core.cap)
+    out.push(`Перебор CORE-бонусов: ${state.cores.length} из ${d.b.core.cap}`);
+  if(d.mech && d.sp.used>d.sp.cap)
+    out.push(`Перебор системных очков: ${d.sp.used} из ${d.sp.cap} SP`);
+  const cap=talentRankCap(d.ll);
+  Object.entries(state.talents).forEach(([id,v])=>{
+    if(v>cap && M.talent[id]) out.push(`${M.talent[id].name}: ранг ${["I","II","III"][v-1]} выше доступного на LL${d.ll}`);
+  });
+  if(d.frame && !frameUnlocked(d.frame)) out.push(`Шасси ${dispName(d.frame)} — лицензия не открыта`);
+  (state.mech.mounts||[]).forEach(mt=>(mt.items||[]).forEach(s=>{
+    const w=M.weapon[s.id];
+    if(w && !unlocked(w)) out.push(`${w.name} — лицензия не открыта`);
+    const md=s.mod&&M.mod[s.mod];
+    if(md && !unlocked(md)) out.push(`${md.name} — лицензия не открыта`);
+  }));
+  (state.mech.systems||[]).forEach(id=>{
+    const sy=M.system[id];
+    if(sy && !unlocked(sy)) out.push(`${sy.name} — лицензия не открыта`);
+  });
+  return out;
+}
+
+const SHEET_STATS=["hp","armor","evasion","edef","heatcap","speed","size","save","sensor_range","tech_attack","repcap"];
+function statStripHTML(d){
+  const cells=SHEET_STATS.map(k=>{
+    const base=d.frame&&d.frame.stats?d.frame.stats[k]:null;
+    const up = base!=null && d.mech[k]!==base;
+    return `<div class="cell ${up?"up":""}"><span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span>
+      <span class="v">${esc(String(d.mech[k]))}</span></div>`;
+  }).join("");
+  const sp=`<div class="cell"><span class="k">SP</span><span class="v">${d.sp.used}/${d.sp.cap}</span></div>`;
+  return `<div class="statstrip">${cells}${sp}</div>`;
+}
+
+function weaponCardHTML(w, mountType, mod){
+  const eff=effectiveWeapon(w, mod);
+  const prof=(w.profiles&&w.profiles.length)?w.profiles[0]:null;
+  const dmg=prof?profDmgStr(prof):shDmg(eff);
+  const rng=prof?profRngStr(prof):shRng(eff);
+  const lk=!unlocked(w);
+  return `<article class="dcard ${lk?"void":""}">
+    <div class="src" style="background:${srcColor(w.source)}"></div>
+    <div class="hd">
+      <span class="nm">${esc(w.name)}</span>
+      <span class="slot">${esc(tr(mountType))}${lk?" · 🔒":""}</span>
+    </div>
+    <div class="keyline">
+      ${dmg?shKey("УРОН",dmg):""}
+      ${rng?shKey("ДИСТ",rng):""}
+      ${w.sp?shKey("SP",w.sp):""}
+    </div>
+    <div class="slot">${esc(tr(w.mount))} · ${esc(tr(w.type))}</div>
+    ${shTags(weaponDisplayTags(eff,0))}
+    ${shEff("ЭФФЕКТ", w.effect)}
+    ${shEff("ПРИ АТАКЕ", w.on_attack)}
+    ${shEff("ПРИ ПОПАДАНИИ", w.on_hit)}
+    ${shEff("ПРИ КРИТЕ", w.on_crit)}
+    ${mod?`<div class="sub">
+      <div class="hd"><span class="nm" style="font-size:16.5px">+ ${esc(mod.name)}</span>
+        <span class="slot">МОД${mod.sp?" · SP "+mod.sp:""}</span></div>
+      ${shEff("ЭФФЕКТ", mod.effect)}</div>`:""}
+  </article>`;
+}
+function systemCardHTML(sy){
+  const lk=!unlocked(sy);
+  return `<article class="dcard ${lk?"void":""}">
+    <div class="src" style="background:${srcColor(sy.source)}"></div>
+    <div class="hd">
+      <span class="nm">${esc(sy.name)}</span>
+      <span class="slot">${esc(tr(sy.type||"System"))}${lk?" · 🔒":""}</span>
+    </div>
+    <div class="keyline">${sy.sp?shKey("SP",sy.sp):""}</div>
+    ${shTags(sy.tags)}
+    ${shEff("ЭФФЕКТ", sy.effect)}
+  </article>`;
+}
+function coreSystemCardHTML(frame){
+  const cs=frame.core_system; if(!cs) return "";
+  return `<article class="dcard">
+    <div class="src" style="background:${srcColor(frame.source)}"></div>
+    <div class="hd"><span class="nm">${esc(cs.name)}</span><span class="slot">CORE-СИСТЕМА</span></div>
+    ${shTags(cs.tags)}
+    ${cs.passive_name?`<div class="eff"><b>ПАССИВНО — ${esc(cs.passive_name)}</b>${rich(cs.passive_effect)}</div>`:""}
+    ${cs.active_name?`<div class="eff"><b>АКТИВНО — ${esc(cs.active_name)}</b>${rich(cs.active_effect)}</div>`:""}
+    ${(!cs.active_name&&cs.effect)?shEff("ЭФФЕКТ",cs.effect):""}
+  </article>`;
+}
+function talentCardHTML(id, rank){
+  const t=M.talent[id]; if(!t) return "";
+  const ranks=(t.ranks||[]).slice(0,rank);
+  return `<article class="dcard">
+    <div class="src" style="background:var(--accent)"></div>
+    <div class="hd"><span class="nm">${esc(t.name)}</span>
+      <span class="slot">РАНГ ${["I","II","III"][rank-1]||rank}</span></div>
+    ${ranks.map((r,i)=>`<div class="eff"><b>${["I","II","III"][i]} — ${esc(r.name)}</b>${rich(r.description)}</div>`).join("")}
+  </article>`;
+}
+function coreBonusCardHTML(id){
+  const cb=M.core[id]; if(!cb) return "";
+  return `<article class="dcard">
+    <div class="src" style="background:${srcColor(cb.source)}"></div>
+    <div class="hd"><span class="nm">${esc(cb.name)}</span><span class="slot">CORE-БОНУС</span></div>
+    ${shEff("ЭФФЕКТ", cb.effect)}
+    ${shEff("НА КРЕПЛЕНИИ", cb.mounted_effect)}
+  </article>`;
+}
+function gearCardHTML(id){
+  const g=M.gear[id]; if(!g) return "";
+  const stats=(g.bonuses||[]).map(b=>shKey(esc(String(b.id).replace("pilot_","").toUpperCase()), b.val)).join("");
+  return `<article class="dcard">
+    <div class="src" style="background:${srcColor(g.source||"GMS")}"></div>
+    <div class="hd"><span class="nm">${esc(g.name)}</span><span class="slot">${esc(tr(g.type||""))}</span></div>
+    <div class="keyline">${stats}${g.damage&&g.damage.length?shKey("УРОН",shDmg(g)):""}${g.range&&g.range.length?shKey("ДИСТ",shRng(g)):""}</div>
+    ${shTags(g.tags)}
+    ${shEff("ЭФФЕКТ", g.effect)}
+  </article>`;
+}
+function deckSection(title, cards){
+  const list=cards.filter(Boolean);
+  if(!list.length) return "";
+  return `<section class="decksec">
+    <h2>${title}<span class="n">${list.length}</span></h2>
+    <div class="deck">${list.join("")}</div>
+  </section>`;
+}
+
+function renderSheet(){
+  const d=derived(), p=state.pilot;
+  const viol=buildViolations();
+  const bg=p.background&&M.bg[p.background];
+
+  const head=`
+    ${sheetSource==="shared"?`<div class="foreign">// ЧУЖАЯ СБОРКА — открыта по ссылке и не сохраняется в этом браузере</div>`:""}
+    <div class="dossier">
+      <h1 class="dossier-id">
+        <span class="cs">${esc(p.callsign||"БЕЗЫМЯННЫЙ")}</span>
+        <span class="nm">${esc(p.name||"имя не задано")}${bg?" · "+esc(bg.name):""}</span>
+        <span class="ll">LL${d.ll} · GRIT +${d.grit}</span>
+      </h1>
+      ${d.frame?`<div class="dossier-frame">ШАССИ <b>${esc(dispName(d.frame))}</b> · ${esc(SRC_NAME[d.frame.source]||d.frame.source)} · ${d.frame.mechtype.map(tr).join(" / ")}</div>
+        ${statStripHTML(d)}`:`<div class="dossier-frame">ШАССИ НЕ ВЫБРАНО</div>`}
+      <div class="stamp ${viol.length?"dev":""}">
+        <span>${viol.length?"⚠":"✓"}</span>
+        <div class="body">${viol.length?`ДОПУСК: С ОТКЛОНЕНИЯМИ (${viol.length})
+          <ul>${viol.map(v=>`<li>${esc(v)}</li>`).join("")}</ul>`:"ДОПУСК ПОДТВЕРЖДЁН — сборка в пределах правил"}</div>
+      </div>
+    </div>`;
+
+  const weaponCards=[];
+  (state.mech.mounts||[]).forEach(mt=>(mt.items||[]).forEach(s=>{
+    const w=M.weapon[s.id];
+    if(w) weaponCards.push(weaponCardHTML(w, mt.type, s.mod?M.mod[s.mod]:null));
+  }));
+
+  const skillLines=Object.entries(state.skills).map(([id,v])=>{
+    const s=skillInfo(id); return s?`${esc(s.name)} +${v}`:null;
+  }).filter(Boolean);
+  const haseLines=HASE.filter(h=>state.hase[h.k]).map(h=>`${h.ru} ${state.hase[h.k]} — ${h.eff}`);
+  const pilotCard=(skillLines.length||haseLines.length)?`<article class="dcard">
+    <div class="src" style="background:var(--accent)"></div>
+    <div class="hd"><span class="nm">Пилот и мех-навыки</span><span class="slot">СВОДКА</span></div>
+    ${haseLines.length?`<div class="eff"><b>МЕХ-НАВЫКИ</b>${haseLines.map(esc).join("<br>")}</div>`:""}
+    ${skillLines.length?`<div class="eff"><b>ТРИГГЕРЫ НАВЫКОВ</b>${skillLines.join(" · ")}</div>`:""}
+  </article>`:"";
+
+  const body = (!d.frame && !skillLines.length && !haseLines.length && !state.gear.armor)
+    ? `<div class="sheet-empty">// СБОРКА ПУСТА<br>вернитесь в редактор и начните с уровня лицензии</div>`
+    : deckSection("ВООРУЖЕНИЕ", weaponCards)
+      + deckSection("СИСТЕМЫ", (state.mech.systems||[]).map(id=>M.system[id]?systemCardHTML(M.system[id]):null))
+      + deckSection("CORE", [d.frame?coreSystemCardHTML(d.frame):null, ...state.cores.map(coreBonusCardHTML)])
+      + deckSection("ТАЛАНТЫ", Object.entries(state.talents).map(([id,v])=>talentCardHTML(id,v)))
+      + deckSection("СНАРЯЖЕНИЕ ПИЛОТА", [state.gear.armor, ...state.gear.weapons, ...state.gear.gear].map(gearCardHTML))
+      + deckSection("ПИЛОТ", [pilotCard]);
+
+  $("#sheet").innerHTML = head + body;
+}
+
+/* ---- share link ---- */
+const SHARE_V = 1;
+const b64uEnc = bytes => {
+  let s=""; const CH=0x8000;
+  for(let i=0;i<bytes.length;i+=CH) s+=String.fromCharCode.apply(null, bytes.subarray(i,i+CH));
+  return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+};
+const b64uDec = str => {
+  const t=str.replace(/-/g,"+").replace(/_/g,"/");
+  const bin=atob(t + "=".repeat((4 - t.length%4) % 4));
+  return Uint8Array.from(bin, c=>c.charCodeAt(0));
+};
+/* Only ids and numbers travel: empty fields are omitted entirely, so a
+   typical build compresses to well under a kilobyte and survives being
+   pasted into any messenger. */
+function packBuild(){
+  const p=state.pilot, o={v:SHARE_V};
+  if(p.name) o.n=p.name;
+  if(p.callsign) o.c=p.callsign;
+  if(p.background) o.b=p.background;
+  if(p.ll) o.l=p.ll;
+  if(Object.keys(state.skills).length) o.s=state.skills;
+  if(state.customSkills.length) o.cs=state.customSkills.map(x=>[x.id,x.name,x.description||""]);
+  if(Object.keys(state.talents).length) o.t=state.talents;
+  const h=HASE.map(x=>state.hase[x.k]);
+  if(h.some(Boolean)) o.h=h;
+  const lic=Object.entries(state.licenses).filter(([,v])=>v);
+  if(lic.length) o.lc=Object.fromEntries(lic);
+  if(state.gear.armor) o.ga=state.gear.armor;
+  if(state.gear.weapons.length) o.gw=state.gear.weapons;
+  if(state.gear.gear.length) o.gg=state.gear.gear;
+  if(state.cores.length) o.cb=state.cores;
+  if(state.mech.frameId){
+    o.f=state.mech.frameId;
+    o.m=(state.mech.mounts||[]).map(mt=>[mt.type,(mt.items||[]).map(s=>s.mod?[s.id,s.mod]:[s.id])]);
+    if(state.mech.systems.length) o.sy=state.mech.systems;
+  }
+  return o;
+}
+function unpackBuild(o){
+  if(!o || typeof o!=="object") return null;
+  return {
+    pilot:{name:o.n||"", callsign:o.c||"", background:o.b||"", ll:o.l||0},
+    skills:o.s||{},
+    customSkills:(o.cs||[]).map(a=>({id:a[0], name:a[1], description:a[2]||""})),
+    talents:o.t||{},
+    hase:HASE.reduce((acc,x,i)=>{ acc[x.k]=(o.h&&o.h[i])||0; return acc; },{}),
+    licenses:o.lc||{},
+    gear:{armor:o.ga||null, weapons:o.gw||[], gear:o.gg||[]},
+    cores:o.cb||[],
+    mech:{
+      frameId:o.f||null,
+      mounts:(o.m||[]).map(a=>({type:a[0], items:(a[1]||[]).map(s=>({id:s[0], mod:s[1]||null}))})),
+      systems:o.sy||[],
+    },
+  };
+}
+/* deflate-raw ships in every current browser and needs no library, which is
+   what keeps this project build-step-free. The "u" prefix is the honest
+   fallback for anything that lacks it. */
+async function encodeShare(){
+  const bytes=new TextEncoder().encode(JSON.stringify(packBuild()));
+  if(typeof CompressionStream==="function"){
+    try{
+      const stream=new Blob([bytes]).stream().pipeThrough(new CompressionStream("deflate-raw"));
+      const buf=await new Response(stream).arrayBuffer();
+      return "z"+b64uEnc(new Uint8Array(buf));
+    }catch(e){ console.warn("[Lancer Registry] сжатие недоступно, ссылка будет длиннее:", e); }
+  }
+  return "u"+b64uEnc(bytes);
+}
+async function decodeShare(payload){
+  const flag=payload[0], body=b64uDec(payload.slice(1));
+  let bytes=body;
+  if(flag==="z"){
+    if(typeof DecompressionStream!=="function") throw new Error("DecompressionStream не поддерживается");
+    const stream=new Blob([body]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+    bytes=new Uint8Array(await new Response(stream).arrayBuffer());
+  } else if(flag!=="u") throw new Error("неизвестный формат ссылки");
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+async function shareSheetLink(){
+  try{
+    const payload=await encodeShare();
+    const url=`${location.origin}${location.pathname}?s=${payload}`;
+    let copied=false;
+    try{ await navigator.clipboard.writeText(url); copied=true; }catch(e){ copied=false; }
+    notice("Ссылка на лист",
+      copied ? "Ссылка скопирована. Открывший её увидит только лист — его собственная сборка не пострадает."
+             : "Скопируйте ссылку вручную. Открывший её увидит только лист — его собственная сборка не пострадает.",
+      [url], "plain");
+  }catch(e){
+    console.error(e);
+    notice("Ссылку собрать не удалось", "Не получилось упаковать сборку в адрес. Выгрузите её файлом кнопкой <b>⬇ СОХРАНИТЬ</b>.");
+  }
+}
+/* Reads ?s=… once at startup. A shared build is read-only by construction:
+   sheetSource stays "shared", which is what stops saveBuildNow() from
+   overwriting the reader's own work. */
+async function consumeShareLink(){
+  const m=/[?&]s=([^&]+)/.exec(location.search);
+  if(!m) return null;
+  history.replaceState(null, "", location.pathname);
+  try{
+    const raw=await decodeShare(decodeURIComponent(m[1]));
+    const built=unpackBuild(raw);
+    if(!built) throw new Error("пустая сборка");
+    const dropped=applyBuildState(built);
+    sheetSource="shared";
+    viewMode="sheet";
+    return {dropped};
+  }catch(e){
+    console.error("[Lancer Registry] ссылка не прочитана:", e);
+    return {failed:true};
+  }
+}
+function setViewMode(mode){
+  viewMode = mode==="sheet" ? "sheet" : "build";
+  if(sheetSource!=="shared"){
+    try{ localStorage.setItem("view_mode", viewMode); }catch(e){}
+  }
+  window.scrollTo({top:0});
+  render();
+}
+/* Leaving a shared sheet is not "switching tabs": the build on screen was
+   never the reader's. Dropping it and restoring their own autosave is the
+   only exit that cannot lose someone's work. */
+function exitSheet(){
+  if(sheetSource==="shared"){
+    sheetSource="own";
+    Object.assign(state, defaultState());
+    const saved=loadSavedBuild();
+    if(saved){
+      applyBuildState(saved.state);
+      lastSaveAt = saved.savedAt ? new Date(saved.savedAt) : null;
+      if(isNaN(lastSaveAt)) lastSaveAt=null;
+    }
+    renderSaveState();
+  }
+  setViewMode("build");
+}
+function syncModeChrome(){
+  const sheet=viewMode==="sheet";
+  const foreign=sheetSource==="shared";
+  document.body.classList.toggle("sheetmode", sheet);
+  $("#sheet").hidden=!sheet;
+  $("#t-sheet").textContent = sheet ? (foreign?"◀ МОЯ СБОРКА":"◀ РЕДАКТОР") : "▤ ЛИСТ";
+  $("#t-link").hidden=!sheet;
+  $("#t-print").hidden=!sheet;
+  // Nothing that changes the build belongs beside a read-only sheet. Export
+  // stays: writing the file out is how a GM keeps someone else's build.
+  ["#t-import","#t-reset"].forEach(sel=>{ $(sel).hidden=sheet; });
+}
+
 /* ============ PRINT SHEET ============ */
 function buildPrintSheet(d){
   const ps=$("#print-sheet"); if(!ps) return;
@@ -3758,6 +4249,9 @@ function wireTopbar(){
     });
   };
   $("#modal").onclick=e=>{ if(e.target.id==="modal"||e.target.classList.contains("mclose")) closeModal(); };
+  $("#t-sheet").onclick=()=>{ if(viewMode==="sheet") exitSheet(); else setViewMode("sheet"); };
+  $("#t-link").onclick=shareSheetLink;
+  $("#t-print").onclick=()=>window.print();
 }
 
 /* ============ BOOT ============ */
@@ -3803,22 +4297,34 @@ function wireLangSwitch(){
   }
   rebuildIndexes();
 
-  // Restore before the first render, so the app never flashes an empty build
-  // over work that is actually still there.
-  let restoreReport=null;
-  const saved=loadSavedBuild();
-  if(saved){
-    const dropped=applyBuildState(saved.state);
-    lastSaveAt = saved.savedAt ? new Date(saved.savedAt) : null;
-    if(isNaN(lastSaveAt)) lastSaveAt=null;
-    if(dropped.length) restoreReport=dropped;
+  // A share link wins over the stored build: the reader asked to see that
+  // one, and their own work stays untouched in localStorage meanwhile.
+  let restoreReport=null, linkFailed=false;
+  const shared=await consumeShareLink();
+  if(shared){
+    if(shared.failed) linkFailed=true;
+    else if(shared.dropped.length) restoreReport=shared.dropped;
+  } else {
+    // Restore before the first render, so the app never flashes an empty
+    // build over work that is actually still there.
+    const saved=loadSavedBuild();
+    if(saved){
+      const dropped=applyBuildState(saved.state);
+      lastSaveAt = saved.savedAt ? new Date(saved.savedAt) : null;
+      if(isNaN(lastSaveAt)) lastSaveAt=null;
+      if(dropped.length) restoreReport=dropped;
+    }
   }
 
   wireTopbar();
   wireLangSwitch();
   render();
   renderSaveState();
-  boot(()=>{ if(restoreReport) reportDropped("Сборка восстановлена частично", restoreReport); });
+  boot(()=>{
+    if(linkFailed) notice("Ссылка не прочитана",
+      "Адрес повреждён или собран другой версией реестра. Попросите прислать ссылку заново или файл сборки.");
+    else if(restoreReport) reportDropped(sheetSource==="shared"?"Сборка открыта частично":"Сборка восстановлена частично", restoreReport);
+  });
 })();
 </script>
 </body>
