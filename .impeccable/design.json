@@ -1,0 +1,306 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-04T00:00:00.000Z",
+  "title": "Design System: LANCER // РЕЕСТР",
+  "extensions": {
+    "colorMeta": {
+      "void": {
+        "role": "neutral",
+        "displayName": "Пустота",
+        "canonical": "#080b11",
+        "tonalRamp": ["#04060a", "#080b11", "#0e131c", "#151c28", "#1e2734", "#33404f", "#5b6a7c", "#9aa8b8"]
+      },
+      "grid-line": {
+        "role": "neutral",
+        "displayName": "Линия сетки",
+        "canonical": "#0b0f17",
+        "tonalRamp": ["#05070b", "#0b0f17", "#111722", "#18202d", "#212b39", "#374454", "#5f6e80", "#9dabbb"]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Панель",
+        "canonical": "#0f141d",
+        "tonalRamp": ["#070a0f", "#0f141d", "#161d28", "#1c2532", "#25303f", "#3b4859", "#637284", "#a0aebd"]
+      },
+      "panel-raised": {
+        "role": "neutral",
+        "displayName": "Панель приподнятая",
+        "canonical": "#161d28",
+        "tonalRamp": ["#0a0e14", "#101620", "#161d28", "#1e2734", "#283342", "#3e4c5d", "#667588", "#a3b1c0"]
+      },
+      "panel-inset": {
+        "role": "neutral",
+        "displayName": "Панель утопленная",
+        "canonical": "#1c2532",
+        "tonalRamp": ["#0c1017", "#131a24", "#1c2532", "#242f3e", "#2e3b4b", "#445265", "#6b7a8d", "#a7b5c3"]
+      },
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Волосяная линия",
+        "canonical": "#243040",
+        "tonalRamp": ["#0e131a", "#182029", "#243040", "#2e3c4e", "#3a4a5e", "#4f6076", "#7686a0", "#aebbcc"]
+      },
+      "hairline-bright": {
+        "role": "neutral",
+        "displayName": "Волосяная яркая",
+        "canonical": "#36485e",
+        "tonalRamp": ["#141b24", "#212c3a", "#2c3a4c", "#36485e", "#445872", "#5b7291", "#8398b5", "#b6c5d8"]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Текст",
+        "canonical": "#dbe4f0",
+        "tonalRamp": ["#1b222c", "#2a3542", "#414f60", "#5c6c80", "#7d8ca0", "#a3b0c1", "#c4cfdd", "#dbe4f0"]
+      },
+      "mute": {
+        "role": "neutral",
+        "displayName": "Приглушённый",
+        "canonical": "#7d8ca0",
+        "tonalRamp": ["#161b21", "#242c36", "#36414f", "#4b596b", "#647285", "#7d8ca0", "#a5b1c0", "#cdd5df"]
+      },
+      "faint": {
+        "role": "neutral",
+        "displayName": "Едва видимый",
+        "canonical": "#6b7c94",
+        "tonalRamp": ["#12171d", "#1e2631", "#2e3947", "#414f61", "#56667c", "#6b7c94", "#96a4b7", "#c2cbd8"]
+      },
+      "system-teal": {
+        "role": "primary",
+        "displayName": "Системная бирюза",
+        "canonical": "#37e0c0",
+        "tonalRamp": ["#04211c", "#073830", "#0f4f45", "#14705f", "#1b9a83", "#25c0a4", "#37e0c0", "#a4f2e4"]
+      },
+      "system-teal-deep": {
+        "role": "primary",
+        "displayName": "Бирюза глубокая",
+        "canonical": "#0f4f45",
+        "tonalRamp": ["#04211c", "#073830", "#0f4f45", "#14705f", "#1b9a83", "#25c0a4", "#37e0c0", "#a4f2e4"]
+      },
+      "system-teal-glow": {
+        "role": "primary",
+        "displayName": "Свечение бирюзы",
+        "canonical": "rgba(55,224,192,.16)"
+      },
+      "chosen-amber": {
+        "role": "secondary",
+        "displayName": "Янтарь выбора",
+        "canonical": "#ffb020",
+        "tonalRamp": ["#2a1c02", "#452e04", "#654307", "#8a5c0a", "#b2770d", "#dc9412", "#ffb020", "#ffd894"]
+      },
+      "chosen-amber-glow": {
+        "role": "secondary",
+        "displayName": "Свечение янтаря выбора",
+        "canonical": "rgba(255,176,32,.16)"
+      },
+      "warning-amber": {
+        "role": "tertiary",
+        "displayName": "Предупреждающий янтарь",
+        "canonical": "#f4a93a",
+        "tonalRamp": ["#281a05", "#412a08", "#5e3d0c", "#805211", "#a66a17", "#cd851f", "#f4a93a", "#fbd79b"]
+      },
+      "warning-amber-glow": {
+        "role": "tertiary",
+        "displayName": "Свечение предупреждения",
+        "canonical": "rgba(244,169,58,.14)"
+      },
+      "cleared-green": {
+        "role": "tertiary",
+        "displayName": "Зелёный допуска",
+        "canonical": "#4fae6e",
+        "tonalRamp": ["#0a1e12", "#12321e", "#1b492c", "#25623b", "#317e4d", "#3f9760", "#4fae6e", "#9ad3ad"]
+      },
+      "alert-red": {
+        "role": "tertiary",
+        "displayName": "Красный тревоги",
+        "canonical": "#e5604f",
+        "tonalRamp": ["#2a0d09", "#451610", "#63211a", "#852e24", "#a83e31", "#c74d3f", "#e5604f", "#f3a89e"]
+      },
+      "src-gms": { "role": "tertiary", "displayName": "GMS — кирпичный", "canonical": "#d8604c" },
+      "src-ipsn": { "role": "tertiary", "displayName": "IPS-N — стальной синий", "canonical": "#3f8fd6" },
+      "src-ssc": { "role": "tertiary", "displayName": "SSC — латунный", "canonical": "#d8c160" },
+      "src-horus": { "role": "tertiary", "displayName": "HORUS — фосфорный зелёный", "canonical": "#52b585" },
+      "src-ha": { "role": "tertiary", "displayName": "HA — пурпурный", "canonical": "#9d6fdd" },
+      "src-exotic": { "role": "tertiary", "displayName": "Экзотика — маджента", "canonical": "#e8398a" }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Только два места: номер уровня лицензии в HUD (33px) и число в слайдере LL (37px)." },
+      "headline": { "displayName": "Headline", "purpose": "Заголовок вкладки в .sechead." },
+      "title": { "displayName": "Title", "purpose": "Имя предмета, заголовок крепления, имя строки списка; 20px в шапке модалки." },
+      "body": { "displayName": "Body", "purpose": "Текст правил и описаний. Вводный абзац раздела ограничен 62ch." },
+      "label": { "displayName": "Label", "purpose": "Метки полей, бейджи, коды, теги, единицы. Трекинг 0.04–0.16em растёт по мере уменьшения кегля." }
+    },
+    "shadows": [
+      { "name": "panel", "value": "0 18px 50px -20px rgba(0,0,0,.8)", "purpose": "Карточки HUD и панель модалки. Карточки предметов теней не несут." },
+      { "name": "tooltip", "value": "0 10px 28px rgba(0,0,0,.45)", "purpose": "Всплывающий глоссарий поверх всего (z-index 1000)." },
+      { "name": "focus-ring", "value": "0 0 0 3px rgba(55,224,192,.16)", "purpose": "Поле в фокусе и кнопка-призрак при наведении. Подсветка, не подъём." },
+      { "name": "focus-ring-tight", "value": "0 0 0 1px rgba(55,224,192,.16)", "purpose": "Инструментальная кнопка шапки при наведении." },
+      { "name": "selected-inset", "value": "inset 0 0 0 1px rgba(255,176,32,.16)", "purpose": "Внутреннее кольцо выбранной карточки и активной вкладки." }
+    ],
+    "motion": [
+      { "name": "state", "value": "150ms", "purpose": "Смена цвета рамки/текста у кнопок, вкладок, полей, чипов." },
+      { "name": "state-fast", "value": "120ms", "purpose": "Плотные интерактивные элементы: шаговые и закрывающие кнопки, кликабельные строки." },
+      { "name": "bar-fill", "value": "250ms", "purpose": "Анимация ширины полосы бюджета." },
+      { "name": "section-enter", "value": "300ms ease", "purpose": "Появление вкладки: opacity 0→1 + translateY(6px)→0." },
+      { "name": "boot-fade", "value": "500ms ease", "purpose": "Затухание загрузочного экрана." },
+      { "name": "spin", "value": "800ms linear infinite", "purpose": "Кольцо загрузки на boot-экране." }
+    ],
+    "breakpoints": [
+      { "name": "shell-collapse", "value": "1020px" },
+      { "name": "statgrid", "value": "680px" },
+      { "name": "sheet", "value": "760px" },
+      { "name": "row2", "value": "560px" },
+      { "name": "tight", "value": "480px" }
+    ],
+    "zIndex": [
+      { "name": "topbar", "value": 60 },
+      { "name": "modal", "value": 120 },
+      { "name": "boot", "value": 200 },
+      { "name": "tooltip", "value": 1000 }
+    ]
+  },
+  "components": [
+    {
+      "name": "Tool Button",
+      "kind": "button",
+      "refersTo": "toolbtn",
+      "description": "Кнопка шапки: сохранить, загрузить, переключить язык. Никакой заливки акцентом — реакция только рамкой и цветом текста.",
+      "html": "<button class=\"ds-toolbtn\">⬇ СОХРАНИТЬ</button> <button class=\"ds-toolbtn ds-toolbtn-warn\">⟲ СБРОС</button>",
+      "css": ".ds-toolbtn { background: #161d28; border: 1px solid #243040; color: #dbe4f0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 9px 14px; border-radius: 5px; display: inline-flex; gap: 7px; align-items: center; cursor: pointer; transition: .15s; } .ds-toolbtn:hover { border-color: #37e0c0; color: #37e0c0; box-shadow: 0 0 0 1px rgba(55,224,192,.16); } .ds-toolbtn:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-toolbtn-warn:hover { border-color: #f4a93a; color: #f4a93a; box-shadow: none; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "ghostbtn",
+      "description": "Действие установки/снятия внутри модалки и слотов. Пунктир в покое, сплошная рамка и кольцо при наведении.",
+      "html": "<button class=\"ds-ghostbtn\">+ УСТАНОВИТЬ СИСТЕМУ</button> <button class=\"ds-ghostbtn ds-ghostbtn-warn\">✕ СНЯТЬ</button>",
+      "css": ".ds-ghostbtn { background: transparent; border: 1px dashed #36485e; color: #37e0c0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 9px 14px; border-radius: 6px; cursor: pointer; transition: .15s; } .ds-ghostbtn:hover { border-style: solid; box-shadow: 0 0 0 3px rgba(55,224,192,.16); } .ds-ghostbtn:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-ghostbtn-warn { border-color: #e5604f; color: #e5604f; } .ds-ghostbtn-warn:hover { box-shadow: 0 0 0 3px rgba(229,96,79,.22); }"
+    },
+    {
+      "name": "Tab Bar",
+      "kind": "nav",
+      "refersTo": "tab",
+      "description": "Основная навигация по девяти этапам сборки. Порядковый индекс слева, точка-индикатор справа; янтарь = активная, янтарная предупреждающая точка = перебор бюджета в этой вкладке.",
+      "html": "<nav class=\"ds-tabs\" role=\"tablist\"><button class=\"ds-tab\" role=\"tab\"><span class=\"ds-tab-ix\">01</span>ПИЛОТ</button><button class=\"ds-tab ds-tab-active\" role=\"tab\" aria-selected=\"true\"><span class=\"ds-tab-ix\">07</span>ВООРУЖЕНИЕ<i class=\"ds-tab-dot\"></i></button><button class=\"ds-tab\" role=\"tab\"><span class=\"ds-tab-ix\">08</span>CORE<i class=\"ds-tab-dot ds-tab-dot-warn\"></i></button></nav>",
+      "css": ".ds-tabs { display: flex; gap: 6px; flex-wrap: wrap; } .ds-tab { background: #0f141d; border: 1px solid #243040; color: #7d8ca0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12.5px; letter-spacing: .05em; padding: 10px 15px; border-radius: 6px; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: .15s; } .ds-tab-ix { color: #6b7c94; font-size: 11px; } .ds-tab:hover { color: #dbe4f0; border-color: #36485e; } .ds-tab:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-tab-active { color: #ffb020; border-color: #ffb020; background: #161d28; box-shadow: inset 0 0 0 1px rgba(255,176,32,.16); } .ds-tab-active .ds-tab-ix { color: #ffb020; } .ds-tab-dot { width: 6px; height: 6px; border-radius: 50%; background: #37e0c0; } .ds-tab-dot-warn { background: #f4a93a; }"
+    },
+    {
+      "name": "Item Card",
+      "kind": "card",
+      "refersTo": "item",
+      "description": "Карточка предмета в сетке выбора: полоса источника слева, имя Chakra Petch, чип производителя, ряд тегов. Состояния: покой, выбрано (янтарь), заблокировано.",
+      "html": "<article class=\"ds-item ds-item-sel\" style=\"--src:#3f8fd6\"><i class=\"ds-item-src\"></i><div class=\"ds-item-top\"><span class=\"ds-item-nm\">Blackbeard</span><span class=\"ds-item-badge ds-item-mfg\">IPS-N</span></div><div class=\"ds-item-tags\"><span class=\"ds-tag ds-tag-stat\">СТРУКТУРА 4</span><span class=\"ds-tag ds-tag-sp\">SP 6</span><span class=\"ds-tag\">ТЯЖЁЛЫЙ</span></div><p class=\"ds-item-desc\">Ответ IPS-N на пиратство: абордажное шасси ближнего боя.</p></article>",
+      "css": ".ds-item { position: relative; background: #0f141d; border: 1px solid #243040; border-radius: 8px; padding: 13px 14px; transition: .15s; cursor: pointer; } .ds-item:hover { border-color: #36485e; } .ds-item-sel { border-color: #ffb020; box-shadow: inset 0 0 0 1px rgba(255,176,32,.16); } .ds-item-src { position: absolute; top: 0; left: 0; bottom: 0; width: 5px; border-radius: 8px 0 0 8px; background: var(--src); } .ds-item-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; } .ds-item-nm { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 17.5px; line-height: 1.2; color: #dbe4f0; } .ds-item-badge { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .06em; color: #7d8ca0; border: 1px solid #243040; padding: 2px 6px; border-radius: 4px; white-space: nowrap; } .ds-item-mfg { font-weight: 600; color: var(--src); border-color: var(--src); background: color-mix(in srgb, var(--src) 22%, transparent); } .ds-item-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 9px; } .ds-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .03em; color: #37e0c0; background: #0f4f45; border-radius: 4px; padding: 2px 6px; } .ds-tag-stat { font-size: 12px; font-weight: 600; padding: 3px 6px; } .ds-tag-sp { color: #f4a93a; background: rgba(244,169,58,.14); } .ds-item-desc { color: #7d8ca0; font-family: Inter, system-ui, sans-serif; font-size: 13.5px; line-height: 1.55; margin: 9px 0 0; }"
+    },
+    {
+      "name": "HUD Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Карточка боковой панели с уголковыми скобками — единственный декоративный элемент системы. Шапка с моноширинной меткой, тело с отступом 14px.",
+      "html": "<section class=\"ds-card\"><div class=\"ds-card-head\"><span class=\"ds-card-lbl\">// СВОДКА <b>МЕХА</b></span></div><div class=\"ds-card-body\">Содержимое карточки</div></section>",
+      "css": ".ds-card { position: relative; background: #0f141d; border: 1px solid #243040; border-radius: 8px; box-shadow: 0 18px 50px -20px rgba(0,0,0,.8); color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-card::before, .ds-card::after { content: ''; position: absolute; width: 9px; height: 9px; pointer-events: none; } .ds-card::before { top: -1px; left: -1px; border-top: 2px solid #37e0c0; border-left: 2px solid #37e0c0; border-radius: 2px 0 0 0; } .ds-card::after { bottom: -1px; right: -1px; border-bottom: 2px solid #37e0c0; border-right: 2px solid #37e0c0; border-radius: 0 0 2px 0; } .ds-card-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 14px; border-bottom: 1px solid #243040; } .ds-card-lbl { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .16em; color: #7d8ca0; } .ds-card-lbl b { color: #37e0c0; font-weight: 400; } .ds-card-body { padding: 14px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Поле формы с моноширинной меткой над ним. Утопленный фон совпадает с цветом линии сетки, поэтому поле читается вырезанным в панели.",
+      "html": "<div class=\"ds-field\"><label for=\"ds-cs\">ПОЗЫВНОЙ</label><input id=\"ds-cs\" class=\"ds-input\" value=\"ЛАСТОЧКА\"></div>",
+      "css": ".ds-field label { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .1em; color: #7d8ca0; margin-bottom: 6px; } .ds-input { width: 100%; background: #0b0f17; border: 1px solid #243040; color: #dbe4f0; border-radius: 6px; padding: 9px 11px; font-family: Inter, system-ui, sans-serif; font-size: 15px; transition: .15s; } .ds-input:focus { outline: none; border-color: #37e0c0; box-shadow: 0 0 0 3px rgba(55,224,192,.16); }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Фильтр в пикере. Единственное место в системе, где акцент используется как заливка большой площади.",
+      "html": "<div class=\"ds-filters\"><button class=\"ds-chip ds-chip-on\">ВСЕ</button><button class=\"ds-chip\">ОСНОВНОЕ</button><button class=\"ds-chip\">ТЯЖЁЛОЕ</button></div>",
+      "css": ".ds-filters { display: flex; gap: 7px; flex-wrap: wrap; } .ds-chip { background: #0f141d; border: 1px solid #243040; color: #7d8ca0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .04em; padding: 7px 13px; border-radius: 20px; cursor: pointer; transition: .15s; } .ds-chip:hover { color: #dbe4f0; } .ds-chip:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-chip-on { color: #06140f; background: #ffb020; border-color: #ffb020; font-weight: 600; }"
+    },
+    {
+      "name": "Stat Tile",
+      "kind": "custom",
+      "refersTo": "stattile",
+      "description": "Базовая единица интерфейса: моноширинная метка над числом Chakra Petch. Один класс покрывает четыре роли модификаторами; .hl означает «стат отличается от базового».",
+      "html": "<div class=\"ds-statgrid\"><div class=\"ds-stattile\"><span class=\"ds-stattile-k\">СТРУКТУРА</span><span class=\"ds-stattile-v\">4</span></div><div class=\"ds-stattile ds-stattile-hl\"><span class=\"ds-stattile-k\">HP</span><span class=\"ds-stattile-v\">18</span></div><div class=\"ds-stattile\"><span class=\"ds-stattile-k\">БРОНЯ</span><span class=\"ds-stattile-v\">2</span></div></div>",
+      "css": ".ds-statgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; } .ds-stattile { position: relative; background: #0b0f17; border: 1px solid #243040; border-radius: 5px; padding: 7px 6px 6px; text-align: center; } .ds-stattile-k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .07em; color: #6b7c94; display: block; min-height: 2.2em; } .ds-stattile-v { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 21px; color: #dbe4f0; line-height: 1; } .ds-stattile-hl .ds-stattile-v { color: #37e0c0; }"
+    },
+    {
+      "name": "Budget Row",
+      "kind": "custom",
+      "refersTo": "budget",
+      "description": "Строка расхода в HUD: имя, значение, полоса 4px. Перерасход перекрашивает и значение, и заполнение в предупреждающий янтарь. Главный механизм «легальность сборки видна на месте».",
+      "html": "<div class=\"ds-budget\"><div class=\"ds-brow\"><span class=\"ds-brow-nm\">SP</span><span class=\"ds-brow-val\">6 / 10</span><span class=\"ds-brow-bar\"><i style=\"width:60%\"></i></span></div><div class=\"ds-brow\"><span class=\"ds-brow-nm\">ЛИЦЕНЗИИ</span><span class=\"ds-brow-val ds-over\">9 / 6</span><span class=\"ds-brow-bar\"><i class=\"ds-over-bar\" style=\"width:100%\"></i></span></div></div>",
+      "css": ".ds-budget { display: flex; flex-direction: column; gap: 9px; } .ds-brow { display: grid; grid-template-columns: 1fr auto; gap: 4px 8px; align-items: center; } .ds-brow-nm { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #7d8ca0; letter-spacing: .04em; } .ds-brow-val { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #dbe4f0; } .ds-brow-val.ds-over { color: #f4a93a; } .ds-brow-bar { grid-column: 1/3; height: 4px; background: #1c2532; border-radius: 3px; overflow: hidden; } .ds-brow-bar i { display: block; height: 100%; background: #37e0c0; border-radius: 3px; transition: width .25s; } .ds-brow-bar i.ds-over-bar { background: #f4a93a; }"
+    },
+    {
+      "name": "Action Block",
+      "kind": "custom",
+      "refersTo": "action-block",
+      "description": "Способность с механической формой: цветная левая грань 3px кодирует тип активации, чтобы Quick/Protocol/Full различались периферийным зрением.",
+      "html": "<div class=\"ds-action ds-action-quick\"><div class=\"ds-action-head\"><span class=\"ds-action-nm\">Абордажный крюк</span><span class=\"ds-action-badge\">БЫСТРОЕ</span></div><div class=\"ds-action-stats\"><span class=\"ds-action-stat\">+1<span class=\"ds-action-u\">АТАКА</span></span><span class=\"ds-action-stat\">5<span class=\"ds-action-u\">ДИСТ</span></span></div><div class=\"ds-action-row\"><span class=\"ds-action-lbl\">ЭФФЕКТ</span>Притяните цель на 3 клетки.</div></div>",
+      "css": ".ds-action { background: #161d28; border: 1px solid #243040; border-left: 3px solid #36485e; border-radius: 8px; padding: 12px 14px; color: #dbe4f0; font-family: Inter, system-ui, sans-serif; font-size: 14px; } .ds-action-quick { border-left-color: #8b7fe8; } .ds-action-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; } .ds-action-nm { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 14.5px; letter-spacing: .02em; } .ds-action-badge { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10.5px; letter-spacing: .08em; color: #7d8ca0; border: 1px solid #36485e; border-radius: 4px; padding: 2px 7px; flex-shrink: 0; } .ds-action-stats { display: flex; gap: 16px; margin-top: 9px; flex-wrap: wrap; } .ds-action-stat { font-family: 'Chakra Petch', sans-serif; font-size: 15px; display: flex; align-items: center; gap: 5px; } .ds-action-u { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; color: #6b7c94; letter-spacing: .05em; margin-left: 2px; } .ds-action-row { margin-top: 8px; } .ds-action-lbl { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 10px; letter-spacing: .1em; color: #6b7c94; margin-bottom: 2px; }"
+    },
+    {
+      "name": "Stepper",
+      "kind": "custom",
+      "refersTo": "stepbtn",
+      "description": "Распределение очков навыков, талантов и мех-навыков. Кнопки 44×44px, значение Chakra Petch бирюзой, пипы показывают потраченные ранги янтарём выбора.",
+      "html": "<div class=\"ds-stepper\"><button class=\"ds-stepbtn\">−</button><span class=\"ds-stepval\">2</span><button class=\"ds-stepbtn\">+</button><span class=\"ds-pips\"><i class=\"ds-pip ds-pip-on\"></i><i class=\"ds-pip ds-pip-on\"></i><i class=\"ds-pip\"></i></span></div>",
+      "css": ".ds-stepper { display: flex; align-items: center; gap: 8px; } .ds-stepbtn { width: 44px; height: 44px; border-radius: 6px; background: #161d28; border: 1px solid #243040; color: #dbe4f0; font-size: 18px; line-height: 1; display: grid; place-items: center; cursor: pointer; transition: .12s; } .ds-stepbtn:hover { border-color: #37e0c0; color: #37e0c0; } .ds-stepbtn:focus-visible { outline: 2px solid #37e0c0; outline-offset: 2px; } .ds-stepbtn:disabled { opacity: .32; cursor: not-allowed; border-color: #243040; color: #6b7c94; } .ds-stepval { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 19.5px; min-width: 48px; text-align: center; color: #37e0c0; } .ds-pips { display: flex; gap: 3px; } .ds-pip { width: 13px; height: 6px; border-radius: 2px; background: #1c2532; border: 1px solid #243040; } .ds-pip-on { background: #ffb020; border-color: #ffb020; }"
+    },
+    {
+      "name": "Glossary Tooltip",
+      "kind": "custom",
+      "refersTo": "stattip-box",
+      "description": "Термин с пунктирным подчёркиванием и его карточка-объяснение. position: fixed с координатами из JS — иначе скроллящийся HUD обрезал бы всплывающее окно.",
+      "html": "<span class=\"ds-tag ds-tag-glossary\">Reliable 2</span><div class=\"ds-tip\"><b>Надёжность 2</b>Даже при промахе цель получает 2 единицы урона выбранного типа.</div>",
+      "css": ".ds-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; letter-spacing: .03em; color: #37e0c0; background: #0f4f45; border-radius: 4px; padding: 2px 6px; } .ds-tag-glossary { cursor: pointer; border-bottom: 1px dotted currentColor; transition: .12s; } .ds-tag-glossary:hover { filter: brightness(1.25); } .ds-tip { width: 400px; max-width: 80vw; background: #161d28; border: 1px solid #36485e; border-radius: 9px; padding: 16px 18px; margin-top: 10px; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.5; color: #dbe4f0; box-shadow: 0 10px 28px rgba(0,0,0,.45); } .ds-tip b { display: block; margin-bottom: 6px; color: #37e0c0; font-family: 'Chakra Petch', sans-serif; font-size: 18px; font-weight: 500; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Военный реестр Союза",
+    "overview": "Это не «интерфейс с sci-fi темой». Это картотека Союза, открытая на терминале: бюрократический аппарат допусков, лицензий и разрешённой номенклатуры, у которого случайно оказался экран. Всё, что видит игрок, оформлено как запись в реестре — у каждого значения есть моноширинная метка над ним, у каждого предмета есть код источника и штамп доступа (ЗАБЛОКИРОВАНО / РАЗБЛОКИРОВАНО), у каждого бюджета есть строка расхода и полоса заполнения. Поэтому моноширинный шрифт здесь несёт не «хакерскую» коннотацию, а канцелярскую: это шрифт учётной строки.\n\nПлотность высокая и намеренная. Тёмное поле (#080b11) с сеткой 46×46px уходит под все панели, и панели читаются как листы, положенные на разграфлённый стол. Скруглений почти нет (6–10px), заливок почти нет, тени почти отсутствуют — разделяют вещи рамки в один пиксель и четыре ступени тона. Единственная декоративная вольность во всей системе — уголковые скобки в двух углах карточки (9×9px, 2px бирюзой): диагональная пара, а не рамка, поэтому она читается как метка фокуса прицела, а не как рамочка.\n\nСистема отвергает две вещи. Неоновый «киберпанк» — глитч, сканлайны, сиренево-розовое свечение по всей странице: здесь свечение существует только как box-shadow радиусом 3px вокруг сфокусированного поля, и ни один эффект не конкурирует с текстом правил. Генеричная SaaS-панель — мягкие тени, синие залитые кнопки, крупные скругления: ни одна кнопка в системе не залита цветом, кроме включённого фильтр-чипа.",
+    "keyCharacteristics": [
+      "Тёмное поле с постоянной сеткой 46×46px как единственный фон всего продукта",
+      "Четыре ступени поверхности (#080b11 → #0f141d → #161d28 → #1c2532) вместо теней",
+      "Два разведённых акцента: бирюза = система, янтарь = твой выбор",
+      "Рамка в 1px как основной разделитель; заливка цветом — исключение",
+      "Моноширинная метка над каждым значением: интерфейс выглядит как учётная запись",
+      "Уголковые скобки карточек — единственный декоративный элемент системы"
+    ],
+    "rules": [
+      {
+        "name": "Правило состояния",
+        "body": "Цвет в этой системе только сообщает состояние и никогда не украшает. Любой цветной пиксель обязан отвечать на вопрос «что здесь происходит»: выбрано, перебор, разблокировано, деструктивно, откуда предмет. Фон, рамки и текст остаются нейтральными. Тест: если убрать цветной элемент и пользователь не потеряет ни одного факта — этот цвет лишний.",
+        "section": "colors"
+      },
+      {
+        "name": "Правило двух акцентов",
+        "body": "Бирюза — состояние системы, янтарь — выбор пользователя. Они не взаимозаменяемы и не смешиваются в одном компоненте: активная вкладка янтарная, но точка-индикатор на ней бирюзовая, потому что это разные высказывания.",
+        "section": "colors"
+      },
+      {
+        "name": "Правило одного фона",
+        "body": "Сетка 46×46px нарисована на body и никогда не повторяется внутри компонентов. Панели её перекрывают, а не воспроизводят.",
+        "section": "layout"
+      }
+    ],
+    "dos": [
+      "Do ставить моноширинную метку рядом с каждым числом. Пара «метка 10–12px JetBrains Mono / значение Chakra Petch» — базовая единица системы.",
+      "Do разделять смысл акцентов: бирюза — состояние системы, янтарь — выбор пользователя, предупреждающий янтарь — перебор, зелёный — допуск получен, красный — деструктивное действие.",
+      "Do строить контейнеры рамкой в 1px и ступенью тона, а не заливкой.",
+      "Do держать переходы на 120–250мс и менять в них цвет рамки, цвет текста и кольцо-свечение.",
+      "Do брать цвет источника из инлайновой --src и заливать через color-mix(... 22%, transparent) — одно правило на все шесть производителей.",
+      "Do проверять новый экран в печатном виде: печать скрывает всю навигацию и переключает страницу на чёрное по белому.",
+      "Do помнить, что русский текст длиннее английского, а размеры шрифтов здесь заданы в фиксированных px."
+    ],
+    "donts": [
+      "Don't заливать акцентом крупные площади. Единственное исключение в системе — включённый фильтр-чип.",
+      "Don't добавлять неоновые эффекты, глитч, сканлайны или разноцветное свечение. Свечение здесь — кольцо 0 0 0 3px с альфой 16% вокруг активного элемента, и ничего больше.",
+      "Don't уводить систему к генеричной SaaS-панели: мягкие тени, залитые синие кнопки, крупные скругления.",
+      "Don't повторять фоновую сетку внутри компонентов — она живёт только на body.",
+      "Don't ставить уголковые скобки куда-либо кроме .card; их редкость и есть их смысл.",
+      "Don't смешивать янтарь выбора (#ffb020) и предупреждающий янтарь (#f4a93a) в одном контейнере — они слишком близки, чтобы читаться как разные сообщения рядом.",
+      "Don't делать интерактивный элемент меньше 44×44px: шаговые и закрывающие кнопки уже приведены к этому размеру."
+    ]
+  }
+}
