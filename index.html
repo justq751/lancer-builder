@@ -3033,6 +3033,9 @@ let tagOpenSet=new Set();
 function wireTagGlossary(tagsSel, boxSel, rawTags, tagSet){
   tagSet = tagSet || tagOpenSet;
   const box=$(boxSel);
+  // Callers wire their buttons on the lines after this call. A missing
+  // description container must not throw and take those with it.
+  if(!box) return;
   const draw=()=>{
     const openIdx=[...tagSet].sort((a,b)=>a-b);
     box.innerHTML = openIdx.map(i=>{
@@ -4275,7 +4278,13 @@ function profilesHTML(w){
     </div>`).join("")}
   </div>`;
 }
-function weaponCardHTML(w, mountType, mod){
+/* Sheet-deck card, NOT the editor's picker card. These used to both be called
+   weaponCardHTML/systemCardHTML; the later declaration silently won, so the
+   picker's "separate card" mode rendered a .dcard, wireTagGlossary found no
+   #wp-tagdesc to write into and threw — which killed the very next lines,
+   the ones wiring "← Назад к списку" and "Установить". The card opened and
+   the modal became a dead end. Keep these two families named apart. */
+function deckWeaponCardHTML(w, mountType, mod){
   const eff=effectiveWeapon(w, mod);
   const hasProfs=!!(w.profiles&&w.profiles.length);
   const lk=!unlocked(w);
@@ -4314,7 +4323,7 @@ function weaponCardHTML(w, mountType, mod){
       ${shEff("ЭФФЕКТ", mod.effect)}</div>`:""}
   </article>`;
 }
-function systemCardHTML(sy){
+function deckSystemCardHTML(sy){
   const lk=!unlocked(sy);
   return `<article class="dcard ${lk?"void":""}">
     <div class="src" style="background:${srcColor(sy.source)}"></div>
@@ -4418,13 +4427,13 @@ function renderSheet(){
   const weaponCards=[];
   (state.mech.mounts||[]).forEach(mt=>(mt.items||[]).forEach(s=>{
     const w=M.weapon[s.id];
-    if(w) weaponCards.push(weaponCardHTML(w, mt.type, s.mod?M.mod[s.mod]:null));
+    if(w) weaponCards.push(deckWeaponCardHTML(w, mt.type, s.mod?M.mod[s.mod]:null));
   }));
 
   const body = (!d.frame && !skillLines.length && !HASE.some(h=>state.hase[h.k]) && !state.gear.armor)
     ? `<div class="sheet-empty">// СБОРКА ПУСТА<br>вернитесь в редактор и начните с уровня лицензии</div>`
     : deckSection("ВООРУЖЕНИЕ", weaponCards)
-      + deckSection("СИСТЕМЫ", (state.mech.systems||[]).map(id=>M.system[id]?systemCardHTML(M.system[id]):null))
+      + deckSection("СИСТЕМЫ", (state.mech.systems||[]).map(id=>M.system[id]?deckSystemCardHTML(M.system[id]):null))
       + deckSection("CORE", [d.frame?coreSystemCardHTML(d.frame):null, ...state.cores.map(coreBonusCardHTML)])
       + deckSection("ТАЛАНТЫ", Object.entries(state.talents).map(([id,v])=>talentCardHTML(id,v)))
       + deckSection("СНАРЯЖЕНИЕ ПИЛОТА", [state.gear.armor, ...state.gear.weapons, ...state.gear.gear].map(gearCardHTML));
