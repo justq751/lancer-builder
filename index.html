@@ -753,11 +753,25 @@ button{font-family:inherit; cursor:pointer}
 .filter-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px}
 .filter-row .filter-lbl{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.08em; color:var(--faint); flex-shrink:0}
 .filter-row .filters{margin-bottom:0}
-/* Sticks a picker's stack of filter rows to the top of the scrolling modal
-   body (.modal .mbd) so they stay reachable while the results list below
-   scrolls — needs its own opaque background or the list would show through. */
-.picker-sticky-filters{position:sticky; top:-18px; z-index:5; background:var(--panel);
-  margin:0 -20px 2px; padding:20px 20px 12px; border-bottom:1px solid var(--line)}
+/* Narrow or zoomed, a wrapping chip row becomes four stacked lines and the
+   four dimensions together become a wall you scroll past before seeing a
+   single weapon. One line each that scrolls sideways keeps every filter
+   present and discoverable while costing one row of height instead of four.
+   Wide screens already fit them on one line, so they keep the calmer wrap. */
+@media(max-width:900px), (max-height:640px){
+  .filter-row{flex-wrap:nowrap}
+  .filter-row .filters{flex-wrap:nowrap; overflow-x:auto; min-width:0;
+    scrollbar-width:thin; scrollbar-color:var(--line) transparent; padding-bottom:3px}
+  .filter-row .filters .chip{flex-shrink:0}
+  .filter-row .filters::-webkit-scrollbar{height:4px}
+  .filter-row .filters::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px}
+}
+/* The filter stack used to be sticky. Measured at 200% zoom it stood 329px
+   tall inside a 315px modal body — taller than the entire scrolling area, so
+   the results were literally unreachable; on a phone it took 84% of the body
+   and showed zero rows. Filters are set once and then you browse, so they
+   scroll away with everything else and the list gets the full height. */
+.picker-filters{margin:0 -20px 2px; padding:0 20px 12px; border-bottom:1px solid var(--line)}
 .chip{background:var(--panel); border:1px solid var(--line); color:var(--mute);
   font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; padding:7px 13px;
   border-radius:20px; transition:.15s}
@@ -775,6 +789,13 @@ button{font-family:inherit; cursor:pointer}
 .modal .mhd h3{flex:0 1 auto; min-width:0; font-size:20px}
 .modal .mhd .mclose{margin-left:auto; flex-shrink:0}
 .modal .mbd{padding:18px 20px; max-height:70vh; overflow:auto; overflow-anchor:none}
+/* A zoomed-in or short window has few pixels to spare, and the 5vh frame plus
+   a 70vh body spends them on empty margin. Give the content the room instead. */
+@media(max-height:640px){
+  .modal{padding:2vh 10px}
+  .modal .mbd{max-height:80vh; padding:14px 16px}
+  .modal .mhd{padding:10px 16px}
+}
 /* Narrow panel for confirmations and notices — the wide picker width would
    make a four-line question look like an empty page. */
 .modal .panel.narrow{width:clamp(320px,46vw,620px)}
@@ -3271,7 +3292,7 @@ function openWeaponPicker(mi){
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
        ${viewToggleHTML()}
-       <div class="picker-sticky-filters">
+       <div class="picker-filters">
          <div class="filter-row"><span class="filter-lbl">ПРОИЗВОДИТЕЛЬ:</span>
            <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div></div>
          ${allow.length>1?`<div class="filter-row"><span class="filter-lbl">КРЕПЛЕНИЕ:</span>
