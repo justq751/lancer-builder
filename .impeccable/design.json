@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-08-04T11:15:27.903Z",
+  "generatedAt": "2026-08-05T05:59:48.766Z",
   "title": "Design System: LANCER // РЕЕСТР",
   "extensions": {
     "colorMeta": {
@@ -415,6 +415,10 @@
       {
         "name": "statstrip-wide",
         "value": "900px"
+      },
+      {
+        "name": "picker-chip-scroll",
+        "value": "900px / height 640px"
       }
     ],
     "zIndex": [
@@ -566,6 +570,30 @@
       "css": ".ds-savestate { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11.5px; letter-spacing: .06em; color: #7d8ca0; white-space: nowrap; margin-right: 16px; } .ds-savestate .pfx { font-style: normal; } .ds-savestate.err { color: #f4a93a; }"
     },
     {
+      "name": "Weapon Modes",
+      "kind": "custom",
+      "refersTo": "weapon-mode",
+      "description": "Многоступенчатое оружие: стойки, уровни заряда, режимы огня. Все режимы выложены сразу, без переключателя — на бумаге его нет, а игроку в свой ход нужно сравнить стойки, а не прощёлкать их.",
+      "html": "<div class=\"ds-profs\"><div class=\"ds-profs-hd\">РЕЖИМЫ · 3</div><div class=\"ds-prof\"><div class=\"ds-prof-hd\"><span class=\"ds-pname\">Без стойки</span><span class=\"ds-keystat\"><span class=\"k\">УРОН</span>1d6 Кинетический</span><span class=\"ds-keystat\"><span class=\"k\">ДИСТ</span>Угроза 1</span></div></div><div class=\"ds-prof\"><div class=\"ds-prof-hd\"><span class=\"ds-pname\">Стойка тролля</span><span class=\"ds-keystat\"><span class=\"k\">УРОН</span>1d6+3 Кинетический</span></div><div class=\"ds-row\"><span class=\"ds-tag\">Неточное</span><span class=\"ds-tag\">Бронебойное (AP)</span></div></div><div class=\"ds-prof\"><div class=\"ds-prof-hd\"><span class=\"ds-pname\">Стойка бури</span><span class=\"ds-keystat\"><span class=\"k\">УРОН</span>1d6 Кинетический</span></div><div class=\"ds-eff\"><b>РЕАКЦИЯ · 1/РАУНД</b><span class=\"ds-trig\">Триггер: после попадания этим оружием.</span>Нанесите 2 кинетического всем смежным персонажам.</div></div></div>",
+      "css": ".ds-profs { border-top: 1px solid #243040; padding-top: 9px; display: flex; flex-direction: column; gap: 10px; color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-profs-hd { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .1em; color: #77869c; } .ds-prof { display: flex; flex-direction: column; gap: 5px; padding-left: 10px; border-left: 1px solid #243040; } .ds-prof-hd { display: flex; flex-wrap: wrap; align-items: baseline; gap: 5px 14px; } .ds-pname { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .08em; color: #37e0c0; flex-shrink: 0; } .ds-keystat { display: inline-flex; align-items: baseline; gap: 5px; font-family: 'Chakra Petch', sans-serif; font-size: 17.5px; } .ds-keystat .k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #77869c; letter-spacing: .08em; } .ds-row { display: flex; flex-wrap: wrap; gap: 5px; } .ds-tag { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 11px; color: #37e0c0; background: #0f4f45; border-radius: 4px; padding: 2px 6px; } .ds-eff { font-size: 16.5px; line-height: 1.5; } .ds-eff b { color: #37e0c0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .1em; display: block; margin-bottom: 2px; font-weight: 400; } .ds-trig { display: block; color: #7d8ca0; margin-bottom: 3px; }"
+    },
+    {
+      "name": "Picker Divider",
+      "kind": "custom",
+      "refersTo": "picker-divider",
+      "description": "Граница между тем, что можно поставить, и тем, что закрыто лицензией. В плоском списке из шестидесяти позиций без неё порядок нечитаем.",
+      "html": "<div class=\"ds-pickdiv\">ЛИЦЕНЗИЯ НЕ ОТКРЫТА</div>",
+      "css": ".ds-pickdiv { display: flex; align-items: center; gap: 10px; margin: 16px 0 6px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .1em; color: #f4a93a; } .ds-pickdiv::after { content: ''; flex: 1; height: 1px; background: #f4a93a; opacity: .35; }"
+    },
+    {
+      "name": "Pilot Strip",
+      "kind": "custom",
+      "refersTo": "stat-cell",
+      "description": "Мех-навыки пилота в шапке листа, той же компонентой, что и статы меха. Печатается и при нулях: на бумаге это поля, которые правят между миссиями.",
+      "html": "<div class=\"ds-statstrip ds-pilot\"><div class=\"ds-cell up\"><span class=\"k\">КОРПУС</span><span class=\"v\">2</span></div><div class=\"ds-cell\"><span class=\"k\">ЛОВКОСТЬ</span><span class=\"v\">0</span></div><div class=\"ds-cell\"><span class=\"k\">СИСТЕМЫ</span><span class=\"v\">0</span></div><div class=\"ds-cell\"><span class=\"k\">ИНЖЕНЕРИЯ</span><span class=\"v\">0</span></div></div><div class=\"ds-dossier-line\"><span class=\"k\">ТРИГГЕРЫ</span>Взлом +2 · Пилотирование +4</div>",
+      "css": ".ds-statstrip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; } .ds-cell { background: #0b0f17; border: 1px solid #243040; border-radius: 6px; padding: 8px 6px; text-align: center; } .ds-cell .k { display: block; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .06em; color: #77869c; } .ds-cell .v { font-family: 'Chakra Petch', sans-serif; font-weight: 600; font-size: 27px; line-height: 1.1; color: #dbe4f0; } .ds-cell.up .v { color: #37e0c0; } .ds-dossier-line { display: flex; gap: 10px; align-items: baseline; margin-top: 10px; font-size: 16.5px; line-height: 1.5; color: #dbe4f0; font-family: Inter, system-ui, sans-serif; } .ds-dossier-line .k { font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; letter-spacing: .1em; color: #77869c; flex-shrink: 0; }"
+    },
+    {
       "name": "Glossary Tooltip",
       "kind": "custom",
       "refersTo": "stattip-box",
@@ -610,6 +638,21 @@
         "name": "Правило именования потерь",
         "body": "Диалог обязан назвать, что именно исчезнет, до того как это исчезнет. Вопрос без списка — это confirm() в новой одежде.",
         "section": "components"
+      },
+      {
+        "name": "Правило порядка выбора",
+        "body": "В любом списке выбора доступное идёт перед недоступным, и граница между ними отбита. Группировка по производителю — ключ второго порядка, не первого: иначе открытая лицензия поднимает предмет только внутри своего блока. GMS возглавляет список без спецслучая — он не требует лицензии и потому попадает в доступную половину первым.",
+        "section": "components"
+      },
+      {
+        "name": "Правило одной правды на карточке",
+        "body": "Если у оружия есть режимы, урон и дальность принадлежат режимам, а не оружию: выносить числа одного профиля в шапку карточки — значит выдавать их за характеристики предмета. В шапке остаётся только по-настоящему общее, а добавка от мода подписывается отдельно как ОТ МОДА.",
+        "section": "components"
+      },
+      {
+        "name": "Срастание требует партнёра",
+        "body": "Раскрытая деталь срастается со строкой только там, где строка получает .open и подставляет обнулённую нижнюю грань. Без партнёра рамка без верхнего края повисает сама по себе — коробка, у которой отрезали верх; там деталь должна быть самостоятельным блоком.",
+        "section": "shapes"
       }
     ],
     "dos": [
@@ -622,7 +665,9 @@
       "Do задавать печатные размеры в пунктах, а не в пикселях.",
       "Do писать font-family:\"Chakra Petch\",sans-serif — без запасного семейства кириллица падает в засечный шрифт браузера.",
       "Do помнить, что русский текст длиннее английского, а размеры шрифтов здесь заданы в фиксированных px.",
-      "Do дублировать [hidden] в CSS для компонентов с явным display (.toolbtn[hidden]{display:none}): правило класса перебивает браузерное, и элемент, которому поставили атрибут, продолжает показываться."
+      "Do дублировать [hidden] в CSS для компонентов с явным display (.toolbtn[hidden]{display:none}): правило класса перебивает браузерное, и элемент, которому поставили атрибут, продолжает показываться.",
+      "Do рисовать иконку, а не подбирать эмодзи: броня и Э-защита когда-то были 🛡 и 🛡️ — один и тот же щит, различимый только вариационным селектором.",
+      "Do давать цветному индикатору title и скрытую подпись (.sr): цвет сам по себе не сообщение."
     ],
     "donts": [
       "Don't заливать акцентом крупные площади. Единственное исключение в системе — включённый фильтр-чип.",
@@ -633,7 +678,10 @@
       "Don't смешивать янтарь выбора (#ffb020) и предупреждающий янтарь (#f4a93a) в одном контейнере — они слишком близки, чтобы читаться как разные сообщения рядом.",
       "Don't делать интерактивный элемент меньше 44×44px: шаговые, закрывающие и все кнопки шапки уже приведены к этому размеру. Не приведены пока фильтр-чипы (~30px), вкладки (~38px) и триггер тултипа (16px).",
       "Don't пускать экранные акценты на бумагу: цвет производителя, бирюза и янтарь в печати не существуют.",
-      "Don't спрашивать о разрушительном действии, не перечислив потери."
+      "Don't спрашивать о разрушительном действии, не перечислив потери.",
+      "Don't делать липким блок, который выше области прокрутки под ним. Проверять на увеличении: 200% зума — это тот же интерфейс в окне 720×450.",
+      "Don't прятать фильтр ради высоты: одна строка с горизонтальной прокруткой стоит столько же и ничего не теряет.",
+      "Don't показывать числа одного профиля как характеристики многоступенчатого оружия."
     ]
   }
 }
