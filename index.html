@@ -772,6 +772,11 @@ button{font-family:inherit; cursor:pointer}
    and showed zero rows. Filters are set once and then you browse, so they
    scroll away with everything else and the list gets the full height. */
 .picker-filters{margin:0 -20px 2px; padding:0 20px 12px; border-bottom:1px solid var(--line)}
+/* Where the installable half of a picker ends. Amber, because that is what
+   the 🔒 badge on every row below it already uses for "licence not open". */
+.pickdiv{display:flex; align-items:center; gap:10px; margin:16px 0 6px;
+  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.1em; color:var(--amber)}
+.pickdiv::after{content:""; flex:1; height:1px; background:var(--amber); opacity:.35}
 .chip{background:var(--panel); border:1px solid var(--line); color:var(--mute);
   font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; padding:7px 13px;
   border-radius:20px; transition:.15s}
@@ -1908,6 +1913,20 @@ function licenseKeyFor(f){ return f.variant || f.name; }
    items from the same manufacturer stay together instead of interleaving. */
 const SOURCE_ORDER = ["GMS","IPS-N","SSC","HORUS","HA","EXOTIC"];
 const sourceOrder = src => { const i=SOURCE_ORDER.indexOf(src); return i<0?999:i; };
+/* Picker ordering. Manufacturer used to be the first key, so opening a
+   licence only lifted an item inside its own manufacturer block — a weapon
+   the pilot had just earned still sat below dozens that cannot be installed
+   at all. Availability comes first now; GMS still leads because it needs no
+   licence and therefore counts as available, and manufacturer grouping is
+   preserved inside each half. */
+const pickerOrder = (a,b) =>
+     (unlocked(b)-unlocked(a))
+  || (sourceOrder(a.source)-sourceOrder(b.source))
+  || a.name.localeCompare(b.name);
+/* Marks where the installable half ends. In a flat list of sixty items the
+   boundary is invisible without it. */
+const lockedDivider = `<div class="pickdiv">ЛИЦЕНЗИЯ НЕ ОТКРЫТА</div>`;
+const dividerBefore = (list,i) => (!unlocked(list[i]) && (i===0 || unlocked(list[i-1]))) ? lockedDivider : "";
 /* Highest license rank the pilot has invested among all frames of a given
    manufacturer (e.g. rank 2 in "Minotaur" and rank 2 in "Genghis" both count
    toward HORUS/HA respectively, but neither reaches the 3 needed to unlock
@@ -3287,7 +3306,7 @@ function openWeaponPicker(mi){
       .filter(w=>wpTypeFilter==="ALL"||w.type===wpTypeFilter)
       .filter(w=>wpDmgFilter==="ALL"||weaponDamageTypes(w).includes(wpDmgFilter))
       .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
-      .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
+      .sort(pickerOrder);
     $("#modal .mhd h3").textContent=`Установить оружие · ${tr(mt.type)}`;
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
@@ -3304,7 +3323,7 @@ function openWeaponPicker(mi){
        </div>
        <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
        <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
-    $("#wp-list").innerHTML=list.map(w=>{
+    $("#wp-list").innerHTML=list.map((w,_i)=>{
       const lk=!unlocked(w);
       const open=pickerViewMode==="inline" && wpExpanded===w.id;
       const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-w="${w.id}">
@@ -3319,7 +3338,7 @@ function openWeaponPicker(mi){
         <button class="ghostbtn block mt-14" id="wp-install-inline">
           ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
         </button></div>`:"";
-      return `<div class="pickitem">${row}${expand}</div>`;
+      return dividerBefore(list,_i)+`<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет подходящего оружия</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
@@ -3400,6 +3419,7 @@ function openPilotGearPicker(slotKind, onInstall){
       </div>`;
       const expand=open?`<div class="expand-detail">${pilotGearCardBody(g)}
         <button class="ghostbtn block mt-14" id="pg-install-inline">✓ Установить это снаряжение</button></div>`:"";
+      // Pilot gear has no licence gate in Lancer's rules, so nothing to divide.
       return `<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет подходящего снаряжения</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
@@ -3513,7 +3533,7 @@ function openModPicker(mi, wi){
     const list=(L.mods||[]).filter(m=>modCompatible(m,w))
       .filter(m=>mpFilter==="ALL"?m.source!=="EXOTIC":m.source===mpFilter)
       .filter(m=>!mpSearch||(m.name+" "+m.source+" "+(m.tags||[]).map(trTag).join(" ")).toLowerCase().includes(mpSearch.toLowerCase()))
-      .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
+      .sort(pickerOrder);
     $("#modal .mhd h3").textContent=`Установить мод · ${esc(w.name)}`;
     setModalBody(
       `<div class="hint" style="margin-bottom:10px">Совместимо с типом: ${tr(w.type)}</div>
@@ -3521,7 +3541,7 @@ function openModPicker(mi, wi){
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${mpFilter===s?'on':''}" data-mpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="mp-search" placeholder="поиск модов…" style="margin-bottom:14px" value="${esc(mpSearch)}">
        <div class="grid" id="mp-list" style="gap:8px"></div>`, keepScroll);
-    $("#mp-list").innerHTML=list.map(m=>{
+    $("#mp-list").innerHTML=list.map((m,_i)=>{
       const lk=!unlocked(m);
       const open=pickerViewMode==="inline" && mpExpanded===m.id;
       const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-m="${m.id}">
@@ -3536,7 +3556,7 @@ function openModPicker(mi, wi){
         <button class="ghostbtn ${lk?'warn':''} block mt-14" id="mp-install-inline">
           ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить этот мод"}
         </button></div>`:"";
-      return `<div class="pickitem">${row}${expand}</div>`;
+      return dividerBefore(list,_i)+`<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет модов, совместимых с этим оружием</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
@@ -3646,14 +3666,14 @@ function openSystemPicker(){
       .filter(s=>syFilter==="ALL"?s.source!=="EXOTIC":s.source===syFilter)
       .filter(s=>!state.mech.systems.includes(s.id))
       .filter(s=>!sySearch||(s.name+" "+tr(s.type)+" "+s.source+" "+(s.tags||[]).map(trTag).join(" ")).toLowerCase().includes(sySearch.toLowerCase()))
-      .sort((a,b)=>(sourceOrder(a.source)-sourceOrder(b.source))||(unlocked(b)-unlocked(a))||a.name.localeCompare(b.name));
+      .sort(pickerOrder);
     $("#modal .mhd h3").textContent="Добавить систему";
     setModalBody(
       `${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
        <input class="input" id="sy-search" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
        <div class="grid" id="sy-list" style="gap:8px"></div>`, keepScroll);
-    $("#sy-list").innerHTML=list.map(s=>{
+    $("#sy-list").innerHTML=list.map((s,_i)=>{
       const lk=!unlocked(s);
       const open=pickerViewMode==="inline" && syExpanded===s.id;
       const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-s="${s.id}">
@@ -3668,7 +3688,7 @@ function openSystemPicker(){
         <button class="ghostbtn block mt-14" id="sy-install-inline">
           ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
         </button></div>`:"";
-      return `<div class="pickitem">${row}${expand}</div>`;
+      return dividerBefore(list,_i)+`<div class="pickitem">${row}${expand}</div>`;
     }).join("")||`<div class="hint">// нет систем</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
