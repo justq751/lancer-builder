@@ -681,9 +681,72 @@ button{font-family:inherit; cursor:pointer}
 .rowbadge.lock{color:var(--amber); border-color:var(--amber)}
 .rowbadge.unlocked{color:var(--ok); border-color:var(--ok)}
 .chevron{color:var(--faint); font-size:19px; flex-shrink:0; font-family:"Chakra Petch",sans-serif}
+
+/* Picker row — the registry line for weapons and systems. A variant, not a
+   change to .listrow: the base row is also used by skills, the loadout and
+   pilot gear, which have no numbers to compare.
+   Two zones. Left: source stripe, name, licence badge, then class and the
+   mechanic (tags) on the second line. Right: a fixed, right-aligned numeric
+   column. The column is the whole point — in the old one-sentence row damage
+   and range landed at a different x on every line, so the one thing the list
+   exists for could not be done by eye. Moving the numbers out also frees
+   exactly the space the tags need, so the row stays two lines tall. */
+.listrow.pick{position:relative; padding:10px 14px 10px 18px; gap:16px}
+.listrow.pick .src{position:absolute; top:-1px; left:-1px; bottom:-1px; width:5px;
+  border-radius:8px 0 0 8px; background:var(--src)}
+.listrow.pick.open .src{border-bottom-left-radius:0}
+/* min-width:0 is load-bearing: without it the flex item takes its min-content
+   width from the no-wrap tag line below and the row pushes the whole modal
+   into horizontal scroll. */
+.listrow.pick .info{flex:1; min-width:0; display:flex; flex-direction:column; gap:4px}
+.listrow.pick .nmline{display:flex; align-items:baseline; gap:9px; flex-wrap:wrap}
+.listrow.pick .clsline{display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+.listrow.pick .cls{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
+  color:var(--faint); white-space:nowrap}
+/* Quieter than .tag: teal-filled pills belong to the opened detail card, and
+   three of them per row across sixty rows would be a wall of accent. */
+.rowtag{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em;
+  color:var(--mute); border:1px solid var(--line); border-radius:4px; padding:1px 6px; white-space:nowrap}
+.rowtag.more{color:var(--faint); border-style:dashed}
+/* Teal because it is the system speaking: "the numbers on the right are one
+   stance of several", not a property of the weapon. */
+.rowtag.stance{color:var(--accent); border-color:var(--accent-deep)}
+.rowtag.sp{color:var(--amber); border-color:color-mix(in srgb, var(--amber) 45%, transparent)}
+.rowstats{display:flex; align-items:center; gap:14px; flex-shrink:0}
+/* Fixed width: the open row's ⌄ is wider than the closed ›, and without this
+   expanding a row nudges every number in it out of the column. */
+.listrow.pick .chevron{width:13px; text-align:center}
+/* min-width keeps the second column a constant width, which is what pins the
+   first column's right edge — that is why the values line up down the list. */
+.rowstat{display:flex; flex-direction:column; gap:2px; min-width:68px; text-align:right}
+.rowstat .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.09em;
+  color:var(--faint); white-space:nowrap}
+.rowstat .v{font-family:"Chakra Petch",sans-serif; font-size:19px; line-height:1; color:var(--ink)}
+.rowstat .v.none{color:var(--faint)}
+/* The stripe carries manufacturer colour, so the locked treatment has to
+   drain saturation the way .item.locked does, not just dim opacity. */
+.listrow.pick.locked{filter:saturate(.4)}
+/* Narrow: vertical comparison is impossible on a phone anyway, so the numeric
+   column drops under the name rather than being squeezed or truncated. */
+@media(max-width:560px){
+  .listrow.pick{flex-wrap:wrap}
+  .listrow.pick .info{flex:1 1 100%}
+  .listrow.pick .rowstats{flex:1; gap:20px}
+  .listrow.pick .rowstat{text-align:left; min-width:0}
+  /* Wrapped, four tags plus a long class name turn one row into five lines and
+     the list doubles in length. Same answer the filter rows already use: one
+     line that scrolls sideways, nothing hidden. The fade only paints pixels
+     when the content actually reaches the right edge, so a short line shows
+     no artifact. */
+  .listrow.pick .clsline{flex-wrap:nowrap; overflow-x:auto; min-width:0;
+    scrollbar-width:none; -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 14px),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 14px),transparent)}
+  .listrow.pick .clsline::-webkit-scrollbar{display:none}
+  .listrow.pick .clsline>*{flex-shrink:0}
+}
 .viewtoggle{display:flex; gap:8px; margin-bottom:12px}
 .profiles{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:11px}
-.pickitem{display:block}
+.pickitem{display:block; min-width:0}
 .listrow.open{border-color:var(--select); border-bottom-left-radius:0; border-bottom-right-radius:0}
 /* Picker default: the row above is a .listrow.open whose bottom corners are
    squared off, so the detail finishes that box — no top edge, negative margin,
@@ -3038,6 +3101,73 @@ function wireViewToggle(onSwitch){
 let profileViewIdx=0;
 const profDmgStr = p => (p.damage||[]).map(x=>x.type?`${x.val} ${tr(x.type)}`:`${x.val}`).join(", ")||"—";
 const profRngStr = p => (p.range||[]).map(x=>x.type?`${tr(x.type)} ${x.val}`:`${x.val}`).join(", ")||"—";
+/* ---- collapsed picker row (weapons + systems) ----------------------------
+   Short mono labels for the numeric column. "ДАЛЬНОСТЬ" / "ВЗРЫВНОЙ" blow out
+   a 10px label; these are interface chrome, which is Russian regardless of
+   the content language, so they're keyed by the English enum and fall back to
+   tr() when nothing matches (including EN content mode, where tr() is
+   identity and the label is already short). */
+const DMG_SHORT={Kinetic:"КИНЕТ",Explosive:"ВЗРЫВН",Energy:"ЭНЕРГ",Burn:"ОГОНЬ",Heat:"ТЕПЛО",Variable:"ПЕРЕМ"};
+const RNG_SHORT={Range:"ДИСТ",Threat:"УГРОЗА",Blast:"ВЗРЫВ",Burst:"ОЧЕРЕДЬ",Line:"ЛИНИЯ",Cone:"КОНУС"};
+const shortEnum=(map,t)=>(currentLang==="ru"&&map[t])||String(tr(t)||"").toUpperCase();
+/* Missing values render as "—" rather than dropping the cell: a vanished cell
+   shifts every column after it and the vertical run stops lining up. */
+const rowStat=(k,v)=>`<div class="rowstat"><span class="k">${esc(k)}</span><span class="v${v==null||v===""?" none":""}">${v==null||v===""?"—":esc(v)}</span></div>`;
+const ROW_TAG_MAX=3;
+/* `skip` drops tags that merely repeat the class already printed to their
+   left — an AI-type system carries an "AI" tag, and "ИИ · ИИ" is noise. */
+function rowTagsHTML(tags, skip){
+  const drop=new Set((skip||[]).filter(Boolean).map(s=>String(s).toLowerCase()));
+  const list=(tags||[]).map(trTag).filter(t=>!drop.has(String(t).toLowerCase()));
+  const rest=list.slice(ROW_TAG_MAX);
+  return list.slice(0,ROW_TAG_MAX).map(t=>`<span class="rowtag">${esc(t)}</span>`).join("")
+    + (rest.length?`<span class="rowtag more" title="${esc(rest.join(", "))}">+${rest.length}</span>`:"");
+}
+function rowBadgeHTML(item){
+  if(!(item.license_level>0)) return "";
+  const lk=!unlocked(item);
+  return `<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(licenseDisplayName(item.license))} ${item.license_level}</span>`;
+}
+/* Multi-stage weapons keep their real numbers in profiles[], so the row shows
+   the first stance and says so with a teal chip instead of passing one
+   stance's damage off as the weapon's own stat. */
+function weaponPickRow(w, open){
+  const lk=!unlocked(w);
+  const p=(w.profiles&&w.profiles.length)?w.profiles[0]:null;
+  const dmgArr=(p&&p.damage&&p.damage.length)?p.damage:(w.damage||[]);
+  const rngArr=(p&&p.range&&p.range.length)?p.range:(w.range||[]);
+  // Range/Threat is the distance you actually check; Blast/Burst/Line/Cone are
+  // area rules, so they read as mechanics on the tag line, not as the number.
+  const pri=rngArr.find(r=>r.type==="Range"||r.type==="Threat")||rngArr[0];
+  const dmgTypes=[...new Set(dmgArr.map(d=>d.type).filter(Boolean))];
+  const chips=(p?`<span class="rowtag stance">СТОЙКА 1/${w.profiles.length}</span>`:"")
+    + rngArr.filter(r=>r!==pri&&r.type).map(r=>`<span class="rowtag">${esc(trTag(r.type))} ${esc(r.val)}</span>`).join("")
+    + (w.sp?`<span class="rowtag sp">${esc(w.sp)} SP</span>`:"");
+  return `<div class="listrow pick clickable ${lk?'locked':''} ${open?'open':''}" data-w="${esc(w.id)}" style="--src:${srcColor(w.source)}">
+    <span class="src"></span>
+    <div class="info">
+      <div class="nmline"><span class="nm">${esc(w.name)}</span>${rowBadgeHTML(w)}</div>
+      <div class="clsline"><span class="cls">${esc(tr(w.mount))} · ${esc(tr(w.type))}</span>${chips}${rowTagsHTML(w.tags,[tr(w.mount),tr(w.type)])}</div>
+    </div>
+    <div class="rowstats">
+      ${rowStat("УРОН"+(dmgTypes.length===1?" · "+shortEnum(DMG_SHORT,dmgTypes[0]):""), dmgArr.map(d=>d.val).join("+"))}
+      ${rowStat(pri&&pri.type?shortEnum(RNG_SHORT,pri.type):"ДИСТ", pri?pri.val:"")}
+    </div>
+    <span class="chevron">${open?'⌄':'›'}</span>
+  </div>`;
+}
+function systemPickRow(s, open){
+  const lk=!unlocked(s);
+  return `<div class="listrow pick clickable ${lk?'locked':''} ${open?'open':''}" data-s="${esc(s.id)}" style="--src:${srcColor(s.source)}">
+    <span class="src"></span>
+    <div class="info">
+      <div class="nmline"><span class="nm">${esc(s.name)}</span>${rowBadgeHTML(s)}</div>
+      <div class="clsline"><span class="cls">${esc(tr(s.type))}</span>${rowTagsHTML(s.tags,[tr(s.type)])}</div>
+    </div>
+    <div class="rowstats">${rowStat("SP", s.sp)}</div>
+    <span class="chevron">${open?'⌄':'›'}</span>
+  </div>`;
+}
 function wireProfileChips(sel, redraw, setIdx){
   setIdx = setIdx || (v=>{profileViewIdx=v;});
   $$(`${sel} .profile-chip`).forEach(b=>b.onclick=()=>{ setIdx(+b.dataset.pi); redraw(); });
@@ -3326,14 +3456,7 @@ function openWeaponPicker(mi){
     $("#wp-list").innerHTML=list.map((w,_i)=>{
       const lk=!unlocked(w);
       const open=pickerViewMode==="inline" && wpExpanded===w.id;
-      const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-w="${w.id}">
-        <div class="info"><div class="nm">${esc(w.name)}</div>
-          <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
-        <div style="display:flex; align-items:center; gap:8px">
-          ${w.license_level>0?`<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(licenseDisplayName(w.license))} ${w.license_level}</span>`:""}
-          <span class="chevron">${open?'⌄':'›'}</span>
-        </div>
-      </div>`;
+      const row=weaponPickRow(w, open);
       const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
         <button class="ghostbtn block mt-14" id="wp-install-inline">
           ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
@@ -3473,11 +3596,7 @@ function openIntegratedPicker(mi){
       `<div class="hint" style="margin-bottom:10px">Это оружие встроено в шасси — заменить его нельзя, можно только вернуть на место.</div>
        ${viewToggleHTML()}
        <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
-    const row=`<div class="listrow clickable ${open?'open':''}" data-w="${w.id}">
-      <div class="info"><div class="nm">${esc(w.name)}</div>
-        <div class="ds">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(w)} · ${rngStr(w)}</div></div>
-      <span class="chevron">${open?'⌄':'›'}</span>
-    </div>`;
+    const row=weaponPickRow(w, open);
     const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
       <button class="ghostbtn block mt-14" id="wp-install-inline">✓ Восстановить это оружие</button></div>`:"";
     $("#wp-list").innerHTML=`<div class="pickitem">${row}${expand}</div>`;
@@ -3676,14 +3795,7 @@ function openSystemPicker(){
     $("#sy-list").innerHTML=list.map((s,_i)=>{
       const lk=!unlocked(s);
       const open=pickerViewMode==="inline" && syExpanded===s.id;
-      const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-s="${s.id}">
-        <div class="info"><div class="nm">${esc(s.name)}</div>
-          <div class="ds">${esc(tr(s.type))} · ${s.sp} SP</div></div>
-        <div style="display:flex; align-items:center; gap:8px">
-          ${s.license_level>0?`<span class="rowbadge ${lk?'lock':'unlocked'}">${lk?'🔒':'🔓'} ${esc(licenseDisplayName(s.license))} ${s.license_level}</span>`:""}
-          <span class="chevron">${open?'⌄':'›'}</span>
-        </div>
-      </div>`;
+      const row=systemPickRow(s, open);
       const expand=open?`<div class="expand-detail">${systemCardBody(s)}
         <button class="ghostbtn block mt-14" id="sy-install-inline">
           ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
