@@ -1188,6 +1188,13 @@ const CONTENT_PACKS = [
   "data/packs/dustgrave-data.json", "data/packs/ktb-data.json",
   "data/packs/sotw-data.json", "data/packs/ssmr-data.json",
 ];
+/* Packs that failed to load on the last loadBaseData() — "DUSTGRAVE", … A
+   missing pack makes its content look nonexistent, so anything built on it
+   would be dropped on restore; startApp() uses this to tell a network hiccup
+   from content that really is gone, and to keep autosave off the stored
+   build until the data is complete again. */
+let PACK_LOAD_FAILURES = [];
+const packLabel = url => url.replace(/^.*\//, "").replace(/-data\.json$/, "").toUpperCase();
 
 async function loadBaseData() {
   try {
@@ -1215,6 +1222,7 @@ async function loadBaseData() {
         ...CONTENT_PACKS.map(p => soft(p, null)),
       ]);
     Object.assign(core, { tags, glossary, stat_labels, core_stat_mods, core_terse, frame_images });
+    PACK_LOAD_FAILURES = CONTENT_PACKS.filter((url, i) => !packs[i]).map(packLabel);
     for (const pack of packs) {
       if (!pack) continue;
       for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses", "mods"]) {
@@ -1441,7 +1449,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever index.html changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-10-14-broken-share-link-keeps-autosave";
+const APP_BUILD = "2026-10-14-p0-autosave-and-keyboard-pickers";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {
@@ -1681,6 +1689,15 @@ let activeTab = "pilot";
 const BUILD_KEY = "lancer_build";
 const BUILD_V = 1;
 let saveTimer = null, lastSaveAt = null, saveFailed = false;
+/* Set (to the list of failed packs) when the stored build was restored with
+   pieces missing only because some pack did not load. Writing the trimmed
+   build back would turn a network hiccup into permanent loss, so autosave
+   stays off until a reload brings the data back — or until the user replaces
+   the build on purpose (import, reset), which is their call to make. */
+let saveHold = null;
+function holdSaveIfIncomplete(dropped){
+  if(dropped.length && PACK_LOAD_FAILURES.length) saveHold = PACK_LOAD_FAILURES.slice();
+}
 /* "build" = the editor, "sheet" = the read-only reference deck. sheetSource
    is "shared" when the build came in through a link: someone else's build
    must never overwrite the reader's own autosave. */
@@ -1699,6 +1716,7 @@ function buildIsEmpty(){
 function saveBuildNow(){
   clearTimeout(saveTimer); saveTimer=null;
   if(sheetSource==="shared") return; // reading someone else's build
+  if(saveHold){ renderSaveState(); return; } // stored build is more complete than this one
   try{
     // A first visit that touched nothing has nothing worth claiming to have
     // saved; once anything is stored, an emptied build is a real change.
@@ -1717,6 +1735,12 @@ function saveBuildNow(){
 function scheduleSave(){ clearTimeout(saveTimer); saveTimer=setTimeout(saveBuildNow, 400); }
 function renderSaveState(){
   const el=document.getElementById("savestate"); if(!el) return;
+  if(saveHold){
+    el.className="savestate err";
+    el.textContent="⚠ НЕ СОХРАНЯЕТСЯ";
+    el.title=`Не загрузились данные: ${saveHold.join(", ")}. Сохранённая сборка не тронута — перезагрузите страницу, чтобы вернуть её целиком. Изменения этой сессии можно выгрузить кнопкой СОХРАНИТЬ.`;
+    return;
+  }
   if(saveFailed){
     el.className="savestate err";
     el.textContent="⚠ НЕ СОХРАНЯЕТСЯ";
@@ -2301,10 +2325,12 @@ function renderPilot(){
       <div id="pilot-gear-loadout"></div>`;
   renderPilotGearLoadout();
 
-  $("#f-name").oninput=e=>{state.pilot.name=e.target.value; renderHUD();};
-  $("#f-call").oninput=e=>{state.pilot.callsign=e.target.value; renderHUD();};
+  // These skip render() (it would rebuild the field under the caret), so they
+  // must ask for the autosave themselves — render() is where it usually happens.
+  $("#f-name").oninput=e=>{state.pilot.name=e.target.value; renderHUD(); scheduleSave();};
+  $("#f-call").oninput=e=>{state.pilot.callsign=e.target.value; renderHUD(); scheduleSave();};
   const bgDesc=()=>{ const b=M.bg[state.pilot.background]; $("#bg-desc").innerHTML=b?rich(b.description):""; };
-  $("#f-bg").onchange=e=>{state.pilot.background=e.target.value; bgDesc(); renderHUD();};
+  $("#f-bg").onchange=e=>{state.pilot.background=e.target.value; bgDesc(); renderHUD(); scheduleSave();};
   bgDesc();
   const ll=$("#f-ll");
   ll.oninput=e=>{ state.pilot.ll=+e.target.value;
@@ -3146,7 +3172,7 @@ function weaponPickRow(w, open){
   const chips=(p?`<span class="rowtag stance">СТОЙКА 1/${w.profiles.length}</span>`:"")
     + rngArr.filter(r=>r!==pri&&r.type).map(r=>`<span class="rowtag">${esc(trTag(r.type))} ${esc(r.val)}</span>`).join("")
     + (w.sp?`<span class="rowtag sp">${esc(w.sp)} SP</span>`:"");
-  return `<div class="listrow pick clickable ${lk?'locked':''} ${open?'open':''}" data-w="${esc(w.id)}" style="--src:${srcColor(w.source)}">
+  return `<div class="listrow pick clickable ${lk?'locked':''} ${open?'open':''}" ${pickRowA11y(open)} data-w="${esc(w.id)}" style="--src:${srcColor(w.source)}">
     <span class="src"></span>
     <div class="info">
       <div class="nmline"><span class="nm">${esc(w.name)}</span>${rowBadgeHTML(w)}</div>
@@ -3159,9 +3185,13 @@ function weaponPickRow(w, open){
     <span class="chevron">${open?'⌄':'›'}</span>
   </div>`;
 }
+/* Picker rows are <div>s (they hold tags/stat blocks a <button> may not), so
+   they carry the button semantics themselves; Enter/Space is handled once,
+   globally — see the keydown listener next to the modal focus trap. */
+const pickRowA11y = open => `role="button" tabindex="0" aria-expanded="${open?"true":"false"}"`;
 function systemPickRow(s, open){
   const lk=!unlocked(s);
-  return `<div class="listrow pick clickable ${lk?'locked':''} ${open?'open':''}" data-s="${esc(s.id)}" style="--src:${srcColor(s.source)}">
+  return `<div class="listrow pick clickable ${lk?'locked':''} ${open?'open':''}" ${pickRowA11y(open)} data-s="${esc(s.id)}" style="--src:${srcColor(s.source)}">
     <span class="src"></span>
     <div class="info">
       <div class="nmline"><span class="nm">${esc(s.name)}</span>${rowBadgeHTML(s)}</div>
@@ -3539,7 +3569,7 @@ function openPilotGearPicker(slotKind, onInstall){
       const open=pgExpanded===g.id;
       const hasArmorStats = g.type==="Armor" && g.bonuses && g.bonuses.length;
       const hint = g.damage||g.range ? `${dmgStr(g)} · ${rngStr(g)}` : hasArmorStats ? pilotGearStatsInlineHTML(g) : tr(g.type);
-      const row=`<div class="listrow clickable ${open?'open':''}" data-g="${g.id}">
+      const row=`<div class="listrow clickable ${open?'open':''}" ${pickRowA11y(open)} data-g="${g.id}">
         <div class="info"><div class="nm">${esc(g.name)}</div><div class="ds">${hint}</div></div>
         <span class="chevron">${open?'⌄':'›'}</span>
       </div>`;
@@ -3666,7 +3696,7 @@ function openModPicker(mi, wi){
     $("#mp-list").innerHTML=list.map((m,_i)=>{
       const lk=!unlocked(m);
       const open=pickerViewMode==="inline" && mpExpanded===m.id;
-      const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" data-m="${m.id}">
+      const row=`<div class="listrow clickable ${lk?'locked':''} ${open?'open':''}" ${pickRowA11y(open)} data-m="${m.id}">
         <div class="info"><div class="nm">${esc(m.name)}</div>
           <div class="ds">${esc(m.source)} · ${m.sp||0} SP</div></div>
         <div style="display:flex; align-items:center; gap:8px">
@@ -3756,6 +3786,7 @@ function openSystemPicker(){
   syFilter="ALL"; sySearch=""; syExpanded=null;
 
   const install=id=>{
+    const at=$$("#sy-list .listrow").findIndex(r=>r.dataset.s===id);
     state.mech.systems.push(id);
     syExpanded=null;
     render();       // updates the loadout tab/HUD (SP counters) behind the modal
@@ -3763,6 +3794,12 @@ function openSystemPicker(){
     // and everything else stays where the eye left it. Redrawing from the top
     // would throw away the scroll position someone spent reading to reach.
     drawList(true);
+    // The focused install button went with its row; the keyboard user's place
+    // is the row that now sits where the installed one was.
+    if(!$("#modal .panel").contains(document.activeElement)){
+      const rows=$$("#sy-list .listrow");
+      (rows[Math.min(Math.max(at,0), rows.length-1)] || $("#sy-search")).focus();
+    }
   };
 
   const drawDetail=(id)=>{
@@ -4052,7 +4089,15 @@ function resetModalScroll(){
   mbd.scrollTop=0; mo.scrollTop=0;
   requestAnimationFrame(()=>{ mbd.scrollTop=0; mo.scrollTop=0; });
 }
-let modalReturnFocus=null;
+let modalReturnFocus=null, modalReturnKey=null;
+/* A selector that finds "the same control" again after render() has replaced
+   the DOM — nearly every modal action ends in closeModal(); render(). */
+function focusKeyOf(el){
+  if(!el || el===document.body) return null;
+  if(el.id) return "#"+CSS.escape(el.id);
+  const d=Object.entries(el.dataset||{})[0];
+  return d ? `[data-${d[0].replace(/[A-Z]/g,c=>"-"+c.toLowerCase())}="${CSS.escape(d[1])}"]` : null;
+}
 function modal(title,html){
   const mhd=$("#modal .mhd");
   // Reset the header to just [h3, close button] on every open — openFrame(),
@@ -4066,6 +4111,7 @@ function modal(title,html){
   mhd.querySelector("h3").textContent=title;
   setModalBody(html);
   modalReturnFocus=document.activeElement;
+  modalReturnKey=focusKeyOf(modalReturnFocus);
   $("#modal").classList.add("show");
   const panel=$("#modal .panel");
   const focusable=panel.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
@@ -4074,7 +4120,17 @@ function modal(title,html){
 function closeModal(){
   $("#modal").classList.remove("show");
   $("#modal .panel").classList.remove("narrow");
-  if(modalReturnFocus){ modalReturnFocus.focus(); modalReturnFocus=null; }
+  const back=modalReturnFocus, key=modalReturnKey;
+  modalReturnFocus=null; modalReturnKey=null;
+  if(!back) return;
+  // Deferred past the caller's render(): restoring now would focus a node that
+  // is about to be replaced, and the keyboard user would land on <body>.
+  queueMicrotask(()=>{
+    if($("#modal").classList.contains("show")) return; // a follow-up dialog owns focus now
+    const target = back.isConnected ? back
+      : (key && document.querySelector(key)) || document.querySelector(`#tab-btn-${activeTab}`);
+    if(target) target.focus();
+  });
 }
 
 /* ============ DIALOGS ============ */
@@ -4083,7 +4139,7 @@ function closeModal(){
    product. Actions run least-destructive first — that ordering is also the
    focus order, since modal() focuses the first control. Escape, the close
    button and Отмена all cancel. */
-function confirmDialog({title, lead, losses, actions}){
+function confirmDialog({title, lead, losses, actions, cancelLabel="Отмена"}){
   const list=(losses&&losses.length)
     ? `<ul class="losslist ${losses.length>8?"scroll":""}">${losses.map(t=>
         typeof t==="string" ? `<li>${esc(t)}</li>` : `<li class="${t.kind||""}">${esc(t.text)}</li>`
@@ -4093,7 +4149,7 @@ function confirmDialog({title, lead, losses, actions}){
     ${list}
     <div class="dialog-actions">
       ${actions.map((a,i)=>`<button class="ghostbtn ${a.danger?"warn":""}" data-act="${i}">${esc(a.label)}</button>`).join("")}
-      <button class="ghostbtn" data-act="cancel">Отмена</button>
+      <button class="ghostbtn" data-act="cancel">${esc(cancelLabel)}</button>
     </div>
   </div>`);
   $("#modal .panel").classList.add("narrow");
@@ -4119,11 +4175,34 @@ function notice(title, lead, items, kind){
   $("#modal .panel").classList.add("narrow");
   $("#modal [data-act=ok]").onclick=closeModal;
 }
+/* The restore lost pieces because packs failed to load — not because the
+   content is gone. Say so, and offer the one fix that works: load again. */
+function reportPackFailure(dropped){
+  confirmDialog({
+    title:"Часть данных не загрузилась",
+    lead:`Не удалось загрузить: <b>${esc(saveHold.join(", "))}</b> — вероятно, сбой сети. Пока эти данные не загружены, часть сборки не видна. <b>Сохранённая сборка не тронута</b>: автосохранение приостановлено, пока данные не загрузятся.`,
+    losses:dropped,
+    actions:[{label:"⟳ Повторить загрузку", run:()=>location.reload()}],
+    cancelLabel:"Продолжить без них",
+  });
+}
 function reportDropped(title, dropped){
   notice(title,
     `Часть сборки не удалось восстановить: этих записей нет в загруженных данных. Обычно это значит, что сборка сделана с другим набором контент-паков или в другой версии реестра. Остальное на месте.`,
     dropped);
 }
+document.addEventListener("keydown", e=>{
+  if(e.key!=="Enter" && e.key!==" ") return;
+  const row=e.target;
+  if(!row.matches || !row.matches('.listrow.clickable[role="button"]')) return;
+  e.preventDefault();
+  const key=focusKeyOf(row);
+  row.click();
+  // The click redraws the list (or swaps in the card view); put focus back on
+  // the same row, or on the first control of whatever replaced the list.
+  const again=(key && document.querySelector(`#modal ${key}`)) || $("#modal .mbd button");
+  if(again) again.focus();
+});
 document.addEventListener("keydown", e=>{
   if(!$("#modal").classList.contains("show")) return;
   if(e.key==="Escape"){ closeModal(); return; }
@@ -4161,6 +4240,7 @@ function importBuild(file){
     }
     const apply=()=>{
       const dropped=applyBuildState(d.state);
+      saveHold=null; // replacing the build was the user's explicit choice
       activeTab="pilot";
       render();
       if(dropped.length) reportDropped("Сборка загружена частично", dropped);
@@ -4574,7 +4654,7 @@ function exitSheet(){
     Object.assign(state, defaultState());
     const saved=loadSavedBuild();
     if(saved){
-      applyBuildState(saved.state);
+      holdSaveIfIncomplete(applyBuildState(saved.state));
       lastSaveAt = saved.savedAt ? new Date(saved.savedAt) : null;
       if(isNaN(lastSaveAt)) lastSaveAt=null;
     }
@@ -4629,6 +4709,7 @@ function wireTopbar(){
         {label:"⬇ Сначала выгрузить в файл", run:exportBuild},
         {label:"⟲ Сбросить всё", danger:true, run:()=>{
           Object.assign(state, defaultState());
+          saveHold=null; // so was clearing it
           activeTab="pilot";
           render();
         }},
@@ -4716,6 +4797,7 @@ function wireLangSwitch(){
     const saved=loadSavedBuild();
     if(saved){
       const dropped=applyBuildState(saved.state);
+      holdSaveIfIncomplete(dropped);
       lastSaveAt = saved.savedAt ? new Date(saved.savedAt) : null;
       if(isNaN(lastSaveAt)) lastSaveAt=null;
       if(dropped.length) restoreReport=dropped;
@@ -4730,6 +4812,7 @@ function wireLangSwitch(){
   bootFinish(()=>{
     if(linkFailed) notice("Ссылка не прочитана",
       "Адрес повреждён или собран другой версией реестра. Попросите прислать ссылку заново или файл сборки.");
+    else if(restoreReport && saveHold) reportPackFailure(restoreReport);
     else if(restoreReport) reportDropped(sheetSource==="shared"?"Сборка открыта частично":"Сборка восстановлена частично", restoreReport);
   });
 })();

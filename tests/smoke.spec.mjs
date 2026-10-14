@@ -106,6 +106,55 @@ test("tab bar is keyboard navigable", async ({ page }) => {
   await expect(page.locator("#tab-btn-pilot")).toBeFocused();
 });
 
+test("weapons and systems can be installed with the keyboard alone", async ({ page }) => {
+  // Regression (AUDIT P0-2, 2026-10-14): picker rows were mouse-only <div>s —
+  // Tab cycled filters/search/close and never reached the list.
+  const build = structuredClone(FULL_BUILD);
+  build.mech.mounts[2].items = []; // free the Heavy mount
+  const errors = await openApp(page, { build });
+  await openTab(page, "loadout");
+  const names = await page.evaluate(() => ({ w: M.weapon.mw_howitzer.name, s: M.system.ms_manipulators.name }));
+  const active = () => page.evaluate(() => {
+    const a = document.activeElement;
+    return { tag: a.tagName, id: a.id, w: a.dataset.w, s: a.dataset.s, inModal: !!a.closest("#modal") };
+  });
+
+  // Weapon: open → search → Tab into the list → Enter expands → Tab → Enter installs
+  await page.locator('#mounts [data-addw="2"]').focus();
+  await page.keyboard.press("Enter");
+  await expect(modal(page)).toBeVisible();
+  await page.locator("#wp-search").focus();
+  await page.keyboard.type(names.w);
+  await page.keyboard.press("Tab");
+  expect(await active()).toMatchObject({ w: "mw_howitzer" });
+  await page.keyboard.press("Enter");
+  expect(await active()).toMatchObject({ w: "mw_howitzer" }); // focus survives the redraw
+  await expect(page.locator('#wp-list .listrow[data-w="mw_howitzer"]')).toHaveAttribute("aria-expanded", "true");
+  await page.keyboard.press("Tab");
+  expect(await active()).toMatchObject({ id: "wp-install-inline" });
+  await page.keyboard.press("Enter");
+  await expect(modal(page)).toBeHidden();
+  expect((await getState(page)).mech.mounts[2].items).toEqual([{ id: "mw_howitzer", mod: null }]);
+  expect((await active()).tag).not.toBe("BODY"); // focus lands somewhere, not lost
+
+  // System: the picker stays open after installing — focus must stay inside it
+  await page.locator("#add-system").focus();
+  await page.keyboard.press("Enter");
+  await page.locator("#sy-search").focus();
+  await page.keyboard.type(names.s);
+  await page.keyboard.press("Tab");
+  expect(await active()).toMatchObject({ s: "ms_manipulators" });
+  await page.keyboard.press(" ");
+  await page.keyboard.press("Tab");
+  expect(await active()).toMatchObject({ id: "sy-install-inline" });
+  await page.keyboard.press("Enter");
+  expect((await getState(page)).mech.systems).toContain("ms_manipulators");
+  expect(await active()).toMatchObject({ inModal: true });
+  await page.keyboard.press("Escape");
+  await expect(page.locator("#add-system")).toBeFocused();
+  expect(errors).toEqual([]);
+});
+
 test("modal closes with Escape and returns focus", async ({ page }) => {
   await openApp(page, { build: FULL_BUILD });
   await openTab(page, "loadout");

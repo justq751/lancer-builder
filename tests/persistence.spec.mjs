@@ -33,6 +33,16 @@ test("autosaves edits and survives a reload", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
+test("typing a name alone is autosaved", async ({ page }) => {
+  // Regression (2026-10-14): name/callsign/background edits only re-rendered
+  // the HUD and never scheduled a save — close the tab and they were gone.
+  await openApp(page);
+  await page.locator("#f-name").fill("Кейт Аояма");
+  await page.locator("#f-bg").selectOption("pbg_colonist");
+  await expect.poll(async () => (await getSaved(page))?.state?.pilot)
+    .toMatchObject({ name: "Кейт Аояма", background: "pbg_colonist" });
+});
+
 test("migrates a legacy save (string weapon slots, variant license key)", async ({ page }) => {
   const errors = await openApp(page, { build: LEGACY_BUILD });
   const s = await getState(page);
@@ -145,6 +155,69 @@ test("a broken share link keeps the reader's own build", async ({ page }) => {
   await page.waitForTimeout(800); // past the autosave debounce
   expect((await getSaved(page)).state.pilot.callsign).toBe("СТАРЫЙ");
   expect((await getState(page)).pilot.callsign).toBe("СТАРЫЙ");
+});
+
+// A build on Störtebeker (Dustgrave pack) — used to simulate a pack that fails
+// to load (flaky mobile network, CDN hiccup) while the build depends on it.
+const PACK_BUILD = {
+  ...structuredClone(FULL_BUILD),
+  licenses: { Raleigh: 2, Nelson: 1 },
+  mech: {
+    frameId: "mf_störtebeker",
+    mounts: [{ type: "Main", items: [{ id: "mw_assault_rifle", mod: null }] }],
+    systems: ["ms_custom_paint_job"],
+  },
+};
+const DUSTGRAVE = "**/data/packs/dustgrave-data.json";
+
+test("a pack that fails to load never overwrites the saved build", async ({ page }) => {
+  // Regression (AUDIT P0-1, 2026-10-14): the missing pack's frame was dropped,
+  // its weapons cascaded out with it, and autosave wrote that over the real build.
+  await page.route(DUSTGRAVE, route => route.fulfill({ status: 503, body: "" }));
+  const errors = await openApp(page, { build: PACK_BUILD });
+
+  const dlg = modal(page);
+  await expect(dlg.locator("h3")).toHaveText("Часть данных не загрузилась");
+  await expect(dlg).toContainText("DUSTGRAVE");
+  await expect(page.locator("#savestate")).toContainText("НЕ СОХРАНЯЕТСЯ");
+
+  // Editing in the degraded session must not reach storage either.
+  await dlg.getByRole("button", { name: "Продолжить без них" }).click();
+  await page.locator("#f-call").fill("ДРУГОЙ");
+  await page.waitForTimeout(800); // past the autosave debounce
+  const saved = (await getSaved(page)).state;
+  expect(saved.mech).toEqual(PACK_BUILD.mech);
+  expect(saved.pilot.callsign).toBe(PACK_BUILD.pilot.callsign);
+
+  // Once the pack loads again, the build is all there.
+  await page.unroute(DUSTGRAVE);
+  await page.reload();
+  await waitForBoot(page);
+  expect(await getState(page)).toEqual(PACK_BUILD);
+  await expect(modal(page)).toBeHidden();
+  expect(errors.filter(e => !/dustgrave/.test(e))).toEqual([]);
+});
+
+test("a failed pack the build does not use leaves autosave on", async ({ page }) => {
+  await page.route(DUSTGRAVE, route => route.fulfill({ status: 503, body: "" }));
+  await openApp(page, { build: FULL_BUILD });
+  await expect(modal(page)).toBeHidden(); // nothing of the build was lost
+  await page.locator("#f-call").fill("ВОРОН");
+  await expect.poll(async () => (await getSaved(page)).state.pilot.callsign).toBe("ВОРОН");
+});
+
+test("importing a build lifts the save hold", async ({ page }, testInfo) => {
+  await page.route(DUSTGRAVE, route => route.fulfill({ status: 503, body: "" }));
+  await openApp(page, { build: PACK_BUILD });
+  await modal(page).getByRole("button", { name: "Продолжить без них" }).click();
+
+  const file = testInfo.outputPath("full.json");
+  writeFileSync(file, JSON.stringify({ _app: "lancer-registry", v: 1, state: FULL_BUILD }));
+  await page.locator("#import-file").setInputFiles(file);
+  await modal(page).getByRole("button", { name: "⬆ Заменить сборку" }).click();
+  // An explicit replace is the user's decision — it saves normally again.
+  await expect.poll(async () => (await getSaved(page)).state).toEqual(FULL_BUILD);
+  await expect(page.locator("#savestate")).toContainText("СОХРАНЕНО");
 });
 
 test("switching language keeps the build and the logic keys", async ({ page }) => {
