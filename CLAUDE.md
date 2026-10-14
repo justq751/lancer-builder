@@ -8,7 +8,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A static, no-build, single-page character/mech builder for the tabletop RPG **Lancer**, reworked from the original monolithic community builder specifically to support **incremental Russian localization**. The entire app is vanilla HTML/CSS/JS in `index.html` (~4700 lines); there is no framework, package manager, or build step. Line numbers drift quickly in this file — locate code by function name or by the `/* ============ SECTION ============ */` banners (`grep -n '============' index.html`).
+A static, no-build, single-page character/mech builder for the tabletop RPG **Lancer**, reworked from the original monolithic community builder specifically to support **incremental Russian localization**. The app is vanilla HTML/CSS/JS with no framework and no build step: `index.html` (markup only), `css/*.css`, and plain `<script src>` files in `js/` (see **Code layout**). Locate code by function name (`grep -rn 'function derived' js/`) rather than line numbers.
 
 Work in progress is tracked in `PLAN.md` (phased improvement plan with checklists). Product context lives in `PRODUCT.md`, the visual system in `DESIGN.md`.
 
@@ -30,26 +30,47 @@ Playwright characterization tests in `tests/` (details: `tests/README.md`). npm 
 
 ```bash
 npm install && npx playwright install chromium   # once
-npm test                                         # whole suite, ~20 s
+npm test                                         # unit (~0.2 s) + browser (~25 s)
+npm run test:unit                                # js/core/ only, no browser
 npm run test:update                              # rewrite goldens + screenshots after an INTENDED change
 ```
 
-- Tests reach into the page's globals (`state`, `L`, `derived()`, `applyBuildState()`, `encodeShare()`, `fetchAndLocalize()`) via `page.evaluate`. If a refactor renames or un-globals one of these, update the tests in the same change.
+- **Unit tests** (`tests/unit/*.test.mjs`, `node --test`) load `js/core/*.js` into an isolated Node `vm` context via `tests/unit/load.mjs` — the same plain scripts the browser runs, no export statements. Set `L`/`M`/`state` as context globals; `coreData()` gives the real core dataset indexed like `rebuildIndexes()`.
+- **Browser tests** reach into the page's globals (`state`, `L`, `derived()`, `applyBuildState()`, `encodeShare()`, `fetchAndLocalize()`) via `page.evaluate`. If a refactor renames or un-globals one of these, update the tests in the same change.
 - `tests/golden/L.{ru,en}.json` pin the full localized dataset, so **any edit to `data/` or `locales/` fails `data.spec.mjs` until goldens are updated** — that is intended; review `git diff tests/golden/` before committing.
 - Screenshot baselines are per-platform (`tests/__screenshots__/win32/` only so far).
 - `test.fail(...)` marks a known, unfixed bug; delete that line once the bug is fixed.
-- Run the suite before claiming a change to `index.html` works.
+- Run `npm test` before claiming a change to the app works.
 
 ## Deployment
 
-The site needs only `index.html`, `data/`, `locales/` and `assets/`; everything else in the repo (`.claude/`, `.github/`, `tools/`, `docs/`, `*.md`, …) is tooling and must not be published. Two deploy targets, each with its own filter — **when adding a new folder the page loads (e.g. `css/`, `js/`), update both**:
+The site needs only `index.html`, `css/`, `js/`, `data/`, `locales/` and `assets/`; everything else in the repo (`.claude/`, `.github/`, `tools/`, `tests/`, `docs/`, `*.md`, …) is tooling and must not be published. Two deploy targets, each with its own filter — **when adding a new top-level folder, check both**:
 
 - **GitHub Pages** — `.github/workflows/deploy.yml` on push to `main` copies the paths listed in `SITE_PATHS` (an allowlist) into `_site/` and uploads that.
 - **Cloudflare** — `wrangler.jsonc` serves the repo root as static assets; `.assetsignore` (a denylist, `.gitignore` syntax) excludes the tooling. A new root-level tooling file/folder must be added there.
 
 ## Architecture
 
-### Data loading & i18n overlay (index.html, "I18N DATA LOADER" section)
+### Code layout
+
+All scripts are classic (non-module) scripts sharing one global scope, loaded by `index.html` in a fixed order — **later files use top-level names from earlier ones, so a new file goes in its place in that list**. Top-level code must not call a function from a file loaded later (only code that runs at event/boot time may).
+
+| Path | Role |
+|---|---|
+| `js/core/i18n.js` | `localizeData()` + overlay helpers. Pure. |
+| `js/core/build.js` | `defaultState()`, `HASE`, migrations, `applyBuildState()` (sanitizes untrusted builds), mount rules (`allowedNext`, `buildMounts`). |
+| `js/core/rules.js` | `derived()`, license/unlock checks, `pickerOrder`. |
+| `js/core/share.js` | `?s=` link codec (`packBuild`/`encodeShare`/…). |
+| `js/i18n-loader.js` | fetching data/packs/locales, `tr()`/`trTag()`, `fetchAndLocalize()`, `APP_BUILD`. |
+| `js/app/*.js` | shared globals and helpers (`base`), `state` + autosave (`state`), license labels, frame swap, `render()`/HUD/tab bar (`render`), export/import (`transfer`). |
+| `js/tabs/*.js` | one file per editor tab (`render<Tab>()`). |
+| `js/ui/*.js` | modal + dialogs, weapon/system/gear/mod pickers. |
+| `js/sheet.js`, `js/print.js`, `js/main.js` | read-only sheet view + share link I/O, print sheet, topbar wiring/boot. |
+| `css/fonts.css`, `css/app.css`, `css/sheet.css` | self-hosted fonts (paths relative to `css/`), app styles, sheet/print styles — in cascade order. |
+
+**`js/core/` contract:** no DOM, `localStorage`, or `fetch` — only the shared globals `L`, `M`, `state` (and web-standard APIs available in Node). That is what lets `tests/unit/` run it without a browser; keep new rules/logic there.
+
+### Data loading & i18n overlay (`js/i18n-loader.js` + `js/core/i18n.js`)
 
 1. `loadBaseData()` fetches `data/lancer-data.json` (canonical English core data) plus several standalone files (`tags.json`, `glossary.json`, `stat_labels.json`, `core_bonus_stat_mods.json`, `core_bonus_terse.json`, `frame_images.json`), and all packs listed in `CONTENT_PACKS` (`data/packs/*.json` — official Massif Press content packs like osr-data, wallflower-data, long-rim-data, dustgrave-data, ktb-data, ows-data, sotw-data, ssmr-data). Pack arrays (`frames`, `weapons`, `systems`, `talents`, `pilot_gear`, `core_bonuses`, `mods`) are concatenated onto the core data's arrays.
 2. `loadLocaleFiles(lang)` fetches `locales/<lang>/*.json` (category files listed in `LOCALE_CATEGORY_FILES`).

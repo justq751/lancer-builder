@@ -1,0 +1,609 @@
+/* ============ LANCER // REGISTRY ============ */
+/* z-index scale in use across this file (documented, not enforced):
+   60 .topbar · 120 .modal · 200 #boot · 1000 .stattip-box (must clear the
+   modal, since tooltips inside modal content need to sit above it). */
+:root{
+  --bg:#080b11;
+  --bg-grid:#0b0f17;
+  --panel:#0f141d;
+  --panel-2:#161d28;
+  --panel-3:#1c2532;
+  --line:#243040;
+  --line-bright:#36485e;
+  --ink:#dbe4f0;
+  --mute:#7d8ca0;
+  /* Lifted from #6b7c94, which measured 4.34:1 on --panel and so failed AA
+     for the 10-12px mono labels this colour actually carries. It now clears
+     4.5:1 on every surface except the --panel-3 hover fill. */
+  --faint:#77869c;
+  --accent:#37e0c0;      /* COMP/CON teal — brand, focus, positive stat values */
+  --accent-deep:#0f4f45;
+  --accent-glow:rgba(55,224,192,.16);
+  --select:#ffb020;      /* selection/active state — separate from --accent so
+                            "chosen" reads distinctly from "brand/positive" */
+  --select-glow:rgba(255,176,32,.16);
+  --amber:#f4a93a;       /* warning / over-budget */
+  --ok:#4fae6e;          /* unlocked license requirement met */
+  --amber-glow:rgba(244,169,58,.14);
+  --red:#e5604f;
+  --gms:#d8604c; --ipsn:#3f8fd6; --ssc:#d8c160; --horus:#52b585; --ha:#9d6fdd; --exotic:#e8398a;
+  --shadow:0 18px 50px -20px rgba(0,0,0,.8);
+  /* Paper is its own surface, not the dark UI inverted: printed output has
+     exactly three values — ink, rule, and the sheet itself. */
+  --print-paper:#fff; --print-ink:#000; --print-rule:#666;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+/* Motion here is all state feedback — bar fills, tab entrances, the boot
+   ring. None of it carries meaning that the still frame doesn't, so honouring
+   the OS switch costs the product nothing and costs a vestibular-sensitive
+   player a great deal to ignore. */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important; animation-iteration-count:1!important;
+    transition-duration:.01ms!important; scroll-behavior:auto!important}
+}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Inter",system-ui,sans-serif; font-size:16.5px; line-height:1.55;
+  background-image:
+    linear-gradient(var(--bg-grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--bg-grid) 1px,transparent 1px);
+  background-size:46px 46px;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:"Chakra Petch",sans-serif; font-weight:600; letter-spacing:.02em; margin:0}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+a{color:var(--accent)}
+button{font-family:inherit; cursor:pointer}
+::selection{background:var(--accent); color:#04130f}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+
+/* ---- boot overlay ---- */
+#boot{position:fixed; inset:0; z-index:200; background:var(--bg);
+  display:flex; align-items:center; justify-content:center; flex-direction:column; gap:18px;
+  transition:opacity .5s ease; font-family:"JetBrains Mono",monospace}
+#boot.done{opacity:0; pointer-events:none}
+#boot .ring{width:54px;height:54px;border:2px solid var(--line);border-top-color:var(--accent);
+  border-radius:50%; animation:spin .8s linear infinite}
+#boot .blog{color:var(--accent); font-size:13.5px; min-height:1.4em; letter-spacing:.06em}
+#boot .ttl{color:var(--faint); font-size:12px; letter-spacing:.4em}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---- header ---- */
+.topbar{position:sticky; top:0; z-index:60; backdrop-filter:blur(8px);
+  background:linear-gradient(180deg,rgba(8,11,17,.96),rgba(8,11,17,.82));
+  border-bottom:1px solid var(--line); padding:11px clamp(14px,3vw,30px);
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap}
+.brand{display:flex; align-items:baseline; gap:11px}
+.brand .sig{font-family:"JetBrains Mono",monospace; color:var(--accent); font-size:14px; letter-spacing:.12em}
+.brand .name{font-family:"Chakra Petch",sans-serif; font-size:clamp(17px,5vw,21px); letter-spacing:.06em}
+.brand .name b{color:var(--accent)}
+.brand .ver{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
+  border:1px solid var(--line); padding:1px 6px; border-radius:3px; align-self:center}
+.topbar .spacer{flex:1}
+.toolbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
+  padding:9px 14px; border-radius:5px; display:inline-flex; gap:7px; align-items:center; transition:.15s;
+  min-height:44px; justify-content:center}
+/* display:inline-flex above outranks the UA's [hidden]{display:none}, so the
+   attribute needs saying again here or nothing ever hides. */
+.toolbtn[hidden]{display:none}
+.toolbtn:hover{border-color:var(--accent); color:var(--accent); box-shadow:0 0 0 1px var(--accent-glow)}
+.toolbtn.warn:hover{border-color:var(--amber); color:var(--amber); box-shadow:none}
+/* Save-state readout — the product's only ambient proof that work is kept.
+   Sits left of the tool buttons as a plain mono label, never as a badge; it
+   goes amber only when a write actually failed (private mode, full quota),
+   because that is the one case where the user must reach for СОХРАНИТЬ. */
+.savestate{font-family:"JetBrains Mono",monospace; font-size:11.5px; letter-spacing:.06em;
+  color:var(--mute); white-space:nowrap}
+.savestate .pfx{font-style:normal}
+.savestate.err{color:var(--amber)}
+/* The header already wraps to several rows on a phone; the word СОХРАНЕНО is
+   what pushes it over. The timestamp alone still answers "is my work kept?",
+   so only the label goes. The failure state keeps its full wording — that one
+   has to be readable at a glance. */
+@media(max-width:560px){
+  .savestate:not(.err) .pfx{display:none}
+}
+
+/* ---- layout ---- */
+.shell{display:grid; grid-template-columns:344px 1fr; gap:clamp(16px,2.4vw,32px);
+  max-width:1680px; margin:0 auto; padding:clamp(18px,2.6vw,34px)}
+@media(max-width:1020px){.shell{grid-template-columns:1fr}}
+
+/* ---- HUD sidebar ---- */
+.hud{position:sticky; top:78px; align-self:start; display:flex; flex-direction:column; gap:14px;
+  max-height:calc(100vh - 96px); overflow:auto; padding-right:2px}
+@media(max-width:1020px){.hud{position:static; max-height:none}}
+.hud::-webkit-scrollbar{width:7px}
+.hud::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px}
+
+.card{position:relative; background:var(--panel);
+  border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow)}
+.card::before,.card::after{content:""; position:absolute; width:9px; height:9px; pointer-events:none}
+.card::before{top:-1px; left:-1px; border-top:2px solid var(--accent); border-left:2px solid var(--accent); border-radius:2px 0 0 0}
+.card::after{bottom:-1px; right:-1px; border-bottom:2px solid var(--accent); border-right:2px solid var(--accent); border-radius:0 0 2px 0}
+.card .head{display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:10px 14px; border-bottom:1px solid var(--line)}
+.card .head .lbl{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.16em; color:var(--mute)}
+.card .head .lbl b{color:var(--accent); font-weight:400}
+.card .body{padding:14px}
+
+.hud .pid{font-family:"Chakra Petch",sans-serif; font-size:23px; line-height:1.15}
+.hud .pid small{display:block; font-family:"JetBrains Mono",monospace; font-size:12px;
+  color:var(--accent); letter-spacing:.12em; margin-top:3px}
+.hud .ll{margin-top:12px; display:flex; align-items:center; gap:10px}
+.hud .ll .big{font-family:"Chakra Petch",sans-serif; font-size:33px; color:var(--accent); line-height:1}
+.hud .ll .meta{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); letter-spacing:.08em}
+
+/* budget rows */
+.budget{display:flex; flex-direction:column; gap:9px}
+.brow{display:grid; grid-template-columns:1fr auto; gap:4px 8px; align-items:center}
+.brow .nm{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--mute); letter-spacing:.04em}
+.brow .val{font-family:"JetBrains Mono",monospace; font-size:13px; color:var(--ink)}
+.brow .val.over{color:var(--amber)}
+.brow .bar{grid-column:1/3; height:4px; background:var(--panel-3); border-radius:3px; overflow:hidden}
+.brow .bar i{display:block; height:100%; background:var(--accent); border-radius:3px; transition:width .25s}
+.brow .bar i.over{background:var(--amber)}
+
+/* mech stat grid in HUD */
+/* Two columns, not three: the sidebar is 344px and each tile now carries a
+   written key, which is what makes it readable at all. Three columns fitted
+   only while the tiles were unlabelled icons nobody could read. */
+.statgrid{display:grid; grid-template-columns:repeat(2,1fr); gap:7px}
+
+/* Unified stat-display tile — a bordered box showing a key/icon and a value.
+   Four call sites share this one base via modifier classes instead of four
+   near-duplicate rule blocks: the plain vertical tile (СВОДКА/CORE tabs),
+   .compact (icon+value only, no text key — СВОДКА МЕХА HUD card), .row
+   (horizontal icon+key+value — ВЫБРАННОЕ ШАССИ frame detail), and .pg
+   (pilot-gear armor tile, its own icon/label/value class names since it
+   already had them before consolidation). */
+.stattile{position:relative; background:var(--bg-grid); border:1px solid var(--line); border-radius:5px;
+  padding:7px 6px 6px; text-align:center}
+.stattile .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.07em; color:var(--faint); display:block; min-height:2.2em}
+.stattile .v{font-family:"Chakra Petch",sans-serif; font-size:21px; color:var(--ink); line-height:1}
+.stattile.hl .v{color:var(--accent)}
+
+/* Compact icon+value tile (no text label). Value font size intentionally
+   matches .stattile.row .v below, so both this and the ВЫБРАННОЕ ШАССИ card
+   read at the same visual scale. */
+.stattile.compact{display:flex; align-items:center; justify-content:flex-start; gap:9px; padding:9px 8px}
+.stattile.compact .col{display:flex; flex-direction:column; align-items:flex-start; min-width:0; text-align:left}
+.stattile.compact .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.06em;
+  color:var(--faint); min-height:0; line-height:1.25; overflow:hidden; text-overflow:ellipsis;
+  white-space:nowrap; max-width:100%}
+.stattile.compact .v{font-size:26px}
+
+/* Horizontal [icon] LABEL ... value row — used in the ВЫБРАННОЕ ШАССИ card
+   (frameDetailBodyHTML) instead of the cramped square vertical tiles. */
+.statrows{margin-bottom:16px}
+.statrow-line{display:grid; gap:8px; margin-bottom:8px}
+.statrow-line:last-child{margin-bottom:0}
+.statrow-line.cols3{grid-template-columns:repeat(3,1fr)}
+.statrow-line.cols2{grid-template-columns:repeat(2,1fr)}
+.stattile.row{display:flex; align-items:center; gap:10px; border-radius:6px; padding:9px 12px; text-align:left}
+.stattile.row .k{font-size:13px; letter-spacing:.06em; color:var(--mute); flex:1; display:inline; min-height:0}
+.stattile.row .v{font-size:26px; flex-shrink:0}
+.hud .nomech{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--faint); text-align:center; padding:14px 4px; letter-spacing:.05em}
+/* Pilot armor stat tiles (Armor/HP Bonus/E-Defense/Evasion/Speed) shown on
+   a pilot_gear card when it's Armor-type with a bonuses[] array — mirrors
+   the reference layout: a row of equal tiles, icon + label above a big
+   accent-colored number. */
+.pgstats{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.stattile.pg{flex:1; min-width:84px; background:var(--panel-2); border-radius:8px; padding:10px 8px}
+@media(max-width:480px){.stattile.pg{min-width:64px}}
+.stattile.pg .ico{margin-bottom:2px; opacity:.85; min-height:20px}
+.pgicon{width:20px; height:20px; object-fit:contain; display:inline-block}
+.stattile.pg .lbl{font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:.08em; color:var(--faint)}
+.stattile.pg .val{font-family:"Chakra Petch",sans-serif; font-size:19px; color:var(--accent); line-height:1.3}
+
+/* stat glossary tooltip (hover icon, compcon.app-style).
+   position:fixed + JS-computed coordinates (see wireStatTooltips()) instead
+   of position:absolute — an absolutely-positioned tooltip gets clipped by
+   any scrollable ancestor (e.g. the HUD sidebar has overflow:auto for its
+   own scrollbar), fixed positioning escapes that entirely. */
+.stattip{position:relative; display:inline-flex; align-items:center; justify-content:center; margin-left:5px; width:16px; height:16px;
+  cursor:help; vertical-align:middle; opacity:.8; transition:.15s; font-size:12px; color:var(--faint)}
+/* The glyph stays 16px so the label it sits beside keeps its rhythm, but the
+   thing a finger has to hit is 44px: a transparent pseudo-element centred on
+   it, outside the flow so no layout moves. */
+.stattip::after{content:""; position:absolute; top:50%; left:50%;
+  width:44px; height:44px; transform:translate(-50%,-50%)}
+.stattip:hover{opacity:1; color:var(--accent)}
+.stattip.lg{width:38px; height:38px; margin-left:0; flex-shrink:0}
+/* Inside a HUD tile the icon shares the row with a key and a value, so it
+   gives up the width the key needs; it stays the glossary handle. */
+.stattile.compact .stattip.lg{width:26px; height:26px}
+.stattip-icon{width:100%; height:100%; object-fit:contain; display:block}
+.stattip-box{display:none; position:fixed;
+  width:400px; max-width:80vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:9px;
+  padding:16px 18px; font-family:"Inter",sans-serif; font-size:16px; line-height:1.5; color:var(--ink);
+  text-align:left; text-transform:none; z-index:1000; box-shadow:0 10px 28px rgba(0,0,0,.45); letter-spacing:normal; font-weight:400}
+.stattip-box b{display:block; margin-bottom:6px; color:var(--accent); font-family:"Chakra Petch",sans-serif; font-size:18px; font-weight:500}
+
+/* ---- tabs ---- */
+.tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px}
+.tab{background:var(--panel); border:1px solid var(--line); color:var(--mute);
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
+  padding:10px 15px; border-radius:6px; display:flex; align-items:center; gap:8px; transition:.15s;
+  min-height:44px}
+.tab .ix{color:var(--faint); font-size:11px}
+.tab:hover{color:var(--ink); border-color:var(--line-bright)}
+.tab.active{color:var(--select); border-color:var(--select); background:var(--panel-2);
+  box-shadow:inset 0 0 0 1px var(--select-glow)}
+.tab.active .ix{color:var(--select)}
+.tab .dot{width:6px;height:6px;border-radius:50%;background:var(--accent); flex-shrink:0}
+.tab .dot.warn{background:var(--amber)}
+/* Visually hidden but read aloud — the dots carry meaning colour alone can't. */
+.sr{position:absolute; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden;
+  clip:rect(0 0 0 0); clip-path:inset(50%); white-space:nowrap; border:0}
+
+/* ---- section ---- */
+.section{display:none}
+.section.show{display:block; animation:fade .3s ease}
+@keyframes fade{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+.sechead{margin-bottom:16px}
+.sechead .mk{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--accent); letter-spacing:.16em}
+.sechead h2{font-size:27px; margin-top:3px}
+.sechead p{color:var(--mute); font-size:14.5px; margin:6px 0 0; max-width:62ch}
+
+/* Recurring in-content sub-heading (e.g. "// СНАРЯЖЕНИЕ ПИЛОТА") — margin
+   varies by context so it stays a small inline style alongside this class. */
+.subhead{font-family:"Chakra Petch",sans-serif; font-size:17.5px}
+
+/* form fields */
+.field{margin-bottom:14px}
+.field>label{display:block; font-family:"JetBrains Mono",monospace; font-size:12px;
+  letter-spacing:.1em; color:var(--mute); margin-bottom:6px}
+.input,select,textarea{width:100%; background:var(--bg-grid); border:1px solid var(--line);
+  color:var(--ink); border-radius:6px; padding:9px 11px; font-family:inherit; font-size:15px; transition:.15s}
+.input:focus,select:focus,textarea:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-glow)}
+.row2{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+@media(max-width:560px){.row2{grid-template-columns:1fr}}
+
+/* LL slider */
+.llpick{display:flex; align-items:center; gap:14px; background:var(--bg-grid);
+  border:1px solid var(--line); border-radius:8px; padding:14px 16px}
+.llpick input[type=range]{flex:1; accent-color:var(--accent)}
+.llpick .num{font-family:"Chakra Petch",sans-serif; font-size:37px; color:var(--accent); min-width:54px; text-align:center}
+.llpick .lab{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--faint); letter-spacing:.08em}
+
+/* generic item card grid */
+.grid{display:grid; gap:12px}
+.grid.cards{grid-template-columns:repeat(auto-fill,minmax(288px,1fr))}
+.grid.stacked{grid-template-columns:1fr}
+.item{position:relative; background:var(--panel); border:1px solid var(--line);
+  border-radius:8px; padding:13px 14px; transition:.15s; cursor:pointer}
+.item:hover{border-color:var(--line-bright)}
+.item.sel{border-color:var(--select); box-shadow:inset 0 0 0 1px var(--select-glow)}
+.item.locked{opacity:.55; filter:saturate(.4)}
+.item.static{cursor:default}
+.item.static:hover{border-color:var(--line)}
+.item .src{position:absolute; top:0; left:0; bottom:0; width:5px; border-radius:8px 0 0 8px}
+/* Frame portrait thumbnail, hotlinked (never downloaded/stored). Used as a
+   flex item (never position:absolute) so it always occupies real space in
+   the layout and can't cover text — see the .item markup that wraps it
+   together with a flex:1 text column. object-fit:contain keeps the art's
+   own aspect ratio. */
+.frame-thumb{width:58px; height:58px; object-fit:contain; border-radius:6px;
+  opacity:.95; flex-shrink:0; background:var(--panel-2)}
+.frame-thumb.lg{width:100px; height:100px}
+.item .top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
+.item .nm{font-family:"Chakra Petch",sans-serif; font-size:17.5px; line-height:1.2}
+.item .badge{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
+  color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap}
+.item .badge.lock{color:var(--amber); border-color:var(--amber)}
+.item .badge.unlocked{color:var(--ok); border-color:var(--ok)}
+/* Manufacturer chip — reads a per-instance color from the inline custom
+   property `--src` (set to srcColor(item.source) at the call site) so this
+   one rule covers every manufacturer hue without per-source CSS. Low-alpha
+   fill keeps text legible across all 6 source colors, including the
+   lighter SSC yellow / HORUS green against the dark panel background. */
+.item .badge.mfg{font-weight:600; color:var(--src); border-color:var(--src);
+  background:color-mix(in srgb, var(--src) 22%, transparent)}
+.item .tags{display:flex; flex-wrap:wrap; gap:5px; margin-top:9px}
+/* 3-per-row stat grid — frame-list quick stats only (renderFrame()), forces
+   a stable 2-row/3-col layout regardless of pill content width, unlike the
+   plain flex-wrap .tags used for variable-length glossary tag rows. */
+.tags.stat-grid{display:grid; grid-template-columns:repeat(3,1fr)}
+.tags.stat-grid .tag{text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
+.tag{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em;
+  color:var(--accent); background:var(--accent-deep); border-radius:4px; padding:2px 6px}
+/* Headline-stat variant — used for the 2-3 stats worth comparing at a glance
+   in a dense card grid (currently only the ШАССИ list, see renderFrame()),
+   so they read as a tier above secondary tags (SP, mount type, flavor). */
+.tag.stat{font-size:12px; font-weight:600; padding:3px 6px}
+.tag.sp{color:var(--amber); background:var(--amber-glow)}
+.tag.dmg{color:#ffcaa0; background:rgba(229,96,79,.16)}
+.tag.rng{color:#a9c9ff; background:rgba(63,143,214,.16)}
+.tag.glossary{cursor:pointer; border-bottom:1px dotted currentColor; transition:.12s}
+.tag.glossary:hover{filter:brightness(1.25)}
+.tag.glossary.open{outline:1px solid currentColor}
+.tagdesc{background:var(--panel-2); border:1px solid var(--line-bright); border-radius:7px;
+  padding:10px 12px; margin-top:9px; font-size:13.5px; color:var(--mute)}
+.tagdesc b{color:var(--ink); font-family:"Chakra Petch",sans-serif; font-size:14px}
+.desc{color:var(--mute); font-size:13.5px; margin-top:9px}
+/* Structured action block — CORE powers and weapon "actions" that have real
+   mechanical shape (an activation cost, sometimes a trigger, sometimes
+   attack stats) instead of just flowing prose. Left border + badge colored
+   per activation type so Quick/Protocol/Full read apart at a glance. */
+.action-block{background:var(--panel-2); border:1px solid var(--line); border-left:3px solid var(--line-bright);
+  border-radius:8px; padding:12px 14px; margin-top:10px}
+.action-block.act-quick{border-left-color:#8b7fe8}
+.action-block.act-protocol{border-left-color:var(--accent)}
+.action-block.act-full{border-left-color:var(--amber)}
+.action-block.act-reaction{border-left-color:#e87f9e}
+.action-block.act-free{border-left-color:var(--faint)}
+.action-head{display:flex; align-items:center; justify-content:space-between; gap:10px}
+.action-nm{font-family:"Chakra Petch",sans-serif; font-size:14.5px; letter-spacing:.02em}
+.action-badge{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.08em; color:var(--mute);
+  border:1px solid var(--line-bright); border-radius:4px; padding:2px 7px; flex-shrink:0}
+.action-stats{display:flex; gap:16px; margin-top:9px; flex-wrap:wrap}
+@media(max-width:480px){.action-stats{gap:10px}}
+.action-stat{font-family:"Chakra Petch",sans-serif; font-size:15px; display:flex; align-items:center; gap:5px}
+.action-stat .u{font-family:"JetBrains Mono",monospace; font-size:10px; color:var(--faint); letter-spacing:.05em; margin-left:2px}
+.action-row{margin-top:8px}
+.action-lbl{display:block; font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.1em; color:var(--faint); margin-bottom:2px}
+.item .meta{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
+  letter-spacing:.05em; margin-top:8px; display:flex; gap:10px; flex-wrap:wrap}
+
+/* stepper for skills/talents/hase */
+.stepper{display:flex; align-items:center; gap:8px}
+.stepbtn{width:44px; height:44px; border-radius:6px; background:var(--panel-2);
+  border:1px solid var(--line); color:var(--ink); font-size:18px; line-height:1; display:grid; place-items:center; transition:.12s}
+.stepbtn:hover{border-color:var(--accent); color:var(--accent)}
+.stepbtn:disabled{opacity:.32; cursor:not-allowed; border-color:var(--line); color:var(--faint)}
+.stepval{font-family:"Chakra Petch",sans-serif; font-size:19.5px; min-width:48px; text-align:center; color:var(--accent)}
+.pips{display:flex; gap:3px}
+.pip{width:13px;height:6px;border-radius:2px;background:var(--panel-3); border:1px solid var(--line)}
+.pip.on{background:var(--select); border-color:var(--select)}
+.pip.locked{border-style:dashed; opacity:.45}
+
+.listrow{display:flex; justify-content:space-between; align-items:center; gap:14px;
+  background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px 14px}
+.listrow .info{min-width:0}
+.listrow .info .nm{font-family:"Chakra Petch",sans-serif; font-size:17.5px}
+.listrow .info .ds{color:var(--mute); font-size:13.5px; margin-top:3px}
+.listrow.maxed{border-color:var(--select)}
+.listrow.clickable{cursor:pointer; transition:.12s}
+.listrow.clickable:hover{border-color:var(--line-bright); background:var(--panel-2)}
+.listrow.locked{opacity:.68}
+.rowbadge{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
+  color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap; flex-shrink:0}
+.rowbadge.lock{color:var(--amber); border-color:var(--amber)}
+.rowbadge.unlocked{color:var(--ok); border-color:var(--ok)}
+.chevron{color:var(--faint); font-size:19px; flex-shrink:0; font-family:"Chakra Petch",sans-serif}
+
+/* Picker row — the registry line for weapons and systems. A variant, not a
+   change to .listrow: the base row is also used by skills, the loadout and
+   pilot gear, which have no numbers to compare.
+   Two zones. Left: source stripe, name, licence badge, then class and the
+   mechanic (tags) on the second line. Right: a fixed, right-aligned numeric
+   column. The column is the whole point — in the old one-sentence row damage
+   and range landed at a different x on every line, so the one thing the list
+   exists for could not be done by eye. Moving the numbers out also frees
+   exactly the space the tags need, so the row stays two lines tall. */
+.listrow.pick{position:relative; padding:10px 14px 10px 18px; gap:16px}
+.listrow.pick .src{position:absolute; top:-1px; left:-1px; bottom:-1px; width:5px;
+  border-radius:8px 0 0 8px; background:var(--src)}
+.listrow.pick.open .src{border-bottom-left-radius:0}
+/* min-width:0 is load-bearing: without it the flex item takes its min-content
+   width from the no-wrap tag line below and the row pushes the whole modal
+   into horizontal scroll. */
+.listrow.pick .info{flex:1; min-width:0; display:flex; flex-direction:column; gap:4px}
+.listrow.pick .nmline{display:flex; align-items:baseline; gap:9px; flex-wrap:wrap}
+.listrow.pick .clsline{display:flex; align-items:center; gap:6px; flex-wrap:wrap}
+.listrow.pick .cls{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
+  color:var(--faint); white-space:nowrap}
+/* Quieter than .tag: teal-filled pills belong to the opened detail card, and
+   three of them per row across sixty rows would be a wall of accent. */
+.rowtag{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.03em;
+  color:var(--mute); border:1px solid var(--line); border-radius:4px; padding:1px 6px; white-space:nowrap}
+.rowtag.more{color:var(--faint); border-style:dashed}
+/* Teal because it is the system speaking: "the numbers on the right are one
+   stance of several", not a property of the weapon. */
+.rowtag.stance{color:var(--accent); border-color:var(--accent-deep)}
+.rowtag.sp{color:var(--amber); border-color:color-mix(in srgb, var(--amber) 45%, transparent)}
+.rowstats{display:flex; align-items:center; gap:14px; flex-shrink:0}
+/* Fixed width: the open row's ⌄ is wider than the closed ›, and without this
+   expanding a row nudges every number in it out of the column. */
+.listrow.pick .chevron{width:13px; text-align:center}
+/* min-width keeps the second column a constant width, which is what pins the
+   first column's right edge — that is why the values line up down the list. */
+.rowstat{display:flex; flex-direction:column; gap:2px; min-width:68px; text-align:right}
+.rowstat .k{font-family:"JetBrains Mono",monospace; font-size:10px; letter-spacing:.09em;
+  color:var(--faint); white-space:nowrap}
+.rowstat .v{font-family:"Chakra Petch",sans-serif; font-size:19px; line-height:1; color:var(--ink)}
+.rowstat .v.none{color:var(--faint)}
+/* The stripe carries manufacturer colour, so the locked treatment has to
+   drain saturation the way .item.locked does, not just dim opacity. */
+.listrow.pick.locked{filter:saturate(.4)}
+/* Narrow: vertical comparison is impossible on a phone anyway, so the numeric
+   column drops under the name rather than being squeezed or truncated. */
+@media(max-width:560px){
+  .listrow.pick{flex-wrap:wrap}
+  .listrow.pick .info{flex:1 1 100%}
+  .listrow.pick .rowstats{flex:1; gap:20px}
+  .listrow.pick .rowstat{text-align:left; min-width:0}
+  /* Wrapped, four tags plus a long class name turn one row into five lines and
+     the list doubles in length. Same answer the filter rows already use: one
+     line that scrolls sideways, nothing hidden. The fade only paints pixels
+     when the content actually reaches the right edge, so a short line shows
+     no artifact. */
+  .listrow.pick .clsline{flex-wrap:nowrap; overflow-x:auto; min-width:0;
+    scrollbar-width:none; -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 14px),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 14px),transparent)}
+  .listrow.pick .clsline::-webkit-scrollbar{display:none}
+  .listrow.pick .clsline>*{flex-shrink:0}
+}
+.viewtoggle{display:flex; gap:8px; margin-bottom:12px}
+.profiles{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:11px}
+.pickitem{display:block; min-width:0}
+.listrow.open{border-color:var(--select); border-bottom-left-radius:0; border-bottom-right-radius:0}
+/* Picker default: the row above is a .listrow.open whose bottom corners are
+   squared off, so the detail finishes that box — no top edge, negative margin,
+   one shape. */
+.expand-detail{background:var(--panel-2); border:1px solid var(--accent); border-top:0;
+  border-radius:0 0 8px 8px; padding:14px; margin-top:-1px}
+/* Loadout: here the row above is either borderless (.equipped inside a slot)
+   or a closed .listrow, so there is nothing for the detail to finish — the
+   picker's treatment reads as a box someone cut the top off. In these places
+   the detail is a complete block of its own, set off from the row instead of
+   fused to it. */
+.slot > .expand-detail,
+#syslist .expand-detail{
+  border:1px solid var(--line); border-radius:8px; margin-top:10px}
+
+/* talent rank descriptions */
+.rankbox{margin-top:10px; display:flex; flex-direction:column; gap:7px}
+.rankline{display:flex; gap:9px; font-size:13.5px; color:var(--faint); transition:.15s}
+.rankline .rk{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint);
+  border:1px solid var(--line); border-radius:4px; padding:1px 6px; height:fit-content}
+.rankline.active{color:var(--ink)}
+.rankline.active .rk{color:var(--select); border-color:var(--select)}
+
+/* mount blocks */
+.mount{background:var(--panel); border:1px solid var(--line); border-radius:9px; margin-bottom:14px; overflow:hidden}
+.mount.integrated{border-color:var(--line-bright)}
+.mount .mhead{display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:11px 14px; background:var(--panel-2); border-bottom:1px solid var(--line)}
+.mount .mhead .mt{font-family:"Chakra Petch",sans-serif; font-size:17.5px}
+.mount .mhead .cap{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); letter-spacing:.06em}
+.mount .slot{padding:15px 16px; border-bottom:1px solid var(--line-bright)}
+.mount .slot:last-child{border-bottom:0}
+.equipped{display:flex; align-items:center; justify-content:space-between; gap:12px}
+.equipped .ei{min-width:0}
+.equipped .ei.clickable{cursor:pointer; border-radius:6px; padding:4px 6px; margin:-4px -6px; transition:.12s}
+.equipped .ei.clickable:hover{background:var(--panel-3)}
+.listrow .info.clickable{cursor:pointer; border-radius:6px; padding:2px 4px; margin:-2px -4px; transition:.12s}
+.listrow .info.clickable:hover{background:var(--panel-3)}
+.equipped .ei .en{font-family:"Chakra Petch",sans-serif; font-size:16.5px}
+.equipped .ei .em{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--faint); margin-top:2px}
+.empty-slot{display:flex; align-items:center; gap:10px; color:var(--faint);
+  font-family:"JetBrains Mono",monospace; font-size:13px; letter-spacing:.04em}
+
+.ghostbtn{background:transparent; border:1px dashed var(--line-bright); color:var(--accent);
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
+  padding:9px 14px; border-radius:6px; transition:.15s}
+.ghostbtn:hover{border-style:solid; box-shadow:0 0 0 3px var(--accent-glow)}
+.ghostbtn.warn{border-color:var(--red); color:var(--red)}
+.ghostbtn.warn:hover{box-shadow:0 0 0 3px rgba(229,96,79,.22)}
+/* Full-width centered variant — the recurring install/remove/back action
+   button at the bottom (or top) of a modal panel. Margin-top varies by
+   context, so it stays a small utility class alongside .block rather than
+   being baked into one fixed value. */
+.ghostbtn.block{width:100%; text-align:center}
+.mt-10{margin-top:10px} .mt-12{margin-top:12px} .mt-14{margin-top:14px} .mt-16{margin-top:16px}
+.mb-14{margin-bottom:14px}
+.xbtn{background:var(--panel-2); border:1px solid var(--line); color:var(--mute);
+  width:44px;height:44px; border-radius:6px; font-size:15px; display:grid; place-items:center; transition:.12s}
+.xbtn:hover{border-color:var(--red); color:var(--red)}
+.xbtn.expand:hover{border-color:var(--accent); color:var(--accent)}
+
+/* filters */
+.filters{display:flex; gap:7px; flex-wrap:wrap; margin-bottom:16px; align-items:center}
+/* Labeled filter row — wraps a .filters chip row with a small caption
+   (e.g. "ТИП:") so multiple filter dimensions stacked in one picker read
+   as distinct categories instead of one undifferentiated wall of chips. */
+.filter-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.filter-row .filter-lbl{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.08em; color:var(--faint); flex-shrink:0}
+.filter-row .filters{margin-bottom:0}
+/* Narrow or zoomed, a wrapping chip row becomes four stacked lines and the
+   four dimensions together become a wall you scroll past before seeing a
+   single weapon. One line each that scrolls sideways keeps every filter
+   present and discoverable while costing one row of height instead of four.
+   Wide screens already fit them on one line, so they keep the calmer wrap. */
+@media(max-width:900px), (max-height:640px){
+  .filter-row{flex-wrap:nowrap}
+  .filter-row .filters{flex-wrap:nowrap; overflow-x:auto; min-width:0;
+    scrollbar-width:thin; scrollbar-color:var(--line) transparent; padding-bottom:3px}
+  .filter-row .filters .chip{flex-shrink:0}
+  .filter-row .filters::-webkit-scrollbar{height:4px}
+  .filter-row .filters::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px}
+}
+/* The filter stack used to be sticky. Measured at 200% zoom it stood 329px
+   tall inside a 315px modal body — taller than the entire scrolling area, so
+   the results were literally unreachable; on a phone it took 84% of the body
+   and showed zero rows. Filters are set once and then you browse, so they
+   scroll away with everything else and the list gets the full height. */
+.picker-filters{margin:0 -20px 2px; padding:0 20px 12px; border-bottom:1px solid var(--line)}
+/* Where the installable half of a picker ends. Amber, because that is what
+   the 🔒 badge on every row below it already uses for "licence not open". */
+.pickdiv{display:flex; align-items:center; gap:10px; margin:16px 0 6px;
+  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.1em; color:var(--amber)}
+.pickdiv::after{content:""; flex:1; height:1px; background:var(--amber); opacity:.35}
+.chip{background:var(--panel); border:1px solid var(--line); color:var(--mute);
+  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; padding:7px 13px;
+  border-radius:20px; transition:.15s}
+.chip:hover{color:var(--ink)}
+.chip.on{color:#06140f; background:var(--select); border-color:var(--select); font-weight:600}
+.searchwrap{flex:1; min-width:160px}
+
+/* modal */
+.modal{position:fixed; inset:0; z-index:120; display:none; align-items:flex-start; justify-content:center;
+  background:rgba(4,6,10,.74); backdrop-filter:blur(3px); padding:5vh 16px; overflow:auto; overflow-anchor:none}
+.modal.show{display:flex}
+.modal .panel{background:var(--panel); border:1px solid var(--line-bright); border-radius:10px;
+  width:clamp(880px,72vw,1560px); max-width:94vw; box-shadow:var(--shadow)}
+.modal .mhd{display:flex; align-items:center; justify-content:flex-start; gap:14px; padding:16px 20px; border-bottom:1px solid var(--line)}
+.modal .mhd h3{flex:0 1 auto; min-width:0; font-size:20px}
+.modal .mhd .mclose{margin-left:auto; flex-shrink:0}
+.modal .mbd{padding:18px 20px; max-height:70vh; overflow:auto; overflow-anchor:none}
+/* A zoomed-in or short window has few pixels to spare, and the 5vh frame plus
+   a 70vh body spends them on empty margin. Give the content the room instead. */
+@media(max-height:640px){
+  .modal{padding:2vh 10px}
+  .modal .mbd{max-height:80vh; padding:14px 16px}
+  .modal .mhd{padding:10px 16px}
+}
+/* Narrow panel for confirmations and notices — the wide picker width would
+   make a four-line question look like an empty page. */
+.modal .panel.narrow{width:clamp(320px,46vw,620px)}
+
+/* Confirmation dialog. The loss list is the whole point of this component:
+   a destructive action must name what disappears before it happens, which is
+   exactly what the native confirm() it replaces could never do. */
+.dialog p{margin:0 0 12px; font-size:16.5px; line-height:1.55}
+.dialog p:last-of-type{margin-bottom:0}
+.dialog .losslist{list-style:none; margin:0; padding:12px 14px; background:var(--bg-grid);
+  border:1px solid var(--line); border-radius:8px; display:flex; flex-direction:column; gap:6px}
+.dialog .losslist li{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--mute);
+  letter-spacing:.03em; display:flex; gap:8px}
+.dialog .losslist li::before{content:"—"; color:var(--faint); flex-shrink:0}
+.dialog .losslist li.keep{color:var(--accent)}
+.dialog .losslist li.keep::before{content:"↳"; color:var(--accent)}
+.dialog .losslist li.drop::before{content:"✕"; color:var(--amber)}
+/* A share URL is data to copy, not a loss to mourn: no marker, and it has to
+   be allowed to break anywhere or it pushes the dialog wider than the panel. */
+.dialog .losslist li.plain{color:var(--ink); word-break:break-all}
+.dialog .losslist li.plain::before{content:none}
+.dialog .losslist.scroll{max-height:34vh; overflow:auto}
+.dialog-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px}
+.dialog-actions .ghostbtn{flex:1 1 200px; text-align:center}
+
+/* summary sheet */
+.sheet{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+@media(max-width:760px){.sheet{grid-template-columns:1fr}}
+.sheet .full{grid-column:1/-1}
+.kv{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:14.5px}
+.kv .k{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--mute); letter-spacing:.04em}
+.sheet h3{font-family:"Chakra Petch",sans-serif; font-size:18.5px; margin-bottom:10px;
+  padding-bottom:7px; border-bottom:1px solid var(--line)}
+.sheet h3 .hash{color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:13.5px}
+.minilist{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px}
+.minilist li{font-size:14px; display:flex; gap:8px}
+.minilist li .mk{color:var(--accent); font-family:"JetBrains Mono",monospace}
+.minilist li.clickable{cursor:pointer; border-radius:5px; padding:2px 4px; margin:-2px -4px; transition:.12s}
+.minilist li.clickable:hover{background:var(--panel-2); color:var(--ink)}
+.warnbox{background:var(--amber-glow); border:1px solid var(--amber); border-radius:8px;
+  padding:11px 14px; color:var(--amber); font-size:13.5px; font-family:"JetBrains Mono",monospace; margin-bottom:14px}
+
+.hint{color:var(--faint); font-size:13px; font-family:"JetBrains Mono",monospace; letter-spacing:.03em}
+.spacer-sm{height:8px}
+details.note{margin-top:6px}
+details.note summary{cursor:pointer; color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:12.5px}
+details.note .body{color:var(--mute); font-size:13.5px; margin-top:7px}
+details.note .body ul{margin:5px 0; padding-left:18px}

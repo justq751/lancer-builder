@@ -177,32 +177,42 @@ brainstorming → writing-plans → using-git-worktrees (ветка)
 
 Цель — глубокие модули с узкими интерфейсами, без сборки.
 
-- [ ] CSS → `css/styles.css` (+ `css/fonts.css`, `css/sheet.css`, `css/print.css`).
-- [ ] JS → нативные ES-модули, ориентировочно:
-  - `js/data/loader.js` — `loadBaseData`, `CONTENT_PACKS`
-  - `js/i18n/overlay.js` — `localizeData`, `pickText`, `overlay*` (чистые функции)
-  - `js/i18n/tr.js` — `tr`, `trTag`, `ENUMS`
-  - `js/state/store.js` — `state`, `setState`, автосохранение
-  - `js/state/migrations.js` — `migrateLicenseKeys`, `migrateWeaponSlots`
-  - `js/state/derived.js` — `derived()`, `licenseKeyFor`
-  - `js/render/*.js` — по файлу на вкладку (`pilot`, `skills`, `talents`,
-    `hase`, `licenses`, `frame`, `loadout`, `summary`, `core-bonuses`)
-  - `js/ui/modal.js`, `js/ui/pickers.js`, `js/sheet.js`, `js/print.js`
-  - `js/main.js` — boot/init
-- [ ] Заменить 88 inline `onclick` на делегирование событий
-      (`data-action="…"` + один обработчик на контейнер) — заодно убирает
-      зависимость от глобальных функций.
-- [ ] Единый хелпер шаблонов с обязательным `esc()` для всех подстановок в
-      `innerHTML`.
-- [ ] Юнит-тесты на чистые модули через `node --test` (без зависимостей):
-      overlay (фолбэк на en, keyed-списки `traits`/`ranks`), миграции,
-      `derived()` (SP, лимиты, грит).
-- [ ] Двигаться маленькими шагами: один модуль → прогон golden + smoke →
-      коммит. Обновлять `APP_BUILD`.
-- [ ] Обновить раздел «Architecture» в `CLAUDE.md` и README.
+**Решено 2026-10-14:** обычные `<script src>` (общая глобальная область,
+исходный порядок) + чистая логика в `js/core/` с юнит-тестами через Node
+`vm`, а не ES-модули: ES-модули потребовали бы переписать обращения к
+общим изменяемым переменным (`L`, `M`, `activeTab`, `viewMode`…) почти
+во всём коде. Ветка `refactor/split-index`.
+
+- [x] CSS → `css/fonts.css` (пути к шрифтам `../assets/fonts/`),
+      `css/app.css`, `css/sheet.css` (печать — внутри sheet.css, порядок
+      каскада сохранён).
+- [x] JS → 25 файлов: `js/core/{i18n,build,rules,share}.js`,
+      `js/i18n-loader.js`, `js/app/*`, `js/tabs/*` (по файлу на вкладку),
+      `js/ui/{pickers,modal}.js`, `js/sheet.js`, `js/print.js`,
+      `js/main.js`. Механическое разбиение сделано скриптом с проверкой
+      побайтного совпадения склейки с исходником.
+- [ ] ~~Заменить inline `onclick` на делегирование событий~~ → **перенесено
+      в этап 6** (вместе с AUDIT P1-2: карточки-`div` → кнопки). Это
+      изменение поведения, а не перенос кода. Inline-атрибутов в разметке
+      всего 5 (`onerror`/`window.print`), остальные 80+ — присваивания
+      `el.onclick=` в рендере.
+- [ ] ~~Единый хелпер шаблонов с `esc()`~~ → **перенесено в этап 6/7**
+      (вместе с `security-review`).
+- [x] Юнит-тесты `node --test`: 24 теста в `tests/unit/` (overlay и
+      фолбэк, `applyBuildState`, миграции, правила креплений, `derived()`,
+      лицензии, CORE, порядок, кодек ссылки). Мутационная проверка: порча
+      формулы HP ловится.
+- [x] Маленькими шагами с прогоном тестов: после CSS+JS-разбиения и после
+      выноса `js/core/` — 50/50 браузерных тестов, скриншоты и golden `L`
+      без изменений. `APP_BUILD = 2026-10-14-split-index`.
+- [x] Обновлены `CLAUDE.md` (Code layout, контракт `js/core/`, Testing,
+      Deployment), `README.md`, `tests/README.md`; `deploy.yml`
+      `SITE_PATHS` += `css js` (проверено: все 32 ссылки и 28 `url()` в
+      собранном `_site` разрешаются).
 
 **Готово, когда:** `index.html` содержит только разметку и подключения,
 все тесты Этапа 1 и новые юнит-тесты зелёные, golden-данные не изменились.
+**Выполнено:** `index.html` 4822 → ~100 строк.
 
 ---
 
@@ -348,3 +358,8 @@ P3). Объём — весь список из `docs/audit/AUDIT.md`. **Вне �
   (+5 новых), скриншоты не изменились. Не проверено: переключение языка,
   если дополнение не загрузится именно при повторной загрузке, — сборка в
   памяти может ссылаться на отсутствующие id (риск падения рендера).
+- 2026-10-14 — Этап 3 (ветка `refactor/split-index`): CSS/JS вынесены из
+  `index.html` в `css/` и `js/` (обычные скрипты), чистая логика — в
+  `js/core/`, 24 юнит-теста (`npm run test:unit`). Браузерные 50/50,
+  скриншоты и golden без изменений. Делегирование событий и хелпер
+  шаблонов перенесены в этап 6.
