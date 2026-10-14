@@ -1,0 +1,264 @@
+# План улучшений LANCER // РЕЕСТР
+
+> Создан 2026-10-14. Рабочий документ: отмечайте `[x]` по мере выполнения и
+> дописывайте заметки в «Журнал» внизу. Контекст продукта — `PRODUCT.md`,
+> визуальная система — `DESIGN.md`, архитектура — `CLAUDE.md`.
+
+## Исходное состояние (на 2026-10-14)
+
+- `index.html` — 4735 строк: ~1060 строк CSS, загрузчик i18n и вся логика
+  вкладок в inline-`<script>`. 37× `innerHTML`, 88× inline `onclick`, ~21
+  ARIA-атрибут. Тестов нет.
+- ~414 строк интерфейса с хардкодом кириллицы — переключатель языка меняет
+  данные, но не сам UI.
+- Покрытие перевода `locales/ru`: weapons 279/339, frames 615/674,
+  core_bonuses 67/94, manufacturers 5/10, enums 87/92, pilot_gear 81/85,
+  systems 520/532. Остальное — 100%. `mods.json` в другом формате (нет
+  поля `"en"` — переводчик не видит оригинал).
+- **Деплой публикует весь репозиторий**: GitHub Pages (`deploy.yml`,
+  `path: "."`) и Cloudflare (`wrangler.jsonc`, `assets.directory: "./"`).
+  Наружу уходят `.claude/` (400 файлов, 6.8 МБ), `tools/`, `*.md`,
+  скриншоты, `skills-lock.json`.
+- `CLAUDE.md` предлагает `python3`, на Windows-машине доступны `py`/`python`.
+- `impeccable` уже применялся: `PRODUCT.md` и `DESIGN.md` заполнены —
+  этап «teach» повторять не нужно.
+
+## Принципы, которые не нарушаем
+
+1. **Без шага сборки.** Только то, что браузер исполняет напрямую: отдельные
+   `.css`, нативные ES-модули (`<script type="module">`). npm допустим лишь
+   как dev-зависимость для тестов.
+2. **`frame.name`, `mount`, `type`, `source`, `tags`, `mechtype` — ключи
+   логики**, переводятся только при рендере (`tr()`/`trTag()`).
+3. **Старые сохранения в localStorage должны открываться.** Любое изменение
+   формата состояния — только с миграцией.
+4. **Частичный перевод = рабочий сайт.** Фолбэк на английский сохраняется.
+5. Перед рефакторингом — страховочные тесты; после каждого этапа — проверка
+   в браузере, а не «должно работать».
+
+## Рабочий цикл для каждого этапа (Superpowers)
+
+```
+brainstorming → writing-plans → using-git-worktrees (ветка)
+  → executing-plans / subagent-driven-development
+  → verification-before-completion (тесты + скриншоты Playwright)
+  → requesting-code-review / code-review → finishing-a-development-branch
+```
+
+Мелкие этапы (0, 5) можно делать без brainstorming/worktree.
+
+---
+
+## Этап 0 — Гигиена деплоя и документации (быстро)
+
+**Навыки:** — (ручная работа), `verification-before-completion`
+
+- [x] GitHub Pages: в `deploy.yml` собирать `_site/` только из
+      `index.html`, `data/`, `locales/`, `assets/` (+ будущие `css/`, `js/`)
+      и загружать его вместо `"."`.
+- [x] Cloudflare: добавить `.assetsignore` (`.claude`, `.github`, `tools`,
+      `tests`, `*.md`, `*.png` в корне, `skills-lock.json`, `wrangler.jsonc`,
+      `node_modules`) — или так же перевести на отдельную папку.
+- [x] Убрать `desktop-1440x900.png` / `mobile-390x844.png` из корня в
+      `docs/screenshots/`.
+- [x] Обновить `CLAUDE.md`: реальный размер `index.html`, `py`/`python`
+      вместо `python3` на Windows, упоминание `wrangler.jsonc`, `PLAN.md`.
+- [ ] Решить, нужны ли в репозитории неиспользуемые навыки (vercel-*,
+      deploy-to-vercel и т.п. из `skills-lock.json`) — см. «Не применяем».
+
+**Готово, когда:** на опубликованном сайте `/.claude/…` и `/tools/…` отдают
+404, сам сайт работает.
+
+---
+
+## Этап 1 — Страховочная сетка тестов (до любых рефакторингов)
+
+**Навыки:** `mattpocock-skills:tdd`, `superpowers:test-driven-development`,
+`playwright-cli` / плагин `playwright`, `run`
+
+Пока логика заперта в inline-скрипте, юнит-тесты не подключить — поэтому
+начинаем с характеризационных тестов через браузер.
+
+- [ ] Минимальный `package.json` только с `@playwright/test` (dev),
+      `playwright.config` с `webServer: python -m http.server`.
+- [ ] **Golden-тест данных:** через `page.evaluate` снять `JSON.stringify(L)`
+      для `ru` и `en`, сохранить в `tests/golden/`, сравнивать при каждом
+      прогоне. Это главный предохранитель для рефакторинга загрузчика.
+- [ ] **Smoke-сценарий:** выбрать происхождение → навыки → таланты →
+      лицензию → шасси → оружие/системы → проверить HUD (SP, структура) →
+      экспорт → очистка → импорт → сборка совпадает.
+- [ ] **Миграции:** положить в localStorage старый формат сохранения
+      (до `migrateLicenseKeys`/`migrateWeaponSlots`), перезагрузить, проверить
+      сборку.
+- [ ] Переключение языка ru ↔ en не теряет сборку.
+- [ ] Визуальные снимки ключевых экранов на 390 / 768 / 1440 px
+      (`toHaveScreenshot`) — для отлова регрессий вёрстки.
+- [ ] Отсутствие ошибок в консоли на всех вкладках.
+
+**Готово, когда:** `npx playwright test` зелёный, golden-файлы закоммичены.
+
+---
+
+## Этап 2 — UI/UX аудит (только находки, без правок кода)
+
+**Навыки:** `impeccable` (audit, critique), `web-design-guidelines`,
+`playwright` (скриншоты, снапшоты доступности)
+
+- [ ] `impeccable` audit + critique по всем вкладкам в обоих режимах
+      (build / sheet) и в печати, опираясь на роли из `PRODUCT.md`
+      (новичок, опытный игрок, ГМ, игрок за столом).
+- [ ] `web-design-guidelines`: клавиатурная навигация, видимый фокус,
+      роли/лейблы у кликабельных `div`/`span` с `onclick`, контраст
+      `--mute`/`--faint` на `--panel`, `prefers-reduced-motion`,
+      модалки (фокус-ловушка, Esc, возврат фокуса).
+- [ ] Мобильные сценарии: игрок за столом на телефоне (режим чтения),
+      пикеры оружия/систем на 390 px.
+- [ ] Результат — `docs/audit/AUDIT.md`: список проблем с приоритетом
+      P0 (блокирует/ломает) … P3 (косметика), скриншоты в `docs/audit/`.
+
+**Готово, когда:** есть приоритизированный список, из которого формируются
+задачи Этапа 6.
+
+---
+
+## Этап 3 — Архитектура: разбиение монолита
+
+**Навыки:** `mattpocock-skills:codebase-design`, `superpowers:brainstorming`,
+`superpowers:writing-plans`, `superpowers:using-git-worktrees`,
+`simplify`, `code-review`
+
+Цель — глубокие модули с узкими интерфейсами, без сборки.
+
+- [ ] CSS → `css/styles.css` (+ `css/fonts.css`, `css/sheet.css`, `css/print.css`).
+- [ ] JS → нативные ES-модули, ориентировочно:
+  - `js/data/loader.js` — `loadBaseData`, `CONTENT_PACKS`
+  - `js/i18n/overlay.js` — `localizeData`, `pickText`, `overlay*` (чистые функции)
+  - `js/i18n/tr.js` — `tr`, `trTag`, `ENUMS`
+  - `js/state/store.js` — `state`, `setState`, автосохранение
+  - `js/state/migrations.js` — `migrateLicenseKeys`, `migrateWeaponSlots`
+  - `js/state/derived.js` — `derived()`, `licenseKeyFor`
+  - `js/render/*.js` — по файлу на вкладку (`pilot`, `skills`, `talents`,
+    `hase`, `licenses`, `frame`, `loadout`, `summary`, `core-bonuses`)
+  - `js/ui/modal.js`, `js/ui/pickers.js`, `js/sheet.js`, `js/print.js`
+  - `js/main.js` — boot/init
+- [ ] Заменить 88 inline `onclick` на делегирование событий
+      (`data-action="…"` + один обработчик на контейнер) — заодно убирает
+      зависимость от глобальных функций.
+- [ ] Единый хелпер шаблонов с обязательным `esc()` для всех подстановок в
+      `innerHTML`.
+- [ ] Юнит-тесты на чистые модули через `node --test` (без зависимостей):
+      overlay (фолбэк на en, keyed-списки `traits`/`ranks`), миграции,
+      `derived()` (SP, лимиты, грит).
+- [ ] Двигаться маленькими шагами: один модуль → прогон golden + smoke →
+      коммит. Обновлять `APP_BUILD`.
+- [ ] Обновить раздел «Architecture» в `CLAUDE.md` и README.
+
+**Готово, когда:** `index.html` содержит только разметку и подключения,
+все тесты Этапа 1 и новые юнит-тесты зелёные, golden-данные не изменились.
+
+---
+
+## Этап 4 — Локализация интерфейса + глоссарий
+
+**Навыки:** `mattpocock-skills:domain-modeling`, `codebase-design`, `tdd`
+
+- [ ] `locales/<lang>/ui.json` + функция `t(key, params)`; вынести ~414
+      строк интерфейса (кнопки, заголовки, подсказки, диалоги, HUD).
+      Английский `ui.json` — канонический, русский — перевод.
+- [ ] Переключатель языка меняет и интерфейс; `<html lang>` обновляется.
+- [ ] Привести `mods.json` к общему формату `{"en": …, "ru": …}` в
+      `tools/extract_locale_template.py`.
+- [ ] `GLOSSARY.md` — словарь терминов EN → RU (шасси, SP, HASE, теги,
+      действия), чтобы переводы были единообразны.
+- [ ] ADR в `docs/adr/`:
+  - 0001 — `frame.name` и структурные поля — ключи логики, перевод только при рендере
+  - 0002 — проект без шага сборки
+  - 0003 — `reserves` / `environments` сознательно не поддерживаются
+  - 0004 — формат локалей и keyed-списки по английскому имени
+
+**Готово, когда:** при `en` на экране нет кириллицы (кроме данных без
+перевода), есть тест на это.
+
+---
+
+## Этап 5 — Завершение перевода данных
+
+**Навыки:** `domain-modeling` (сверка с глоссарием), `anthropic-skills:stop-slop`
+(вычитка флейвор-текста)
+
+- [ ] `tools/locale_coverage.py` — отчёт о покрытии по файлам и списком
+      пустых `"ru"`; выводить в CI как информацию (не падать).
+- [ ] Дозаполнить: weapons (60), frames (59), core_bonuses (27),
+      systems (12), enums (5), manufacturers (5), pilot_gear (4).
+- [ ] Вычитка по глоссарию: единые термины во всех файлах.
+
+---
+
+## Этап 6 — UX-полировка по итогам аудита
+
+**Навыки:** `impeccable` (harden, adapt, clarify, polish, distill),
+`web-design-guidelines`, `design-system`, `frontend-design` (точечно),
+`ui-ux-pro-max` (только справочно)
+
+- [ ] Закрыть P0/P1 из `docs/audit/AUDIT.md`.
+- [ ] Добавить favicon (сейчас `/favicon.ico` отдаёт 404 — единственная
+      ошибка в консоли при загрузке).
+- [ ] **harden:** пустые состояния, ошибки загрузки JSON (сейчас — что видит
+      пользователь, если `fetch` упал?), битый импорт, переполнение SP.
+- [ ] **adapt:** мобильный режим чтения листа для игрока за столом.
+- [ ] **clarify:** подсказки для новичка (почему предмет заблокирован, что
+      нужно для разблокировки).
+- [ ] **Доступность:** фокус, клавиатура, ARIA, контраст — до уровня WCAG AA.
+- [ ] **design-system:** разложить токены `:root` на primitive → semantic →
+      component, синхронно с фронтматтером `DESIGN.md`.
+- [ ] `frontend-design` — только если аудит покажет, что конкретный экран
+      нужно переосмыслить; сохранять эстетику COMP/CON из `DESIGN.md`.
+- [ ] После каждой правки — обновлять визуальные снимки Playwright осознанно.
+
+---
+
+## Этап 7 — CI и постоянное качество
+
+**Навыки:** `code-review`, `security-review`, `simplify`,
+`superpowers:requesting-code-review`, `mattpocock-skills:pr`
+
+- [ ] GitHub Actions: перед деплоем — валидация всех JSON, `node --test`,
+      `npx playwright test`; деплой только при зелёных тестах.
+- [ ] `security-review` один раз целиком: `innerHTML` + импорт сборки из
+      файла пользователя (XSS через поля имени/заметок), `localStorage`.
+- [ ] Работа через ветки и PR; `code-review` перед мёржем.
+- [ ] Опционально: og:image / превью ссылки (`banner-design`) — для
+      красивых ссылок в чатах.
+
+---
+
+## Не применяем (и почему)
+
+| Навык | Причина |
+|---|---|
+| `vercel-react-best-practices`, `vercel-composition-patterns`, `vercel-react-view-transitions` | В проекте нет React |
+| `ui-styling` (shadcn/Tailwind) | Требует сборки, противоречит принципу 1 |
+| `brand`, `design`, `slides`, `banner-design` | Маркетинг; максимум — og:image на Этапе 7 |
+| deploy-to-vercel / vercel-* из `skills-lock.json` | Деплой идёт на GitHub Pages и Cloudflare |
+
+## Порядок и зависимости
+
+```
+Этап 0 ──► Этап 1 ──► Этап 3 ──► Этап 4 ──► Этап 6
+              │                     │
+              └──► Этап 2 ──────────┴──────► Этап 6
+Этап 5 — параллельно в любой момент (только JSON)
+Этап 7 — после Этапа 3 (когда есть юнит-тесты)
+```
+
+## Журнал
+
+- 2026-10-14 — план создан.
+- 2026-10-14 — Этап 0 (ветка `chore/deploy-hygiene`): `deploy.yml` публикует
+  только `_site/` (allowlist `SITE_PATHS`), добавлен `.assetsignore` для
+  Cloudflare, скриншоты перенесены в `docs/screenshots/`, `CLAUDE.md`
+  обновлён (раздел Deployment, убраны устаревшие номера строк), в
+  `.gitignore`/`.assetsignore` добавлены `.playwright-mcp/`. Проверено:
+  собранный `_site/` (3.3 МБ) отдаёт все 37 запросов данных/шрифтов с 200,
+  ошибок нет, кроме отсутствующего favicon. `.assetsignore` локально через
+  wrangler не проверялся. Открыт вопрос: неиспользуемые навыки в репозитории.

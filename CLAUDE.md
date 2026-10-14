@@ -4,7 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A static, no-build, single-page character/mech builder for the tabletop RPG **Lancer**, reworked from the original monolithic community builder specifically to support **incremental Russian localization**. The entire app is vanilla HTML/CSS/JS in `index.html` (~3300 lines); there is no framework, package manager, or build step.
+A static, no-build, single-page character/mech builder for the tabletop RPG **Lancer**, reworked from the original monolithic community builder specifically to support **incremental Russian localization**. The entire app is vanilla HTML/CSS/JS in `index.html` (~4700 lines); there is no framework, package manager, or build step. Line numbers drift quickly in this file — locate code by function name or by the `/* ============ SECTION ============ */` banners (`grep -n '============' index.html`).
+
+Work in progress is tracked in `PLAN.md` (phased improvement plan with checklists). Product context lives in `PRODUCT.md`, the visual system in `DESIGN.md`.
 
 The core motivation: the original app had the ~300KB `lancer-data` dataset inlined as a single string in a `<script>` tag, making translation impossible. This version extracts it into `data/*.json` (canonical English) plus per-category `locales/ru/*.json` translation files, overlaid onto the English data at load time.
 
@@ -13,14 +15,21 @@ The core motivation: the original app had the ~300KB `lancer-data` dataset inlin
 There is no build step. `index.html` cannot be opened via `file://` because the browser blocks `fetch()` of local files — you must serve it:
 
 ```bash
-python3 -m http.server 8000
+python3 -m http.server 8000   # on Windows: py -m http.server 8000 (python3 is not on PATH there)
 ```
 
-Then open `http://localhost:8000/`. No test suite, linter, or CI checks exist beyond the GitHub Pages deploy workflow (`.github/workflows/deploy.yml`), which just uploads the repo as-is (no build step) on push to `main`.
+Then open `http://localhost:8000/`. No test suite or linter exists yet.
+
+## Deployment
+
+The site needs only `index.html`, `data/`, `locales/` and `assets/`; everything else in the repo (`.claude/`, `.github/`, `tools/`, `docs/`, `*.md`, …) is tooling and must not be published. Two deploy targets, each with its own filter — **when adding a new folder the page loads (e.g. `css/`, `js/`), update both**:
+
+- **GitHub Pages** — `.github/workflows/deploy.yml` on push to `main` copies the paths listed in `SITE_PATHS` (an allowlist) into `_site/` and uploads that.
+- **Cloudflare** — `wrangler.jsonc` serves the repo root as static assets; `.assetsignore` (a denylist, `.gitignore` syntax) excludes the tooling. A new root-level tooling file/folder must be added there.
 
 ## Architecture
 
-### Data loading & i18n overlay (index.html, "I18N DATA LOADER" section, ~line 736+)
+### Data loading & i18n overlay (index.html, "I18N DATA LOADER" section)
 
 1. `loadBaseData()` fetches `data/lancer-data.json` (canonical English core data) plus several standalone files (`tags.json`, `glossary.json`, `stat_labels.json`, `core_bonus_stat_mods.json`, `core_bonus_terse.json`, `frame_images.json`), and all packs listed in `CONTENT_PACKS` (`data/packs/*.json` — official Massif Press content packs like osr-data, wallflower-data, long-rim-data, dustgrave-data, ktb-data, ows-data, sotw-data, ssmr-data). Pack arrays (`frames`, `weapons`, `systems`, `talents`, `pilot_gear`, `core_bonuses`, `mods`) are concatenated onto the core data's arrays.
 2. `loadLocaleFiles(lang)` fetches `locales/<lang>/*.json` (category files listed in `LOCALE_CATEGORY_FILES`).
@@ -28,17 +37,17 @@ Then open `http://localhost:8000/`. No test suite, linter, or CI checks exist be
 4. The result becomes the global `L` used by all rendering/logic code — nothing downstream needs to know localization happened.
 
 **Critical constraint — some fields are logic keys, never translated in-place:**
-- `frame.name` (and `frame.variant` for variant frames) keys `state.licenses[...]` and is compared via `item.license === frame.name` to unlock weapons/systems. Translating it in the data would break license unlocking. See `licenseKeyFor()` (~line 1332).
+- `frame.name` (and `frame.variant` for variant frames) keys `state.licenses[...]` and is compared via `item.license === frame.name` to unlock weapons/systems. Translating it in the data would break license unlocking. See `licenseKeyFor()`.
 - `mount`, `type`, `source`, `tags`, `mechtype` values (e.g. `"Main"`, `"Rifle"`, `"GMS"`, `"Reliable 2"`) are compared literally throughout the app logic (mount matching, filters, source colors) and are never mutated on data objects.
 
-Instead, these "structural" values are translated **only at render time** via `tr()` (~line 980) and `trTag()` (~line 989), which look up `locales/<lang>/enums.json`. If you ever need chassis names to visibly translate while keeping license logic intact, the intended approach (documented in README) is adding a separate `frame.display_name` field rather than mutating `frame.name`.
+Instead, these "structural" values are translated **only at render time** via `tr()` and `trTag()`, which look up `locales/<lang>/enums.json`. If you ever need chassis names to visibly translate while keeping license logic intact, the intended approach (documented in README) is adding a separate `frame.display_name` field rather than mutating `frame.name`.
 
 ### App state & rendering
 
-- Global mutable `state` object (~line 1217) holds the in-progress build (licenses, loadout, skills, etc.); `derived()` (~line 1272) computes derived stats from it.
-- `render()` → `renderHUD()` + `renderTab()` + `renderTabBar()`; all state mutations should go through `setState(fn)` (~line 1422), which runs `fn` then re-renders — don't mutate `state` and expect the UI to update without going through `setState`.
+- Global mutable `state` object holds the in-progress build (licenses, loadout, skills, etc.); `derived()` computes derived stats from it.
+- `render()` → `renderHUD()` + `renderTab()` + `renderTabBar()`; all state mutations should go through `setState(fn)`, which runs `fn` then re-renders — don't mutate `state` and expect the UI to update without going through `setState`.
 - Tab-specific render functions follow `render<TabName>()` naming (`renderPilot`, `renderSkills`, `renderTalents`, `renderHase`, etc.).
-- `localStorage` persists language choice (`lancer_lang`), talent view mode (`talents_view_mode`), and presumably the build itself — check `migrateLicenseKeys()`/`migrateWeaponSlots()` (~line 1053/1069) if changing how state is keyed, since these exist specifically to migrate old localStorage saves forward.
+- `localStorage` persists the build itself (`lancer_build`, autosaved), language choice (`lancer_lang`), build/sheet view (`view_mode`), and picker/talent view modes (`picker_view_mode`, `talents_view_mode`) — check `migrateLicenseKeys()`/`migrateWeaponSlots()` if changing how state is keyed, since these exist specifically to migrate old localStorage saves forward.
 
 ### Known unimplemented feature (not a bug)
 
@@ -57,7 +66,7 @@ Typical workflow for adding/updating a content pack:
 python3 tools/normalize_pack.py <lib_dir> data/packs/<name>.json "<label>"
 python3 tools/extract_locale_template.py --lang ru
 ```
-Then translate the newly-appeared empty `"ru": ""` entries.
+Then translate the newly-appeared empty `"ru": ""` entries. On Windows use `py` (or `python`) instead of `python3`.
 
 ## Translating content
 

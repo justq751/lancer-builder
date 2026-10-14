@@ -28,3 +28,5 @@ npm-debug.log*
 
 # playwright-cli session artifacts (screenshots, snapshots, console logs)
 .playwright-cli/
+.playwright-mcp/
+.playwright/

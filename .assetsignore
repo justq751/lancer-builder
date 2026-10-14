@@ -1,0 +1,30 @@
+# Cloudflare (wrangler.jsonc → assets.directory: "./") публикует корень
+# репозитория. Здесь исключено всё, что не нужно браузеру: сайту нужны
+# только index.html, data/, locales/, assets/. Синтаксис как у .gitignore.
+# Добавили в корень новый служебный файл или папку — допишите сюда.
+
+# VCS, CI, окружение агентов
+.git
+.github
+.gitignore
+.claude
+.impeccable
+.playwright
+.playwright-cli
+.playwright-mcp
+.wrangler
+.dev.vars
+.assetsignore
+skills-lock.json
+wrangler.jsonc
+
+# Инструменты, тесты, документация
+tools
+tests
+docs
+node_modules
+package.json
+package-lock.json
+*.md
+*.py
+*.bak

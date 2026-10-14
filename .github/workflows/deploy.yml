@@ -37,14 +37,23 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Здесь просто загружается всё содержимое репозитория как есть —
-      # у сайта нет шага сборки (это обычный статический HTML/JS/JSON).
-      # Если файлы сайта лежат не в корне репозитория, а в подпапке
-      # (например, docs/ или lancer-registry/), поменяйте путь ниже.
+      # У сайта нет шага сборки — файлы копируются как есть. Но публикуем
+      # только то, что нужно браузеру, а не весь репозиторий (.claude/,
+      # tools/, *.md и прочее рабочее окружение наружу не уходят).
+      # Добавили новую папку, которую грузит index.html (например css/
+      # или js/)? Допишите её в SITE_PATHS — и в .assetsignore для
+      # Cloudflare ничего менять не нужно, там список исключений.
+      - name: Assemble site
+        env:
+          SITE_PATHS: "index.html data locales assets"
+        run: |
+          mkdir _site
+          for p in $SITE_PATHS; do cp -r "$p" _site/; done
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "_site"
 
       - name: Deploy to GitHub Pages
         id: deployment
