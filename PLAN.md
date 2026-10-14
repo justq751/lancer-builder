@@ -63,8 +63,10 @@ brainstorming → writing-plans → using-git-worktrees (ветка)
       `docs/screenshots/`.
 - [x] Обновить `CLAUDE.md`: реальный размер `index.html`, `py`/`python`
       вместо `python3` на Windows, упоминание `wrangler.jsonc`, `PLAN.md`.
-- [ ] Решить, нужны ли в репозитории неиспользуемые навыки (vercel-*,
+- [x] Решить, нужны ли в репозитории неиспользуемые навыки (vercel-*,
       deploy-to-vercel и т.п. из `skills-lock.json`) — см. «Не применяем».
+      **Решено:** оставить как есть в `.claude/skills/` (могут пригодиться;
+      из деплоя исключены через `SITE_PATHS` и `.assetsignore`).
 
 **Готово, когда:** на опубликованном сайте `/.claude/…` и `/tools/…` отдают
 404, сам сайт работает.
@@ -261,4 +263,4 @@ brainstorming → writing-plans → using-git-worktrees (ветка)
   `.gitignore`/`.assetsignore` добавлены `.playwright-mcp/`. Проверено:
   собранный `_site/` (3.3 МБ) отдаёт все 37 запросов данных/шрифтов с 200,
   ошибок нет, кроме отсутствующего favicon. `.assetsignore` локально через
-  wrangler не проверялся. Открыт вопрос: неиспользуемые навыки в репозитории.
+  wrangler не проверялся. Навыки в `.claude/skills/` решено оставить в репозитории.
