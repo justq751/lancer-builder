@@ -139,11 +139,8 @@ test("a broken share link reports instead of crashing", async ({ page }) => {
 });
 
 test("a broken share link keeps the reader's own build", async ({ page }) => {
-  // KNOWN BUG (found 2026-10-14, see PLAN.md journal): startApp() only
-  // restores the autosave when there is no ?s= at all, so a link that fails
-  // to decode leaves an empty build — which the first render() then autosaves
-  // over the reader's real one. Remove this line once fixed.
-  test.fail(true, "broken ?s= link wipes the reader's autosave");
+  // Regression (fixed 2026-10-14): a link that failed to decode used to leave
+  // an empty build, which the first render() autosaved over the real one.
   await openApp(page, { build: LEGACY_BUILD, path: "/?s=zNOT_A_REAL_PAYLOAD" });
   await page.waitForTimeout(800); // past the autosave debounce
   expect((await getSaved(page)).state.pilot.callsign).toBe("СТАРЫЙ");
