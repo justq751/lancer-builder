@@ -30,3 +30,7 @@ npm-debug.log*
 .playwright-cli/
 .playwright-mcp/
 .playwright/
+
+# Playwright test runner output (tests/ — see tests/README.md)
+test-results/
+playwright-report/

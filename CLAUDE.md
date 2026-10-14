@@ -18,7 +18,23 @@ There is no build step. `index.html` cannot be opened via `file://` because the 
 python3 -m http.server 8000   # on Windows: py -m http.server 8000 (python3 is not on PATH there)
 ```
 
-Then open `http://localhost:8000/`. No test suite or linter exists yet.
+Then open `http://localhost:8000/` (or `npm run serve` → `http://localhost:4173/`, a dependency-free Node server).
+
+## Testing
+
+Playwright characterization tests in `tests/` (details: `tests/README.md`). npm is dev-only — the site still has no build step and no runtime dependencies.
+
+```bash
+npm install && npx playwright install chromium   # once
+npm test                                         # whole suite, ~20 s
+npm run test:update                              # rewrite goldens + screenshots after an INTENDED change
+```
+
+- Tests reach into the page's globals (`state`, `L`, `derived()`, `applyBuildState()`, `encodeShare()`, `fetchAndLocalize()`) via `page.evaluate`. If a refactor renames or un-globals one of these, update the tests in the same change.
+- `tests/golden/L.{ru,en}.json` pin the full localized dataset, so **any edit to `data/` or `locales/` fails `data.spec.mjs` until goldens are updated** — that is intended; review `git diff tests/golden/` before committing.
+- Screenshot baselines are per-platform (`tests/__screenshots__/win32/` only so far).
+- `test.fail(...)` marks a known, unfixed bug; delete that line once the bug is fixed.
+- Run the suite before claiming a change to `index.html` works.
 
 ## Deployment
 
