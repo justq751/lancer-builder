@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Working agreements
+
+- **Sub-agents are allowed when a skill's procedure requires them** (e.g. `impeccable critique` runs its design review and detector assessment as two isolated sub-agents). Treat this as the user's standing, explicit permission — do not fall back to a degraded single-context run for that reason. Outside such skill requirements, the default applies: spawn sub-agents only when asked.
+
 ## What this is
 
 A static, no-build, single-page character/mech builder for the tabletop RPG **Lancer**, reworked from the original monolithic community builder specifically to support **incremental Russian localization**. The entire app is vanilla HTML/CSS/JS in `index.html` (~4700 lines); there is no framework, package manager, or build step. Line numbers drift quickly in this file — locate code by function name or by the `/* ============ SECTION ============ */` banners (`grep -n '============' index.html`).
