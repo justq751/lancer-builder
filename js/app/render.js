@@ -35,13 +35,15 @@ function renderHUD(){
           <span class="col"><span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span>
           <span class="v">${d.mech[k]}</span></span></div>`;
       }).join("")}
-    </div>
-    <div class="brow" style="margin-top:10px">
-      ${bar(d.sp,"СИСТ. ОЧКИ (SP)")}
     </div>`
     : `<div class="nomech">// ШАССИ НЕ ВЫБРАНО<br>откройте вкладку ШАССИ</div>`;
 
+  // Narrow screens only (the sheet's header): the sheet covers the dock, so
+  // it carries its own way out besides Esc and a tap outside.
   $("#hud").innerHTML = `
+  <div class="hudsheet-hd">
+    <button class="toolbtn" popovertarget="hud" popovertargetaction="hide">✕ ЗАКРЫТЬ</button>
+  </div>
   <div class="card">
     <div class="head"><span class="lbl"><b>//</b> РЕЕСТР ПИЛОТА</span></div>
     <div class="body">
@@ -61,6 +63,7 @@ function renderHUD(){
       ${bar(d.b.hase,"МЕХ-НАВЫКИ")}
       ${bar(d.b.license,"ЛИЦЕНЗИИ")}
       ${bar(d.b.core,"CORE-БОНУСЫ")}
+      ${d.mech ? bar(d.sp,"СИСТ. ОЧКИ (SP)") : ""}
     </div></div>
   </div>
   <div class="card">
@@ -68,6 +71,36 @@ function renderHUD(){
       ${d.frame?`<span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(dispName(d.frame))}</span>`:""}</div>
     <div class="body">${stats}</div>
   </div>`;
+  renderLedger(d);
+}
+
+/* The HUD's budget card folded into one line for the dock (≤1020px) — the
+   "legality is visible in place" promise kept on a phone without spending a
+   screen on it. Each cell is a budget row in miniature: key, used/cap, a 2px
+   fill that turns amber over the cap. The whole line is one button: it opens
+   the full HUD as a sheet. */
+function renderLedger(d){
+  const cell=(k,b,full)=>{
+    if(!b) return `<span class="lg none"><span class="k" aria-hidden="true">${k}</span><span class="v" aria-hidden="true">—</span><i></i>
+      <span class="sr">${full}: шасси не выбрано</span></span>`;
+    const over=b.used>b.cap;
+    const pct=Math.min(100,b.cap?b.used/b.cap*100:0);
+    const used=+b.used.toFixed(1);
+    return `<span class="lg ${over?'over':''}"><span class="k" aria-hidden="true">${k}</span>
+      <span class="v" aria-hidden="true">${used}/${b.cap}</span><i style="width:${pct}%"></i>
+      <span class="sr">${full}: ${used} из ${b.cap}${over?", перебор":""}.</span></span>`;
+  };
+  $("#ledger").innerHTML = `
+    <span class="lg ll"><span class="k" aria-hidden="true">LL</span><span class="v" aria-hidden="true">${d.ll}</span>
+      <span class="sr">Лицензионный уровень ${d.ll}.</span></span>
+    ${cell("НАВ",d.b.skill,"Навыки")}
+    ${cell("ТАЛ",d.b.talent,"Таланты")}
+    ${cell("HASE",d.b.hase,"Мех-навыки")}
+    ${cell("ЛИЦ",d.b.license,"Лицензии")}
+    ${cell("CORE",d.b.core,"CORE-бонусы")}
+    ${cell("SP",d.mech?d.sp:null,"Очки систем")}
+    <span class="chev" aria-hidden="true"></span>
+    <span class="sr">Открыть реестр пилота</span>`;
 }
 
 /* ============ TAB BAR ============ */
@@ -118,7 +151,10 @@ function renderTabBar(){
       ${dot}</button>`;
   }).join("");
   const btns=$$("#tabs .tab");
-  const activate=b=>{activeTab=b.dataset.tab; render(); window.scrollTo({top:0,behavior:"smooth"}); $(`#tab-btn-${activeTab}`).focus();};
+  revealActiveTab();
+  // preventScroll: in the dock the tab row is fixed, and letting focus()
+  // scroll would fight the scrollTo just above it.
+  const activate=b=>{activeTab=b.dataset.tab; render(); window.scrollTo({top:0,behavior:"smooth"}); $(`#tab-btn-${activeTab}`).focus({preventScroll:true});};
   btns.forEach((b,i)=>{
     b.onclick=()=>activate(b);
     b.onkeydown=e=>{
@@ -130,6 +166,20 @@ function renderTabBar(){
       if(ni!==null){ e.preventDefault(); activate(btns[ni]); }
     };
   });
+}
+
+/* In the dock the tab row is one line that scrolls sideways; the active tab
+   must never sit off-screen. Only the row's own scrollLeft moves — never the
+   page (scrollIntoView would also scroll the window). A wrapping row has no
+   overflow, so this is a no-op on wide screens. */
+function revealActiveTab(){
+  const row=$("#tabs"), el=$("#tabs .tab.active");
+  if(!el || row.scrollWidth<=row.clientWidth) return;
+  const pad=24;
+  const l=el.getBoundingClientRect().left-row.getBoundingClientRect().left+row.scrollLeft;
+  const r=l+el.offsetWidth;
+  if(l-pad<row.scrollLeft) row.scrollLeft=Math.max(0,l-pad);
+  else if(r+pad>row.scrollLeft+row.clientWidth) row.scrollLeft=r+pad-row.clientWidth;
 }
 
 /* ============ TAB ROUTER ============ */

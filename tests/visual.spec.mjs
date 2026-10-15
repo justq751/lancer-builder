@@ -12,9 +12,18 @@ const VIEWPORTS = [
   { name: "desktop", width: 1440, height: 900 },
 ];
 
-// "СОХРАНЕНО hh:mm" depends on the clock.
-const shot = (page, name) =>
-  expect(page).toHaveScreenshot(`${name}.png`, { mask: [page.locator("#savestate")] });
+// "СОХРАНЕНО hh:mm" depends on the clock. Hidden rather than masked: a mask
+// paints over whatever covers the element too — on a phone that was the
+// full-screen picker's title.
+// Under a full parallel run the frame portrait sometimes was not decoded yet.
+// Only on-screen images: the off-screen loading="lazy" thumbnails never load.
+const shot = async (page, name) => {
+  await page.waitForFunction(() => [...document.images].every(img => {
+    const r = img.getBoundingClientRect();
+    return img.complete || r.bottom < 0 || r.top > innerHeight || !r.width;
+  }));
+  await expect(page).toHaveScreenshot(`${name}.png`, { style: "#savestate{visibility:hidden}" });
+};
 
 for (const vp of VIEWPORTS) {
   test.describe(vp.name, () => {

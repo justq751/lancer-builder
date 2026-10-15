@@ -25,7 +25,48 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Деплой начинается только если этот шаг зелёный (needs: test ниже).
+  # Скриншотные проверки пропускаются (--ignore-snapshots): их эталоны
+  # сняты на Windows, а шрифты в Linux рисуются чуть иначе. Всё остальное —
+  # JSON, юнит-тесты, golden-данные, поведение в браузере — проверяется.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install test tooling
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: Validate JSON
+        run: npm run test:json
+
+      - name: Unit tests
+        run: npm run test:unit
+
+      - name: Browser tests
+        run: npx playwright test --ignore-snapshots
+
+      # Отчёт с трассировками упавших тестов — во вкладке Actions →
+      # этот запуск → Artifacts.
+      - name: Upload test report
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
   deploy:
+    needs: test
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

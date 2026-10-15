@@ -100,23 +100,119 @@ button{font-family:inherit; cursor:pointer}
   color:var(--mute); white-space:nowrap}
 .savestate .pfx{font-style:normal}
 .savestate.err{color:var(--amber)}
-/* The header already wraps to several rows on a phone; the word СОХРАНЕНО is
-   what pushes it over. The timestamp alone still answers "is my work kept?",
-   so only the label goes. The failure state keeps its full wording — that one
-   has to be readable at a glance. */
-@media(max-width:560px){
-  .savestate:not(.err) .pfx{display:none}
-}
 
 /* ---- layout ---- */
 .shell{display:grid; grid-template-columns:344px 1fr; gap:clamp(16px,2.4vw,32px);
   max-width:1680px; margin:0 auto; padding:clamp(18px,2.6vw,34px)}
-@media(max-width:1020px){.shell{grid-template-columns:1fr}}
+/* minmax(0,…): a bare 1fr track is at least as wide as its widest unbreakable
+   child, and one long word in the frame tab pushed the whole page to 559px on
+   a 390px phone — the fixed dock then stretched with it. */
+@media(max-width:1020px){.shell{grid-template-columns:minmax(0,1fr)}}
 
 /* ---- HUD sidebar ---- */
-.hud{position:sticky; top:78px; align-self:start; display:flex; flex-direction:column; gap:14px;
-  max-height:calc(100vh - 96px); overflow:auto; padding-right:2px}
-@media(max-width:1020px){.hud{position:static; max-height:none}}
+/* #hud carries the popover attribute (it is the bottom sheet on narrow
+   screens), so the UA's popover box — fixed, inset 0, centred, bordered,
+   Canvas-coloured — is undone here for the in-flow sidebar. */
+.hud{position:sticky; inset:auto; top:78px; align-self:start; display:flex; flex-direction:column; gap:14px;
+  max-height:calc(100vh - 96px); overflow:auto; padding:0 2px 0 0; margin:0; border:0;
+  width:auto; height:auto; background:none; color:inherit}
+.hudsheet-hd{display:none}
+
+/* ---- wide: dock and ⋯ menu dissolve into the old layout ---- */
+/* display:contents lets the same markup be a sidebar/header row here and a
+   fixed dock / popover sheet below 1021px — no element is duplicated, so ids,
+   handlers and tests see one control each. Author display wins over the UA's
+   [popover]:not(:popover-open){display:none}. */
+.dock,.moremenu{display:contents}
+.ledger,.toolbtn.more{display:none}
+
+/* ---- narrow (≤1020px): the editor is the tab, not the HUD ---- */
+/* Measured before: on a 390×844 phone the header stood 173px, the HUD 928px,
+   and the tabs began at 1136px — every tab switch cost a screen and a half of
+   scrolling. Now the header is one row that scrolls away, the HUD folds into a
+   one-line ledger, and ledger + tabs sit fixed at the bottom, in thumb reach.
+   The full HUD is one tap away as a bottom sheet. */
+@media(max-width:1020px){
+  :root{--dock-h:112px}
+  .topbar{position:relative; display:grid; grid-template-columns:1fr auto auto;
+    grid-template-areas:"brand sheet more" "save sheet more"; gap:0 8px; padding:8px 14px}
+  .topbar .spacer{display:none}
+  .brand{grid-area:brand; min-width:0}
+  .brand .name{white-space:nowrap}
+  .savestate{grid-area:save}
+  #t-sheet{grid-area:sheet}
+  /* The mode button grows to «◀ МОЯ СБОРКА» in the sheet; the wordmark is
+     what gives way, never the controls. */
+  @media(max-width:560px){
+    .brand .ver{display:none}
+    .brand .name{font-size:17.5px; min-width:0; overflow:hidden; text-overflow:ellipsis}
+  }
+  @media(max-width:420px){.brand .sig{display:none}}
+  .toolbtn.more{display:inline-flex; grid-area:more; width:44px; padding:0; font-size:17.5px; letter-spacing:0}
+
+  /* ⋯ menu and HUD: bottom sheets — the same edge the dock lives on, so the
+     thumb that opened them is already where their buttons are. */
+  .moremenu:not(:popover-open),.hud:not(:popover-open){display:none}
+  .moremenu:popover-open,.hud:popover-open{position:fixed; inset:auto 0 0 0; margin:0; width:100%;
+    max-height:85dvh; overflow:auto; overscroll-behavior:contain; color:var(--ink);
+    background:var(--bg); border:0; border-top:1px solid var(--line-bright); border-radius:10px 10px 0 0;
+    box-shadow:0 -18px 50px -20px rgba(0,0,0,.8)}
+  .moremenu::backdrop,.hud::backdrop{background:rgba(4,6,10,.62)}
+  .moremenu:popover-open{display:grid; grid-template-columns:1fr 1fr; gap:8px;
+    padding:14px 14px calc(14px + env(safe-area-inset-bottom))}
+  .moremenu .toolbtn{min-height:48px; justify-content:flex-start}
+  .hud:popover-open{display:flex; padding:0 14px calc(14px + env(safe-area-inset-bottom))}
+  .hudsheet-hd{display:flex; justify-content:flex-end; position:sticky; top:0; z-index:1;
+    background:var(--bg); padding:10px 0; margin-bottom:-4px}
+
+  .dock{display:flex; flex-direction:column; gap:6px; position:fixed; left:0; right:0; bottom:0; z-index:50;
+    padding:6px 10px calc(6px + env(safe-area-inset-bottom));
+    background:linear-gradient(0deg,rgba(8,11,17,.98),rgba(8,11,17,.9)); backdrop-filter:blur(8px);
+    border-top:1px solid var(--line)}
+  .shell{padding-bottom:calc(var(--dock-h) + 24px + env(safe-area-inset-bottom))}
+  /* The on-screen keyboard already takes half the screen; a dock riding on
+     top of it would leave the field being typed in no room at all. */
+  body:has(:is(input:not([type=range]):not([type=checkbox]):not([type=radio]),textarea):focus) .dock{display:none}
+
+  .ledger{display:flex; align-items:stretch; gap:4px; width:100%; min-height:48px; margin:0;
+    background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:6px 8px 6px 10px;
+    color:var(--ink); text-align:left; transition:border-color .15s}
+  .ledger:hover,.ledger[aria-expanded=true]{border-color:var(--line-bright)}
+  .ledger .lg{flex:1 1 0; min-width:0; display:flex; flex-direction:column; justify-content:space-between; gap:2px;
+    padding-right:6px; background:linear-gradient(var(--panel-3),var(--panel-3)) no-repeat left bottom / calc(100% - 6px) 2px}
+  .ledger .lg .k{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.04em; color:var(--faint);
+    line-height:1.2; white-space:nowrap}
+  .ledger .lg .v{font-family:"Chakra Petch",sans-serif; font-size:17.5px; line-height:1; white-space:nowrap;
+    font-variant-numeric:tabular-nums}
+  .ledger .lg i{display:block; height:2px; background:var(--accent); transition:width .25s}
+  .ledger .lg.over .v{color:var(--amber)}
+  .ledger .lg.over i{background:var(--amber)}
+  .ledger .lg.none .v{color:var(--faint)}
+  .ledger .lg.ll{flex:0 0 auto; padding-right:10px; margin-right:2px; border-right:1px solid var(--line); background:none}
+  .ledger .lg.ll .v{color:var(--accent)}
+  .ledger .chev{flex:0 0 auto; align-self:center; width:8px; height:8px; margin:0 2px 0 4px;
+    border-top:2px solid var(--mute); border-left:2px solid var(--mute); transform:translateY(2px) rotate(45deg);
+    transition:transform .2s}
+  .ledger[aria-expanded=true] .chev{transform:translateY(-2px) rotate(225deg)}
+
+  /* .dock prefix: these must outrank the base .tabs/.tab rules further down. */
+  .dock .tabs{flex-wrap:nowrap; overflow-x:auto; margin:0; gap:6px; scrollbar-width:none; overscroll-behavior-x:contain;
+    -webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 18px),transparent);
+    mask-image:linear-gradient(90deg,#000 calc(100% - 18px),transparent)}
+  .dock .tabs::-webkit-scrollbar{display:none}
+  .dock .tab{flex-shrink:0; padding:10px 12px; white-space:nowrap}
+}
+/* Phone: the picker gets the whole screen. In a 5vh-framed 70vh body it
+   showed two and a half rows; full height roughly doubles that. Confirmations
+   (.narrow) stay small centred dialogs — a four-line question does not need a
+   page. */
+@media(max-width:640px){
+  .modal:has(> .panel:not(.narrow)){padding:0}
+  .modal .panel:not(.narrow){width:100%; max-width:none; height:100dvh; display:flex; flex-direction:column;
+    border:0; border-radius:0}
+  .modal .panel:not(.narrow) .mbd{flex:1; min-height:0; max-height:none; padding:14px 14px calc(14px + env(safe-area-inset-bottom))}
+  .modal .panel:not(.narrow) .mhd{padding:8px 8px 8px 14px}
+}
 .hud::-webkit-scrollbar{width:7px}
 .hud::-webkit-scrollbar-thumb{background:var(--line); border-radius:4px}
 
@@ -184,6 +280,11 @@ button{font-family:inherit; cursor:pointer}
 .statrow-line:last-child{margin-bottom:0}
 .statrow-line.cols3{grid-template-columns:repeat(3,1fr)}
 .statrow-line.cols2{grid-template-columns:repeat(2,1fr)}
+/* Three key+value rows across a 350px phone left ~110px each for a key like
+   «ОЧКИ ЗДОРОВЬЯ» and a 26px number; the row ran 190px off screen. */
+@media(max-width:560px){
+  .statrow-line.cols3,.statrow-line.cols2{grid-template-columns:1fr}
+}
 .stattile.row{display:flex; align-items:center; gap:10px; border-radius:6px; padding:9px 12px; text-align:left}
 .stattile.row .k{font-size:13px; letter-spacing:.06em; color:var(--mute); flex:1; display:inline; min-height:0}
 .stattile.row .v{font-size:26px; flex-shrink:0}
@@ -218,19 +319,24 @@ button{font-family:inherit; cursor:pointer}
    gives up the width the key needs; it stays the glossary handle. */
 .stattile.compact .stattip.lg{width:26px; height:26px}
 .stattip-icon{width:100%; height:100%; object-fit:contain; display:block}
-.stattip-box{display:none; position:fixed;
+.stattip-box{display:none; position:fixed; inset:auto; margin:0; overflow:visible;
   width:400px; max-width:80vw; background:var(--panel-2); border:1px solid var(--line-bright); border-radius:9px;
   padding:16px 18px; font-family:"Inter",sans-serif; font-size:16px; line-height:1.5; color:var(--ink);
   text-align:left; text-transform:none; z-index:1000; box-shadow:0 10px 28px rgba(0,0,0,.45); letter-spacing:normal; font-weight:400}
 .stattip-box b{display:block; margin-bottom:6px; color:var(--accent); font-family:"Chakra Petch",sans-serif; font-size:18px; font-weight:500}
 
 /* ---- tabs ---- */
-.tabs{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:18px}
+.tabs{display:flex; gap:5px; flex-wrap:wrap; margin-bottom:18px}
 .tab{background:var(--panel); border:1px solid var(--line); color:var(--mute);
   font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.05em;
-  padding:10px 15px; border-radius:6px; display:flex; align-items:center; gap:8px; transition:.15s;
+  padding:10px 11px; border-radius:6px; display:flex; align-items:center; gap:8px; transition:.15s;
   min-height:44px}
 .tab .ix{color:var(--faint); font-size:11px}
+/* Nine tabs in one row: at 1440 they fit with the index; between the
+   breakpoint and 1440 the content column is ~840px and the index numbers are
+   what pushed the row onto a second line. The order is still the left-to-right
+   order of the row itself, so the number is the part that can go. */
+@media(min-width:1021px) and (max-width:1439px){.tab .ix{display:none}}
 .tab:hover{color:var(--ink); border-color:var(--line-bright)}
 .tab.active{color:var(--select); border-color:var(--select); background:var(--panel-2);
   box-shadow:inset 0 0 0 1px var(--select-glow)}
@@ -273,7 +379,7 @@ button{font-family:inherit; cursor:pointer}
 
 /* generic item card grid */
 .grid{display:grid; gap:12px}
-.grid.cards{grid-template-columns:repeat(auto-fill,minmax(288px,1fr))}
+.grid.cards{grid-template-columns:repeat(auto-fill,minmax(min(288px,100%),1fr))}
 .grid.stacked{grid-template-columns:1fr}
 .item{position:relative; background:var(--panel); border:1px solid var(--line);
   border-radius:8px; padding:13px 14px; transition:.15s; cursor:pointer}
@@ -291,7 +397,7 @@ button{font-family:inherit; cursor:pointer}
 .frame-thumb{width:58px; height:58px; object-fit:contain; border-radius:6px;
   opacity:.95; flex-shrink:0; background:var(--panel-2)}
 .frame-thumb.lg{width:100px; height:100px}
-.item .top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
+.item .top{display:flex; justify-content:space-between; align-items:flex-start; gap:6px 8px; flex-wrap:wrap}
 .item .nm{font-family:"Chakra Petch",sans-serif; font-size:17.5px; line-height:1.2}
 .item .badge{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em;
   color:var(--mute); border:1px solid var(--line); padding:2px 6px; border-radius:4px; white-space:nowrap}
@@ -365,6 +471,13 @@ button{font-family:inherit; cursor:pointer}
 .listrow{display:flex; justify-content:space-between; align-items:center; gap:14px;
   background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:12px 14px}
 .listrow .info{min-width:0}
+/* Phone: the name gets the line; the stepper drops under it, right-aligned,
+   instead of pushing the row (and with it the page) past the screen edge. */
+@media(max-width:560px){
+  .listrow:not(.pick){flex-wrap:wrap}
+  .listrow:not(.pick) .info{flex:1 1 220px}
+  .listrow:not(.pick) .stepper{margin-left:auto}
+}
 .listrow .info .nm{font-family:"Chakra Petch",sans-serif; font-size:17.5px}
 .listrow .info .ds{color:var(--mute); font-size:13.5px; margin-top:3px}
 .listrow.maxed{border-color:var(--select)}
@@ -586,7 +699,7 @@ button{font-family:inherit; cursor:pointer}
 
 /* summary sheet */
 .sheet{display:grid; grid-template-columns:1fr 1fr; gap:16px}
-@media(max-width:760px){.sheet{grid-template-columns:1fr}}
+@media(max-width:760px){.sheet{grid-template-columns:minmax(0,1fr)}}
 .sheet .full{grid-column:1/-1}
 .kv{display:grid; grid-template-columns:auto 1fr; gap:4px 12px; font-size:14.5px}
 .kv .k{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--mute); letter-spacing:.04em}
@@ -594,7 +707,7 @@ button{font-family:inherit; cursor:pointer}
   padding-bottom:7px; border-bottom:1px solid var(--line)}
 .sheet h3 .hash{color:var(--accent); font-family:"JetBrains Mono",monospace; font-size:13.5px}
 .minilist{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:6px}
-.minilist li{font-size:14px; display:flex; gap:8px}
+.minilist li{font-size:14px; display:flex; flex-wrap:wrap; gap:0 8px}
 .minilist li .mk{color:var(--accent); font-family:"JetBrains Mono",monospace}
 .minilist li.clickable{cursor:pointer; border-radius:5px; padding:2px 4px; margin:-2px -4px; transition:.12s}
 .minilist li.clickable:hover{background:var(--panel-2); color:var(--ink)}

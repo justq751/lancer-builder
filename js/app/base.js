@@ -133,9 +133,20 @@ function statKeyHTML(k){
    icon's own bounding box, flipping below if there isn't room above. */
 (function wireStatTooltips(){
   const box=document.getElementById("global-stattip");
+  // The box is a manual popover so it can rise into the top layer: the HUD
+  // is a popover sheet on narrow screens, and a plain z-index:1000 box would
+  // open underneath it. Each showPopover() lands above whatever is open.
+  const lift=on=>{
+    try{
+      const open=box.matches(":popover-open");
+      if(on && !open) box.showPopover();
+      else if(!on && open) box.hidePopover();
+    }catch(_){} // no Popover API: the z-index fallback still works outside the sheet
+  };
   const show=tip=>{
     box.innerHTML = `<b>${tip.dataset.tipname}</b>${tip.dataset.tipdesc}`;
     box.style.display="block";
+    lift(true);
     const r=tip.getBoundingClientRect();
     const bw=box.offsetWidth, bh=box.offsetHeight;
     let left=r.left+r.width/2-bw/2;
@@ -145,7 +156,7 @@ function statKeyHTML(k){
     box.style.left=left+"px";
     box.style.top=top+"px";
   };
-  const hide=()=>{ box.style.display="none"; };
+  const hide=()=>{ box.style.display="none"; lift(false); };
   document.addEventListener("mouseover", e=>{
     const tip=e.target.closest(".stattip"); if(!tip) return;
     show(tip);

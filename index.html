@@ -35,19 +35,33 @@
   <div class="spacer"></div>
   <span class="savestate" id="savestate" aria-live="polite"></span>
   <button class="toolbtn mode" id="t-sheet">▤ ЛИСТ</button>
-  <button class="toolbtn" id="t-link" hidden>🔗 ССЫЛКА</button>
-  <button class="toolbtn" id="t-print" hidden>🖨 ПЕЧАТЬ</button>
-  <button class="toolbtn" id="t-lang" title="Переключить язык контента / Toggle content language">RU / EN</button>
-  <button class="toolbtn" id="t-import">⬆ ЗАГРУЗИТЬ</button>
-  <button class="toolbtn" id="t-export">⬇ СОХРАНИТЬ</button>
-  <button class="toolbtn warn" id="t-reset">⟲ СБРОС</button>
+  <!-- Wide screens: the menu is display:contents, so its buttons sit in the
+       header row as before. Narrow (≤1020px): it is a popover behind ⋯ — the
+       header is one row and the rare actions stop costing a screen row. -->
+  <button class="toolbtn more" id="t-more" popovertarget="more-menu" aria-label="Ещё действия">⋯</button>
+  <div class="moremenu" id="more-menu" popover>
+    <button class="toolbtn" id="t-link" hidden>🔗 ССЫЛКА</button>
+    <button class="toolbtn" id="t-print" hidden>🖨 ПЕЧАТЬ</button>
+    <button class="toolbtn" id="t-lang" title="Переключить язык контента / Toggle content language">RU / EN</button>
+    <button class="toolbtn" id="t-import">⬆ ЗАГРУЗИТЬ</button>
+    <button class="toolbtn" id="t-export">⬇ СОХРАНИТЬ</button>
+    <button class="toolbtn warn" id="t-reset">⟲ СБРОС</button>
+  </div>
   <input type="file" id="import-file" accept="application/json" hidden>
 </header>
 
 <div class="shell">
-  <aside class="hud" id="hud"></aside>
+  <!-- Wide screens: the sticky sidebar. Narrow: a bottom sheet (popover)
+       opened from the budget ledger in the dock. -->
+  <aside class="hud" id="hud" popover aria-label="Реестр пилота"></aside>
   <main>
-    <nav class="tabs" id="tabs" role="tablist"></nav>
+    <!-- Wide screens: display:contents — the tab row heads the content as
+         before. Narrow: fixed to the bottom, in thumb reach, with the budget
+         ledger above it. -->
+    <div class="dock" id="dock">
+      <button class="ledger" id="ledger" popovertarget="hud" aria-controls="hud"></button>
+      <nav class="tabs" id="tabs" role="tablist"></nav>
+    </div>
     <div id="tab" class="section show" role="tabpanel"></div>
   </main>
 </div>
@@ -69,7 +83,7 @@
      browsers even with position:fixed, if an ancestor sets a property that
      creates a new containing block (filter/transform/etc.) — living at the
      top level sidesteps that class of bug entirely. See wireStatTooltips(). -->
-<div class="stattip-box" id="global-stattip"></div>
+<div class="stattip-box" id="global-stattip" popover="manual"></div>
 
 <!-- Plain (non-module) scripts sharing one global scope, executed in this
      order — it is the order the code had as one inline script, and later files

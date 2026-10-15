@@ -30,7 +30,7 @@ Playwright characterization tests in `tests/` (details: `tests/README.md`). npm 
 
 ```bash
 npm install && npx playwright install chromium   # once
-npm test                                         # unit (~0.2 s) + browser (~25 s)
+npm test                                         # JSON validity + unit (~0.2 s) + browser (~25 s)
 npm run test:unit                                # js/core/ only, no browser
 npm run test:update                              # rewrite goldens + screenshots after an INTENDED change
 ```
@@ -46,8 +46,8 @@ npm run test:update                              # rewrite goldens + screenshots
 
 The site needs only `index.html`, `css/`, `js/`, `data/`, `locales/` and `assets/`; everything else in the repo (`.claude/`, `.github/`, `tools/`, `tests/`, `docs/`, `*.md`, …) is tooling and must not be published. Two deploy targets, each with its own filter — **when adding a new top-level folder, check both**:
 
-- **GitHub Pages** — `.github/workflows/deploy.yml` on push to `main` copies the paths listed in `SITE_PATHS` (an allowlist) into `_site/` and uploads that.
-- **Cloudflare** — `wrangler.jsonc` serves the repo root as static assets; `.assetsignore` (a denylist, `.gitignore` syntax) excludes the tooling. A new root-level tooling file/folder must be added there.
+- **GitHub Pages** — `.github/workflows/deploy.yml` on push to `main` first runs a `test` job (`test:json`, `test:unit`, `playwright test --ignore-snapshots` — screenshot baselines are win32-only, so CI skips them), then the `deploy` job (`needs: test`) copies the paths listed in `SITE_PATHS` (an allowlist) into `_site/` and uploads that. Red tests = no deploy.
+- **Cloudflare** — deploys on its own, without waiting for the tests. `wrangler.jsonc` serves the repo root as static assets; `.assetsignore` (a denylist, `.gitignore` syntax) excludes the tooling. A new root-level tooling file/folder must be added there.
 
 ## Architecture
 

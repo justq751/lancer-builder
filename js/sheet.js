@@ -195,13 +195,47 @@ function gearCardHTML(id){
     ${shEff("ЭФФЕКТ", g.effect)}
   </article>`;
 }
-function deckSection(title, cards){
+function deckSection(id, title, cards){
   const list=cards.filter(Boolean);
-  if(!list.length) return "";
-  return `<section class="decksec">
+  if(!list.length) return null;
+  return { id, title, n:list.length, html:`<section class="decksec" id="sh-${id}">
     <h2>${title}<span class="n">${list.length}</span></h2>
     <div class="deck">${list.join("")}</div>
-  </section>`;
+  </section>` };
+}
+
+/* The dossier used to be sticky: 47% of a 1440×900 screen and ~57% of a
+   1280×720 one, leaving ~250px for the cards it was meant to accompany. Now it
+   scrolls away and this one line stays instead — the numbers a player glances
+   back at mid-fight, and the deck's sections as jump links (on a phone the
+   sheet is 6600px long; the links are its table of contents). The stats only
+   appear once the dossier has left the screen, so they never sit twice in
+   view. */
+const SHEETBAR_STATS=["hp","armor","evasion","edef","heatcap","speed"];
+function sheetBarHTML(d, p, sections){
+  const stats = d.mech ? SHEETBAR_STATS.map(k=>
+    `<span class="sb-stat"><span class="k">${esc(STAT_RU[k][0])}</span><span class="v">${esc(String(d.mech[k]))}</span></span>`).join("") : "";
+  return `<nav class="sheetbar" aria-label="Разделы листа">
+    <div class="sb-id" aria-hidden="true"><span class="cs">${esc(p.callsign||"БЕЗЫМЯННЫЙ")}</span>${stats}</div>
+    <div class="sb-nav">${sections.map(s=>`<a href="#sh-${s.id}">${s.title}<span class="n">${s.n}</span></a>`).join("")}</div>
+  </nav>`;
+}
+let sheetBarObserver=null;
+function watchSheetBar(){
+  if(sheetBarObserver) sheetBarObserver.disconnect();
+  const dossier=$("#sheet .dossier"), bar=$("#sheet .sheetbar");
+  if(!bar) return;
+  // Jump without writing #sh-… into the address bar: that URL is the one
+  // «ССЫЛКА» and the browser's own share button hand out.
+  bar.querySelectorAll("a").forEach(a=>a.onclick=e=>{
+    e.preventDefault();
+    const sec=document.getElementById(a.hash.slice(1)); if(!sec) return;
+    sec.scrollIntoView({block:"start"});
+    sec.setAttribute("tabindex","-1"); sec.focus({preventScroll:true});
+  });
+  if(!dossier || !("IntersectionObserver" in window)) return;
+  sheetBarObserver=new IntersectionObserver(([e])=>bar.classList.toggle("stuck", !e.isIntersecting));
+  sheetBarObserver.observe(dossier);
 }
 
 function renderSheet(){
@@ -248,15 +282,20 @@ function renderSheet(){
     if(w) weaponCards.push(deckWeaponCardHTML(w, mt.type, s.mod?M.mod[s.mod]:null));
   }));
 
-  const body = (!d.frame && !skillLines.length && !HASE.some(h=>state.hase[h.k]) && !state.gear.armor)
+  const empty = !d.frame && !skillLines.length && !HASE.some(h=>state.hase[h.k]) && !state.gear.armor;
+  const sections = empty ? [] : [
+    deckSection("weapons", "ВООРУЖЕНИЕ", weaponCards),
+    deckSection("systems", "СИСТЕМЫ", (state.mech.systems||[]).map(id=>M.system[id]?deckSystemCardHTML(M.system[id]):null)),
+    deckSection("core", "CORE", [d.frame?coreSystemCardHTML(d.frame):null, ...state.cores.map(coreBonusCardHTML)]),
+    deckSection("talents", "ТАЛАНТЫ", Object.entries(state.talents).map(([id,v])=>talentCardHTML(id,v))),
+    deckSection("gear", "СНАРЯЖЕНИЕ ПИЛОТА", [state.gear.armor, ...state.gear.weapons, ...state.gear.gear].map(gearCardHTML)),
+  ].filter(Boolean);
+  const body = empty
     ? `<div class="sheet-empty">// СБОРКА ПУСТА<br>вернитесь в редактор и начните с уровня лицензии</div>`
-    : deckSection("ВООРУЖЕНИЕ", weaponCards)
-      + deckSection("СИСТЕМЫ", (state.mech.systems||[]).map(id=>M.system[id]?deckSystemCardHTML(M.system[id]):null))
-      + deckSection("CORE", [d.frame?coreSystemCardHTML(d.frame):null, ...state.cores.map(coreBonusCardHTML)])
-      + deckSection("ТАЛАНТЫ", Object.entries(state.talents).map(([id,v])=>talentCardHTML(id,v)))
-      + deckSection("СНАРЯЖЕНИЕ ПИЛОТА", [state.gear.armor, ...state.gear.weapons, ...state.gear.gear].map(gearCardHTML));
+    : (sections.length ? sheetBarHTML(d, p, sections) : "") + sections.map(s=>s.html).join("");
 
   $("#sheet").innerHTML = head + body;
+  watchSheetBar();
 }
 
 /* ---- share link (codec: packBuild/encodeShare… in js/core/share.js) ---- */

@@ -27,6 +27,28 @@ function wireTopbar(){
   $("#t-sheet").onclick=()=>{ if(viewMode==="sheet") exitSheet(); else setViewMode("sheet"); };
   $("#t-link").onclick=shareSheetLink;
   $("#t-print").onclick=()=>window.print();
+  wireNarrowChrome();
+}
+
+/* The ⋯ menu and the HUD sheet are popovers only on narrow screens; wide, the
+   CSS lays both out in place and nothing here fires. Popovers sit in the top
+   layer, above any z-index — so a menu action that opens a dialog must close
+   the menu first, or the dialog would open underneath it. */
+function wireNarrowChrome(){
+  const menu=$("#more-menu"), hud=$("#hud");
+  const isOpen=el=>{ try{ return el.matches(":popover-open"); }catch(_){ return false; } };
+  menu.addEventListener("click", e=>{ if(e.target.closest("button") && isOpen(menu)) menu.hidePopover(); });
+  // popovertarget exposes "expanded" only in the accessibility tree; the
+  // attribute is written too, so CSS (the ledger's chevron) can follow it.
+  [[hud,$("#ledger")],[menu,$("#t-more")]].forEach(([pop,btn])=>{
+    btn.setAttribute("aria-expanded","false");
+    pop.addEventListener("toggle", e=>btn.setAttribute("aria-expanded", String(e.newState==="open")));
+  });
+  // Widening the window past the breakpoint turns both back into in-flow
+  // layout; an open popover would stay pinned in the top layer over it.
+  matchMedia("(min-width:1021px)").addEventListener("change", e=>{
+    if(e.matches) [menu,hud].forEach(el=>{ if(isOpen(el)) el.hidePopover(); });
+  });
 }
 
 /* ============ BOOT ============ */

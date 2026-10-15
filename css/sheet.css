@@ -6,11 +6,39 @@
 body.sheetmode .shell{display:none}
 .sheetview{max-width:1680px; margin:0 auto; padding:clamp(18px,2.6vw,34px)}
 
-/* Dossier — the one place the whole build is stated at once. Sticky, because
-   the stats are what a player looks back at between cards. */
-.dossier{position:sticky; top:60px; z-index:40; background:var(--bg);
-  border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:18px}
-@media(max-width:760px){.dossier{position:static}}
+/* Dossier — the one place the whole build is stated at once. It scrolls away;
+   the .sheetbar below keeps the glance-back numbers in view instead. */
+.dossier{border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:18px}
+
+/* Sheet bar — one sticky line: callsign + six stats (only once the dossier is
+   off screen, .stuck) and the deck's sections as jump links. */
+.sheetbar{position:sticky; top:66px; z-index:40; display:flex; align-items:center; gap:8px 18px; flex-wrap:wrap;
+  margin:0 0 6px; padding:8px 0; background:var(--bg); border-bottom:1px solid var(--line)}
+.sheetbar .sb-id{display:none; align-items:baseline; gap:14px; min-width:0}
+.sheetbar.stuck .sb-id{display:flex}
+.sheetbar .cs{font-family:"Chakra Petch",sans-serif; font-size:17.5px; white-space:nowrap}
+.sheetbar .sb-stat{display:inline-flex; align-items:baseline; gap:5px; white-space:nowrap}
+.sheetbar .sb-stat .k{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.06em; color:var(--faint)}
+.sheetbar .sb-stat .v{font-family:"Chakra Petch",sans-serif; font-size:17.5px; font-variant-numeric:tabular-nums}
+.sheetbar .sb-nav{display:flex; gap:6px; margin-left:auto}
+.sheetbar .sb-nav a{display:inline-flex; align-items:center; gap:7px; min-height:36px; padding:6px 11px;
+  border:1px solid var(--line); border-radius:6px; background:var(--panel); color:var(--mute); text-decoration:none;
+  font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.06em; white-space:nowrap; transition:.15s}
+.sheetbar .sb-nav a:hover{color:var(--ink); border-color:var(--line-bright)}
+.sheetbar .sb-nav a .n{color:var(--faint)}
+.decksec{scroll-margin-top:130px}
+.decksec:focus{outline:none}
+/* Narrow: the header no longer sticks, so the bar takes the top edge. Each
+   half becomes a row that scrolls sideways rather than wrapping into four. */
+@media(max-width:1020px){
+  .sheetbar{top:0; flex-direction:column; align-items:stretch; flex-wrap:nowrap; gap:6px;
+    margin-left:calc(-1 * clamp(18px,2.6vw,34px)); margin-right:calc(-1 * clamp(18px,2.6vw,34px));
+    padding:8px clamp(18px,2.6vw,34px)}
+  .sheetbar .sb-id,.sheetbar .sb-nav{overflow-x:auto; scrollbar-width:none; margin-left:0}
+  .sheetbar .sb-id::-webkit-scrollbar,.sheetbar .sb-nav::-webkit-scrollbar{display:none}
+  .sheetbar .sb-nav a{min-height:44px}
+  .decksec{scroll-margin-top:120px}
+}
 .dossier-id{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap}
 .dossier-id .cs{font-family:"Chakra Petch",sans-serif; font-size:27px; line-height:1.15}
 .dossier-id .nm{font-family:"JetBrains Mono",monospace; font-size:12.5px; color:var(--mute); letter-spacing:.06em}
@@ -57,7 +85,7 @@ body.sheetmode .shell{display:none}
 .decksec > h2 .n{font-family:"JetBrains Mono",monospace; font-size:12px; color:var(--faint);
   letter-spacing:.1em; margin-left:8px}
 .deck{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:12px}
-@media(max-width:560px){.deck{grid-template-columns:1fr}}
+@media(max-width:560px){.deck{grid-template-columns:minmax(0,1fr)}}
 /* A card with three or more modes takes two columns, so its stances read as
    rows instead of a narrow tower. Below two columns there is nothing to span. */
 .deck > .dcard.wide{grid-column:span 2}
@@ -67,7 +95,7 @@ body.sheetmode .shell{display:none}
 .dcard{position:relative; background:var(--panel); border:1px solid var(--line);
   border-radius:8px; padding:12px 14px 12px 18px; display:flex; flex-direction:column; gap:8px}
 .dcard .src{position:absolute; top:0; left:0; bottom:0; width:5px; border-radius:8px 0 0 8px}
-.dcard .hd{display:flex; justify-content:space-between; align-items:flex-start; gap:8px}
+.dcard .hd{display:flex; justify-content:space-between; align-items:flex-start; gap:2px 8px; flex-wrap:wrap}
 .dcard .nm{font-family:"Chakra Petch",sans-serif; font-size:17.5px; line-height:1.2}
 .dcard .slot{font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.06em;
   color:var(--faint); white-space:nowrap; flex-shrink:0}
@@ -106,7 +134,7 @@ body.sheetmode .shell{display:none}
 /* print */
 @media print{
   body{background:var(--print-paper); color:var(--print-ink)}
-  .topbar,.hud,.tabs,#boot,.filters,.toolbtn{display:none!important}
+  .topbar,.hud,.tabs,.dock,.sheetbar,#boot,.filters,.toolbtn{display:none!important}
   .shell{grid-template-columns:1fr; max-width:none; padding:0}
   .section{display:none!important}
   #print-sheet{display:block!important}
