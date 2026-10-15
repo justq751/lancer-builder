@@ -27,7 +27,42 @@
    ================================================================= */
 
 let ENUMS = null;                 // parsed locales/<lang>/enums.json
-let currentLang = localStorage.getItem("lancer_lang") || "ru";
+let currentLang = localStorage.getItem("lancer_lang") || "ru"; // DATA language
+// Interface language and its strings — independent of the data language
+// (ADR 0005). t() in js/core/i18n.js reads both.
+let UI = {};
+let UI_LANG = "ru";
+
+/* data/ui.json is the canonical English; for ru, locales/ru/ui.json is laid
+   over it. A failed Russian file leaves the English interface — the site
+   still works. Sets <html lang> and remembers the choice. */
+// Only the latest request may apply its strings: choosing ru then en quickly
+// must not end in ru because the ru file arrived last.
+let uiLoadSeq = 0;
+async function loadUiStrings(lang) {
+  const mine = ++uiLoadSeq;
+  const en = await fetchJSON("data/ui.json").catch(e => { console.warn("[i18n] data/ui.json:", e.message); return {}; });
+  let ru = null;
+  if (lang === "ru") ru = await fetchJSON("locales/ru/ui.json").catch(e => { console.warn("[i18n] locales/ru/ui.json:", e.message); return null; });
+  if (mine !== uiLoadSeq) return false; // a later choice superseded this one
+  UI = overlayUiStrings(en, ru);
+  UI_LANG = lang;
+  document.documentElement.lang = lang;
+  try { localStorage.setItem("lancer_ui_lang", lang); } catch (_) {}
+  return true;
+}
+
+/* Static markup in index.html: a data-i18n attribute (a key) sets the element's content,
+   data-i18n-attr (attr:key pairs, ";"-separated) sets attributes. */
+function applyStaticStrings(root = document) {
+  root.querySelectorAll("[data-i18n]").forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+  root.querySelectorAll("[data-i18n-attr]").forEach(el => {
+    el.dataset.i18nAttr.split(";").forEach(pair => {
+      const [attr, key] = pair.split(":").map(s => s.trim());
+      if (attr && key) el.setAttribute(attr, t(key));
+    });
+  });
+}
 
 const LOCALE_CATEGORY_FILES = [
   "enums", "frames", "weapons", "systems", "talents",
@@ -96,14 +131,8 @@ async function loadBaseData() {
     }
     return core;
   } catch (e) {
-    document.body.innerHTML =
-      "<div style='padding:40px;font-family:monospace;color:#e5604f'>" +
-      "Не удалось загрузить data/lancer-data.json.<br><br>" +
-      "Если вы открыли index.html прямо из файловой системы (file://), " +
-      "браузер блокирует fetch() локальных файлов. Запустите локальный сервер, например:<br><br>" +
-      "<code>python3 -m http.server</code><br><br>" +
-      "…в папке проекта и откройте http://localhost:8000/ — подробнее в README.md." +
-      "</div>";
+    // Shown by startApp() (showLoadError), which by then has the interface
+    // strings. A failed language switch later must not wipe the page.
     throw e;
   }
 }
@@ -158,7 +187,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever the app's code (index.html, css/, js/) changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-10-15-keyboard-semantics";
+const APP_BUILD = "2026-10-15-ui-localization";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {

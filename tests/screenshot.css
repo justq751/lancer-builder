@@ -1,0 +1,3 @@
+/* Applied by visual.spec.mjs while it takes screenshots: hides what changes
+   between runs on its own. «СОХРАНЕНО hh:mm» depends on the clock. */
+#savestate { visibility: hidden; }

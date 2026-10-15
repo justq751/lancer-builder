@@ -25,7 +25,7 @@ function licenseRanksHTML(f){
     const li=(id,mk,hint)=>`<li class="clickable"><button type="button" class="linkrow" data-viewitem="${id}">
       <span class="mk" aria-hidden="true">${mk}</span> ${esc(it.name)} <span class="hint">${hint}</span></button></li>`;
     if(it._kind==="w") return li(`w:${it.id}`, "⚔", `${tr(it.mount)} · ${dmgStr(it)}`);
-    if(it._kind==="m") return li(`m:${it.id}`, "🔧", `мод · ${it.sp||0} SP`);
+    if(it._kind==="m") return li(`m:${it.id}`, "🔧", t("licenses.item_mod", {sp:it.sp||0}));
     return li(`s:${it.id}`, "⚙", `${it.sp} SP`);
   };
   return [1,2,3].map(rank=>{
@@ -33,29 +33,29 @@ function licenseRanksHTML(f){
     const list = byRank[rank];
     if(!framesHere.length && !list.length) return "";
     return `<div style="margin-bottom:14px">
-      <h4 style="font-family:'Chakra Petch',sans-serif;font-size:15px;margin-bottom:6px;color:var(--accent)">РАНГ ${rank}</h4>
-      ${framesHere.map(fr=>`<div class="desc" style="margin-bottom:6px">🔓 Открывает само шасси <b>${esc(dispName(fr))}</b>${fr.variant?` <span class="hint">(вариант лицензии ${esc(fr.variant)})</span>`:""}.</div>`).join("")}
+      <h4 style="font-family:'Chakra Petch',sans-serif;font-size:15px;margin-bottom:6px;color:var(--accent)">${t("licenses.rank", {rank})}</h4>
+      ${framesHere.map(fr=>`<div class="desc" style="margin-bottom:6px">🔓 ${t("licenses.unlocks_frame", {name:dispName(fr)})}${fr.variant?` <span class="hint">${t("licenses.variant_of", {name:fr.variant})}</span>`:""}.</div>`).join("")}
       ${list.length?`<ul class="minilist">${list.map(line).join("")}</ul>`:""}
     </div>`;
-  }).join("") || `<div class="hint">На эту лицензию не привязано ни оружия, ни систем, ни модов — только шасси.</div>`;
+  }).join("") || `<div class="hint">${t("licenses.only_frame")}</div>`;
 }
 function openLicenseDetail(fid){
   const f=M.frame[fid], key=licenseKeyFor(f), v=licRank(key), d=derived();
   const remaining=d.b.license.cap-d.b.license.used;
   const siblings=L.frames.filter(fr=>licenseKeyFor(fr)===key && fr.id!==f.id).map(fr=>dispName(fr));
   const img=frameImageURL(f);
-  const imgHTML = img ? `<a href="${img}" target="_blank" rel="noopener" title="Открыть источник изображения">
+  const imgHTML = img ? `<a href="${img}" target="_blank" rel="noopener" title="${t("licenses.img_source")}">
     <img src="${img}" alt="" loading="lazy" onerror="this.closest('a').remove()"
       style="float:right; width:300px; height:300px; object-fit:contain; margin:0 0 12px 16px; border-radius:8px; background:var(--panel-2); cursor:zoom-in"></a>` : "";
   modal(dispName(f), `
     ${imgHTML}
     <div class="meta" style="margin-bottom:14px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype?.map(tr).join(" / ")||""}</div>
-    ${siblings.length?`<div class="desc" style="margin-bottom:14px">Эта лицензия общая с ${siblings.map(n=>`<b>${esc(n)}</b>`).join(", ")} — ранг один на всех, поднимая его здесь, вы поднимаете его и там.</div>`:""}
+    ${siblings.length?`<div class="desc" style="margin-bottom:14px">${t("licenses.shared", {namesHtml:siblings.map(n=>`<b>${esc(n)}</b>`).join(", ")})}</div>`:""}
     <div class="stepper" style="margin-bottom:18px">
-      <button class="stepbtn" id="lic-minus" ${v<=0?"disabled":""} aria-label="Понизить ранг лицензии">−</button>
+      <button class="stepbtn" id="lic-minus" ${v<=0?"disabled":""} aria-label="${t("licenses.minus_rank")}">−</button>
       <span class="pips" aria-hidden="true">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
-      <button class="stepbtn" id="lic-plus" ${(v<3&&remaining>=1)?"":"disabled"} aria-label="Повысить ранг лицензии">+</button>
-      <span class="hint" style="margin-left:10px">ранг ${v}/3</span>
+      <button class="stepbtn" id="lic-plus" ${(v<3&&remaining>=1)?"":"disabled"} aria-label="${t("licenses.plus_rank")}">+</button>
+      <span class="hint" style="margin-left:10px">${t("licenses.rank_of3", {v})}</span>
     </div>
     ${licenseRanksHTML(f)}`);
   $("#lic-minus").onclick=()=>{ stepLicense(key,-1); render(); openLicenseDetail(fid); };
@@ -76,7 +76,7 @@ function viewLicenseItemPreview(kind, id, back){
     const html = kind==="w" ? weaponCardHTML(item) : kind==="m" ? modCardHTML(item) : systemCardHTML(item);
     $("#modal .mhd h3").textContent=item.name;
     setModalBody(
-      `<button class="ghostbtn mb-14" id="lip-back">← Назад к лицензии</button>`
+      `<button class="ghostbtn mb-14" id="lip-back">← ${t("licenses.back")}</button>`
       + html);
     if(kind==="w") wireTagGlossary("#wp-tags","#wp-tagdesc",weaponDisplayTags(item, profileViewIdx));
     else if(kind==="m") wireTagGlossary("#md-tags","#md-tagdesc",item.tags||[]);
@@ -95,9 +95,9 @@ function renderLicenses(){
   // group by manufacturer
   const groups={};
   licFrames.forEach(f=>(groups[f.source]=groups[f.source]||[]).push(f));
-  $("#tab").innerHTML = sechead("// 05 · ЛИЦЕНЗИИ","Лицензии производителей",
-    `Тратьте очки лицензий, чтобы открывать шасси, оружие и системы производителей. Каждый ранг лицензии = 1 очко (макс. 3). GMS доступен бесплатно. Потрачено ${d.b.license.used} из ${d.b.license.cap}. Кликните по карточке, чтобы увидеть, что открывает каждый ранг.`)
-    + (over?`<div class="warnbox">⚠ Превышено очков лицензий на ${d.b.license.used-d.b.license.cap}.</div>`:"")
+  $("#tab").innerHTML = sechead(t("licenses.mark"),t("licenses.title"),
+    t("licenses.lead", {used:d.b.license.used, cap:d.b.license.cap}))
+    + (over?`<div class="warnbox">⚠ ${t("licenses.over", {n:d.b.license.used-d.b.license.cap})}</div>`:"")
     + Object.entries(groups).map(([src,fr])=>`
       <h3 style="font-family:'Chakra Petch',sans-serif;font-size:16.5px;margin:18px 0 10px;color:${srcColor(src)}">// ${esc(SRC_NAME[src]||src)}</h3>
       <div class="grid cards">${fr.map(f=>{
@@ -110,15 +110,15 @@ function renderLicenses(){
           <div class="top">${cardLinkHTML("license", f.id, esc(nm), "nm")}<div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
           <div style="display:flex; gap:12px; align-items:flex-start; margin-top:6px">
             <div style="flex:1; min-width:0">
-              <div class="meta">ШАССИ открывается на ранге ${f.license_level} · открыто предметов: ${nUnlock}</div>
-              ${f.variant?`<div class="meta" style="color:var(--accent)">↳ общая лицензия с ${esc(f.variant)}</div>`:""}
+              <div class="meta">${t("licenses.card_meta", {rank:f.license_level, n:nUnlock})}</div>
+              ${f.variant?`<div class="meta" style="color:var(--accent)">↳ ${t("licenses.shared_with", {name:f.variant})}</div>`:""}
             </div>
-            ${frameImageURL(f)?`<img class="frame-thumb" src="${frameImageURL(f)}" alt="Портрет шасси ${esc(dispName(f))}" loading="lazy" onerror="this.remove()">`:""}
+            ${frameImageURL(f)?`<img class="frame-thumb" src="${frameImageURL(f)}" alt="${t("common.frame_portrait", {name:dispName(f)})}" loading="lazy" onerror="this.remove()">`:""}
           </div>
           <div class="stepper" style="margin-top:11px">
-            <button class="stepbtn" data-lic="${esc(key)}" data-d="-1" ${v<=0?"disabled":""} aria-label="Понизить ранг лицензии ${esc(key)}">−</button>
-            <span class="pips" role="img" aria-label="Ранг ${v} из 3">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
-            <button class="stepbtn" data-lic="${esc(key)}" data-d="1" ${(v<3&&remaining>=1)?"":"disabled"} aria-label="Повысить ранг лицензии ${esc(key)}">+</button>
+            <button class="stepbtn" data-lic="${esc(key)}" data-d="-1" ${v<=0?"disabled":""} aria-label="${t("licenses.minus_key", {key})}">−</button>
+            <span class="pips" role="img" aria-label="${t("common.rank_of3", {v})}">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
+            <button class="stepbtn" data-lic="${esc(key)}" data-d="1" ${(v<3&&remaining>=1)?"":"disabled"} aria-label="${t("licenses.plus_key", {key})}">+</button>
           </div></div>`;
       }).join("")}</div>`).join("");
   $$("#tab .stepbtn[data-lic]").forEach(b=>b.onclick=()=>{

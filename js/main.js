@@ -5,16 +5,16 @@ function wireTopbar(){
   $("#import-file").onchange=e=>{ const f=e.target.files[0]; e.target.value=""; if(f) importBuild(f); };
   $("#t-reset").onclick=()=>{
     if(buildIsEmpty()){
-      notice("Сбрасывать нечего", "Сборка и так пуста.");
+      notice(tText("dialog.reset.nothing_title"), t("dialog.reset.nothing_lead"));
       return;
     }
     confirmDialog({
-      title:"Сброс сборки",
-      lead:"Сброс очистит всё и перезапишет автосохранение в этом браузере. Отменить это будет нельзя.",
+      title:tText("dialog.reset.title"),
+      lead:t("dialog.reset.lead"),
       losses:buildLossSummary(),
       actions:[
-        {label:"⬇ Сначала выгрузить в файл", run:exportBuild},
-        {label:"⟲ Сбросить всё", danger:true, run:()=>{
+        {label:"⬇ "+tText("dialog.export_first"), run:exportBuild},
+        {label:"⟲ "+tText("dialog.reset.confirm"), danger:true, run:()=>{
           Object.assign(state, defaultState());
           saveHold=null; // so was clearing it
           activeTab="pilot";
@@ -23,7 +23,7 @@ function wireTopbar(){
       ],
     });
   };
-  $("#modal").onclick=e=>{ if(e.target.id==="modal"||e.target.classList.contains("mclose")) closeModal(); };
+  $("#modal").onclick=e=>{ if(e.target.id==="modal"||e.target.closest(".mclose")) closeModal(); };
   $("#t-sheet").onclick=()=>{ if(viewMode==="sheet") exitSheet(); else setViewMode("sheet"); };
   $("#t-link").onclick=shareSheetLink;
   $("#t-print").onclick=()=>window.print();
@@ -79,8 +79,8 @@ function wireFocusNet(){
   const check=()=>setTimeout(()=>{
     if(!last || last.el.isConnected) return;
     if(document.activeElement!==document.body || $("#modal").classList.contains("show")) return;
-    const t=(last.key && document.querySelector(last.key)) || (last.inTab ? $("#tab") : null);
-    if(t) t.focus({preventScroll:true});
+    const target=(last.key && document.querySelector(last.key)) || (last.inTab ? $("#tab") : null);
+    if(target) target.focus({preventScroll:true});
   });
   document.addEventListener("keydown", check, true);
   document.addEventListener("click", check, true);
@@ -93,10 +93,12 @@ function wireFocusNet(){
 function wireNarrowChrome(){
   const menu=$("#more-menu"), hud=$("#hud");
   const isOpen=el=>{ try{ return el.matches(":popover-open"); }catch(_){ return false; } };
-  menu.addEventListener("click", e=>{ if(e.target.closest("button") && isOpen(menu)) menu.hidePopover(); });
+  // Buttons that open another popover (the language button) keep the menu:
+  // that panel nests over it, and closing the menu would close it too.
+  menu.addEventListener("click", e=>{ const b=e.target.closest("button"); if(b && !b.hasAttribute("popovertarget") && isOpen(menu)) menu.hidePopover(); });
   // popovertarget exposes "expanded" only in the accessibility tree; the
   // attribute is written too, so CSS (the ledger's chevron) can follow it.
-  [[hud,$("#ledger")],[menu,$("#t-more")]].forEach(([pop,btn])=>{
+  [[hud,$("#ledger")],[menu,$("#t-more")],[$("#lang-panel"),$("#t-lang")]].forEach(([pop,btn])=>{
     btn.setAttribute("aria-expanded","false");
     pop.addEventListener("toggle", e=>btn.setAttribute("aria-expanded", String(e.newState==="open")));
   });
@@ -138,32 +140,84 @@ function bootFinish(onDone){
 }
 
 /* ============ LANGUAGE SWITCH ============ */
-function wireLangSwitch(){
-  const btn=$("#t-lang");
-  if(!btn) return;
-  btn.textContent = currentLang==="ru" ? "EN / RU" : "RU / EN";
-  btn.onclick = async ()=>{
-    const next = currentLang==="ru" ? "en" : "ru";
-    btn.disabled = true; btn.textContent="…";
-    try{
-      L = await fetchAndLocalize(next);
-      rebuildIndexes();
-      wireLangSwitch();
-      render();
-    } finally { btn.disabled = false; }
-  };
+/* Two independent settings (ADR 0005): the interface language (UI_LANG, t())
+   and the data language (currentLang, L). The button states both — "RU",
+   "EN", or "RU · EN" for interface · data — so the checking-against-the-
+   original mode is visible at a glance. */
+function renderLangButton(){
+  const btn=$("#t-lang"); if(!btn) return;
+  const u=UI_LANG, d=currentLang;
+  btn.textContent = u===d ? u.toUpperCase() : `${u.toUpperCase()} · ${d.toUpperCase()}`;
+  // i18n-dynamic: lang.aria.ui_ru, lang.aria.ui_en, lang.aria.data_ru, lang.aria.data_en
+  btn.setAttribute("aria-label", t("lang.aria", {ui:t("lang.aria.ui_"+u), data:t("lang.aria.data_"+d)}));
+  $$('#lang-panel input[name="ui-lang"]').forEach(r=>{ r.checked = r.value===u; });
+  $$('#lang-panel input[name="data-lang"]').forEach(r=>{ r.checked = r.value===d; });
 }
+async function setUiLanguage(lang){
+  if(!(await loadUiStrings(lang))) return; // superseded by a later choice
+  applyStaticStrings();
+  // A dialog was built from the old strings; its parts are not re-rendered.
+  if($("#modal").classList.contains("show")) closeModal();
+  render();
+  renderSaveState();
+  renderLangButton();
+}
+/* The row is marked busy, not disabled: disabling would knock focus off the
+   radio the keyboard user just moved to. Changes while busy are ignored and
+   the radios snap back to the language actually in force. */
+let dataLangBusy=false;
+async function setDataLanguage(lang){
+  if(dataLangBusy){ renderLangButton(); return; }
+  dataLangBusy=true;
+  const row=$("#lang-data");
+  row.setAttribute("aria-busy","true");
+  const busy=document.createElement("span"); busy.className="busy"; busy.textContent=" …";
+  row.querySelector("legend").append(busy);
+  try{
+    L = await fetchAndLocalize(lang);
+    rebuildIndexes();
+    render();
+  } catch(e){
+    console.error("[Lancer Registry] could not load the data language:", e);
+    notice(tText("lang.data_failed_title"), t("lang.data_failed_lead", {lang:lang.toUpperCase()}));
+  } finally {
+    dataLangBusy=false;
+    row.removeAttribute("aria-busy"); busy.remove();
+    renderLangButton();
+  }
+}
+function wireLangPanel(){
+  $$('#lang-panel input[name="ui-lang"]').forEach(r=>r.onchange=()=>setUiLanguage(r.value));
+  $$('#lang-panel input[name="data-lang"]').forEach(r=>r.onchange=()=>setDataLanguage(r.value));
+  renderLangButton();
+}
+
+const LOAD_ERROR_FALLBACK = "Could not load data/lancer-data.json.<br><br>If you opened index.html straight from the file system (file://), the browser blocks fetch() of local files. Start a local server, for example:<br><br><code>python3 -m http.server</code><br><br>…in the project folder and open http://localhost:8000/ — see README.md.";
 
 /* ============ INIT ============ */
 (async function startApp(){
-  bootSay("ЗАГРУЗКА РЕЕСТРА UNION…"); // not awaited: the fetch must start now
+  // Interface and data languages are chosen apart (ADR 0005). Both fetches
+  // start now; the interface strings are tiny and awaited first, so even the
+  // boot lines speak the chosen language.
+  const ls=k=>{ try{ return localStorage.getItem(k); }catch(_){ return null; } };
+  const langs=detectLanguages(navigator.language, {ui:ls("lancer_ui_lang"), data:ls("lancer_lang")});
+  const dataP=fetchAndLocalize(langs.data);
+  dataP.catch(()=>{}); // handled below; keeps an early rejection from going unobserved
+  await loadUiStrings(langs.ui);
+  applyStaticStrings();
+  bootSay(tText("boot.loading")); // not awaited
   try{
-    L = await fetchAndLocalize(currentLang);
+    L = await dataP;
   }catch(e){
     console.error(e);
-    return; // loadBaseData() already showed an error message in the DOM
+    // Still the developer-facing text (AUDIT P1-4 rewrites this screen).
+    // English literal fallback: in the file:// case data/ui.json failed too,
+    // and t() would have nothing to show but the key.
+    const help = UI["error.load.dev"] ? t("error.load.dev") : LOAD_ERROR_FALLBACK;
+    document.body.innerHTML = `<div style="padding:40px;font-family:monospace;color:#e5604f">${help}</div>`;
+    return;
   }
-  await bootSay(`СИНХРОНИЗАЦИЯ: ${L.frames.length} ШАССИ · ${L.weapons.length} ОРУЖИЯ · ${L.systems.length} СИСТЕМ`, BOOT_MIN_SYNC);
+  await bootSay(tText("boot.sync", {frames:L.frames.length, weapons:L.weapons.length, systems:L.systems.length}), BOOT_MIN_SYNC);
   rebuildIndexes();
 
   // A share link wins over the stored build: the reader asked to see that
@@ -190,14 +244,14 @@ function wireLangSwitch(){
   }
 
   wireTopbar();
-  wireLangSwitch();
+  wireLangPanel();
   render();
   renderSaveState();
-  await bootSay("ДОСТУП РАЗРЕШЁН ▸");
+  await bootSay(tText("boot.granted")+" ▸");
   bootFinish(()=>{
-    if(linkFailed) notice("Ссылка не прочитана",
-      "Адрес повреждён или собран другой версией реестра. Попросите прислать ссылку заново или файл сборки.");
+    if(linkFailed) notice(tText("dialog.link_failed.title"),
+      t("dialog.link_failed.lead"));
     else if(restoreReport && saveHold) reportPackFailure(restoreReport);
-    else if(restoreReport) reportDropped(sheetSource==="shared"?"Сборка открыта частично":"Сборка восстановлена частично", restoreReport);
+    else if(restoreReport) reportDropped(tText(sheetSource==="shared"?"dialog.dropped.opened_title":"dialog.dropped.restored_title"), restoreReport); // i18n-dynamic: dialog.dropped.opened_title, dialog.dropped.restored_title
   });
 })();

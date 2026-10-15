@@ -1,0 +1,1842 @@
+{
+ "a11y.editor_h1": {
+  "en": "Pilot and mech build editor",
+  "ru": "Редактор сборки пилота и меха"
+ },
+ "a11y.help": {
+  "en": "Help",
+  "ru": "Справка"
+ },
+ "a11y.help_for": {
+  "en": "{name}: help",
+  "ru": "{name}: справка"
+ },
+ "a11y.skip": {
+  "en": "Skip to content",
+  "ru": "К содержимому"
+ },
+ "boot.granted": {
+  "en": "ACCESS GRANTED",
+  "ru": "ДОСТУП РАЗРЕШЁН"
+ },
+ "boot.loading": {
+  "en": "LOADING THE UNION REGISTRY…",
+  "ru": "ЗАГРУЗКА РЕЕСТРА UNION…"
+ },
+ "boot.sync": {
+  "en": "SYNC: {frames} FRAMES · {weapons} WEAPONS · {systems} SYSTEMS",
+  "ru": "СИНХРОНИЗАЦИЯ: {frames} ШАССИ · {weapons} ОРУЖИЯ · {systems} СИСТЕМ"
+ },
+ "brand.name": {
+  "en": "REGISTRY",
+  "ru": "РЕЕСТР"
+ },
+ "budget.cores": {
+  "en": "CORE BONUSES",
+  "ru": "CORE-БОНУСЫ"
+ },
+ "budget.hase": {
+  "en": "MECH SKILLS",
+  "ru": "МЕХ-НАВЫКИ"
+ },
+ "budget.licenses": {
+  "en": "LICENSES",
+  "ru": "ЛИЦЕНЗИИ"
+ },
+ "budget.skills": {
+  "en": "SKILLS",
+  "ru": "НАВЫКИ"
+ },
+ "budget.sp": {
+  "en": "SYSTEM POINTS (SP)",
+  "ru": "СИСТ. ОЧКИ (SP)"
+ },
+ "budget.talents": {
+  "en": "TALENTS",
+  "ru": "ТАЛАНТЫ"
+ },
+ "common.all": {
+  "en": "ALL",
+  "ru": "ВСЕ"
+ },
+ "common.cancel": {
+  "en": "Cancel",
+  "ru": "Отмена"
+ },
+ "common.cancel_caps": {
+  "en": "CANCEL",
+  "ru": "ОТМЕНА"
+ },
+ "common.close": {
+  "en": "CLOSE",
+  "ru": "ЗАКРЫТЬ"
+ },
+ "common.collapse": {
+  "en": "Collapse",
+  "ru": "Свернуть"
+ },
+ "common.collapse_details": {
+  "en": "Collapse details",
+  "ru": "Свернуть подробности"
+ },
+ "common.delete": {
+  "en": "Delete",
+  "ru": "Удалить"
+ },
+ "common.edit": {
+  "en": "Edit",
+  "ru": "Редактировать"
+ },
+ "common.expand": {
+  "en": "Expand",
+  "ru": "Развернуть"
+ },
+ "common.expand_details": {
+  "en": "Expand details",
+  "ru": "Развернуть подробности"
+ },
+ "common.frame_portrait": {
+  "en": "Portrait of frame {name}",
+  "ru": "Портрет шасси {name}"
+ },
+ "common.ok": {
+  "en": "Got it",
+  "ru": "Понятно"
+ },
+ "common.rank_of3": {
+  "en": "Rank {v} of 3",
+  "ru": "Ранг {v} из 3"
+ },
+ "common.save_caps": {
+  "en": "SAVE",
+  "ru": "СОХРАНИТЬ"
+ },
+ "common.selected": {
+  "en": "SELECTED",
+  "ru": "ВЫБРАНО"
+ },
+ "common.show_details": {
+  "en": "Show details",
+  "ru": "Показать подробности"
+ },
+ "core.cap_info": {
+  "en": "CORE bonuses open at LL3, then one more for every 3 license levels (LL6, LL9…).",
+  "ru": "CORE-бонусы открываются с LL3, и затем ещё по одному за каждые 3 уровня лицензий (LL6, LL9…)."
+ },
+ "core.lead": {
+  "en": "Selected {n} of {cap}. A manufacturer's bonuses open when you have 3+ license ranks in any of that manufacturer's frames — otherwise only GMS bonuses are available.",
+  "ru": "Выбрано {n} из {cap}. Бонусы конкретного производителя открываются, когда у вас есть 3+ ранга лицензии на любое шасси этого производителя — иначе доступны только бонусы GMS."
+ },
+ "core.limit": {
+  "en": "Limit reached ({n}/{cap})",
+  "ru": "Лимит исчерпан ({n}/{cap})"
+ },
+ "core.mark": {
+  "en": "// 08 · CORE BONUSES",
+  "ru": "// 08 · CORE-БОНУСЫ"
+ },
+ "core.mounted": {
+  "en": "If installed on a mount:",
+  "ru": "Если установлено на крепление:"
+ },
+ "core.no_match": {
+  "en": "// no CORE bonuses match this search",
+  "ru": "// нет доступных CORE-бонусов по этому запросу"
+ },
+ "core.none": {
+  "en": "// no CORE bonuses selected",
+  "ru": "// CORE-бонусы не выбраны"
+ },
+ "core.pick": {
+  "en": "Select this CORE bonus",
+  "ru": "Выбрать этот CORE-бонус"
+ },
+ "core.pick_anyway": {
+  "en": "Select anyway",
+  "ru": "Выбрать всё равно"
+ },
+ "core.pick_anyway_lic": {
+  "en": "Select anyway ({source} license not unlocked)",
+  "ru": "Выбрать всё равно (лицензия {source} не открыта)"
+ },
+ "core.remove": {
+  "en": "Remove CORE bonus",
+  "ru": "Убрать CORE-бонус"
+ },
+ "core.remove_this": {
+  "en": "Remove this CORE bonus",
+  "ru": "Убрать этот CORE-бонус"
+ },
+ "core.requires": {
+  "en": "Requires 3+ license ranks in a {source} frame (now: {rank}).",
+  "ru": "Требуется 3+ ранга лицензии на шасси {source} (сейчас: {rank})."
+ },
+ "core.search": {
+  "en": "Search CORE bonuses",
+  "ru": "Поиск CORE-бонусов"
+ },
+ "core.search_ph": {
+  "en": "search CORE bonuses…",
+  "ru": "поиск CORE-бонусов…"
+ },
+ "core.title": {
+  "en": "CORE bonuses",
+  "ru": "CORE-бонусы"
+ },
+ "dialog.dropped.lead": {
+  "en": "Part of the build could not be restored: these entries are not in the loaded data. Usually this means the build was made with a different set of content packs or in a different version of the registry. Everything else is in place.",
+  "ru": "Часть сборки не удалось восстановить: этих записей нет в загруженных данных. Обычно это значит, что сборка сделана с другим набором контент-паков или в другой версии реестра. Остальное на месте."
+ },
+ "dialog.dropped.loaded_title": {
+  "en": "Build loaded partly",
+  "ru": "Сборка загружена частично"
+ },
+ "dialog.dropped.opened_title": {
+  "en": "Build opened partly",
+  "ru": "Сборка открыта частично"
+ },
+ "dialog.dropped.restored_title": {
+  "en": "Build restored partly",
+  "ru": "Сборка восстановлена частично"
+ },
+ "dialog.export_first": {
+  "en": "Export to a file first",
+  "ru": "Сначала выгрузить в файл"
+ },
+ "dialog.import.export_first": {
+  "en": "Export the current one first",
+  "ru": "Сначала выгрузить текущую"
+ },
+ "dialog.import.lead": {
+  "en": "The loaded build will replace the current one. The current build will not be kept anywhere except files you have already exported.",
+  "ru": "Загруженная сборка заменит текущую. Текущая сборка не сохранится нигде, кроме уже выгруженных файлов."
+ },
+ "dialog.import.replace": {
+  "en": "Replace the build",
+  "ru": "Заменить сборку"
+ },
+ "dialog.import.title": {
+  "en": "Load build",
+  "ru": "Загрузка сборки"
+ },
+ "dialog.link_failed.lead": {
+  "en": "The address is damaged or was made by another version of the registry. Ask for the link again, or for the build file.",
+  "ru": "Адрес повреждён или собран другой версией реестра. Попросите прислать ссылку заново или файл сборки."
+ },
+ "dialog.link_failed.title": {
+  "en": "Link could not be read",
+  "ru": "Ссылка не прочитана"
+ },
+ "dialog.not_build.lead": {
+  "en": "This is not a registry build file. Load a file made by the <b>⬇ SAVE</b> button — usually something like <b>CALLSIGN_lancer.json</b>.",
+  "ru": "Это не файл сборки реестра. Загрузите файл, который выгружает кнопка <b>⬇ СОХРАНИТЬ</b> — обычно это что-то вроде <b>ПОЗЫВНОЙ_lancer.json</b>."
+ },
+ "dialog.not_build.title": {
+  "en": "File not recognised",
+  "ru": "Файл не распознан"
+ },
+ "dialog.pack_failed.continue": {
+  "en": "Continue without them",
+  "ru": "Продолжить без них"
+ },
+ "dialog.pack_failed.lead": {
+  "en": "Could not load: <b>{packs}</b> — probably a network hiccup. Until this data loads, part of the build is not shown. <b>The saved build is untouched</b>: autosave is paused until the data loads.",
+  "ru": "Не удалось загрузить: <b>{packs}</b> — вероятно, сбой сети. Пока эти данные не загружены, часть сборки не видна. <b>Сохранённая сборка не тронута</b>: автосохранение приостановлено, пока данные не загрузятся."
+ },
+ "dialog.pack_failed.retry": {
+  "en": "Retry loading",
+  "ru": "Повторить загрузку"
+ },
+ "dialog.pack_failed.title": {
+  "en": "Some data did not load",
+  "ru": "Часть данных не загрузилась"
+ },
+ "dialog.read_failed.lead": {
+  "en": "The browser could not read this file. Check that it has not been deleted and is not open in another program.",
+  "ru": "Браузер не смог прочитать этот файл. Проверьте, что он не удалён и не открыт в другой программе."
+ },
+ "dialog.read_failed.title": {
+  "en": "File could not be read",
+  "ru": "Файл не прочитан"
+ },
+ "dialog.reset.confirm": {
+  "en": "Reset everything",
+  "ru": "Сбросить всё"
+ },
+ "dialog.reset.lead": {
+  "en": "Reset clears everything and overwrites the autosave in this browser. This cannot be undone.",
+  "ru": "Сброс очистит всё и перезапишет автосохранение в этом браузере. Отменить это будет нельзя."
+ },
+ "dialog.reset.nothing_lead": {
+  "en": "The build is already empty.",
+  "ru": "Сборка и так пуста."
+ },
+ "dialog.reset.nothing_title": {
+  "en": "Nothing to reset",
+  "ru": "Сбрасывать нечего"
+ },
+ "dialog.reset.title": {
+  "en": "Reset build",
+  "ru": "Сброс сборки"
+ },
+ "dropped.armor": {
+  "en": "armor “{id}”",
+  "ru": "броня «{id}»"
+ },
+ "dropped.background": {
+  "en": "background “{id}”",
+  "ru": "происхождение «{id}»"
+ },
+ "dropped.core": {
+  "en": "CORE bonus “{id}”",
+  "ru": "CORE-бонус «{id}»"
+ },
+ "dropped.frame": {
+  "en": "frame “{id}”",
+  "ru": "шасси «{id}»"
+ },
+ "dropped.gear": {
+  "en": "gear “{id}”",
+  "ru": "снаряжение «{id}»"
+ },
+ "dropped.license": {
+  "en": "license “{id}”",
+  "ru": "лицензия «{id}»"
+ },
+ "dropped.mod": {
+  "en": "mod “{id}”",
+  "ru": "мод «{id}»"
+ },
+ "dropped.skill": {
+  "en": "skill “{id}”",
+  "ru": "навык «{id}»"
+ },
+ "dropped.system": {
+  "en": "system “{id}”",
+  "ru": "система «{id}»"
+ },
+ "dropped.talent": {
+  "en": "talent “{id}”",
+  "ru": "талант «{id}»"
+ },
+ "dropped.weapon": {
+  "en": "weapon “{id}”",
+  "ru": "оружие «{id}»"
+ },
+ "dropped.weapon_no_frame": {
+  "en": "weapon “{name}” (no frame)",
+  "ru": "оружие «{name}» (нет шасси)"
+ },
+ "error.load.dev": {
+  "en": "Could not load data/lancer-data.json.<br><br>If you opened index.html straight from the file system (file://), the browser blocks fetch() of local files. Start a local server, for example:<br><br><code>python3 -m http.server</code><br><br>…in the project folder and open http://localhost:8000/ — see README.md.",
+  "ru": "Не удалось загрузить data/lancer-data.json.<br><br>Если вы открыли index.html прямо из файловой системы (file://), браузер блокирует fetch() локальных файлов. Запустите локальный сервер, например:<br><br><code>python3 -m http.server</code><br><br>…в папке проекта и откройте http://localhost:8000/ — подробнее в README.md."
+ },
+ "frame.action.detail": {
+  "en": "Effect",
+  "ru": "Эффект"
+ },
+ "frame.action.trigger": {
+  "en": "Trigger",
+  "ru": "Триггер"
+ },
+ "frame.core_active": {
+  "en": "CORE active — {name}",
+  "ru": "CORE-актив — {name}"
+ },
+ "frame.core_system": {
+  "en": "CORE SYSTEM — {name}",
+  "ru": "CORE-СИСТЕМА — {name}"
+ },
+ "frame.lead": {
+  "en": "Choose a frame. Its base stats add up with your mech skills and GRIT. A lock means the license is not unlocked yet — you can pick anything, but check the requirements on the LICENSES tab.",
+  "ru": "Выберите рамную платформу (frame). Её базовые статы складываются с вашими мех-навыками и GRIT. Замок означает, что лицензия ещё не открыта — выбрать можно всё, но проверьте требования на вкладке ЛИЦЕНЗИИ."
+ },
+ "frame.license_ll": {
+  "en": "license LL{ll}",
+  "ru": "лицензия LL{ll}"
+ },
+ "frame.mark": {
+  "en": "// 06 · FRAME",
+  "ru": "// 06 · ШАССИ"
+ },
+ "frame.mounts": {
+  "en": "MOUNTS: {list}",
+  "ru": "КРЕПЛЕНИЯ: {list}"
+ },
+ "frame.passive": {
+  "en": "Passive — {name}:",
+  "ru": "Пассивно — {name}:"
+ },
+ "frame.pick": {
+  "en": "SELECT THIS FRAME",
+  "ru": "ВЫБРАТЬ ЭТО ШАССИ"
+ },
+ "frame.pick_force": {
+  "en": "SELECT ANYWAY",
+  "ru": "ВЫБРАТЬ НАСИЛЬНО"
+ },
+ "frame.selected_head": {
+  "en": "SELECTED FRAME — {name}",
+  "ru": "ВЫБРАННОЕ ШАССИ — {name}"
+ },
+ "frame.stat.armor": {
+  "en": "ARMOR",
+  "ru": "БРОНЯ"
+ },
+ "frame.stat.evasion": {
+  "en": "EVA",
+  "ru": "УКЛ"
+ },
+ "frame.stat.size": {
+  "en": "SIZE",
+  "ru": "РАЗМ"
+ },
+ "frame.stat.speed": {
+  "en": "SPD",
+  "ru": "СКОР"
+ },
+ "frame.summary_toggle": {
+  "en": "{action} frame summary",
+  "ru": "{action} сводку шасси"
+ },
+ "frame.title": {
+  "en": "Choose a mech",
+  "ru": "Выбор меха"
+ },
+ "frame.traits": {
+  "en": "TRAITS",
+  "ru": "ОСОБЕННОСТИ"
+ },
+ "hase.agility.effect": {
+  "en": "+1 Evasion · +1 Speed per 2 ranks",
+  "ru": "+1 Уклонение · +1 Скорость за 2 ранга"
+ },
+ "hase.agility.name": {
+  "en": "AGILITY",
+  "ru": "ЛОВКОСТЬ"
+ },
+ "hase.engineering.effect": {
+  "en": "+1 Heat Capacity · +1 to limited systems per 2 ranks",
+  "ru": "+1 Теплоёмкость · +1 к лимит. системам за 2 ранга"
+ },
+ "hase.engineering.name": {
+  "en": "ENGINEERING",
+  "ru": "ИНЖЕНЕРИЯ"
+ },
+ "hase.hull.effect": {
+  "en": "+2 HP · +1 Repair Capacity per 2 ranks",
+  "ru": "+2 HP · +1 Ремонт за 2 ранга"
+ },
+ "hase.hull.name": {
+  "en": "HULL",
+  "ru": "КОРПУС"
+ },
+ "hase.lead": {
+  "en": "Spread points across the mech's four attributes. These ranks change your frame's stats directly. Spent {used} of {cap}.",
+  "ru": "Распределите очки между четырьмя характеристиками меха. Эти ранги напрямую меняют статы вашего шасси. Потрачено {used} из {cap}."
+ },
+ "hase.mark": {
+  "en": "// 04 · CALIBRATION",
+  "ru": "// 04 · КАЛИБРОВКА"
+ },
+ "hase.minus": {
+  "en": "Lower: {name}",
+  "ru": "Понизить: {name}"
+ },
+ "hase.over": {
+  "en": "Mech skill budget exceeded by {n}.",
+  "ru": "Превышен бюджет мех-навыков на {n}."
+ },
+ "hase.plus": {
+  "en": "Raise: {name}",
+  "ru": "Повысить: {name}"
+ },
+ "hase.rank": {
+  "en": "rank {v}/6",
+  "ru": "ранг {v}/6"
+ },
+ "hase.systems.effect": {
+  "en": "+1 E-Defense · +1 Tech Attack · +1 SP per 2 ranks",
+  "ru": "+1 Э-Защита · +1 Тех-атака · +1 SP за 2 ранга"
+ },
+ "hase.systems.name": {
+  "en": "SYSTEMS",
+  "ru": "СИСТЕМЫ"
+ },
+ "hase.title": {
+  "en": "Mech skills (HASE)",
+  "ru": "Мех-навыки (HASE)"
+ },
+ "hud.aria": {
+  "en": "Pilot registry",
+  "ru": "Реестр пилота"
+ },
+ "hud.budget": {
+  "en": "BUILD BUDGET",
+  "ru": "БЮДЖЕТ ПОСТРОЕНИЯ"
+ },
+ "hud.ll_label": {
+  "en": "license level",
+  "ru": "лицензионный уровень"
+ },
+ "hud.mech": {
+  "en": "MECH SUMMARY",
+  "ru": "СВОДКА МЕХА"
+ },
+ "hud.no_callsign": {
+  "en": "NAMELESS",
+  "ru": "БЕЗЫМЯННЫЙ"
+ },
+ "hud.no_frame": {
+  "en": "// NO FRAME SELECTED<br>open the FRAME tab",
+  "ru": "// ШАССИ НЕ ВЫБРАНО<br>откройте вкладку ШАССИ"
+ },
+ "hud.no_name": {
+  "en": "no name set",
+  "ru": "имя не задано"
+ },
+ "hud.registry": {
+  "en": "PILOT REGISTRY",
+  "ru": "РЕЕСТР ПИЛОТА"
+ },
+ "lang.aria": {
+  "en": "Language: {ui}, {data}",
+  "ru": "Язык: {ui}, {data}"
+ },
+ "lang.aria.data_en": {
+  "en": "English data",
+  "ru": "данные английские"
+ },
+ "lang.aria.data_ru": {
+  "en": "Russian data",
+  "ru": "данные русские"
+ },
+ "lang.aria.ui_en": {
+  "en": "English interface",
+  "ru": "интерфейс английский"
+ },
+ "lang.aria.ui_ru": {
+  "en": "Russian interface",
+  "ru": "интерфейс русский"
+ },
+ "lang.data": {
+  "en": "GAME DATA",
+  "ru": "ДАННЫЕ ИГРЫ"
+ },
+ "lang.data_failed_lead": {
+  "en": "Could not load the game data ({lang}) — probably a network hiccup. The previous language stays; try again in a moment.",
+  "ru": "Не удалось загрузить данные игры ({lang}) — вероятно, сбой сети. Остаётся прежний язык; попробуйте ещё раз чуть позже."
+ },
+ "lang.data_failed_title": {
+  "en": "Game data did not load",
+  "ru": "Данные игры не загрузились"
+ },
+ "lang.data_hint": {
+  "en": "English data is the Massif Press original — for checking against the rulebook.",
+  "ru": "Английские данные — оригинал Massif Press, для сверки с книгой правил."
+ },
+ "lang.native.en": {
+  "en": "English",
+  "ru": "English"
+ },
+ "lang.native.ru": {
+  "en": "Русский",
+  "ru": "Русский"
+ },
+ "lang.title": {
+  "en": "LANGUAGE",
+  "ru": "ЯЗЫК"
+ },
+ "lang.ui": {
+  "en": "INTERFACE",
+  "ru": "ИНТЕРФЕЙС"
+ },
+ "ledger.cell": {
+  "en": "{what}: {used} of {cap}.",
+  "ru": "{what}: {used} из {cap}."
+ },
+ "ledger.cell_over": {
+  "en": "{what}: {used} of {cap}, over budget.",
+  "ru": "{what}: {used} из {cap}, перебор."
+ },
+ "ledger.full.cores": {
+  "en": "CORE bonuses",
+  "ru": "CORE-бонусы"
+ },
+ "ledger.full.hase": {
+  "en": "Mech skills",
+  "ru": "Мех-навыки"
+ },
+ "ledger.full.licenses": {
+  "en": "Licenses",
+  "ru": "Лицензии"
+ },
+ "ledger.full.skills": {
+  "en": "Skills",
+  "ru": "Навыки"
+ },
+ "ledger.full.sp": {
+  "en": "System points",
+  "ru": "Очки систем"
+ },
+ "ledger.full.talents": {
+  "en": "Talents",
+  "ru": "Таланты"
+ },
+ "ledger.k.cores": {
+  "en": "CORE",
+  "ru": "CORE"
+ },
+ "ledger.k.hase": {
+  "en": "HASE",
+  "ru": "HASE"
+ },
+ "ledger.k.licenses": {
+  "en": "LIC",
+  "ru": "ЛИЦ"
+ },
+ "ledger.k.skills": {
+  "en": "SKL",
+  "ru": "НАВ"
+ },
+ "ledger.k.sp": {
+  "en": "SP",
+  "ru": "SP"
+ },
+ "ledger.k.talents": {
+  "en": "TAL",
+  "ru": "ТАЛ"
+ },
+ "ledger.ll": {
+  "en": "License level {ll}.",
+  "ru": "Лицензионный уровень {ll}."
+ },
+ "ledger.no_frame": {
+  "en": "{what}: no frame selected",
+  "ru": "{what}: шасси не выбрано"
+ },
+ "ledger.open": {
+  "en": "Open the pilot registry",
+  "ru": "Открыть реестр пилота"
+ },
+ "licenses.back": {
+  "en": "Back to the license",
+  "ru": "Назад к лицензии"
+ },
+ "licenses.card_meta": {
+  "en": "FRAME unlocks at rank {rank} · items unlocked: {n}",
+  "ru": "ШАССИ открывается на ранге {rank} · открыто предметов: {n}"
+ },
+ "licenses.img_source": {
+  "en": "Open the image source",
+  "ru": "Открыть источник изображения"
+ },
+ "licenses.item_mod": {
+  "en": "mod · {sp} SP",
+  "ru": "мод · {sp} SP"
+ },
+ "licenses.lead": {
+  "en": "Spend license points to unlock manufacturers' frames, weapons and systems. Each license rank = 1 point (max 3). GMS is free. Spent {used} of {cap}. Click a card to see what each rank unlocks.",
+  "ru": "Тратьте очки лицензий, чтобы открывать шасси, оружие и системы производителей. Каждый ранг лицензии = 1 очко (макс. 3). GMS доступен бесплатно. Потрачено {used} из {cap}. Кликните по карточке, чтобы увидеть, что открывает каждый ранг."
+ },
+ "licenses.mark": {
+  "en": "// 05 · LICENSES",
+  "ru": "// 05 · ЛИЦЕНЗИИ"
+ },
+ "licenses.minus_key": {
+  "en": "Lower license rank {key}",
+  "ru": "Понизить ранг лицензии {key}"
+ },
+ "licenses.minus_rank": {
+  "en": "Lower license rank",
+  "ru": "Понизить ранг лицензии"
+ },
+ "licenses.only_frame": {
+  "en": "No weapons, systems or mods are tied to this license — only frames.",
+  "ru": "На эту лицензию не привязано ни оружия, ни систем, ни модов — только шасси."
+ },
+ "licenses.over": {
+  "en": "License points exceeded by {n}.",
+  "ru": "Превышено очков лицензий на {n}."
+ },
+ "licenses.plus_key": {
+  "en": "Raise license rank {key}",
+  "ru": "Повысить ранг лицензии {key}"
+ },
+ "licenses.plus_rank": {
+  "en": "Raise license rank",
+  "ru": "Повысить ранг лицензии"
+ },
+ "licenses.rank": {
+  "en": "RANK {rank}",
+  "ru": "РАНГ {rank}"
+ },
+ "licenses.rank_of3": {
+  "en": "rank {v}/3",
+  "ru": "ранг {v}/3"
+ },
+ "licenses.shared": {
+  "en": "This license is shared with {namesHtml} — one rank for all of them: raising it here raises it there too.",
+  "ru": "Эта лицензия общая с {namesHtml} — ранг один на всех, поднимая его здесь, вы поднимаете его и там."
+ },
+ "licenses.shared_with": {
+  "en": "shared license with {name}",
+  "ru": "общая лицензия с {name}"
+ },
+ "licenses.title": {
+  "en": "Manufacturer licenses",
+  "ru": "Лицензии производителей"
+ },
+ "licenses.unlocks_frame": {
+  "en": "Unlocks the frame itself: <b>{name}</b>",
+  "ru": "Открывает само шасси <b>{name}</b>"
+ },
+ "licenses.variant_of": {
+  "en": "(license variant of {name})",
+  "ru": "(вариант лицензии {name})"
+ },
+ "loadout.add_system": {
+  "en": "ADD SYSTEM",
+  "ru": "ДОБАВИТЬ СИСТЕМУ"
+ },
+ "loadout.filled": {
+  "en": "full",
+  "ru": "заполнено"
+ },
+ "loadout.install_mod": {
+  "en": "INSTALL MOD",
+  "ru": "УСТАНОВИТЬ МОД"
+ },
+ "loadout.install_weapon": {
+  "en": "INSTALL WEAPON",
+  "ru": "УСТАНОВИТЬ ОРУЖИЕ"
+ },
+ "loadout.integrated": {
+  "en": "{n} / 1 · built into the frame",
+  "ru": "{n} / 1 · встроено в шасси"
+ },
+ "loadout.lead": {
+  "en": "Install weapons on the mounts and systems within your system points (SP). SP used: {used} of {cap}.",
+  "ru": "Установите оружие в крепления и системы в рамках системных очков (SP). Использовано SP: {used} из {cap}."
+ },
+ "loadout.mark": {
+  "en": "// 07 · LOADOUT",
+  "ru": "// 07 · ВООРУЖЕНИЕ"
+ },
+ "loadout.mounts_head": {
+  "en": "// WEAPON MOUNTS",
+  "ru": "// КРЕПЛЕНИЯ ОРУЖИЯ"
+ },
+ "loadout.no_frame": {
+  "en": "// NO ACTIVE FRAME",
+  "ru": "// НЕТ АКТИВНОГО ШАССИ"
+ },
+ "loadout.no_frame_lead": {
+  "en": "Choose a frame on the FRAME tab first.",
+  "ru": "Сначала выберите шасси на вкладке ШАССИ."
+ },
+ "loadout.no_systems": {
+  "en": "// no systems installed",
+  "ru": "// систем не установлено"
+ },
+ "loadout.no_tag": {
+  "en": "No description for this tag in the glossary yet.",
+  "ru": "Описание этого тега пока не найдено в справочнике."
+ },
+ "loadout.over": {
+  "en": "System point limit exceeded by {n} SP.",
+  "ru": "Превышен лимит системных очков на {n} SP."
+ },
+ "loadout.remove_mod": {
+  "en": "Remove mod",
+  "ru": "Убрать мод"
+ },
+ "loadout.remove_system": {
+  "en": "Remove system",
+  "ru": "Убрать систему"
+ },
+ "loadout.remove_weapon": {
+  "en": "Remove weapon",
+  "ru": "Убрать оружие"
+ },
+ "loadout.restore_integrated": {
+  "en": "RESTORE INTEGRATED WEAPON",
+  "ru": "ВОССТАНОВИТЬ ИНТЕГРИРОВАННОЕ ОРУЖИЕ"
+ },
+ "loadout.systems_head": {
+  "en": "// SYSTEMS",
+  "ru": "// СИСТЕМЫ"
+ },
+ "loadout.title": {
+  "en": "Mech loadout",
+  "ru": "Снаряжение меха"
+ },
+ "loadout.title_frame": {
+  "en": "Loadout — {name}",
+  "ru": "Снаряжение — {name}"
+ },
+ "loss.cores": {
+  "en": {
+   "one": "{n} CORE bonus",
+   "other": "{n} CORE bonuses"
+  },
+  "ru": {
+   "one": "{n} CORE-бонус",
+   "few": "{n} CORE-бонуса",
+   "many": "{n} CORE-бонусов"
+  }
+ },
+ "loss.frame": {
+  "en": "frame {name}",
+  "ru": "шасси {name}"
+ },
+ "loss.gear": {
+  "en": {
+   "one": "{n} piece of pilot gear",
+   "other": "{n} pieces of pilot gear"
+  },
+  "ru": {
+   "one": "{n} предмет снаряжения",
+   "few": "{n} предмета снаряжения",
+   "many": "{n} предметов снаряжения"
+  }
+ },
+ "loss.hase": {
+  "en": {
+   "one": "{n} mech skill",
+   "other": "{n} mech skills"
+  },
+  "ru": {
+   "one": "{n} мех-навык",
+   "few": "{n} мех-навыка",
+   "many": "{n} мех-навыков"
+  }
+ },
+ "loss.licenses": {
+  "en": {
+   "one": "{n} license",
+   "other": "{n} licenses"
+  },
+  "ru": {
+   "one": "{n} лицензия",
+   "few": "{n} лицензии",
+   "many": "{n} лицензий"
+  }
+ },
+ "loss.ll": {
+  "en": "license level LL{ll}",
+  "ru": "лицензионный уровень LL{ll}"
+ },
+ "loss.pilot": {
+  "en": "pilot {name}",
+  "ru": "пилот {name}"
+ },
+ "loss.skills": {
+  "en": {
+   "one": "{n} skill trigger",
+   "other": "{n} skill triggers"
+  },
+  "ru": {
+   "one": "{n} навык",
+   "few": "{n} навыка",
+   "many": "{n} навыков"
+  }
+ },
+ "loss.systems": {
+  "en": {
+   "one": "{n} system",
+   "other": "{n} systems"
+  },
+  "ru": {
+   "one": "{n} система",
+   "few": "{n} системы",
+   "many": "{n} систем"
+  }
+ },
+ "loss.talents": {
+  "en": {
+   "one": "{n} talent",
+   "other": "{n} talents"
+  },
+  "ru": {
+   "one": "{n} талант",
+   "few": "{n} таланта",
+   "many": "{n} талантов"
+  }
+ },
+ "loss.weapons": {
+  "en": {
+   "one": "{n} weapon",
+   "other": "{n} weapons"
+  },
+  "ru": {
+   "one": "{n} единица оружия",
+   "few": "{n} единицы оружия",
+   "many": "{n} единиц оружия"
+  }
+ },
+ "page.description": {
+  "en": "Pilot and mech builder for the Lancer tabletop RPG. Data: massif-press/lancer-data.",
+  "ru": "Конструктор пилота и меха для настольной ролевой игры Lancer. Данные: massif-press/lancer-data."
+ },
+ "page.title": {
+  "en": "LANCER // REGISTRY — mech and pilot builder",
+  "ru": "LANCER // РЕЕСТР — конструктор меха и пилота"
+ },
+ "picker.allowed_size": {
+  "en": "Allowed size: {list}",
+  "ru": "Допустимый размер: {list}"
+ },
+ "picker.back": {
+  "en": "Back to the list",
+  "ru": "Назад к списку"
+ },
+ "picker.damage": {
+  "en": "DAMAGE",
+  "ru": "УРОН"
+ },
+ "picker.f.damage": {
+  "en": "DAMAGE:",
+  "ru": "УРОН:"
+ },
+ "picker.f.maker": {
+  "en": "MANUFACTURER:",
+  "ru": "ПРОИЗВОДИТЕЛЬ:"
+ },
+ "picker.f.mount": {
+  "en": "MOUNT:",
+  "ru": "КРЕПЛЕНИЕ:"
+ },
+ "picker.f.type": {
+  "en": "TYPE:",
+  "ru": "ТИП:"
+ },
+ "picker.gear.armor": {
+  "en": "ARMOR",
+  "ru": "БРОНЯ"
+ },
+ "picker.gear.edef": {
+  "en": "E-DEFENSE",
+  "ru": "Э-ЗАЩИТА"
+ },
+ "picker.gear.evasion": {
+  "en": "EVASION",
+  "ru": "УКЛОНЕНИЕ"
+ },
+ "picker.gear.hp": {
+  "en": "HP BONUS",
+  "ru": "БОНУС ОЗ"
+ },
+ "picker.gear.speed": {
+  "en": "SPEED",
+  "ru": "СКОРОСТЬ"
+ },
+ "picker.gear_stats": {
+  "en": "ARMOR {armor} · HP +{hp} · E-DEF {edef} · EVA {evasion} · SPD {speed}",
+  "ru": "БРОНЯ {armor} · ОЗ +{hp} · Э-ЗАЩ {edef} · УКЛ {evasion} · СКОР {speed}"
+ },
+ "picker.gear_title.Armor": {
+  "en": "Install armor",
+  "ru": "Установить броню"
+ },
+ "picker.gear_title.Gear": {
+  "en": "Install gear",
+  "ru": "Установить снаряжение"
+ },
+ "picker.gear_title.Weapon": {
+  "en": "Install weapon",
+  "ru": "Установить оружие"
+ },
+ "picker.install_anyway": {
+  "en": "Install anyway (license not unlocked)",
+  "ru": "Установить всё равно (лицензия не открыта)"
+ },
+ "picker.install_gear": {
+  "en": "Install this gear",
+  "ru": "Установить это снаряжение"
+ },
+ "picker.install_mod": {
+  "en": "Install this mod",
+  "ru": "Установить этот мод"
+ },
+ "picker.install_system": {
+  "en": "Install this system",
+  "ru": "Установить эту систему"
+ },
+ "picker.install_weapon": {
+  "en": "Install this weapon",
+  "ru": "Установить это оружие"
+ },
+ "picker.locked_divider": {
+  "en": "LICENSE NOT UNLOCKED",
+  "ru": "ЛИЦЕНЗИЯ НЕ ОТКРЫТА"
+ },
+ "picker.mod_compat": {
+  "en": "Compatible with type: {type}",
+  "ru": "Совместимо с типом: {type}"
+ },
+ "picker.mod_mounts": {
+  "en": "Mounts: {list}",
+  "ru": "Крепления: {list}"
+ },
+ "picker.mod_stats": {
+  "en": "Changes weapon stats:",
+  "ru": "Изменяет статы оружия:"
+ },
+ "picker.mod_title": {
+  "en": "Install mod · {name}",
+  "ru": "Установить мод · {name}"
+ },
+ "picker.no_gear": {
+  "en": "// no matching gear",
+  "ru": "// нет подходящего снаряжения"
+ },
+ "picker.no_mods": {
+  "en": "// no mods compatible with this weapon",
+  "ru": "// нет модов, совместимых с этим оружием"
+ },
+ "picker.no_systems": {
+  "en": "// no systems",
+  "ru": "// нет систем"
+ },
+ "picker.no_weapons": {
+  "en": "// no matching weapons",
+  "ru": "// нет подходящего оружия"
+ },
+ "picker.on_attack": {
+  "en": "On attack:",
+  "ru": "При атаке:"
+ },
+ "picker.on_attack_p": {
+  "en": "On attack ({name}):",
+  "ru": "При атаке ({name}):"
+ },
+ "picker.on_crit": {
+  "en": "On critical hit:",
+  "ru": "При критическом ударе:"
+ },
+ "picker.on_crit_p": {
+  "en": "On critical hit ({name}):",
+  "ru": "При критическом ударе ({name}):"
+ },
+ "picker.on_hit": {
+  "en": "On hit:",
+  "ru": "При попадании:"
+ },
+ "picker.on_hit_p": {
+  "en": "On hit ({name}):",
+  "ru": "При попадании ({name}):"
+ },
+ "picker.remove_mod": {
+  "en": "Remove this mod",
+  "ru": "Убрать этот мод"
+ },
+ "picker.remove_system": {
+  "en": "Remove this system",
+  "ru": "Убрать эту систему"
+ },
+ "picker.remove_weapon": {
+  "en": "Remove this weapon from the mount",
+  "ru": "Убрать это оружие с крепления"
+ },
+ "picker.restore_hint": {
+  "en": "This weapon is built into the frame — it can't be replaced, only put back.",
+  "ru": "Это оружие встроено в шасси — заменить его нельзя, можно только вернуть на место."
+ },
+ "picker.restore_title": {
+  "en": "Restore integrated weapon",
+  "ru": "Восстановить интегрированное оружие"
+ },
+ "picker.restore_weapon": {
+  "en": "Restore this weapon",
+  "ru": "Восстановить это оружие"
+ },
+ "picker.search.gear": {
+  "en": "Search gear",
+  "ru": "Поиск снаряжения"
+ },
+ "picker.search.gear_ph": {
+  "en": "search…",
+  "ru": "поиск…"
+ },
+ "picker.search.mods": {
+  "en": "Search mods",
+  "ru": "Поиск модов"
+ },
+ "picker.search.mods_ph": {
+  "en": "search mods…",
+  "ru": "поиск модов…"
+ },
+ "picker.search.systems": {
+  "en": "Search systems",
+  "ru": "Поиск систем"
+ },
+ "picker.search.systems_ph": {
+  "en": "search systems…",
+  "ru": "поиск систем…"
+ },
+ "picker.search.weapons": {
+  "en": "Search weapons",
+  "ru": "Поиск оружия"
+ },
+ "picker.search.weapons_ph": {
+  "en": "search weapons…",
+  "ru": "поиск оружия…"
+ },
+ "picker.stance": {
+  "en": "STANCE 1/{n}",
+  "ru": "СТОЙКА 1/{n}"
+ },
+ "picker.system_title": {
+  "en": "Add system",
+  "ru": "Добавить систему"
+ },
+ "picker.view.card": {
+  "en": "Separate card",
+  "ru": "Отдельная карточка"
+ },
+ "picker.view.inline": {
+  "en": "Expand in the list",
+  "ru": "Разворачивать в списке"
+ },
+ "picker.weapon_title": {
+  "en": "Install weapon · {mount}",
+  "ru": "Установить оружие · {mount}"
+ },
+ "pilot.bg_none": {
+  "en": "— not selected —",
+  "ru": "— не выбрано —"
+ },
+ "pilot.budget_body": {
+  "en": "At every LL you get <b>+1</b> point of skills, talents, mech skills and licenses. GRIT = LL ÷ 2 (rounded up) and is added to mech HP, saves and attacks. A CORE bonus is granted at every even level.<ul><li>Skill points: 4 + LL</li><li>Talent points: 3 + LL</li><li>Mech skills: 2 + LL</li><li>Licenses: LL</li><li>CORE bonuses: LL ÷ 2 (round down)</li></ul>",
+  "ru": "На каждом LL вы получаете: <b>+1</b> очко навыков, талантов, мех-навыков и лицензий. GRIT = LL ÷ 2 (округление вверх) и добавляется к HP меха, спасброску и атакам. CORE-бонус выдаётся на каждом чётном уровне.<ul><li>Очки навыков: 4 + LL</li><li>Очки талантов: 3 + LL</li><li>Мех-навыки: 2 + LL</li><li>Лицензии: LL</li><li>CORE-бонусы: LL ÷ 2 (вниз)</li></ul>"
+ },
+ "pilot.budget_q": {
+  "en": "How is the budget counted?",
+  "ru": "Как считается бюджет?"
+ },
+ "pilot.field.background": {
+  "en": "BACKGROUND",
+  "ru": "ПРОИСХОЖДЕНИЕ (BACKGROUND)"
+ },
+ "pilot.field.callsign": {
+  "en": "CALLSIGN",
+  "ru": "ПОЗЫВНОЙ"
+ },
+ "pilot.field.callsign_ph": {
+  "en": "e.g. RONIN",
+  "ru": "напр. RONIN"
+ },
+ "pilot.field.ll": {
+  "en": "LICENSE LEVEL — LL {ll}",
+  "ru": "ЛИЦЕНЗИОННЫЙ УРОВЕНЬ — LL {ll}"
+ },
+ "pilot.field.name": {
+  "en": "PILOT NAME",
+  "ru": "ИМЯ ПИЛОТА"
+ },
+ "pilot.field.name_ph": {
+  "en": "e.g. Kate Aoyama",
+  "ru": "напр. Кейт Аояма"
+ },
+ "pilot.gear_head": {
+  "en": "// PILOT GEAR",
+  "ru": "// СНАРЯЖЕНИЕ ПИЛОТА (GEAR LOADOUT)"
+ },
+ "pilot.gear_hint": {
+  "en": "Personal pilot gear — separate from the mech's equipment. 1 armor slot, 2 weapon slots, 3 slots for other gear.",
+  "ru": "Личное снаряжение пилота — отдельно от снаряжения меха. 1 слот брони, 2 слота оружия, 3 слота прочего снаряжения."
+ },
+ "pilot.gear_remove": {
+  "en": "Remove gear",
+  "ru": "Убрать снаряжение"
+ },
+ "pilot.lead": {
+  "en": "Basic pilot data. License Level (LL) sets the whole build budget — raise it to unlock more skills, talents and gear.",
+  "ru": "Базовые данные пилота. Лицензионный уровень (LL) задаёт весь бюджет построения — поднимайте его, чтобы открыть больше навыков, талантов и снаряжения."
+ },
+ "pilot.ll.max": {
+  "en": "LL12 · veteran",
+  "ru": "LL12 · ветеран"
+ },
+ "pilot.ll.min": {
+  "en": "LL0 · rookie",
+  "ru": "LL0 · новобранец"
+ },
+ "pilot.ll.valuetext": {
+  "en": "LL {ll}, GRIT +{grit}",
+  "ru": "LL {ll}, GRIT +{grit}"
+ },
+ "pilot.mark": {
+  "en": "// 01 · IDENTIFICATION",
+  "ru": "// 01 · ИДЕНТИФИКАЦИЯ"
+ },
+ "pilot.slot.armor": {
+  "en": "Armor",
+  "ru": "Броня"
+ },
+ "pilot.slot.gear": {
+  "en": "Gear",
+  "ru": "Снаряжение"
+ },
+ "pilot.slot.install": {
+  "en": "INSTALL {what}",
+  "ru": "УСТАНОВИТЬ {what}"
+ },
+ "pilot.slot.weapon": {
+  "en": "Weapon",
+  "ru": "Оружие"
+ },
+ "pilot.title": {
+  "en": "Pilot",
+  "ru": "Пилот"
+ },
+ "print.cores": {
+  "en": "CORE bonuses:",
+  "ru": "CORE-бонусы:"
+ },
+ "print.hase": {
+  "en": "Mech skills:",
+  "ru": "Мех-навыки:"
+ },
+ "print.mech": {
+  "en": "MECH — {name} ({source})",
+  "ru": "МЕХ — {name} ({source})"
+ },
+ "print.skills": {
+  "en": "Skills:",
+  "ru": "Навыки:"
+ },
+ "print.systems": {
+  "en": "Systems:",
+  "ru": "Системы:"
+ },
+ "print.talents": {
+  "en": "Talents:",
+  "ru": "Таланты:"
+ },
+ "print.weapons": {
+  "en": "Weapons:",
+  "ru": "Оружие:"
+ },
+ "save.failed_title": {
+  "en": "The browser won't let the build be saved (private mode or full storage). Export it with SAVE.",
+  "ru": "Браузер не даёт сохранить сборку (приватный режим или переполнено хранилище). Выгрузите её кнопкой СОХРАНИТЬ."
+ },
+ "save.hold_title": {
+  "en": "Some data did not load: {packs}. The saved build is untouched — reload the page to get it back in full. This session's changes can be exported with SAVE.",
+  "ru": "Не загрузились данные: {packs}. Сохранённая сборка не тронута — перезагрузите страницу, чтобы вернуть её целиком. Изменения этой сессии можно выгрузить кнопкой СОХРАНИТЬ."
+ },
+ "save.not_saving": {
+  "en": "NOT SAVING",
+  "ru": "НЕ СОХРАНЯЕТСЯ"
+ },
+ "save.saved": {
+  "en": "SAVED",
+  "ru": "СОХРАНЕНО"
+ },
+ "save.title": {
+  "en": "The build is saved automatically in this browser. SAVE exports it to a file.",
+  "ru": "Сборка автоматически сохраняется в этом браузере. Кнопка СОХРАНИТЬ выгружает её файлом."
+ },
+ "sheet.active": {
+  "en": "ACTIVE — {name}",
+  "ru": "АКТИВНО — {name}"
+ },
+ "sheet.cleared": {
+  "en": "CLEARANCE CONFIRMED — the build is within the rules",
+  "ru": "ДОПУСК ПОДТВЕРЖДЁН — сборка в пределах правил"
+ },
+ "sheet.core_bonus": {
+  "en": "CORE BONUS",
+  "ru": "CORE-БОНУС"
+ },
+ "sheet.core_system": {
+  "en": "CORE SYSTEM",
+  "ru": "CORE-СИСТЕМА"
+ },
+ "sheet.deviations": {
+  "en": "CLEARANCE: WITH DEVIATIONS ({n})",
+  "ru": "ДОПУСК: С ОТКЛОНЕНИЯМИ ({n})"
+ },
+ "sheet.dmg": {
+  "en": "DMG",
+  "ru": "УРОН"
+ },
+ "sheet.effect": {
+  "en": "EFFECT",
+  "ru": "ЭФФЕКТ"
+ },
+ "sheet.empty": {
+  "en": "// BUILD IS EMPTY<br>go back to the editor and start with the license level",
+  "ru": "// СБОРКА ПУСТА<br>вернитесь в редактор и начните с уровня лицензии"
+ },
+ "sheet.foreign": {
+  "en": "// SOMEONE ELSE'S BUILD — opened from a link and not saved in this browser",
+  "ru": "// ЧУЖАЯ СБОРКА — открыта по ссылке и не сохраняется в этом браузере"
+ },
+ "sheet.frame_line": {
+  "en": "FRAME <b>{name}</b> · {source} · {types}",
+  "ru": "ШАССИ <b>{name}</b> · {source} · {types}"
+ },
+ "sheet.from_mod": {
+  "en": "FROM MOD",
+  "ru": "ОТ МОДА"
+ },
+ "sheet.link.copied": {
+  "en": "Link copied. Whoever opens it sees only the sheet — their own build is not affected.",
+  "ru": "Ссылка скопирована. Открывший её увидит только лист — его собственная сборка не пострадает."
+ },
+ "sheet.link.failed_lead": {
+  "en": "The build could not be packed into an address. Export it to a file with the <b>⬇ SAVE</b> button.",
+  "ru": "Не получилось упаковать сборку в адрес. Выгрузите её файлом кнопкой <b>⬇ СОХРАНИТЬ</b>."
+ },
+ "sheet.link.failed_title": {
+  "en": "Could not build the link",
+  "ru": "Ссылку собрать не удалось"
+ },
+ "sheet.link.manual": {
+  "en": "Copy the link by hand. Whoever opens it sees only the sheet — their own build is not affected.",
+  "ru": "Скопируйте ссылку вручную. Открывший её увидит только лист — его собственная сборка не пострадает."
+ },
+ "sheet.link.title": {
+  "en": "Link to the sheet",
+  "ru": "Ссылка на лист"
+ },
+ "sheet.mod": {
+  "en": "MOD",
+  "ru": "МОД"
+ },
+ "sheet.modes": {
+  "en": "MODES · {n}",
+  "ru": "РЕЖИМЫ · {n}"
+ },
+ "sheet.mounted": {
+  "en": "ON A MOUNT",
+  "ru": "НА КРЕПЛЕНИИ"
+ },
+ "sheet.nav": {
+  "en": "Sheet sections",
+  "ru": "Разделы листа"
+ },
+ "sheet.no_frame": {
+  "en": "NO FRAME SELECTED",
+  "ru": "ШАССИ НЕ ВЫБРАНО"
+ },
+ "sheet.on_attack": {
+  "en": "ON ATTACK",
+  "ru": "ПРИ АТАКЕ"
+ },
+ "sheet.on_crit": {
+  "en": "ON CRIT",
+  "ru": "ПРИ КРИТЕ"
+ },
+ "sheet.on_hit": {
+  "en": "ON HIT",
+  "ru": "ПРИ ПОПАДАНИИ"
+ },
+ "sheet.passive": {
+  "en": "PASSIVE — {name}",
+  "ru": "ПАССИВНО — {name}"
+ },
+ "sheet.rank": {
+  "en": "RANK {rank}",
+  "ru": "РАНГ {rank}"
+ },
+ "sheet.rng": {
+  "en": "RNG",
+  "ru": "ДИСТ"
+ },
+ "sheet.sec.gear": {
+  "en": "PILOT GEAR",
+  "ru": "СНАРЯЖЕНИЕ ПИЛОТА"
+ },
+ "sheet.sec.systems": {
+  "en": "SYSTEMS",
+  "ru": "СИСТЕМЫ"
+ },
+ "sheet.sec.talents": {
+  "en": "TALENTS",
+  "ru": "ТАЛАНТЫ"
+ },
+ "sheet.sec.weapons": {
+  "en": "WEAPONS",
+  "ru": "ВООРУЖЕНИЕ"
+ },
+ "sheet.trigger": {
+  "en": "Trigger: {triggerHtml}",
+  "ru": "Триггер: {triggerHtml}"
+ },
+ "sheet.triggers": {
+  "en": "TRIGGERS",
+  "ru": "ТРИГГЕРЫ"
+ },
+ "skills.add_custom": {
+  "en": "CUSTOM SKILL",
+  "ru": "СВОЙ НАВЫК"
+ },
+ "skills.custom_tag": {
+  "en": "CUSTOM",
+  "ru": "СВОЙ"
+ },
+ "skills.delete_aria": {
+  "en": "Delete skill",
+  "ru": "Удалить навык"
+ },
+ "skills.edit_aria": {
+  "en": "Edit skill",
+  "ru": "Редактировать навык"
+ },
+ "skills.editor.create": {
+  "en": "CREATE",
+  "ru": "СОЗДАТЬ"
+ },
+ "skills.editor.desc": {
+  "en": "DESCRIPTION",
+  "ru": "ОПИСАНИЕ"
+ },
+ "skills.editor.desc_ph": {
+  "en": "What this skill does when it is used",
+  "ru": "Что делает этот навык, когда его применяют"
+ },
+ "skills.editor.edit_title": {
+  "en": "Edit custom skill",
+  "ru": "Редактировать свой навык"
+ },
+ "skills.editor.name": {
+  "en": "NAME",
+  "ru": "НАЗВАНИЕ"
+ },
+ "skills.editor.name_ph": {
+  "en": "e.g. “Hack reality”",
+  "ru": "например, «Взломать реальность»"
+ },
+ "skills.editor.new_title": {
+  "en": "New pilot skill",
+  "ru": "Новый навык пилота"
+ },
+ "skills.lead": {
+  "en": "Spread points across skill triggers. Each step gives +2 (max +6 per trigger). Spent {used} of {cap}.",
+  "ru": "Распределите очки между триггерами навыков. Каждый шаг даёт +2 (максимум +6 на триггер). Потрачено {used} из {cap}."
+ },
+ "skills.mark": {
+  "en": "// 02 · TRIGGERS",
+  "ru": "// 02 · ТРИГГЕРЫ"
+ },
+ "skills.minus": {
+  "en": "Remove a point: {name}",
+  "ru": "Убрать очко: {name}"
+ },
+ "skills.over": {
+  "en": "Skill budget exceeded by {n}. Lower the ranks.",
+  "ru": "Превышен бюджет навыков на {n}. Уменьшите ранги."
+ },
+ "skills.plus": {
+  "en": "Add a point: {name}",
+  "ru": "Добавить очко: {name}"
+ },
+ "skills.title": {
+  "en": "Pilot skills",
+  "ru": "Навыки пилота"
+ },
+ "summary.background": {
+  "en": "BACKGROUND",
+  "ru": "ПРОИСХОЖДЕНИЕ"
+ },
+ "summary.callsign": {
+  "en": "CALLSIGN",
+  "ru": "ПОЗЫВНОЙ"
+ },
+ "summary.cores": {
+  "en": "CORE BONUSES",
+  "ru": "CORE-БОНУСЫ"
+ },
+ "summary.export": {
+  "en": "SAVE TO FILE",
+  "ru": "СОХРАНИТЬ В ФАЙЛ"
+ },
+ "summary.frame": {
+  "en": "FRAME",
+  "ru": "ШАССИ"
+ },
+ "summary.hase": {
+  "en": "MECH SKILLS",
+  "ru": "МЕХ-НАВЫКИ"
+ },
+ "summary.lead": {
+  "en": "The full pilot and mech summary. Save the build to a file or print the sheet.",
+  "ru": "Полная сводка пилота и меха. Сохраните сборку в файл или распечатайте лист."
+ },
+ "summary.mark": {
+  "en": "// 09 · SUMMARY",
+  "ru": "// 09 · СВОДКА"
+ },
+ "summary.mech": {
+  "en": "MECH",
+  "ru": "МЕХ"
+ },
+ "summary.name": {
+  "en": "NAME",
+  "ru": "ИМЯ"
+ },
+ "summary.no_frame": {
+  "en": "// no frame selected",
+  "ru": "// шасси не выбрано"
+ },
+ "summary.no_systems": {
+  "en": "no systems",
+  "ru": "систем нет"
+ },
+ "summary.no_weapons": {
+  "en": "no weapons installed",
+  "ru": "оружие не установлено"
+ },
+ "summary.pilot": {
+  "en": "PILOT",
+  "ru": "ПИЛОТ"
+ },
+ "summary.print": {
+  "en": "PRINT",
+  "ru": "РАСПЕЧАТАТЬ"
+ },
+ "summary.skills": {
+  "en": "SKILLS",
+  "ru": "НАВЫКИ"
+ },
+ "summary.systems": {
+  "en": "SYSTEMS",
+  "ru": "СИСТЕМЫ"
+ },
+ "summary.talents": {
+  "en": "TALENTS",
+  "ru": "ТАЛАНТЫ"
+ },
+ "summary.title": {
+  "en": "Character sheet",
+  "ru": "Лист персонажа"
+ },
+ "summary.type": {
+  "en": "TYPE",
+  "ru": "ТИП"
+ },
+ "summary.weapons": {
+  "en": "WEAPONS",
+  "ru": "ОРУЖИЕ"
+ },
+ "swap.all": {
+  "en": "All weapons carry over:",
+  "ru": "Всё вооружение переносится:"
+ },
+ "swap.carry": {
+  "en": "Carry over what fits ({n})",
+  "ru": "Перенести совместимое ({n})"
+ },
+ "swap.lead": {
+  "en": "<b>{frame}</b> has a different set of mounts, so the weapons have to be rearranged. {tail}",
+  "ru": "У <b>{frame}</b> другой набор креплений, поэтому вооружение придётся переставить. {tail}"
+ },
+ "swap.no_mount": {
+  "en": "{name} — no matching mount",
+  "ru": "{name} — нет подходящего крепления"
+ },
+ "swap.none": {
+  "en": "Nothing can be carried over:",
+  "ru": "Перенести не получится ничего:"
+ },
+ "swap.some": {
+  "en": "Not everything carries over:",
+  "ru": "Переносится не всё:"
+ },
+ "swap.strip": {
+  "en": "Remove everything",
+  "ru": "Снять всё"
+ },
+ "swap.title": {
+  "en": "Changing frame",
+  "ru": "Смена шасси"
+ },
+ "tabs.core": {
+  "en": "CORE",
+  "ru": "CORE"
+ },
+ "tabs.frame": {
+  "en": "FRAME",
+  "ru": "ШАССИ"
+ },
+ "tabs.hase": {
+  "en": "MECH SKILLS",
+  "ru": "МЕХ-НАВЫКИ"
+ },
+ "tabs.licenses": {
+  "en": "LICENSES",
+  "ru": "ЛИЦЕНЗИИ"
+ },
+ "tabs.loadout": {
+  "en": "LOADOUT",
+  "ru": "ВООРУЖЕНИЕ"
+ },
+ "tabs.over": {
+  "en": "Over budget",
+  "ru": "Перебор бюджета"
+ },
+ "tabs.over_sr": {
+  "en": "over budget",
+  "ru": "перебор бюджета"
+ },
+ "tabs.pilot": {
+  "en": "PILOT",
+  "ru": "ПИЛОТ"
+ },
+ "tabs.skills": {
+  "en": "SKILLS",
+  "ru": "НАВЫКИ"
+ },
+ "tabs.spare": {
+  "en": "Points left to spend",
+  "ru": "Остались нераспределённые очки"
+ },
+ "tabs.spare_sr": {
+  "en": "points left",
+  "ru": "остались очки"
+ },
+ "tabs.summary": {
+  "en": "SUMMARY",
+  "ru": "ИТОГ"
+ },
+ "tabs.talents": {
+  "en": "TALENTS",
+  "ru": "ТАЛАНТЫ"
+ },
+ "talents.cap_exceeded": {
+  "en": "Rank {v} exceeds the limit for LL{ll} (max {cap})",
+  "ru": "Ранг {v} превышает лимит для LL{ll} (макс {cap})"
+ },
+ "talents.lead_max": {
+  "en": "Each talent rank costs 1 point (max rank 3). At LL{ll} ranks up to {cap} are available. Spent {used} of {total}.",
+  "ru": "Каждый ранг таланта стоит 1 очко (макс. ранг 3). На LL{ll} доступен ранг до {cap}. Потрачено {used} из {total}."
+ },
+ "talents.lead_more": {
+  "en": "Each talent rank costs 1 point (max rank 3). At LL{ll} ranks up to {cap} are available — rank {next} unlocks at LL{at}. Spent {used} of {total}.",
+  "ru": "Каждый ранг таланта стоит 1 очко (макс. ранг 3). На LL{ll} доступен ранг до {cap} — ранг {next} откроется на LL{at}. Потрачено {used} из {total}."
+ },
+ "talents.mark": {
+  "en": "// 03 · TRAINING",
+  "ru": "// 03 · ПОДГОТОВКА"
+ },
+ "talents.minus": {
+  "en": "Lower rank: {name}",
+  "ru": "Понизить ранг: {name}"
+ },
+ "talents.next_at": {
+  "en": "Rank {rank} available from LL{ll}",
+  "ru": "Ранг {rank} доступен с LL{ll}"
+ },
+ "talents.next_locked": {
+  "en": "Rank {rank} — from LL{ll}",
+  "ru": "Ранг {rank} — с LL{ll}"
+ },
+ "talents.over": {
+  "en": "Talent budget exceeded by {n}.",
+  "ru": "Превышен бюджет талантов на {n}."
+ },
+ "talents.plus": {
+  "en": "Raise rank: {name}",
+  "ru": "Повысить ранг: {name}"
+ },
+ "talents.rank_over_ll": {
+  "en": "Some talents have a rank above what LL{ll} allows — lower the rank or raise the pilot's LL.",
+  "ru": "Есть таланты с рангом выше допустимого для LL{ll} — понизьте ранг или повысьте LL пилота."
+ },
+ "talents.title": {
+  "en": "Talents",
+  "ru": "Таланты"
+ },
+ "talents.view.column": {
+  "en": "Single column",
+  "ru": "Одна колонка"
+ },
+ "talents.view.grid": {
+  "en": "Grid",
+  "ru": "Сетка"
+ },
+ "term.dmg.Burn": {
+  "en": "BURN",
+  "ru": "ОГОНЬ"
+ },
+ "term.dmg.Energy": {
+  "en": "ENERGY",
+  "ru": "ЭНЕРГ"
+ },
+ "term.dmg.Explosive": {
+  "en": "EXPLOSIVE",
+  "ru": "ВЗРЫВН"
+ },
+ "term.dmg.Heat": {
+  "en": "HEAT",
+  "ru": "ТЕПЛО"
+ },
+ "term.dmg.Kinetic": {
+  "en": "KINETIC",
+  "ru": "КИНЕТ"
+ },
+ "term.dmg.Variable": {
+  "en": "VARIABLE",
+  "ru": "ПЕРЕМ"
+ },
+ "term.rng.Blast": {
+  "en": "BLAST",
+  "ru": "ВЗРЫВ"
+ },
+ "term.rng.Burst": {
+  "en": "BURST",
+  "ru": "ОЧЕРЕДЬ"
+ },
+ "term.rng.Cone": {
+  "en": "CONE",
+  "ru": "КОНУС"
+ },
+ "term.rng.Line": {
+  "en": "LINE",
+  "ru": "ЛИНИЯ"
+ },
+ "term.rng.Range": {
+  "en": "RANGE",
+  "ru": "ДИСТ"
+ },
+ "term.rng.Threat": {
+  "en": "THREAT",
+  "ru": "УГРОЗА"
+ },
+ "term.stat.armor": {
+  "en": "ARMOR",
+  "ru": "БРОНЯ"
+ },
+ "term.stat.edef": {
+  "en": "E-DEF",
+  "ru": "Э-ЗАЩ"
+ },
+ "term.stat.evasion": {
+  "en": "EVASION",
+  "ru": "УКЛОН"
+ },
+ "term.stat.heatcap": {
+  "en": "HEAT",
+  "ru": "ТЕПЛО"
+ },
+ "term.stat.hp": {
+  "en": "HP",
+  "ru": "ОЗ"
+ },
+ "term.stat.repcap": {
+  "en": "REPAIR",
+  "ru": "РЕМОНТ"
+ },
+ "term.stat.save": {
+  "en": "SAVE",
+  "ru": "СПАС."
+ },
+ "term.stat.sensor_range": {
+  "en": "SENSORS",
+  "ru": "СЕНСОР"
+ },
+ "term.stat.size": {
+  "en": "SIZE",
+  "ru": "РАЗМЕР"
+ },
+ "term.stat.sp": {
+  "en": "SP",
+  "ru": "SP"
+ },
+ "term.stat.speed": {
+  "en": "SPEED",
+  "ru": "СКОР."
+ },
+ "term.stat.stress": {
+  "en": "STRESS",
+  "ru": "СТРЕСС"
+ },
+ "term.stat.structure": {
+  "en": "STRUCT.",
+  "ru": "СТРУКТ."
+ },
+ "term.stat.tech_attack": {
+  "en": "TECH ATK",
+  "ru": "ТЕХ-АТК"
+ },
+ "topbar.editor": {
+  "en": "EDITOR",
+  "ru": "РЕДАКТОР"
+ },
+ "topbar.export": {
+  "en": "SAVE",
+  "ru": "СОХРАНИТЬ"
+ },
+ "topbar.import": {
+  "en": "LOAD",
+  "ru": "ЗАГРУЗИТЬ"
+ },
+ "topbar.link": {
+  "en": "LINK",
+  "ru": "ССЫЛКА"
+ },
+ "topbar.more": {
+  "en": "More actions",
+  "ru": "Ещё действия"
+ },
+ "topbar.my_build": {
+  "en": "MY BUILD",
+  "ru": "МОЯ СБОРКА"
+ },
+ "topbar.print": {
+  "en": "PRINT",
+  "ru": "ПЕЧАТЬ"
+ },
+ "topbar.reset": {
+  "en": "RESET",
+  "ru": "СБРОС"
+ },
+ "topbar.sheet": {
+  "en": "SHEET",
+  "ru": "ЛИСТ"
+ },
+ "viol.cores": {
+  "en": "CORE bonuses over budget: {n} of {cap}",
+  "ru": "Перебор CORE-бонусов: {n} из {cap}"
+ },
+ "viol.frame_locked": {
+  "en": "Frame {name} — license not unlocked",
+  "ru": "Шасси {name} — лицензия не открыта"
+ },
+ "viol.hase": {
+  "en": "Mech skills over budget",
+  "ru": "Перебор мех-навыков"
+ },
+ "viol.item_locked": {
+  "en": "{name} — license not unlocked",
+  "ru": "{name} — лицензия не открыта"
+ },
+ "viol.licenses": {
+  "en": "Licenses over budget",
+  "ru": "Перебор лицензий"
+ },
+ "viol.over": {
+  "en": "{label}: {used} of {cap}",
+  "ru": "{label}: {used} из {cap}"
+ },
+ "viol.skills": {
+  "en": "Skills over budget",
+  "ru": "Перебор навыков"
+ },
+ "viol.sp": {
+  "en": "System points over budget: {used} of {cap} SP",
+  "ru": "Перебор системных очков: {used} из {cap} SP"
+ },
+ "viol.talent_rank": {
+  "en": "{name}: rank {rank} is above what LL{ll} allows",
+  "ru": "{name}: ранг {rank} выше доступного на LL{ll}"
+ },
+ "viol.talents": {
+  "en": "Talents over budget",
+  "ru": "Перебор талантов"
+ }
+}

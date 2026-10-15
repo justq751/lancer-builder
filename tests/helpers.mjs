@@ -64,3 +64,25 @@ export async function openTab(page, id) {
 }
 
 export const modal = page => page.locator("#modal.show");
+
+/**
+ * Sets the interface and/or data language through the language panel, the
+ * way a person would: ⋯ first on a narrow screen, then the language button,
+ * then the radio. Waits until the switch (which may refetch data) is done.
+ */
+export async function setLanguage(page, { ui, data } = {}) {
+  const more = page.locator("#t-more");
+  if (await more.isVisible()) await more.click();
+  await page.locator("#t-lang").click();
+  const panel = page.locator("#lang-panel");
+  await expect(panel).toBeVisible();
+  for (const [name, value] of [["ui-lang", ui], ["data-lang", data]]) {
+    if (!value) continue;
+    await panel.locator(`label:has(input[name="${name}"][value="${value}"])`).click();
+    await expect(panel.locator(`input[name="${name}"][value="${value}"]`)).toBeChecked();
+  }
+  await expect(panel.locator('fieldset[aria-busy="true"]')).toHaveCount(0);
+  if (ui) await expect(page.locator("html")).toHaveAttribute("lang", ui);
+  if (data) await expect.poll(() => page.evaluate(() => currentLang)).toBe(data);
+  await page.keyboard.press("Escape");
+}

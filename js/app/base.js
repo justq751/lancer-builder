@@ -32,7 +32,7 @@ function rebuildIndexes(){
     gear: byId(L.pilot_gear), bg: byId(L.backgrounds), mod: byId(L.mods || []),
   };
   TAGS = byId(L.tags || []);
-  TAG_PATTERNS = (L.tags || []).map(t => ({ id: t.id, re: tagTemplateToRegex(t.name) }));
+  TAG_PATTERNS = (L.tags || []).map(tg => ({ id: tg.id, re: tagTemplateToRegex(tg.name) }));
   migrateLicenseKeys();
   migrateWeaponSlots();
 }
@@ -52,13 +52,13 @@ function tagTemplateToRegex(tpl){
   const OPT = "\u0001", REQ = "\u0002";
   // "<space>{VAL}" -> optional numeric group (legacy data sometimes omits
   // the implicit "1", e.g. bare "Accurate" instead of "Accurate 1")
-  let t = String(tpl).replace(/\s\{VAL\}/g, OPT);
-  t = t.replace(/\{VAL\}/g, REQ); // any remaining {VAL} (e.g. "{VAL}/Round") stays mandatory
-  t = t.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
+  let src = String(tpl).replace(/\s\{VAL\}/g, OPT);
+  src = src.replace(/\{VAL\}/g, REQ); // any remaining {VAL} (e.g. "{VAL}/Round") stays mandatory
+  src = src.replace(/[.*+?^${}()|[\]\\/]/g, "\\$&");
   // value can be a plain number OR dice notation like "1d6+2"
-  t = t.split(OPT).join("(?:\\s+([\\w./+-]+))?");
-  t = t.split(REQ).join("([\\w./+-]+)");
-  return new RegExp("^" + t + "$", "i");
+  src = src.split(OPT).join("(?:\\s+([\\w./+-]+))?");
+  src = src.split(REQ).join("([\\w./+-]+)");
+  return new RegExp("^" + src + "$", "i");
 }
 
 /* Looks up the glossary entry for a rendered tag string (in whatever
@@ -70,11 +70,11 @@ function describeTag(displayTag){
   for(const {id, re} of TAG_PATTERNS){
     const m = String(displayTag).match(re);
     if(!m) continue;
-    const t = TAGS[id]; if(!t) continue;
+    const tag = TAGS[id]; if(!tag) continue;
     const val = m[1] || "1";
     return {
-      name: String(t.name).replace(/\{VAL\}/g, val),
-      description: String(t.description).replace(/\{VAL\}/g, val),
+      name: String(tag.name).replace(/\{VAL\}/g, val),
+      description: String(tag.description).replace(/\{VAL\}/g, val),
     };
   }
   return null;
@@ -90,14 +90,11 @@ const srcColor = s => SRC[s]||"var(--line-bright)";
    Returns "" if this frame has no known image (safe to check falsy). */
 const frameImageURL = f => (L.frame_images && L.frame_images[f.id]) || "";
 
-/* RU stat labels */
-const STAT_RU = {
-  hp:["ОЗ","Очки здоровья"], armor:["БРОНЯ","Armor"], structure:["СТРУКТ.","Structure"],
-  stress:["СТРЕСС","Reactor Stress"], heatcap:["ТЕПЛО","Heat Cap"], repcap:["РЕМОНТ","Repair Cap"],
-  evasion:["УКЛОН","Evasion"], edef:["Э-ЗАЩ","E-Defense"], speed:["СКОР.","Speed"],
-  sensor_range:["СЕНСОР","Sensors"], tech_attack:["ТЕХ-АТК","Tech Attack"], save:["СПАС.","Save"],
-  size:["РАЗМЕР","Size"], sp:["SP","System Points"],
-};
+/* Short stat label in the interface language (plain text). Where the data
+   has its own label (L.stat_labels — data language) callers try that first:
+   a game term with a dictionary in the data follows the data (ADR 0005). */
+// i18n-dynamic: term.stat.hp, term.stat.armor, term.stat.structure, term.stat.stress, term.stat.heatcap, term.stat.repcap, term.stat.evasion, term.stat.edef, term.stat.speed, term.stat.sensor_range, term.stat.tech_attack, term.stat.save, term.stat.size, term.stat.sp
+const statShort = k => tText(`term.stat.${k}`);
 /* Stat glossary — from massif-press/lancer-data/lib/glossary.json (data/glossary.json),
    translated via locales/<lang>/glossary.json like everything else. Powers
    the hover-tooltip icon next to each stat label (compcon.app-style). */
@@ -128,15 +125,15 @@ const STAT_ICONS = {
 function statIconHTML(k, size){
   const g = L && L.glossary && L.glossary[k];
   const cls = size ? `stattip ${size}` : "stattip";
-  if(!g) return `<span class="${cls}" tabindex="0" role="button" aria-label="Справка">ⓘ</span>`;
+  if(!g) return `<span class="${cls}" tabindex="0" role="button" aria-label="${t("a11y.help")}">ⓘ</span>`;
   const icon = STAT_ICONS[k] ? `<img class="stattip-icon" src="${STAT_ICONS[k]}" alt="">` : "ⓘ";
-  return `<span class="${cls}" tabindex="0" role="button" aria-label="${esc(g.name)}: справка"
+  return `<span class="${cls}" tabindex="0" role="button" aria-label="${t("a11y.help_for", {name:g.name})}"
     data-tipname="${esc(g.name)}" data-tipdesc="${esc(g.description)}">${icon}</span>`;
 }
 function statKeyHTML(k){
   const g = L && L.glossary && L.glossary[k];
-  if(!g) return STAT_RU[k][0];
-  return `${STAT_RU[k][0]}${statIconHTML(k)}`;
+  if(!g) return esc(statShort(k));
+  return `${esc(statShort(k))}${statIconHTML(k)}`;
 }
 /* Delegated (registered once, survives re-renders) — shows the stat
    glossary tooltip at a fixed screen position computed from the hovered

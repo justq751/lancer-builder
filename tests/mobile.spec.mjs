@@ -23,8 +23,10 @@ test("tab content starts right under the header, the dock holds tabs and budget"
   expect(errors).toEqual([]);
 });
 
-test("every tab fits the phone width — nothing scrolls sideways", async ({ page }) => {
-  const errors = await openApp(page, { build: FULL_BUILD });
+// Both interface languages: English labels are not the Russian ones' length.
+for (const [lang, opts] of [["ru", {}], ["en", { lang: "en", storage: { lancer_ui_lang: "en" } }]])
+test(`every tab fits the phone width — nothing scrolls sideways (${lang})`, async ({ page }) => {
+  const errors = await openApp(page, { build: FULL_BUILD, ...opts });
   for (const id of TABS) {
     await openTab(page, id);
     // The active tab is scrolled into the dock's row, never left off-screen.

@@ -34,42 +34,42 @@ function renderHUD(){
         const base = d.frame && d.frame.stats ? d.frame.stats[k] : null;
         const hl = base!=null && d.mech[k]!==base ? "hl" : "";
         return `<div class="stattile compact ${hl}">${statIconHTML(k,"lg")}
-          <span class="col"><span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span>
+          <span class="col"><span class="k">${esc(L.stat_labels?.[k]||statShort(k))}</span>
           <span class="v">${d.mech[k]}</span></span></div>`;
       }).join("")}
     </div>`
-    : `<div class="nomech">// ШАССИ НЕ ВЫБРАНО<br>откройте вкладку ШАССИ</div>`;
+    : `<div class="nomech">${t("hud.no_frame")}</div>`;
 
   // Narrow screens only (the sheet's header): the sheet covers the dock, so
   // it carries its own way out besides Esc and a tap outside.
   $("#hud").innerHTML = `
   <div class="hudsheet-hd">
-    <button class="toolbtn" popovertarget="hud" popovertargetaction="hide">✕ ЗАКРЫТЬ</button>
+    <button class="toolbtn" popovertarget="hud" popovertargetaction="hide">✕ ${t("common.close")}</button>
   </div>
   <div class="card">
-    <div class="head"><span class="lbl"><b>//</b> РЕЕСТР ПИЛОТА</span></div>
+    <div class="head"><span class="lbl"><b>//</b> ${t("hud.registry")}</span></div>
     <div class="body">
-      <div class="pid">${esc(p.callsign||"БЕЗЫМЯННЫЙ")}
-        <small>${esc(p.name||"имя не задано")}${p.background?" · "+esc(M.bg[p.background]?.name||""):""}</small></div>
+      <div class="pid">${esc(p.callsign||tText("hud.no_callsign"))}
+        <small>${esc(p.name||tText("hud.no_name"))}${p.background?" · "+esc(M.bg[p.background]?.name||""):""}</small></div>
       <div class="ll">
         <span class="big">LL${d.ll}</span>
-        <span class="meta">GRIT +${d.grit}<br>лицензионный уровень</span>
+        <span class="meta">GRIT +${d.grit}<br>${t("hud.ll_label")}</span>
       </div>
     </div>
   </div>
   <div class="card">
-    <div class="head"><span class="lbl"><b>//</b> БЮДЖЕТ ПОСТРОЕНИЯ</span></div>
+    <div class="head"><span class="lbl"><b>//</b> ${t("hud.budget")}</span></div>
     <div class="body"><div class="budget">
-      ${bar(d.b.skill,"НАВЫКИ")}
-      ${bar(d.b.talent,"ТАЛАНТЫ")}
-      ${bar(d.b.hase,"МЕХ-НАВЫКИ")}
-      ${bar(d.b.license,"ЛИЦЕНЗИИ")}
-      ${bar(d.b.core,"CORE-БОНУСЫ")}
-      ${d.mech ? bar(d.sp,"СИСТ. ОЧКИ (SP)") : ""}
+      ${bar(d.b.skill,t("budget.skills"))}
+      ${bar(d.b.talent,t("budget.talents"))}
+      ${bar(d.b.hase,t("budget.hase"))}
+      ${bar(d.b.license,t("budget.licenses"))}
+      ${bar(d.b.core,t("budget.cores"))}
+      ${d.mech ? bar(d.sp,t("budget.sp")) : ""}
     </div></div>
   </div>
   <div class="card">
-    <div class="head"><span class="lbl"><b>//</b> СВОДКА МЕХА</span>
+    <div class="head"><span class="lbl"><b>//</b> ${t("hud.mech")}</span>
       ${d.frame?`<span class="lbl" style="color:${srcColor(d.frame.source)}">${esc(dispName(d.frame))}</span>`:""}</div>
     <div class="body">${stats}</div>
   </div>`;
@@ -82,34 +82,35 @@ function renderHUD(){
    fill that turns amber over the cap. The whole line is one button: it opens
    the full HUD as a sheet. */
 function renderLedger(d){
-  const cell=(k,b,full)=>{
+  // i18n-dynamic: ledger.k.skills, ledger.k.talents, ledger.k.hase, ledger.k.licenses, ledger.k.cores, ledger.k.sp, ledger.full.skills, ledger.full.talents, ledger.full.hase, ledger.full.licenses, ledger.full.cores, ledger.full.sp
+  const cell=(id,b)=>{
+    const k=t(`ledger.k.${id}`), full=tText(`ledger.full.${id}`);
     if(!b) return `<span class="lg none"><span class="k" aria-hidden="true">${k}</span><span class="v" aria-hidden="true">—</span><i></i>
-      <span class="sr">${full}: шасси не выбрано</span></span>`;
+      <span class="sr">${t("ledger.no_frame", {what:full})}</span></span>`;
     const over=b.used>b.cap;
     const pct=Math.min(100,b.cap?b.used/b.cap*100:0);
     const used=+b.used.toFixed(1);
     return `<span class="lg ${over?'over':''}"><span class="k" aria-hidden="true">${k}</span>
       <span class="v" aria-hidden="true">${used}/${b.cap}</span><i style="width:${pct}%"></i>
-      <span class="sr">${full}: ${used} из ${b.cap}${over?", перебор":""}.</span></span>`;
+      <span class="sr">${t(over?"ledger.cell_over":"ledger.cell", {what:full, used, cap:b.cap})}</span></span>`; // i18n-dynamic: ledger.cell_over, ledger.cell
   };
   $("#ledger").innerHTML = `
     <span class="lg ll"><span class="k" aria-hidden="true">LL</span><span class="v" aria-hidden="true">${d.ll}</span>
-      <span class="sr">Лицензионный уровень ${d.ll}.</span></span>
-    ${cell("НАВ",d.b.skill,"Навыки")}
-    ${cell("ТАЛ",d.b.talent,"Таланты")}
-    ${cell("HASE",d.b.hase,"Мех-навыки")}
-    ${cell("ЛИЦ",d.b.license,"Лицензии")}
-    ${cell("CORE",d.b.core,"CORE-бонусы")}
-    ${cell("SP",d.mech?d.sp:null,"Очки систем")}
+      <span class="sr">${t("ledger.ll", {ll:d.ll})}</span></span>
+    ${cell("skills",d.b.skill)}
+    ${cell("talents",d.b.talent)}
+    ${cell("hase",d.b.hase)}
+    ${cell("licenses",d.b.license)}
+    ${cell("cores",d.b.core)}
+    ${cell("sp",d.mech?d.sp:null)}
     <span class="chev" aria-hidden="true"></span>
-    <span class="sr">Открыть реестр пилота</span>`;
+    <span class="sr">${t("ledger.open")}</span>`;
 }
 
 /* ============ TAB BAR ============ */
-const TABS=[
-  ["pilot","ПИЛОТ"],["skills","НАВЫКИ"],["talents","ТАЛАНТЫ"],["hase","МЕХ-НАВЫКИ"],
-  ["licenses","ЛИЦЕНЗИИ"],["frame","ШАССИ"],["loadout","ВООРУЖЕНИЕ"],["core","CORE"],["summary","ИТОГ"]
-];
+// Tab ids, in order; each tab's name is the key tabs.<id>.
+// i18n-dynamic: tabs.pilot, tabs.skills, tabs.talents, tabs.hase, tabs.licenses, tabs.frame, tabs.loadout, tabs.core, tabs.summary
+const TABS=["pilot","skills","talents","hase","licenses","frame","loadout","core","summary"];
 function tabWarn(id){
   const d=derived();
   if(id==="skills")   return d.b.skill.used>d.b.skill.cap;
@@ -137,15 +138,16 @@ function tabSpare(id){
   return false;
 }
 function renderTabBar(){
-  $("#tabs").innerHTML = TABS.map(([id,nm],i)=>{
+  $("#tabs").innerHTML = TABS.map((id,i)=>{
+    const nm=t(`tabs.${id}`);
     const warn=tabWarn(id);
     const spare=!warn && tabSpare(id);
     const sel=activeTab===id;
     // The dot is never colour alone: it carries a title and an accessible
     // name, because "amber vs teal" is not a distinction a screen reader or
     // a colour-blind player can make.
-    const dot = warn ? `<span class="dot warn" title="Перебор бюджета"><span class="sr">перебор бюджета</span></span>`
-              : spare ? `<span class="dot" title="Остались нераспределённые очки"><span class="sr">остались очки</span></span>`
+    const dot = warn ? `<span class="dot warn" title="${t("tabs.over")}"><span class="sr">${t("tabs.over_sr")}</span></span>`
+              : spare ? `<span class="dot" title="${t("tabs.spare")}"><span class="sr">${t("tabs.spare_sr")}</span></span>`
               : "";
     return `<button class="tab ${sel?'active':''}" data-tab="${id}" role="tab"
       aria-selected="${sel}" aria-controls="tab" id="tab-btn-${id}" tabindex="${sel?0:-1}">

@@ -6,7 +6,7 @@
 const shDmg = w => (w.damage||[]).map(x=>`${x.val} ${trTag(x.type)}`).join(" + ");
 const shRng = w => (w.range||[]).map(x=>`${tr(x.type)} ${x.val}`).join(" · ");
 const shTags = tags => (tags||[]).length
-  ? `<div class="row">${tags.map(t=>`<span class="tag">${esc(trTag(t))}</span>`).join("")}</div>` : "";
+  ? `<div class="row">${tags.map(tg=>`<span class="tag">${esc(trTag(tg))}</span>`).join("")}</div>` : "";
 function shEff(label, html){
   return html ? `<div class="eff"><b>${label}</b>${rich(html)}</div>` : "";
 }
@@ -17,29 +17,30 @@ function shKey(k, v){ return `<span class="keystat"><span class="k">${k}</span>$
    simply where it finally gets said out loud. */
 function buildViolations(){
   const d=derived(), out=[];
-  const over=(b,label)=>{ if(b.used>b.cap) out.push(`${label}: ${(+b.used.toFixed(1))} из ${b.cap}`); };
-  over(d.b.skill,"Перебор навыков");
-  over(d.b.talent,"Перебор талантов");
-  over(d.b.hase,"Перебор мех-навыков");
-  over(d.b.license,"Перебор лицензий");
+  // Plain text (tText): the list esc()es each line itself.
+  const over=(b,label)=>{ if(b.used>b.cap) out.push(tText("viol.over", {label, used:+b.used.toFixed(1), cap:b.cap})); };
+  over(d.b.skill,tText("viol.skills"));
+  over(d.b.talent,tText("viol.talents"));
+  over(d.b.hase,tText("viol.hase"));
+  over(d.b.license,tText("viol.licenses"));
   if(d.b.core.cap>0 && state.cores.length>d.b.core.cap)
-    out.push(`Перебор CORE-бонусов: ${state.cores.length} из ${d.b.core.cap}`);
+    out.push(tText("viol.cores", {n:state.cores.length, cap:d.b.core.cap}));
   if(d.mech && d.sp.used>d.sp.cap)
-    out.push(`Перебор системных очков: ${d.sp.used} из ${d.sp.cap} SP`);
+    out.push(tText("viol.sp", {used:d.sp.used, cap:d.sp.cap}));
   const cap=talentRankCap(d.ll);
   Object.entries(state.talents).forEach(([id,v])=>{
-    if(v>cap && M.talent[id]) out.push(`${M.talent[id].name}: ранг ${["I","II","III"][v-1]} выше доступного на LL${d.ll}`);
+    if(v>cap && M.talent[id]) out.push(tText("viol.talent_rank", {name:M.talent[id].name, rank:["I","II","III"][v-1], ll:d.ll}));
   });
-  if(d.frame && !frameUnlocked(d.frame)) out.push(`Шасси ${dispName(d.frame)} — лицензия не открыта`);
+  if(d.frame && !frameUnlocked(d.frame)) out.push(tText("viol.frame_locked", {name:dispName(d.frame)}));
   (state.mech.mounts||[]).forEach(mt=>(mt.items||[]).forEach(s=>{
     const w=M.weapon[s.id];
-    if(w && !unlocked(w)) out.push(`${w.name} — лицензия не открыта`);
+    if(w && !unlocked(w)) out.push(tText("viol.item_locked", {name:w.name}));
     const md=s.mod&&M.mod[s.mod];
-    if(md && !unlocked(md)) out.push(`${md.name} — лицензия не открыта`);
+    if(md && !unlocked(md)) out.push(tText("viol.item_locked", {name:md.name}));
   }));
   (state.mech.systems||[]).forEach(id=>{
     const sy=M.system[id];
-    if(sy && !unlocked(sy)) out.push(`${sy.name} — лицензия не открыта`);
+    if(sy && !unlocked(sy)) out.push(tText("viol.item_locked", {name:sy.name}));
   });
   return out;
 }
@@ -49,7 +50,7 @@ function statStripHTML(d){
   const cells=SHEET_STATS.map(k=>{
     const base=d.frame&&d.frame.stats?d.frame.stats[k]:null;
     const up = base!=null && d.mech[k]!==base;
-    return `<div class="cell ${up?"up":""}"><span class="k">${esc(L.stat_labels?.[k]||STAT_RU[k][0])}</span>
+    return `<div class="cell ${up?"up":""}"><span class="k">${esc(L.stat_labels?.[k]||statShort(k))}</span>
       <span class="v">${esc(String(d.mech[k]))}</span></div>`;
   }).join("");
   const sp=`<div class="cell"><span class="k">SP</span><span class="v">${d.sp.used}/${d.sp.cap}</span></div>`;
@@ -68,7 +69,7 @@ function profActionHTML(a){
     : "";
   const head=[tr(a.activation||""), freq].filter(Boolean).join(" · ").toUpperCase();
   return `<div class="eff"><b>${esc(head)}${a.name?" — "+esc(a.name):""}</b>
-    ${a.trigger?`<span class="trig">Триггер: ${rich(a.trigger)}</span>`:""}${rich(a.detail||"")}</div>`;
+    ${a.trigger?`<span class="trig">${t("sheet.trigger", {triggerHtml:rich(a.trigger)})}</span>`:""}${rich(a.detail||"")}</div>`;
 }
 /* Multi-stage weapons — stances, charge levels, firing modes — carry their
    real numbers per profile, not on the weapon. The editor shows one at a time
@@ -80,19 +81,19 @@ function profilesHTML(w){
   const profs=w.profiles||[];
   if(!profs.length) return "";
   return `<div class="profs">
-    <div class="profs-hd">РЕЖИМЫ · ${profs.length}</div>
+    <div class="profs-hd">${t("sheet.modes", {n:profs.length})}</div>
     ${profs.map(p=>`<div class="prof">
       <div class="prof-hd">
         <span class="pname">${esc(p.name)}</span>
-        ${(p.damage&&p.damage.length)?shKey("УРОН",profDmgStr(p)):""}
-        ${(p.range&&p.range.length)?shKey("ДИСТ",profRngStr(p)):""}
+        ${(p.damage&&p.damage.length)?shKey(t("sheet.dmg"),profDmgStr(p)):""}
+        ${(p.range&&p.range.length)?shKey(t("sheet.rng"),profRngStr(p)):""}
       </div>
       ${shTags(p.tags)}
       ${p.effect?`<div class="eff">${rich(p.effect)}</div>`:""}
       ${(p.actions||[]).map(profActionHTML).join("")}
-      ${p.on_attack?shEff("ПРИ АТАКЕ", onHitText(p.on_attack)):""}
-      ${p.on_hit?shEff("ПРИ ПОПАДАНИИ", onHitText(p.on_hit)):""}
-      ${p.on_crit?shEff("ПРИ КРИТЕ", onHitText(p.on_crit)):""}
+      ${p.on_attack?shEff(t("sheet.on_attack"), onHitText(p.on_attack)):""}
+      ${p.on_hit?shEff(t("sheet.on_hit"), onHitText(p.on_hit)):""}
+      ${p.on_crit?shEff(t("sheet.on_crit"), onHitText(p.on_crit)):""}
     </div>`).join("")}
   </div>`;
 }
@@ -122,23 +123,23 @@ function deckWeaponCardHTML(w, mountType, mod){
       <span class="slot">${esc(tr(mountType))}${lk?" · 🔒":""}</span>
     </div>
     <div class="keyline">
-      ${dmg?shKey("УРОН",dmg):""}
-      ${rng?shKey("ДИСТ",rng):""}
-      ${modDmg?shKey("ОТ МОДА",'+'+modDmg):""}
-      ${modRng?shKey("ОТ МОДА",'+'+modRng):""}
+      ${dmg?shKey(t("sheet.dmg"),dmg):""}
+      ${rng?shKey(t("sheet.rng"),rng):""}
+      ${modDmg?shKey(t("sheet.from_mod"),'+'+modDmg):""}
+      ${modRng?shKey(t("sheet.from_mod"),'+'+modRng):""}
       ${w.sp?shKey("SP",w.sp):""}
     </div>
     <div class="slot">${esc(tr(w.mount))} · ${esc(tr(w.type))}</div>
     ${shTags(hasProfs?(eff.tags||[]):weaponDisplayTags(eff,0))}
-    ${shEff("ЭФФЕКТ", w.effect)}
-    ${shEff("ПРИ АТАКЕ", w.on_attack)}
-    ${shEff("ПРИ ПОПАДАНИИ", w.on_hit)}
-    ${shEff("ПРИ КРИТЕ", w.on_crit)}
+    ${shEff(t("sheet.effect"), w.effect)}
+    ${shEff(t("sheet.on_attack"), w.on_attack)}
+    ${shEff(t("sheet.on_hit"), w.on_hit)}
+    ${shEff(t("sheet.on_crit"), w.on_crit)}
     ${profilesHTML(w)}
     ${mod?`<div class="sub">
       <div class="hd"><span class="nm" style="font-size:16.5px">+ ${esc(mod.name)}</span>
-        <span class="slot">МОД${mod.sp?" · SP "+mod.sp:""}</span></div>
-      ${shEff("ЭФФЕКТ", mod.effect)}</div>`:""}
+        <span class="slot">${t("sheet.mod")}${mod.sp?" · SP "+mod.sp:""}</span></div>
+      ${shEff(t("sheet.effect"), mod.effect)}</div>`:""}
   </article>`;
 }
 function deckSystemCardHTML(sy){
@@ -151,27 +152,27 @@ function deckSystemCardHTML(sy){
     </div>
     <div class="keyline">${sy.sp?shKey("SP",sy.sp):""}</div>
     ${shTags(sy.tags)}
-    ${shEff("ЭФФЕКТ", sy.effect)}
+    ${shEff(t("sheet.effect"), sy.effect)}
   </article>`;
 }
 function coreSystemCardHTML(frame){
   const cs=frame.core_system; if(!cs) return "";
   return `<article class="dcard">
     <div class="src" style="background:${srcColor(frame.source)}"></div>
-    <div class="hd"><span class="nm">${esc(cs.name)}</span><span class="slot">CORE-СИСТЕМА</span></div>
+    <div class="hd"><span class="nm">${esc(cs.name)}</span><span class="slot">${t("sheet.core_system")}</span></div>
     ${shTags(cs.tags)}
-    ${cs.passive_name?`<div class="eff"><b>ПАССИВНО — ${esc(cs.passive_name)}</b>${rich(cs.passive_effect)}</div>`:""}
-    ${cs.active_name?`<div class="eff"><b>АКТИВНО — ${esc(cs.active_name)}</b>${rich(cs.active_effect)}</div>`:""}
-    ${(!cs.active_name&&cs.effect)?shEff("ЭФФЕКТ",cs.effect):""}
+    ${cs.passive_name?`<div class="eff"><b>${t("sheet.passive", {name:cs.passive_name})}</b>${rich(cs.passive_effect)}</div>`:""}
+    ${cs.active_name?`<div class="eff"><b>${t("sheet.active", {name:cs.active_name})}</b>${rich(cs.active_effect)}</div>`:""}
+    ${(!cs.active_name&&cs.effect)?shEff(t("sheet.effect"),cs.effect):""}
   </article>`;
 }
 function talentCardHTML(id, rank){
-  const t=M.talent[id]; if(!t) return "";
-  const ranks=(t.ranks||[]).slice(0,rank);
+  const tal=M.talent[id]; if(!tal) return "";
+  const ranks=(tal.ranks||[]).slice(0,rank);
   return `<article class="dcard">
     <div class="src" style="background:var(--accent)"></div>
-    <div class="hd"><span class="nm">${esc(t.name)}</span>
-      <span class="slot">РАНГ ${["I","II","III"][rank-1]||rank}</span></div>
+    <div class="hd"><span class="nm">${esc(tal.name)}</span>
+      <span class="slot">${t("sheet.rank", {rank:["I","II","III"][rank-1]||rank})}</span></div>
     ${ranks.map((r,i)=>`<div class="eff"><b>${["I","II","III"][i]} — ${esc(r.name)}</b>${rich(r.description)}</div>`).join("")}
   </article>`;
 }
@@ -179,9 +180,9 @@ function coreBonusCardHTML(id){
   const cb=M.core[id]; if(!cb) return "";
   return `<article class="dcard">
     <div class="src" style="background:${srcColor(cb.source)}"></div>
-    <div class="hd"><span class="nm">${esc(cb.name)}</span><span class="slot">CORE-БОНУС</span></div>
-    ${shEff("ЭФФЕКТ", cb.effect)}
-    ${shEff("НА КРЕПЛЕНИИ", cb.mounted_effect)}
+    <div class="hd"><span class="nm">${esc(cb.name)}</span><span class="slot">${t("sheet.core_bonus")}</span></div>
+    ${shEff(t("sheet.effect"), cb.effect)}
+    ${shEff(t("sheet.mounted"), cb.mounted_effect)}
   </article>`;
 }
 function gearCardHTML(id){
@@ -190,9 +191,9 @@ function gearCardHTML(id){
   return `<article class="dcard">
     <div class="src" style="background:${srcColor(g.source||"GMS")}"></div>
     <div class="hd"><span class="nm">${esc(g.name)}</span><span class="slot">${esc(tr(g.type||""))}</span></div>
-    <div class="keyline">${stats}${g.damage&&g.damage.length?shKey("УРОН",shDmg(g)):""}${g.range&&g.range.length?shKey("ДИСТ",shRng(g)):""}</div>
+    <div class="keyline">${stats}${g.damage&&g.damage.length?shKey(t("sheet.dmg"),shDmg(g)):""}${g.range&&g.range.length?shKey(t("sheet.rng"),shRng(g)):""}</div>
     ${shTags(g.tags)}
-    ${shEff("ЭФФЕКТ", g.effect)}
+    ${shEff(t("sheet.effect"), g.effect)}
   </article>`;
 }
 function deckSection(id, title, cards){
@@ -214,9 +215,9 @@ function deckSection(id, title, cards){
 const SHEETBAR_STATS=["hp","armor","evasion","edef","heatcap","speed"];
 function sheetBarHTML(d, p, sections){
   const stats = d.mech ? SHEETBAR_STATS.map(k=>
-    `<span class="sb-stat"><span class="k">${esc(STAT_RU[k][0])}</span><span class="v">${esc(String(d.mech[k]))}</span></span>`).join("") : "";
-  return `<nav class="sheetbar" aria-label="Разделы листа">
-    <div class="sb-id" aria-hidden="true"><span class="cs">${esc(p.callsign||"БЕЗЫМЯННЫЙ")}</span>${stats}</div>
+    `<span class="sb-stat"><span class="k">${esc(statShort(k))}</span><span class="v">${esc(String(d.mech[k]))}</span></span>`).join("") : "";
+  return `<nav class="sheetbar" aria-label="${t("sheet.nav")}">
+    <div class="sb-id" aria-hidden="true"><span class="cs">${esc(p.callsign||tText("hud.no_callsign"))}</span>${stats}</div>
     <div class="sb-nav">${sections.map(s=>`<a href="#sh-${s.id}">${s.title}<span class="n">${s.n}</span></a>`).join("")}</div>
   </nav>`;
 }
@@ -254,25 +255,25 @@ function renderSheet(){
   // track between missions, not facts you only mention when non-empty.
   const pilotStrip=`<div class="statstrip pilot">
     ${HASE.map(h=>`<div class="cell ${state.hase[h.k]?"up":""}">
-      <span class="k">${esc(h.ru)}</span><span class="v">${state.hase[h.k]}</span></div>`).join("")}
+      <span class="k">${esc(haseLabel(h.k,"name"))}</span><span class="v">${state.hase[h.k]}</span></div>`).join("")}
   </div>`;
 
   const head=`
-    ${sheetSource==="shared"?`<div class="foreign">// ЧУЖАЯ СБОРКА — открыта по ссылке и не сохраняется в этом браузере</div>`:""}
+    ${sheetSource==="shared"?`<div class="foreign">${t("sheet.foreign")}</div>`:""}
     <div class="dossier">
       <h1 class="dossier-id">
-        <span class="cs">${esc(p.callsign||"БЕЗЫМЯННЫЙ")}</span>
-        <span class="nm">${esc(p.name||"имя не задано")}${bg?" · "+esc(bg.name):""}</span>
+        <span class="cs">${esc(p.callsign||tText("hud.no_callsign"))}</span>
+        <span class="nm">${esc(p.name||tText("hud.no_name"))}${bg?" · "+esc(bg.name):""}</span>
         <span class="ll">LL${d.ll} · GRIT +${d.grit}</span>
       </h1>
       ${pilotStrip}
-      ${skillLines.length?`<div class="dossier-line"><span class="k">ТРИГГЕРЫ</span>${skillLines.join(" · ")}</div>`:""}
-      ${d.frame?`<div class="dossier-frame">ШАССИ <b>${esc(dispName(d.frame))}</b> · ${esc(SRC_NAME[d.frame.source]||d.frame.source)} · ${d.frame.mechtype.map(tr).join(" / ")}</div>
-        ${statStripHTML(d)}`:`<div class="dossier-frame">ШАССИ НЕ ВЫБРАНО</div>`}
+      ${skillLines.length?`<div class="dossier-line"><span class="k">${t("sheet.triggers")}</span>${skillLines.join(" · ")}</div>`:""}
+      ${d.frame?`<div class="dossier-frame">${t("sheet.frame_line", {name:dispName(d.frame), source:SRC_NAME[d.frame.source]||d.frame.source, types:d.frame.mechtype.map(tr).join(" / ")})}</div>
+        ${statStripHTML(d)}`:`<div class="dossier-frame">${t("sheet.no_frame")}</div>`}
       <div class="stamp ${viol.length?"dev":""}">
         <span>${viol.length?"⚠":"✓"}</span>
-        <div class="body">${viol.length?`ДОПУСК: С ОТКЛОНЕНИЯМИ (${viol.length})
-          <ul>${viol.map(v=>`<li>${esc(v)}</li>`).join("")}</ul>`:"ДОПУСК ПОДТВЕРЖДЁН — сборка в пределах правил"}</div>
+        <div class="body">${viol.length?`${t("sheet.deviations", {n:viol.length})}
+          <ul>${viol.map(v=>`<li>${esc(v)}</li>`).join("")}</ul>`:t("sheet.cleared")}</div>
       </div>
     </div>`;
 
@@ -284,14 +285,14 @@ function renderSheet(){
 
   const empty = !d.frame && !skillLines.length && !HASE.some(h=>state.hase[h.k]) && !state.gear.armor;
   const sections = empty ? [] : [
-    deckSection("weapons", "ВООРУЖЕНИЕ", weaponCards),
-    deckSection("systems", "СИСТЕМЫ", (state.mech.systems||[]).map(id=>M.system[id]?deckSystemCardHTML(M.system[id]):null)),
+    deckSection("weapons", t("sheet.sec.weapons"), weaponCards),
+    deckSection("systems", t("sheet.sec.systems"), (state.mech.systems||[]).map(id=>M.system[id]?deckSystemCardHTML(M.system[id]):null)),
     deckSection("core", "CORE", [d.frame?coreSystemCardHTML(d.frame):null, ...state.cores.map(coreBonusCardHTML)]),
-    deckSection("talents", "ТАЛАНТЫ", Object.entries(state.talents).map(([id,v])=>talentCardHTML(id,v))),
-    deckSection("gear", "СНАРЯЖЕНИЕ ПИЛОТА", [state.gear.armor, ...state.gear.weapons, ...state.gear.gear].map(gearCardHTML)),
+    deckSection("talents", t("sheet.sec.talents"), Object.entries(state.talents).map(([id,v])=>talentCardHTML(id,v))),
+    deckSection("gear", t("sheet.sec.gear"), [state.gear.armor, ...state.gear.weapons, ...state.gear.gear].map(gearCardHTML)),
   ].filter(Boolean);
   const body = empty
-    ? `<div class="sheet-empty">// СБОРКА ПУСТА<br>вернитесь в редактор и начните с уровня лицензии</div>`
+    ? `<div class="sheet-empty">${t("sheet.empty")}</div>`
     : (sections.length ? sheetBarHTML(d, p, sections) : "") + sections.map(s=>s.html).join("");
 
   $("#sheet").innerHTML = head + body;
@@ -305,13 +306,12 @@ async function shareSheetLink(){
     const url=`${location.origin}${location.pathname}?s=${payload}`;
     let copied=false;
     try{ await navigator.clipboard.writeText(url); copied=true; }catch(e){ copied=false; }
-    notice("Ссылка на лист",
-      copied ? "Ссылка скопирована. Открывший её увидит только лист — его собственная сборка не пострадает."
-             : "Скопируйте ссылку вручную. Открывший её увидит только лист — его собственная сборка не пострадает.",
+    notice(tText("sheet.link.title"),
+      t(copied ? "sheet.link.copied" : "sheet.link.manual"), // i18n-dynamic: sheet.link.copied, sheet.link.manual
       [url], "plain");
   }catch(e){
     console.error(e);
-    notice("Ссылку собрать не удалось", "Не получилось упаковать сборку в адрес. Выгрузите её файлом кнопкой <b>⬇ СОХРАНИТЬ</b>.");
+    notice(tText("sheet.link.failed_title"), t("sheet.link.failed_lead"));
   }
 }
 /* Reads ?s=… once at startup. A shared build is read-only by construction:
@@ -324,13 +324,13 @@ async function consumeShareLink(){
   try{
     const raw=await decodeShare(decodeURIComponent(m[1]));
     const built=unpackBuild(raw);
-    if(!built) throw new Error("пустая сборка");
+    if(!built) throw new Error("empty build");
     const dropped=applyBuildState(built);
     sheetSource="shared";
     viewMode="sheet";
     return {dropped};
   }catch(e){
-    console.error("[Lancer Registry] ссылка не прочитана:", e);
+    console.error("[Lancer Registry] could not read the link:", e);
     return {failed:true};
   }
 }
@@ -364,7 +364,8 @@ function syncModeChrome(){
   const foreign=sheetSource==="shared";
   document.body.classList.toggle("sheetmode", sheet);
   $("#sheet").hidden=!sheet;
-  $("#t-sheet").textContent = sheet ? (foreign?"◀ МОЯ СБОРКА":"◀ РЕДАКТОР") : "▤ ЛИСТ";
+  // i18n-dynamic: topbar.my_build, topbar.editor
+  $("#t-sheet").textContent = sheet ? "◀ "+t(foreign?"topbar.my_build":"topbar.editor") : "▤ "+t("topbar.sheet");
   $("#t-link").hidden=!sheet;
   $("#t-print").hidden=!sheet;
   // Nothing that changes the build belongs beside a read-only sheet. Export

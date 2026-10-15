@@ -2,7 +2,7 @@
 // (onclick handlers, data-* selectors) that state-level tests cannot see.
 import { test, expect } from "@playwright/test";
 import { FULL_BUILD } from "./fixtures/builds.mjs";
-import { openApp, getState, openTab, modal } from "./helpers.mjs";
+import { openApp, getState, openTab, modal, setLanguage } from "./helpers.mjs";
 
 const TABS = ["pilot", "skills", "talents", "hase", "licenses", "frame", "loadout", "core", "summary"];
 
@@ -83,8 +83,7 @@ test("every tab renders an empty build without errors, in both languages", async
   const errors = await openApp(page);
   for (const lang of ["ru", "en"]) {
     if (lang === "en") {
-      await page.locator("#t-lang").click();
-      await expect.poll(() => page.evaluate(() => currentLang)).toBe("en");
+      await setLanguage(page, { data: "en" });
     }
     for (const id of TABS) {
       await openTab(page, id);

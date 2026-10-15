@@ -3,6 +3,7 @@
 // after an intended visual change run `npm run test:update` and review the
 // new PNGs before committing them.
 import { test, expect } from "@playwright/test";
+import { fileURLToPath } from "node:url";
 import { FULL_BUILD } from "./fixtures/builds.mjs";
 import { openApp, openTab, modal } from "./helpers.mjs";
 
@@ -12,9 +13,11 @@ const VIEWPORTS = [
   { name: "desktop", width: 1440, height: 900 },
 ];
 
-// "СОХРАНЕНО hh:mm" depends on the clock. Hidden rather than masked: a mask
-// paints over whatever covers the element too — on a phone that was the
-// full-screen picker's title.
+// "СОХРАНЕНО hh:mm" depends on the clock. Hidden (tests/screenshot.css) rather
+// than masked: a mask paints over whatever covers the element too — on a
+// phone that was the full-screen picker's title. toHaveScreenshot takes a
+// stylePath; a `style` option is silently ignored.
+const SHOT_CSS = fileURLToPath(new URL("./screenshot.css", import.meta.url));
 // Under a full parallel run the frame portrait sometimes was not decoded yet.
 // Only on-screen images: the off-screen loading="lazy" thumbnails never load.
 const shot = async (page, name) => {
@@ -22,7 +25,7 @@ const shot = async (page, name) => {
     const r = img.getBoundingClientRect();
     return img.complete || r.bottom < 0 || r.top > innerHeight || !r.width;
   }));
-  await expect(page).toHaveScreenshot(`${name}.png`, { style: "#savestate{visibility:hidden}" });
+  await expect(page).toHaveScreenshot(`${name}.png`, { stylePath: SHOT_CSS });
 };
 
 for (const vp of VIEWPORTS) {
@@ -61,3 +64,25 @@ for (const vp of VIEWPORTS) {
     });
   });
 }
+
+// English interface + data (ADR 0005): English strings are longer or shorter
+// than the Russian ones the layout grew up with.
+test.describe("english", () => {
+  const EN = { lang: "en", storage: { lancer_ui_lang: "en" } };
+  test.describe("desktop", () => {
+    test.use({ viewport: { width: 1440, height: 900 } });
+    test("full build: pilot", async ({ page }) => {
+      await openApp(page, { build: FULL_BUILD, ...EN });
+      await shot(page, "desktop-pilot-en");
+    });
+  });
+  test.describe("mobile", () => {
+    test.use({ viewport: { width: 390, height: 844 } });
+    test("full build: loadout", async ({ page }) => {
+      await openApp(page, { build: FULL_BUILD, ...EN });
+      await openTab(page, "loadout");
+      await page.evaluate(() => window.scrollTo(0, 0));
+      await shot(page, "mobile-loadout-en");
+    });
+  });
+});

@@ -2,8 +2,9 @@
    HTML/label helpers on top of the rules in js/core/rules.js. */
 /* Marks where the installable half ends. In a flat list of sixty items the
    boundary is invisible without it. */
-const lockedDivider = `<div class="pickdiv">ЛИЦЕНЗИЯ НЕ ОТКРЫТА</div>`;
-const dividerBefore = (list,i) => (!unlocked(list[i]) && (i===0 || unlocked(list[i-1]))) ? lockedDivider : "";
+// A function, not a constant: the interface language is known only at boot.
+const lockedDivider = () => `<div class="pickdiv">${t("picker.locked_divider")}</div>`;
+const dividerBefore = (list,i) => (!unlocked(list[i]) && (i===0 || unlocked(list[i-1]))) ? lockedDivider() : "";
 /* item.license (and licenseKeyFor(frame)) are always the frame's English
    name/variant — that's the logic key licenses are tracked by, and it must
    never be swapped for translated text (see the frame.name comment near

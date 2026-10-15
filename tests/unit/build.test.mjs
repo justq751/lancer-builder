@@ -1,13 +1,14 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { loadScripts, coreData, plain } from "./load.mjs";
+import { loadScripts, coreData, plain, uiStrings } from "./load.mjs";
 import { FULL_BUILD } from "../fixtures/builds.mjs";
 
 // Fresh context per test: applyBuildState() writes into the global `state`.
 function setup(extraL = {}) {
   const { L, M } = coreData();
   Object.assign(L, extraL);
-  const run = loadScripts(["js/core/build.js", "js/core/rules.js"], { L, M });
+  // i18n.js too: applyBuildState() words its "dropped" list with tText().
+  const run = loadScripts(["js/core/i18n.js", "js/core/build.js", "js/core/rules.js"], { L, M, UI: uiStrings("ru"), UI_LANG: "ru" });
   run.ctx.state = run("defaultState()");
   return run;
 }

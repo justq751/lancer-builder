@@ -11,8 +11,8 @@ const b64uEnc = bytes => {
   return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
 };
 const b64uDec = str => {
-  const t=str.replace(/-/g,"+").replace(/_/g,"/");
-  const bin=atob(t + "=".repeat((4 - t.length%4) % 4));
+  const b64=str.replace(/-/g,"+").replace(/_/g,"/");
+  const bin=atob(b64 + "=".repeat((4 - b64.length%4) % 4));
   return Uint8Array.from(bin, c=>c.charCodeAt(0));
 };
 /* Only ids and numbers travel: empty fields are omitted entirely, so a
@@ -70,7 +70,7 @@ async function encodeShare(){
       const stream=new Blob([bytes]).stream().pipeThrough(new CompressionStream("deflate-raw"));
       const buf=await new Response(stream).arrayBuffer();
       return "z"+b64uEnc(new Uint8Array(buf));
-    }catch(e){ console.warn("[Lancer Registry] сжатие недоступно, ссылка будет длиннее:", e); }
+    }catch(e){ console.warn("[Lancer Registry] compression unavailable, the link will be longer:", e); }
   }
   return "u"+b64uEnc(bytes);
 }
@@ -78,9 +78,9 @@ async function decodeShare(payload){
   const flag=payload[0], body=b64uDec(payload.slice(1));
   let bytes=body;
   if(flag==="z"){
-    if(typeof DecompressionStream!=="function") throw new Error("DecompressionStream не поддерживается");
+    if(typeof DecompressionStream!=="function") throw new Error("DecompressionStream is not supported");
     const stream=new Blob([body]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
     bytes=new Uint8Array(await new Response(stream).arrayBuffer());
-  } else if(flag!=="u") throw new Error("неизвестный формат ссылки");
+  } else if(flag!=="u") throw new Error("unknown link format");
   return JSON.parse(new TextDecoder().decode(bytes));
 }

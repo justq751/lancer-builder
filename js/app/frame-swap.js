@@ -31,21 +31,19 @@ function pickFrame(id){
   const plan=planFrameSwap(fr);
   const losses=[
     ...plan.carried.map(c=>({kind:"keep", text:`${c.w.name} → ${tr(c.mount)}`})),
-    ...plan.leftBehind.map(w=>({kind:"drop", text:`${w.name} — нет подходящего крепления`})),
+    ...plan.leftBehind.map(w=>({kind:"drop", text:tText("swap.no_mount", {name:w.name})})),
   ];
   const actions=[];
   if(plan.carried.length) actions.push({
-    label:`↳ Перенести совместимое (${plan.carried.length})`,
+    label:"↳ "+tText("swap.carry", {n:plan.carried.length}),
     run:()=>commit(plan.mounts),
   });
-  actions.push({label:"✕ Снять всё", danger:true, run:()=>commit(buildMounts(fr))});
+  actions.push({label:"✕ "+tText("swap.strip"), danger:true, run:()=>commit(buildMounts(fr))});
 
-  const tail = !plan.leftBehind.length ? "Всё вооружение переносится:"
-             : !plan.carried.length    ? "Перенести не получится ничего:"
-             :                           "Переносится не всё:";
+  const tail = tText(!plan.leftBehind.length ? "swap.all" : !plan.carried.length ? "swap.none" : "swap.some"); // i18n-dynamic: swap.all, swap.none, swap.some
   confirmDialog({
-    title:"Смена шасси",
-    lead:`У <b>${esc(dispName(fr))}</b> другой набор креплений, поэтому вооружение придётся переставить. ${tail}`,
+    title:tText("swap.title"),
+    lead:t("swap.lead", {frame:dispName(fr), tail}),
     losses,
     actions,
   });

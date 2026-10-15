@@ -2,19 +2,19 @@
 function renderLoadout(){
   const d=derived();
   if(!d.frame){
-    $("#tab").innerHTML=sechead("// 07 · ВООРУЖЕНИЕ","Снаряжение меха","Сначала выберите шасси на вкладке ШАССИ.")
-      +`<div class="nomech" style="padding:40px">// НЕТ АКТИВНОГО ШАССИ</div>`;
+    $("#tab").innerHTML=sechead(t("loadout.mark"),t("loadout.title"),t("loadout.no_frame_lead"))
+      +`<div class="nomech" style="padding:40px">${t("loadout.no_frame")}</div>`;
     return;
   }
   const over=d.sp.used>d.sp.cap;
-  $("#tab").innerHTML = sechead("// 07 · ВООРУЖЕНИЕ",`Снаряжение — ${esc(dispName(d.frame))}`,
-    `Установите оружие в крепления и системы в рамках системных очков (SP). Использовано SP: ${d.sp.used} из ${d.sp.cap}.`)
-    + (over?`<div class="warnbox">⚠ Превышен лимит системных очков на ${d.sp.used-d.sp.cap} SP.</div>`:"")
-    + `<h3 class="subhead" style="margin:6px 0 12px">// КРЕПЛЕНИЯ ОРУЖИЯ</h3>
+  $("#tab").innerHTML = sechead(t("loadout.mark"),t("loadout.title_frame", {name:dispName(d.frame)}),
+    t("loadout.lead", {used:d.sp.used, cap:d.sp.cap}))
+    + (over?`<div class="warnbox">⚠ ${t("loadout.over", {n:d.sp.used-d.sp.cap})}</div>`:"")
+    + `<h3 class="subhead" style="margin:6px 0 12px">${t("loadout.mounts_head")}</h3>
        <div id="mounts"></div>
-       <h3 class="subhead" style="margin:24px 0 6px">// СИСТЕМЫ <span class="mono" style="font-size:12px;color:var(--faint)">(SP ${d.sp.used}/${d.sp.cap})</span></h3>
+       <h3 class="subhead" style="margin:24px 0 6px">${t("loadout.systems_head")} <span class="mono" style="font-size:12px;color:var(--faint)">(SP ${d.sp.used}/${d.sp.cap})</span></h3>
        <div class="spacer-sm"></div>
-       <button class="ghostbtn" id="add-system">+ ДОБАВИТЬ СИСТЕМУ</button>
+       <button class="ghostbtn" id="add-system">+ ${t("loadout.add_system")}</button>
        <div class="grid" id="syslist" style="margin-top:12px"></div>`;
 
   // mounts
@@ -31,8 +31,8 @@ function renderLoadout(){
         <div class="ei clickable has-cardlink">${cardLinkHTML("weapon", key, esc(w.name), "en")}
           <div class="em">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(ew)} · ${rngStr(ew)}${w.sp?` · ${w.sp} SP`:""}</div></div>
         <div style="display:flex;align-items:center;gap:8px">
-          <button class="xbtn expand" data-expw="${key}" title="Показать подробности" aria-label="${open?'Свернуть':'Развернуть'} подробности">${open?'⌄':'›'}</button>
-          <button class="xbtn" data-rmw="${key}" aria-label="Убрать оружие">✕</button>
+          <button class="xbtn expand" data-expw="${key}" title="${t("common.show_details")}" aria-label="${t(open?"common.collapse_details":"common.expand_details")}">${open?'⌄':'›'}</button>
+          <button class="xbtn" data-rmw="${key}" aria-label="${t("loadout.remove_weapon")}">✕</button>
         </div>
       </div>`;
       const expand=open?`<div class="expand-detail">${weaponCardBody(ew, dk, eqWeaponProfIdx.get(key)||0)}</div>`:"";
@@ -47,25 +47,25 @@ function renderLoadout(){
           <div class="ei clickable has-cardlink">${cardLinkHTML("mod", key, `<span aria-hidden="true">🔧</span> ${esc(mod.name)}`, "en")}
             <div class="em">${mlk?`🔒 ${esc(licenseDisplayName(mod.license))} ${mod.license_level}`:`${mod.sp||0} SP`}</div></div>
           <div style="display:flex;align-items:center;gap:8px">
-            <button class="xbtn expand" data-expmod="${key}" title="Показать подробности" aria-label="${modOpen?'Свернуть':'Развернуть'} подробности">${modOpen?'⌄':'›'}</button>
-            <button class="xbtn" data-rmmod="${key}" aria-label="Убрать мод">✕</button>
+            <button class="xbtn expand" data-expmod="${key}" title="${t("common.show_details")}" aria-label="${t(modOpen?"common.collapse_details":"common.expand_details")}">${modOpen?'⌄':'›'}</button>
+            <button class="xbtn" data-rmmod="${key}" aria-label="${t("loadout.remove_mod")}">✕</button>
           </div>
         </div>${modOpen?`<div class="expand-detail">${modCardBody(mod, dk+"-mod")}</div>`:""}`;
       } else if(compatMods.length){
-        modRow = `<button class="ghostbtn block mt-10" data-addmod="${key}">+ УСТАНОВИТЬ МОД</button>`;
+        modRow = `<button class="ghostbtn block mt-10" data-addmod="${key}">+ ${t("loadout.install_mod")}</button>`;
       }
       return `<div class="slot">${row}${expand}${modRow}</div>`;
     }).join("");
     const capLine = isInt
-      ? `${mt.items.length} / 1 · встроено в шасси`
-      : `${mt.items.length} / ${mt.type.includes("/")||mt.type==="Flex"?2:1} · ${allowedNext(mt.type,sizes).map(tr).join("/")||"заполнено"}`;
+      ? t("loadout.integrated", {n:mt.items.length})
+      : `${mt.items.length} / ${mt.type.includes("/")||mt.type==="Flex"?2:1} · ${allowedNext(mt.type,sizes).map(tr).join("/")||t("loadout.filled")}`;
     const restoreBtn = (isInt && !mt.items.length)
-      ? `<div class="slot"><button class="ghostbtn" data-restoreint="${mi}">+ ВОССТАНОВИТЬ ИНТЕГРИРОВАННОЕ ОРУЖИЕ</button></div>` : "";
+      ? `<div class="slot"><button class="ghostbtn" data-restoreint="${mi}">+ ${t("loadout.restore_integrated")}</button></div>` : "";
     return `<div class="mount ${isInt?'integrated':''}">
       <div class="mhead"><span class="mt">${tr(mt.type)}</span>
         <span class="cap">${capLine}</span></div>
       ${slots}
-      ${can?`<div class="slot"><button class="ghostbtn" data-addw="${mi}">+ УСТАНОВИТЬ ОРУЖИЕ</button></div>`:""}
+      ${can?`<div class="slot"><button class="ghostbtn" data-addw="${mi}">+ ${t("loadout.install_weapon")}</button></div>`:""}
       ${restoreBtn}
     </div>`;
   }).join("");
@@ -96,13 +96,13 @@ function renderLoadout(){
       <div class="info clickable has-cardlink"><div class="nm">${cardLinkHTML("system", si, esc(sy.name))} <span class="tag sp">${sy.sp} SP</span></div>
         <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+esc(truncateWords(stripHTML(sy.effect),140)):""}</div></div>
       <div style="display:flex;align-items:center;gap:8px">
-        <button class="xbtn expand" data-exps="${si}" title="Показать подробности" aria-label="${open?'Свернуть':'Развернуть'} подробности">${open?'⌄':'›'}</button>
-        <button class="xbtn" data-rms="${si}" aria-label="Убрать систему">✕</button>
+        <button class="xbtn expand" data-exps="${si}" title="${t("common.show_details")}" aria-label="${t(open?"common.collapse_details":"common.expand_details")}">${open?'⌄':'›'}</button>
+        <button class="xbtn" data-rms="${si}" aria-label="${t("loadout.remove_system")}">✕</button>
       </div>
     </div>`;
     const expand=open?`<div class="expand-detail">${systemCardBody(sy, String(si))}</div>`:"";
     return `<div class="pickitem">${row}${expand}</div>`;
-  }).join("") : `<div class="hint">// систем не установлено</div>`;
+  }).join("") : `<div class="hint">${t("loadout.no_systems")}</div>`;
   eqSystemExpanded.forEach(si=>{
     const sy=M.system[state.mech.systems[si]];
     if(!sy){ eqSystemExpanded.delete(si); return; }
@@ -190,7 +190,7 @@ function wireTagGlossary(tagsSel, boxSel, rawTags, tagSet){
       const info=describeTag(trTag(raw)) || describeTag(raw);
       return info
         ? `<div class="tagdesc"><b>${esc(info.name)}</b><div style="margin-top:4px">${esc(info.description)}</div></div>`
-        : `<div class="tagdesc">Описание этого тега пока не найдено в справочнике.</div>`;
+        : `<div class="tagdesc">${t("loadout.no_tag")}</div>`;
     }).join("");
     $$(`${tagsSel} .glossary`).forEach(el=>{
       const on=tagSet.has(+el.dataset.tgi);

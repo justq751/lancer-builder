@@ -201,6 +201,25 @@ def build_core_bonuses(data, old):
     return out
 
 
+def build_mods(data, old):
+    """Weapon mods: same {en, ru} pairs as every other file. mods.json was
+    hand-made with "ru" only, so a translator could not see the original."""
+    out = {}
+    for m in data.get("mods", []):
+        old_e = old.get(m["id"], {})
+        entry = {
+            "name": pair(m.get("name"), old_e.get("name")),
+            "effect": pair(m.get("effect"), old_e.get("effect")),
+            "description": pair(m.get("description"), old_e.get("description")),
+        }
+        for k in ("on_hit", "on_attack", "on_crit"):
+            text = _on_field(m.get(k))
+            if text is not None:
+                entry[k] = pair(text, old_e.get(k))
+        out[m["id"]] = entry
+    return out
+
+
 def build_pilot_gear(data, old):
     out = {}
     for g in data["pilot_gear"]:
@@ -279,7 +298,40 @@ BUILDERS = {
     "tags.json": build_tags,
     "glossary.json": build_glossary,
     "stat_labels.json": build_stat_labels,
+    "mods.json": build_mods,
 }
+
+
+UI_FILE = ROOT / "data" / "ui.json"
+
+
+def build_ui(old):
+    """Interface strings: data/ui.json (canonical English) -> {key: {en, ru}}.
+
+    A plural entry is an object of forms; its Russian side is
+    {one, few, many}. When the English text of a key changed since the
+    translation was made, the old Russian is kept (better slightly dated
+    Russian than English in the middle of a Russian screen) and marked
+    "stale": true for the translator. t() ignores the marker."""
+    en_all = json.loads(UI_FILE.read_text(encoding="utf-8"))
+    out = {}
+    for key, en in en_all.items():
+        prev = old.get(key) if isinstance(old.get(key), dict) else {}
+        if isinstance(en, dict):
+            empty = {"one": "", "few": "", "many": ""}
+            ru = prev.get("ru") if isinstance(prev.get("ru"), dict) else empty
+            ru = {f: ru.get(f, "") for f in ("one", "few", "many")}
+            filled = any(ru.values())
+        else:
+            ru = prev.get("ru", "") if isinstance(prev.get("ru"), str) else ""
+            filled = bool(ru)
+        entry = {"en": en, "ru": ru}
+        if filled and "en" in prev and prev["en"] != en:
+            entry["stale"] = True
+        elif filled and prev.get("stale"):
+            entry["stale"] = True
+        out[key] = entry
+    return out
 
 
 def load_combined_data():
@@ -308,13 +360,21 @@ def load_combined_data():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--lang", default="ru")
+    # The data locales have drifted from what the builders generate (hand
+    # edits, see PLAN.md stage 5), so a full run rewrites thousands of lines.
+    # --only ui.json (comma list of file names) regenerates just those.
+    ap.add_argument("--only", default="",
+                    help="comma list of locale files to regenerate, e.g. ui.json")
     args = ap.parse_args()
 
     data = load_combined_data()
     out_dir = ROOT / "locales" / args.lang
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    only = {s.strip() for s in args.only.split(",") if s.strip()}
     for filename, builder in BUILDERS.items():
+        if only and filename not in only:
+            continue
         path = out_dir / filename
         old = {}
         if path.exists():
@@ -330,6 +390,18 @@ def main():
             if isinstance(v, dict) and v.get("name", {}).get("ru")
         )
         print(f"{filename:20s} {n_done:4d} / {n_total:4d} names translated")
+
+    # Interface strings have their own source (data/ui.json), not the game data.
+    if UI_FILE.exists() and (not only or "ui.json" in only):
+        path = out_dir / "ui.json"
+        old = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+        result = build_ui(old)
+        path.write_text(json.dumps(result, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+        missing = sum(1 for v in result.values()
+                      if not (v["ru"] if isinstance(v["ru"], str) else all(v["ru"].values())))
+        stale = sum(1 for v in result.values() if v.get("stale"))
+        print(f"{'ui.json':20s} {len(result) - missing:4d} / {len(result):4d} strings translated"
+              + (f", {stale} stale (search \"stale\")" if stale else ""))
 
 
 if __name__ == "__main__":

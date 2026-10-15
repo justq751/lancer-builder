@@ -57,18 +57,18 @@ All scripts are classic (non-module) scripts sharing one global scope, loaded by
 
 | Path | Role |
 |---|---|
-| `js/core/i18n.js` | `localizeData()` + overlay helpers. Pure. |
+| `js/core/i18n.js` | `localizeData()` + overlay helpers; interface strings: `t()`, `tText()`, `overlayUiStrings()`, `detectLanguages()`. Pure (`t()` reads the `UI`/`UI_LANG` globals). |
 | `js/core/build.js` | `defaultState()`, `HASE`, migrations, `applyBuildState()` (sanitizes untrusted builds), mount rules (`allowedNext`, `buildMounts`). |
 | `js/core/rules.js` | `derived()`, license/unlock checks, `pickerOrder`. |
 | `js/core/share.js` | `?s=` link codec (`packBuild`/`encodeShare`/…). |
-| `js/i18n-loader.js` | fetching data/packs/locales, `tr()`/`trTag()`, `fetchAndLocalize()`, `APP_BUILD`. |
+| `js/i18n-loader.js` | fetching data/packs/locales, `tr()`/`trTag()`, `fetchAndLocalize()`, `UI`/`UI_LANG` + `loadUiStrings()`/`applyStaticStrings()`, `APP_BUILD`. |
 | `js/app/*.js` | shared globals and helpers (`base`), `state` + autosave (`state`), license labels, frame swap, `render()`/HUD/tab bar (`render`), export/import (`transfer`). |
 | `js/tabs/*.js` | one file per editor tab (`render<Tab>()`). |
 | `js/ui/*.js` | modal + dialogs, weapon/system/gear/mod pickers. |
 | `js/sheet.js`, `js/print.js`, `js/main.js` | read-only sheet view + share link I/O, print sheet, topbar wiring/boot. |
 | `css/fonts.css`, `css/app.css`, `css/sheet.css` | self-hosted fonts (paths relative to `css/`), app styles, sheet/print styles — in cascade order. |
 
-**`js/core/` contract:** no DOM, `localStorage`, or `fetch` — only the shared globals `L`, `M`, `state` (and web-standard APIs available in Node). That is what lets `tests/unit/` run it without a browser; keep new rules/logic there.
+**`js/core/` contract:** no DOM, `localStorage`, or `fetch` — only the shared globals `L`, `M`, `state`, `UI`, `UI_LANG` (and web-standard APIs available in Node, incl. `Intl`). Core words its user-facing messages with `tText()`; unit tests pass a real `UI` via `uiStrings()` in `tests/unit/load.mjs`. That is what lets `tests/unit/` run it without a browser; keep new rules/logic there.
 
 ### Data loading & i18n overlay (`js/i18n-loader.js` + `js/core/i18n.js`)
 
@@ -89,7 +89,7 @@ Instead, these "structural" values are translated **only at render time** via `t
 - `render()` → `renderHUD()` + `renderTab()` + `renderTabBar()`; all state mutations should go through `setState(fn)`, which runs `fn` then re-renders — don't mutate `state` and expect the UI to update without going through `setState`.
 - **Keyboard/focus conventions:** anything clickable is a `<button>` (never `<div onclick>`). A card that opens a detail view uses `cardLinkHTML(kind, id, html)` — its name becomes a button stretched over the card (`.has-cardlink` on the card), and the click is handled once by delegation in `CARD_OPENERS` (`js/main.js`); add a new kind there. Focus survives re-renders: `render()` restores it via `keepFocusAcrossRender()` and `wireFocusNet()` covers partial redraws — both find "the same control" by `id` or all `data-*` attributes (`focusKeyOf()`), so give re-rendered buttons stable data attributes. A control that must stay focusable when inactive uses `aria-disabled="true"`, not `disabled`.
 - Tab-specific render functions follow `render<TabName>()` naming (`renderPilot`, `renderSkills`, `renderTalents`, `renderHase`, etc.).
-- `localStorage` persists the build itself (`lancer_build`, autosaved), language choice (`lancer_lang`), build/sheet view (`view_mode`), and picker/talent view modes (`picker_view_mode`, `talents_view_mode`) — check `migrateLicenseKeys()`/`migrateWeaponSlots()` if changing how state is keyed, since these exist specifically to migrate old localStorage saves forward.
+- `localStorage` persists the build itself (`lancer_build`, autosaved), data language (`lancer_lang`), interface language (`lancer_ui_lang`), build/sheet view (`view_mode`), and picker/talent view modes (`picker_view_mode`, `talents_view_mode`) — check `migrateLicenseKeys()`/`migrateWeaponSlots()` if changing how state is keyed, since these exist specifically to migrate old localStorage saves forward.
 
 ### Known unimplemented feature (not a bug)
 
@@ -99,16 +99,25 @@ Pack categories `reserves` and `environments` are intentionally not loaded/merge
 
 These operate on the JSON data files, not the app itself:
 
-- **`extract_locale_template.py --lang ru`** — regenerates `locales/ru/*.json` from `data/lancer-data.json` + `data/packs/*.json`. Preserves existing `"ru"` translations, adds empty `"ru"` entries for new/changed fields, drops entries for fields that disappeared. Run this after updating `data/lancer-data.json` or adding a new pack.
+- **`extract_locale_template.py --lang ru [--only ui.json,mods.json]`** — regenerates `locales/ru/*.json` from `data/lancer-data.json` + `data/packs/*.json`, and `locales/ru/ui.json` from `data/ui.json`. Preserves existing `"ru"` translations, adds empty `"ru"` entries for new fields, drops entries for fields that disappeared; in `ui.json` a translation whose English changed is kept and marked `"stale": true`. **The data locales have drifted from what the builders generate (hand edits) — a full run rewrites thousands of lines; until that is reconciled (PLAN.md stage 5), use `--only <files>`.**
 - **`normalize_pack.py <lib_dir> data/packs/<name>.json "<label>"`** — converts a pack using the newer upstream `lancer-data` schema (tag objects like `{"id":"tg_reliable","val":2}`, ability text in `actions`/`deployables` arrays) into the flat shape `data/lancer-data.json` already uses (plain tag strings like `"Reliable 2"`, ability text folded into `effect`/`*_effect`), so the renderer needs zero changes to support a new pack.
 - **`merge_frames.py <normalized_file> <target_file>`** — merges just the `frames` array from a normalized pack output into a target data file, leaving every other key untouched. Writes a `.bak` backup of the target before overwriting.
 
 Typical workflow for adding/updating a content pack:
 ```bash
 python3 tools/normalize_pack.py <lib_dir> data/packs/<name>.json "<label>"
-python3 tools/extract_locale_template.py --lang ru
+python3 tools/extract_locale_template.py --lang ru --only weapons.json,systems.json   # the files the pack touches
 ```
-Then translate the newly-appeared empty `"ru": ""` entries. On Windows use `py` (or `python`) instead of `python3`.
+Then translate the newly-appeared empty `"ru": ""` entries — and review `git diff locales/` before keeping it. On Windows use `py` (or `python`) instead of `python3`.
+
+## UI strings (ADR 0005)
+
+- No interface text in code: English lives in `data/ui.json`, Russian in `locales/ru/ui.json` (`{key: {en, ru}}`). Render with `t(key, params)` (returns HTML; params are escaped) or `tText(key, params)` (plain text — for `textContent`, `title`/`aria-label`, and lists that `esc()` their items). A param named `…Html` is inserted as markup (caller builds and escapes it). Plural strings are `{one, other}` / ru `{one, few, many}` objects, picked by `params.n`.
+- Static markup in `index.html`: `data-i18n="key"` (content) / `data-i18n-attr="aria-label:key;title:key2"`; `applyStaticStrings()` fills them.
+- Adding text: add the key to `data/ui.json`, run `py tools/extract_locale_template.py --lang ru --only ui.json`, fill `"ru"`. Keys in code are literals; a computed key family is declared with a `// i18n-dynamic: a.b, a.c` comment (checked by `tests/unit/ui-keys.test.mjs`). Never name a local variable `t` (it hides `t()`; guarded by a unit test).
+- Two independent languages: interface (`UI_LANG`, `lancer_ui_lang`) and data (`currentLang`, `lancer_lang`). `tr()`/`trTag()` follow the data language; a game term with a data dictionary (`stat_labels`, `enums`, `glossary`) follows the data, everything else follows the interface.
+- `tests/unit/no-cyrillic.test.mjs` fails on Cyrillic in `js/` or `index.html` (outside comments and `<head>`); `tests/en.spec.mjs` walks every screen in `en`/`en` for Cyrillic.
+- Terminology: `GLOSSARY.md` (EN → RU, with open questions).
 
 ## Translating content
 

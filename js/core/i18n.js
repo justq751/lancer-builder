@@ -160,3 +160,65 @@ function localizeData(base, locale) {
 
   return L;
 }
+
+/* ============ CORE: interface strings ============
+   t() reads two globals the loader owns (js/i18n-loader.js): UI — the flat
+   {key: text | plural forms} map for the interface language — and UI_LANG.
+   Keys are literals in the code; tests/unit/ui-keys.test.mjs checks them
+   against data/ui.json. See docs/adr/0005-ui-localization.md. */
+const UI_LANGS = ["ru", "en"];
+const uiWarned = new Set();
+const uiEsc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+/* The string for `key`, with {name} filled from params (escaped — params
+   carry user text such as a callsign; the string's own markup is ours and
+   stays). A plural entry {one, few, many, other} is picked by params.n. A
+   missing key renders as the key itself, so a gap is visible, not fatal. */
+function t(key, params) { return uiFormat(key, params, uiEsc); }
+/* The same string for text contexts — textContent, title/aria-label, and
+   lists that esc() their own items: parameters go in raw, or the reader
+   would see "&lt;b&gt;". Never put its result into innerHTML. */
+function tText(key, params) { return uiFormat(key, params, String); }
+function uiFormat(key, params, fill) {
+  let s = UI && UI[key];
+  if (s == null) {
+    if (!uiWarned.has(key)) { uiWarned.add(key); console.warn("[i18n] missing UI string:", key); }
+    return key;
+  }
+  if (typeof s === "object") {
+    const form = new Intl.PluralRules(UI_LANG).select(Number(params && params.n));
+    s = s[form] ?? s.other ?? Object.values(s)[0];
+  }
+  if (!params) return s;
+  // A parameter named …Html is markup the caller built (and escaped) itself —
+  // e.g. a list of <b>names</b> — and goes in as is.
+  return s.replace(/\{(\w+)\}/g, (m, k) => (k in params ? (k.endsWith("Html") ? String(params[k]) : fill(params[k])) : m));
+}
+
+/* English map + the ru {key: {en, ru}} file → one flat map. Plural forms are
+   taken as a set: a Russian entry missing any of one/few/many would pick an
+   empty form, so it keeps the English set instead. */
+function overlayUiStrings(en, ruPairs) {
+  const out = { ...en };
+  if (!ruPairs) return out;
+  for (const [k, pair] of Object.entries(ruPairs)) {
+    if (!(k in en) || !pair) continue;
+    const ru = pair.ru;
+    if (typeof ru === "string") { if (ru.trim()) out[k] = ru; }
+    else if (ru && ["one", "few", "many"].every(f => typeof ru[f] === "string" && ru[f].trim())) out[k] = ru;
+  }
+  return out;
+}
+
+/* Which interface/data languages to start in. Stored choices win. A visitor
+   from before stage 4 has only the data language stored and always had a
+   Russian interface — they keep it. A first visit follows the browser. */
+function detectLanguages(navLang, stored) {
+  const ok = v => (UI_LANGS.includes(v) ? v : null);
+  const browser = /^ru\b/i.test(navLang || "") ? "ru" : "en";
+  const ui = ok(stored && stored.ui), data = ok(stored && stored.data);
+  return {
+    ui: ui || (data ? "ru" : browser),
+    data: data || browser,
+  };
+}

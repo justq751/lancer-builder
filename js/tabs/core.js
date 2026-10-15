@@ -5,9 +5,9 @@ let coreFilter="ALL", coreSearch="";
    already-selected bonus and when browsing the add-picker. */
 function coreCardBody(c){
   const unl=coreBonusUnlocked(c);
-  return `${unl?"":`<div class="hint" style="margin-top:2px">Требуется 3+ ранга лицензии на шасси ${esc(c.source)} (сейчас: ${manufacturerRank(c.source)}).</div>`}
+  return `${unl?"":`<div class="hint" style="margin-top:2px">${t("core.requires", {source:c.source, rank:manufacturerRank(c.source)})}</div>`}
     <div class="desc" style="margin-top:10px">${rich(c.effect)}</div>
-    ${c.mounted_effect?`<div class="desc" style="margin-top:9px"><b>Если установлено на крепление:</b> ${rich(c.mounted_effect)}</div>`:""}`;
+    ${c.mounted_effect?`<div class="desc" style="margin-top:9px"><b>${t("core.mounted")}</b> ${rich(c.mounted_effect)}</div>`:""}`;
 }
 function coreCardHTML(c){
   const unl=coreBonusUnlocked(c);
@@ -22,14 +22,14 @@ function coreCardHTML(c){
 function renderCore(){
   const d=derived();
   const capped=d.b.core.cap<1;
-  $("#tab").innerHTML = sechead("// 08 · CORE-БОНУСЫ","CORE-бонусы",
+  $("#tab").innerHTML = sechead(t("core.mark"),t("core.title"),
       capped
-        ? "CORE-бонусы открываются с LL3, и затем ещё по одному за каждые 3 уровня лицензий (LL6, LL9…)."
-        : `Выбрано ${state.cores.length} из ${d.b.core.cap}. Бонусы конкретного производителя открываются, когда у вас есть 3+ ранга лицензии на любое шасси этого производителя — иначе доступны только бонусы GMS.`)
+        ? t("core.cap_info")
+        : t("core.lead", {n:state.cores.length, cap:d.b.core.cap}))
     + (capped ? "" : `
       <div id="core-selected"></div>
-      <div class="filters" id="core-filters" style="margin-top:18px">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${coreFilter===s?'on':''}" data-cf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
-      <input class="input" id="core-search" aria-label="Поиск CORE-бонусов" placeholder="поиск CORE-бонусов…" style="margin:12px 0 14px" value="${esc(coreSearch)}">
+      <div class="filters" id="core-filters" style="margin-top:18px">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${coreFilter===s?'on':''}" data-cf="${s}">${s==="ALL"?t("common.all"):s}</button>`).join("")}</div>
+      <input class="input" id="core-search" aria-label="${t("core.search")}" placeholder="${t("core.search_ph")}" style="margin:12px 0 14px" value="${esc(coreSearch)}">
       <div id="core-list"></div>`);
   if(capped) return;
 
@@ -39,11 +39,11 @@ function renderCore(){
       <div class="equipped">
         <div class="ei clickable has-cardlink">${cardLinkHTML("core-selected", ci, esc(c.name), "en")}
           <div class="em">${esc(c.source)}</div></div>
-        <button class="xbtn" data-rmcore="${ci}" aria-label="Убрать CORE-бонус">✕</button>
+        <button class="xbtn" data-rmcore="${ci}" aria-label="${t("core.remove")}">✕</button>
       </div>
       <div style="margin-top:10px">${coreCardBody(c)}</div>
     </div>`;
-  }).join("") + `</div>` : `<div class="hint">// CORE-бонусы не выбраны</div>`;
+  }).join("") + `</div>` : `<div class="hint">${t("core.none")}</div>`;
 
   $$("#core-selected .xbtn[data-rmcore]").forEach(b=>b.onclick=()=>{
     state.cores.splice(+b.dataset.rmcore,1); render();
@@ -75,10 +75,10 @@ function renderCore(){
               <div class="badge ${unl?'mfg':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
             ${terse?`<div class="desc" style="margin-top:8px">${esc(terse)}</div>`:""}
             <button class="ghostbtn ${slotsFull?'':(unl?'':'warn')}" data-pickcore="${c.id}" ${slotsFull?"disabled":""}
-              style="margin-top:11px; width:100%; text-align:center">${slotsFull?`⚠ Лимит исчерпан (${state.cores.length}/${dNow.b.core.cap})`:(unl?"✓ Выбрать этот CORE-бонус":"⚠ Выбрать всё равно")}</button>
+              style="margin-top:11px; width:100%; text-align:center">${slotsFull?`⚠ ${t("core.limit", {n:state.cores.length, cap:dNow.b.core.cap})}`:(unl?"✓ "+t("core.pick"):"⚠ "+t("core.pick_anyway"))}</button>
           </div>`;
         }).join("")}</div>`;
-    }).join("") : `<div class="hint">// нет доступных CORE-бонусов по этому запросу</div>`;
+    }).join("") : `<div class="hint">${t("core.no_match")}</div>`;
     $$("#core-list [data-pickcore]").forEach(b=>b.onclick=()=>{
       const id=b.dataset.pickcore, dd=derived();
       if(state.cores.length>=dd.b.core.cap) return;
@@ -100,7 +100,7 @@ function renderCore(){
 function viewSelectedCore(ci){
   const c=M.core[state.cores[ci]];
   modal(c.name, coreCardHTML(c) +
-    `<button class="ghostbtn warn block mt-16" id="core-remove">✕ Убрать этот CORE-бонус</button>`);
+    `<button class="ghostbtn warn block mt-16" id="core-remove">✕ ${t("core.remove_this")}</button>`);
   $("#core-remove").onclick=()=>{ state.cores.splice(ci,1); closeModal(); render(); };
 }
 
@@ -113,7 +113,7 @@ function openCoreDetail(id){
   const unl=coreBonusUnlocked(c);
   modal(c.name, coreCardHTML(c) +
     `<button class="ghostbtn ${full?'':(unl?'':'warn')} block mt-16" id="core-select" ${full?"disabled":""}>
-      ${full?`⚠ Лимит исчерпан (${state.cores.length}/${d.b.core.cap})`:(unl?"✓ Выбрать этот CORE-бонус":`⚠ Выбрать всё равно (лицензия ${esc(c.source)} не открыта)`)}
+      ${full?`⚠ ${t("core.limit", {n:state.cores.length, cap:d.b.core.cap})}`:(unl?"✓ "+t("core.pick"):`⚠ ${t("core.pick_anyway_lic", {source:c.source})}`)}
     </button>`);
   $("#core-select").onclick=()=>{
     if(full) return;

@@ -40,7 +40,7 @@ function saveBuildNow(){
     // Private browsing and a full quota both land here. Losing the autosave is
     // survivable; losing it silently is not — the header goes amber.
     saveFailed=true;
-    console.error("[Lancer Registry] не удалось сохранить сборку:", e);
+    console.error("[Lancer Registry] could not save the build:", e);
   }
   renderSaveState();
 }
@@ -49,22 +49,21 @@ function renderSaveState(){
   const el=document.getElementById("savestate"); if(!el) return;
   if(saveHold){
     el.className="savestate err";
-    el.textContent="⚠ НЕ СОХРАНЯЕТСЯ";
-    el.title=`Не загрузились данные: ${saveHold.join(", ")}. Сохранённая сборка не тронута — перезагрузите страницу, чтобы вернуть её целиком. Изменения этой сессии можно выгрузить кнопкой СОХРАНИТЬ.`;
+    el.textContent="⚠ "+tText("save.not_saving");
+    el.title=tText("save.hold_title", {packs:saveHold.join(", ")});
     return;
   }
   if(saveFailed){
     el.className="savestate err";
-    el.textContent="⚠ НЕ СОХРАНЯЕТСЯ";
-    el.title="Браузер не даёт сохранить сборку (приватный режим или переполнено хранилище). Выгрузите её кнопкой СОХРАНИТЬ.";
+    el.textContent="⚠ "+tText("save.not_saving");
+    el.title=tText("save.failed_title");
     return;
   }
   el.className="savestate";
   if(!lastSaveAt){ el.textContent=""; el.removeAttribute("title"); return; }
-  const hh=String(lastSaveAt.getHours()).padStart(2,"0");
-  const mm=String(lastSaveAt.getMinutes()).padStart(2,"0");
-  el.innerHTML=`<i class="pfx">// СОХРАНЕНО </i>${hh}:${mm}`;
-  el.title="Сборка автоматически сохраняется в этом браузере. Кнопка СОХРАНИТЬ выгружает её файлом.";
+  const time=new Intl.DateTimeFormat(UI_LANG, {hour:"2-digit", minute:"2-digit"}).format(lastSaveAt);
+  el.innerHTML=`<i class="pfx">// ${t("save.saved")} </i>${esc(time)}`;
+  el.title=tText("save.title");
 }
 function loadSavedBuild(){
   let raw=null;
@@ -74,7 +73,7 @@ function loadSavedBuild(){
     const d=JSON.parse(raw);
     return (d && typeof d==="object" && d.state) ? d : null;
   }catch(e){
-    console.warn("[Lancer Registry] сохранённая сборка повреждена, игнорирую");
+    console.warn("[Lancer Registry] the saved build is corrupted, ignoring it");
     return null;
   }
 }
@@ -84,26 +83,22 @@ function loadSavedBuild(){
    disappears" list in every destructive dialog. */
 function buildLossSummary(){
   const out=[];
-  const n=(x,one,few,many)=>{ const m=x%100, k=x%10;
-    if(m>=11&&m<=14) return `${x} ${many}`;
-    if(k===1) return `${x} ${one}`;
-    if(k>=2&&k<=4) return `${x} ${few}`;
-    return `${x} ${many}`; };
+  // Plain text (tText): confirmDialog esc()es each line itself.
   const p=state.pilot;
-  if(p.callsign||p.name) out.push(`пилот ${p.callsign||p.name}`);
-  if(p.ll) out.push(`лицензионный уровень LL${p.ll}`);
-  const sk=Object.keys(state.skills).length; if(sk) out.push(n(sk,"навык","навыка","навыков"));
-  const tl=Object.keys(state.talents).length; if(tl) out.push(n(tl,"талант","таланта","талантов"));
-  const hs=HASE.filter(h=>state.hase[h.k]).length; if(hs) out.push(n(hs,"мех-навык","мех-навыка","мех-навыков"));
+  if(p.callsign||p.name) out.push(tText("loss.pilot", {name:p.callsign||p.name}));
+  if(p.ll) out.push(tText("loss.ll", {ll:p.ll}));
+  const sk=Object.keys(state.skills).length; if(sk) out.push(tText("loss.skills", {n:sk}));
+  const tl=Object.keys(state.talents).length; if(tl) out.push(tText("loss.talents", {n:tl}));
+  const hs=HASE.filter(h=>state.hase[h.k]).length; if(hs) out.push(tText("loss.hase", {n:hs}));
   const lc=Object.keys(state.licenses).filter(k=>state.licenses[k]).length;
-  if(lc) out.push(n(lc,"лицензия","лицензии","лицензий"));
+  if(lc) out.push(tText("loss.licenses", {n:lc}));
   const gr=(state.gear.armor?1:0)+state.gear.weapons.length+state.gear.gear.length;
-  if(gr) out.push(n(gr,"предмет снаряжения","предмета снаряжения","предметов снаряжения"));
-  if(state.cores.length) out.push(n(state.cores.length,"CORE-бонус","CORE-бонуса","CORE-бонусов"));
+  if(gr) out.push(tText("loss.gear", {n:gr}));
+  if(state.cores.length) out.push(tText("loss.cores", {n:state.cores.length}));
   const fr=state.mech.frameId&&M.frame[state.mech.frameId];
-  if(fr) out.push(`шасси ${dispName(fr)}`);
+  if(fr) out.push(tText("loss.frame", {name:dispName(fr)}));
   const wp=(state.mech.mounts||[]).reduce((a,mt)=>a+(mt.items||[]).length,0);
-  if(wp) out.push(n(wp,"единица оружия","единицы оружия","единиц оружия"));
-  if(state.mech.systems.length) out.push(n(state.mech.systems.length,"система","системы","систем"));
+  if(wp) out.push(tText("loss.weapons", {n:wp}));
+  if(state.mech.systems.length) out.push(tText("loss.systems", {n:state.mech.systems.length}));
   return out;
 }

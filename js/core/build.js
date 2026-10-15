@@ -18,11 +18,16 @@ function defaultState(){
   };
 }
 const HASE = [
-  {k:"hull",      ru:"КОРПУС",   en:"HULL",        eff:"+2 HP · +1 Ремонт за 2 ранга"},
-  {k:"agility",   ru:"ЛОВКОСТЬ", en:"AGILITY",     eff:"+1 Уклонение · +1 Скорость за 2 ранга"},
-  {k:"systems",   ru:"СИСТЕМЫ",  en:"SYSTEMS",     eff:"+1 Э-Защита · +1 Тех-атака · +1 SP за 2 ранга"},
-  {k:"engineering",ru:"ИНЖЕНЕРИЯ",en:"ENGINEERING",eff:"+1 Теплоёмкость · +1 к лимит. системам за 2 ранга"},
+  // en: the game's own term, shown beside the translation as a reference —
+  // not interface text. Name and effect in the interface language: haseLabel().
+  {k:"hull",       en:"HULL"},
+  {k:"agility",    en:"AGILITY"},
+  {k:"systems",    en:"SYSTEMS"},
+  {k:"engineering",en:"ENGINEERING"},
 ];
+/* Plain text; callers esc() it for HTML.
+   i18n-dynamic: hase.hull.name, hase.hull.effect, hase.agility.name, hase.agility.effect, hase.systems.name, hase.systems.effect, hase.engineering.name, hase.engineering.effect */
+const haseLabel = (k, part) => tText(`hase.${k}.${part}`);
 /* One-time migration: variant frames (frame.variant set) now share their
    base frame's license track (see licenseKeyFor()) instead of tracking
    their own. If a build has progress stored under a variant's own name
@@ -75,7 +80,7 @@ function allowedNext(type,sizes){
   return [];
 }
 function buildMounts(frame){
-  const mounts = frame.mounts.map(t=>({type:t,items:[]}));
+  const mounts = frame.mounts.map(type=>({type:type,items:[]}));
   const iw = FRAME_INTEGRATED_WEAPON[frame.id];
   if(iw) mounts.push({type:"Integrated", items:[{id:iw, mod:null}]});
   return mounts;
@@ -115,7 +120,7 @@ function applyBuildState(raw){
   next.pilot.name=str(p.name).slice(0,120);
   next.pilot.callsign=str(p.callsign).slice(0,120);
   next.pilot.ll=int(p.ll,0,12);
-  if(p.background && !M.bg[p.background]) dropped.push(`происхождение «${p.background}»`);
+  if(p.background && !M.bg[p.background]) dropped.push(tText("dropped.background", {id:p.background}));
   next.pilot.background=M.bg[p.background]?p.background:"";
 
   // Custom skills are user-authored, so they validate by shape, not by id —
@@ -127,11 +132,11 @@ function applyBuildState(raw){
 
   Object.entries(obj(s.skills)).forEach(([id,v])=>{
     if(M.skill[id]||customIds.has(id)) next.skills[id]=int(v,0,6);
-    else dropped.push(`навык «${id}»`);
+    else dropped.push(tText("dropped.skill", {id}));
   });
   Object.entries(obj(s.talents)).forEach(([id,v])=>{
     if(M.talent[id]) next.talents[id]=int(v,1,3);
-    else dropped.push(`талант «${id}»`);
+    else dropped.push(tText("dropped.talent", {id}));
   });
   const h=obj(s.hase);
   HASE.forEach(x=>{ next.hase[x.k]=int(h[x.k],0,6); });
@@ -142,39 +147,39 @@ function applyBuildState(raw){
   (L.frames||[]).forEach(f=>{ if(f.name) licKeys.add(f.name); if(f.variant) licKeys.add(f.variant); });
   Object.entries(obj(s.licenses)).forEach(([k,v])=>{
     if(licKeys.has(k)) next.licenses[k]=int(v,0,3);
-    else dropped.push(`лицензия «${k}»`);
+    else dropped.push(tText("dropped.license", {id:k}));
   });
 
   const g=obj(s.gear);
-  if(g.armor && !M.gear[g.armor]) dropped.push(`броня «${g.armor}»`);
+  if(g.armor && !M.gear[g.armor]) dropped.push(tText("dropped.armor", {id:g.armor}));
   next.gear.armor=M.gear[g.armor]?g.armor:null;
   const keepGear=list=>arr(list).filter(id=>{
     if(M.gear[id]) return true;
-    dropped.push(`снаряжение «${id}»`); return false;
+    dropped.push(tText("dropped.gear", {id})); return false;
   });
   next.gear.weapons=keepGear(g.weapons);
   next.gear.gear=keepGear(g.gear);
 
   next.cores=arr(s.cores).filter(id=>{
     if(M.core[id]) return true;
-    dropped.push(`CORE-бонус «${id}»`); return false;
+    dropped.push(tText("dropped.core", {id})); return false;
   });
 
   const m=obj(s.mech);
-  if(m.frameId && !M.frame[m.frameId]) dropped.push(`шасси «${m.frameId}»`);
+  if(m.frameId && !M.frame[m.frameId]) dropped.push(tText("dropped.frame", {id:m.frameId}));
   next.mech.frameId=M.frame[m.frameId]?m.frameId:null;
   next.mech.systems=arr(m.systems).filter(id=>{
     if(M.system[id]) return true;
-    dropped.push(`система «${id}»`); return false;
+    dropped.push(tText("dropped.system", {id})); return false;
   });
   if(next.mech.frameId){
     next.mech.mounts=arr(m.mounts).map(mt=>({
       type: typeof (mt&&mt.type)==="string" ? mt.type : "Main",
       items: arr(mt&&mt.items).map(slot=>{
         const id = typeof slot==="string" ? slot : (slot && slot.id);
-        if(!M.weapon[id]){ if(id) dropped.push(`оружие «${id}»`); return null; }
+        if(!M.weapon[id]){ if(id) dropped.push(tText("dropped.weapon", {id})); return null; }
         const mod = slot && slot.mod;
-        if(mod && !M.mod[mod]){ dropped.push(`мод «${mod}»`); return {id, mod:null}; }
+        if(mod && !M.mod[mod]){ dropped.push(tText("dropped.mod", {id:mod})); return {id, mod:null}; }
         return {id, mod: mod||null};
       }).filter(Boolean),
     }));
@@ -183,7 +188,7 @@ function applyBuildState(raw){
     // Frame is gone, so its mounts have nothing to hang on.
     arr(m.mounts).forEach(mt=>arr(mt&&mt.items).forEach(slot=>{
       const id = typeof slot==="string" ? slot : (slot && slot.id);
-      if(id && M.weapon[id]) dropped.push(`оружие «${M.weapon[id].name}» (нет шасси)`);
+      if(id && M.weapon[id]) dropped.push(tText("dropped.weapon_no_frame", {name:M.weapon[id].name}));
     }));
   }
 

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LANCER // РЕЕСТР — конструктор меха и пилота</title>
-<meta name="description" content="Конструктор пилота и меха для настольной ролевой игры Lancer. Данные: massif-press/lancer-data.">
+<title data-i18n="page.title">LANCER // РЕЕСТР — конструктор меха и пилота</title>
+<meta name="description" data-i18n-attr="content:page.description" content="Конструктор пилота и меха для настольной ролевой игры Lancer. Данные: massif-press/lancer-data.">
 <!-- The loader runs from scripts at the end of <body>, so nothing would be
      requested until they are fetched and executed. These four files are
      1.5MB of the 2.2MB payload and are always needed; starting them during
@@ -22,32 +22,48 @@
 
 <div id="boot">
   <div class="ring"></div>
-  <div class="blog">ИНИЦИАЛИЗАЦИЯ…</div>
+  <div class="blog">…</div>
   <div class="ttl">LANCER · UNION REGISTRY</div>
 </div>
 
-<a class="skip" href="#tab">К содержимому</a>
+<a class="skip" href="#tab" data-i18n="a11y.skip">Skip to content</a>
 
 <header class="topbar">
   <div class="brand">
     <span class="sig mono">//</span>
-    <span class="name">LANCER <b>РЕЕСТР</b></span>
+    <span class="name">LANCER <b data-i18n="brand.name">REGISTRY</b></span>
     <span class="ver mono">COMP/CON v1</span>
   </div>
   <div class="spacer"></div>
   <span class="savestate" id="savestate" aria-live="polite"></span>
-  <button class="toolbtn mode" id="t-sheet">▤ ЛИСТ</button>
+  <button class="toolbtn mode" id="t-sheet">▤ SHEET</button>
   <!-- Wide screens: the menu is display:contents, so its buttons sit in the
        header row as before. Narrow (≤1020px): it is a popover behind ⋯ — the
        header is one row and the rare actions stop costing a screen row. -->
-  <button class="toolbtn more" id="t-more" popovertarget="more-menu" aria-label="Ещё действия">⋯</button>
+  <button class="toolbtn more" id="t-more" popovertarget="more-menu" data-i18n-attr="aria-label:topbar.more" aria-label="More actions">⋯</button>
   <div class="moremenu" id="more-menu" popover>
-    <button class="toolbtn" id="t-link" hidden>🔗 ССЫЛКА</button>
-    <button class="toolbtn" id="t-print" hidden>🖨 ПЕЧАТЬ</button>
-    <button class="toolbtn" id="t-lang" title="Переключить язык контента / Toggle content language">RU / EN</button>
-    <button class="toolbtn" id="t-import">⬆ ЗАГРУЗИТЬ</button>
-    <button class="toolbtn" id="t-export">⬇ СОХРАНИТЬ</button>
-    <button class="toolbtn warn" id="t-reset">⟲ СБРОС</button>
+    <button class="toolbtn" id="t-link" hidden><span>🔗 <span data-i18n="topbar.link">LINK</span></span></button>
+    <button class="toolbtn" id="t-print" hidden><span>🖨 <span data-i18n="topbar.print">PRINT</span></span></button>
+    <!-- Shows the state (RU, EN, or "RU · EN" = interface · data); opens the
+         panel with the two independent settings (ADR 0005). -->
+    <button class="toolbtn" id="t-lang" popovertarget="lang-panel">RU</button>
+    <div class="langpanel" id="lang-panel" popover>
+      <div class="lp-hd mono"><b>//</b> <span data-i18n="lang.title">LANGUAGE</span></div>
+      <fieldset class="langrow" id="lang-ui">
+        <legend data-i18n="lang.ui">INTERFACE</legend>
+        <label><input type="radio" name="ui-lang" value="ru"><span>RU · <span lang="ru" data-i18n="lang.native.ru"></span></span></label>
+        <label><input type="radio" name="ui-lang" value="en"><span>EN · <span lang="en" data-i18n="lang.native.en">English</span></span></label>
+      </fieldset>
+      <fieldset class="langrow" id="lang-data">
+        <legend data-i18n="lang.data">GAME DATA</legend>
+        <label><input type="radio" name="data-lang" value="ru"><span>RU · <span lang="ru" data-i18n="lang.native.ru"></span></span></label>
+        <label><input type="radio" name="data-lang" value="en"><span>EN · <span lang="en" data-i18n="lang.native.en">English</span></span></label>
+      </fieldset>
+      <p class="hint" data-i18n="lang.data_hint"></p>
+    </div>
+    <button class="toolbtn" id="t-import"><span>⬆ <span data-i18n="topbar.import">LOAD</span></span></button>
+    <button class="toolbtn" id="t-export"><span>⬇ <span data-i18n="topbar.export">SAVE</span></span></button>
+    <button class="toolbtn warn" id="t-reset"><span>⟲ <span data-i18n="topbar.reset">RESET</span></span></button>
   </div>
   <input type="file" id="import-file" accept="application/json" hidden>
 </header>
@@ -55,11 +71,11 @@
 <div class="shell">
   <!-- Wide screens: the sticky sidebar. Narrow: a bottom sheet (popover)
        opened from the budget ledger in the dock. -->
-  <aside class="hud" id="hud" popover aria-label="Реестр пилота"></aside>
+  <aside class="hud" id="hud" popover data-i18n-attr="aria-label:hud.aria" aria-label="Pilot registry"></aside>
   <main>
     <!-- The editor's one h1 (the sheet has its own: the callsign). Read by
          screen readers as the page's title; the tab's h2 follows it. -->
-    <h1 class="sr">Редактор сборки пилота и меха</h1>
+    <h1 class="sr" data-i18n="a11y.editor_h1">Pilot and mech build editor</h1>
     <!-- Wide screens: display:contents — the tab row heads the content as
          before. Narrow: fixed to the bottom, in thumb reach, with the budget
          ledger above it. -->
@@ -77,7 +93,7 @@
 
 <div class="modal" id="modal">
   <div class="panel" role="dialog" aria-modal="true">
-    <div class="mhd"><h3></h3><button class="toolbtn mclose">✕ ЗАКРЫТЬ</button></div>
+    <div class="mhd"><h3></h3><button class="toolbtn mclose"><span>✕ <span data-i18n="common.close">CLOSE</span></span></button></div>
     <div class="mbd"></div>
   </div>
 </div>

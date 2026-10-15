@@ -57,11 +57,11 @@ function keepFocusAcrossRender(){
   const key=focusKeyOf(el), inTab=!!el.closest("#tab");
   return ()=>{
     if(el.isConnected || $("#modal").classList.contains("show")) return;
-    let t=key && document.querySelector(key);
-    if(t && t.disabled) t=t.closest(".stepper, .item, .slot, .listrow")
+    let target=key && document.querySelector(key);
+    if(target && target.disabled) target=target.closest(".stepper, .item, .slot, .listrow")
       ?.querySelector("button:not(:disabled), [tabindex='0']") || null;
-    if(!t && inTab) t=$("#tab");
-    if(t) t.focus({preventScroll:true});
+    if(!target && inTab) target=$("#tab");
+    if(target) target.focus({preventScroll:true});
   };
 }
 function modal(title,html){
@@ -105,10 +105,10 @@ function closeModal(){
    product. Actions run least-destructive first — that ordering is also the
    focus order, since modal() focuses the first control. Escape, the close
    button and Отмена all cancel. */
-function confirmDialog({title, lead, losses, actions, cancelLabel="Отмена"}){
+function confirmDialog({title, lead, losses, actions, cancelLabel=tText("common.cancel")}){
   const list=(losses&&losses.length)
-    ? `<ul class="losslist ${losses.length>8?"scroll":""}">${losses.map(t=>
-        typeof t==="string" ? `<li>${esc(t)}</li>` : `<li class="${t.kind||""}">${esc(t.text)}</li>`
+    ? `<ul class="losslist ${losses.length>8?"scroll":""}">${losses.map(it=>
+        typeof it==="string" ? `<li>${esc(it)}</li>` : `<li class="${it.kind||""}">${esc(it.text)}</li>`
       ).join("")}</ul>` : "";
   modal(title, `<div class="dialog">
     <p>${rich(lead)}</p>
@@ -132,11 +132,11 @@ function confirmDialog({title, lead, losses, actions, cancelLabel="Отмена"
 function notice(title, lead, items, kind){
   const cls = kind==="plain" ? "plain" : "drop";
   const list=(items&&items.length)
-    ? `<ul class="losslist ${items.length>8?"scroll":""}">${items.map(t=>`<li class="${cls}">${esc(t)}</li>`).join("")}</ul>` : "";
+    ? `<ul class="losslist ${items.length>8?"scroll":""}">${items.map(it=>`<li class="${cls}">${esc(it)}</li>`).join("")}</ul>` : "";
   modal(title, `<div class="dialog">
     <p>${rich(lead)}</p>
     ${list}
-    <div class="dialog-actions"><button class="ghostbtn" data-act="ok">Понятно</button></div>
+    <div class="dialog-actions"><button class="ghostbtn" data-act="ok">${t("common.ok")}</button></div>
   </div>`);
   $("#modal .panel").classList.add("narrow");
   $("#modal [data-act=ok]").onclick=closeModal;
@@ -145,17 +145,15 @@ function notice(title, lead, items, kind){
    content is gone. Say so, and offer the one fix that works: load again. */
 function reportPackFailure(dropped){
   confirmDialog({
-    title:"Часть данных не загрузилась",
-    lead:`Не удалось загрузить: <b>${esc(saveHold.join(", "))}</b> — вероятно, сбой сети. Пока эти данные не загружены, часть сборки не видна. <b>Сохранённая сборка не тронута</b>: автосохранение приостановлено, пока данные не загрузятся.`,
+    title:tText("dialog.pack_failed.title"),
+    lead:t("dialog.pack_failed.lead", {packs:saveHold.join(", ")}),
     losses:dropped,
-    actions:[{label:"⟳ Повторить загрузку", run:()=>location.reload()}],
-    cancelLabel:"Продолжить без них",
+    actions:[{label:"⟳ "+tText("dialog.pack_failed.retry"), run:()=>location.reload()}],
+    cancelLabel:tText("dialog.pack_failed.continue"),
   });
 }
 function reportDropped(title, dropped){
-  notice(title,
-    `Часть сборки не удалось восстановить: этих записей нет в загруженных данных. Обычно это значит, что сборка сделана с другим набором контент-паков или в другой версии реестра. Остальное на месте.`,
-    dropped);
+  notice(title, t("dialog.dropped.lead"), dropped);
 }
 document.addEventListener("keydown", e=>{
   if(e.key!=="Enter" && e.key!==" ") return;

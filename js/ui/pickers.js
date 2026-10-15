@@ -2,8 +2,8 @@
 let pickerViewMode = localStorage.getItem("picker_view_mode") || "inline"; // "inline" default | "card"
 function viewToggleHTML(){
   return `<div class="viewtoggle">
-    <button class="chip ${pickerViewMode==='inline'?'on':''}" data-vm="inline">☰ Разворачивать в списке</button>
-    <button class="chip ${pickerViewMode==='card'?'on':''}" data-vm="card">▣ Отдельная карточка</button>
+    <button class="chip ${pickerViewMode==='inline'?'on':''}" data-vm="inline">☰ ${t("picker.view.inline")}</button>
+    <button class="chip ${pickerViewMode==='card'?'on':''}" data-vm="card">▣ ${t("picker.view.card")}</button>
   </div>`;
 }
 function wireViewToggle(onSwitch){
@@ -26,13 +26,12 @@ const profDmgStr = p => (p.damage||[]).map(x=>x.type?`${x.val} ${tr(x.type)}`:`$
 const profRngStr = p => (p.range||[]).map(x=>x.type?`${tr(x.type)} ${x.val}`:`${x.val}`).join(", ")||"—";
 /* ---- collapsed picker row (weapons + systems) ----------------------------
    Short mono labels for the numeric column. "ДАЛЬНОСТЬ" / "ВЗРЫВНОЙ" blow out
-   a 10px label; these are interface chrome, which is Russian regardless of
-   the content language, so they're keyed by the English enum and fall back to
-   tr() when nothing matches (including EN content mode, where tr() is
-   identity and the label is already short). */
-const DMG_SHORT={Kinetic:"КИНЕТ",Explosive:"ВЗРЫВН",Energy:"ЭНЕРГ",Burn:"ОГОНЬ",Heat:"ТЕПЛО",Variable:"ПЕРЕМ"};
-const RNG_SHORT={Range:"ДИСТ",Threat:"УГРОЗА",Blast:"ВЗРЫВ",Burst:"ОЧЕРЕДЬ",Line:"ЛИНИЯ",Cone:"КОНУС"};
-const shortEnum=(map,t)=>(currentLang==="ru"&&map[t])||String(tr(t)||"").toUpperCase();
+   a 10px label. The short forms have no dictionary in the data, so they are
+   interface strings (term.dmg.* / term.rng.*, keyed by the English enum) and
+   follow the interface language (ADR 0005); an enum with no short form falls
+   back to tr() of the data. */
+// i18n-dynamic: term.dmg.Kinetic, term.dmg.Explosive, term.dmg.Energy, term.dmg.Burn, term.dmg.Heat, term.dmg.Variable, term.rng.Range, term.rng.Threat, term.rng.Blast, term.rng.Burst, term.rng.Line, term.rng.Cone
+const shortEnum=(kind,ty)=>(UI[`term.${kind}.${ty}`] ? tText(`term.${kind}.${ty}`) : String(tr(ty)||"").toUpperCase());
 /* Missing values render as "—" rather than dropping the cell: a vanished cell
    shifts every column after it and the vertical run stops lining up. */
 const rowStat=(k,v)=>`<div class="rowstat"><span class="k">${esc(k)}</span><span class="v${v==null||v===""?" none":""}">${v==null||v===""?"—":esc(v)}</span></div>`;
@@ -41,9 +40,9 @@ const ROW_TAG_MAX=3;
    left — an AI-type system carries an "AI" tag, and "ИИ · ИИ" is noise. */
 function rowTagsHTML(tags, skip){
   const drop=new Set((skip||[]).filter(Boolean).map(s=>String(s).toLowerCase()));
-  const list=(tags||[]).map(trTag).filter(t=>!drop.has(String(t).toLowerCase()));
+  const list=(tags||[]).map(trTag).filter(tg=>!drop.has(String(tg).toLowerCase()));
   const rest=list.slice(ROW_TAG_MAX);
-  return list.slice(0,ROW_TAG_MAX).map(t=>`<span class="rowtag">${esc(t)}</span>`).join("")
+  return list.slice(0,ROW_TAG_MAX).map(tg=>`<span class="rowtag">${esc(tg)}</span>`).join("")
     + (rest.length?`<span class="rowtag more" title="${esc(rest.join(", "))}">+${rest.length}</span>`:"");
 }
 function rowBadgeHTML(item){
@@ -63,7 +62,7 @@ function weaponPickRow(w, open){
   // area rules, so they read as mechanics on the tag line, not as the number.
   const pri=rngArr.find(r=>r.type==="Range"||r.type==="Threat")||rngArr[0];
   const dmgTypes=[...new Set(dmgArr.map(d=>d.type).filter(Boolean))];
-  const chips=(p?`<span class="rowtag stance">СТОЙКА 1/${w.profiles.length}</span>`:"")
+  const chips=(p?`<span class="rowtag stance">${t("picker.stance", {n:w.profiles.length})}</span>`:"")
     + rngArr.filter(r=>r!==pri&&r.type).map(r=>`<span class="rowtag">${esc(trTag(r.type))} ${esc(r.val)}</span>`).join("")
     + (w.sp?`<span class="rowtag sp">${esc(w.sp)} SP</span>`:"");
   return `<div class="listrow pick clickable ${lk?'locked':''} ${open?'open':''}" ${pickRowA11y(open)} data-w="${esc(w.id)}" style="--src:${srcColor(w.source)}">
@@ -73,8 +72,8 @@ function weaponPickRow(w, open){
       <div class="clsline"><span class="cls">${esc(tr(w.mount))} · ${esc(tr(w.type))}</span>${chips}${rowTagsHTML(w.tags,[tr(w.mount),tr(w.type)])}</div>
     </div>
     <div class="rowstats">
-      ${rowStat("УРОН"+(dmgTypes.length===1?" · "+shortEnum(DMG_SHORT,dmgTypes[0]):""), dmgArr.map(d=>d.val).join("+"))}
-      ${rowStat(pri&&pri.type?shortEnum(RNG_SHORT,pri.type):"ДИСТ", pri?pri.val:"")}
+      ${rowStat(tText("picker.damage")+(dmgTypes.length===1?" · "+shortEnum("dmg",dmgTypes[0]):""), dmgArr.map(d=>d.val).join("+"))}
+      ${rowStat(pri&&pri.type?shortEnum("rng",pri.type):tText("term.rng.Range"), pri?pri.val:"")}
     </div>
     <span class="chevron">${open?'⌄':'›'}</span>
   </div>`;
@@ -167,19 +166,18 @@ const pgIcon = k => STAT_ICONS[k]
   ? `<img class="pgicon" src="${STAT_ICONS[k]}" alt="" loading="lazy">` : "";
 function pilotGearStatsInlineHTML(g){
   const s = pilotGearStatValues(g);
-  return `БРОНЯ ${esc(String(s.armor))} · ОЗ +${esc(String(s.hp))} · Э-ЗАЩ ${esc(String(s.edef))}`
-    + ` · УКЛ ${esc(String(s.evasion))} · СКОР ${esc(String(s.speed))}`;
+  return t("picker.gear_stats", {armor:s.armor, hp:s.hp, edef:s.edef, evasion:s.evasion, speed:s.speed});
 }
 function pilotGearStatsHTML(g){
   if(g.type!=="Armor" || !(g.bonuses&&g.bonuses.length)) return "";
   const s = pilotGearStatValues(g);
   const tile=(k,lbl,val)=>`<div class="stattile pg"><div class="ico">${pgIcon(k)}</div><div class="lbl">${lbl}</div><div class="val">${esc(String(val))}</div></div>`;
   return `<div class="pgstats">
-    ${tile("armor","БРОНЯ",s.armor)}
-    ${tile("hp","БОНУС ОЗ","+"+s.hp)}
-    ${tile("edef","Э-ЗАЩИТА",s.edef)}
-    ${tile("evasion","УКЛОНЕНИЕ",s.evasion)}
-    ${tile("speed","СКОРОСТЬ",s.speed)}
+    ${tile("armor",t("picker.gear.armor"),s.armor)}
+    ${tile("hp",t("picker.gear.hp"),"+"+s.hp)}
+    ${tile("edef",t("picker.gear.edef"),s.edef)}
+    ${tile("evasion",t("picker.gear.evasion"),s.evasion)}
+    ${tile("speed",t("picker.gear.speed"),s.speed)}
   </div>`;
 }
 /* Pilot gear card — same shape as weaponCardBody/systemCardBody, but pilot
@@ -226,12 +224,12 @@ function weaponCardBody(w, uid, curProfIdx){
     <div id="${descId}"></div>
     ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
     ${prof && prof.effect?`<div class="desc" style="margin-top:9px"><b>${esc(prof.name)}:</b> ${rich(prof.effect)}</div>`:""}
-    ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(w.on_attack))}</div>`:""}
-    ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(w.on_hit))}</div>`:""}
-    ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(w.on_crit))}</div>`:""}
-    ${prof && prof.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке (${esc(prof.name)}):</b> ${rich(onHitText(prof.on_attack))}</div>`:""}
-    ${prof && prof.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании (${esc(prof.name)}):</b> ${rich(onHitText(prof.on_hit))}</div>`:""}
-    ${prof && prof.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе (${esc(prof.name)}):</b> ${rich(onHitText(prof.on_crit))}</div>`:""}`;
+    ${w.on_attack?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_attack")}</b> ${rich(onHitText(w.on_attack))}</div>`:""}
+    ${w.on_hit?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_hit")}</b> ${rich(onHitText(w.on_hit))}</div>`:""}
+    ${w.on_crit?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_crit")}</b> ${rich(onHitText(w.on_crit))}</div>`:""}
+    ${prof && prof.on_attack?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_attack_p", {name:prof.name})}</b> ${rich(onHitText(prof.on_attack))}</div>`:""}
+    ${prof && prof.on_hit?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_hit_p", {name:prof.name})}</b> ${rich(onHitText(prof.on_hit))}</div>`:""}
+    ${prof && prof.on_crit?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_crit_p", {name:prof.name})}</b> ${rich(onHitText(prof.on_crit))}</div>`:""}`;
 }
 function weaponCardHTML(w){
   const badge=licenseBadge(w, tr(w.mount));
@@ -287,18 +285,18 @@ function modCardBody(mod, uid){
   const statBits = [
     mod.added_range?.length ? mod.added_range.map(r=>`+${r.val} ${tr(r.type)}`).join(", ") : "",
     mod.added_damage?.length ? mod.added_damage.map(d=>`+${d.val} ${tr(d.type)}`).join(", ") : "",
-    mod.added_tags?.length ? mod.added_tags.map(t=>trTag(t)).join(", ") : "",
+    mod.added_tags?.length ? mod.added_tags.map(tg=>trTag(tg)).join(", ") : "",
   ].filter(Boolean).join(" · ");
   return `<div class="tags" id="${tagsId}">
       <span class="tag sp">${mod.sp||0} SP</span>
       ${(mod.tags||[]).map((tg,i)=>`<button type="button" class="tag glossary" data-tgi="${i}" aria-expanded="false">${esc(trTag(tg))}</button>`).join("")}
     </div>
     <div id="${descId}"></div>
-    ${statBits?`<div class="desc" style="margin-top:10px"><b>Изменяет статы оружия:</b> ${esc(statBits)}</div>`:""}
+    ${statBits?`<div class="desc" style="margin-top:10px"><b>${t("picker.mod_stats")}</b> ${esc(statBits)}</div>`:""}
     ${mod.effect?`<div class="desc" style="margin-top:9px">${rich(mod.effect)}</div>`:""}
-    ${mod.on_attack?`<div class="desc" style="margin-top:9px"><b>При атаке:</b> ${rich(onHitText(mod.on_attack))}</div>`:""}
-    ${mod.on_hit?`<div class="desc" style="margin-top:9px"><b>При попадании:</b> ${rich(onHitText(mod.on_hit))}</div>`:""}
-    ${mod.on_crit?`<div class="desc" style="margin-top:9px"><b>При критическом ударе:</b> ${rich(onHitText(mod.on_crit))}</div>`:""}`;
+    ${mod.on_attack?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_attack")}</b> ${rich(onHitText(mod.on_attack))}</div>`:""}
+    ${mod.on_hit?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_hit")}</b> ${rich(onHitText(mod.on_hit))}</div>`:""}
+    ${mod.on_crit?`<div class="desc" style="margin-top:9px"><b>${t("picker.on_crit")}</b> ${rich(onHitText(mod.on_crit))}</div>`:""}`;
 }
 function modCardHTML(mod){
   const badge=licenseBadge(mod, esc(mod.source));
@@ -306,7 +304,7 @@ function modCardHTML(mod){
     <div class="src" style="background:${srcColor(mod.source)}"></div>
     <div class="top"><div class="nm" style="font-size:21px">${esc(mod.name)}</div>
       <div class="badge ${badge.cls}">${badge.text}</div></div>
-    <div class="meta" style="margin-top:6px">Крепления: ${(mod.allowed_types||[]).map(tr).join(" / ")}</div>
+    <div class="meta" style="margin-top:6px">${t("picker.mod_mounts", {list:(mod.allowed_types||[]).map(tr).join(" / ")})}</div>
     <div style="margin-top:11px">${modCardBody(mod)}</div>
   </div>`;
 }
@@ -335,10 +333,10 @@ function openWeaponPicker(mi){
     tagOpenSet=new Set(); profileViewIdx=0;
     $("#modal .mhd h3").textContent=w.name;
     setModalBody(
-      `<button class="ghostbtn mb-14" id="wp-back">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="wp-back">← ${t("picker.back")}</button>`
       + weaponCardHTML(w) +
       `<button class="ghostbtn block mt-16" id="wp-install">
-        ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
+        ${lk?"⚠ "+t("picker.install_anyway"):"✓ "+t("picker.install_weapon")}
       </button>`);
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", ()=>drawDetail(id));
@@ -364,21 +362,21 @@ function openWeaponPicker(mi){
       .filter(w=>wpDmgFilter==="ALL"||weaponDamageTypes(w).includes(wpDmgFilter))
       .filter(w=>!wpSearch||(w.name+" "+tr(w.type)+" "+w.source+" "+(w.tags||[]).map(trTag).join(" ")).toLowerCase().includes(wpSearch.toLowerCase()))
       .sort(pickerOrder);
-    $("#modal .mhd h3").textContent=`Установить оружие · ${tr(mt.type)}`;
+    $("#modal .mhd h3").textContent=tText("picker.weapon_title", {mount:tr(mt.type)});
     setModalBody(
-      `<div class="hint" style="margin-bottom:10px">Допустимый размер: ${allow.map(tr).join(" / ")}</div>
+      `<div class="hint" style="margin-bottom:10px">${t("picker.allowed_size", {list:allow.map(tr).join(" / ")})}</div>
        ${viewToggleHTML()}
        <div class="picker-filters">
-         <div class="filter-row"><span class="filter-lbl">ПРОИЗВОДИТЕЛЬ:</span>
-           <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div></div>
-         ${allow.length>1?`<div class="filter-row"><span class="filter-lbl">КРЕПЛЕНИЕ:</span>
-           <div class="filters">${["ALL",...allow].map(sz=>`<button class="chip ${wpSizeFilter===sz?'on':''}" data-wpsz="${sz}">${sz==="ALL"?"ВСЕ":tr(sz)}</button>`).join("")}</div></div>`:""}
-         <div class="filter-row"><span class="filter-lbl">ТИП:</span>
-           <div class="filters">${["ALL",...typeOptions].map(t=>`<button class="chip ${wpTypeFilter===t?'on':''}" data-wpty="${t}">${t==="ALL"?"ВСЕ":tr(t)}</button>`).join("")}</div></div>
-         <div class="filter-row"><span class="filter-lbl">УРОН:</span>
-           <div class="filters">${["ALL",...dmgOptions].map(d=>`<button class="chip ${wpDmgFilter===d?'on':''}" data-wpdm="${d}">${d==="ALL"?"ВСЕ":tr(d)}</button>`).join("")}</div></div>
+         <div class="filter-row"><span class="filter-lbl">${t("picker.f.maker")}</span>
+           <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${wpFilter===s?'on':''}" data-wpf="${s}">${s==="ALL"?t("common.all"):s}</button>`).join("")}</div></div>
+         ${allow.length>1?`<div class="filter-row"><span class="filter-lbl">${t("picker.f.mount")}</span>
+           <div class="filters">${["ALL",...allow].map(sz=>`<button class="chip ${wpSizeFilter===sz?'on':''}" data-wpsz="${sz}">${sz==="ALL"?t("common.all"):tr(sz)}</button>`).join("")}</div></div>`:""}
+         <div class="filter-row"><span class="filter-lbl">${t("picker.f.type")}</span>
+           <div class="filters">${["ALL",...typeOptions].map(ty=>`<button class="chip ${wpTypeFilter===ty?'on':''}" data-wpty="${ty}">${ty==="ALL"?t("common.all"):tr(ty)}</button>`).join("")}</div></div>
+         <div class="filter-row"><span class="filter-lbl">${t("picker.f.damage")}</span>
+           <div class="filters">${["ALL",...dmgOptions].map(d=>`<button class="chip ${wpDmgFilter===d?'on':''}" data-wpdm="${d}">${d==="ALL"?t("common.all"):tr(d)}</button>`).join("")}</div></div>
        </div>
-       <input class="input" id="wp-search" aria-label="Поиск оружия" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
+       <input class="input" id="wp-search" aria-label="${t("picker.search.weapons")}" placeholder="${t("picker.search.weapons_ph")}" style="margin-bottom:14px" value="${esc(wpSearch)}">
        <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
     $("#wp-list").innerHTML=list.map((w,_i)=>{
       const lk=!unlocked(w);
@@ -386,10 +384,10 @@ function openWeaponPicker(mi){
       const row=weaponPickRow(w, open);
       const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
         <button class="ghostbtn block mt-14" id="wp-install-inline">
-          ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить это оружие"}
+          ${lk?"⚠ "+t("picker.install_anyway"):"✓ "+t("picker.install_weapon")}
         </button></div>`:"";
       return dividerBefore(list,_i)+`<div class="pickitem">${row}${expand}</div>`;
-    }).join("")||`<div class="hint">// нет подходящего оружия</div>`;
+    }).join("")||`<div class="hint">${t("picker.no_weapons")}</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     wireViewToggle(drawList);
@@ -416,7 +414,7 @@ function openWeaponPicker(mi){
     }
   };
 
-  modal(`Установить оружие · ${tr(mt.type)}`, "");
+  modal(tText("picker.weapon_title", {mount:tr(mt.type)}), "");
   drawList();
 }
 
@@ -440,9 +438,9 @@ function openPilotGearPicker(slotKind, onInstall){
   const drawDetail=(id)=>{
     const g=M.gear[id];
     setModalBody(
-      `<button class="ghostbtn mb-14" id="pg-back">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="pg-back">← ${t("picker.back")}</button>`
       + pilotGearCardHTML(g) +
-      `<button class="ghostbtn block mt-16" id="pg-install">✓ Установить это снаряжение</button>`);
+      `<button class="ghostbtn block mt-16" id="pg-install">✓ ${t("picker.install_gear")}</button>`);
     wireTagGlossary("#pg-tags", "#pg-tagdesc", g.tags||[]);
     $("#pg-back").onclick=drawList;
     $("#pg-install").onclick=()=>install(g.id);
@@ -454,10 +452,10 @@ function openPilotGearPicker(slotKind, onInstall){
     const list=L.pilot_gear.filter(g=>g.type===slotKind && !(g.tags||[]).includes("Exotic Gear"))
       .filter(g=>!pgSearch||(g.name+" "+(g.tags||[]).map(trTag).join(" ")).toLowerCase().includes(pgSearch.toLowerCase()))
       .sort((a,b)=>a.name.localeCompare(b.name));
-    const label = slotKind==="Armor"?"броню":slotKind==="Weapon"?"оружие":"снаряжение";
-    $("#modal .mhd h3").textContent=`Установить ${label}`;
+    // i18n-dynamic: picker.gear_title.Armor, picker.gear_title.Weapon, picker.gear_title.Gear
+    $("#modal .mhd h3").textContent=tText(`picker.gear_title.${slotKind}`);
     setModalBody(
-      `<input class="input" id="pg-search" aria-label="Поиск снаряжения" placeholder="поиск…" style="margin-bottom:14px" value="${esc(pgSearch)}">
+      `<input class="input" id="pg-search" aria-label="${t("picker.search.gear")}" placeholder="${t("picker.search.gear_ph")}" style="margin-bottom:14px" value="${esc(pgSearch)}">
        <div class="grid" id="pg-list" style="gap:8px"></div>`, keepScroll);
     $("#pg-list").innerHTML=list.map(g=>{
       const open=pgExpanded===g.id;
@@ -468,10 +466,10 @@ function openPilotGearPicker(slotKind, onInstall){
         <span class="chevron">${open?'⌄':'›'}</span>
       </div>`;
       const expand=open?`<div class="expand-detail">${pilotGearCardBody(g)}
-        <button class="ghostbtn block mt-14" id="pg-install-inline">✓ Установить это снаряжение</button></div>`:"";
+        <button class="ghostbtn block mt-14" id="pg-install-inline">✓ ${t("picker.install_gear")}</button></div>`:"";
       // Pilot gear has no licence gate in Lancer's rules, so nothing to divide.
       return `<div class="pickitem">${row}${expand}</div>`;
-    }).join("")||`<div class="hint">// нет подходящего снаряжения</div>`;
+    }).join("")||`<div class="hint">${t("picker.no_gear")}</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     const input=$("#pg-search");
@@ -505,9 +503,9 @@ function openIntegratedPicker(mi){
     tagOpenSet=new Set(); profileViewIdx=0;
     $("#modal .mhd h3").textContent=w.name;
     setModalBody(
-      `<button class="ghostbtn mb-14" id="wp-back">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="wp-back">← ${t("picker.back")}</button>`
       + weaponCardHTML(w) +
-      `<button class="ghostbtn block mt-16" id="wp-install">✓ Восстановить это оружие</button>`);
+      `<button class="ghostbtn block mt-16" id="wp-install">✓ ${t("picker.restore_weapon")}</button>`);
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", drawDetail);
     $("#wp-back").onclick=drawList;
@@ -518,14 +516,14 @@ function openIntegratedPicker(mi){
     const mbd=$("#modal .mbd");
     const savedScroll = keepScroll ? mbd.scrollTop : null;
     const open=pickerViewMode==="inline" && wpExpanded===w.id;
-    $("#modal .mhd h3").textContent="Восстановить интегрированное оружие";
+    $("#modal .mhd h3").textContent=tText("picker.restore_title");
     setModalBody(
-      `<div class="hint" style="margin-bottom:10px">Это оружие встроено в шасси — заменить его нельзя, можно только вернуть на место.</div>
+      `<div class="hint" style="margin-bottom:10px">${t("picker.restore_hint")}</div>
        ${viewToggleHTML()}
        <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
     const row=weaponPickRow(w, open);
     const expand=open?`<div class="expand-detail">${weaponCardBody(w)}
-      <button class="ghostbtn block mt-14" id="wp-install-inline">✓ Восстановить это оружие</button></div>`:"";
+      <button class="ghostbtn block mt-14" id="wp-install-inline">✓ ${t("picker.restore_weapon")}</button></div>`:"";
     $("#wp-list").innerHTML=`<div class="pickitem">${row}${expand}</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
@@ -543,7 +541,7 @@ function openIntegratedPicker(mi){
     }
   };
 
-  modal("Восстановить интегрированное оружие", "");
+  modal(tText("picker.restore_title"), "");
   drawList();
 }
 
@@ -563,10 +561,10 @@ function openModPicker(mi, wi){
     tagOpenSet=new Set();
     $("#modal .mhd h3").textContent=m.name;
     setModalBody(
-      `<button class="ghostbtn mb-14" id="mp-back">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="mp-back">← ${t("picker.back")}</button>`
       + modCardHTML(m) +
       `<button class="ghostbtn ${lk?'warn':''} block mt-16" id="mp-install">
-        ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить этот мод"}
+        ${lk?"⚠ "+t("picker.install_anyway"):"✓ "+t("picker.install_mod")}
       </button>`);
     wireTagGlossary("#md-tags", "#md-tagdesc", m.tags||[]);
     $("#mp-back").onclick=drawList;
@@ -580,12 +578,12 @@ function openModPicker(mi, wi){
       .filter(m=>mpFilter==="ALL"?m.source!=="EXOTIC":m.source===mpFilter)
       .filter(m=>!mpSearch||(m.name+" "+m.source+" "+(m.tags||[]).map(trTag).join(" ")).toLowerCase().includes(mpSearch.toLowerCase()))
       .sort(pickerOrder);
-    $("#modal .mhd h3").textContent=`Установить мод · ${esc(w.name)}`;
+    $("#modal .mhd h3").textContent=tText("picker.mod_title", {name:w.name});
     setModalBody(
-      `<div class="hint" style="margin-bottom:10px">Совместимо с типом: ${tr(w.type)}</div>
+      `<div class="hint" style="margin-bottom:10px">${t("picker.mod_compat", {type:tr(w.type)})}</div>
        ${viewToggleHTML()}
-       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${mpFilter===s?'on':''}" data-mpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
-       <input class="input" id="mp-search" aria-label="Поиск модов" placeholder="поиск модов…" style="margin-bottom:14px" value="${esc(mpSearch)}">
+       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${mpFilter===s?'on':''}" data-mpf="${s}">${s==="ALL"?t("common.all"):s}</button>`).join("")}</div>
+       <input class="input" id="mp-search" aria-label="${t("picker.search.mods")}" placeholder="${t("picker.search.mods_ph")}" style="margin-bottom:14px" value="${esc(mpSearch)}">
        <div class="grid" id="mp-list" style="gap:8px"></div>`, keepScroll);
     $("#mp-list").innerHTML=list.map((m,_i)=>{
       const lk=!unlocked(m);
@@ -600,10 +598,10 @@ function openModPicker(mi, wi){
       </div>`;
       const expand=open?`<div class="expand-detail">${modCardBody(m)}
         <button class="ghostbtn ${lk?'warn':''} block mt-14" id="mp-install-inline">
-          ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить этот мод"}
+          ${lk?"⚠ "+t("picker.install_anyway"):"✓ "+t("picker.install_mod")}
         </button></div>`:"";
       return dividerBefore(list,_i)+`<div class="pickitem">${row}${expand}</div>`;
-    }).join("")||`<div class="hint">// нет модов, совместимых с этим оружием</div>`;
+    }).join("")||`<div class="hint">${t("picker.no_mods")}</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     wireViewToggle(drawList);
@@ -625,7 +623,7 @@ function openModPicker(mi, wi){
     }
   };
 
-  modal(`Установить мод · ${w.name}`, "");
+  modal(tText("picker.mod_title", {name:w.name}), "");
   drawList();
 }
 
@@ -635,7 +633,7 @@ function openModPicker(mi, wi){
 function viewEquippedMod(mi, wi){
   const slot=state.mech.mounts[mi].items[wi], mod=M.mod[slot.mod];
   modal(mod.name, modCardHTML(mod) +
-    `<button class="ghostbtn warn block mt-16" id="md-remove">✕ Убрать этот мод</button>`);
+    `<button class="ghostbtn warn block mt-16" id="md-remove">✕ ${t("picker.remove_mod")}</button>`);
   wireTagGlossary("#md-tags", "#md-tagdesc", mod.tags||[]);
   $("#md-remove").onclick=()=>{ slot.mod=null; closeModal(); render(); };
 }
@@ -652,7 +650,7 @@ function viewEquippedWeapon(mi, wi){
   tagOpenSet=new Set(); profileViewIdx=0;
   const draw=()=>{
     modal(w.name, weaponCardHTML(ew) +
-      `<button class="ghostbtn warn block mt-16" id="wp-remove">✕ Убрать это оружие с крепления</button>`);
+      `<button class="ghostbtn warn block mt-16" id="wp-remove">✕ ${t("picker.remove_weapon")}</button>`);
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(ew, profileViewIdx));
     wireProfileChips("#wp-profiles", draw);
     $("#wp-remove").onclick=()=>{ state.mech.mounts[mi].items.splice(wi,1); closeModal(); render(); };
@@ -665,7 +663,7 @@ function viewEquippedSystem(si){
   const s=M.system[state.mech.systems[si]];
   tagOpenSet=new Set();
   modal(s.name, systemCardHTML(s) +
-    `<button class="ghostbtn warn block mt-16" id="sy-remove">✕ Убрать эту систему</button>`);
+    `<button class="ghostbtn warn block mt-16" id="sy-remove">✕ ${t("picker.remove_system")}</button>`);
   wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
   $("#sy-remove").onclick=()=>{ state.mech.systems.splice(si,1); closeModal(); render(); };
 }
@@ -701,10 +699,10 @@ function openSystemPicker(){
     tagOpenSet=new Set();
     $("#modal .mhd h3").textContent=s.name;
     setModalBody(
-      `<button class="ghostbtn mb-14" id="sy-back">← Назад к списку</button>`
+      `<button class="ghostbtn mb-14" id="sy-back">← ${t("picker.back")}</button>`
       + systemCardHTML(s) +
       `<button class="ghostbtn block mt-16" id="sy-install">
-        ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
+        ${lk?"⚠ "+t("picker.install_anyway"):"✓ "+t("picker.install_system")}
       </button>`);
     wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
     $("#sy-back").onclick=drawList;
@@ -720,11 +718,11 @@ function openSystemPicker(){
       .filter(s=>!state.mech.systems.includes(s.id))
       .filter(s=>!sySearch||(s.name+" "+tr(s.type)+" "+s.source+" "+(s.tags||[]).map(trTag).join(" ")).toLowerCase().includes(sySearch.toLowerCase()))
       .sort(pickerOrder);
-    $("#modal .mhd h3").textContent="Добавить систему";
+    $("#modal .mhd h3").textContent=tText("picker.system_title");
     setModalBody(
       `${viewToggleHTML()}
-       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
-       <input class="input" id="sy-search" aria-label="Поиск систем" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
+       <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?t("common.all"):s}</button>`).join("")}</div>
+       <input class="input" id="sy-search" aria-label="${t("picker.search.systems")}" placeholder="${t("picker.search.systems_ph")}" style="margin-bottom:14px" value="${esc(sySearch)}">
        <div class="grid" id="sy-list" style="gap:8px"></div>`, keepScroll);
     $("#sy-list").innerHTML=list.map((s,_i)=>{
       const lk=!unlocked(s);
@@ -732,10 +730,10 @@ function openSystemPicker(){
       const row=systemPickRow(s, open);
       const expand=open?`<div class="expand-detail">${systemCardBody(s)}
         <button class="ghostbtn block mt-14" id="sy-install-inline">
-          ${lk?"⚠ Установить всё равно (лицензия не открыта)":"✓ Установить эту систему"}
+          ${lk?"⚠ "+t("picker.install_anyway"):"✓ "+t("picker.install_system")}
         </button></div>`:"";
       return dividerBefore(list,_i)+`<div class="pickitem">${row}${expand}</div>`;
-    }).join("")||`<div class="hint">// нет систем</div>`;
+    }).join("")||`<div class="hint">${t("picker.no_systems")}</div>`;
     if(savedScroll!==null) mbd.scrollTop=savedScroll;
 
     wireViewToggle(drawList);
@@ -758,7 +756,7 @@ function openSystemPicker(){
     }
   };
 
-  modal("Добавить систему", "");
+  modal(tText("picker.system_title"), "");
   drawList();
 }
 

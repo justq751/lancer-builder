@@ -4,7 +4,7 @@
 import { test, expect } from "@playwright/test";
 import { writeFileSync } from "node:fs";
 import { FULL_BUILD, LEGACY_BUILD, UNKNOWN_IDS_BUILD } from "./fixtures/builds.mjs";
-import { openApp, getState, getSaved, modal, waitForBoot } from "./helpers.mjs";
+import { openApp, getState, getSaved, modal, waitForBoot, setLanguage } from "./helpers.mjs";
 
 test("restores the autosaved build on load", async ({ page }) => {
   const errors = await openApp(page, { build: FULL_BUILD });
@@ -145,7 +145,7 @@ test("a broken share link reports instead of crashing", async ({ page }) => {
   const errors = await openApp(page, { build: LEGACY_BUILD, path: "/?s=zNOT_A_REAL_PAYLOAD" });
   await expect(modal(page).locator("h3")).toHaveText("Ссылка не прочитана");
   // consumeShareLink() logs the decode failure on purpose.
-  expect(errors.filter(e => !e.includes("ссылка не прочитана"))).toEqual([]);
+  expect(errors.filter(e => !e.includes("could not read the link"))).toEqual([]);
 });
 
 test("a broken share link keeps the reader's own build", async ({ page }) => {
@@ -224,9 +224,7 @@ test("switching language keeps the build and the logic keys", async ({ page }) =
   const errors = await openApp(page, { build: FULL_BUILD });
   const hp = await page.evaluate(() => derived().mech.hp);
 
-  await page.locator("#t-lang").click();
-  await expect.poll(() => page.evaluate(() => currentLang)).toBe("en");
-  await expect(page.locator("#t-lang")).toBeEnabled();
+  await setLanguage(page, { data: "en" });
   expect(await getState(page)).toEqual(FULL_BUILD);
   expect(await page.evaluate(() => derived().mech.hp)).toBe(hp);
 
@@ -234,8 +232,18 @@ test("switching language keeps the build and the logic keys", async ({ page }) =
   await waitForBoot(page);
   expect(await page.evaluate(() => currentLang)).toBe("en"); // choice persisted
 
-  await page.locator("#t-lang").click();
-  await expect.poll(() => page.evaluate(() => currentLang)).toBe("ru");
+  await setLanguage(page, { data: "ru" });
   expect(await getState(page)).toEqual(FULL_BUILD);
+  expect(errors).toEqual([]);
+});
+
+test("a callsign with markup shows as text in the reset dialog", async ({ page }) => {
+  // Loss lists esc() their items, and t() escapes parameters: building them
+  // with t() would double-escape and show "&lt;b&gt;" (see tText).
+  const errors = await openApp(page, { build: { ...FULL_BUILD, pilot: { ...FULL_BUILD.pilot, callsign: "<b>X</b>" } } });
+  await page.evaluate(() => $("#t-reset").click());
+  const list = page.locator("#modal .losslist");
+  await expect(list).toContainText("<b>X</b>");
+  await expect(list.locator("b")).toHaveCount(0);
   expect(errors).toEqual([]);
 });

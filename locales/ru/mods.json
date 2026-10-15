@@ -1,126 +1,160 @@
 {
  "wm_thermal_charge": {
   "name": {
+   "en": "Thermal Charge",
    "ru": "Термический заряд"
   },
   "effect": {
+   "en": "On a hit with the weapon this mod is applied to, expend a charge as a free action to activate its detonator and deal +1d6 explosive bonus damage.",
    "ru": "При попадании оружием, на которое установлен этот мод, потратьте заряд как свободное действие, чтобы активировать детонатор и нанести +1d6 бонусного взрывного урона."
   },
   "description": {
+   "en": "One popular modification to the classic war pike involves replacing the long, armor-piercing pike head with a disposable, impact-triggered explosive charge. On penetration, the pike’s head is severed from the shaft – moments later, the embedded pike head detonates in a conical explosion from the point forward. Spare thermal charges are stable, and transported in external tube magazines.<br>IPS-N also makes thermal charges compatible with GMS’s range of blades, hammers, and picks.",
    "ru": "Одна из популярных модификаций классической боевой пики — замена длинного бронебойного наконечника одноразовым взрывным зарядом ударного действия. При пробитии наконечник пики отделяется от древка — мгновение спустя встроенный наконечник детонирует, создавая конический взрыв, направленный вперёд от точки удара. Запасные термические заряды стабильны и перевозятся во внешних трубчатых магазинах.<br>IPS-N также выпускает термические заряды, совместимые с линейкой клинков, молотов и кирок GMS."
   },
   "on_hit": {
+   "en": "On a hit with the weapon this mod is applied to, expend a charge as a free action to activate its detonator and deal +1d6 explosive bonus damage.",
    "ru": "При попадании оружием, на которое установлен этот мод, потратьте заряд как свободное действие, чтобы активировать детонатор и нанести +1d6 бонусного взрывного урона."
   }
  },
  "wm_uncle_class_comp_con": {
   "name": {
+   "en": "UNCLE-Class Comp/Con",
    "ru": "UNCLE-Class Comp/Con"
   },
   "effect": {
+   "en": "Your UNCLE-class COMP/CON has control of the weapon this mod is applied to and its associated systems.<br>1/turn, you can attack at +2 difficulty with UNCLE’s weapon as a free action. UNCLE can’t use weapons that have already been used this turn, and any weapon UNCLE attacks with can’t be used again until the start of your next turn.<br>UNCLE isn’t a full NHP, so cannot enter cascade.",
    "ru": "Ваш COMP/CON класса UNCLE берёт под контроль оружие, на которое установлен этот мод, и связанные с ним системы.<br>1/ход вы можете атаковать оружием UNCLE с +2 Сложностью как свободное действие. UNCLE не может использовать оружие, уже использованное в этот ход, и любое оружие, которым атаковал UNCLE, нельзя использовать повторно до начала вашего следующего хода.<br>UNCLE не является полноценным НЧП, поэтому не может войти в каскад."
   },
   "description": {
+   "en": "IPS-N’s UNCLE COMP/CON system is the result of the DARKSTAR-2 program, a temporary project that sought to develop more advanced smart weapons. Early prototypes were hampered by a combination of high power-draw, unstable conditioning, and frustrating single-task orientation that eventually saw the project shuttered.<br>While IPS-N is no longer developing new iterations of UNCLE, they still have a stock of QA-approved legacy systems accessible to qualified pilots.<br>Pilots lucky enough to field test models swear by UNCLE’s task efficiency and parallel-track reasoning, though the outdated COMP/CONs are known for their somewhat unstable personalities.",
    "ru": "UNCLE COMP/CON от IPS-N — результат программы DARKSTAR-2, временного проекта, нацеленного на разработку более продвинутого умного оружия. Ранние прототипы страдали от сочетания высокого энергопотребления, нестабильной настройки и разочаровывающей однозадачности, что в итоге привело к закрытию проекта.<br>Хотя IPS-N больше не разрабатывает новые итерации UNCLE, у компании всё ещё есть запас одобренных ОТК устаревших систем, доступных квалифицированным пилотам.<br>Пилоты, которым посчастливилось испытать эти модели в деле, клянутся эффективностью UNCLE в решении задач и параллельным мышлением, хотя устаревшие COMP/CON известны несколько нестабильным характером."
   }
  },
  "wm_throughbolt_rounds": {
   "name": {
+   "en": "Throughbolt Rounds",
    "ru": "Пробойные патроны"
   },
   "effect": {
+   "en": "When you attack with the weapon this mod is applied to, you may fire a throughbolt round instead of attacking normally. Draw a line 3 path from you, passing through terrain or other obstacles – any characters or objects in the path take 2 AP kinetic damage as the projectile punches through them and out the other side. Range, cover, and line of sight for the attack are then measured from the end of this path, continuing in the same direction.",
    "ru": "Атакуя оружием, на которое установлен этот мод, вы можете выстрелить пробойным патроном вместо обычной атаки. Проведите путь-линию 3 от себя, проходящую через рельеф или другие препятствия — все персонажи или объекты на пути получают 2 пробивающего броню кинетического урона, когда снаряд пробивает их насквозь. Дальность, укрытие и линия видимости для атаки затем отсчитываются от конца этого пути, продолжаясь в том же направлении."
   },
   "description": {
+   "en": "Throughbolt rounds are a proprietary IPS-N anti-armor invention. When fired, the rounds ignite and project a superheated cone of plasma before them, creating an effect like a miniature lance that easily penetrates multiple targets – even through hard surfaces.",
    "ru": "Пробойные патроны — фирменная противоброневая разработка IPS-N. При выстреле патроны воспламеняются и проецируют перед собой перегретый конус плазмы, создавая эффект миниатюрного копья, легко пробивающего несколько целей — даже сквозь твёрдые поверхности."
   }
  },
  "wm_shock_wreath": {
   "name": {
+   "en": "Shock Wreath",
    "ru": "Шоковый венец"
   },
   "effect": {
+   "en": "In addition to its usual damage, 1/round you may activate the wreath as a quick action when you hit a character with the weapon this mod is applied to to cause it to take 1d6 burn. If it already is suffering from burn, it can additionally only draw line of sight to adjacent spaces until the end of its next turn.",
    "ru": "Помимо обычного урона, 1/раунд вы можете активировать венец как быстрое действие при попадании по персонажу оружием, на которое установлен этот мод, нанося ему 1d6 горения. Если он уже страдает от горения, он дополнительно может проводить линию видимости только на соседние клетки до конца своего следующего хода."
   },
   "description": {
+   "en": "A post-fab modification popular among melee combat specialists, Shock Wreathes integrate a bundle of conductive filaments within the blade, point, tip, or surface of a close combat weapon. Paired with a power source – typically in the hilt or lower half of a weapon, but sometimes external – Shock Wreathes give kinetic weapons a thermal edge and a distinctive visual marker: fine lines of white-hot light like filigree, shrouding the modified weapon in shimmering heat.",
    "ru": "Постфабрикационная модификация, популярная среди специалистов ближнего боя. Шоковые венцы встраивают пучок токопроводящих нитей в клинок, остриё, наконечник или поверхность оружия ближнего боя. В паре с источником питания — обычно в рукояти или нижней половине оружия, но иногда внешним — Шоковые венцы придают кинетическому оружию термическую грань и характерный визуальный признак: тонкие линии бело-раскалённого света, похожие на филигрань, окутывающие модифицированное оружие мерцающим жаром."
   }
  },
  "wm_stabilizer_mod": {
   "name": {
+   "en": "Stabilizer Mod",
    "ru": "Стабилизирующий мод"
   },
   "effect": {
+   "en": "the weapon this mod is applied to gains +5 range and the Ordnance tag.",
    "ru": "Оружие, на которое установлен этот мод, получает +5 Дальность и тег «Артиллерия»."
   },
   "description": {
+   "en": "Stabilizer mods enhance physical mounts and targeting software, ensuring weapons remain level, steady, and at an appropriate angle regardless of terrain or pilot maneuvers.",
    "ru": "Стабилизирующие моды улучшают физические крепления и ПО наведения, обеспечивая ровное, устойчивое положение оружия под правильным углом независимо от рельефа или манёвров пилота."
   }
  },
  "wm_nanocomposite_adaptation": {
   "name": {
+   "en": "Nanocomposite Adaptation",
    "ru": "Нанокомпозитная адаптация"
   },
   "effect": {
+   "en": "the weapon this mod is applied to gains Smart and Seeking.",
    "ru": "Оружие, на которое установлен этот мод, получает теги «Умное» и «Самонаводящееся»."
   },
   "description": {
+   "en": "Nanocomposite weapons take aggressive drone swarms and condense them into individual rounds, a coherent beam, or the edge of a blade.<br>Adapted projectile weapons fire shaped CONSUME/HIVE rounds that shatter on impact, releasing their payload of autonomous nanite maniples. Once freed, the maniples begin eating away at surrounding tissue or superstructure. They proceed until burnout or total target consumption, whichever occurs first. In flight, the maniples are able to hive-link and make slight adjustments to the trajectory of their round, ensuring positive impact.<br>Coherent beam weapons transport maniples directly, while conventional melee weapons are replaced by analogs composed entirely of nanobots.",
    "ru": "Нанокомпозитное оружие берёт агрессивные дрон-рои и уплотняет их в отдельные патроны, когерентный луч или лезвие клинка.<br>Адаптированное снарядное оружие стреляет формованными патронами CONSUME/HIVE, разрушающимися при ударе и высвобождающими полезную нагрузку из автономных нанитовых манипул. Освободившись, манипулы начинают разъедать окружающие ткани или суперструктуру. Они продолжают действовать, пока не иссякнут или полностью не поглотят цель — что наступит раньше. В полёте манипулы способны образовывать рой-связь и слегка корректировать траекторию снаряда, гарантируя точное попадание.<br>Когерентное лучевое оружие переносит манипулы напрямую, а обычное оружие ближнего боя заменяется аналогами, полностью состоящими из нанороботов."
   }
  },
  "wm_phase_ready_mod": {
   "name": {
+   "en": "Phase-Ready Mod",
    "ru": "Фазоготовый мод"
   },
   "effect": {
+   "en": "As long as you know the rough location of your target, the weapon this mod is applied to can attack through solid walls and obstructions, doesn’t require line of sight, and ignores all cover, but targets attacked this way count as Invisible.",
    "ru": "Пока вы примерно знаете местоположение цели, оружие, на которое установлен этот мод, может атаковать сквозь твёрдые стены и препятствия, не требует линии видимости и игнорирует любое укрытие, но цели, поражённые таким образом, считаются Невидимыми."
   },
   "description": {
+   "en": "As it was named following its first use during the civil hostilities on Luna de Oro, phase-ready ammunition is the “devil’s bullets”. Each round contains a nanoprocessor suite networked with its weapon of origin that calculates and translates the specific nature of that round’s superpositional relation with a projected future doppelgänger that manifests in the space immediately before its intended target. To put it simply, phase-ready rounds, when fired, exist in two places at once: exiting the barrel of the weapon they were fired from, and directly in front of the target, prior to impact. The prime round may never hit its target, but given it already exists at the moment of impact, the doppelgänger round will reliably reach its mark.",
    "ru": "Названные так после первого применения во время гражданских столкновений на Луна-де-Оро, фазоготовые патроны — это «дьявольские пули». Каждый патрон содержит наносопроцессорный комплект, связанный сетью со своим оружием происхождения, который вычисляет и переводит специфическую природу суперпозиционной связи этого патрона с прогнозируемым будущим двойником, проявляющимся в пространстве непосредственно перед намеченной целью. Проще говоря, фазоготовые патроны при выстреле существуют в двух местах одновременно: покидая ствол оружия, из которого их выпустили, и непосредственно перед целью, до момента удара. Изначальный патрон может никогда не попасть в цель, но поскольку его двойник уже существует в момент удара, он неизменно достигнет цели."
   }
  },
  "wm_paracausal_mod": {
   "name": {
+   "en": "Paracausal Mod",
    "ru": "Паракаузальный мод"
   },
   "effect": {
+   "en": "This weapon gains Overkill, and its damage can’t be reduced in any way, including by other effects and systems (such as Resistance, Armor, etc).",
    "ru": "Это оружие получает тег «Сверхурон», и его урон нельзя снизить никаким способом, включая другие эффекты и системы (например, Сопротивление, Броню и т.д.)."
   },
   "description": {
+   "en": "Paracausal weapons are a headache for military planners; their precise A–Z function is often obscured, though they consistently produce the same “Z” output per “A” input.<br>The first reports of unregulated paracausal weaponry occurred during the civil engagements on Tian Shen. System-local forces received sealed magazines with directions to be loaded and fired as normal, although inspection of the magazines’ contents was prohibited on grounds that it would “damage the payload”. Helmet and gun cam footage do not betray the anomalous effects of this ordnance, though after-action reports uncovered a seemingly minor, though incredibly odd fact: every single trooper outfitted with this paracausal ammunition scored a 100% positive impact rate.<br>Union has scheduled all unregulated paracausal weapons and ammunition for retrieval, and the bureau is currently investigating Harrison Armory for its role in the development of the technology. Despite this, paracausal ammunition is still in use, as shipments and codes continue to leak to interested parties.",
    "ru": "Паракаузальное оружие — головная боль для военных штабистов; его точная функция «от А до Я» часто скрыта, хотя оно неизменно даёт один и тот же результат «Я» на входе «А».<br>Первые сообщения о нерегулируемом паракаузальном оружии появились во время гражданских столкновений на Тянь-Шэнь. Местные силовые структуры получили опечатанные магазины с инструкцией заряжать и стрелять как обычно, хотя осмотр содержимого магазинов был запрещён на основании того, что это «повредит полезную нагрузку». Записи шлемовых и оружейных камер не выдают аномальных эффектов этого боеприпаса, хотя отчёты по итогам операций вскрыли на первый взгляд незначительный, но невероятно странный факт: у каждого без исключения бойца, оснащённого этими паракаузальными патронами, результативность попаданий составила 100%.<br>Union внесла всё нерегулируемое паракаузальное оружие и боеприпасы в список подлежащих изъятию, и бюро в настоящее время расследует роль Harrison Armory в разработке этой технологии. Несмотря на это, паракаузальные патроны всё ещё используются, поскольку поставки и коды продолжают утекать заинтересованным сторонам."
-  }
- },
- "mw_bounder_class_comp_con": {
-  "name": {
-   "ru": "BOUNDER-Class Comp/Con"
-  },
-  "effect": {
-   "ru": "Этот мод не работает с оружием типа Взрыв, Всплеск, Линия или Конус. 1/раунд вы можете выбрать одно из следующего:<ul><li>Промахнувшись этим оружием, вы можете перебросить атаку по другой цели, отсчитывая Дальность и линию видимости от местоположения исходной цели.</li><li>Вы можете направить выстрел рикошетом за углы и от окружения, чтобы поразить дальние цели. Выберите элемент рельефа или объект Размера 1 или больше в пределах Дальности и линии видимости оружия. Совершая атаку, вы можете отсчитывать Дальность и линию видимости от этой точки вместо своей.</li><li>Выбросив на кубике 20 для этой атаки («натуральную двадцатку»), вы можете направить выстрел рикошетом в критическую зону цели. Урон атаки нельзя снизить никаким способом, и при попадании цель опрокидывается.</li></ul><br><br>Эта система не является полноценным НЧП и не может войти в каскад."
-  },
-  "description": {
-   "ru": "Изначально задуманный как часть лицензионного пакета «Кэмпбелл», в итоге проигравшего «Калибану» на отборочных испытаниях, comp/con класса BOUNDER тем не менее представляет одну из новейших разработок IPS-N в области умного оружия следующего поколения. Программа «Кэмпбелл» была нацелена на обеспечение успешных абордажных операций через решения непрямого наведения, минимизируя риск ответного огня, и хотя «Кэмпбелл» в итоге так и не был принят на вооружение, BOUNDER остаётся доступен как самостоятельная лицензия для заказа.<br><br>BOUNDER — это совместный аппаратно-программный пакет, подходящий для большинства основных типов вооружения, разработанный для максимизации отражательной способности поверхности и когерентности снаряда/волновой формы за счёт сочетания специализированных боеприпасов, переменного электромагнитного линзирования и настраиваемых профилей стрельбы. Благодаря продвинутым возможностям баллистического расчёта системы, пользователи способны точно прокладывать траектории рикошета от твёрдых поверхностей в реальном времени с приемлемой точностью.<br><br>Уроки, извлечённые из печально известного comp/con класса UNCLE, привели к куда более стабильному и удобному для пользователя опыту, хотя некоторые пилоты, знакомые с обеими системами, утверждают, что находят особенности UNCLE более располагающими, чем отточенный, но менее эксцентричный характер BOUNDER."
   }
  },
  "wm_supermassive_mod": {
   "name": {
+   "en": "Supermassive Mod",
    "ru": "Сверхмассивный мод"
   },
   "effect": {
+   "en": "Choose one CQB, CANNON, or MELEE weapon: it gains OVERKILL and KNOCKBACK +1. During a FULL REPAIR, you may tune it to remove safety limiters, increasing this benefit to KNOCKBACK +2 instead; however, it also gains ORDNANCE (if it is ranged) or INACCURATE (if it is melee).",
    "ru": "Выберите одно оружие типа CQB, ПУШКА или БЛИЖНЕЕ: оно получает тег «Сверхурон» и «Отбрасывание +1». Во время ПОЛНОГО РЕМОНТА вы можете настроить его, сняв ограничители безопасности, увеличив этот бонус до «Отбрасывание +2»; однако оно также получает тег «Артиллерия» (если дальнобойное) или «Неточное» (если ближнее)."
   },
   "description": {
+   "en": "The first in a suite of best-practice modifications for close-quarters combat out of the same Titan–Enceladus Field Project that produced the Caliban, supermassive mods include a host of alterations to close-quarters weapons designed to enhance their general lethality and utility by lifting safety precautions.",
    "ru": "Первая в наборе рекомендованных модификаций для ближнего боя из того же проекта «Титан-Энцелад», что произвёл на свет «Калибана» — сверхмассивные моды включают ряд изменений для оружия ближнего боя, разработанных для повышения его общей смертоносности и полезности за счёт снятия мер безопасности."
   }
  },
  "wm_molten_wreathe": {
   "name": {
+   "en": "Molten Wreathe",
    "ru": "Расплавленный венец"
   },
   "effect": {
+   "en": "Choose one MELEE weapon: 1/round, after you hit a character with this weapon, you take 1 Heat and it projects a superheated Cone 3 cloud oriented away from your target in a direction of your choice. Your target and any characters caught in this cloud each take 2 Explosive Damage.",
    "ru": "Выберите одно БЛИЖНЕЕ оружие: 1/раунд, попав этим оружием по персонажу, вы получаете 1 Тепло, и оно проецирует перегретое облако-Конус 3, направленное в сторону от цели в выбранном вами направлении. Ваша цель и любые персонажи, попавшие в это облако, получают по 2 взрывного урона."
   },
   "description": {
+   "en": "Needing a significant boost to her Raleigh’s melee capacity, Xiong decided upon a crude but effective solution: she would re-route her Raleigh’s coldcore dispersion systems into the chassis’ palms with a simple on/off switch, allowing it to superheat equipped weapons. The resultant ad hoc thermal weapon is so hot that it prompts an explosive vaporization of hard and soft surfaces on impact, creating a secondary backblast cloud that is a deadly weapon in its own right. The production version of this system simply adds a sturdier, dedicated routing system and better insulation.",
    "ru": "Нуждаясь в значительном усилении ближнего боя своего «Раleigh», Сюн решила прибегнуть к грубому, но эффективному решению: она перенаправила системы рассеивания холодного ядра своего «Раleigh» в ладони шасси через простой переключатель вкл/выкл, позволяя перегревать установленное оружие. Получившееся импровизированное термическое оружие настолько горячее, что вызывает взрывное испарение твёрдых и мягких поверхностей при ударе, создавая вторичное облако обратной вспышки, которое само по себе является смертоносным оружием. Серийная версия этой системы просто добавляет более прочную выделенную систему отвода и лучшую изоляцию."
+  }
+ },
+ "mw_bounder_class_comp_con": {
+  "name": {
+   "en": "BOUNDER-Class Comp/Con",
+   "ru": "BOUNDER-Class Comp/Con"
+  },
+  "effect": {
+   "en": "This Mod does not work with Blast, Burst, Line, or Cone weapons. 1/round you may choose one of the following:<ul><li>When you miss an attack with this weapon, you may reroll that attack against a different target, tracing Range and line of sight from the original target's location.</li><li>You may bank your shot around corners and off of the environment to hit distant targets. Choose a piece of terrain or object Size 1 or larger within the weapon's Range and line of sight. When you make your attack, you may trace Range and line of sight from that location instead.</li><li>When you roll a 20 on a die for this attack (sometimes called a \"natural 20\"), you may ricochet the shot to strike a critical area on the target. The attack's damage can't be reduced in any way, and on hit the target is knocked Prone.</li></ul><br><br>This system isn't a full NHP and cannot enter cascade.",
+   "ru": "Этот мод не работает с оружием типа Взрыв, Всплеск, Линия или Конус. 1/раунд вы можете выбрать одно из следующего:<ul><li>Промахнувшись этим оружием, вы можете перебросить атаку по другой цели, отсчитывая Дальность и линию видимости от местоположения исходной цели.</li><li>Вы можете направить выстрел рикошетом за углы и от окружения, чтобы поразить дальние цели. Выберите элемент рельефа или объект Размера 1 или больше в пределах Дальности и линии видимости оружия. Совершая атаку, вы можете отсчитывать Дальность и линию видимости от этой точки вместо своей.</li><li>Выбросив на кубике 20 для этой атаки («натуральную двадцатку»), вы можете направить выстрел рикошетом в критическую зону цели. Урон атаки нельзя снизить никаким способом, и при попадании цель опрокидывается.</li></ul><br><br>Эта система не является полноценным НЧП и не может войти в каскад."
+  },
+  "description": {
+   "en": "Originally planned as part of the \"Campbell\" license package, which ultimately lost to the Caliban during selection trials, the BOUNDER-class comp/con nonetheless represents one of IPS-N's latest developments in next-generation smart weapons design. The Campbell program was intended to facilitate successful boarding actions through indirect targeting solutions, minimizing the risk of incoming retaliatory fire, and although the Campbell was ultimately never adopted, BOUNDER remains available as a self-contained license for requisition.<br><br>BOUNDER is a joint hardware/software package suitable for most mainline armaments, designed to maximize surface reflectivity and projectile/waveform cohesion through a combination of specialized ammunition, variable electromagnetic lensing, and adjustable firing profiles. Thanks to the system's advanced ballistic calculation capabilities, users are able accurately chart oblique firing solutions across hard surfaces in realtime with acceptable accuracy.<br><br>Lessons learned from the infamous UNCLE-class comp/con have resulted in a much more stable and user-friendly experience, though some pilots with experience of both systems claim they find UNCLE's idiosyncrasies more endearing than BOUNDER's polished, but less eccentric, personality.",
+   "ru": "Изначально задуманный как часть лицензионного пакета «Кэмпбелл», в итоге проигравшего «Калибану» на отборочных испытаниях, comp/con класса BOUNDER тем не менее представляет одну из новейших разработок IPS-N в области умного оружия следующего поколения. Программа «Кэмпбелл» была нацелена на обеспечение успешных абордажных операций через решения непрямого наведения, минимизируя риск ответного огня, и хотя «Кэмпбелл» в итоге так и не был принят на вооружение, BOUNDER остаётся доступен как самостоятельная лицензия для заказа.<br><br>BOUNDER — это совместный аппаратно-программный пакет, подходящий для большинства основных типов вооружения, разработанный для максимизации отражательной способности поверхности и когерентности снаряда/волновой формы за счёт сочетания специализированных боеприпасов, переменного электромагнитного линзирования и настраиваемых профилей стрельбы. Благодаря продвинутым возможностям баллистического расчёта системы, пользователи способны точно прокладывать траектории рикошета от твёрдых поверхностей в реальном времени с приемлемой точностью.<br><br>Уроки, извлечённые из печально известного comp/con класса UNCLE, привели к куда более стабильному и удобному для пользователя опыту, хотя некоторые пилоты, знакомые с обеими системами, утверждают, что находят особенности UNCLE более располагающими, чем отточенный, но менее эксцентричный характер BOUNDER."
   }
  }
 }
