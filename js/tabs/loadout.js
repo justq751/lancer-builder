@@ -28,7 +28,7 @@ function renderLoadout(){
       const ew = effectiveWeapon(w, mod); // mod's added_tags/range/damage folded in, for display only
       const key=`${mi}:${wi}`, dk=`${mi}-${wi}`, open=eqWeaponExpanded.has(key);
       const row=`<div class="equipped">
-        <div class="ei clickable" data-vieww="${key}"><div class="en">${esc(w.name)}</div>
+        <div class="ei clickable has-cardlink">${cardLinkHTML("weapon", key, esc(w.name), "en")}
           <div class="em">${tr(w.mount)} · ${tr(w.type)} · ${dmgStr(ew)} · ${rngStr(ew)}${w.sp?` · ${w.sp} SP`:""}</div></div>
         <div style="display:flex;align-items:center;gap:8px">
           <button class="xbtn expand" data-expw="${key}" title="Показать подробности" aria-label="${open?'Свернуть':'Развернуть'} подробности">${open?'⌄':'›'}</button>
@@ -44,7 +44,7 @@ function renderLoadout(){
       if(mod){
         const mlk=!unlocked(mod);
         modRow = `<div class="equipped" style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)">
-          <div class="ei clickable" data-viewmod="${key}"><div class="en">🔧 ${esc(mod.name)}</div>
+          <div class="ei clickable has-cardlink">${cardLinkHTML("mod", key, `<span aria-hidden="true">🔧</span> ${esc(mod.name)}`, "en")}
             <div class="em">${mlk?`🔒 ${esc(licenseDisplayName(mod.license))} ${mod.license_level}`:`${mod.sp||0} SP`}</div></div>
           <div style="display:flex;align-items:center;gap:8px">
             <button class="xbtn expand" data-expmod="${key}" title="Показать подробности" aria-label="${modOpen?'Свернуть':'Развернуть'} подробности">${modOpen?'⌄':'›'}</button>
@@ -93,7 +93,7 @@ function renderLoadout(){
     const sy=M.system[id];
     const open=eqSystemExpanded.has(si);
     const row=`<div class="listrow">
-      <div class="info clickable" data-views="${si}"><div class="nm">${esc(sy.name)} <span class="tag sp">${sy.sp} SP</span></div>
+      <div class="info clickable has-cardlink"><div class="nm">${cardLinkHTML("system", si, esc(sy.name))} <span class="tag sp">${sy.sp} SP</span></div>
         <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+esc(truncateWords(stripHTML(sy.effect),140)):""}</div></div>
       <div style="display:flex;align-items:center;gap:8px">
         <button class="xbtn expand" data-exps="${si}" title="Показать подробности" aria-label="${open?'Свернуть':'Развернуть'} подробности">${open?'⌄':'›'}</button>
@@ -126,17 +126,9 @@ function renderLoadout(){
     if(eqWeaponExpanded.has(key)) eqWeaponExpanded.delete(key); else eqWeaponExpanded.add(key);
     renderLoadout();
   });
-  $$("#mounts .ei[data-vieww]").forEach(el=>el.onclick=()=>{
-    const [mi,wi]=el.dataset.vieww.split(":").map(Number);
-    viewEquippedWeapon(mi,wi);
-  });
   $$("#mounts .ghostbtn[data-addmod]").forEach(b=>b.onclick=()=>{
     const [mi,wi]=b.dataset.addmod.split(":").map(Number);
     openModPicker(mi,wi);
-  });
-  $$("#mounts .ei[data-viewmod]").forEach(el=>el.onclick=()=>{
-    const [mi,wi]=el.dataset.viewmod.split(":").map(Number);
-    viewEquippedMod(mi,wi);
   });
   $$("#mounts .xbtn[data-expmod]").forEach(b=>b.onclick=e=>{
     e.stopPropagation();
@@ -165,7 +157,6 @@ function renderLoadout(){
     if(eqSystemExpanded.has(si)) eqSystemExpanded.delete(si); else eqSystemExpanded.add(si);
     renderLoadout();
   });
-  $$("#syslist .info[data-views]").forEach(el=>el.onclick=()=>viewEquippedSystem(+el.dataset.views));
 }
 /* Strips HTML tags for a plain-text preview, then truncates at a word
    boundary (never mid-word, never mid-tag) with an ellipsis. Used for
@@ -201,7 +192,11 @@ function wireTagGlossary(tagsSel, boxSel, rawTags, tagSet){
         ? `<div class="tagdesc"><b>${esc(info.name)}</b><div style="margin-top:4px">${esc(info.description)}</div></div>`
         : `<div class="tagdesc">Описание этого тега пока не найдено в справочнике.</div>`;
     }).join("");
-    $$(`${tagsSel} .glossary`).forEach(el=>el.classList.toggle("open", tagSet.has(+el.dataset.tgi)));
+    $$(`${tagsSel} .glossary`).forEach(el=>{
+      const on=tagSet.has(+el.dataset.tgi);
+      el.classList.toggle("open", on);
+      el.setAttribute("aria-expanded", String(on));
+    });
   };
   $$(`${tagsSel} .glossary`).forEach(el=>{
     el.onclick=()=>{

@@ -36,12 +36,33 @@ function resetModalScroll(){
 }
 let modalReturnFocus=null, modalReturnKey=null;
 /* A selector that finds "the same control" again after render() has replaced
-   the DOM — nearly every modal action ends in closeModal(); render(). */
+   the DOM — nearly every modal action ends in closeModal(); render(), and
+   every in-page action ends in render(). All data-* attributes take part:
+   the − and + of one stepper share data-sk and differ only in data-d. */
 function focusKeyOf(el){
   if(!el || el===document.body) return null;
   if(el.id) return "#"+CSS.escape(el.id);
-  const d=Object.entries(el.dataset||{})[0];
-  return d ? `[data-${d[0].replace(/[A-Z]/g,c=>"-"+c.toLowerCase())}="${CSS.escape(d[1])}"]` : null;
+  const attrs=Object.entries(el.dataset||{}).map(([k,v])=>
+    `[data-${k.replace(/[A-Z]/g,c=>"-"+c.toLowerCase())}="${CSS.escape(v)}"]`).join("");
+  return attrs ? el.tagName.toLowerCase()+attrs : null;
+}
+/* Called by render() before it replaces the DOM; the returned function puts
+   focus back afterwards. Without it every keyboard action — a stepper press,
+   picking a frame — dropped focus on <body> and the next Tab began again at
+   the header. Falls back to a live sibling (a stepper's − once + went
+   disabled at the cap) and then to the tab panel itself. */
+function keepFocusAcrossRender(){
+  const el=document.activeElement;
+  if(!el || el===document.body || el.closest("#modal")) return ()=>{};
+  const key=focusKeyOf(el), inTab=!!el.closest("#tab");
+  return ()=>{
+    if(el.isConnected || $("#modal").classList.contains("show")) return;
+    let t=key && document.querySelector(key);
+    if(t && t.disabled) t=t.closest(".stepper, .item, .slot, .listrow")
+      ?.querySelector("button:not(:disabled), [tabindex='0']") || null;
+    if(!t && inTab) t=$("#tab");
+    if(t) t.focus({preventScroll:true});
+  };
 }
 function modal(title,html){
   const mhd=$("#modal .mhd");

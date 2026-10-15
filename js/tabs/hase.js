@@ -15,9 +15,9 @@ function renderHase(){
         <div class="badge">ранг ${v}/6</div></div>
       <div class="desc">${h.eff}</div>
       <div class="stepper" style="margin-top:12px">
-        <button class="stepbtn" data-hs="${h.k}" data-d="-1" ${v<=0?"disabled":""}>−</button>
-        <span class="pips">${[1,2,3,4,5,6].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
-        <button class="stepbtn" data-hs="${h.k}" data-d="1" ${(v<6&&remaining>=1)?"":"disabled"}>+</button>
+        <button class="stepbtn" data-hs="${h.k}" data-d="-1" ${v<=0?"disabled":""} aria-label="Понизить: ${h.ru}">−</button>
+        <span class="pips" aria-hidden="true">${[1,2,3,4,5,6].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
+        <button class="stepbtn" data-hs="${h.k}" data-d="1" ${(v<6&&remaining>=1)?"":"disabled"} aria-label="Повысить: ${h.ru}">+</button>
       </div></div>`;
   }).join("");
   $$("#hase-list .stepbtn").forEach(b=>b.onclick=()=>{

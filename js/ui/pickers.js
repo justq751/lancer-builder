@@ -192,7 +192,7 @@ function pilotGearCardBody(g, uid){
   return `${pilotGearStatsHTML(g)}<div class="tags" id="${tagsId}">
       ${g.damage&&g.damage.length?`<span class="tag dmg">${dmgStr(g)}</span>`:""}
       ${g.range&&g.range.length?`<span class="tag rng">${rngStr(g)}</span>`:""}
-      ${(g.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+      ${(g.tags||[]).map((tg,i)=>`<button type="button" class="tag glossary" data-tgi="${i}" aria-expanded="false">${esc(trTag(tg))}</button>`).join("")}
     </div>
     <div id="${descId}"></div>
     ${g.effect?`<div class="desc" style="margin-top:${hasStats?12:0}px">${rich(g.effect)}</div>`:""}
@@ -221,7 +221,7 @@ function weaponCardBody(w, uid, curProfIdx){
     <div class="tags" id="${tagsId}">
       <span class="tag dmg">${dmg}</span><span class="tag rng">${rng}</span>
       ${w.sp?`<span class="tag sp">${w.sp} SP</span>`:""}
-      ${dispTags.map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+      ${dispTags.map((tg,i)=>`<button type="button" class="tag glossary" data-tgi="${i}" aria-expanded="false">${esc(trTag(tg))}</button>`).join("")}
     </div>
     <div id="${descId}"></div>
     ${w.effect?`<div class="desc" style="margin-top:12px">${rich(w.effect)}</div>`:""}
@@ -252,7 +252,7 @@ function systemCardBody(s, uid){
   const tagsId = uid?`sy-tags-${uid}`:"sy-tags", descId = uid?`sy-tagdesc-${uid}`:"sy-tagdesc";
   return `<div class="tags" id="${tagsId}">
       <span class="tag sp">${s.sp} SP</span>
-      ${(s.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+      ${(s.tags||[]).map((tg,i)=>`<button type="button" class="tag glossary" data-tgi="${i}" aria-expanded="false">${esc(trTag(tg))}</button>`).join("")}
     </div>
     <div id="${descId}"></div>
     ${s.description?`<div class="desc" style="margin-top:12px">${rich(s.description)}</div>`:""}
@@ -291,7 +291,7 @@ function modCardBody(mod, uid){
   ].filter(Boolean).join(" · ");
   return `<div class="tags" id="${tagsId}">
       <span class="tag sp">${mod.sp||0} SP</span>
-      ${(mod.tags||[]).map((tg,i)=>`<span class="tag glossary" data-tgi="${i}">${esc(trTag(tg))}</span>`).join("")}
+      ${(mod.tags||[]).map((tg,i)=>`<button type="button" class="tag glossary" data-tgi="${i}" aria-expanded="false">${esc(trTag(tg))}</button>`).join("")}
     </div>
     <div id="${descId}"></div>
     ${statBits?`<div class="desc" style="margin-top:10px"><b>Изменяет статы оружия:</b> ${esc(statBits)}</div>`:""}
@@ -378,7 +378,7 @@ function openWeaponPicker(mi){
          <div class="filter-row"><span class="filter-lbl">УРОН:</span>
            <div class="filters">${["ALL",...dmgOptions].map(d=>`<button class="chip ${wpDmgFilter===d?'on':''}" data-wpdm="${d}">${d==="ALL"?"ВСЕ":tr(d)}</button>`).join("")}</div></div>
        </div>
-       <input class="input" id="wp-search" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
+       <input class="input" id="wp-search" aria-label="Поиск оружия" placeholder="поиск оружия…" style="margin-bottom:14px" value="${esc(wpSearch)}">
        <div class="grid" id="wp-list" style="gap:8px"></div>`, keepScroll);
     $("#wp-list").innerHTML=list.map((w,_i)=>{
       const lk=!unlocked(w);
@@ -457,7 +457,7 @@ function openPilotGearPicker(slotKind, onInstall){
     const label = slotKind==="Armor"?"броню":slotKind==="Weapon"?"оружие":"снаряжение";
     $("#modal .mhd h3").textContent=`Установить ${label}`;
     setModalBody(
-      `<input class="input" id="pg-search" placeholder="поиск…" style="margin-bottom:14px" value="${esc(pgSearch)}">
+      `<input class="input" id="pg-search" aria-label="Поиск снаряжения" placeholder="поиск…" style="margin-bottom:14px" value="${esc(pgSearch)}">
        <div class="grid" id="pg-list" style="gap:8px"></div>`, keepScroll);
     $("#pg-list").innerHTML=list.map(g=>{
       const open=pgExpanded===g.id;
@@ -585,7 +585,7 @@ function openModPicker(mi, wi){
       `<div class="hint" style="margin-bottom:10px">Совместимо с типом: ${tr(w.type)}</div>
        ${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${mpFilter===s?'on':''}" data-mpf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
-       <input class="input" id="mp-search" placeholder="поиск модов…" style="margin-bottom:14px" value="${esc(mpSearch)}">
+       <input class="input" id="mp-search" aria-label="Поиск модов" placeholder="поиск модов…" style="margin-bottom:14px" value="${esc(mpSearch)}">
        <div class="grid" id="mp-list" style="gap:8px"></div>`, keepScroll);
     $("#mp-list").innerHTML=list.map((m,_i)=>{
       const lk=!unlocked(m);
@@ -724,7 +724,7 @@ function openSystemPicker(){
     setModalBody(
       `${viewToggleHTML()}
        <div class="filters">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${syFilter===s?'on':''}" data-syf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
-       <input class="input" id="sy-search" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
+       <input class="input" id="sy-search" aria-label="Поиск систем" placeholder="поиск систем…" style="margin-bottom:14px" value="${esc(sySearch)}">
        <div class="grid" id="sy-list" style="gap:8px"></div>`, keepScroll);
     $("#sy-list").innerHTML=list.map((s,_i)=>{
       const lk=!unlocked(s);

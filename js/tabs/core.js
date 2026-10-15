@@ -29,7 +29,7 @@ function renderCore(){
     + (capped ? "" : `
       <div id="core-selected"></div>
       <div class="filters" id="core-filters" style="margin-top:18px">${["ALL","GMS","IPS-N","SSC","HORUS","HA","EXOTIC"].map(s=>`<button class="chip ${coreFilter===s?'on':''}" data-cf="${s}">${s==="ALL"?"ВСЕ":s}</button>`).join("")}</div>
-      <input class="input" id="core-search" placeholder="поиск CORE-бонусов…" style="margin:12px 0 14px" value="${esc(coreSearch)}">
+      <input class="input" id="core-search" aria-label="Поиск CORE-бонусов" placeholder="поиск CORE-бонусов…" style="margin:12px 0 14px" value="${esc(coreSearch)}">
       <div id="core-list"></div>`);
   if(capped) return;
 
@@ -37,7 +37,7 @@ function renderCore(){
     const c=M.core[id];
     return `<div class="slot">
       <div class="equipped">
-        <div class="ei clickable" data-viewcore="${ci}"><div class="en">${esc(c.name)}</div>
+        <div class="ei clickable has-cardlink">${cardLinkHTML("core-selected", ci, esc(c.name), "en")}
           <div class="em">${esc(c.source)}</div></div>
         <button class="xbtn" data-rmcore="${ci}" aria-label="Убрать CORE-бонус">✕</button>
       </div>
@@ -45,9 +45,7 @@ function renderCore(){
     </div>`;
   }).join("") + `</div>` : `<div class="hint">// CORE-бонусы не выбраны</div>`;
 
-  $$("#core-selected .ei[data-viewcore]").forEach(el=>el.onclick=()=>viewSelectedCore(+el.dataset.viewcore));
-  $$("#core-selected .xbtn[data-rmcore]").forEach(b=>b.onclick=e=>{
-    e.stopPropagation();
+  $$("#core-selected .xbtn[data-rmcore]").forEach(b=>b.onclick=()=>{
     state.cores.splice(+b.dataset.rmcore,1); render();
   });
 
@@ -71,9 +69,9 @@ function renderCore(){
         <div class="grid cards">${fr.map(c=>{
           const unl=coreBonusUnlocked(c);
           const terse=(L.core_terse?.[c.id]?.[currentLang])||(L.core_terse?.[c.id]?.en)||"";
-          return `<div class="item ${!unl?'locked':''}" data-c="${c.id}">
+          return `<div class="item has-cardlink ${!unl?'locked':''}" data-c="${c.id}">
             <div class="src" style="background:${srcColor(c.source)}"></div>
-            <div class="top"><div class="nm">${esc(c.name)}</div>
+            <div class="top">${cardLinkHTML("core", c.id, esc(c.name), "nm")}
               <div class="badge ${unl?'mfg':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
             ${terse?`<div class="desc" style="margin-top:8px">${esc(terse)}</div>`:""}
             <button class="ghostbtn ${slotsFull?'':(unl?'':'warn')}" data-pickcore="${c.id}" ${slotsFull?"disabled":""}
@@ -81,9 +79,7 @@ function renderCore(){
           </div>`;
         }).join("")}</div>`;
     }).join("") : `<div class="hint">// нет доступных CORE-бонусов по этому запросу</div>`;
-    $$("#core-list .item").forEach(it=>it.onclick=()=>openCoreDetail(it.dataset.c));
-    $$("#core-list [data-pickcore]").forEach(b=>b.onclick=e=>{
-      e.stopPropagation();
+    $$("#core-list [data-pickcore]").forEach(b=>b.onclick=()=>{
       const id=b.dataset.pickcore, dd=derived();
       if(state.cores.length>=dd.b.core.cap) return;
       state.cores.push(id); render();

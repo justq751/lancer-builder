@@ -2,10 +2,12 @@
 /* Every state mutation in this file ends here, which makes render() the one
    honest place to persist from — no mutation site can forget to. */
 function render(){
+  const restoreFocus=keepFocusAcrossRender();
   syncModeChrome();
   if(viewMode==="sheet") renderSheet();
   else { renderHUD(); renderTab(); renderTabBar(); }
   scheduleSave();
+  restoreFocus();
 }
 
 function setState(fn){ fn(); render(); }

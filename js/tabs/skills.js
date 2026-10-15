@@ -16,9 +16,9 @@ function renderSkills(){
     return `<div class="listrow ${v===6?'maxed':''}">
       <div class="info"><div class="nm">${esc(s.name)}${custom?' <span class="tag" style="margin-left:6px">СВОЙ</span>':''}</div><div class="ds">${rich(s.description)}</div></div>
       <div class="stepper">
-        <button class="stepbtn" data-sk="${s.id}" data-d="-1" ${v<=0?"disabled":""}>−</button>
+        <button class="stepbtn" data-sk="${s.id}" data-d="-1" ${v<=0?"disabled":""} aria-label="Убрать очко: ${esc(s.name)}">−</button>
         <span class="stepval">${v?"+"+v:"—"}</span>
-        <button class="stepbtn" data-sk="${s.id}" data-d="1" ${canInc?"":"disabled"}>+</button>
+        <button class="stepbtn" data-sk="${s.id}" data-d="1" ${canInc?"":"disabled"} aria-label="Добавить очко: ${esc(s.name)}">+</button>
         ${custom?`<button class="xbtn" data-editsk="${s.id}" title="Редактировать" aria-label="Редактировать навык" style="margin-left:8px">✎</button>
                   <button class="xbtn" data-rmsk="${s.id}" title="Удалить" aria-label="Удалить навык">✕</button>`:""}
       </div></div>`;
@@ -44,9 +44,9 @@ function renderSkills(){
 function openCustomSkillEditor(id){
   const existing = id ? (state.customSkills||[]).find(s=>s.id===id) : null;
   modal(existing?"Редактировать свой навык":"Новый навык пилота", `
-    <div class="field"><label>НАЗВАНИЕ</label>
+    <div class="field"><label for="csk-name">НАЗВАНИЕ</label>
       <input class="input" id="csk-name" placeholder="например, «Взломать реальность»" value="${esc(existing?.name||"")}"></div>
-    <div class="field" style="margin-top:12px"><label>ОПИСАНИЕ</label>
+    <div class="field" style="margin-top:12px"><label for="csk-desc">ОПИСАНИЕ</label>
       <textarea class="input" id="csk-desc" rows="4" placeholder="Что делает этот навык, когда его применяют" style="resize:vertical; font-family:inherit">${esc(existing?.description||"")}</textarea></div>
     <div style="display:flex;gap:10px;margin-top:16px">
       <button class="toolbtn" style="border-color:var(--accent);color:var(--accent)" id="csk-save">${existing?"✓ СОХРАНИТЬ":"✓ СОЗДАТЬ"}</button>

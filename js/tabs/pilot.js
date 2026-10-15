@@ -1,23 +1,25 @@
 /* ============ PILOT ============ */
+// What a screen reader says for the LL slider instead of a bare "3".
+const llValueText=ll=>`LL ${ll}, GRIT +${Math.ceil(ll/2)}`;
 function renderPilot(){
   const p=state.pilot;
   const bgOpts = `<option value="">— не выбрано —</option>`+L.backgrounds
     .map(b=>`<option value="${b.id}" ${p.background===b.id?"selected":""}>${esc(b.name)}</option>`).join("");
   $("#tab").innerHTML = sechead("// 01 · ИДЕНТИФИКАЦИЯ","Пилот","Базовые данные пилота. Лицензионный уровень (LL) задаёт весь бюджет построения — поднимайте его, чтобы открыть больше навыков, талантов и снаряжения.")
    + `<div class="row2">
-        <div class="field"><label>ИМЯ ПИЛОТА</label>
-          <input class="input" id="f-name" value="${esc(p.name)}" placeholder="напр. Кейт Аояма"></div>
-        <div class="field"><label>ПОЗЫВНОЙ</label>
-          <input class="input" id="f-call" value="${esc(p.callsign)}" placeholder="напр. RONIN"></div>
+        <div class="field"><label for="f-name">ИМЯ ПИЛОТА</label>
+          <input class="input" id="f-name" value="${esc(p.name)}" placeholder="напр. Кейт Аояма" autocomplete="off" spellcheck="false"></div>
+        <div class="field"><label for="f-call">ПОЗЫВНОЙ</label>
+          <input class="input" id="f-call" value="${esc(p.callsign)}" placeholder="напр. RONIN" autocomplete="off" spellcheck="false"></div>
       </div>
-      <div class="field"><label>ПРОИСХОЖДЕНИЕ (BACKGROUND)</label>
-        <select id="f-bg">${bgOpts}</select>
+      <div class="field"><label for="f-bg">ПРОИСХОЖДЕНИЕ (BACKGROUND)</label>
+        <select id="f-bg" aria-describedby="bg-desc">${bgOpts}</select>
         <div id="bg-desc" class="hint" style="margin-top:8px"></div></div>
-      <div class="field"><label>ЛИЦЕНЗИОННЫЙ УРОВЕНЬ — LL ${p.ll}</label>
+      <div class="field"><label for="f-ll" id="f-ll-label">ЛИЦЕНЗИОННЫЙ УРОВЕНЬ — LL ${p.ll}</label>
         <div class="llpick">
-          <span class="num">${p.ll}</span>
+          <span class="num" aria-hidden="true">${p.ll}</span>
           <div style="flex:1">
-            <input type="range" id="f-ll" min="0" max="12" value="${p.ll}">
+            <input type="range" id="f-ll" min="0" max="12" value="${p.ll}" aria-valuetext="${llValueText(p.ll)}">
             <div class="lab" style="display:flex;justify-content:space-between;margin-top:4px">
               <span>LL0 · новобранец</span><span>LL12 · ветеран</span></div>
           </div>
@@ -43,11 +45,22 @@ function renderPilot(){
   ll.oninput=e=>{ state.pilot.ll=+e.target.value;
     $$(".llpick .num").forEach(n=>n.textContent=e.target.value);
     $$(".llpick .lab b").forEach(b=>b.textContent="+"+Math.ceil(state.pilot.ll/2));
-    $(".field>label").textContent=`ЛИЦЕНЗИОННЫЙ УРОВЕНЬ — LL ${e.target.value}`;
+    // By id: the old `.field>label` matched the first label on the tab — the
+    // pilot's name — and dragging the slider overwrote it.
+    $("#f-ll-label").textContent=`ЛИЦЕНЗИОННЫЙ УРОВЕНЬ — LL ${e.target.value}`;
+    e.target.setAttribute("aria-valuetext", llValueText(state.pilot.ll));
     renderHUD(); renderTabBar(); };
   ll.onchange=()=>render();
 }
 
+/* key is "armor:0" / "weapon:1" / "gear:2" — the slot, as cardLinkHTML got it. */
+function viewPilotGear(key){
+  const [kind,idxStr]=key.split(":"), idx=+idxStr;
+  const id = kind==="armor"?state.gear.armor:kind==="weapon"?state.gear.weapons[idx]:state.gear.gear[idx];
+  const item=M.gear[id]; if(!item) return;
+  modal(item.name, pilotGearCardHTML(item));
+  wireTagGlossary("#pg-tags","#pg-tagdesc",item.tags||[]);
+}
 function renderPilotGearLoadout(){
   const g=state.gear;
   const slotGroup=(label, kind, items, max, isArmorSingle)=>{
@@ -59,7 +72,7 @@ function renderPilotGearLoadout(){
         const key=`${kind}:${i}`, open=pilotGearOpenSet.has(key);
         slots.push(`<div class="slot">
           <div class="equipped">
-            <div class="ei clickable" data-viewpg="${key}"><div class="en">${esc(item.name)}</div>
+            <div class="ei clickable has-cardlink">${cardLinkHTML("gear", key, esc(item.name), "en")}
               <div class="em">${tr(item.type)}${item.damage||item.range?` · ${dmgStr(item)} · ${rngStr(item)}`:""}</div></div>
             <div style="display:flex;align-items:center;gap:8px">
               <button class="xbtn expand" data-exppg="${key}" title="Показать подробности" aria-label="${open?'Свернуть':'Развернуть'} подробности">${open?'⌄':'›'}</button>
@@ -102,12 +115,5 @@ function renderPilotGearLoadout(){
     const key=b.dataset.exppg;
     if(pilotGearOpenSet.has(key)) pilotGearOpenSet.delete(key); else pilotGearOpenSet.add(key);
     renderPilotGearLoadout();
-  });
-  $$("#pilot-gear-loadout [data-viewpg]").forEach(el=>el.onclick=()=>{
-    const [kind,idxStr]=el.dataset.viewpg.split(":"), idx=+idxStr;
-    const id = kind==="armor"?state.gear.armor:kind==="weapon"?state.gear.weapons[idx]:state.gear.gear[idx];
-    const item=M.gear[id];
-    modal(item.name, pilotGearCardHTML(item));
-    wireTagGlossary("#pg-tags","#pg-tagdesc",item.tags||[]);
   });
 }

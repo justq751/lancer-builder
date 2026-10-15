@@ -28,6 +28,62 @@ function wireTopbar(){
   $("#t-link").onclick=shareSheetLink;
   $("#t-print").onclick=()=>window.print();
   wireNarrowChrome();
+  wireFocusNet();
+  wireCardLinks();
+  wireSkipLink();
+}
+
+/* Every "open the details of this" card (cardLinkHTML) goes through here —
+   one delegated listener instead of an onclick re-bound on each card after
+   every render. Ids of equipped items are positions ("mount:slot"). */
+const slotPair=k=>k.split(":").map(Number);
+const CARD_OPENERS={
+  "frame":         id=>openFrame(id),
+  "license":       id=>openLicenseDetail(id),
+  "core":          id=>openCoreDetail(id),
+  "core-selected": i=>viewSelectedCore(+i),
+  "weapon":        k=>viewEquippedWeapon(...slotPair(k)),
+  "mod":           k=>viewEquippedMod(...slotPair(k)),
+  "system":        i=>viewEquippedSystem(+i),
+  "gear":          k=>viewPilotGear(k),
+};
+function wireCardLinks(){
+  document.addEventListener("click", e=>{
+    const b=e.target.closest(".cardlink[data-open]");
+    if(b && CARD_OPENERS[b.dataset.open]) CARD_OPENERS[b.dataset.open](b.dataset.id);
+  });
+}
+
+/* Skip link: past the header to whatever the page is showing — the tab panel
+   in the editor, the sheet in reading mode. Focus moves, the URL does not. */
+function wireSkipLink(){
+  $("a.skip").onclick=e=>{
+    e.preventDefault();
+    const target = viewMode==="sheet" ? $("#sheet") : $("#tab");
+    target.focus();
+  };
+}
+
+/* render() keeps focus itself (keepFocusAcrossRender), but many handlers
+   redraw just their own part — a filter chip calls renderFrame(), an expand
+   button renderLoadout(). This net catches those: after any keyboard or
+   pointer action, if the control that had focus was replaced and focus fell
+   to <body>, put it on the control's successor. setTimeout, not a microtask:
+   it has to run after the target's own handlers, not after this listener. */
+function wireFocusNet(){
+  let last=null;
+  document.addEventListener("focusin", e=>{
+    const el=e.target;
+    last = el.closest("#modal") ? null : { el, key:focusKeyOf(el), inTab:!!el.closest("#tab") };
+  });
+  const check=()=>setTimeout(()=>{
+    if(!last || last.el.isConnected) return;
+    if(document.activeElement!==document.body || $("#modal").classList.contains("show")) return;
+    const t=(last.key && document.querySelector(last.key)) || (last.inTab ? $("#tab") : null);
+    if(t) t.focus({preventScroll:true});
+  });
+  document.addEventListener("keydown", check, true);
+  document.addEventListener("click", check, true);
 }
 
 /* The ⋯ menu and the HUD sheet are popovers only on narrow screens; wide, the

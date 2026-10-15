@@ -122,9 +122,9 @@ function renderFrame(){
         const sel=state.mech.frameId===f.id;
         const lk=!frameUnlocked(f);
         const s=f.stats;
-        return `<div class="item ${sel?'sel':''} ${lk?'locked':''}" data-frame="${f.id}">
+        return `<div class="item has-cardlink ${sel?'sel':''} ${lk?'locked':''}" data-frame="${f.id}">
           <div class="src" style="background:${srcColor(f.source)}"></div>
-          <div class="top"><div class="nm">${esc(dispName(f))}</div>
+          <div class="top">${cardLinkHTML("frame", f.id, esc(dispName(f)), "nm")}
             <div class="badge ${lk?'lock':'mfg'}" ${lk?'':`style="--src:${srcColor(f.source)}"`}>${lk?"🔒 LL"+f.license_level:f.source}</div></div>
           <div style="display:flex; gap:12px; align-items:flex-start; margin-top:6px">
             <div style="flex:1; min-width:0">
@@ -139,15 +139,16 @@ function renderFrame(){
             <span class="tag stat">РАЗМ ${s.size}</span>
           </div>
           <div class="meta" style="margin-top:9px">КРЕПЛЕНИЯ: ${f.mounts.map(tr).join(" · ")}</div>
-          <button class="ghostbtn ${(!sel&&lk)?'warn':''}" data-pickframe="${f.id}" ${sel?"disabled":""}
+          <button class="ghostbtn ${(!sel&&lk)?'warn':''}" data-pickframe="${f.id}" ${sel?'aria-disabled="true"':""}
             style="margin-top:11px; width:100%; text-align:center">${sel?"✓ ВЫБРАНО":(lk?"⚠ ВЫБРАТЬ НАСИЛЬНО":"▶ ВЫБРАТЬ ЭТО ШАССИ")}</button>
         </div>`;
       }).join("")}</div>`;
   }).join("");
   $$("#frame-filters .chip").forEach(c=>c.onclick=()=>{frameFilter=c.dataset.ff; renderFrame();});
-  $$("#frame-list .item").forEach(it=>it.onclick=()=>openFrame(it.dataset.frame));
-  $$("#frame-list [data-pickframe]").forEach(b=>b.onclick=e=>{
-    e.stopPropagation();
+  // The selected frame's button stays focusable (aria-disabled, not disabled):
+  // it is where focus lands after the pick, saying «✓ ВЫБРАНО».
+  $$("#frame-list [data-pickframe]").forEach(b=>b.onclick=()=>{
+    if(b.getAttribute("aria-disabled")==="true") return;
     pickFrame(b.dataset.pickframe);
   });
   const toggleBtn=$("#toggle-frame-summary");

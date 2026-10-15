@@ -26,6 +26,8 @@
   <div class="ttl">LANCER · UNION REGISTRY</div>
 </div>
 
+<a class="skip" href="#tab">К содержимому</a>
+
 <header class="topbar">
   <div class="brand">
     <span class="sig mono">//</span>
@@ -55,6 +57,9 @@
        opened from the budget ledger in the dock. -->
   <aside class="hud" id="hud" popover aria-label="Реестр пилота"></aside>
   <main>
+    <!-- The editor's one h1 (the sheet has its own: the callsign). Read by
+         screen readers as the page's title; the tab's h2 follows it. -->
+    <h1 class="sr">Редактор сборки пилота и меха</h1>
     <!-- Wide screens: display:contents — the tab row heads the content as
          before. Narrow: fixed to the bottom, in thumb reach, with the budget
          ledger above it. -->
@@ -62,11 +67,11 @@
       <button class="ledger" id="ledger" popovertarget="hud" aria-controls="hud"></button>
       <nav class="tabs" id="tabs" role="tablist"></nav>
     </div>
-    <div id="tab" class="section show" role="tabpanel"></div>
+    <div id="tab" class="section show" role="tabpanel" tabindex="-1"></div>
   </main>
 </div>
 
-<div id="sheet" class="sheetview" hidden></div>
+<div id="sheet" class="sheetview" tabindex="-1" hidden></div>
 
 <div id="print-sheet" style="display:none"></div>
 

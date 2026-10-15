@@ -20,9 +20,13 @@ function licenseRanksHTML(f){
   const byRank={1:[],2:[],3:[]};
   items.forEach(it=>{ const r=it.license_level||1; if(byRank[r]) byRank[r].push(it); });
   const line=it=>{
-    if(it._kind==="w") return `<li class="clickable" data-viewitem="w:${it.id}"><span class="mk">⚔</span> ${esc(it.name)} <span class="hint">${tr(it.mount)} · ${dmgStr(it)}</span></li>`;
-    if(it._kind==="m") return `<li class="clickable" data-viewitem="m:${it.id}"><span class="mk">🔧</span> ${esc(it.name)} <span class="hint">мод · ${it.sp||0} SP</span></li>`;
-    return `<li class="clickable" data-viewitem="s:${it.id}"><span class="mk">⚙</span> ${esc(it.name)} <span class="hint">${it.sp} SP</span></li>`;
+    // Each line is a button (opens the item's preview); the li stays a plain
+    // list item so the list still reads as a list.
+    const li=(id,mk,hint)=>`<li class="clickable"><button type="button" class="linkrow" data-viewitem="${id}">
+      <span class="mk" aria-hidden="true">${mk}</span> ${esc(it.name)} <span class="hint">${hint}</span></button></li>`;
+    if(it._kind==="w") return li(`w:${it.id}`, "⚔", `${tr(it.mount)} · ${dmgStr(it)}`);
+    if(it._kind==="m") return li(`m:${it.id}`, "🔧", `мод · ${it.sp||0} SP`);
+    return li(`s:${it.id}`, "⚙", `${it.sp} SP`);
   };
   return [1,2,3].map(rank=>{
     const framesHere = siblingFrames.filter(fr=>fr.license_level===rank);
@@ -48,9 +52,9 @@ function openLicenseDetail(fid){
     <div class="meta" style="margin-bottom:14px;color:${srcColor(f.source)}">${esc(SRC_NAME[f.source]||f.source)} · ${f.mechtype?.map(tr).join(" / ")||""}</div>
     ${siblings.length?`<div class="desc" style="margin-bottom:14px">Эта лицензия общая с ${siblings.map(n=>`<b>${esc(n)}</b>`).join(", ")} — ранг один на всех, поднимая его здесь, вы поднимаете его и там.</div>`:""}
     <div class="stepper" style="margin-bottom:18px">
-      <button class="stepbtn" id="lic-minus" ${v<=0?"disabled":""}>−</button>
-      <span class="pips">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
-      <button class="stepbtn" id="lic-plus" ${(v<3&&remaining>=1)?"":"disabled"}>+</button>
+      <button class="stepbtn" id="lic-minus" ${v<=0?"disabled":""} aria-label="Понизить ранг лицензии">−</button>
+      <span class="pips" aria-hidden="true">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
+      <button class="stepbtn" id="lic-plus" ${(v<3&&remaining>=1)?"":"disabled"} aria-label="Повысить ранг лицензии">+</button>
       <span class="hint" style="margin-left:10px">ранг ${v}/3</span>
     </div>
     ${licenseRanksHTML(f)}`);
@@ -100,9 +104,10 @@ function renderLicenses(){
         const key=licenseKeyFor(f);
         const v=licRank(key);
         const nUnlock = [...L.weapons,...L.systems,...(L.mods||[])].filter(it=>it.license===key && (it.license_level||0)<=v).length;
-        return `<div class="item ${v?'sel':''} clickable" data-openlic="${f.id}">
+        const nm=dispName(f);
+        return `<div class="item has-cardlink ${v?'sel':''} clickable" data-openlic="${f.id}">
           <div class="src" style="background:${srcColor(src)}"></div>
-          <div class="top"><div class="nm">${esc(dispName(f))}</div><div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
+          <div class="top">${cardLinkHTML("license", f.id, esc(nm), "nm")}<div class="badge">${f.mechtype?.map(tr).join(" / ")||""}</div></div>
           <div style="display:flex; gap:12px; align-items:flex-start; margin-top:6px">
             <div style="flex:1; min-width:0">
               <div class="meta">ШАССИ открывается на ранге ${f.license_level} · открыто предметов: ${nUnlock}</div>
@@ -111,15 +116,13 @@ function renderLicenses(){
             ${frameImageURL(f)?`<img class="frame-thumb" src="${frameImageURL(f)}" alt="Портрет шасси ${esc(dispName(f))}" loading="lazy" onerror="this.remove()">`:""}
           </div>
           <div class="stepper" style="margin-top:11px">
-            <button class="stepbtn" data-lic="${esc(key)}" data-d="-1" ${v<=0?"disabled":""}>−</button>
-            <span class="pips">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
-            <button class="stepbtn" data-lic="${esc(key)}" data-d="1" ${(v<3&&remaining>=1)?"":"disabled"}>+</button>
+            <button class="stepbtn" data-lic="${esc(key)}" data-d="-1" ${v<=0?"disabled":""} aria-label="Понизить ранг лицензии ${esc(key)}">−</button>
+            <span class="pips" role="img" aria-label="Ранг ${v} из 3">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''}"></span>`).join("")}</span>
+            <button class="stepbtn" data-lic="${esc(key)}" data-d="1" ${(v<3&&remaining>=1)?"":"disabled"} aria-label="Повысить ранг лицензии ${esc(key)}">+</button>
           </div></div>`;
       }).join("")}</div>`).join("");
-  $$("#tab .stepbtn[data-lic]").forEach(b=>b.onclick=e=>{
-    e.stopPropagation();
+  $$("#tab .stepbtn[data-lic]").forEach(b=>b.onclick=()=>{
     stepLicense(b.dataset.lic, +b.dataset.d);
     render();
   });
-  $$("#tab .item[data-openlic]").forEach(it=>it.onclick=()=>openLicenseDetail(it.dataset.openlic));
 }

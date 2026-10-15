@@ -118,8 +118,14 @@ test("weapons and systems can be installed with the keyboard alone", async ({ pa
     const a = document.activeElement;
     return { tag: a.tagName, id: a.id, w: a.dataset.w, s: a.dataset.s, inModal: !!a.closest("#modal") };
   });
+  // The expanded row's tags are buttons too (glossary), so the install button
+  // is a few Tabs away rather than exactly one.
+  const tabTo = async id => {
+    for (let i = 0; i < 12 && (await active()).id !== id; i++) await page.keyboard.press("Tab");
+    expect(await active()).toMatchObject({ id });
+  };
 
-  // Weapon: open → search → Tab into the list → Enter expands → Tab → Enter installs
+  // Weapon: open → search → Tab into the list → Enter expands → Tab… → Enter installs
   await page.locator('#mounts [data-addw="2"]').focus();
   await page.keyboard.press("Enter");
   await expect(modal(page)).toBeVisible();
@@ -130,8 +136,7 @@ test("weapons and systems can be installed with the keyboard alone", async ({ pa
   await page.keyboard.press("Enter");
   expect(await active()).toMatchObject({ w: "mw_howitzer" }); // focus survives the redraw
   await expect(page.locator('#wp-list .listrow[data-w="mw_howitzer"]')).toHaveAttribute("aria-expanded", "true");
-  await page.keyboard.press("Tab");
-  expect(await active()).toMatchObject({ id: "wp-install-inline" });
+  await tabTo("wp-install-inline");
   await page.keyboard.press("Enter");
   await expect(modal(page)).toBeHidden();
   expect((await getState(page)).mech.mounts[2].items).toEqual([{ id: "mw_howitzer", mod: null }]);
@@ -145,8 +150,7 @@ test("weapons and systems can be installed with the keyboard alone", async ({ pa
   await page.keyboard.press("Tab");
   expect(await active()).toMatchObject({ s: "ms_manipulators" });
   await page.keyboard.press(" ");
-  await page.keyboard.press("Tab");
-  expect(await active()).toMatchObject({ id: "sy-install-inline" });
+  await tabTo("sy-install-inline");
   await page.keyboard.press("Enter");
   expect((await getState(page)).mech.systems).toContain("ms_manipulators");
   expect(await active()).toMatchObject({ inModal: true });

@@ -5,6 +5,16 @@ const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
 const esc = s => (s==null?"":String(s)).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const rich = s => s==null?"":String(s); // dataset html is trusted (<br><ul><li><b>)
 
+/* A card that opens a detail view is a button — its name. The card used to be
+   a <div onclick>: unreachable by Tab, silent to a screen reader. The
+   button's ::after (CSS .cardlink) stretches over the whole card, so a click
+   anywhere on it still opens it, and the card's own buttons sit above that
+   layer. `inner` is HTML the caller has already escaped. Clicks are handled
+   once, by delegation — see CARD_OPENERS / wireCardLinks() in main.js. */
+function cardLinkHTML(kind, id, inner, cls=""){
+  return `<button type="button" class="cardlink ${cls}" data-open="${kind}" data-id="${esc(String(id))}">${inner}</button>`;
+}
+
 /* lookup maps (rebuilt once L is loaded/localized — see rebuildIndexes()) */
 const byId = arr => Object.fromEntries(arr.map(x=>[x.id,x]));
 let M = {};

@@ -38,9 +38,9 @@ function renderTalents(){
     return `<div class="item ${v?'sel':''}" ${capExceeded?'style="border-color:var(--amber)"':''}>
       <div class="top"><div class="nm">${esc(t.name)}</div>
         <div class="stepper">
-          <button class="stepbtn" data-tl="${t.id}" data-d="-1" ${v<=0?"disabled":""}>−</button>
-          <span class="pips">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''} ${n>rankCap?'locked':''}"></span>`).join("")}</span>
-          <button class="stepbtn" data-tl="${t.id}" data-d="1" ${canInc?"":"disabled"} ${nextLocked?`title="Ранг ${v+1} доступен с LL${rankCap}"`:""}>+</button>
+          <button class="stepbtn" data-tl="${t.id}" data-d="-1" ${v<=0?"disabled":""} aria-label="Понизить ранг: ${esc(t.name)}">−</button>
+          <span class="pips" role="img" aria-label="Ранг ${v} из 3">${[1,2,3].map(n=>`<span class="pip ${v>=n?'on':''} ${n>rankCap?'locked':''}"></span>`).join("")}</span>
+          <button class="stepbtn" data-tl="${t.id}" data-d="1" ${canInc?"":"disabled"} aria-label="Повысить ранг: ${esc(t.name)}" ${nextLocked?`title="Ранг ${v+1} доступен с LL${rankCap}"`:""}>+</button>
         </div></div>
       <div class="desc">${esc(t.terse||"")}</div>
       ${capExceeded?`<div class="hint" style="color:var(--amber)">⚠ Ранг ${v} превышает лимит для LL${d.ll} (макс ${rankCap})</div>`
