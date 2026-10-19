@@ -116,6 +116,10 @@ lancer-registry/
 
 ## Обновление данных из upstream lancer-data
 
+> Сырые снимки всех официальных репозиториев Massif Press лежат в
+> `upstream/`, обновляются `py tools/sync_upstream.py pull`. Полная
+> процедура — `upstream/README.md`; текст ниже описывает старый ручной путь.
+
 Если вы получите новую версию `lancer-data` (новые шасси/оружие или
 правки текста):
 

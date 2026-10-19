@@ -356,6 +356,46 @@ P3). Объём — весь список из `docs/audit/AUDIT.md`. **Вне �
 - [ ] Опционально: og:image / превью ссылки (`banner-design`) — для
       красивых ссылок в чатах.
 
+## Этап 8 — Синхронизация с официальными данными Massif Press
+
+**Цель:** правки Massif (опечатки, эррата, новые предметы) попадают на сайт
+по повторяемой процедуре, а не «когда кто-то заметил». Процедура —
+`upstream/README.md`, инструмент — `tools/sync_upstream.py`.
+
+- [x] Снимки 9 репозиториев (`lancer-data`, `ktb-data`, `dustgrave-data`,
+      `long-rim-data`, `osr-data`, `ssmr-data`, `sotw-data`,
+      `wallflower-data`, `ows-data`) в `upstream/<repo>/`, коммиты в
+      `upstream/upstream.lock.json`; папка исключена из обоих деплоев.
+      **Сделано 2026-10-19:** первый снимок, ~1.5 МБ.
+- [ ] **Паки: довести нормализацию до 0 расхождений.** Сейчас
+      `normalize_pack.py upstream/<repo>` воспроизводит `data/packs/` точно
+      для osr, ssmr, sotw, ows; расхождения:
+      ktb `mw_emperor_integrated` (actions/profiles/damage/range),
+      dustgrave `ms_iconoclast` (tags), long-rim `mf_zheng` (core_system),
+      wallflower `mf_sagarmatha`/`mf_tokugawa_alt_enkidu`/`mf_kidd`
+      (core_system), `t_empath` (ranks). Для каждого решить: это ручная
+      правка (перенести в нормализатор) или устаревшие у нас данные
+      (принять upstream). После — `data/packs/*` = чистый выход
+      нормализатора, и обновление пака становится механическим.
+- [ ] **sotw-data: 5 предысторий** (`pbg_company_squire`, `pbg_noble_heir`,
+      `pbg_pankrati`, `pbg_second_choice`, …) есть в upstream, но
+      `normalize_pack.py` не обрабатывает `backgrounds` — добавить
+      категорию и слияние в `loadBaseData()`.
+- [ ] **Core (`data/lancer-data.json`): сверка со схемой 4.x.** Наш файл —
+      старая плоская схема исходного конструктора; upstream 4.0.12 — новая
+      (тексты оружия/систем/core bonuses расходятся в 80–100 предметах,
+      в основном из-за схемы). Шаги: прогнать `normalize_pack.py` на
+      `upstream/lancer-data` → сравнить с текущим по id → отделить
+      «схемный шум» от реальной эррата → решить, переходим ли на
+      пересборку core из upstream (как у паков) или только переносим
+      эррату руками. Учесть категории только из core (`skills`,
+      `backgrounds`, `manufacturers`, `mods`) и `data/extracted frames/`.
+- [ ] Регулярная проверка: `py tools/sync_upstream.py status` (exit 1 =
+      есть обновления). Вариант — job по расписанию в GitHub Actions,
+      который открывает issue; не блокирует деплой.
+- [ ] После каждой синхронизации — `locale_coverage.py --list`: новые
+      пустые `"ru"` и помеченные изменения уходят в Этап 5.
+
 ---
 
 ## Не применяем (и почему)
@@ -375,6 +415,7 @@ P3). Объём — весь список из `docs/audit/AUDIT.md`. **Вне �
               └──► Этап 2 ──────────┴──────► Этап 6
 Этап 5 — параллельно в любой момент (только JSON)
 Этап 7 — после Этапа 3 (когда есть юнит-тесты)
+Этап 8 — независимо; его выход (новые "ru": "") питает Этап 5
 ```
 
 ## Журнал
@@ -462,3 +503,8 @@ P3). Объём — весь список из `docs/audit/AUDIT.md`. **Вне �
   скриншотов (подписи креплений и Теплоёмкость; часть изменений была ниже
   порога 0.2%). 45 юнит + 80 браузерных. `APP_BUILD =
   2026-10-19-data-translation`.
+- 2026-10-19 — Этап 8: `upstream/` — снимки 9 репозиториев massif-press
+  (`tools/sync_upstream.py`, `upstream/upstream.lock.json`), процедура
+  обновления в `upstream/README.md`. Сверка: id во всех паках совпадают с
+  upstream; нормализация паков воспроизводит текущие файлы, кроме 9
+  предметов; в sotw не подключены 5 предысторий; core — старая схема.

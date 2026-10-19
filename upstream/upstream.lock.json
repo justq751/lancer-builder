@@ -1,0 +1,56 @@
+{
+  "lancer-data": {
+    "repo": "https://github.com/massif-press/lancer-data",
+    "commit": "a928f093fe268a9f54b183ce3089f440a7084b84",
+    "date": "2026-10-14",
+    "version": "4.0.12"
+  },
+  "ktb-data": {
+    "repo": "https://github.com/massif-press/ktb-data",
+    "commit": "df5118aafeb2e00a0f33c883ec5d88cf51fdd90c",
+    "date": "2026-05-29",
+    "version": "2.0.2"
+  },
+  "dustgrave-data": {
+    "repo": "https://github.com/massif-press/dustgrave-data",
+    "commit": "2f14289134a13561e9c59af9f250eaa17663cfef",
+    "date": "2026-10-14",
+    "version": "2.0.3"
+  },
+  "long-rim-data": {
+    "repo": "https://github.com/massif-press/long-rim-data",
+    "commit": "01a501330fb62a6ada8334206b36428205516e6b",
+    "date": "2024-03-20",
+    "version": "1.2.2"
+  },
+  "osr-data": {
+    "repo": "https://github.com/massif-press/osr-data",
+    "commit": "50ff48865280be929414dce75d85b78cd6e37480",
+    "date": "2025-01-31",
+    "version": "1.2.1"
+  },
+  "ssmr-data": {
+    "repo": "https://github.com/massif-press/ssmr-data",
+    "commit": "63744092a8c28e265b5704f4e892ca81aea6cf09",
+    "date": "2024-03-20",
+    "version": "1.7.0"
+  },
+  "sotw-data": {
+    "repo": "https://github.com/massif-press/sotw-data",
+    "commit": "98af030866b5cf9c38f6d722f71a7cbafab57063",
+    "date": "2025-01-25",
+    "version": "1.0.2"
+  },
+  "wallflower-data": {
+    "repo": "https://github.com/massif-press/wallflower-data",
+    "commit": "154e96adeab1a57c2c662f86fc7136ffdb4f2937",
+    "date": "2024-03-20",
+    "version": "2.1.0"
+  },
+  "ows-data": {
+    "repo": "https://github.com/massif-press/ows-data",
+    "commit": "6cfe7e88754ed01b1aaa05e8b5690a8ab22de6e0",
+    "date": "2026-05-29",
+    "version": "2.0.1"
+  }
+}
