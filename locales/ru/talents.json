@@ -30,7 +30,7 @@
     },
     "description": {
      "en": "When you Boost while flying, you may move an additional 1d6 spaces, but take heat equal to half that amount.",
-     "ru": "Когда вы Ускоряетесь в полёте, вы можете переместиться на дополнительные 1d6 клеток, но получаете тепло, равное половине этого количества."
+     "ru": "Когда вы совершаете Рывок в полёте, вы можете переместиться на дополнительные 1d6 клеток, но получаете тепло, равное половине этого количества."
     }
    },
    "Supersonic": {
@@ -848,7 +848,7 @@
     },
     "description": {
      "en": "When you Boost, your next Ram before the start of your next turn gains +1 Accuracy and knocks your target back an additional 2 spaces.",
-     "ru": "Когда вы Ускоряетесь, ваш следующий Таран до начала следующего хода получает +1 к Точности и отбрасывает вашу цель на дополнительные 2 клетки."
+     "ru": "Когда вы совершаете Рывок, ваш следующий Таран до начала следующего хода получает +1 к Точности и отбрасывает вашу цель на дополнительные 2 клетки."
     }
    },
    "Kinetic Mass Transfer": {
@@ -868,7 +868,7 @@
     },
     "description": {
      "en": "1/round, when you Boost, you may supercharge your mech’s servos. Move your maximum speed in a straight line, take 1d3+3 Heat, and gain the following benefits:<ul><li>You can freely pass through characters the same Size as your mech or smaller; any characters passed through must succeed on a Hull save or be knocked Prone.</li><li>Any terrain, walls, or other stationary obstructions you attempt to pass through receive 20 Kinetic AP damage. If that is enough to destroy them, you pass through; otherwise, your movement ends.</li><li>You ignore difficult terrain.</li><li>Your movement ignores engagement and doesn’t provoke reactions.</li></ul>",
-     "ru": "1/раунд, когда вы Ускоряетесь, вы можете форсировать серводвигатели меха. Переместитесь на максимальную скорость по прямой линии, получите 1d3+3 Тепла и получите следующие преимущества:<ul><li>Вы можете свободно проходить через персонажей того же Размера, что и ваш мех, или меньше; любые персонажи, через которых вы прошли, должны пройти спасбросок Корпуса, иначе сбиваются с ног.</li><li>Любая местность, стены или другие стационарные препятствия, через которые вы пытаетесь пройти, получают 20 бронебойного кинетического урона. Если это достаточно для их уничтожения, вы проходите сквозь; иначе ваше движение заканчивается.</li><li>Вы игнорируете сложную местность.</li><li>Ваше движение игнорирует вовлечённость и не провоцирует реакции.</li></ul>"
+     "ru": "1/раунд, когда вы совершаете Рывок, вы можете форсировать серводвигатели меха. Переместитесь на максимальную скорость по прямой линии, получите 1d3+3 Тепла и получите следующие преимущества:<ul><li>Вы можете свободно проходить через персонажей того же Размера, что и ваш мех, или меньше; любые персонажи, через которых вы прошли, должны пройти спасбросок Корпуса, иначе сбиваются с ног.</li><li>Любая местность, стены или другие стационарные препятствия, через которые вы пытаетесь пройти, получают 20 бронебойного кинетического урона. Если это достаточно для их уничтожения, вы проходите сквозь; иначе ваше движение заканчивается.</li><li>Вы игнорируете сложную местность.</li><li>Ваше движение игнорирует вовлечённость и не провоцирует реакции.</li></ul>"
     }
    }
   }
@@ -1333,6 +1333,328 @@
    }
   }
  },
+ "t_prospector": {
+  "name": {
+   "en": "Prospector",
+   "ru": "Старатель"
+  },
+  "terse": {
+   "en": "Tunnel through the battlefield and create entrances for you and your allies to use.",
+   "ru": "Прокладывайте туннели через поле боя и создавайте проходы для себя и союзников."
+  },
+  "description": {
+   "en": "Some people aren’t afraid to get their hands dirty. You are one of these individuals and you aren’t afraid to get your mech’s hands dirty, either. Having equipped it with all sorts of industrial mining equipment, your mech is now able to move great amounts of dirt in a very short amount of time, allowing it and its allies to rapidly redeploy using subterranean routes.",
+   "ru": "Некоторые люди не боятся запачкать руки. Вы — один из таких людей, и вы не боитесь запачкать руки и своему меху. Оснастив его всевозможным горнодобывающим оборудованием, вы теперь способны перемещать огромные объёмы грунта за очень короткое время, позволяя ему и союзникам быстро перебрасываться, используя подземные маршруты."
+  },
+  "ranks": {
+   "Stake a Claim": {
+    "name": {
+     "en": "Stake a Claim",
+     "ru": "Застолбить участок"
+    },
+    "description": {
+     "en": "Tunnel: When Tunneling, remove the character from the battlefield and then immediately place them in a free and valid space. This is considered moving 1 space and does trigger Reactions. <br>Gain the “Create Entrance” Quick Action which you may use 1/Scene. <br>While completely within an Entrance you and allied characters gain the “Subterranean Reposition” Reaction during your own turns.",
+     "ru": "Туннелирование: при Туннелировании удалите персонажа с поля боя, а затем немедленно поместите его на свободную допустимую клетку. Это считается перемещением на 1 клетку и провоцирует Реакции.<br>Получите Быстрое действие «Создать проход», которое можно использовать 1/сцену.<br>Находясь полностью внутри Прохода, вы и союзные персонажи получаете Реакцию «Подземная перестановка» в свои ходы."
+    }
+   },
+   "Gold Fever": {
+    "name": {
+     "en": "Gold Fever",
+     "ru": "Золотая лихорадка"
+    },
+    "description": {
+     "en": "Hostile characters within the area when an Entrance is created must succeed on a Hull save or be knocked Prone. <br>Additionally, after you use \"Create Entrance,\" allied characters completely within your initial Entrance may use \"Subterranean Reposition\" even though it is not their turn.",
+     "ru": "Враждебные персонажи в области при создании Прохода должны пройти спасбросок Корпуса или быть опрокинуты.<br>Кроме того, после использования «Создать проход» союзные персонажи, полностью находящиеся в вашем изначальном Проходе, могут использовать «Подземную перестановку», даже если это не их ход."
+    }
+   },
+   "Mother Lode": {
+    "name": {
+     "en": "Mother Lode",
+     "ru": "Материнская жила"
+    },
+    "description": {
+     "en": "\"Create Entrance\" becomes 1/Round and you may use it an additional time each Scene.  All Entrances you create are connected for the purposes of Tunneling.",
+     "ru": "«Создать проход» теперь доступно 1/раунд, и вы можете использовать его дополнительный раз за сцену. Все созданные вами Проходы считаются соединёнными для целей Туннелирования."
+    }
+   }
+  }
+ },
+ "t_iconoclast": {
+  "name": {
+   "en": "Iconoclast",
+   "ru": "Иконоборец"
+  },
+  "terse": {
+   "en": "Tap into the power of your NHP companion.",
+   "ru": "Задействуйте силу своего НЧП-компаньона."
+  },
+  "description": {
+   "en": "You have acquired an NHP, or has it acquired you? Together you have set out to achieve greatness and push boundaries. The two of you are in it together and you’ll be able to achieve fantastical things. Perhaps you’re unaware of the risks; perhaps you willfully choose to ignore them. The power you can tap into with the help of your companion is, however, undeniable. And with such power, who is to stop the two of you from breaking some taboos?",
+   "ru": "Вы обрели НЧП — или это он обрёл вас? Вместе вы отправились в путь к величию, раздвигая границы. Вы оба заодно, и вместе способны достичь фантастических вещей. Возможно, вы не осознаёте риски; возможно, вы сознательно предпочитаете их игнорировать. Однако сила, которую вы можете задействовать с помощью своего компаньона, неоспорима. А с такой силой кто остановит вас двоих от нарушения нескольких табу?"
+  },
+  "ranks": {
+   "Transgression": {
+    "name": {
+     "en": "Transgression",
+     "ru": "Преступление"
+    },
+    "description": {
+     "en": "You may choose to equip your mech with an Unstable NHP system.",
+     "ru": "Вы можете выбрать оснастить свой мех системой «Нестабильный НЧП»."
+    }
+   },
+   "Transmutation": {
+    "name": {
+     "en": "Transmutation",
+     "ru": "Трансмутация"
+    },
+    "description": {
+     "en": "After performing any action granted to you by an NHP, excluding handing control of your mech over to the NHP as a protocol, you may immediately perform the TRANSMUTING SPARK free action. Each NHP may only trigger this action 1/round.",
+     "ru": "После совершения любого действия, предоставленного вам НЧП, за исключением передачи управления мехом НЧП как протокол, вы можете немедленно совершить свободное действие «МЕМОВАЯ ИСКРА». Каждый НЧП может активировать это действие только 1/раунд."
+    }
+   },
+   "Transcension": {
+    "name": {
+     "en": "Transcension",
+     "ru": "Трансцендентность"
+    },
+    "description": {
+     "en": "Gain a Transcendence Die, a d3 starting at 3. When you use “Transmuting Spark,” reduce the die by 1. If the die is at 1 when you use “Transmuting Spark,” you may immediately enter a transcendent state and reset the Transcendence Die to 3. This has the following effects until the end of your next turn: <br><ul><li>Your Transcendence Die can’t decrease.</li><li>“Memetic Spark” gains +4 damage and +5 Range.</li><li>Unless flying or climbing, you are forced to permanently Hover exactly 1 Space above any surface at all times.</li><li>You gain Immunity to involuntary movement.</li></ul><br>Whenever you cascade and lose control of your mech, you enter a transcendent state for the duration. Cascading NHPs have access to the benefits of this Talent. Your Transcendence Die resets at the end of the Scene.",
+     "ru": "Получите Кость трансцендентности, d3, начинающуюся с 3. Когда вы используете «Мемовую искру», уменьшите кость на 1. Если кость равна 1, когда вы используете «Мемовую искру», вы можете немедленно войти в трансцендентное состояние и сбросить Кость трансцендентности на 3. Это даёт следующие эффекты до конца вашего следующего хода:<br><ul><li>Ваша Кость трансцендентности не может уменьшаться.</li><li>«Мемовая искра» получает +4 урона и +5 Радиус.</li><li>Если вы не летите и не карабкаетесь, вы вынуждены постоянно Парить ровно в 1 клетке над любой поверхностью.</li><li>Вы получаете Иммунитет к недобровольному перемещению.</li></ul><br>Всякий раз, когда вы входите в каскад и теряете контроль над своим мехом, вы входите в трансцендентное состояние на этот срок. Каскадирующие НЧП получают доступ к преимуществам этого таланта. Ваша Кость трансцендентности сбрасывается в конце сцены."
+    }
+   }
+  }
+ },
+ "t_field_analyst": {
+  "name": {
+   "en": "Field Analyst",
+   "ru": "Полевой аналитик"
+  },
+  "terse": {
+   "en": "Support your allies with your keen analysis of the battlefield.",
+   "ru": "Поддерживайте союзников острым анализом поля боя."
+  },
+  "description": {
+   "en": "You’ve always been perceptive, able to analyze the flow of battle and come up with strategies on the spot. You’re the mastermind behind the scenes, helping your allies out in battle in various ways. From subtle nudges to your comrades when aiming their weapons to devising advanced firing solutions or tailor-made evasive patterns. With your support, any battle your allies find themselves in is sure to end in success.",
+   "ru": "Вы всегда были проницательны, способны анализировать ход боя и на месте придумывать стратегии. Вы — незримый закулисный стратег, помогающий союзникам в бою разными способами: от едва заметных подсказок товарищам при прицеливании до разработки продвинутых огневых решений или индивидуальных схем уклонения. С вашей поддержкой любой бой, в который попадают ваши союзники, наверняка закончится успехом."
+  },
+  "ranks": {
+   "Tactical Intelligence": {
+    "name": {
+     "en": "Tactical Intelligence",
+     "ru": "Тактическая разведка"
+    },
+    "description": {
+     "en": "Whenever an allied character in line of sight misses with an attack, you know by how much it missed. Additionally, you gain the “Superior Intelligence” Reaction.",
+     "ru": "Всякий раз, когда союзный персонаж в пределах линии видимости промахивается атакой, вы узнаёте, насколько именно он промахнулся. Кроме того, вы получаете Реакцию «Превосходящий интеллект»."
+    }
+   },
+   "Information Handling": {
+    "name": {
+     "en": "Information Handling",
+     "ru": "Обработка информации"
+    },
+    "description": {
+     "en": "Gain an Intel Die, a d6 starting at 1. <br>At the end of your turn, if you didn’t take any actions that affected a hostile character during that turn other than Scan, your Intel Die increases by 2 to a maximum of 6. <br>Whenever you use Superior Intelligence, you may increase the attack roll by the value of your Intel Die instead of by 1. Afterward, it is reset to 1. <br> Your Intel Die resets at the end of each scene.",
+     "ru": "Получите Кость разведданных, d6, начинающуюся с 1.<br>В конце своего хода, если вы не совершали действий, затрагивающих враждебного персонажа в этот ход, кроме Сканирования, ваша Кость разведданных увеличивается на 2, максимум до 6.<br>Всякий раз, когда вы используете «Превосходящий интеллект», вы можете увеличить бросок атаки на значение вашей Кости разведданных вместо 1. После этого она сбрасывается на 1.<br>Ваша Кость разведданных сбрасывается в конце каждой сцены."
+    }
+   },
+   "Active Interference": {
+    "name": {
+     "en": "Active Interference",
+     "ru": "Активные помехи"
+    },
+    "description": {
+     "en": "Whenever a hostile character in line of sight hits with an attack, you know what they rolled. <br>You may also use \"Superior Intelligence\" when a hostile character in Line of Sight has rolled an Attack Roll. Instead of adding to the attack roll, you subtract from it in the same manner. Each attack roll can only be affected this way once.",
+     "ru": "Всякий раз, когда враждебный персонаж в пределах линии видимости попадает атакой, вы узнаёте, что он выбросил.<br>Вы также можете использовать «Превосходящий интеллект», когда враждебный персонаж в пределах линии видимости совершил бросок атаки. Вместо прибавления к броску атаки вы таким же образом вычитаете из него. Каждый бросок атаки может быть затронут таким образом лишь один раз."
+    }
+   }
+  }
+ },
+ "t_house_guard": {
+  "name": {
+   "en": "House Guard",
+   "ru": "Домовая стража"
+  },
+  "terse": {
+   "en": "Improve your ability to defend your allies.",
+   "ru": "Улучшает вашу способность защищать союзников."
+  },
+  "description": {
+   "en": "You fight at the side of your allies, your mech a bulwark that grants them unbreakable resolve and bolsters them up to greater glory.",
+   "ru": "Вы сражаетесь бок о бок с союзниками, и ваш мех — оплот, дающий им несокрушимую решимость и поддерживающий их на пути к вящей славе."
+  },
+  "ranks": {
+   "Front Rank": {
+    "name": {
+     "en": "Front Rank",
+     "ru": "Передний ряд"
+    },
+    "description": {
+     "en": "You count as adjacent when you are within Range 2 for the purposes of your effects on allied characters (from your traits, talents, systems, or weapons) that require adjacency to your mech.",
+     "ru": "Вы считаетесь соседним, находясь в пределах Дальности 2, для целей ваших эффектов на союзных персонажей (от ваших черт, талантов, систем или оружия), требующих соседства с вашим мехом."
+    }
+   },
+   "Greater Guardian": {
+    "name": {
+     "en": "Greater Guardian",
+     "ru": "Великий страж"
+    },
+    "description": {
+     "en": "Your mech gains the Guardian trait if it doesn’t already have it (adjacent allies can use your mech as hard cover). Guardian now additionally grants soft cover to all adjacent allies from all directions.",
+     "ru": "Ваш мех получает черту «Страж», если у него её ещё нет (соседние союзники могут использовать ваш мех как жёсткое укрытие). «Страж» теперь дополнительно даёт мягкое укрытие всем соседним союзникам со всех направлений."
+    }
+   },
+   "Shield of the Legion": {
+    "name": {
+     "en": "Shield of the Legion",
+     "ru": "Щит легиона"
+    },
+    "description": {
+     "en": "1/round, when you reduce damage to an allied character, cancel an attack against them, or cause one to miss, you may deal 2 energy damage to the attacker and knock them Prone.",
+     "ru": "1/раунд, когда вы снижаете урон союзному персонажу, отменяете атаку по нему или заставляете её промахнуться, вы можете нанести 2 энергетического урона атакующему и опрокинуть его."
+    }
+   }
+  }
+ },
+ "t_pankrati": {
+  "name": {
+   "en": "Pankrati",
+   "ru": "Панкрати"
+  },
+  "terse": {
+   "en": "Rush and overpower slower opponents",
+   "ru": "Стремительно сокрушайте более медленных противников."
+  },
+  "description": {
+   "en": "Your fighting is as flashy as the greatest fighters of the Kreoss, and your mech leaps into battle with great aplomb.",
+   "ru": "Ваш бой так же эффектен, как у величайших бойцов Креосса, и ваш мех бросается в битву с огромным апломбом."
+  },
+  "ranks": {
+   "Veni": {
+    "name": {
+     "en": "Veni",
+     "ru": "Veni"
+    },
+    "description": {
+     "en": "You gain +1 Accuracy to melee attacks against Immobilized or Slowed targets.",
+     "ru": "Вы получаете +1 Точность на ближние атаки против Обездвиженных или Замедленных целей."
+    }
+   },
+   "Vidi": {
+    "name": {
+     "en": "Vidi",
+     "ru": "Vidi"
+    },
+    "description": {
+     "en": "1/scene, you can make a Valiant Charge as a free action on your turn, moving up to twice your Speed and ignoring terrain penalties. You must move in a straight line and end your charge adjacent to a hostile character, and you cannot start your charge adjacent to any hostile characters. When you end your charge, any adjacent hostile characters are Slowed until the end of their next turn.",
+     "ru": "1/сцену вы можете совершить Доблестный рывок как свободное действие в свой ход, переместившись на расстояние до удвоенной Скорости, игнорируя штрафы рельефа. Вы должны двигаться по прямой линии и закончить рывок рядом с враждебным персонажем, при этом вы не можете начать рывок рядом с враждебными персонажами. Когда вы заканчиваете рывок, все соседние враждебные персонажи становятся Замедленными до конца своего следующего хода."
+    }
+   },
+   "Vici": {
+    "name": {
+     "en": "Vici",
+     "ru": "Vici"
+    },
+    "description": {
+     "en": "If you start your Valiant Charge adjacent to any allied characters, they may immediately Boost as a reaction after your charge resolves.",
+     "ru": "Если вы начинаете Доблестный рывок рядом с союзными персонажами, они могут немедленно совершить Рывок как реакцию после завершения вашего рывка."
+    }
+   }
+  }
+ },
+ "t_spaceborn": {
+  "name": {
+   "en": "Spaceborn",
+   "ru": "Космич"
+  },
+  "terse": {
+   "en": "Improve your mobility and gain an inbuilt EVA suite",
+   "ru": "Улучшает подвижность и даёт встроенный комплект выхода в открытый космос."
+  },
+  "description": {
+   "en": "You’re adept at planting your feet wherever you find them – even on nothing at all. In places where people born downwell have a hard time keeping their lunch down, you thrive. Which way is up? It’s up to you",
+   "ru": "Вы умеете становиться на ноги, где бы ни оказались — даже вообще ни на чём. Там, где рождённые в гравитационном колодце люди с трудом удерживают обед внутри, вы процветаете. Где верх? Решать вам."
+  },
+  "ranks": {
+   "Home in the Void": {
+    "name": {
+     "en": "Home in the Void",
+     "ru": "Дом в пустоте"
+    },
+    "description": {
+     "en": "All of your mechs that you build come with built-in EVA capabilities, meaning you suffer no penalties when operating underwater or in zero-g environments. As a quick action, you can shunt power into this component to fly 3 spaces and take Heat equal to your mech’s Size + 1, although you must land at the end of this movement or fall.",
+     "ru": "Все мехи, которые вы строите, поставляются со встроенными возможностями выхода в открытый космос, то есть вы не получаете штрафов при работе под водой или в условиях нулевой гравитации. Как быстрое действие, вы можете направить энергию в этот компонент, чтобы пролететь 3 клетки и получить Тепло, равное Размеру вашего меха + 1, хотя вы должны приземлиться в конце этого перемещения, иначе начинаете падать."
+    }
+   },
+   "Sea Legs": {
+    "name": {
+     "en": "Sea Legs",
+     "ru": "Морские ноги"
+    },
+    "description": {
+     "en": "1/round, when your mech is involuntarily moved by another character’s attack or by failing a save forced by another character, you can choose the direction you move. Additionally, when your mech clears Prone, you may move 2 spaces in any direction as a free action. This movement ignores engagement and doesn’t provoke reactions",
+     "ru": "1/раунд, когда ваш мех недобровольно перемещается атакой другого персонажа либо провалом спасброска, принуждённого другим персонажем, вы можете выбрать направление перемещения. Кроме того, когда ваш мех снимает Опрокинутость, вы можете переместиться на 2 клетки в любом направлении как свободное действие. Это перемещение игнорирует связанность боем и не провоцирует реакции."
+    }
+   },
+   "Scrapper": {
+    "name": {
+     "en": "Scrapper",
+     "ru": "Драчун"
+    },
+    "description": {
+     "en": "1/round, when your mech hits a character with a melee attack, it can immediately give that character +1 Difficulty on all checks or saves to avoid Knockback, Prone, Slowed or Immobilized until the end of its next turn, including any effects that are part of the triggering attack.",
+     "ru": "1/раунд, когда ваш мех попадает по персонажу ближней атакой, он может немедленно дать этому персонажу +1 Сложность на все проверки или спасброски для избежания Отбрасывания, Опрокидывания, Замедления или Обездвиживания до конца своего следующего хода, включая любые эффекты, являющиеся частью атаки-триггера."
+    }
+   }
+  }
+ },
+ "t_black_thumb": {
+  "name": {
+   "en": "Black Thumb",
+   "ru": "Чёрный большой палец"
+  },
+  "terse": {
+   "en": "Ride your mech to repair it during combat",
+   "ru": "Оседлайте свой мех, чтобы чинить его прямо в бою."
+  },
+  "description": {
+   "en": "You’re used to station engineering – the kind that regularly requires crawling through nightmarishly tight vents, squeezing past boiling-hot steam pipes, and tapping on thin panes of sheet metal that lie between you and certain death. After that, a little combat engineering is nothing.",
+   "ru": "Вы привыкли к станционной инженерии — той, что регулярно требует ползать через кошмарно тесные вентиляционные шахты, протискиваться мимо кипящих паровых труб и постукивать по тонким листам металла, отделяющим вас от верной смерти. После этого немного боевой инженерии — сущий пустяк."
+  },
+  "ranks": {
+   "Flesh to Metal": {
+    "name": {
+     "en": "Flesh to Metal",
+     "ru": "Плоть в металл"
+    },
+    "description": {
+     "en": "You treat DISMOUNT as a quick action instead of a full action. When you DISMOUNT, your pilot gains a personal shield. The next time your pilot would take damage, reduce that damage to 0, then the shield disperses. Otherwise, it disperses at the end of the scene. You can only have one personal shield at once, and any shields created replace the last one.",
+     "ru": "Вы считаете Высадку быстрым действием вместо полного. Когда вы совершаете Высадку, ваш пилот получает личный щит. В следующий раз, когда пилот должен получить урон, снизьте этот урон до 0, после чего щит рассеивается. В противном случае он рассеивается в конце сцены. У вас может быть только один личный щит одновременно, и любой созданный щит заменяет предыдущий."
+    }
+   },
+   "Rodeo": {
+    "name": {
+     "en": "Rodeo",
+     "ru": "Родео"
+    },
+    "description": {
+     "en": "<p>As a protocol, you give up the controls, pop the hatch on your mech and partly climb out, starting a BLACK THUMB RODEO and gaining a personal shield (as above). While in rodeo, your pilot is immune to involuntary movement, occupies your mech’s space and moves when it moves. This does not count as DISMOUNT and the mech can’t be controlled from outside, so it will idle unless it is capable of acting independently (e.g., if it has an NHP that has been given control, which you can do as part of this protocol). <br>While in rodeo, your pilot becomes a valid target and can take damage normally. If you lose your personal shield for any reason, you are immediately forced back inside your mech, ending the effect, and you cannot start a rodeo again on your following turn. You can also end a rodeo as a quick action on any of your turns. <br>While in rodeo, your pilot can only take the <b>Extinguish</b>, <b>Field Repair</b>, or <b>Rig Vents</b> actions granted by Black Thumb.",
+     "ru": "<p>Как протокол, вы отказываетесь от управления, открываете люк своего меха и частично вылезаете наружу, начиная РОДЕО ЧЁРНОГО ПАЛЬЦА и получая личный щит (как выше). Находясь в родео, ваш пилот имеет иммунитет к недобровольному перемещению, занимает клетку вашего меха и перемещается вместе с ним. Это не считается Высадкой, и мехом нельзя управлять снаружи, поэтому он будет простаивать, если не способен действовать самостоятельно (например, если у него есть НЧП, которому передано управление, что вы можете сделать в рамках этого протокола).<br>Находясь в родео, ваш пилот становится допустимой целью и может получать урон как обычно. Если вы теряете личный щит по любой причине, вас немедленно вынуждает вернуться в мех, заканчивая эффект, и вы не можете начать родео снова в свой следующий ход. Вы также можете завершить родео как быстрое действие в любой свой ход.<br>Находясь в родео, ваш пилот может совершать только действия <b>Extinguish</b>, <b>Field Repair</b> или <b>Rig Vents</b>, предоставляемые Чёрным пальцем.</p>"
+    }
+   },
+   "Rodeo Master": {
+    "name": {
+     "en": "Rodeo Master",
+     "ru": "Мастер родео"
+    },
+    "description": {
+     "en": "Your Black Thumb actions can be used on adjacent allied mechs.",
+     "ru": "Ваши действия Чёрного пальца можно использовать на соседних союзных мехах."
+    }
+   }
+  }
+ },
  "t_demolitionist": {
   "name": {
    "en": "Demolitionist",
@@ -1425,6 +1747,52 @@
    }
   }
  },
+ "mf_orator": {
+  "name": {
+   "en": "Orator",
+   "ru": "Оратор"
+  },
+  "terse": {
+   "en": "The power of your words is undeniable, and can incapacitate your opponents more readily than any weapon could.",
+   "ru": "Сила ваших слов неоспорима и способна обезвредить противников вернее любого оружия."
+  },
+  "description": {
+   "en": "Only the fool sees war as a means to and end; you know the integrity of any give human is far easier to penetrate than a chassis's exterior hull plating. So let fools be fools, and speak your truth. Tell them the gods they worship die a quiet death; tell them the manna they covet invites despondency, and the voices they follow lead nowhere. They will hear you – this is undeniable – and in doing so will even begin to question the motives of the hands they use to hold and the feet they use to walk. Your power is that of the orator, and in years to come your histories will paint war a bygone remembrance.",
+   "ru": "Только глупец видит в войне самоцель — вы же знаете, что дух человека пробить куда легче, чем броню шасси. Пусть глупцы остаются глупцами, а вы говорите правду: что боги, которым они поклоняются, тихо умирают, что желанная манна ведёт к унынию, а голоса, за которыми они идут, никуда не приводят. Вас услышат — это неизбежно, — и, услышав, люди начнут сомневаться даже в намерениях собственных рук и ног. Ваша сила — сила оратора, и однажды ваша история превратит войну в далёкое воспоминание."
+  },
+  "ranks": {
+   "Convincing Rhetoric": {
+    "name": {
+     "en": "Convincing Rhetoric",
+     "ru": "Убедительная риторика"
+    },
+    "description": {
+     "en": "Gain the <b>Convincing Rhetoric</b> reaction.",
+     "ru": "Получите реакцию <b>«Убедительная риторика»</b>."
+    }
+   },
+   "Voice of Reason": {
+    "name": {
+     "en": "Voice of Reason",
+     "ru": "Голос разума"
+    },
+    "description": {
+     "en": "<div>You start combat with 1 Orator die - a d6 - representing your power of speech. At the end of your turn when you do not attack or force any saves from hostile characters that turn, you gain +1 Orator die up to a maximum of 3 Orator Die. They last until expended or the current scene ends.</div> <div>1/round as a free action you can expend Orator Dice for one of the following effects as long as you can communicate with your target</div> <ul> <li><strong>Encourage (1 Die):</strong> An ally in line of sight may make a systems check against any non-self inflicted conditions affecting them, using the Orator Die at accuracy, ending that condition on a successful check.</li> <li><strong>Investigate (2 Dice):</strong> Choose a hostile character in line of sight. The next time you or an allied character makes an attack against them it is rolled twice, taking the highest result as final.</li> <li><strong>Cast Doubt (2 Dice):</strong> Choose a hostile character in line of sight. They cannot benefit from or be targeted by their allies' systems or traits until the end of their next turn.</li> </ul>",
+     "ru": "Вы начинаете бой с 1 Костью оратора — d6, — символизирующей силу вашего слова. В конце хода, если вы не атаковали и не принуждали враждебных персонажей к спасброскам в этот ход, получите +1 Кость оратора, максимум 3. Они действуют, пока не потрачены или пока не закончится текущая сцена.<br>1/раунд как свободное действие вы можете тратить Кости оратора на один из следующих эффектов, пока можете общаться с целью:<ul><li><b>Ободрить (1 Кость):</b> Союзник в пределах линии видимости может пройти проверку Систем против любого не самонанесённого состояния, действующего на него, используя Кость оратора как точность; при успехе состояние снимается.</li><li><b>Расследовать (2 Кости):</b> Выберите враждебного персонажа в пределах линии видимости. В следующий раз, когда вы или союзный персонаж атакуете его, бросьте атаку дважды, взяв лучший результат.</li><li><b>Посеять сомнение (2 Кости):</b> Выберите враждебного персонажа в пределах линии видимости. Он не может пользоваться системами или чертами союзников и не может быть их целью до конца своего следующего хода.</li></ul>"
+    }
+   },
+   "The March of the Ten Thousand": {
+    "name": {
+     "en": "The March of the Ten Thousand",
+     "ru": "Марш десяти тысяч"
+    },
+    "description": {
+     "en": "<p>Start combat with +1 additional Orator Dice. Additionally, gain an additional option for Voice of Reason</p> <ul> <li><strong>Demoralize (3 Dice):</strong> Choose a hostile character in line of sight. They cannot move, attack, force saves or take tech actions until the end of their next turn. They then gain Immunity to this effect until the end of the scene.</li>",
+     "ru": "Начинайте бой с ещё +1 Костью оратора. Также получите дополнительный вариант для «Голоса разума»:<ul><li><b>Деморализовать (3 Кости):</b> Выберите враждебного персонажа в пределах линии видимости. Он не может перемещаться, атаковать, принуждать к спасброскам или совершать тех-действия до конца своего следующего хода. Затем он получает Иммунитет к этому эффекту до конца сцены.</li></ul>"
+    }
+   }
+  }
+ },
  "t_empath": {
   "name": {
    "en": "Empath",
@@ -1436,7 +1804,7 @@
   },
   "description": {
    "en": "<p><i>Your time on Hercynia has always been marked by a kind of … searching. A connection to the planet, to something alive there. You can perceive it best at night, when it’s quiet: your name, or a whisper that speaks something deeper and more true, spoken in the voice of another. You don’t feel any fear when you hear it. You feel complete. It takes some time down the well, but one morning you awake resolute.</p><p>Time to find the distant speaker.</i></p><p>Whether your character was born offworld and came to Hercynia knowing nothing of the Egregorians, Witness, or any of the planet’s history, or you were born in Evergreen or one of the cities of the HUC, your character can be an empath. An empath is someone who can not only register when Witness is being shared, but begin to understand it and, with some training, even add their own subjectivity to it.</p><p>Mere exposure to Hercynia is enough for a character to become an empath. Nobody is “born” an empath – it is a learned process, not an inherited one. Although, like all skills, some people find it easier than others, anyone can potentially learn to understand Witness. Normally, human empaths bond with Egregorians – there are many examples of such in the United Cities. Rarely, empaths can form bonds with other humans – a process that is as rare and wondrous to Egregorians as it is to the humans undergoing it, and one that also suggests that a human extension of Witness may latent and possible with exploration.</p>",
-   "ru": "<p><i>Ваше время на Гercинии всегда было отмечено своего рода… поиском. Связью с планетой, с чем-то живым там. Вы лучше всего ощущаете это ночью, когда тихо: своё имя, или шёпот, говорящий что-то более глубокое и истинное, произнесённое голосом другого. Вы не чувствуете страха, слыша это. Вы чувствуете целостность. Требуется время в колодце, но однажды утром вы просыпаетесь с решимостью.</p><p>Пора найти того далёкого собеседника.</i></p><p>Родился ли ваш персонаж не на этой планете и прибыл на Герцинию, ничего не зная об Эгрегорианах, Свидетеле или истории этого мира, или же родился в Эвергрине или одном из городов ОГК, ваш персонаж может быть эмпатом. Эмпат — тот, кто не просто способен ощутить, когда происходит обмен Свидетелем, но начинает понимать его и, с некоторой тренировкой, даже добавлять собственную субъектность в него.</p><p>Простого пребывания на Герцинии достаточно, чтобы персонаж стал эмпатом. Никто не «рождается» эмпатом — это приобретаемый процесс, а не наследуемый. Хотя, как и с любым навыком, некоторым он даётся легче, чем другим, потенциально любой может научиться понимать Свидетеля. Обычно человеческие эмпаты образуют связь с Эгрегорианами — таких примеров много в Объединённых городах. Редко эмпаты могут образовывать связь с другими людьми — процесс, столь же редкий и чудесный для Эгрегориан, как и для самих людей, переживающих его, и указывающий на то, что человеческое расширение Свидетеля может быть скрытым и достижимым через исследование.</p>"
+   "ru": "<p><i>Ваше время на Герцинии всегда было отмечено своего рода… поиском. Связью с планетой, с чем-то живым там. Вы лучше всего ощущаете это ночью, когда тихо: своё имя, или шёпот, говорящий что-то более глубокое и истинное, произнесённое голосом другого. Вы не чувствуете страха, слыша это. Вы чувствуете целостность. Требуется время в колодце, но однажды утром вы просыпаетесь с решимостью.</p><p>Пора найти того далёкого собеседника.</i></p><p>Родился ли ваш персонаж не на этой планете и прибыл на Герцинию, ничего не зная об Эгрегорианах, Свидетеле или истории этого мира, или же родился в Эвергрине или одном из городов ОГК, ваш персонаж может быть эмпатом. Эмпат — тот, кто не просто способен ощутить, когда происходит обмен Свидетелем, но начинает понимать его и, с некоторой тренировкой, даже добавлять собственную субъектность в него.</p><p>Простого пребывания на Герцинии достаточно, чтобы персонаж стал эмпатом. Никто не «рождается» эмпатом — это приобретаемый процесс, а не наследуемый. Хотя, как и с любым навыком, некоторым он даётся легче, чем другим, потенциально любой может научиться понимать Свидетеля. Обычно человеческие эмпаты образуют связь с Эгрегорианами — таких примеров много в Объединённых городах. Редко эмпаты могут образовывать связь с другими людьми — процесс, столь же редкий и чудесный для Эгрегориан, как и для самих людей, переживающих его, и указывающий на то, что человеческое расширение Свидетеля может быть скрытым и достижимым через исследование.</p>"
   },
   "ranks": {
    "Sympathetic Precognition": {
@@ -1469,365 +1837,6 @@
      "ru": "1/сцену, как быстрое действие, вы можете обратиться к глубоким резервам воли, чтобы дать необычайную осведомлённость союзному персонажу в пределах видимости. Ваш мех немедленно становится Ошеломлён до начала своего следующего хода, а ваше восприятие почти полностью слито с восприятием другого персонажа. До конца его следующего хода каждый раз, когда этот персонаж совершает атаку, проверку или спасбросок, он может выбрать бросить как обычно или вместо этого считать эту атаку, проверку или спасбросок так, как если бы выбросил 10 на d20. Решение нужно принять до броска."
     }
    }
-  }
- },
- "t_house_guard": {
-  "name": {
-   "en": "House Guard",
-   "ru": "Домовая стража"
-  },
-  "terse": {
-   "en": "...",
-   "ru": "Улучшает вашу способность защищать союзников."
-  },
-  "description": {
-   "en": "...",
-   "ru": "Вы сражаетесь бок о бок с союзниками, и ваш мех — оплот, дающий им несокрушимую решимость и поддерживающий их на пути к вящей славе."
-  },
-  "ranks": {
-   "Front Rank": {
-    "name": {
-     "en": "Front Rank",
-     "ru": "Передний ряд"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Вы считаетесь соседним, находясь в пределах Радиуса 2, для целей ваших эффектов на союзных персонажей (от ваших черт, талантов, систем или оружия), требующих соседства с вашим мехом."
-    }
-   },
-   "Greater Guardian": {
-    "name": {
-     "en": "Greater Guardian",
-     "ru": "Великий страж"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Ваш мех получает черту «Страж», если у него её ещё нет (соседние союзники могут использовать ваш мех как жёсткое укрытие). «Страж» теперь дополнительно даёт мягкое укрытие всем соседним союзникам со всех направлений."
-    }
-   },
-   "Shield of the Legion": {
-    "name": {
-     "en": "Shield of the Legion",
-     "ru": "Щит легиона"
-    },
-    "description": {
-     "en": "...",
-     "ru": "1/раунд, когда вы снижаете урон союзному персонажу, отменяете атаку по нему или заставляете её промахнуться, вы можете нанести 2 энергетического урона атакующему и опрокинуть его."
-    }
-   }
-  }
- },
- "t_pankrati": {
-  "name": {
-   "en": "Pankrati",
-   "ru": "Панкрати"
-  },
-  "terse": {
-   "en": "...",
-   "ru": "Стремительно сокрушайте более медленных противников."
-  },
-  "description": {
-   "en": "...",
-   "ru": "Ваш бой так же эффектен, как у величайших бойцов Креосса, и ваш мех бросается в битву с огромным апломбом."
-  },
-  "ranks": {
-   "Veni": {
-    "name": {
-     "en": "Veni",
-     "ru": "Veni"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Вы получаете +1 Точность на ближние атаки против Обездвиженных или Замедленных целей."
-    }
-   },
-   "Vidi": {
-    "name": {
-     "en": "Vidi",
-     "ru": "Vidi"
-    },
-    "description": {
-     "en": "...",
-     "ru": "1/сцену вы можете совершить Доблестный рывок как свободное действие в свой ход, переместившись на расстояние до удвоенной Скорости, игнорируя штрафы рельефа. Вы должны двигаться по прямой линии и закончить рывок рядом с враждебным персонажем, при этом вы не можете начать рывок рядом с враждебными персонажами. Когда вы заканчиваете рывок, все соседние враждебные персонажи становятся Замедленными до конца своего следующего хода."
-    }
-   },
-   "Vici": {
-    "name": {
-     "en": "Vici",
-     "ru": "Vici"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Если вы начинаете Доблестный рывок рядом с союзными персонажами, они могут немедленно совершить Ускорение как реакцию после завершения вашего рывка."
-    }
-   }
-  }
- },
- "t_prospector": {
-  "name": {
-   "en": "Prospector",
-   "ru": "Старатель"
-  },
-  "terse": {
-   "en": "...",
-   "ru": "Прокладывайте туннели через поле боя и создавайте проходы для себя и союзников."
-  },
-  "description": {
-   "en": "...",
-   "ru": "Некоторые люди не боятся запачкать руки. Вы — один из таких людей, и вы не боитесь запачкать руки и своему меху. Оснастив его всевозможным горнодобывающим оборудованием, вы теперь способны перемещать огромные объёмы грунта за очень короткое время, позволяя ему и союзникам быстро перебрасываться, используя подземные маршруты."
-  },
-  "ranks": {
-   "Stake a Claim": {
-    "name": {
-     "en": "Stake a Claim",
-     "ru": "Застолбить участок"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Туннелирование: при Туннелировании удалите персонажа с поля боя, а затем немедленно поместите его на свободную допустимую клетку. Это считается перемещением на 1 клетку и провоцирует Реакции.<br>Получите Быстрое действие «Создать проход», которое можно использовать 1/сцену.<br>Находясь полностью внутри Прохода, вы и союзные персонажи получаете Реакцию «Подземная перестановка» в свои ходы."
-    }
-   },
-   "Gold Fever": {
-    "name": {
-     "en": "Gold Fever",
-     "ru": "Золотая лихорадка"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Враждебные персонажи в области при создании Прохода должны пройти спасбросок Корпуса или быть опрокинуты.<br>Кроме того, после использования «Создать проход» союзные персонажи, полностью находящиеся в вашем изначальном Проходе, могут использовать «Подземную перестановку», даже если это не их ход."
-    }
-   },
-   "Mother Lode": {
-    "name": {
-     "en": "Mother Lode",
-     "ru": "Материнская жила"
-    },
-    "description": {
-     "en": "...",
-     "ru": "«Создать проход» теперь доступно 1/раунд, и вы можете использовать его дополнительный раз за сцену. Все созданные вами Проходы считаются соединёнными для целей Туннелирования."
-    }
-   }
-  }
- },
- "t_iconoclast": {
-  "name": {
-   "en": "Iconoclast",
-   "ru": "Иконоборец"
-  },
-  "terse": {
-   "en": "...",
-   "ru": "Задействуйте силу своего НЧП-компаньона."
-  },
-  "description": {
-   "en": "...",
-   "ru": "Вы обрели НЧП — или это он обрёл вас? Вместе вы отправились в путь к величию, раздвигая границы. Вы оба заодно, и вместе способны достичь фантастических вещей. Возможно, вы не осознаёте риски; возможно, вы сознательно предпочитаете их игнорировать. Однако сила, которую вы можете задействовать с помощью своего компаньона, неоспорима. А с такой силой кто остановит вас двоих от нарушения нескольких табу?"
-  },
-  "ranks": {
-   "Transgression": {
-    "name": {
-     "en": "Transgression",
-     "ru": "Преступление"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Вы можете выбрать оснастить свой мех системой «Нестабильный НЧП»."
-    }
-   },
-   "Transmutation": {
-    "name": {
-     "en": "Transmutation",
-     "ru": "Трансмутация"
-    },
-    "description": {
-     "en": "...",
-     "ru": "После совершения любого действия, предоставленного вам НЧП, за исключением передачи управления мехом НЧП как протокол, вы можете немедленно совершить свободное действие «МЕМОВАЯ ИСКРА». Каждый НЧП может активировать это действие только 1/раунд."
-    }
-   },
-   "Transcension": {
-    "name": {
-     "en": "Transcension",
-     "ru": "Трансцендентность"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Получите Кость трансцендентности, d3, начинающуюся с 3. Когда вы используете «Мемовую искру», уменьшите кость на 1. Если кость равна 1, когда вы используете «Мемовую искру», вы можете немедленно войти в трансцендентное состояние и сбросить Кость трансцендентности на 3. Это даёт следующие эффекты до конца вашего следующего хода:<br><ul><li>Ваша Кость трансцендентности не может уменьшаться.</li><li>«Мемовая искра» получает +4 урона и +5 Радиус.</li><li>Если вы не летите и не карабкаетесь, вы вынуждены постоянно Парить ровно в 1 клетке над любой поверхностью.</li><li>Вы получаете Иммунитет к недобровольному перемещению.</li></ul><br>Всякий раз, когда вы входите в каскад и теряете контроль над своим мехом, вы входите в трансцендентное состояние на этот срок. Каскадирующие НЧП получают доступ к преимуществам этого таланта. Ваша Кость трансцендентности сбрасывается в конце сцены."
-    }
-   }
-  }
- },
- "t_field_analyst": {
-  "name": {
-   "en": "Field Analyst",
-   "ru": "Полевой аналитик"
-  },
-  "terse": {
-   "en": "...",
-   "ru": "Поддерживайте союзников острым анализом поля боя."
-  },
-  "description": {
-   "en": "...",
-   "ru": "Вы всегда были проницательны, способны анализировать ход боя и на месте придумывать стратегии. Вы — незримый закулисный стратег, помогающий союзникам в бою разными способами: от едва заметных подсказок товарищам при прицеливании до разработки продвинутых огневых решений или индивидуальных схем уклонения. С вашей поддержкой любой бой, в который попадают ваши союзники, наверняка закончится успехом."
-  },
-  "ranks": {
-   "Tactical Intelligence": {
-    "name": {
-     "en": "Tactical Intelligence",
-     "ru": "Тактическая разведка"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Всякий раз, когда союзный персонаж в пределах линии видимости промахивается атакой, вы узнаёте, насколько именно он промахнулся. Кроме того, вы получаете Реакцию «Превосходящий интеллект»."
-    }
-   },
-   "Information Handling": {
-    "name": {
-     "en": "Information Handling",
-     "ru": "Обработка информации"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Получите Кость разведданных, d6, начинающуюся с 1.<br>В конце своего хода, если вы не совершали действий, затрагивающих враждебного персонажа в этот ход, кроме Сканирования, ваша Кость разведданных увеличивается на 2, максимум до 6.<br>Всякий раз, когда вы используете «Превосходящий интеллект», вы можете увеличить бросок атаки на значение вашей Кости разведданных вместо 1. После этого она сбрасывается на 1.<br>Ваша Кость разведданных сбрасывается в конце каждой сцены."
-    }
-   },
-   "Active Interference": {
-    "name": {
-     "en": "Active Interference",
-     "ru": "Активные помехи"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Всякий раз, когда враждебный персонаж в пределах линии видимости попадает атакой, вы узнаёте, что он выбросил.<br>Вы также можете использовать «Превосходящий интеллект», когда враждебный персонаж в пределах линии видимости совершил бросок атаки. Вместо прибавления к броску атаки вы таким же образом вычитаете из него. Каждый бросок атаки может быть затронут таким образом лишь один раз."
-    }
-   }
-  }
- },
- "t_spaceborn": {
-  "name": {
-   "en": "Spaceborn",
-   "ru": "Космич"
-  },
-  "terse": {
-   "en": "...",
-   "ru": "Улучшает подвижность и даёт встроенный комплект выхода в открытый космос."
-  },
-  "description": {
-   "en": "...",
-   "ru": "Вы умеете становиться на ноги, где бы ни оказались — даже вообще ни на чём. Там, где рождённые в гравитационном колодце люди с трудом удерживают обед внутри, вы процветаете. Где верх? Решать вам."
-  },
-  "ranks": {
-   "Home in the Void": {
-    "name": {
-     "en": "Home in the Void",
-     "ru": "Дом в пустоте"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Все мехи, которые вы строите, поставляются со встроенными возможностями выхода в открытый космос, то есть вы не получаете штрафов при работе под водой или в условиях нулевой гравитации. Как быстрое действие, вы можете направить энергию в этот компонент, чтобы пролететь 3 клетки и получить Тепло, равное Размеру вашего меха + 1, хотя вы должны приземлиться в конце этого перемещения, иначе начинаете падать."
-    }
-   },
-   "Sea Legs": {
-    "name": {
-     "en": "Sea Legs",
-     "ru": "Морские ноги"
-    },
-    "description": {
-     "en": "...",
-     "ru": "1/раунд, когда ваш мех недобровольно перемещается атакой другого персонажа либо провалом спасброска, принуждённого другим персонажем, вы можете выбрать направление перемещения. Кроме того, когда ваш мех снимает Опрокинутость, вы можете переместиться на 2 клетки в любом направлении как свободное действие. Это перемещение игнорирует связанность боем и не провоцирует реакции."
-    }
-   },
-   "Scrapper": {
-    "name": {
-     "en": "Scrapper",
-     "ru": "Драчун"
-    },
-    "description": {
-     "en": "...",
-     "ru": "1/раунд, когда ваш мех попадает по персонажу ближней атакой, он может немедленно дать этому персонажу +1 Сложность на все проверки или спасброски для избежания Отбрасывания, Опрокидывания, Замедления или Обездвиживания до конца своего следующего хода, включая любые эффекты, являющиеся частью атаки-триггера."
-    }
-   }
-  }
- },
- "t_black_thumb": {
-  "name": {
-   "en": "Black Thumb",
-   "ru": "Чёрный большой палец"
-  },
-  "terse": {
-   "en": "...",
-   "ru": "Оседлайте свой мех, чтобы чинить его прямо в бою."
-  },
-  "description": {
-   "en": "...",
-   "ru": "Вы привыкли к станционной инженерии — той, что регулярно требует ползать через кошмарно тесные вентиляционные шахты, протискиваться мимо кипящих паровых труб и постукивать по тонким листам металла, отделяющим вас от верной смерти. После этого немного боевой инженерии — сущий пустяк."
-  },
-  "ranks": {
-   "Flesh to Metal": {
-    "name": {
-     "en": "Flesh to Metal",
-     "ru": "Плоть в металл"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Вы считаете Высадку быстрым действием вместо полного. Когда вы совершаете Высадку, ваш пилот получает личный щит. В следующий раз, когда пилот должен получить урон, снизьте этот урон до 0, после чего щит рассеивается. В противном случае он рассеивается в конце сцены. У вас может быть только один личный щит одновременно, и любой созданный щит заменяет предыдущий."
-    }
-   },
-   "Rodeo": {
-    "name": {
-     "en": "Rodeo",
-     "ru": "Родео"
-    },
-    "description": {
-     "en": "...",
-     "ru": "<p>Как протокол, вы отказываетесь от управления, открываете люк своего меха и частично вылезаете наружу, начиная РОДЕО ЧЁРНОГО ПАЛЬЦА и получая личный щит (как выше). Находясь в родео, ваш пилот имеет иммунитет к недобровольному перемещению, занимает клетку вашего меха и перемещается вместе с ним. Это не считается Высадкой, и мехом нельзя управлять снаружи, поэтому он будет простаивать, если не способен действовать самостоятельно (например, если у него есть НЧП, которому передано управление, что вы можете сделать в рамках этого протокола).<br>Находясь в родео, ваш пилот становится допустимой целью и может получать урон как обычно. Если вы теряете личный щит по любой причине, вас немедленно вынуждает вернуться в мех, заканчивая эффект, и вы не можете начать родео снова в свой следующий ход. Вы также можете завершить родео как быстрое действие в любой свой ход.<br>Находясь в родео, ваш пилот может совершать только действия <b>Extinguish</b>, <b>Field Repair</b> или <b>Rig Vents</b>, предоставляемые Чёрным пальцем.</p>"
-    }
-   },
-   "Rodeo Master": {
-    "name": {
-     "en": "Rodeo Master",
-     "ru": "Мастер родео"
-    },
-    "description": {
-     "en": "...",
-     "ru": "Ваши действия Чёрного пальца можно использовать на соседних союзных мехах."
-    }
-   }
-  }
- },
- "mf_orator": {
-  "name": {
-   "ru": "Оратор"
-  },
-  "terse": {
-   "ru": "Сила ваших слов неоспорима и способна обезвредить противников вернее любого оружия."
-  },
-  "ranks": {
-   "Convincing Rhetoric": {
-    "name": {
-     "ru": "Убедительная риторика"
-    },
-    "description": {
-     "ru": "Получите реакцию <b>«Убедительная риторика»</b>."
-    }
-   },
-   "Voice of Reason": {
-    "name": {
-     "ru": "Голос разума"
-    },
-    "description": {
-     "ru": "Вы начинаете бой с 1 Костью оратора — d6, — символизирующей силу вашего слова. В конце хода, если вы не атаковали и не принуждали враждебных персонажей к спасброскам в этот ход, получите +1 Кость оратора, максимум 3. Они действуют, пока не потрачены или пока не закончится текущая сцена.<br>1/раунд как свободное действие вы можете тратить Кости оратора на один из следующих эффектов, пока можете общаться с целью:<ul><li><b>Ободрить (1 Кость):</b> Союзник в пределах линии видимости может пройти проверку Систем против любого не самонанесённого состояния, действующего на него, используя Кость оратора как точность; при успехе состояние снимается.</li><li><b>Расследовать (2 Кости):</b> Выберите враждебного персонажа в пределах линии видимости. В следующий раз, когда вы или союзный персонаж атакуете его, бросьте атаку дважды, взяв лучший результат.</li><li><b>Посеять сомнение (2 Кости):</b> Выберите враждебного персонажа в пределах линии видимости. Он не может пользоваться системами или чертами союзников и не может быть их целью до конца своего следующего хода.</li></ul>"
-    }
-   },
-   "The March of the Ten Thousand": {
-    "name": {
-     "ru": "Марш десяти тысяч"
-    },
-    "description": {
-     "ru": "Начинайте бой с ещё +1 Костью оратора. Также получите дополнительный вариант для «Голоса разума»:<ul><li><b>Деморализовать (3 Кости):</b> Выберите враждебного персонажа в пределах линии видимости. Он не может перемещаться, атаковать, принуждать к спасброскам или совершать тех-действия до конца своего следующего хода. Затем он получает Иммунитет к этому эффекту до конца сцены.</li></ul>"
-    }
-   }
-  },
-  "description": {
-   "ru": "Только глупец видит в войне самоцель — вы же знаете, что дух человека пробить куда легче, чем броню шасси. Пусть глупцы остаются глупцами, а вы говорите правду: что боги, которым они поклоняются, тихо умирают, что желанная манна ведёт к унынию, а голоса, за которыми они идут, никуда не приводят. Вас услышат — это неизбежно, — и, услышав, люди начнут сомневаться даже в намерениях собственных рук и ног. Ваша сила — сила оратора, и однажды ваша история превратит войну в далёкое воспоминание."
   }
  }
 }

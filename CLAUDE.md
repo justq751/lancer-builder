@@ -99,7 +99,8 @@ Pack categories `reserves` and `environments` are intentionally not loaded/merge
 
 These operate on the JSON data files, not the app itself:
 
-- **`extract_locale_template.py --lang ru [--only ui.json,mods.json]`** — regenerates `locales/ru/*.json` from `data/lancer-data.json` + `data/packs/*.json`, and `locales/ru/ui.json` from `data/ui.json`. Preserves existing `"ru"` translations, adds empty `"ru"` entries for new fields, drops entries for fields that disappeared; in `ui.json` a translation whose English changed is kept and marked `"stale": true`. **The data locales have drifted from what the builders generate (hand edits) — a full run rewrites thousands of lines; until that is reconciled (PLAN.md stage 5), use `--only <files>`.**
+- **`extract_locale_template.py --lang ru [--only ui.json,mods.json]`** — regenerates `locales/ru/*.json` from `data/lancer-data.json` + `data/packs/*.json`, and `locales/ru/ui.json` from `data/ui.json`. Preserves existing `"ru"` translations, adds empty `"ru"` entries for new fields, drops entries for fields that disappeared; in `ui.json` a translation whose English changed is kept and marked `"stale": true`. A full run is safe (builders cover every field `localizeData()` overlays); `--only <files>` limits it.
+- **`locale_coverage.py [--list] [--markdown]`** — translation coverage per locale file, the untranslated paths, `ui.json` stale marks, and "generator drift" (files a regeneration would rewrite). Informational, always exits 0; CI prints it to the run's Summary.
 - **`normalize_pack.py <lib_dir> data/packs/<name>.json "<label>"`** — converts a pack using the newer upstream `lancer-data` schema (tag objects like `{"id":"tg_reliable","val":2}`, ability text in `actions`/`deployables` arrays) into the flat shape `data/lancer-data.json` already uses (plain tag strings like `"Reliable 2"`, ability text folded into `effect`/`*_effect`), so the renderer needs zero changes to support a new pack.
 - **`merge_frames.py <normalized_file> <target_file>`** — merges just the `frames` array from a normalized pack output into a target data file, leaving every other key untouched. Writes a `.bak` backup of the target before overwriting.
 
@@ -108,7 +109,7 @@ Typical workflow for adding/updating a content pack:
 python3 tools/normalize_pack.py <lib_dir> data/packs/<name>.json "<label>"
 python3 tools/extract_locale_template.py --lang ru --only weapons.json,systems.json   # the files the pack touches
 ```
-Then translate the newly-appeared empty `"ru": ""` entries — and review `git diff locales/` before keeping it. On Windows use `py` (or `python`) instead of `python3`.
+Then translate the newly-appeared empty `"ru": ""` entries (`py tools/locale_coverage.py --list` finds them) — and review `git diff locales/` before keeping it. Terms follow `GLOSSARY.md`. On Windows use `py` (or `python`) instead of `python3`.
 
 ## UI strings (ADR 0005)
 

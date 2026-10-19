@@ -48,6 +48,24 @@ def pair(en, old):
     return {"en": en or "", "ru": old_ru}
 
 
+def build_named_actions(items, old_map):
+    """Actions/deployables keyed by English name, like every other sublist.
+    trigger/detail may be a string or {detail: ...} (see overlayOnField)."""
+    old_map = old_map or {}
+    out = {}
+    for a in items or []:
+        key = a.get("name") or ""
+        old_a = old_map.get(key, {})
+        entry = {}
+        for field in ("name", "trigger", "detail"):
+            text = _on_field(a.get(field))
+            if text:
+                entry[field] = pair(text, old_a.get(field))
+        if entry:
+            out[key] = entry
+    return out
+
+
 def merge_dict_field(new_obj, old_obj, fields):
     old_obj = old_obj or {}
     out = {}
@@ -82,6 +100,11 @@ def build_frames(data, old):
             ["name", "description", "passive_name", "passive_effect",
              "active_name", "active_effect"]
         )
+        # localizeData() overlays core-system actions by English name.
+        for k in ("passive_actions", "active_actions"):
+            acts = build_named_actions(cs.get(k), old_cs.get(k))
+            if acts:
+                entry["core_system"][k] = acts
         out[fr["id"]] = entry
     return out
 
@@ -119,25 +142,25 @@ def build_weapons(data, old):
                 pp = {"name": pair(p.get("name"), old_p.get("name"))}
                 if p.get("effect"):
                     pp["effect"] = pair(p.get("effect"), old_p.get("effect"))
+                for k in ("on_hit", "on_attack", "on_crit"):
+                    text = _on_field(p.get(k))
+                    if text:
+                        pp[k] = pair(text, old_p.get(k))
                 # Actions nested in a profile (e.g. a stance's reaction). The
                 # sheet view renders these, so they need translating too;
                 # keyed by the English action name like every other sublist.
-                if p.get("actions"):
-                    old_acts = old_p.get("actions", {})
-                    acts = {}
-                    for a in p["actions"]:
-                        akey = a.get("name") or ""
-                        old_a = old_acts.get(akey, {})
-                        aentry = {}
-                        for field in ("name", "trigger", "detail"):
-                            if a.get(field):
-                                aentry[field] = pair(a.get(field), old_a.get(field))
-                        if aentry:
-                            acts[akey] = aentry
-                    if acts:
-                        pp["actions"] = acts
+                acts = build_named_actions(p.get("actions"), old_p.get("actions"))
+                if acts:
+                    pp["actions"] = acts
                 pentry[key] = pp
             entry["profiles"] = pentry
+        # Weapon-level actions/deployables are not rendered yet (normalize_pack
+        # folds their text into effect), but they are translated: keep them so
+        # the work is not lost when the sheet starts showing them.
+        for k in ("actions", "deployables"):
+            acts = build_named_actions(w.get(k), old_e.get(k))
+            if acts:
+                entry[k] = acts
         out[w["id"]] = entry
     return out
 
@@ -224,10 +247,13 @@ def build_pilot_gear(data, old):
     out = {}
     for g in data["pilot_gear"]:
         old_e = old.get(g["id"], {})
-        out[g["id"]] = {
+        entry = {
             "name": pair(g.get("name"), old_e.get("name")),
             "description": pair(g.get("description"), old_e.get("description")),
         }
+        if g.get("effect"):
+            entry["effect"] = pair(g.get("effect"), old_e.get("effect"))
+        out[g["id"]] = entry
     return out
 
 
@@ -334,7 +360,7 @@ def build_ui(old):
     return out
 
 
-def load_combined_data():
+def load_combined_data(quiet=False):
     """Core data + every normalized pack in data/packs/, merged into one
     lookup so pack items get template entries alongside core-book items."""
     data = json.loads(DATA_FILE.read_text(encoding="utf-8"))
@@ -353,7 +379,8 @@ def load_combined_data():
             for cat, items in pack.items():
                 if cat in data and items:
                     data[cat] = data[cat] + items
-            print(f"  + merged {pack_file.name}")
+            if not quiet:
+                print(f"  + merged {pack_file.name}")
     return data
 
 

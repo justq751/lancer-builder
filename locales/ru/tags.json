@@ -152,11 +152,11 @@
  "tg_overshield": {
   "name": {
    "en": "Overshield",
-   "ru": "Сверхщит"
+   "ru": "Овершилд"
   },
   "description": {
    "en": "This system provides HP that disappears at the end of the scene or when a specified condition is met. The user only retains the highest value of Overshield applied – it does not stack. For example, if a system provides Overshield 5 and the user gains another effect that provides Overshield 7, they would gain Overshield 7. Damage is dealt to Overshield first, then HP. Overshield can push a character past their maximum HP. It can’t benefit from healing but otherwise benefits normally from anything that would affect HP and damage (i.e., reduction, armor, etc).",
-   "ru": "Эта система даёт ОЗ, которые исчезают в конце сцены или при выполнении указанного условия. Пользователь сохраняет только наибольшее значение Сверхщита — они не складываются. Например, если система даёт Сверхщит 5, а пользователь получает другой эффект, дающий Сверхщит 7, он получит Сверхщит 7. Урон сначала наносится Сверхщиту, затем ОЗ. Сверхщит может превысить максимум ОЗ персонажа. Он не может быть восстановлен лечением, но в остальном на него действует всё, что влияет на ОЗ и урон (снижение, броня и т.д.)."
+   "ru": "Эта система даёт ОЗ, которые исчезают в конце сцены или при выполнении указанного условия. Пользователь сохраняет только наибольшее значение Овершилда — они не складываются. Например, если система даёт Овершилд 5, а пользователь получает другой эффект, дающий Овершилд 7, он получит Овершилд 7. Урон сначала наносится Овершилду, затем ОЗ. Овершилд может превысить максимум ОЗ персонажа. Он не может быть восстановлен лечением, но в остальном на него действует всё, что влияет на ОЗ и урон (снижение, броня и т.д.)."
   }
  },
  "tg_reliable": {
@@ -246,7 +246,7 @@
   },
   "description": {
    "en": "This system, talent, or weapon can only be used if the user is in the Danger Zone (Heat equal to at least half of their Heat Cap).",
-   "ru": "Эту систему, талант или оружие можно использовать только если пользователь находится в Опасной зоне (Тепло не менее половины его Предела тепла)."
+   "ru": "Эту систему, талант или оружие можно использовать только если пользователь находится в Опасной зоне (Тепло не менее половины его Теплоёмкости)."
   }
  },
  "tg_deployable": {

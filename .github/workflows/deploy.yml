@@ -52,6 +52,12 @@ jobs:
       - name: Unit tests
         run: npm run test:unit
 
+      # Только информация — частичный перевод не ошибка (фолбэк на
+      # английский). Таблица — во вкладке Actions → Summary этого запуска.
+      - name: Locale coverage
+        continue-on-error: true
+        run: python3 tools/locale_coverage.py --markdown --list >> "$GITHUB_STEP_SUMMARY"
+
       - name: Browser tests
         run: npx playwright test --ignore-snapshots
 

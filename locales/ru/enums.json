@@ -3,27 +3,27 @@
  "mount_types": {
   "Main": {
    "en": "Main",
-   "ru": "Основной"
+   "ru": "Основное"
   },
   "Heavy": {
    "en": "Heavy",
-   "ru": "Тяжёлый"
+   "ru": "Тяжёлое"
   },
   "Auxiliary": {
    "en": "Auxiliary",
-   "ru": "Вспомогательный"
+   "ru": "Вспомогательное"
   },
   "Superheavy": {
    "en": "Superheavy",
-   "ru": "Сверхтяжёлый"
+   "ru": "Сверхтяжёлое"
   },
   "Flex": {
    "en": "Flex",
-   "ru": "Гибкий"
+   "ru": "Гибкое"
   },
   "Main/Aux": {
    "en": "Main/Aux",
-   "ru": "Основной/Вспом."
+   "ru": "Основное/Вспом."
   },
   "Aux/Aux": {
    "en": "Aux/Aux",
@@ -31,7 +31,7 @@
   },
   "Ship-class": {
    "en": "Ship-class",
-   "ru": "Корабельный"
+   "ru": "Корабельное"
   },
   "Integrated": {
    "en": "Integrated",
@@ -217,23 +217,23 @@
  "source_names": {
   "GMS": {
    "en": "GENERAL MASSIVE SYSTEMS",
-   "ru": ""
+   "ru": "GENERAL MASSIVE SYSTEMS"
   },
   "IPS-N": {
    "en": "IPS-NORTHSTAR",
-   "ru": ""
+   "ru": "IPS-NORTHSTAR"
   },
   "SSC": {
    "en": "SMITH-SHIMANO CORPRO",
-   "ru": ""
+   "ru": "SMITH-SHIMANO CORPRO"
   },
   "HORUS": {
    "en": "HORUS",
-   "ru": ""
+   "ru": "HORUS"
   },
   "HA": {
    "en": "HARRISON ARMORY",
-   "ru": ""
+   "ru": "HARRISON ARMORY"
   }
  },
  "tag_words": {
@@ -352,7 +352,7 @@
   },
   "Overshield": {
    "en": "Overshield",
-   "ru": "Сверхщит"
+   "ru": "Овершилд"
   },
   "Invulnerable": {
    "en": "Invulnerable",

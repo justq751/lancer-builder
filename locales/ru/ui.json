@@ -349,7 +349,7 @@
  },
  "frame.lead": {
   "en": "Choose a frame. Its base stats add up with your mech skills and GRIT. A lock means the license is not unlocked yet — you can pick anything, but check the requirements on the LICENSES tab.",
-  "ru": "Выберите рамную платформу (frame). Её базовые статы складываются с вашими мех-навыками и GRIT. Замок означает, что лицензия ещё не открыта — выбрать можно всё, но проверьте требования на вкладке ЛИЦЕНЗИИ."
+  "ru": "Выберите шасси. Его базовые статы складываются с вашими мех-навыками и GRIT. Замок означает, что лицензия ещё не открыта — выбрать можно всё, но проверьте требования на вкладке ЛИЦЕНЗИИ."
  },
  "frame.license_ll": {
   "en": "license LL{ll}",
@@ -425,7 +425,7 @@
  },
  "hase.hull.effect": {
   "en": "+2 HP · +1 Repair Capacity per 2 ranks",
-  "ru": "+2 HP · +1 Ремонт за 2 ранга"
+  "ru": "+2 ОЗ · +1 Ремонт за 2 ранга"
  },
  "hase.hull.name": {
   "en": "HULL",
@@ -1109,7 +1109,7 @@
  },
  "pilot.budget_body": {
   "en": "At every LL you get <b>+1</b> point of skills, talents, mech skills and licenses. GRIT = LL ÷ 2 (rounded up) and is added to mech HP, saves and attacks. A CORE bonus is granted at every even level.<ul><li>Skill points: 4 + LL</li><li>Talent points: 3 + LL</li><li>Mech skills: 2 + LL</li><li>Licenses: LL</li><li>CORE bonuses: LL ÷ 2 (round down)</li></ul>",
-  "ru": "На каждом LL вы получаете: <b>+1</b> очко навыков, талантов, мех-навыков и лицензий. GRIT = LL ÷ 2 (округление вверх) и добавляется к HP меха, спасброску и атакам. CORE-бонус выдаётся на каждом чётном уровне.<ul><li>Очки навыков: 4 + LL</li><li>Очки талантов: 3 + LL</li><li>Мех-навыки: 2 + LL</li><li>Лицензии: LL</li><li>CORE-бонусы: LL ÷ 2 (вниз)</li></ul>"
+  "ru": "На каждом LL вы получаете: <b>+1</b> очко навыков, талантов, мех-навыков и лицензий. GRIT = LL ÷ 2 (округление вверх) и добавляется к ОЗ меха, спасброску и атакам. CORE-бонус выдаётся на каждом чётном уровне.<ul><li>Очки навыков: 4 + LL</li><li>Очки талантов: 3 + LL</li><li>Мех-навыки: 2 + LL</li><li>Лицензии: LL</li><li>CORE-бонусы: LL ÷ 2 (вниз)</li></ul>"
  },
  "pilot.budget_q": {
   "en": "How is the budget counted?",
@@ -1689,7 +1689,7 @@
  },
  "term.rng.Burst": {
   "en": "BURST",
-  "ru": "ОЧЕРЕДЬ"
+  "ru": "ВСПЫШКА"
  },
  "term.rng.Cone": {
   "en": "CONE",

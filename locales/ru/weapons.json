@@ -978,7 +978,7 @@
   },
   "effect": {
    "en": "The Apocalypse Rail must be charged before it can be fired, using the Charge Rail CORE Power.<br>This weapon has different profiles determined by the current value of the APOCALYPSE DIE when you fire it. Each profile replaces the one proceeding it. The Apocalypse Rail cannot be fired at targets within range 5.<br> After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.<br><b>Fire Apocalypse Rail</b> — If the value of the Apocalypse Die is 1–3, you can attack on your turn with the Apocalypse Rail as a full action, but can’t move or take any other actions on the same turn.<br>After an attack with the Apocalypse Rail, the Apocalypse Die resets to 4.",
-   "ru": "«Рельс Апокалипсиса» нужно зарядить, прежде чем стрелять, используя CORE-способность «Зарядить рельс».<br>У этого оружия разные профили в зависимости от текущего значения КОСТИ АПОКАЛИПСИСА в момент выстрела. Каждый профиль заменяет предыдущий. «Рельс Апокалипсиса» нельзя направить на цели в пределах радиуса 5.<br>После атаки «Рельсом Апокалипсиса» Кость Апокалипсиса сбрасывается на 4.<br><b>Выстрелить из Рельса Апокалипсиса</b> — Если значение Кости Апокалипсиса 1–3, вы можете атаковать в свой ход «Рельсом Апокалипсиса» как полное действие, но не можете перемещаться или совершать другие действия в этот же ход.<br>После атаки «Рельсом Апокалипсиса» Кость Апокалипсиса сбрасывается на 4."
+   "ru": "«Рельс Апокалипсиса» нужно зарядить, прежде чем стрелять, используя CORE-способность «Зарядить рельс».<br>У этого оружия разные профили в зависимости от текущего значения КОСТИ АПОКАЛИПСИСА в момент выстрела. Каждый профиль заменяет предыдущий. «Рельс Апокалипсиса» нельзя направить на цели в пределах Дальности 5.<br>После атаки «Рельсом Апокалипсиса» Кость Апокалипсиса сбрасывается на 4.<br><b>Выстрелить из Рельса Апокалипсиса</b> — Если значение Кости Апокалипсиса 1–3, вы можете атаковать в свой ход «Рельсом Апокалипсиса» как полное действие, но не можете перемещаться или совершать другие действия в этот же ход.<br>После атаки «Рельсом Апокалипсиса» Кость Апокалипсиса сбрасывается на 4."
   },
   "profiles": {
    "Charge Rail: 4": {
@@ -1059,6 +1059,556 @@
    }
   }
  },
+ "mw_brutus_wrecker": {
+  "name": {
+   "en": "Brutus’s Wrecker",
+   "ru": "Разрушитель Брута"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "Target is knocked Prone.",
+   "ru": "Цель опрокидывается."
+  }
+ },
+ "mw_brutus_shield": {
+  "name": {
+   "en": "Brutus’s Shield",
+   "ru": "Щит Брута"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "actions": {
+   "Raise Shield": {
+    "name": {
+     "en": "Raise Shield",
+     "ru": "Поднять щит"
+    },
+    "detail": {
+     "en": "As a protocol, you may raise this Shield to gain 4+Grit Overshield until the start of your next turn, at which point you lose all Overshield. You are Slowed while you have this Overshield. <br>You may not use this Protocol two turns in a row.",
+     "ru": "Как протокол, вы можете поднять этот Щит, чтобы получить Овершилд 4+Грит до начала своего следующего хода, после чего теряете весь Овершилд. Пока у вас есть этот Овершилд, вы Замедлены.<br>Вы не можете использовать этот Протокол два хода подряд."
+    }
+   }
+  }
+ },
+ "mw_blast_pick": {
+  "name": {
+   "en": "Blast Pick",
+   "ru": "Взрывная кирка"
+  },
+  "effect": {
+   "en": "Before making an attack, you may declare that you unload this weapon. If you do, the attack deals 2d6+6 Explosive damage and it gains Knockback 2. Otherwise, this weapon does not unload.",
+   "ru": "Перед совершением атаки вы можете объявить, что разряжаете это оружие. Если вы это делаете, атака наносит 2d6+6 взрывного урона и получает Отбрасывание 2. В противном случае это оружие не разряжается."
+  },
+  "profiles": {
+   "Regular Swing": {
+    "name": {
+     "en": "Regular Swing",
+     "ru": "Обычный удар"
+    }
+   },
+   "Explosive Swing": {
+    "name": {
+     "en": "Explosive Swing",
+     "ru": "Взрывной удар"
+    }
+   }
+  }
+ },
+ "mw_shock_baton": {
+  "name": {
+   "en": "Shock Baton",
+   "ru": "Шоковая дубинка"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_crit": {
+   "en": "Your target must succeed on a Systems save or become Jammed until the end of their next turn. On a success, they become Impaired for the same duration. Each character can only be affected this way 1/Scene.",
+   "ru": "Ваша цель должна пройти спасбросок Систем или стать Заклиненной до конца своего следующего хода. При успехе она становится Ослабленной на тот же срок. Каждый персонаж может быть поражён таким образом только 1/сцену."
+  }
+ },
+ "mw_reaper_assault_cannon": {
+  "name": {
+   "en": "Reaper Assault Cannon",
+   "ru": "Штурмовая пушка «Жнец»"
+  },
+  "effect": {
+   "en": "You may fire this weapon as if it were a Superheavy weapon. If you do, it gains Reliable 5 and it deals 4d3+2 Kinetic damage instead of its standard damage.",
+   "ru": "Вы можете стрелять из этого оружия, как если бы оно было Сверхтяжёлым оружием. Если вы это делаете, оно получает Надёжность 5 и наносит 4d3+2 кинетического урона вместо стандартного урона."
+  },
+  "profiles": {
+   "Standard": {
+    "name": {
+     "en": "Standard",
+     "ru": "Стандартный"
+    }
+   },
+   "Superheavy": {
+    "name": {
+     "en": "Superheavy",
+     "ru": "Сверхтяжёлый"
+    }
+   }
+  }
+ },
+ "mw_tempest_charged_blade": {
+  "name": {
+   "en": "Tempest Charged Blade",
+   "ru": "Заряженный клинок «Буря»"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_hurricane_cluster_projector": {
+  "name": {
+   "en": "Hurricane Cluster Projector",
+   "ru": "Кассетный проектор «Ураган»"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_ferrofluid_lance": {
+  "name": {
+   "en": "Ferrofluid Lance",
+   "ru": "Феррожидкостное копьё"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "1/round, you may force a character hit by this weapon to make a Hull save. On a failure, both you and your target are Immobilized and cannot be moved in any way. For the duration, the target always considers you within range for melee attacks. On any subsequent turn, you can end this effect as a protocol, knocking your target 4 spaces in any direction, or your target can end it by successfully hitting you with a ranged or melee attack. This condition can’t be removed any other way.",
+   "ru": "1/раунд вы можете заставить персонажа, поражённого этим оружием, пройти спасбросок Корпуса. При провале вы и ваша цель становитесь Обездвиженными и не можете быть перемещены никаким образом. На протяжении действия эффекта цель всегда считает вас в пределах дальности ближних атак. На любом последующем ходу вы можете как протокол завершить этот эффект, отбросив цель на 4 клетки в любом направлении, либо цель может завершить его, успешно попав по вам дальней или ближней атакой. Это состояние нельзя снять никаким другим способом."
+  },
+  "actions": {
+   "Ferrofluid Lance Fling": {
+    "name": {
+     "en": "Ferrofluid Lance Fling",
+     "ru": "Бросок феррожидкостного копья"
+    },
+    "detail": {
+     "en": "End the immobilization effect of the Ferrofluid Lance on both you and your target to knock them back 4 spaces in any direction.",
+     "ru": "Завершите эффект обездвиживания Феррожидкостного копья для себя и цели, чтобы отбросить её на 4 клетки в любом направлении."
+    }
+   }
+  }
+ },
+ "mw_retort_loop": {
+  "name": {
+   "en": "Retort Loop",
+   "ru": "Контрудар"
+  },
+  "effect": {
+   "en": "Any time you take damage from a hostile source you may choose to store a charge in this weapon. It fires with an additional +1d6 kinetic damage, Reliable 2, and Knockback 1 for each charge stored, to a maximum of 3 charges. Once fired, it clears all charges, hit or miss.",
+   "ru": "Каждый раз, когда вы получаете урон из враждебного источника, вы можете сохранить заряд в этом оружии. Оно стреляет с дополнительным +1d6 кинетического урона, Надёжностью 2 и Отбрасыванием 1 за каждый сохранённый заряд, максимум до 3 зарядов. После выстрела все заряды сбрасываются, вне зависимости от попадания."
+  },
+  "profiles": {
+   "0 Charges": {
+    "name": {
+     "en": "0 Charges",
+     "ru": "0 зарядов"
+    },
+    "on_attack": {
+     "en": "When fired, the weapon deals an additional 1d6 kinetic damage per charge, up to a maximum of 3 charges. Once fired, the charges deplete to 0, hit or miss. They also deplete to 0 if you take structure or stress damage.",
+     "ru": "При выстреле оружие наносит дополнительно 1d6 кинетического урона за каждый заряд, максимум за 3 заряда. После выстрела заряды сбрасываются до 0, вне зависимости от попадания. Они также сбрасываются до 0, если вы получаете структурный урон или урон по стрессу."
+    }
+   },
+   "1 Charge": {
+    "name": {
+     "en": "1 Charge",
+     "ru": "1 заряд"
+    },
+    "on_attack": {
+     "en": "When fired, the weapon deals an additional 1d6 kinetic damage per charge, up to a maximum of 3 charges. Once fired, the charges deplete to 0, hit or miss. They also deplete to 0 if you take structure or stress damage.",
+     "ru": "При выстреле оружие наносит дополнительно 1d6 кинетического урона за каждый заряд, максимум за 3 заряда. После выстрела заряды сбрасываются до 0, вне зависимости от попадания. Они также сбрасываются до 0, если вы получаете структурный урон или урон по стрессу."
+    }
+   },
+   "2 Charges": {
+    "name": {
+     "en": "2 Charges",
+     "ru": "2 заряда"
+    },
+    "on_attack": {
+     "en": "When fired, the weapon deals an additional 1d6 kinetic damage per charge, up to a maximum of 3 charges. Once fired, the charges deplete to 0, hit or miss. They also deplete to 0 if you take structure or stress damage.",
+     "ru": "При выстреле оружие наносит дополнительно 1d6 кинетического урона за каждый заряд, максимум за 3 заряда. После выстрела заряды сбрасываются до 0, вне зависимости от попадания. Они также сбрасываются до 0, если вы получаете структурный урон или урон по стрессу."
+    }
+   },
+   "3 Charges": {
+    "name": {
+     "en": "3 Charges",
+     "ru": "3 заряда"
+    },
+    "on_attack": {
+     "en": "When fired, the weapon deals an additional 1d6 kinetic damage per charge, up to a maximum of 3 charges. Once fired, the charges deplete to 0, hit or miss. They also deplete to 0 if you take structure or stress damage.",
+     "ru": "При выстреле оружие наносит дополнительно 1d6 кинетического урона за каждый заряд, максимум за 3 заряда. После выстрела заряды сбрасываются до 0, вне зависимости от попадания. Они также сбрасываются до 0, если вы получаете структурный урон или урон по стрессу."
+    }
+   }
+  }
+ },
+ "mw_bolt_nexus": {
+  "name": {
+   "en": "Bolt Nexus",
+   "ru": "Болтовой узел"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "profiles": {
+   "Default": {
+    "name": {
+     "en": "Default",
+     "ru": "По умолчанию"
+    },
+    "on_hit": {
+     "en": "Once this weapon hits a character, it gains the Target Acquired profile against that character only until you attack a new character with this weapon.",
+     "ru": "Как только это оружие попадает по персонажу, оно получает профиль «Цель захвачена» против этого персонажа, пока вы не атакуете этим оружием нового персонажа."
+    }
+   },
+   "Target Acquired": {
+    "name": {
+     "en": "Target Acquired",
+     "ru": "Цель захвачена"
+    }
+   }
+  }
+ },
+ "mw_emperor_integrated": {
+  "name": {
+   "en": "Marathon Arc Bow",
+   "ru": "Марафонский дуговой лук"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "profiles": {
+   "Default": {
+    "name": {
+     "en": "Default",
+     "ru": "По умолчанию"
+    },
+    "on_attack": {
+     "en": "Allied characters caught in the area are not attacked, but instead gain overshield +2. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 2).",
+     "ru": "Союзные персонажи, попавшие в область, не подвергаются атаке, но вместо этого получают Овершилд +2. Этот особый Овершилд не заменяет предыдущий, а увеличивает его, максимум до Овершилда 12 (если у союзника нет Овершилда, он получает Овершилд 2)."
+    }
+   },
+   "Drawn Back": {
+    "name": {
+     "en": "Drawn Back",
+     "ru": "Натянут"
+    },
+    "on_attack": {
+     "en": "Allied characters caught in the area are not attacked, but instead gain overshield +4. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 4).",
+     "ru": "Союзные персонажи, попавшие в область, не подвергаются атаке, но вместо этого получают Овершилд +4. Этот особый Овершилд не заменяет предыдущий, а увеличивает его, максимум до Овершилда 12 (если у союзника нет Овершилда, он получает Овершилд 4)."
+    }
+   }
+  },
+  "actions": {
+   "Draw Back": {
+    "name": {
+     "en": "Draw Back",
+     "ru": "Натянуть"
+    },
+    "detail": {
+     "en": "This weapon can be drawn back with a quick action to use the Drawn Back profile on its next attack. This effect is lost if you move for any reason.",
+     "ru": "Это оружие можно натянуть быстрым действием, чтобы при следующей атаке использовать профиль «Натянут». Эффект теряется, если вы перемещаетесь по любой причине."
+    }
+   }
+  }
+ },
+ "mw_kraul_rifle": {
+  "name": {
+   "en": "Kraul Rifle",
+   "ru": "Винтовка Краул"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "your target is impaled by this weapon’s harpoon-like projectile. Any time after your target takes any action or movement during their next turn, you can reel in the line and boost as a reaction, moving toward that target by the most direct route possible. They must then pass a HULL save or be knocked PRONE; succeed or fail, this effect ends. The line snaps if your target teleports.",
+   "ru": "ваша цель пронзена гарпунообразным снарядом этого оружия. В любой момент после того, как ваша цель совершит действие или перемещение в свой следующий ход, вы можете смотать леску и совершить Рывок как реакцию, перемещаясь к этой цели самым прямым возможным маршрутом. Затем она должна пройти спасбросок Корпуса или быть Опрокинута; успех или провал — этот эффект заканчивается. Леска обрывается, если ваша цель телепортируется."
+  }
+ },
+ "mw_terashima_blade": {
+  "name": {
+   "en": "Terashima Blade",
+   "ru": "Клинок Терашима"
+  },
+  "effect": {
+   "en": "You may begin any fight in any of this weapon's stances and may take a stance or shift between stances as a protocol. Once you have taken a stance, you remain in it until you take a new stance, this weapon is destroyed, or you are STUNNED or JAMMED. You can also drop a stance as a free action.",
+   "ru": "Вы можете начать любой бой в любой из стоек этого оружия и можете принять стойку или сменить стойку как протокол. Приняв стойку, вы остаётесь в ней, пока не примете новую стойку, это оружие не будет уничтожено, либо вы не станете Оглушены или Заклинены. Вы также можете сбросить стойку как свободное действие."
+  },
+  "profiles": {
+   "No Stance": {
+    "name": {
+     "en": "No Stance",
+     "ru": "Без стойки"
+    }
+   },
+   "Troll Stance": {
+    "name": {
+     "en": "Troll Stance",
+     "ru": "Стойка тролля"
+    }
+   },
+   "Storm Stance": {
+    "name": {
+     "en": "Storm Stance",
+     "ru": "Стойка бури"
+    },
+    "effect": {
+     "en": "You gain the Storm Stance Reaction.",
+     "ru": "Вы получаете реакцию «Стойка бури»."
+    },
+    "actions": {
+     "Storm Stance Reaction": {
+      "name": {
+       "en": "Storm Stance Reaction",
+       "ru": "Стойка бури"
+      },
+      "trigger": {
+       "en": "After hitting with this weapon while in Storm Stance.",
+       "ru": "После попадания этим оружием в Стойке бури."
+      },
+      "detail": {
+       "en": "You may immediately deal 2 kinetic to all other characters adjacent to you and your target.",
+       "ru": "Вы можете немедленно нанести 2 кинетического урона всем другим персонажам, соседним с вами и вашей целью."
+      }
+     }
+    }
+   },
+   "Lord's Stance": {
+    "name": {
+     "en": "Lord's Stance",
+     "ru": "Стойка лорда"
+    },
+    "effect": {
+     "en": "You cannot make ranged or tech attacks, but any ranged attack against you that misses deflects off your sword, dealing 2 damage (same type as the attack) to a character of your choice in range 3 and line of sight from you. Any melee attack that misses you forces the attacker to pass a HULL save or be knocked PRONE.",
+     "ru": "Вы не можете совершать дальние или тех-атаки, но любая дальняя атака по вам, промахнувшаяся, отражается от вашего меча, нанося 2 урона (того же типа, что и атака) выбранному вами персонажу в пределах Дальности 3 и линии видимости от вас. Любая ближняя атака, промахнувшаяся по вам, заставляет атакующего пройти спасбросок Корпуса или быть Опрокинутым."
+    }
+   },
+   "Wind Stance": {
+    "name": {
+     "en": "Wind Stance",
+     "ru": "Стойка ветра"
+    },
+    "effect": {
+     "en": "After attacking with this weapon, hit or miss, you may move 2 spaces in any direction, ignoring engagement and reactions.",
+     "ru": "После атаки этим оружием, попадание или промах, вы можете переместиться на 2 клетки в любом направлении, игнорируя связанность боем и реакции."
+    }
+   }
+  },
+  "actions": {
+   "Change Stance": {
+    "name": {
+     "en": "Change Stance",
+     "ru": "Сменить стойку"
+    },
+    "detail": {
+     "en": "Change this weapon's stance.",
+     "ru": "Сменить стойку этого оружия."
+    }
+   },
+   "Drop Stance": {
+    "name": {
+     "en": "Drop Stance",
+     "ru": "Сбросить стойку"
+    },
+    "detail": {
+     "en": "Drop this weapon's stance.",
+     "ru": "Сбросить стойку этого оружия."
+    }
+   }
+  }
+ },
+ "mw_hammer_u_rpl": {
+  "name": {
+   "en": "Hammer U-RPL",
+   "ru": "Молот U-RPL"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  }
+ },
+ "mw_hhs_155_cannibal": {
+  "name": {
+   "en": "HHS-155 CANNIBAL",
+   "ru": "HHS-155 КАННИБАЛ"
+  },
+  "effect": {
+   "en": "You can fire this heavy shotgun twice before it needs to be reloaded. Alternatively, you may fire with both barrels at once, receiving +1 Difficulty, increasing its damage to 3d6+4 Kinetic and its KNOCKBACK to 4, but requiring it to be reloaded as usual. When this weapon is reloaded, you may choose to deal 5 Kinetic Damage to an adjacent character from the force of the ejecting shells.",
+   "ru": "Вы можете выстрелить из этого тяжёлого дробовика дважды, прежде чем его потребуется перезарядить. Либо вы можете выстрелить из обоих стволов одновременно, получая +1 Сложность, увеличивая урон до 3d6+4 кинетического и Отбрасывание до 4, но требуя перезарядки как обычно. При перезарядке этого оружия вы можете нанести 5 кинетического урона соседнему персонажу силой выброса гильз."
+  },
+  "profiles": {
+   "Single Barrel": {
+    "name": {
+     "en": "Single Barrel",
+     "ru": "Один ствол"
+    }
+   },
+   "Both Barrels": {
+    "name": {
+     "en": "Both Barrels",
+     "ru": "Оба ствола"
+    },
+    "effect": {
+     "en": "Fire both barrels at once, causing the weapon to be fired with +1 Difficulty and requiring a reload as normal.",
+     "ru": "Выстрелить из обоих стволов одновременно, из-за чего оружие стреляет с +1 Сложностью и требует перезарядки как обычно."
+    }
+   }
+  }
+ },
+ "mw_fusion_rifle": {
+  "name": {
+   "en": "Fusion Rifle",
+   "ru": "Термоядерная винтовка"
+  },
+  "effect": {
+   "en": "This weapon deals damage equal to its RANGE from the target (up to a maximum of 6 Energy Damage).",
+   "ru": "Это оружие наносит урон, равный его Радиусу до цели (максимум 6 энергетического урона)."
+  }
+ },
+ "mw_slag_cannon": {
+  "name": {
+   "en": "Slag Cannon",
+   "ru": "Шлаковая пушка"
+  },
+  "effect": {
+   "en": "If your target is on the ground or a flat surface, once this attack resolves place a SIZE 1 mound of slag in a free space adjacent to them. The mound is an object with EVASION 5 and 10 HP.",
+   "ru": "Если ваша цель находится на земле или ровной поверхности, после разрешения этой атаки поместите курган шлака Размера 1 на свободную соседнюю с ней клетку. Курган — это объект с Уклонением 5 и 10 ОЗ."
+  },
+  "deployables": {
+   "Slag": {
+    "name": {
+     "en": "Slag",
+     "ru": "Шлак"
+    },
+    "detail": {
+     "en": "Created by the Slag Cannon",
+     "ru": "Создан Шлаковой пушкой"
+    }
+   }
+  }
+ },
+ "mw_unraveler": {
+  "name": {
+   "en": "Unraveler",
+   "ru": "Распутыватель"
+  },
+  "effect": {
+   "en": "If an attack from this weapon would not deal enough damage to destroy its target or cause it to take at least 1 structure damage, it instead only deals RELIABLE 2 damage, even on a hit.",
+   "ru": "Если атака этим оружием не наносит достаточно урона, чтобы уничтожить цель или нанести ей хотя бы 1 структурный урон, она вместо этого наносит только Надёжный урон 2, даже при попадании."
+  }
+ },
+ "mw_warp_rifle": {
+  "name": {
+   "en": "Warp Rifle",
+   "ru": "Варп-винтовка"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "The target must pass an ENGINEERING save or be teleported a number of spaces equal to the damage you dealt with this weapon (including bonus damage, etc.; no more than 10 spaces), in a direction of your choice. They must end in a free, valid space.",
+   "ru": "Цель должна пройти спасбросок Инженерии или быть телепортирована на число клеток, равное урону, нанесённому этим оружием (включая бонусный урон и т.д.; не более 10 клеток), в выбранном вами направлении. Она должна закончить перемещение на свободной, допустимой клетке."
+  }
+ },
+ "mw_xiaoli_combat_sheathe": {
+  "name": {
+   "en": "Tiger-Hunter Combat Sheathe",
+   "ru": "Боевые ножны охотника на тигров"
+  },
+  "effect": {
+   "en": "This weapon can attack two targets at a time, and can be used even while JAMMED.",
+   "ru": "Это оружие может атаковать две цели одновременно и может использоваться, даже будучи Заклиненным."
+  }
+ },
+ "mw_d_d_288": {
+  "name": {
+   "en": "D/D 288",
+   "ru": "D/D 288"
+  },
+  "effect": {
+   "en": "Unlike other Superheavy weapons, this weapon can be used with the basic profile to Skirmish.<br>You may charge this weapon as a quick action. While charged, you benefit from soft cover, but you are SLOWED, take 2 Heat at the start of your turn, and can no longer use the D/D 288 with SKIRMISH. At the start of any of your turns while it is charged, it has the Charged profile.",
+   "ru": "В отличие от другого Сверхтяжёлого оружия, это оружие можно использовать с базовым профилем для Стычки.<br>Вы можете зарядить это оружие как быстрое действие. Пока оно заряжено, вы получаете преимущества мягкого укрытия, но становитесь Замедлены, получаете 2 Тепла в начале своего хода и больше не можете использовать D/D 288 со Стычкой. В начале любого вашего хода, пока оно заряжено, оно имеет профиль «Заряжено»."
+  },
+  "profiles": {
+   "Uncharged": {
+    "name": {
+     "en": "Uncharged",
+     "ru": "Не заряжено"
+    }
+   },
+   "Charged": {
+    "name": {
+     "en": "Charged",
+     "ru": "Заряжено"
+    },
+    "on_hit": {
+     "en": "While charged, this weapon deals 30 AP Kinetic Damage when it hits objects or pieces of terrain. If this destroys objects and pieces of terrain, they explode, dealing 1d6 Kinetic Damage to all adjacent characters other than you and knocking them back 1 space.<br>This weapon loses its charge when you hit a target, when you disperse its charge as a free action, or when you become STUNNED or SHUT DOWN.",
+     "ru": "Пока заряжено, это оружие наносит 30 пробивающего броню кинетического урона при попадании по объектам или элементам рельефа. Если это уничтожает объекты и элементы рельефа, они взрываются, нанося 1d6 кинетического урона всем соседним персонажам, кроме вас, и отбрасывая их на 1 клетку.<br>Это оружие теряет заряд, когда вы попадаете по цели, когда вы рассеиваете заряд как свободное действие, либо когда вы становитесь Оглушены или Отключены."
+    }
+   }
+  },
+  "actions": {
+   "Charge D/D 288": {
+    "name": {
+     "en": "Charge D/D 288",
+     "ru": "Зарядить D/D 288"
+    },
+    "detail": {
+     "en": "Charge the D/D 288. At the start of any of your turns while the D/D 288 is Charged, it uses the \"Charged\" profile. You become SLOWED, and benefit from soft cover. Additionally, gain 2 Heat at the start of your turn.<br>The \"Charged\" profile cannot be used to Skirmish.",
+     "ru": "Зарядите D/D 288. В начале любого вашего хода, пока D/D 288 Заряжен, он использует профиль «Заряжено». Вы становитесь Замедлены и получаете преимущества мягкого укрытия. Кроме того, получаете 2 Тепла в начале своего хода.<br>Профиль «Заряжено» нельзя использовать для Стычки."
+    }
+   }
+  }
+ },
+ "mw_caliban_integrated": {
+  "name": {
+   "en": "HHS-075 “Flayer” Shotgun",
+   "ru": "HHS-075 «Свежеватель»"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "profiles": {
+   "Standard": {
+    "name": {
+     "en": "Standard",
+     "ru": "Стандартный"
+    },
+    "on_attack": {
+     "en": "After any attack with this weapon, you may smack an adjacent character with the butt end, dealing 1 Kinetic Damage and knocking them back 1 space.",
+     "ru": "После любой атаки этим оружием вы можете ударить соседнего персонажа прикладом, нанеся 1 кинетического урона и отбросив его на 1 клетку."
+    }
+   },
+   "Autochoke Equipped": {
+    "name": {
+     "en": "Autochoke Equipped",
+     "ru": "С автодросселем"
+    },
+    "on_attack": {
+     "en": "After any attack with this weapon, you may smack an adjacent character with the butt end, dealing 1 Kinetic Damage and knocking them back 1 space.",
+     "ru": "После любой атаки этим оружием вы можете ударить соседнего персонажа прикладом, нанеся 1 кинетического урона и отбросив его на 1 клетку."
+    }
+   }
+  }
+ },
  "mw_xc_br_battle_rifle": {
   "name": {
    "en": "XC-BR Battle Rifle",
@@ -1081,6 +1631,158 @@
   "effect": {
    "en": "Attacks with this weapon ignore Invisible.",
    "ru": "Одно из самых передовых Nexus-орудий GMS, проходящее полевые испытания — проект XC-DPM «Хищник» — прямой потомок более раннего проекта MC-DHK «Охотник-убийца», в своё время совместного предприятия Специального агентства перспективных исследований и инженеров GMS. Nexus «Хищник» получил всестороннее обновление прицеливания и автономности, включив умную оружейную конструкцию MD+ «Muse Drive». Эвристика этой системы, хотя формально признанная Тест-Ноль, демонстрирует поразительно продвинутые возможности захвата цели даже при столкновении с активными контрмерами, способными сбить с толку традиционные платформы умного оружия.<br>Атаки этим оружием игнорируют Невидимость."
+  }
+ },
+ "mw_integrated_shock_claws": {
+  "name": {
+   "en": "Shock Claws",
+   "ru": "Шоковые когти"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "profiles": {
+   "Shock Claws": {
+    "name": {
+     "en": "Shock Claws",
+     "ru": "Шоковые когти"
+    },
+    "effect": {
+     "en": "This weapon may only be used during the Go Loud core power. This weapon can't be used to attack in the same turn as another Heavy or Superheavy weapon.",
+     "ru": "Это оружие может использоваться только во время CORE-способности «В открытую». Это оружие нельзя использовать для атаки в тот же ход, что и другое Тяжёлое или Сверхтяжёлое оружие."
+    },
+    "on_attack": {
+     "en": "You may deal 1d6 AP energy damage to a different character of your choice within Range 3 of the target.",
+     "ru": "Вы можете нанести 1d6 пробивающего броню энергетического урона другому персонажу по своему выбору в пределах Дальности 3 от цели."
+    }
+   },
+   "Damaged": {
+    "name": {
+     "en": "Damaged",
+     "ru": "Повреждено"
+    },
+    "effect": {
+     "en": "This weapon may only be used during the Go Loud core power. The first time in a scene an allied Mech character within Sensors takes structure damage before Going Loud, this profile replaces the default Shock Claws profile. This weapon can't be used to attack in the same turn as another Heavy or Superheavy weapon.",
+     "ru": "Это оружие может использоваться только во время CORE-способности «В открытую». Первый раз за сцену, когда союзный персонаж-мех в пределах Сенсора получает структурный урон до ухода «В открытую», этот профиль заменяет стандартный профиль Шоковых когтей. Это оружие нельзя использовать для атаки в тот же ход, что и другое Тяжёлое или Сверхтяжёлое оружие."
+    },
+    "on_attack": {
+     "en": "You may deal 1d6 AP energy damage to a different character of your choice within Range 3 of the target.",
+     "ru": "Вы можете нанести 1d6 пробивающего броню энергетического урона другому персонажу по своему выбору в пределах Дальности 3 от цели."
+    }
+   },
+   "Ruined": {
+    "name": {
+     "en": "Ruined",
+     "ru": "Разрушено"
+    },
+    "effect": {
+     "en": "This weapon may only be used during the Go Loud core power. If you Go Loud after allied Mech characters within Sensors take structure damage twice or more during the scene, an allied Mech character is destroyed, or while at 2 structure or less, this profile replaces the default Shock Claws profile. This weapon can't be used to attack in the same turn as another Heavy or Superheavy weapon.",
+     "ru": "Это оружие может использоваться только во время CORE-способности «В открытую». Если вы уходите «В открытую» после того, как союзные персонажи-мехи в пределах Сенсора получили структурный урон дважды или более за сцену, союзный персонаж-мех уничтожен, или пока вы находитесь при 2 Структуре или меньше, этот профиль заменяет стандартный профиль Шоковых когтей. Это оружие нельзя использовать для атаки в тот же ход, что и другое Тяжёлое или Сверхтяжёлое оружие."
+    },
+    "on_attack": {
+     "en": "You may deal 1d6 AP energy damage to a different character of your choice within Range 3 of the target.",
+     "ru": "Вы можете нанести 1d6 пробивающего броню энергетического урона другому персонажу по своему выбору в пределах Дальности 3 от цели."
+    }
+   }
+  }
+ },
+ "mw_legionnaire_battle_rifle": {
+  "name": {
+   "en": "Legionnaire Battle Rifle",
+   "ru": "Боевая винтовка легионера"
+  },
+  "effect": {
+   "en": "You may attack with this weapon without expending or requiring charges, and this weapon can be destroyed (due to critical damage or other effects) even if it has no charges remaining.",
+   "ru": "Вы можете атаковать этим оружием, не тратя и не требуя зарядов, и это оружие может быть уничтожено (из-за критического урона или иных эффектов), даже если у него не осталось зарядов."
+  },
+  "on_attack": {
+   "en": "You may expend up to 3 charges. For each charge expended you may either gain +2 Reliable for the attack or, on hit, push the target character 1 space in any direction.",
+   "ru": "Вы можете потратить до 3 зарядов. За каждый потраченный заряд вы можете либо получить +2 Надёжности для этой атаки, либо, при попадании, оттолкнуть цель на 1 клетку в любом направлении."
+  }
+ },
+ "mw_superthermal_blade": {
+  "name": {
+   "en": "Superthermal Blade",
+   "ru": "Супертермический клинок"
+  },
+  "effect": {
+   "en": "You may attack with this weapon without expending or requiring charges, and this weapon can be destroyed (due to critical damage or other effects) even if it has no charges remaining.",
+   "ru": "Вы можете атаковать этим оружием, не тратя и не требуя зарядов, и это оружие может быть уничтожено (из-за критического урона или иных эффектов), даже если у него не осталось зарядов."
+  },
+  "on_hit": {
+   "en": "1/round, if you are in the Danger Zone you may expend a charge to to deal +3 heat; if you are not in the Danger Zone, you may take 3 heat to expend a charge for the same effect.",
+   "ru": "1/раунд, если вы находитесь в Опасной зоне, вы можете потратить заряд, чтобы нанести +3 тепла; если вы не в Опасной зоне, вы можете получить 3 тепла, чтобы потратить заряд с тем же эффектом."
+  }
+ },
+ "mw_legion_nexus": {
+  "name": {
+   "en": "Legion Nexus",
+   "ru": "Легионный узел"
+  },
+  "effect": {
+   "en": "1/round, after attacking with this weapon, you may expend a charge as a free action to task a team of subalterns to operate independently from the main unit. This counts as a Drone deployed in a free space adjacent to you. You may attack with this weapon without expending or requiring charges, and this weapon can be destroyed (due to critical damage or other effects) even if it has no charges remaining.",
+   "ru": "1/раунд, после атаки этим оружием вы можете потратить заряд как свободное действие, чтобы отправить отряд субалтернов действовать независимо от основного подразделения. Это считается Дроном, развёрнутым на свободной клетке рядом с вами. Вы можете атаковать этим оружием, не тратя и не требуя зарядов, и это оружие может быть уничтожено (из-за критического урона или иных эффектов), даже если у него не осталось зарядов."
+  },
+  "deployables": {
+   "Legion Drone": {
+    "name": {
+     "en": "Legion Drone",
+     "ru": "Легионный дрон"
+    },
+    "detail": {
+     "en": "As a protocol, you may move each deployed legion drone you control up to 3 spaces and order each of them to perform one of the following commands:<ul><li>Suppression Protocols: Choose a hostile character within Range 5 of the drone. Your attacks with the legion nexus against them gain +1 Accuracy until the end of their next turn. This effect does not stack. That character must also pass an Agility save or become Impaired until the end of their next turn.</li><li>Assault Position: A hostile character adjacent to the drone must pass a Hull save or be knocked back 1 space and be knocked Prone. Until the start of your next turn, the drone counts as Size 1 and adjacent allied characters can use it for hard cover.</li></ul>For each deployed legion drone you control, the legion nexus deals +2 damage on hit to a maximum of +6. Legion drones cannot be recalled and expire at the end of the scene.",
+     "ru": "Как протокол, вы можете переместить каждый развёрнутый вами легионный дрон на 3 клетки и отдать каждому из них одну из следующих команд:<ul><li>Протоколы подавления: выберите враждебного персонажа в пределах Дальности 5 от дрона. Ваши атаки Легионным узлом по нему получают +1 Точность до конца его следующего хода. Эффект не суммируется. Этот персонаж также должен пройти спасбросок Ловкости или стать Ослабленным до конца своего следующего хода.</li><li>Штурмовая позиция: враждебный персонаж рядом с дроном должен пройти спасбросок Корпуса или быть отброшен на 1 клетку и опрокинут. До начала вашего следующего хода дрон считается Размера 1, и союзные персонажи рядом с ним могут использовать его как жёсткое укрытие.</li></ul>За каждый развёрнутый вами легионный дрон Легионный узел наносит +2 урона при попадании, максимум +6. Легионные дроны нельзя отозвать, и они исчезают в конце сцены."
+    }
+   }
+  }
+ },
+ "mw_shrapnel_cannon": {
+  "name": {
+   "en": "Shrapnel Cannon",
+   "ru": "Осколочная пушка"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_hit": {
+   "en": "This weapon creates a Cone 5 area originating from the target, oriented away from them in a direction of your choice and tracing line of sight from that target. All units in this area must pass an Agility save or take 1d6 kinetic damage.",
+   "ru": "Это оружие создаёт область-Конус 5, исходящую от цели, ориентированную в сторону от неё в выбранном вами направлении и прослеживающую линию видимости от этой цели. Все юниты в этой области должны пройти спасбросок Ловкости или получить 1d6 кинетического урона."
+  }
+ },
+ "mw_electrohydraulic_claw": {
+  "name": {
+   "en": "Electrohydraulic Claw",
+   "ru": "Электрогидравлический коготь"
+  },
+  "effect": {
+   "en": "1/round, you may activate the claws as a quick action when you hit a character with this weapon to automatically grapple them. Targets grappled this way must pass a Hull save or become Shredded until the end of their next turn.<br><br>This weapon deals 10 AP kinetic damage to objects, cover, and the environment. Additionally, you gain +1 Accuracy to all non-combat mech skill checks to pry heavy objects open or apart (e.g., sealed airlocks, jammed cockpits, vault doors, cargo containers, etc); this effect does not stack.",
+   "ru": "1/раунд вы можете активировать когти как быстрое действие, когда попадаете этим оружием по персонажу, чтобы автоматически захватить его. Цели, захваченные таким образом, должны пройти спасбросок Корпуса или стать Изрешечёнными до конца своего следующего хода.<br><br>Это оружие наносит 10 пробивающего броню кинетического урона объектам, укрытиям и окружению. Кроме того, вы получаете +1 Точность на все небоевые проверки навыков меха для взлома или разжатия тяжёлых объектов (например, герметичных шлюзов, заклинивших кабин, дверей хранилищ, грузовых контейнеров и т.д.); этот эффект не суммируется."
+  }
+ },
+ "mw_fusion_torch": {
+  "name": {
+   "en": "Fusion Torch",
+   "ru": "Термоядерный резак"
+  },
+  "effect": {
+   "en": "",
+   "ru": ""
+  },
+  "on_attack": {
+   "en": "This weapon automatically deals 30 AP energy damage to objects, cover, and terrain within its area, leaving behind clouds of molten debris in their place that linger until the end of your next turn. Characters other than you that begin their turn in these clouds or who enter them for the first time in a round take 1d6 energy damage. As long as you are at least partially within a cloud, you gain soft cover.",
+   "ru": "Это оружие автоматически наносит 30 пробивающего броню энергетического урона объектам, укрытиям и рельефу в своей области, оставляя после себя облака расплавленных обломков, которые сохраняются до конца вашего следующего хода. Персонажи, кроме вас, начинающие ход в этих облаках или впервые входящие в них за раунд, получают 1d6 энергетического урона. Пока вы хотя бы частично находитесь в облаке, вы получаете мягкое укрытие."
+  }
+ },
+ "mw_empakaai_alt_blackbeard_integrated": {
+  "name": {
+   "en": "Colossus Termo-Unguis",
+   "ru": "Термо-коготь колосса"
+  },
+  "effect": {
+   "en": "The Empakaai’s COLOSSUS TERMO-UNGUIS can be used even while Jammed. <br/> Before rolling, you may force your target and any characters of your choice adjacent to it to make a Hull save or be pulled adjacent and automatically Grappled.",
+   "ru": "«Термо-коготь колосса» «Эмпакааи» можно использовать, даже будучи Заклиненным.<br>Перед броском вы можете заставить цель и любых персонажей по вашему выбору, соседних с ней, пройти спасбросок Корпуса, иначе они будут притянуты вплотную и автоматически Захвачены."
   }
  },
  "mw_blackspot_targeting_laser": {
@@ -1157,601 +1859,6 @@
   "effect": {
    "en": "1/round, this weapon deals +1d6 bonus damage to characters that are SHREDDED or STUNNED.",
    "ru": "Прощай, старый [друг/любимый]<br>1/раунд это оружие наносит +1d6 бонусного урона персонажам, которые Истрёпаны или Ошеломлены."
-  }
- },
- "mw_integrated_shock_claws": {
-  "name": {
-   "en": "Shock Claws",
-   "ru": "Шоковые когти"
-  },
-  "profiles": {
-   "Shock Claws": {
-    "name": {
-     "en": "Shock Claws",
-     "ru": "Шоковые когти"
-    },
-    "effect": {
-     "en": "...",
-     "ru": "Это оружие может использоваться только во время CORE-способности «В открытую». Это оружие нельзя использовать для атаки в тот же ход, что и другое Тяжёлое или Сверхтяжёлое оружие."
-    },
-    "on_attack": {
-     "ru": "Вы можете нанести 1d6 пробивающего броню энергетического урона другому персонажу по своему выбору в пределах Радиуса 3 от цели."
-    }
-   },
-   "Damaged": {
-    "name": {
-     "en": "Damaged",
-     "ru": "Повреждено"
-    },
-    "effect": {
-     "en": "...",
-     "ru": "Это оружие может использоваться только во время CORE-способности «В открытую». Первый раз за сцену, когда союзный персонаж-мех в пределах Сенсора получает структурный урон до ухода «В открытую», этот профиль заменяет стандартный профиль Шоковых когтей. Это оружие нельзя использовать для атаки в тот же ход, что и другое Тяжёлое или Сверхтяжёлое оружие."
-    },
-    "on_attack": {
-     "ru": "Вы можете нанести 1d6 пробивающего броню энергетического урона другому персонажу по своему выбору в пределах Радиуса 3 от цели."
-    }
-   },
-   "Ruined": {
-    "name": {
-     "en": "Ruined",
-     "ru": "Разрушено"
-    },
-    "effect": {
-     "en": "...",
-     "ru": "Это оружие может использоваться только во время CORE-способности «В открытую». Если вы уходите «В открытую» после того, как союзные персонажи-мехи в пределах Сенсора получили структурный урон дважды или более за сцену, союзный персонаж-мех уничтожен, или пока вы находитесь при 2 Структуре или меньше, этот профиль заменяет стандартный профиль Шоковых когтей. Это оружие нельзя использовать для атаки в тот же ход, что и другое Тяжёлое или Сверхтяжёлое оружие."
-    },
-    "on_attack": {
-     "ru": "Вы можете нанести 1d6 пробивающего броню энергетического урона другому персонажу по своему выбору в пределах Радиуса 3 от цели."
-    }
-   }
-  }
- },
- "mw_legionnaire_battle_rifle": {
-  "name": {
-   "en": "Legionnaire Battle Rifle",
-   "ru": "Боевая винтовка легионера"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Вы можете атаковать этим оружием, не тратя и не требуя зарядов, и это оружие может быть уничтожено (из-за критического урона или иных эффектов), даже если у него не осталось зарядов."
-  },
-  "on_attack": {
-   "en": "...",
-   "ru": "Вы можете потратить до 3 зарядов. За каждый потраченный заряд вы можете либо получить +2 Надёжности для этой атаки, либо, при попадании, оттолкнуть цель на 1 клетку в любом направлении."
-  }
- },
- "mw_superthermal_blade": {
-  "name": {
-   "en": "Superthermal Blade",
-   "ru": "Супертермический клинок"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Вы можете атаковать этим оружием, не тратя и не требуя зарядов, и это оружие может быть уничтожено (из-за критического урона или иных эффектов), даже если у него не осталось зарядов."
-  },
-  "on_hit": {
-   "en": "...",
-   "ru": "1/раунд, если вы находитесь в Опасной зоне, вы можете потратить заряд, чтобы нанести +3 тепла; если вы не в Опасной зоне, вы можете получить 3 тепла, чтобы потратить заряд с тем же эффектом."
-  }
- },
- "mw_legion_nexus": {
-  "name": {
-   "en": "Legion Nexus",
-   "ru": "Легионный узел"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "1/раунд, после атаки этим оружием вы можете потратить заряд как свободное действие, чтобы отправить отряд субалтернов действовать независимо от основного подразделения. Это считается Дроном, развёрнутым на свободной клетке рядом с вами. Вы можете атаковать этим оружием, не тратя и не требуя зарядов, и это оружие может быть уничтожено (из-за критического урона или иных эффектов), даже если у него не осталось зарядов."
-  },
-  "deployables": {
-   "Legion Drone": {
-    "name": {
-     "en": "Legion Drone",
-     "ru": "Легионный дрон"
-    },
-    "detail": {
-     "en": "...",
-     "ru": "Как протокол, вы можете переместить каждый развёрнутый вами легионный дрон на 3 клетки и отдать каждому из них одну из следующих команд:<ul><li>Протоколы подавления: выберите враждебного персонажа в пределах Радиуса 5 от дрона. Ваши атаки Легионным узлом по нему получают +1 Точность до конца его следующего хода. Эффект не суммируется. Этот персонаж также должен пройти спасбросок Ловкости или стать Ослабленным до конца своего следующего хода.</li><li>Штурмовая позиция: враждебный персонаж рядом с дроном должен пройти спасбросок Корпуса или быть отброшен на 1 клетку и опрокинут. До начала вашего следующего хода дрон считается Размера 1, и союзные персонажи рядом с ним могут использовать его как жёсткое укрытие.</li></ul>За каждый развёрнутый вами легионный дрон Легионный узел наносит +2 урона при попадании, максимум +6. Легионные дроны нельзя отозвать, и они исчезают в конце сцены."
-    }
-   }
-  }
- },
- "mw_shrapnel_cannon": {
-  "name": {
-   "en": "Shrapnel Cannon",
-   "ru": "Осколочная пушка"
-  },
-  "on_hit": {
-   "en": "...",
-   "ru": "Это оружие создаёт область-Конус 5, исходящую от цели, ориентированную в сторону от неё в выбранном вами направлении и прослеживающую линию видимости от этой цели. Все юниты в этой области должны пройти спасбросок Ловкости или получить 1d6 кинетического урона."
-  }
- },
- "mw_electrohydraulic_claw": {
-  "name": {
-   "en": "Electrohydraulic Claw",
-   "ru": "Электрогидравлический коготь"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "1/раунд вы можете активировать когти как быстрое действие, когда попадаете этим оружием по персонажу, чтобы автоматически захватить его. Цели, захваченные таким образом, должны пройти спасбросок Корпуса или стать Изрешечёнными до конца своего следующего хода.<br><br>Это оружие наносит 10 пробивающего броню кинетического урона объектам, укрытиям и окружению. Кроме того, вы получаете +1 Точность на все небоевые проверки навыков меха для взлома или разжатия тяжёлых объектов (например, герметичных шлюзов, заклинивших кабин, дверей хранилищ, грузовых контейнеров и т.д.); этот эффект не суммируется."
-  }
- },
- "mw_fusion_torch": {
-  "name": {
-   "en": "Fusion Torch",
-   "ru": "Термоядерный резак"
-  },
-  "on_attack": {
-   "en": "...",
-   "ru": "Это оружие автоматически наносит 30 пробивающего броню энергетического урона объектам, укрытиям и рельефу в своей области, оставляя после себя облака расплавленных обломков, которые сохраняются до конца вашего следующего хода. Персонажи, кроме вас, начинающие ход в этих облаках или впервые входящие в них за раунд, получают 1d6 энергетического урона. Пока вы хотя бы частично находитесь в облаке, вы получаете мягкое укрытие."
-  }
- },
- "mw_ferrofluid_lance": {
-  "name": {
-   "en": "Ferrofluid Lance",
-   "ru": "Феррожидкостное копьё"
-  },
-  "on_hit": {
-   "en": "...",
-   "ru": "1/раунд вы можете заставить персонажа, поражённого этим оружием, пройти спасбросок Корпуса. При провале вы и ваша цель становитесь Обездвиженными и не можете быть перемещены никаким образом. На протяжении действия эффекта цель всегда считает вас в пределах радиуса для ближних атак. На любом последующем ходу вы можете как протокол завершить этот эффект, отбросив цель на 4 клетки в любом направлении, либо цель может завершить его, успешно попав по вам дальней или ближней атакой. Это состояние нельзя снять никаким другим способом."
-  }
- },
- "mw_retort_loop": {
-  "name": {
-   "en": "Retort Loop",
-   "ru": "Контрудар"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Каждый раз, когда вы получаете урон из враждебного источника, вы можете сохранить заряд в этом оружии. Оно стреляет с дополнительным +1d6 кинетического урона, Надёжностью 2 и Отбрасыванием 1 за каждый сохранённый заряд, максимум до 3 зарядов. После выстрела все заряды сбрасываются, вне зависимости от попадания."
-  },
-  "profiles": {
-   "0 Charges": {
-    "name": {
-     "en": "0 Charges",
-     "ru": "0 зарядов"
-    },
-    "on_attack": {
-     "en": "...",
-     "ru": "При выстреле оружие наносит дополнительно 1d6 кинетического урона за каждый заряд, максимум за 3 заряда. После выстрела заряды сбрасываются до 0, вне зависимости от попадания. Они также сбрасываются до 0, если вы получаете структурный урон или урон по стрессу."
-    }
-   },
-   "1 Charge": {
-    "name": {
-     "en": "1 Charge",
-     "ru": "1 заряд"
-    },
-    "on_attack": {
-     "en": "...",
-     "ru": "При выстреле оружие наносит дополнительно 1d6 кинетического урона за каждый заряд, максимум за 3 заряда. После выстрела заряды сбрасываются до 0, вне зависимости от попадания. Они также сбрасываются до 0, если вы получаете структурный урон или урон по стрессу."
-    }
-   },
-   "2 Charges": {
-    "name": {
-     "en": "2 Charges",
-     "ru": "2 заряда"
-    },
-    "on_attack": {
-     "en": "...",
-     "ru": "При выстреле оружие наносит дополнительно 1d6 кинетического урона за каждый заряд, максимум за 3 заряда. После выстрела заряды сбрасываются до 0, вне зависимости от попадания. Они также сбрасываются до 0, если вы получаете структурный урон или урон по стрессу."
-    }
-   },
-   "3 Charges": {
-    "name": {
-     "en": "3 Charges",
-     "ru": "3 заряда"
-    },
-    "on_attack": {
-     "en": "...",
-     "ru": "При выстреле оружие наносит дополнительно 1d6 кинетического урона за каждый заряд, максимум за 3 заряда. После выстрела заряды сбрасываются до 0, вне зависимости от попадания. Они также сбрасываются до 0, если вы получаете структурный урон или урон по стрессу."
-    }
-   }
-  }
- },
- "mw_bolt_nexus": {
-  "name": {
-   "en": "Bolt Nexus",
-   "ru": "Болтовой узел"
-  },
-  "profiles": {
-   "Default": {
-    "name": {
-     "en": "Default",
-     "ru": "По умолчанию"
-    },
-    "on_hit": {
-     "en": "...",
-     "ru": "Как только это оружие попадает по персонажу, оно получает профиль «Цель захвачена» против этого персонажа, пока вы не атакуете этим оружием нового персонажа."
-    }
-   },
-   "Target Acquired": {
-    "name": {
-     "en": "Target Acquired",
-     "ru": "Цель захвачена"
-    }
-   }
-  }
- },
- "mw_emperor_integrated": {
-  "name": {
-   "en": "Marathon Arc Bow",
-   "ru": "Марафонский дуговой лук"
-  },
-  "profiles": {
-   "Default": {
-    "name": {
-     "en": "Default",
-     "ru": "По умолчанию"
-    },
-    "on_attack": {
-     "ru": "Союзные персонажи, попавшие в область, не подвергаются атаке, но вместо этого получают Овершилд +2. Этот особый Овершилд не заменяет предыдущий, а увеличивает его, максимум до Овершилда 12 (если у союзника нет Овершилда, он получает Овершилд 2)."
-    }
-   },
-   "Drawn Back": {
-    "name": {
-     "en": "Drawn Back",
-     "ru": "Натянут"
-    },
-    "on_attack": {
-     "ru": "Союзные персонажи, попавшие в область, не подвергаются атаке, но вместо этого получают Овершилд +4. Этот особый Овершилд не заменяет предыдущий, а увеличивает его, максимум до Овершилда 12 (если у союзника нет Овершилда, он получает Овершилд 4)."
-    }
-   }
-  }
- },
- "mw_brutus_wrecker": {
-  "name": {
-   "en": "Brutus's Wrecker",
-   "ru": "Разрушитель Брута"
-  },
-  "on_crit": {
-   "en": "...",
-   "ru": "Цель опрокидывается."
-  }
- },
- "mw_brutus_shield": {
-  "name": {
-   "en": "Brutus's Shield",
-   "ru": "Щит Брута"
-  },
-  "actions": {
-   "Raise Shield": {
-    "name": {
-     "en": "Raise Shield",
-     "ru": "Поднять щит"
-    },
-    "detail": {
-     "en": "...",
-     "ru": "Как протокол, вы можете поднять этот Щит, чтобы получить Овершилд 4+Грит до начала своего следующего хода, после чего теряете весь Овершилд. Пока у вас есть этот Овершилд, вы Замедлены.<br>Вы не можете использовать этот Протокол два хода подряд."
-    }
-   }
-  }
- },
- "mw_blast_pick": {
-  "name": {
-   "en": "Blast Pick",
-   "ru": "Взрывная кирка"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Перед совершением атаки вы можете объявить, что разряжаете это оружие. Если вы это делаете, атака наносит 2d6+6 взрывного урона и получает Отбрасывание 2. В противном случае это оружие не разряжается."
-  },
-  "profiles": {
-   "Regular Swing": {
-    "name": {
-     "en": "Regular Swing",
-     "ru": "Обычный удар"
-    }
-   },
-   "Explosive Swing": {
-    "name": {
-     "en": "Explosive Swing",
-     "ru": "Взрывной удар"
-    }
-   }
-  }
- },
- "mw_shock_baton": {
-  "name": {
-   "en": "Shock Baton",
-   "ru": "Шоковая дубинка"
-  },
-  "on_crit": {
-   "en": "...",
-   "ru": "Ваша цель должна пройти спасбросок Систем или стать Заклиненной до конца своего следующего хода. При успехе она становится Ослабленной на тот же срок. Каждый персонаж может быть поражён таким образом только 1/сцену."
-  }
- },
- "mw_reaper_assault_cannon": {
-  "name": {
-   "en": "Reaper Assault Cannon",
-   "ru": "Штурмовая пушка «Жнец»"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Вы можете стрелять из этого оружия, как если бы оно было Сверхтяжёлым оружием. Если вы это делаете, оно получает Надёжность 5 и наносит 4d3+2 кинетического урона вместо стандартного урона."
-  },
-  "profiles": {
-   "Standard": {
-    "name": {
-     "en": "Standard",
-     "ru": "Стандартный"
-    }
-   },
-   "Superheavy": {
-    "name": {
-     "en": "Superheavy",
-     "ru": "Сверхтяжёлый"
-    }
-   }
-  }
- },
- "mw_tempest_charged_blade": {
-  "name": {
-   "en": "Tempest Charged Blade",
-   "ru": "Заряженный клинок «Буря»"
-  }
- },
- "mw_hurricane_cluster_projector": {
-  "name": {
-   "en": "Hurricane Cluster Projector",
-   "ru": "Кассетный проектор «Ураган»"
-  }
- },
- "mw_kraul_rifle": {
-  "name": {
-   "en": "Kraul Rifle",
-   "ru": "Винтовка Краул"
-  },
-  "on_hit": {
-   "en": "...",
-   "ru": "ваша цель пронзена гарпунообразным снарядом этого оружия. В любой момент после того, как ваша цель совершит действие или перемещение в свой следующий ход, вы можете смотать леску и совершить Ускорение как реакцию, перемещаясь к этой цели самым прямым возможным маршрутом. Затем она должна пройти спасбросок Корпуса или быть Опрокинута; успех или провал — этот эффект заканчивается. Леска обрывается, если ваша цель телепортируется."
-  }
- },
- "mw_terashima_blade": {
-  "name": {
-   "en": "Terashima Blade",
-   "ru": "Клинок Терашима"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Вы можете начать любой бой в любой из стоек этого оружия и можете принять стойку или сменить стойку как протокол. Приняв стойку, вы остаётесь в ней, пока не примете новую стойку, это оружие не будет уничтожено, либо вы не станете Оглушены или Заклинены. Вы также можете сбросить стойку как свободное действие."
-  },
-  "actions": {
-   "Change Stance": {
-    "name": {
-     "en": "Change Stance",
-     "ru": "Сменить стойку"
-    },
-    "detail": {
-     "en": "...",
-     "ru": "Сменить стойку этого оружия."
-    }
-   },
-   "Drop Stance": {
-    "name": {
-     "en": "Drop Stance",
-     "ru": "Сбросить стойку"
-    },
-    "detail": {
-     "en": "...",
-     "ru": "Сбросить стойку этого оружия."
-    }
-   }
-  },
-  "profiles": {
-   "No Stance": {
-    "name": {
-     "en": "No Stance",
-     "ru": "Без стойки"
-    }
-   },
-   "Troll Stance": {
-    "name": {
-     "en": "Troll Stance",
-     "ru": "Стойка тролля"
-    }
-   },
-   "Storm Stance": {
-    "name": {
-     "en": "Storm Stance",
-     "ru": "Стойка бури"
-    },
-    "effect": {
-     "en": "...",
-     "ru": "Вы получаете реакцию «Стойка бури»."
-    }
-   },
-   "Lord's Stance": {
-    "name": {
-     "en": "Lord's Stance",
-     "ru": "Стойка лорда"
-    },
-    "effect": {
-     "en": "...",
-     "ru": "Вы не можете совершать дальние или тех-атаки, но любая дальняя атака по вам, промахнувшаяся, отражается от вашего меча, нанося 2 урона (того же типа, что и атака) выбранному вами персонажу в пределах Радиуса 3 и линии видимости от вас. Любая ближняя атака, промахнувшаяся по вам, заставляет атакующего пройти спасбросок Корпуса или быть Опрокинутым."
-    }
-   },
-   "Wind Stance": {
-    "name": {
-     "en": "Wind Stance",
-     "ru": "Стойка ветра"
-    },
-    "effect": {
-     "en": "...",
-     "ru": "После атаки этим оружием, попадание или промах, вы можете переместиться на 2 клетки в любом направлении, игнорируя связанность боем и реакции."
-    }
-   }
-  }
- },
- "mw_hammer_u_rpl": {
-  "name": {
-   "en": "Hammer U-RPL",
-   "ru": "Молот U-RPL"
-  }
- },
- "mw_hhs_155_cannibal": {
-  "name": {
-   "en": "HHS-155 CANNIBAL",
-   "ru": "HHS-155 КАННИБАЛ"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Вы можете выстрелить из этого тяжёлого дробовика дважды, прежде чем его потребуется перезарядить. Либо вы можете выстрелить из обоих стволов одновременно, получая +1 Сложность, увеличивая урон до 3d6+4 кинетического и Отбрасывание до 4, но требуя перезарядки как обычно. При перезарядке этого оружия вы можете нанести 5 кинетического урона соседнему персонажу силой выброса гильз."
-  },
-  "profiles": {
-   "Single Barrel": {
-    "name": {
-     "en": "Single Barrel",
-     "ru": "Один ствол"
-    }
-   },
-   "Both Barrels": {
-    "name": {
-     "en": "Both Barrels",
-     "ru": "Оба ствола"
-    },
-    "effect": {
-     "en": "...",
-     "ru": "Выстрелить из обоих стволов одновременно, из-за чего оружие стреляет с +1 Сложностью и требует перезарядки как обычно."
-    }
-   }
-  }
- },
- "mw_fusion_rifle": {
-  "name": {
-   "en": "Fusion Rifle",
-   "ru": "Термоядерная винтовка"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Это оружие наносит урон, равный его Радиусу до цели (максимум 6 энергетического урона)."
-  }
- },
- "mw_slag_cannon": {
-  "name": {
-   "en": "Slag Cannon",
-   "ru": "Шлаковая пушка"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Если ваша цель находится на земле или ровной поверхности, после разрешения этой атаки поместите курган шлака Размера 1 на свободную соседнюю с ней клетку. Курган — это объект с Уклонением 5 и 10 ОЗ."
-  },
-  "deployables": {
-   "Slag": {
-    "name": {
-     "en": "Slag",
-     "ru": "Шлак"
-    },
-    "detail": {
-     "en": "...",
-     "ru": "Создан Шлаковой пушкой"
-    }
-   }
-  }
- },
- "mw_unraveler": {
-  "name": {
-   "en": "Unraveler",
-   "ru": "Распутыватель"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Если атака этим оружием не наносит достаточно урона, чтобы уничтожить цель или нанести ей хотя бы 1 структурный урон, она вместо этого наносит только Надёжный урон 2, даже при попадании."
-  }
- },
- "mw_warp_rifle": {
-  "name": {
-   "en": "Warp Rifle",
-   "ru": "Варп-винтовка"
-  },
-  "on_hit": {
-   "en": "...",
-   "ru": "Цель должна пройти спасбросок Инженерии или быть телепортирована на число клеток, равное урону, нанесённому этим оружием (включая бонусный урон и т.д.; не более 10 клеток), в выбранном вами направлении. Она должна закончить перемещение на свободной, допустимой клетке."
-  }
- },
- "mw_xiaoli_combat_sheathe": {
-  "name": {
-   "en": "Tiger-Hunter Combat Sheathe",
-   "ru": "Боевые ножны охотника на тигров"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "Это оружие может атаковать две цели одновременно и может использоваться, даже будучи Заклиненным."
-  }
- },
- "mw_d_d_288": {
-  "name": {
-   "en": "D/D 288",
-   "ru": "D/D 288"
-  },
-  "effect": {
-   "en": "...",
-   "ru": "В отличие от другого Сверхтяжёлого оружия, это оружие можно использовать с базовым профилем для Стычки.<br>Вы можете зарядить это оружие как быстрое действие. Пока оно заряжено, вы получаете преимущества мягкого укрытия, но становитесь Замедлены, получаете 2 Тепла в начале своего хода и больше не можете использовать D/D 288 со Стычкой. В начале любого вашего хода, пока оно заряжено, оно имеет профиль «Заряжено»."
-  },
-  "actions": {
-   "Charge D/D 288": {
-    "name": {
-     "en": "Charge D/D 288",
-     "ru": "Зарядить D/D 288"
-    },
-    "detail": {
-     "en": "...",
-     "ru": "Зарядите D/D 288. В начале любого вашего хода, пока D/D 288 Заряжен, он использует профиль «Заряжено». Вы становитесь Замедлены и получаете преимущества мягкого укрытия. Кроме того, получаете 2 Тепла в начале своего хода.<br>Профиль «Заряжено» нельзя использовать для Стычки."
-    }
-   }
-  },
-  "profiles": {
-   "Uncharged": {
-    "name": {
-     "en": "Uncharged",
-     "ru": "Не заряжено"
-    }
-   },
-   "Charged": {
-    "name": {
-     "en": "Charged",
-     "ru": "Заряжено"
-    },
-    "on_hit": {
-     "en": "...",
-     "ru": "Пока заряжено, это оружие наносит 30 пробивающего броню кинетического урона при попадании по объектам или элементам рельефа. Если это уничтожает объекты и элементы рельефа, они взрываются, нанося 1d6 кинетического урона всем соседним персонажам, кроме вас, и отбрасывая их на 1 клетку.<br>Это оружие теряет заряд, когда вы попадаете по цели, когда вы рассеиваете заряд как свободное действие, либо когда вы становитесь Оглушены или Отключены."
-    }
-   }
-  }
- },
- "mw_caliban_integrated": {
-  "name": {
-   "en": "HHS-075 \"Flayer\" Shotgun",
-   "ru": "HHS-075 «Свежеватель»"
-  },
-  "profiles": {
-   "Standard": {
-    "name": {
-     "en": "Standard",
-     "ru": "Стандартный"
-    },
-    "on_attack": {
-     "en": "...",
-     "ru": "После любой атаки этим оружием вы можете ударить соседнего персонажа прикладом, нанеся 1 кинетического урона и отбросив его на 1 клетку."
-    }
-   },
-   "Autochoke Equipped": {
-    "name": {
-     "en": "Autochoke Equipped",
-     "ru": "С автодросселем"
-    },
-    "on_attack": {
-     "en": "...",
-     "ru": "После любой атаки этим оружием вы можете ударить соседнего персонажа прикладом, нанеся 1 кинетического урона и отбросив его на 1 клетку."
-    }
-   }
-  }
- },
- "mw_empakaai_alt_blackbeard_integrated": {
-  "name": {
-   "ru": "Термо-коготь колосса"
-  },
-  "effect": {
-   "ru": "«Термо-коготь колосса» «Эмпакааи» можно использовать, даже будучи Заклиненным.<br>Перед броском вы можете заставить цель и любых персонажей по вашему выбору, соседних с ней, пройти спасбросок Корпуса, иначе они будут притянуты вплотную и автоматически Захвачены."
   }
  }
 }

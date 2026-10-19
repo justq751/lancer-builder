@@ -21,7 +21,8 @@ function jsFiles(dir = "js") {
    `<b>//</b>` inside a template is markup, not a comment. */
 function stripJsComments(text) {
   const noBlocks = text.replace(/\/\*[\s\S]*?\*\//g, m => m.replace(/[^\n]/g, " "));
-  return noBlocks.split("\n").map(line =>
+  // \r?: on a CRLF checkout `.*$` would stop at the \r and keep the comment.
+  return noBlocks.split(/\r?\n/).map(line =>
     /^\s*\/\//.test(line) ? "" : line.replace(/([;,{}()\[\]])\s*\/\/.*$/, "$1")).join("\n");
 }
 

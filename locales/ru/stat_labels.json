@@ -17,7 +17,7 @@
  },
  "heatcap": {
   "en": "HEAT CAPACITY",
-  "ru": "ТЕПЛО"
+  "ru": "ТЕПЛОЁМКОСТЬ"
  },
  "evasion": {
   "en": "EVASION",
@@ -45,7 +45,7 @@
  },
  "save": {
   "en": "SAVE TARGET",
-  "ru": "СПАС БРОСОК"
+  "ru": "СПАСБРОСОК"
  },
  "sp": {
   "en": "SYSTEM POINTS",
