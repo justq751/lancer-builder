@@ -24,6 +24,31 @@
 `lcp_manifest.json`/`package.json`) снят каждый снимок. Файлы снимков
 руками не правим — только `tools/sync_upstream.py`.
 
+**`overrides/<repo>.json`** — наши ручные правки поверх upstream, когда
+там ошибка или нет данных, которые есть в COMP/CON. Это единственное место
+для ручных правок данных. Формат — схема upstream (теги-объекты,
+`actions`), нормализатор накладывает правку на сырой предмет до
+нормализации:
+
+```json
+{"weapons": {"mw_emperor_integrated": {
+  "_reason": "почему правим",
+  "_upstream": "802a07ee1e4b",
+  "range": null,
+  "profiles": [ ... ]
+}}}
+```
+
+Поле заменяет upstream-поле, `null` удаляет его. `_upstream` — отпечаток
+upstream-предмета, под который писалась правка: если Massif изменит этот
+предмет, `normalize_pack.py` выведет `! override …: upstream item
+changed` — перепроверить правку (может, upstream уже исправил сам) и
+вписать новый отпечаток из сообщения. Отпечаток новой правки:
+`py -c "import sys,json;sys.path.insert(0,'tools');import normalize_pack as n;print(n.fingerprint(next(x for x in json.load(open('upstream/<repo>/<cat>.json',encoding='utf8')) if x['id']=='<id>')))"`.
+
+Сейчас правки: Marathon Arc Bow (ktb) — два профиля Default/Drawn Back
+и действие Draw Back, как в COMP/CON (на GitHub их нет ни в одной версии).
+
 **`data/lancer-data.json` и `data/packs/*.json` — чистый выход
 `tools/normalize_pack.py`** из этих снимков. Руками их не правим: правка
 пропадёт при следующей пересборке. Нужно иначе показать данные —
@@ -64,6 +89,7 @@ py tools/sync_upstream.py status     # без скачивания; exit 1, ес
    done
    ```
 
+   Предупреждения `! override …` — см. `overrides/` выше.
    Затем `git diff data/` — должно совпасть по смыслу с шагом 2. Если
    upstream поменял схему (новое поле с текстом, другой формат), это
    видно здесь: доработать `normalize_pack.py` и пересобрать.

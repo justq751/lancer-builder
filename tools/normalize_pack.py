@@ -23,6 +23,7 @@ Unsupported categories (reserves, environments — the app has no UI/tab
 for these at all) are intentionally left out; see README.
 """
 import difflib
+import hashlib
 import json
 import re
 import sys
@@ -300,8 +301,40 @@ NORMALIZERS = {
 CORE_ONLY = {"skills", "manufacturers"}
 
 
+def fingerprint(item):
+    return hashlib.sha1(json.dumps(item, sort_keys=True, ensure_ascii=False).encode("utf-8")).hexdigest()[:12]
+
+
+def load_overrides(lib_dir):
+    """Hand-written fixes for data upstream gets wrong or lacks, kept beside
+    the snapshots: upstream/overrides/<repo>.json =
+    {category: {id: {"_reason": "...", "_upstream": "<fingerprint>", field: value}}}.
+    Fields replace the upstream ones (null removes one) before normalization,
+    so values use the raw upstream schema."""
+    path = lib_dir.parent / "overrides" / f"{lib_dir.name}.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def apply_override(item, patch, where):
+    """_upstream is the fingerprint of the upstream item the patch was written
+    against; when upstream changes that item, the patch needs a recheck."""
+    seen = fingerprint(item)
+    if patch.get("_upstream") != seen:
+        print(f"  ! override {where}: upstream item changed (fingerprint {seen}, "
+              f"override written for {patch.get('_upstream')}) — recheck it, then update _upstream")
+    for k, v in patch.items():
+        if k.startswith("_"):
+            continue
+        if v is None:
+            item.pop(k, None)
+        else:
+            item[k] = v
+    return item
+
+
 def build_pack(lib_dir, out_path, item_prefix):
     lib_dir = pathlib.Path(lib_dir)
+    overrides = load_overrides(lib_dir)
     out = {}
     for cat, fn in NORMALIZERS.items():
         src = lib_dir / f"{cat}.json"
@@ -310,6 +343,12 @@ def build_pack(lib_dir, out_path, item_prefix):
                 out[cat] = []
             continue
         items = json.loads(src.read_text(encoding="utf-8"))
+        patches = dict(overrides.get(cat, {}))
+        for it in items:
+            if it.get("id") in patches:
+                apply_override(it, patches.pop(it["id"]), f"{cat}/{it['id']}")
+        for missing in patches:
+            print(f"  ! override {cat}/{missing}: no such item upstream")
         out[cat] = [fn(it) for it in items]
     pathlib.Path(out_path).write_text(
         json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"

@@ -385,6 +385,10 @@ P3). Объём — весь список из `docs/audit/AUDIT.md`. **Вне �
         (`already_described()`) — 20+ повторов в талантах, снаряжении, системах;
       - удалены `data/extracted frames/` (публиковался, не использовался) и
         `tools/merge_frames.py`.
+- [x] **Ручные правки поверх upstream** — `upstream/overrides/<repo>.json`,
+      с отпечатком исходного предмета (предупреждение, если upstream его
+      изменит). Первая: Marathon Arc Bow — 2 профиля + Draw Back, как в
+      COMP/CON (на GitHub их нет; вернул правку из `d3ba3c1`).
 - [x] **sotw-data: 5 предысторий** — категория `backgrounds` в нормализаторе
       и в слиянии паков (`loadBaseData()`), переведены.
 - [x] Перевод: `extract_locale_template.py` помечает `"stale": true` во всех

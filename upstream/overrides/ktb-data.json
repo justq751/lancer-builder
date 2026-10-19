@@ -1,0 +1,32 @@
+{
+ "weapons": {
+  "mw_emperor_integrated": {
+   "_reason": "COMP/CON shows two profiles (Default Line 10 / Drawn Back Line 20) and a Draw Back quick action; ktb-data on GitHub has only the single Line 15 version in every tag and branch. Restores the hand fix from d3ba3c1 (2026-07-10).",
+   "_upstream": "802a07ee1e4b",
+   "range": null,
+   "damage": null,
+   "on_attack": null,
+   "profiles": [
+    {
+     "name": "Default",
+     "range": [{"type": "Line", "val": 10}],
+     "damage": [{"type": "Energy", "val": "1d6"}],
+     "on_attack": {"detail": "Allied characters caught in the area are not attacked, but instead gain overshield +2. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 2)."}
+    },
+    {
+     "name": "Drawn Back",
+     "range": [{"type": "Line", "val": 20}],
+     "damage": [{"type": "Energy", "val": "1d6"}],
+     "on_attack": {"detail": "Allied characters caught in the area are not attacked, but instead gain overshield +4. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 4)."}
+    }
+   ],
+   "actions": [
+    {
+     "name": "Draw Back",
+     "activation": "Quick",
+     "detail": "This weapon can be drawn back with a quick action to use the Drawn Back profile on its next attack. This effect is lost if you move for any reason."
+    }
+   ]
+  }
+ }
+}
