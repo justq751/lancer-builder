@@ -79,7 +79,7 @@ async function fetchJSON(url) {
    Each pack file is pre-normalized (see tools/normalize_pack.py) into the
    same flat shape as data/lancer-data.json, so no renderer changes are
    needed. Packs only cover categories the app already has a UI for
-   (frames/weapons/systems/talents/pilot_gear/core_bonuses/mods) — pack
+   (frames/weapons/systems/talents/pilot_gear/core_bonuses/mods/backgrounds) — pack
    categories with no app support (e.g. reserves, environments) are
    intentionally omitted; see README. */
 const CONTENT_PACKS = [
@@ -125,7 +125,7 @@ async function loadBaseData() {
     PACK_LOAD_FAILURES = CONTENT_PACKS.filter((url, i) => !packs[i]).map(packLabel);
     for (const pack of packs) {
       if (!pack) continue;
-      for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses", "mods"]) {
+      for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses", "mods", "backgrounds"]) {
         if (pack[cat] && pack[cat].length) core[cat] = (core[cat] || []).concat(pack[cat]);
       }
     }
@@ -187,7 +187,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever the app's code (index.html, css/, js/) changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-10-19-data-translation";
+const APP_BUILD = "2026-10-19-upstream-sync";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {

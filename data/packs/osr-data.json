@@ -85,8 +85,6 @@
    "mount": "Main",
    "type": "Rifle",
    "cost": 1,
-   "barrage": true,
-   "skirmish": true,
    "damage": [
     {
      "type": "Kinetic",
@@ -120,8 +118,6 @@
    "mount": "Main",
    "type": "Nexus",
    "cost": 1,
-   "barrage": true,
-   "skirmish": true,
    "damage": [
     {
      "type": "Kinetic",
@@ -234,5 +230,8 @@
    ]
   }
  ],
- "pilot_gear": []
+ "core_bonuses": [],
+ "pilot_gear": [],
+ "backgrounds": [],
+ "mods": []
 }

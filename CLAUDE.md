@@ -72,7 +72,7 @@ All scripts are classic (non-module) scripts sharing one global scope, loaded by
 
 ### Data loading & i18n overlay (`js/i18n-loader.js` + `js/core/i18n.js`)
 
-1. `loadBaseData()` fetches `data/lancer-data.json` (canonical English core data) plus several standalone files (`tags.json`, `glossary.json`, `stat_labels.json`, `core_bonus_stat_mods.json`, `core_bonus_terse.json`, `frame_images.json`), and all packs listed in `CONTENT_PACKS` (`data/packs/*.json` — official Massif Press content packs like osr-data, wallflower-data, long-rim-data, dustgrave-data, ktb-data, ows-data, sotw-data, ssmr-data). Pack arrays (`frames`, `weapons`, `systems`, `talents`, `pilot_gear`, `core_bonuses`, `mods`) are concatenated onto the core data's arrays.
+1. `loadBaseData()` fetches `data/lancer-data.json` (canonical English core data) plus several standalone files (`tags.json`, `glossary.json`, `stat_labels.json`, `core_bonus_stat_mods.json`, `core_bonus_terse.json`, `frame_images.json`), and all packs listed in `CONTENT_PACKS` (`data/packs/*.json` — official Massif Press content packs like osr-data, wallflower-data, long-rim-data, dustgrave-data, ktb-data, ows-data, sotw-data, ssmr-data). Pack arrays (`frames`, `weapons`, `systems`, `talents`, `pilot_gear`, `core_bonuses`, `mods`, `backgrounds`) are concatenated onto the core data's arrays.
 2. `loadLocaleFiles(lang)` fetches `locales/<lang>/*.json` (category files listed in `LOCALE_CATEGORY_FILES`).
 3. `localizeData(base, locale)` deep-clones the base data and overlays translated strings via `pickText()`/`overlayKeyedPairs()`/`overlayNamedSublist()`/`overlayOnField()`: a translated `"ru"` value is used if non-empty, otherwise the English original is kept. This means the site is always fully functional even with partial translation coverage.
 4. The result becomes the global `L` used by all rendering/logic code — nothing downstream needs to know localization happened.
@@ -99,19 +99,19 @@ Pack categories `reserves` and `environments` are intentionally not loaded/merge
 
 These operate on the JSON data files, not the app itself:
 
-- **`extract_locale_template.py --lang ru [--only ui.json,mods.json]`** — regenerates `locales/ru/*.json` from `data/lancer-data.json` + `data/packs/*.json`, and `locales/ru/ui.json` from `data/ui.json`. Preserves existing `"ru"` translations, adds empty `"ru"` entries for new fields, drops entries for fields that disappeared; in `ui.json` a translation whose English changed is kept and marked `"stale": true`. A full run is safe (builders cover every field `localizeData()` overlays); `--only <files>` limits it.
-- **`locale_coverage.py [--list] [--markdown]`** — translation coverage per locale file, the untranslated paths, `ui.json` stale marks, and "generator drift" (files a regeneration would rewrite). Informational, always exits 0; CI prints it to the run's Summary.
+- **`extract_locale_template.py --lang ru [--only ui.json,mods.json]`** — regenerates `locales/ru/*.json` from `data/lancer-data.json` + `data/packs/*.json`, and `locales/ru/ui.json` from `data/ui.json`. Preserves existing `"ru"` translations, adds empty `"ru"` entries for new fields, drops entries for fields that disappeared (and the translation of a field whose English became empty). In every file a translation whose English changed is kept and marked `"stale": true` — recheck it, then delete the marker. A full run is safe (builders cover every field `localizeData()` overlays); `--only <files>` limits it.
+- **`locale_coverage.py [--list] [--markdown]`** — translation coverage per locale file, the untranslated and `"stale"` paths, and "generator drift" (files a regeneration would rewrite). Informational, always exits 0; CI prints it to the run's Summary.
 - **`sync_upstream.py status|pull [names] [--ref X]`** — keeps raw byte-for-byte snapshots of the 9 official `massif-press/*-data` repos' `lib/*.json` in `upstream/<repo>/`, pinned in `upstream/upstream.lock.json`. The site never reads `upstream/` (excluded from both deploys). Never hand-edit it; the full update procedure is `upstream/README.md`.
-- **`normalize_pack.py <lib_dir> data/packs/<name>.json "<label>"`** — converts a pack using the newer upstream `lancer-data` schema (tag objects like `{"id":"tg_reliable","val":2}`, ability text in `actions`/`deployables` arrays) into the flat shape `data/lancer-data.json` already uses (plain tag strings like `"Reliable 2"`, ability text folded into `effect`/`*_effect`), so the renderer needs zero changes to support a new pack.
-- **`merge_frames.py <normalized_file> <target_file>`** — merges just the `frames` array from a normalized pack output into a target data file, leaving every other key untouched. Writes a `.bak` backup of the target before overwriting.
+- **`normalize_pack.py upstream/<repo> <out.json> "<label>"`** — builds a site data file from an upstream snapshot: `data/lancer-data.json` from `upstream/lancer-data`, `data/packs/<repo>.json` from the rest. Both are pure generator output — **never hand-edit them**, change the normalizer instead. It flattens the upstream schema for the renderer: tag objects → `data/tags.json` names (`"Reliable 2"`, `"Heat 2 (Self)"`), `actions`/`deployables` folded into `effect` / rank `description` (skipped when the prose already says it, `already_described()`; reactions keep their trigger), engine hooks the app never reads dropped (`HOOKS`). Frame core systems keep structured `passive_actions`/`active_actions`.
 
-Typical workflow for adding/updating a content pack (full version: `upstream/README.md`):
+Updating data from upstream (full version: `upstream/README.md`):
 ```bash
-python3 tools/sync_upstream.py pull <name>        # then review git diff upstream/<name>/
+python3 tools/sync_upstream.py pull [<name>]      # then review git diff upstream/
+python3 tools/normalize_pack.py upstream/lancer-data data/lancer-data.json core
 python3 tools/normalize_pack.py upstream/<name> data/packs/<name>.json "<label>"
-python3 tools/extract_locale_template.py --lang ru --only weapons.json,systems.json   # the files the pack touches
+python3 tools/extract_locale_template.py --lang ru
 ```
-Then translate the newly-appeared empty `"ru": ""` entries (`py tools/locale_coverage.py --list` finds them) — and review `git diff locales/` before keeping it. Terms follow `GLOSSARY.md`. On Windows use `py` (or `python`) instead of `python3`.
+Then translate the new empty `"ru": ""` entries and recheck the `"stale"` ones (`py tools/locale_coverage.py --list` finds both) — and review `git diff locales/` before keeping it. Terms follow `GLOSSARY.md`. On Windows use `py` (or `python`) instead of `python3`.
 
 ## UI strings (ADR 0005)
 

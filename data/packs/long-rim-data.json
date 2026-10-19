@@ -60,8 +60,7 @@
     "description": "The ATLAS extends microneedles into the musculature and ancillary nervous system of its pilot, melding flesh, machine, and the memory of all who wore it before.",
     "active_name": "Final Hunt",
     "active_effect": "<p>For the rest of the scene, you:</p> <ul> <li>Move an additional 1 space when you voluntarily move for any reason (e.g. standard moves, BOOST, movement from systems or talents).</li> <li>Benefits from soft cover at all times, no matter where you are.</li> <li>Can HIDE even in the open, without requiring cover.</li> </ul> <p> The only way to reveal you is for another character to SEARCH for you or for you to lose Hidden as usual &ndash; by using BOOST, attacking, forcing a save, and so on. When active, 1/round, when you make a melee or ranged attack while HIDDEN, your target must also succeed on a HULL save or be knocked PRONE. This takes place before the attack is rolled </p>",
-    "activation": "Quick",
-    "passive_effect": null
+    "activation": "Quick"
    },
    "license_id": "mf_atlas"
   },
@@ -120,8 +119,7 @@
     "activation": "Protocol",
     "integrated": [
      "mw_caliban_integrated"
-    ],
-    "passive_effect": null
+    ]
    },
    "license_id": "mf_caliban"
   },
@@ -183,8 +181,7 @@
     "description": "Screeching and venting steam, the Kobold digs into the earth. Moments later, the very ground bends to the pilot’s will and the air shrieks with agony — the cry of every dead Ungrateful, martyred or taken by the Dustmen",
     "active_name": "Terraform",
     "active_effect": "Your mech extrudes a massive amount of polymer, creating up to 10 SIZE 1 cubes in free spaces within Range 5. These cubes can be separate or connected and can be stacked up to 5 spaces high. If connected, they form a contiguous surface that can block line of sight. During the turn in which they are extruded, the cubes grant soft cover and each has EVASION 5 and 10 HP. At the start of your next turn, they harden, each cube granting hard cover and gaining +10 HP (but retaining any damage they had taken).",
-    "activation": "Full",
-    "passive_effect": null
+    "activation": "Full"
    },
    "license_id": "mf_kobold"
   },
@@ -231,8 +228,7 @@
     "description": "“Drink Deep, and Descend.”",
     "active_name": "Glitch time",
     "active_effect": "<p>You gain the ability to disrupt time for the rest of this scene. 1/round, when any character successfully attacks, effects, or takes an action against another character within SENSORS, you may interrupt it before it resolves, with the following effects:</p> <ul> <li>The character taking the action is pushed up to 3 spaces in a direction of your choice, even if they have IMMUNITY to involuntary movement</li> <li>You teleport to one of the spaces originally occupied by that character, or as close as possible, no matter how far away it was.</li> <li>The initial attack, effect, or action resolves with you as its target. </li> </ul> <p>You receive all damage, conditions, statuses, and effects, and the action must be carried out without changes. For example, if the effect was to teleport an allied character to a certain space, you are teleported to that space instead; if the effect was to repair an allied character, you are repaired instead; if the effect was to deal damage and KNOCKBACK, you take the damage (using your ARMOR, RESISTANCE, etc.) and are knocked back in the same direction as the original target would be; if the effect was to inflict a condition or status, you receive that condition or status instead. Initiating this interruption does not count as a reaction. Effects that target the self cannot be interrupted this way </p>",
-    "activation": "Quick",
-    "passive_effect": null
+    "activation": "Quick"
    },
    "license_id": "mf_lich"
   },
@@ -380,8 +376,7 @@
       "min": 0,
       "max": 6
      }
-    ],
-    "passive_effect": ""
+    ]
    },
    "license_id": "mf_zheng"
   }
@@ -424,19 +419,7 @@
    "source": "SSC",
    "license": "Atlas",
    "license_level": 3,
-   "effect": "You may begin any fight in any of this weapon's stances and may take a stance or shift between stances as a protocol. Once you have taken a stance, you remain in it until you take a new stance, this weapon is destroyed, or you are STUNNED or JAMMED. You can also drop a stance as a free action.",
-   "actions": [
-    {
-     "name": "Change Stance",
-     "activation": "Protocol",
-     "detail": "Change this weapon's stance."
-    },
-    {
-     "name": "Drop Stance",
-     "activation": "Free",
-     "detail": "Drop this weapon's stance."
-    }
-   ],
+   "effect": "You may begin any fight in any of this weapon's stances and may take a stance or shift between stances as a protocol. Once you have taken a stance, you remain in it until you take a new stance, this weapon is destroyed, or you are STUNNED or JAMMED. You can also drop a stance as a free action.<br><b>Change Stance</b> — Change this weapon's stance.",
    "profiles": [
     {
      "name": "No Stance",
@@ -486,16 +469,7 @@
        "val": 1
       }
      ],
-     "effect": "You gain the Storm Stance Reaction.",
-     "actions": [
-      {
-       "activation": "Reaction",
-       "name": "Storm Stance Reaction",
-       "frequency": "1/round",
-       "trigger": "After hitting with this weapon while in Storm Stance.",
-       "detail": "You may immediately deal 2 kinetic to all other characters adjacent to you and your target."
-      }
-     ]
+     "effect": "You gain the Storm Stance Reaction.<br><b>Storm Stance Reaction</b> — <i>Trigger:</i> After hitting with this weapon while in Storm Stance.<br>You may immediately deal 2 kinetic to all other characters adjacent to you and your target."
     },
     {
      "effect_type": "Profile",
@@ -672,22 +646,12 @@
     }
    ],
    "tags": [
-    "Heat Self 1"
+    "Heat 1 (Self)"
    ],
    "source": "HORUS",
    "license": "Kobold",
    "license_level": 2,
-   "effect": "If your target is on the ground or a flat surface, once this attack resolves place a SIZE 1 mound of slag in a free space adjacent to them. The mound is an object with EVASION 5 and 10 HP.",
-   "deployables": [
-    {
-     "name": "Slag",
-     "type": "Deployable",
-     "activation": "Free",
-     "hp": "10",
-     "evasion": "5",
-     "detail": "Created by the Slag Cannon"
-    }
-   ],
+   "effect": "If your target is on the ground or a flat surface, once this attack resolves place a SIZE 1 mound of slag in a free space adjacent to them. The mound is an object with EVASION 5 and 10 HP.<br><b>Deployable — Slag:</b> Created by the Slag Cannon",
    "description": "Dripping with molten fury, the Slag Cannon is quick to print and requires little training to use effectively. Temperamental but powerful, the Slag Cannon utilizes a simple rawmat-decomp system wedded to an insulated projector to break down, superheat, and cast a stream of plural-state particles at its target. Once cast in this way, the plural-state particles snap into coherence at a range of roughly 80-100 meters, creating base-element lumps of slag wherever they come to rest."
   },
   {
@@ -778,14 +742,7 @@
    "source": "IPS-N",
    "license": "Zheng",
    "license_level": 3,
-   "effect": "Unlike other Superheavy weapons, this weapon can be used with the basic profile to Skirmish.<br>You may charge this weapon as a quick action. While charged, you benefit from soft cover, but you are SLOWED, take 2 Heat at the start of your turn, and can no longer use the D/D 288 with SKIRMISH. At the start of any of your turns while it is charged, it has the Charged profile.",
-   "actions": [
-    {
-     "name": "Charge D/D 288",
-     "activation": "Quick",
-     "detail": "Charge the D/D 288. At the start of any of your turns while the D/D 288 is Charged, it uses the \"Charged\" profile. You become SLOWED, and benefit from soft cover. Additionally, gain 2 Heat at the start of your turn.<br>The \"Charged\" profile cannot be used to Skirmish."
-    }
-   ],
+   "effect": "Unlike other Superheavy weapons, this weapon can be used with the basic profile to Skirmish.<br>You may charge this weapon as a quick action. While charged, you benefit from soft cover, but you are SLOWED, take 2 Heat at the start of your turn, and can no longer use the D/D 288 with SKIRMISH. At the start of any of your turns while it is charged, it has the Charged profile.<br><b>Charge D/D 288</b> — Charge the D/D 288. At the start of any of your turns while the D/D 288 is Charged, it uses the \"Charged\" profile. You become SLOWED, and benefit from soft cover. Additionally, gain 2 Heat at the start of your turn.<br>The \"Charged\" profile cannot be used to Skirmish.",
    "profiles": [
     {
      "name": "Uncharged",
@@ -803,8 +760,7 @@
      ],
      "tags": [
       "Reliable 3"
-     ],
-     "skirmish": true
+     ]
     },
     {
      "name": "Charged",
@@ -820,7 +776,6 @@
        "val": 3
       }
      ],
-     "skirmish": false,
      "on_hit": "While charged, this weapon deals 30 AP Kinetic Damage when it hits objects or pieces of terrain. If this destroys objects and pieces of terrain, they explode, dealing 1d6 Kinetic Damage to all adjacent characters other than you and knocking them back 1 space.<br>This weapon loses its charge when you hit a target, when you disperse its charge as a free action, or when you become STUNNED or SHUT DOWN.",
      "tags": [
       "Reliable 8",
@@ -909,7 +864,7 @@
    "sp": 2,
    "tags": [
     "Unique",
-    "Heat Self 1"
+    "Heat 1 (Self)"
    ],
    "source": "SSC",
    "license": "Atlas",
@@ -945,7 +900,7 @@
    "license": "Atlas",
    "license_level": 3,
    "description": "The rarest of Atlas frames can be printed with the embedded muscle memories of Jäger Kunst masters: old Sparri and others who have dedicated lives to their martial art. SSC does not recommend using these embedded systems without proper bodily tempering and will not release these programs to unqualified pilots.",
-   "effect": "<br><b>Fatal Clash</b> — After damage has been resolved, you and your target each roll a contested Hull or Agility check (each party choosing which to roll). The loser is knocked Prone, takes 1d6 kinetic damage, and is knocked back 3 spaces in a direction chosen by the winner. The winner may then move 3 spaces in any direction, ignoring engagement and not provoking reactions. The loser may immediately take 2 AP kinetic damage to force the contest to be rerolled. This damage cannot be prevented or reduced in any way.<br>If the result is a tie, the contest immediately ends. Otherwise, the contest continues until one character loses without forcing a re-roll or would take structure damage, in which case they immediately lose."
+   "effect": "<br><b>Fatal Clash</b> — <i>Trigger:</i> You take damage from or deal damage with a melee attack<br>After damage has been resolved, you and your target each roll a contested Hull or Agility check (each party choosing which to roll). The loser is knocked Prone, takes 1d6 kinetic damage, and is knocked back 3 spaces in a direction chosen by the winner. The winner may then move 3 spaces in any direction, ignoring engagement and not provoking reactions. The loser may immediately take 2 AP kinetic damage to force the contest to be rerolled. This damage cannot be prevented or reduced in any way.<br>If the result is a tie, the contest immediately ends. Otherwise, the contest continues until one character loses without forcing a re-roll or would take structure damage, in which case they immediately lose."
   },
   {
    "id": "ms_hardpoint_reinforcement",
@@ -985,7 +940,7 @@
    "tags": [
     "Overshield",
     "Unique",
-    "Heat Self 1"
+    "Heat 1 (Self)"
    ],
    "source": "IPS-N",
    "license": "Caliban",
@@ -1151,7 +1106,7 @@
    "type": "System",
    "sp": 2,
    "tags": [
-    "Heat Self 1"
+    "Heat 1 (Self)"
    ],
    "source": "HA",
    "license": "Sunzi",
@@ -1211,9 +1166,6 @@
    "id": "ms_spaceborn_1",
    "name": "Spaceborn EVA",
    "type": "System",
-   "talent_item": true,
-   "talent_id": "t_spaceborn",
-   "talent_rank": 1,
    "sp": 0,
    "tags": [
     "Unique",
@@ -1259,7 +1211,7 @@
     },
     {
      "name": "Rodeo",
-     "description": "<p>As a protocol, you give up the controls, pop the hatch on your mech and partly climb out, starting a BLACK THUMB RODEO and gaining a personal shield (as above). While in rodeo, your pilot is immune to involuntary movement, occupies your mech’s space and moves when it moves. This does not count as DISMOUNT and the mech can’t be controlled from outside, so it will idle unless it is capable of acting independently (e.g., if it has an NHP that has been given control, which you can do as part of this protocol). <br>While in rodeo, your pilot becomes a valid target and can take damage normally. If you lose your personal shield for any reason, you are immediately forced back inside your mech, ending the effect, and you cannot start a rodeo again on your following turn. You can also end a rodeo as a quick action on any of your turns. <br>While in rodeo, your pilot can only take the <b>Extinguish</b>, <b>Field Repair</b>, or <b>Rig Vents</b> actions granted by Black Thumb."
+     "description": "<p>As a protocol, you give up the controls, pop the hatch on your mech and partly climb out, starting a BLACK THUMB RODEO and gaining a personal shield (as above). While in rodeo, your pilot is immune to involuntary movement, occupies your mech’s space and moves when it moves. This does not count as DISMOUNT and the mech can’t be controlled from outside, so it will idle unless it is capable of acting independently (e.g., if it has an NHP that has been given control, which you can do as part of this protocol). <br>While in rodeo, your pilot becomes a valid target and can take damage normally. If you lose your personal shield for any reason, you are immediately forced back inside your mech, ending the effect, and you cannot start a rodeo again on your following turn. You can also end a rodeo as a quick action on any of your turns. <br>While in rodeo, your pilot can only take the <b>Extinguish</b>, <b>Field Repair</b>, or <b>Rig Vents</b> actions granted by Black Thumb.<br><b>End Black Thumb Rodeo (Quick)</b> — End your current Black Thumb Rodeo.<br><b>BT: Extinguish (Full)</b> — You immediately clear all Burn affecting your mech, and it gains Resistance to Burn until the start of your next turn. Conditions that were self inflicted cannot be cleared with this action.<br><b>BT: Field Repair (Full)</b> — Your mech gains Overshield 2 and clears either Slowed or Immobilized. Conditions that were self inflicted cannot be cleared with this action.<br><b>BT: Rig Vents (Full)</b> — Your mech clears 2 Heat and clears either Impaired or Jammed. Conditions that were self inflicted cannot be cleared with this action."
     },
     {
      "name": "Rodeo Master",
@@ -1268,8 +1220,9 @@
    ]
   }
  ],
- "pilot_gear": [],
  "core_bonuses": [],
+ "pilot_gear": [],
+ "backgrounds": [],
  "mods": [
   {
    "id": "wm_supermassive_mod",

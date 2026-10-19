@@ -162,8 +162,7 @@
        }
       ]
      }
-    ],
-    "passive_effect": null
+    ]
    }
   }
  ],
@@ -227,15 +226,9 @@
    ],
    "source": "EXOTIC",
    "license_level": 0,
-   "actions": [
-    {
-     "name": "Raise Shield",
-     "activation": "Protocol",
-     "detail": "As a protocol, you may raise this Shield to gain 4+Grit Overshield until the start of your next turn, at which point you lose all Overshield. You are Slowed while you have this Overshield. <br>You may not use this Protocol two turns in a row."
-    }
-   ],
    "description": "The signature weapon of the former perpetual champion of Crater Pit. Since Brutus’s defeat in glorious combat, someone else now wields this relatively advanced slab shield. Incorporating surprisingly complex Harrison Armory technology, this shield can project a localized force field of significant strength.",
-   "sp": 1
+   "sp": 1,
+   "effect": "<br><b>Raise Shield</b> — As a protocol, you may raise this Shield to gain 4+Grit Overshield until the start of your next turn, at which point you lose all Overshield. You are Slowed while you have this Overshield. <br>You may not use this Protocol two turns in a row."
   },
   {
    "id": "mw_blast_pick",
@@ -426,7 +419,7 @@
     "Smart",
     "Seeking",
     "Ordnance",
-    "Heat Self 2"
+    "Heat 2 (Self)"
    ],
    "source": "GMS",
    "license": "GMS",
@@ -439,13 +432,11 @@
    "id": "ms_iconoclast",
    "name": "Unstable NHP",
    "type": "AI",
-   "talent_item": true,
-   "talent_id": "t_iconoclast",
-   "talent_rank": 1,
    "sp": 0,
    "tags": [
     "Unique",
-    "Round 1"
+    "AI",
+    "1/Round"
    ],
    "source": "",
    "license": "GMS",
@@ -465,7 +456,8 @@
    "source": "EXOTIC",
    "license_level": 0,
    "effect": "As a protocol, you may expend a charge to pick any number of the following stims and apply their effects. Roll 1d6 for each stim chosen: if any two dice show the same result, you immediately become Stunned until the end of your current turn instead of applying the effects. All effects from this system last until the start of your next turn.<br><b>Agitron</b> — <ul><li>You become Impaired.</li><li>You gain Immunity to Shredded.</li><li>Your Melee attacks gain Knockback 1 and deal +2 bonus damage.</li></ul><br><b>Enduritran</b> — <ul><li>You become Jammed.</li><li>You gain Immunity to Impaired.</li><li>You gain +2 Armor. This may bring you above 4 Armor.</li></ul><br><b>Edge</b> — <ul><li>You become Slowed.</li><li>You gain Immunity to Jammed.</li><li>Your next attack this turn gains +1 Accuracy.</li></ul><br><b>Nerve Boosters</b> — <ul><li>You become Shredded.</li><li>You gain Immunity to Slowed.</li><li>You gain +1 Speed and ignore Engagement and your movements do not trigger Reactions.</li></ul>",
-   "description": "Powerful stim pumps are directly wired into the cockpit and intravenously administer the pilot with a potent slew of drugs. While they can enhance a pilot’s combat ability to superhuman levels, users should be keenly aware of the substances’ various side effects. While the apparatus is theoretically capable of mixing and administering complex drug cocktails this should be done with extreme caution, as the wrong mixtures or doses may lead to sudden cardiac arrest, requiring resuscitation of the pilot via in-built defibrillators and an injection of “adrenadron” to purge their system."
+   "description": "Powerful stim pumps are directly wired into the cockpit and intravenously administer the pilot with a potent slew of drugs. While they can enhance a pilot’s combat ability to superhuman levels, users should be keenly aware of the substances’ various side effects. While the apparatus is theoretically capable of mixing and administering complex drug cocktails this should be done with extreme caution, as the wrong mixtures or doses may lead to sudden cardiac arrest, requiring resuscitation of the pilot via in-built defibrillators and an injection of “adrenadron” to purge their system.",
+   "type": "System"
   },
   {
    "id": "ms_mesmertrance_dampener",
@@ -477,8 +469,9 @@
    ],
    "source": "EXOTIC",
    "license_level": 0,
-   "effect": "1/Scene as a reaction when you are targeted by a tech attack, you may give that attack +1 Difficulty. Additionally, you gain Immunity to the MesmerTrance environmental hazard.<br><b>MesmerTrance Dampener</b> — You may give that attack +1 Difficulty. Additionally, you gain Immunity to the MesmerTrance environmental hazard.",
-   "description": "Handed to you by the Talons, the MesmerTrance dampener supposedly stops the highly advanced and aggressive “MesmerTrance” virus from affecting your mech. As a side effect, it also provides limited protection against other, less sophisticated attacks on your mech’s systems."
+   "effect": "1/Scene as a reaction when you are targeted by a tech attack, you may give that attack +1 Difficulty. Additionally, you gain Immunity to the MesmerTrance environmental hazard.",
+   "description": "Handed to you by the Talons, the MesmerTrance dampener supposedly stops the highly advanced and aggressive “MesmerTrance” virus from affecting your mech. As a side effect, it also provides limited protection against other, less sophisticated attacks on your mech’s systems.",
+   "type": "System"
   },
   {
    "id": "ms_armament_redundancy",
@@ -492,13 +485,8 @@
    "license": "GMS",
    "license_level": 0,
    "effect": "You may choose to ignore weapon destruction as a result of the SYSTEM TRAUMA result when taking structure damage. This system can only be used once before each FULL REPAIR, and is not a valid target for system destruction.",
-   "active_effects": [
-    {
-     "name": "Armament Redundancy",
-     "detail": "You may choose to ignore weapon destruction from SYSTEM TRAUMA when taking structure damage. Usable once before each Full Repair."
-    }
-   ],
-   "description": "By installing additional armor plating, redundant firing circuits, and enhanced insulation to magazines the longevity of a frame’s armaments can be greatly enhanced."
+   "description": "By installing additional armor plating, redundant firing circuits, and enhanced insulation to magazines the longevity of a frame’s armaments can be greatly enhanced.",
+   "type": "System"
   }
  ],
  "talents": [
@@ -510,7 +498,7 @@
    "ranks": [
     {
      "name": "Stake a Claim",
-     "description": "Tunnel: When Tunneling, remove the character from the battlefield and then immediately place them in a free and valid space. This is considered moving 1 space and does trigger Reactions. <br>Gain the “Create Entrance” Quick Action which you may use 1/Scene. <br>While completely within an Entrance you and allied characters gain the “Subterranean Reposition” Reaction during your own turns."
+     "description": "Tunnel: When Tunneling, remove the character from the battlefield and then immediately place them in a free and valid space. This is considered moving 1 space and does trigger Reactions. <br>Gain the “Create Entrance” Quick Action which you may use 1/Scene. <br>While completely within an Entrance you and allied characters gain the “Subterranean Reposition” Reaction during your own turns.<br><b>Create Entrance (Quick)</b> — 1/Scene While standing on solid ground you may create a Burst 1 Entrance around yourself as a Quick Action. You may then Tunnel to anywhere up to 5 spaces away where you then create another Burst 1 Entrance. Entrances remain in play until the end of the scene. Terrain and sections of terrain overlapping an Entrance take 20 AP Explosive damage. Additionally, you cannot take Reactions until the end of the current turn.<br><b>Subterranean Reposition (Reaction, 1/round)</b> — <i>Trigger:</i> During your turn, you are completely within an Entrance.<br>You immediately Tunnel, ending the movement completely within a different Entrance created by the same character as the first."
     },
     {
      "name": "Gold Fever",
@@ -534,7 +522,7 @@
     },
     {
      "name": "Transmutation",
-     "description": "After performing any action granted to you by an NHP, excluding handing control of your mech over to the NHP as a protocol, you may immediately perform the TRANSMUTING SPARK free action. Each NHP may only trigger this action 1/round."
+     "description": "After performing any action granted to you by an NHP, excluding handing control of your mech over to the NHP as a protocol, you may immediately perform the TRANSMUTING SPARK free action. Each NHP may only trigger this action 1/round.<br><b>Transmuting Spark (Free)</b> — Project a LINE 3 lightning arc as a free action. Characters of your choice in the LINE take 2 AP energy damage."
     },
     {
      "name": "Transcension",
@@ -550,7 +538,7 @@
    "ranks": [
     {
      "name": "Tactical Intelligence",
-     "description": "Whenever an allied character in line of sight misses with an attack, you know by how much it missed. Additionally, you gain the “Superior Intelligence” Reaction."
+     "description": "Whenever an allied character in line of sight misses with an attack, you know by how much it missed. Additionally, you gain the “Superior Intelligence” Reaction.<br><b>Superior Intelligence (Reaction, 2/round)</b> — <i>Trigger:</i> An allied character in Line of Sight has rolled an Attack Roll.<br>You may add 1 to the attack roll. This may cause an attack to hit or to critically hit. Each attack roll can only be affected this way once."
     },
     {
      "name": "Information Handling",
@@ -558,9 +546,18 @@
     },
     {
      "name": "Active Interference",
-     "description": "Whenever a hostile character in line of sight hits with an attack, you know what they rolled. <br>You may also use \"Superior Intelligence\" when a hostile character in Line of Sight has rolled an Attack Roll. Instead of adding to the attack roll, you subtract from it in the same manner. Each attack roll can only be affected this way once."
+     "description": "Whenever a hostile character in line of sight hits with an attack, you know what they rolled. <br>You may also use \"Superior Intelligence\" when a hostile character in Line of Sight has rolled an Attack Roll. Instead of adding to the attack roll, you subtract from it in the same manner. Each attack roll can only be affected this way once.<br><b>Active Interference (Reaction, 2/round)</b> — <i>Trigger:</i> A hostile character in Line of Sight has rolled an Attack Roll.<br>Subtract from the attack roll using your Intel Die value (or 1 without Intel Die). Each attack roll can only be affected this way once."
     }
    ]
+  }
+ ],
+ "core_bonuses": [
+  {
+   "id": "cb_superheavy_mounting",
+   "name": "Superheavy Mounting",
+   "source": "GMS",
+   "effect": "If your mech has fewer than 3 mounts (excluding integrated mounts) it gains an additional superheavy mount. It can only take SUPERHEAVY WEAPONS. They still require an additional mount to be installed. If your mech also has a heavy mount the SUPERHEAVY WEAPON must use that mount as the additional mount.",
+   "description": "You’d be surprised how large a gun you could fit on a chassis if you ripped out peripheral systems and failsafe redundancies."
   }
  ],
  "pilot_gear": [
@@ -721,12 +718,6 @@
    "name": "Madrigal Jump System",
    "type": "Gear",
    "effect": "<p><b>Requirement</b>: Weapons and Gear with “Madrigal” in the name may only be equipped if the Pilot is wearing the “Madrigal Boarding Carapace”.</p><p>If your pilot is on foot you may Fly when you Boost. You must end this movement on solid ground or begin falling.</p>",
-   "active_effects": [
-    {
-     "name": "Madrigal Jump System",
-     "detail": "While on foot, you may Fly when you Boost. You must end on solid ground or begin falling."
-    }
-   ],
    "tags": [
     "Unique",
     "Exotic Gear",
@@ -738,12 +729,6 @@
    "name": "Madrigal Thermal Visor",
    "type": "Gear",
    "effect": "<p><b>Requirement</b>: Weapons and Gear with “Madrigal” in the name may only be equipped if the Pilot is wearing the “Madrigal Boarding Carapace”.</p><p>If your pilot is on foot your attacks ignore Cover.</p>",
-   "active_effects": [
-    {
-     "name": "Madrigal Thermal Visor",
-     "detail": "While on foot, your attacks ignore Cover."
-    }
-   ],
    "tags": [
     "Unique",
     "Exotic Gear",
@@ -755,12 +740,6 @@
    "name": "Madrigal Active Camo",
    "type": "Gear",
    "effect": "<p><b>Requirement</b>: Weapons and Gear with “Madrigal” in the name may only be equipped if the Pilot is wearing the “Madrigal Boarding Carapace”.</p><p>If your pilot is on foot, ranged attacks originating from beyond Range 3 treat you as having Hard Cover.</p>",
-   "active_effects": [
-    {
-     "name": "Madrigal Active Camo",
-     "detail": "While on foot, ranged attacks from beyond Range 3 treat you as having Hard Cover."
-    }
-   ],
    "tags": [
     "Unique",
     "Exotic Gear",
@@ -771,7 +750,7 @@
    "id": "ms_madrigal_personal_shield",
    "name": "Madrigal Personal Shield",
    "type": "Gear",
-   "effect": "<p><b>Requirement</b>: Weapons and Gear with “Madrigal” in the name may only be equipped if the Pilot is wearing the “Madrigal Boarding Carapace”.</p><p>If your pilot is on foot, you gain the Shielded reaction.</p><br><b>Shielded</b> — You may expend a charge to gain Resistance to that damage.",
+   "effect": "<p><b>Requirement</b>: Weapons and Gear with “Madrigal” in the name may only be equipped if the Pilot is wearing the “Madrigal Boarding Carapace”.</p><p>If your pilot is on foot, you gain the Shielded reaction.</p><br><b>Shielded</b> — <i>Trigger:</i> You take damage.<br>You may expend a charge to gain Resistance to that damage.",
    "tags": [
     "Unique",
     "Exotic Gear",
@@ -827,13 +806,6 @@
    ]
   }
  ],
- "core_bonuses": [
-  {
-   "id": "cb_superheavy_mounting",
-   "name": "Superheavy Mounting",
-   "source": "GMS",
-   "effect": "If your mech has fewer than 3 mounts (excluding integrated mounts) it gains an additional superheavy mount. It can only take SUPERHEAVY WEAPONS. They still require an additional mount to be installed. If your mech also has a heavy mount the SUPERHEAVY WEAPON must use that mount as the additional mount.",
-   "description": "You’d be surprised how large a gun you could fit on a chassis if you ripped out peripheral systems and failsafe redundancies."
-  }
- ]
+ "backgrounds": [],
+ "mods": []
 }

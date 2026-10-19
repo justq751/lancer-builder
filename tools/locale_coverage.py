@@ -10,7 +10,7 @@ CI can print it without failing (a partial translation is a working site).
 Usage:
     python3 tools/locale_coverage.py [--lang ru] [--list] [--markdown]
 
-    --list      also print every untranslated path (file: id/field/...)
+    --list      also print every untranslated and stale path (file: id/field/...)
     --markdown  GitHub-flavoured table, for $GITHUB_STEP_SUMMARY
 
 Also reports "generator drift": files that extract_locale_template.py would
@@ -35,19 +35,22 @@ def filled(ru, en):
     return isinstance(ru, str) and bool(ru.strip())
 
 
-def walk(node, path, out):
-    """Collect (path, translated?) for every pair whose English is non-empty."""
+def walk(node, path, out, stale):
+    """Collect (path, translated?) for every pair whose English is non-empty,
+    and the paths of pairs marked "stale" (English changed since translation)."""
     if not isinstance(node, dict):
         return
     if "en" in node and "ru" in node:
         en = node["en"]
         if (isinstance(en, str) and en.strip()) or (isinstance(en, dict) and en):
             out.append(("/".join(path), filled(node["ru"], en)))
+        if node.get("stale"):
+            stale.append("/".join(path))
         return
     for key, value in node.items():
         if key.startswith("_"):  # "_comment" and friends
             continue
-        walk(value, path + [key], out)
+        walk(value, path + [key], out, stale)
 
 
 def drifted_files(lang):
@@ -74,14 +77,15 @@ def main():
     ap.add_argument("--list", action="store_true", help="print every untranslated path")
     ap.add_argument("--markdown", action="store_true", help="markdown table output")
     args = ap.parse_args()
+    sys.stdout.reconfigure(encoding="utf-8")  # ids like ms_jäger_kunst_ii on a cp1251 console
 
-    rows, missing, stale = [], {}, 0
+    rows, missing, stale = [], {}, {}
     for path in sorted((ROOT / "locales" / args.lang).glob("*.json")):
-        pairs = []
+        pairs, stale_paths = [], []
         doc = json.loads(path.read_text(encoding="utf-8"))
-        walk(doc, [], pairs)
-        if path.name == "ui.json":
-            stale = sum(1 for v in doc.values() if isinstance(v, dict) and v.get("stale"))
+        walk(doc, [], pairs, stale_paths)
+        if stale_paths:
+            stale[path.name] = stale_paths
         todo = [p for p, ok in pairs if not ok]
         rows.append((path.name, len(pairs) - len(todo), len(pairs)))
         if todo:
@@ -102,18 +106,21 @@ def main():
         print(f"{'total':20s} {done:5d} / {total:5d}  ({100 * done / max(total, 1):.1f}%)")
 
     notes = []
-    if stale:
-        notes.append(f'ui.json: {stale} translation(s) marked "stale" (English changed since)')
+    for name, paths in stale.items():
+        notes.append(f'{name}: {len(paths)} translation(s) marked "stale" (English changed since)')
     if drift:
         notes.append("generator drift — extract_locale_template.py would rewrite: " + ", ".join(drift))
     for note in notes:
         print(("\n- " if args.markdown else "\n") + note)
 
-    if args.list and missing:
+    if args.list and (missing or stale):
         print("\n```" if args.markdown else "")
         for name, todo in missing.items():
             for p in todo:
                 print(f"{name}: {p}")
+        for name, paths in stale.items():
+            for p in paths:
+                print(f"{name}: {p}  [stale]")
         if args.markdown:
             print("```")
 

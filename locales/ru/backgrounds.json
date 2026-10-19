@@ -198,5 +198,55 @@
    "en": "At the end of the day, empire only functions when labor clocks in. Labor mines the raw materials; labor fashions stone and metal and organic matter into bolts and screws and glue; labor designs the patterns for printers; labor shapes and welds, hammers and builds. Without the labor of trillions, all progress would grind to a halt. <i>Before you set down the wrench and picked up a helm, what kind of work did you do? Did you work in the fields, factories, shipyards, mines, or somewhere else? What was your life like before you began training as a pilot? Why did you leave? Will you return? Was there a project you worked on that you're especially proud of? Do you have an old crew still working on the clock? What world did you call home, and what were the working conditions there?</i>",
    "ru": "В конце концов, империя функционирует только тогда, когда труд выходит на смену. Труд добывает сырьё; труд превращает камень, металл и органическую материю в болты, винты и клей; труд создаёт шаблоны для принтеров; труд формирует и сваривает, кует и строит. Без труда триллионов весь прогресс остановился бы. <i>Прежде чем вы отложили гаечный ключ и взялись за штурвал, какую работу вы выполняли? Вы работали в полях, на заводах, в доках, шахтах, или где-то ещё? Какой была ваша жизнь до того, как вы начали обучение на пилота? Почему вы уехали? Вы вернётесь? Был ли проект, над которым вы работали и которым особенно гордитесь? У вас есть старая команда, что всё ещё работает по расписанию? Какой мир вы называли домом, и какие там были условия труда?</i>"
   }
+ },
+ "pbg_noble_heir": {
+  "name": {
+   "en": "Noble Heir",
+   "ru": "Знатный наследник"
+  },
+  "description": {
+   "en": "Through an accident of birth or the result of political cunning you are set to inherit, and bear the weight of great expectations. <i>What relationship do you have with your noble house? What do the people around you expect of you? How does that constrain you?</i><br>Karrakin noble houses are hotbeds of political infighting. <i>Who did you have to step over to gain or retain your position? Who supports you? Who seeks to usurp you? Why?</i>",
+   "ru": "По случайности рождения или благодаря политической хитрости вы должны унаследовать титул — и несёте груз больших ожиданий. <i>Какие у вас отношения с вашим знатным домом? Чего от вас ждут окружающие? Как это вас сковывает?</i><br>Карракинские знатные дома — рассадник политических интриг. <i>Через кого вам пришлось переступить, чтобы получить или сохранить своё положение? Кто вас поддерживает? Кто хочет занять ваше место? Почему?</i>"
+  }
+ },
+ "pbg_second_choice": {
+  "name": {
+   "en": "Second Choice",
+   "ru": "Младший отпрыск"
+  },
+  "description": {
+   "en": "An entire industry exists to salve the existential ennui of young Karrakin nobility through travel and exchange programs with Earth, Ras Shamra, and beyond. <i>Where else in the galaxy have you been? What strange sights have you seen? Who have you met? How has this affected your relationship with Karrakin society?</i><br>You benefit from great privilege, but have comparatively little responsibility. <i>What is your relationship with your fellow nobles? With power? With your own privilege?</i>",
+   "ru": "Целая индустрия существует ради того, чтобы унять экзистенциальную тоску молодой карракинской знати — путешествиями и программами обмена с Землёй, Рас-Шамрой и не только. <i>Где ещё в галактике вы побывали? Какие странные зрелища видели? Кого встречали? Как это повлияло на ваши отношения с карракинским обществом?</i><br>У вас огромные привилегии, но сравнительно мало ответственности. <i>Какие у вас отношения с другими дворянами? С властью? С собственными привилегиями?</i>"
+  }
+ },
+ "pbg_company_squire": {
+  "name": {
+   "en": "Company Squire",
+   "ru": "Оруженосец компании"
+  },
+  "description": {
+   "en": "The traditional path to becoming a kavaliere is to learn from more experienced pilots as part of their support staff. <i>Who did you squire for? How did they treat you? What were your responsibilities?  What did you learn from them?</i><br>The Great Companies system is a political structure unto itself. <i>Did you squire for a noble house company or mercenary Free Company? Have you seen combat with them? How has your company influenced you?</i>",
+   "ru": "Традиционный путь к званию кавальере — учиться у более опытных пилотов, служа в их команде поддержки. <i>У кого вы были оруженосцем? Как с вами обращались? Каковы были ваши обязанности? Чему вы у них научились?</i><br>Система Великих компаний — самостоятельная политическая структура. <i>Вы служили оруженосцем в компании знатного дома или в наёмной Вольной компании? Бывали ли вы с ними в бою? Как компания на вас повлияла?</i>"
+  }
+ },
+ "pbg_pankrati": {
+  "name": {
+   "en": "Pankrati",
+   "ru": "Панкрати"
+  },
+  "description": {
+   "en": "The mech combat sport of pankration mekani produces a great number of the BUC’s most talented pilots. <i>What is your record in competitive matches? Which formats were your specialty? What motivated you to train for real combat? What did you find difficult about the transition?</i><br>Talented pankrati frequently achieve great renown across the Concern and beyond. <i>Do you have fans? How do they see you? Do you indulge your celebrity status?</i>",
+   "ru": "Спорт боёв мехов — панкратион мекани — даёт BUC множество самых талантливых пилотов. <i>Каков ваш счёт в соревновательных поединках? В каких форматах вы были сильнее всего? Что побудило вас готовиться к настоящему бою? Что далось вам трудно при этом переходе?</i><br>Талантливые панкрати часто прославляются на весь Концерн и за его пределами. <i>Есть ли у вас поклонники? Какими они вас видят? Пользуетесь ли вы своей славой?</i>"
+  }
+ },
+ "pbg_young_buck": {
+  "name": {
+   "en": "Young Buck",
+   "ru": "Молодой волк"
+  },
+  "description": {
+   "en": "The BUC celebrates its “young bucks”, the talented soldiers who rise through the ranks as a result of skill and dedication. <i>How did you join the BUC, and what was your role? What led to your meteoric rise? What obstacles have you faced, and how did you overcome them?</i><br>Tours with the BUC range from quiet peacekeeping missions, through to hot wars on distant planets. <i>Where were you deployed, and what did you do there? How has that experience shaped you? What is your relationship with war? With your fellow soldiers? With the people you helped, or hurt?</i>",
+   "ru": "BUC чествует своих «молодых волков» — талантливых солдат, поднявшихся по службе благодаря умению и преданности делу. <i>Как вы попали в BUC и какой была ваша роль? Что привело к вашему стремительному взлёту? С какими препятствиями вы столкнулись и как их преодолели?</i><br>Командировки с BUC бывают самыми разными — от тихих миротворческих миссий до горячих войн на далёких планетах. <i>Куда вас направляли и что вы там делали? Как этот опыт вас сформировал? Каковы ваши отношения с войной? С сослуживцами? С людьми, которым вы помогли — или навредили?</i>"
+  }
  }
 }

@@ -249,8 +249,8 @@
    "ru": "Штурмовая пушка"
   },
   "effect": {
-   "en": "IPS-N’s assault cannon of choice is a deep-cooled autocannon, fieldable as a mounted weapon or manipulator-operated platform. The cannon, simple in its functionality, can be fed by either box magazine or belt and is a standard inclusion in almost any among IPS-N fleet orders. In micro and zero-gravity environments, Drake pilots commonly employ the assault cannon as an additional propulsion system.",
-   "ru": "Штурмовая пушка, которую предпочитает IPS-N — глубоко охлаждаемая автопушка, применимая и как установленное на мех оружие, и как платформа с ручным манипулятором. Пушка, простая по своей конструкции, может питаться как из коробчатого магазина, так и лентой, и является стандартным пунктом почти в любом флотском заказе IPS-N. В условиях микро- и нулевой гравитации пилоты «Дрейков» часто используют штурмовую пушку как дополнительную двигательную систему."
+   "en": "",
+   "ru": ""
   },
   "profiles": {
    "Standard": {
@@ -259,7 +259,7 @@
      "ru": "Стандартный"
     },
     "effect": {
-     "en": "You can spin up this weapon’s barrels as a quick action.<br><b>Spin Up Assault Cannon</b> — Spin up the barrels of the Assault Cannon, Slowing your mech and allowing use of its “Spin-Up Mode” profile.",
+     "en": "You can spin up this weapon’s barrels as a quick action.<br><b>Spin Up Assault Cannon</b> — Spin up the barrels of the Assault Cannon, Slowing your mech and allowing use of its \"Spin-Up Mode\" profile.",
      "ru": "Вы можете раскрутить стволы этого оружия как быстрое действие.<br><b>Раскрутить штурмовую пушку</b> — Раскрутите стволы Штурмовой пушки, получая Замедление и открывая доступ к её профилю «Режим раскрутки»."
     }
    },
@@ -269,7 +269,7 @@
      "ru": "Режим раскрутки"
     },
     "effect": {
-     "en": "While spinning, this weapon gains Reliable 3, but you become Slowed.<br>You can end this effect as a protocol.<br><b>Cease Spin-Up</b> — End the Assault Cannon's “Spin-Up Mode”, ending the Slowed condition and allowing the Assault Cannon to be used with its “Standard” profile.",
+     "en": "While spinning, this weapon gains Reliable 3, but you become Slowed.<br>You can end this effect as a protocol.<br><b>Cease Spin-Up</b> — End the Assault Cannon's \"Spin-Up Mode\", ending the Slowed condition and allowing the Assault Cannon to be used with its \"Standard\" profile.",
      "ru": "Пока пушка раскручена, это оружие получает Надёжное 3, но вы становитесь Замедлены.<br>Вы можете прекратить этот эффект как протокол.<br><b>Прекратить раскрутку</b> — Завершите «Режим раскрутки» Штурмовой пушки, снимая Замедление и открывая доступ к профилю «Стандартный»."
     }
    }
@@ -295,8 +295,8 @@
    "ru": "Тяжёлая штурмовая пушка «Левиафан»"
   },
   "effect": {
-   "en": "The Leviathan Heavy Assault Cannon (HAC) is a massive, multi-barrel rotary cannon fed by an external reservoir, usually dorsally mounted on the chassis carrying it. Unmodified, the Leviathan should only be fired within the recommended burst timing specifications to prevent percussive trauma to joints and pilots.<br>In partnership with Harrison Armory’s Think Tank, IPS-N is currently investigating remote solutions for the cannon’s ammunition consumption demands.",
-   "ru": "Тяжёлая штурмовая пушка «Левиафан» (HAC) — массивная многоствольная вращающаяся пушка, питающаяся от внешнего резервуара, обычно устанавливаемая на спине несущего её шасси. Без модификаций «Левиафан» следует применять только в рекомендованных временных режимах очередей, чтобы избежать ударной травмы суставов и пилота.<br>В партнёрстве с Мозговым центром Harrison Armory, IPS-N в настоящее время изучает дистанционные решения для потребностей пушки в боеприпасах."
+   "en": "",
+   "ru": ""
   },
   "profiles": {
    "Standard": {
@@ -305,7 +305,7 @@
      "ru": "Стандартный"
     },
     "effect": {
-     "en": "Unlike other Superheavy weapons, the Leviathan can be used with Skirmish. You can spin up this weapon’s barrels as a quick action.<br><b>Spin Up Leviathan</b> — Spin up the barrels of the Leviathan Heavy Assault Cannon, Slowing your mech and allowing use of its “Spin-Up Mode” profile.",
+     "en": "Unlike other Superheavy weapons, the Leviathan can be used with Skirmish. You can spin up this weapon’s barrels as a quick action.<br><b>Spin Up Leviathan</b> — Spin up the barrels of the Leviathan Heavy Assault Cannon, Slowing your mech and allowing use of its \"Spin-Up Mode\" profile.",
      "ru": "В отличие от другого Сверхтяжёлого оружия, «Левиафан» можно использовать с Атакой на манёвре (Skirmish). Вы можете раскрутить стволы этого оружия как быстрое действие.<br><b>Раскрутить «Левиафан»</b> — Раскрутите стволы Тяжёлой штурмовой пушки «Левиафан», получая Замедление и открывая доступ к её профилю «Режим раскрутки»."
     }
    },
@@ -315,7 +315,7 @@
      "ru": "Режим раскрутки"
     },
     "effect": {
-     "en": "While spinning, you are Slowed and can no longer use the Leviathan with Skirmish.<br>You can cease this effect as a protocol.<br><b>Cease Spin-Up</b> — End the Leviathan Heavy Assault Cannon’s “Spin-Up Mode”, ending the Slowed condition and allowing the Leviathan to be used with its “Standard” profile.",
+     "en": "While spinning, you are Slowed and can no longer use the Leviathan with Skirmish.<br>You can cease this effect as a protocol.<br><b>Cease Spin-Up</b> — End the Leviathan Heavy Assault Cannon's \"Spin-Up Mode\", ending the Slowed condition and allowing the Leviathan to be used with its \"Standard\" profile.",
      "ru": "Пока пушка раскручена, вы Замедлены и не можете использовать «Левиафан» с Атакой на манёвре.<br>Вы можете прекратить этот эффект как протокол.<br><b>Прекратить раскрутку</b> — Завершите режим «Режим раскрутки» Тяжёлой штурмовой пушки «Левиафан», снимая Замедление и открывая доступ к профилю «Стандартный»."
     }
    }
@@ -647,8 +647,8 @@
    "ru": "Автомодуль"
   },
   "effect": {
-   "en": "Instead of using any kind of trigger mechanism, this weapon automatically scans for target locks, firing spinning, razor-sharp disks upon successful IDs. Gain the Autonomous Assault reaction, which is the only way you can attack with the Autopod<br><b>Autonomous Assault</b> — You may automatically hit their target with the Autopod.",
-   "ru": "Вместо использования какого-либо спускового механизма это оружие автоматически сканирует захваты целей, выпуская вращающиеся остро заточенные диски при успешном опознании. Получите реакцию «Автономная атака» — единственный способ атаковать этим оружием.<br><b>Автономная атака</b> — Вы можете автоматически попасть по цели из Автопода."
+   "en": "Instead of using any kind of trigger mechanism, this weapon automatically scans for target locks, firing spinning, razor-sharp disks upon successful IDs. Gain the Autonomous Assault reaction, which is the only way you can attack with the Autopod<br><b>Autonomous Assault</b> — <i>Trigger:</i> Another character attacks a target within range 15 of you and consumes Lock On<br>You may automatically hit their target with the Autopod.",
+   "ru": "Вместо использования какого-либо спускового механизма это оружие автоматически сканирует захваты целей, выпуская вращающиеся остро заточенные диски при успешном опознании. Получите реакцию «Автономная атака» — единственный способ атаковать этим оружием.<br><b>Автономная атака</b> — <i>Триггер:</i> другой персонаж атакует цель в пределах дальности 15 от вас и расходует Захват цели.<br>Вы можете автоматически попасть по цели из Автопода."
   }
  },
  "mw_vorpal_gun": {
@@ -657,8 +657,8 @@
    "ru": "Смертоносное орудие"
   },
   "effect": {
-   "en": "Gain the Snicker-Snack reaction, which is the only way you can attack with this weapon.<br><b>Snicker-Snack</b> — You may make an attack against the hostile character with the Vorpal Gun.",
-   "ru": "Получите реакцию «Хрустни-щёлкни» — единственный способ атаковать этим оружием.<br><b>Хрустни-щёлкни</b> — Вы можете атаковать враждебного персонажа из Ворпал-пушки."
+   "en": "Gain the Snicker-Snack reaction, which is the only way you can attack with this weapon.<br><b>Snicker-Snack</b> — <i>Trigger:</i> A hostile character within Range of the Vorpal Gun and line of sight deals damage to an allied character.<br>You may make an attack against the hostile character with the Vorpal Gun.",
+   "ru": "Получите реакцию «Хрустни-щёлкни» — единственный способ атаковать этим оружием.<br><b>Хрустни-щёлкни</b> — <i>Триггер:</i> враждебный персонаж в пределах Дальности Ворпал-пушки и линии видимости наносит урон союзному персонажу.<br>Вы можете атаковать враждебного персонажа из Ворпал-пушки."
   }
  },
  "mw_ghoul_nexus": {
@@ -749,8 +749,8 @@
    "ru": "Автопушка"
   },
   "effect": {
-   "en": "This weapon can’t make normal attacks. Instead, you can attack with it as a free action at the end of your turn. It doesn’t benefit from or trigger your talents.<br><b>Fire Autogun</b> — This weapon can’t make normal attacks. Instead, you can attack with it as a free action at the end of your turn. It doesn’t benefit from or trigger your talents.",
-   "ru": "Это оружие не может атаковать обычным образом. Вместо этого вы можете атаковать им как свободное действие в конце своего хода. На него не действуют и его не провоцируют ваши таланты.<br><b>Выстрелить из Автопушки</b> — Это оружие не может атаковать обычным образом. Вместо этого вы можете атаковать им как свободное действие в конце своего хода. На него не действуют и его не провоцируют ваши таланты."
+   "en": "This weapon can’t make normal attacks. Instead, you can attack with it as a free action at the end of your turn. It doesn’t benefit from or trigger your talents.",
+   "ru": "Это оружие не может атаковать обычным образом. Вместо этого вы можете атаковать им как свободное действие в конце своего хода. На него не действуют и его не провоцируют ваши таланты."
   }
  },
  "mw_siege_cannon": {
@@ -759,24 +759,28 @@
    "ru": "Осадная пушка"
   },
   "effect": {
-   "en": "The siege cannon is the Armory’s quintessential artillery piece: a howitzer cannon fed by an automated loading system. Typically mounted on long-range mechs deployed in artillery or squad-support roles, siege cannons are capable of both indirect and direct fire as the situation demands with variable ammunition options.",
-   "ru": "Осадная пушка — типичное артиллерийское орудие Арсенала: гаубица с автоматизированной системой заряжания. Обычно устанавливаемая на дальнобойные мехи, развёрнутые в роли артиллерии или поддержки отряда, осадная пушка способна вести как непрямой, так и прямой огонь в зависимости от ситуации, с переменными вариантами боеприпасов."
-  },
-  "on_attack": {
-   "en": "Choose to fire in either siege mode or direct fire mode.",
-   "ru": "Выберите режим стрельбы: осадный или прямой наводки."
+   "en": "",
+   "ru": ""
   },
   "profiles": {
    "Siege Mode": {
     "name": {
      "en": "Siege Mode",
      "ru": "Осадный режим"
+    },
+    "on_attack": {
+     "en": "Choose to fire in either siege mode or direct fire mode.",
+     "ru": "Выберите, стрелять в осадном режиме или в режиме прямой наводки."
     }
    },
    "Direct Fire Mode": {
     "name": {
      "en": "Direct Fire Mode",
      "ru": "Режим прямой наводки"
+    },
+    "on_attack": {
+     "en": "Choose to fire in either siege mode or direct fire mode.",
+     "ru": "Выберите, стрелять в осадном режиме или в режиме прямой наводки."
     }
    }
   }
@@ -875,8 +879,8 @@
    "ru": "Тахионное копьё"
   },
   "effect": {
-   "en": "<br><b>Tachyon Lance Backblast</b> — Create a cone 3 backblast of burning plasma in the opposite direction to the attack. Characters within the affected area must succeed on an Engineering save or take 4 burn and 2 heat. Until the start of your next turn, the affected area provides soft cover.",
-   "ru": "<br><b>Обратная вспышка Тахионного копья</b> — Создайте обратную вспышку горящей плазмы-конус 3 в направлении, противоположном атаке. Персонажи в поражённой области должны пройти спасбросок Инженерии или получить 4 горения и 2 тепла. До начала вашего следующего хода поражённая область даёт мягкое укрытие."
+   "en": "<br><b>Tachyon Lance Backblast</b> — <i>Trigger:</i> You attack with the Tachyon Lance while in the Danger Zone.<br>Create a cone 3 backblast of burning plasma in the opposite direction to the attack. Characters within the affected area must succeed on an Engineering save or take 4 burn and 2 heat. Until the start of your next turn, the affected area provides soft cover.",
+   "ru": "<br><b>Обратная вспышка Тахионного копья</b> — <i>Триггер:</i> вы атакуете Тахионным копьём, находясь в Опасной зоне.<br>Создайте обратную вспышку горящей плазмы-конус 3 в направлении, противоположном атаке. Персонажи в поражённой области должны пройти спасбросок Инженерии или получить 4 горения и 2 тепла. До начала вашего следующего хода поражённая область даёт мягкое укрытие."
   },
   "on_attack": {
    "en": "If you’re in the Danger Zone, create a cone 3 backblast of burning plasma in the opposite direction to the attack. Characters within the affected area must succeed on an Engineering save or take 4 burn and 2 heat. Until the start of your next turn, the affected area provides soft cover.",
@@ -937,8 +941,8 @@
    "ru": "Прототипное оружие II"
   },
   "effect": {
-   "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 1d6+2 to determine this weapon’s Limited uses and choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></li></ul></ul>",
-   "ru": "Это оружие — экспериментальный прототип, созданный под ваши конкретные требования.<br>Когда вы устанавливаете его или проводите Полный ремонт, вы можете выбрать новый тип оружия, тип урона и либо Угрозу 1 (ближнее), либо Дальность 10 (все остальные типы). Дополнительно, каждый раз при Полном ремонте, перебрасывайте 1d6+2 для определения количества использований этого оружия по Лимиту и выбирайте два:<ul><li><b>Доработанная оптика:</b> Ваше прототипное оружие всегда получает +1 к Точности атак.</li><li><b>Доработанный компьютер:</b> Ваше прототипное оружие становится Умным.</li><li><b>Снятая защита реактора:</b> Каждый раз, когда вы атакуете своим прототипным оружием, вы можете выбрать — за 2 Тепла — атаковать одним из следующих вариантов, зависящих от типа оружия:<ul><li><b>Дальнее оружие:</b> Конус 3, Линия 5 или [Взрыв 1, Дальность 10].</li><li><b>Оружие ближнего боя:</b> Вспышка 1.</li></li></ul></ul>"
+   "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 1d6+2 to determine this weapon’s Limited uses and choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></ul></li></ul>",
+   "ru": "Это оружие — экспериментальный прототип, созданный под ваши конкретные требования.<br>Когда вы устанавливаете его или проводите Полный ремонт, вы можете выбрать новый тип оружия, тип урона и либо Угрозу 1 (ближнее), либо Дальность 10 (все остальные типы). Дополнительно, каждый раз при Полном ремонте, перебрасывайте 1d6+2 для определения количества использований этого оружия по Лимиту и выбирайте два:<ul><li><b>Доработанная оптика:</b> Ваше прототипное оружие всегда получает +1 к Точности атак.</li><li><b>Доработанный компьютер:</b> Ваше прототипное оружие становится Умным.</li><li><b>Снятая защита реактора:</b> Каждый раз, когда вы атакуете своим прототипным оружием, вы можете выбрать — за 2 Тепла — атаковать одним из следующих вариантов, зависящих от типа оружия:<ul><li><b>Дальнее оружие:</b> Конус 3, Линия 5 или [Взрыв 1, Дальность 10].</li><li><b>Оружие ближнего боя:</b> Вспышка 1.</li></ul></li></ul>"
   }
  },
  "mw_prototype_3": {
@@ -947,8 +951,8 @@
    "ru": "Прототипное оружие III"
   },
   "effect": {
-   "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 2d6 to determine this weapon’s Limited uses and choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></li></ul></ul>",
-   "ru": "Это оружие — экспериментальный прототип, созданный под ваши конкретные требования.<br>Когда вы устанавливаете его или проводите Полный ремонт, вы можете выбрать новый тип оружия, тип урона и либо Угрозу 1 (ближнее), либо Дальность 10 (все остальные типы). Дополнительно, каждый раз при Полном ремонте, перебрасывайте 2d6 для определения количества использований этого оружия по Лимиту и выбирайте два:<ul><li><b>Доработанная оптика:</b> Ваше прототипное оружие всегда получает +1 к Точности атак.</li><li><b>Доработанный компьютер:</b> Ваше прототипное оружие становится Умным.</li><li><b>Снятая защита реактора:</b> Каждый раз, когда вы атакуете своим прототипным оружием, вы можете выбрать — за 2 Тепла — атаковать одним из следующих вариантов, зависящих от типа оружия:<ul><li><b>Дальнее оружие:</b> Конус 3, Линия 5 или [Взрыв 1, Дальность 10].</li><li><b>Оружие ближнего боя:</b> Вспышка 1.</li></li></ul></ul>"
+   "en": "This weapon is an experimental prototype, customized according to your specific requirements.<br>When you install it, or during a Full Repair, you may choose a new weapon type, damage type, and either Threat 1 (melee) or Range 10 (all other types). Additionally, each time you perform a Full Repair, reroll 2d6 to determine this weapon’s Limited uses and choose two:<ul><li><b>Tweaked Optics:</b> Your prototype weapon always gains +1 Accuracy on attacks.</li><li><b>Tweaked Computer:</b> Your prototype weapon is Smart.</li><li><b>Stripped reactor shielding:</b> Each time you attack with your prototype weapon, you may choose – at the cost of 2 Heat – to attack with one of the following options, depending on its weapon type:<ul><li><b>Ranged weapon:</b> Cone 3, Line 5, or [Blast 1, Range 10].</li><li><b>Melee weapon:</b> Burst 1.</li></ul></li></ul>",
+   "ru": "Это оружие — экспериментальный прототип, созданный под ваши конкретные требования.<br>Когда вы устанавливаете его или проводите Полный ремонт, вы можете выбрать новый тип оружия, тип урона и либо Угрозу 1 (ближнее), либо Дальность 10 (все остальные типы). Дополнительно, каждый раз при Полном ремонте, перебрасывайте 2d6 для определения количества использований этого оружия по Лимиту и выбирайте два:<ul><li><b>Доработанная оптика:</b> Ваше прототипное оружие всегда получает +1 к Точности атак.</li><li><b>Доработанный компьютер:</b> Ваше прототипное оружие становится Умным.</li><li><b>Снятая защита реактора:</b> Каждый раз, когда вы атакуете своим прототипным оружием, вы можете выбрать — за 2 Тепла — атаковать одним из следующих вариантов, зависящих от типа оружия:<ul><li><b>Дальнее оружие:</b> Конус 3, Линия 5 или [Взрыв 1, Дальность 10].</li><li><b>Оружие ближнего боя:</b> Вспышка 1.</li></ul></li></ul>"
   }
  },
  "mw_lancaster_integrated": {
@@ -1029,32 +1033,48 @@
    "ru": "ZF4 SOLIDCORE"
   },
   "effect": {
-   "en": "This weapon’s profile is determined by the number of Charges it carries. It begins with 1 Charge, dealing 1d6 energy with line 4. Each time you Stabilize, you gain an additional 1 Charge, up to a maximum of 4. The ZF4 gains an additional +4 line and +1d6 energy damage for each charge, and resets to 1 Charge after each attack. Charges persist between scenes, but are lost during a full repair.",
-   "ru": "Профиль этого оружия определяется числом накопленных Зарядов. Оно начинает с 1 Заряда, нанося 1d6 энергетического урона с Линией 4. Каждый раз, когда вы Стабилизируетесь, вы получаете дополнительный 1 Заряд, максимум до 4. ZF4 получает дополнительные +4 к Линии и +1d6 энергетического урона за каждый заряд, и сбрасывается до 1 Заряда после каждой атаки. Заряды сохраняются между сценами, но теряются при Полном ремонте."
+   "en": "",
+   "ru": ""
   },
   "profiles": {
    "1 Charge": {
     "name": {
      "en": "1 Charge",
      "ru": "1 Заряд"
+    },
+    "effect": {
+     "en": "This weapon’s profile is determined by the number of Charges it carries. It begins with 1 Charge, dealing 1d6 energy with line 4. Each time you Stabilize, you gain an additional 1 Charge, up to a maximum of 4. The ZF4 gains an additional +4 line and +1d6 energy damage for each charge, and resets to 1 Charge after each attack. Charges persist between scenes, but are lost during a full repair.",
+     "ru": "Профиль этого оружия определяется числом накопленных Зарядов. Оно начинает с 1 Заряда, нанося 1d6 энергетического урона с Линией 4. Каждый раз, когда вы Стабилизируетесь, вы получаете дополнительный 1 Заряд, максимум до 4. ZF4 получает дополнительные +4 к Линии и +1d6 энергетического урона за каждый заряд, и сбрасывается до 1 Заряда после каждой атаки. Заряды сохраняются между сценами, но теряются при Полном ремонте."
     }
    },
    "2 Charges": {
     "name": {
      "en": "2 Charges",
      "ru": "2 Заряда"
+    },
+    "effect": {
+     "en": "This weapon’s profile is determined by the number of Charges it carries. It begins with 1 Charge, dealing 1d6 energy with line 4. Each time you Stabilize, you gain an additional 1 Charge, up to a maximum of 4. The ZF4 gains an additional +4 line and +1d6 energy damage for each charge, and resets to 1 Charge after each attack. Charges persist between scenes, but are lost during a full repair.",
+     "ru": "Профиль этого оружия определяется числом накопленных Зарядов. Оно начинает с 1 Заряда, нанося 1d6 энергетического урона с Линией 4. Каждый раз, когда вы Стабилизируетесь, вы получаете дополнительный 1 Заряд, максимум до 4. ZF4 получает дополнительные +4 к Линии и +1d6 энергетического урона за каждый заряд, и сбрасывается до 1 Заряда после каждой атаки. Заряды сохраняются между сценами, но теряются при Полном ремонте."
     }
    },
    "3 Charges": {
     "name": {
      "en": "3 Charges",
      "ru": "3 Заряда"
+    },
+    "effect": {
+     "en": "This weapon’s profile is determined by the number of Charges it carries. It begins with 1 Charge, dealing 1d6 energy with line 4. Each time you Stabilize, you gain an additional 1 Charge, up to a maximum of 4. The ZF4 gains an additional +4 line and +1d6 energy damage for each charge, and resets to 1 Charge after each attack. Charges persist between scenes, but are lost during a full repair.",
+     "ru": "Профиль этого оружия определяется числом накопленных Зарядов. Оно начинает с 1 Заряда, нанося 1d6 энергетического урона с Линией 4. Каждый раз, когда вы Стабилизируетесь, вы получаете дополнительный 1 Заряд, максимум до 4. ZF4 получает дополнительные +4 к Линии и +1d6 энергетического урона за каждый заряд, и сбрасывается до 1 Заряда после каждой атаки. Заряды сохраняются между сценами, но теряются при Полном ремонте."
     }
    },
    "4 Charges": {
     "name": {
      "en": "4 Charges",
      "ru": "4 Заряда"
+    },
+    "effect": {
+     "en": "This weapon’s profile is determined by the number of Charges it carries. It begins with 1 Charge, dealing 1d6 energy with line 4. Each time you Stabilize, you gain an additional 1 Charge, up to a maximum of 4. The ZF4 gains an additional +4 line and +1d6 energy damage for each charge, and resets to 1 Charge after each attack. Charges persist between scenes, but are lost during a full repair.",
+     "ru": "Профиль этого оружия определяется числом накопленных Зарядов. Оно начинает с 1 Заряда, нанося 1d6 энергетического урона с Линией 4. Каждый раз, когда вы Стабилизируетесь, вы получаете дополнительный 1 Заряд, максимум до 4. ZF4 получает дополнительные +4 к Линии и +1d6 энергетического урона за каждый заряд, и сбрасывается до 1 Заряда после каждой атаки. Заряды сохраняются между сценами, но теряются при Полном ремонте."
     }
    }
   }
@@ -1079,20 +1099,8 @@
    "ru": "Щит Брута"
   },
   "effect": {
-   "en": "",
-   "ru": ""
-  },
-  "actions": {
-   "Raise Shield": {
-    "name": {
-     "en": "Raise Shield",
-     "ru": "Поднять щит"
-    },
-    "detail": {
-     "en": "As a protocol, you may raise this Shield to gain 4+Grit Overshield until the start of your next turn, at which point you lose all Overshield. You are Slowed while you have this Overshield. <br>You may not use this Protocol two turns in a row.",
-     "ru": "Как протокол, вы можете поднять этот Щит, чтобы получить Овершилд 4+Грит до начала своего следующего хода, после чего теряете весь Овершилд. Пока у вас есть этот Овершилд, вы Замедлены.<br>Вы не можете использовать этот Протокол два хода подряд."
-    }
-   }
+   "en": "<br><b>Raise Shield</b> — As a protocol, you may raise this Shield to gain 4+Grit Overshield until the start of your next turn, at which point you lose all Overshield. You are Slowed while you have this Overshield. <br>You may not use this Protocol two turns in a row.",
+   "ru": "<br><b>Поднять щит</b> — Как протокол вы можете поднять этот Щит, получив Овершилд 4+Грит до начала вашего следующего хода, после чего теряете весь Овершилд. Пока у вас есть этот Овершилд, вы Замедлены.<br>Вы не можете использовать этот Протокол два хода подряд."
   }
  },
  "mw_blast_pick": {
@@ -1183,24 +1191,12 @@
    "ru": "Феррожидкостное копьё"
   },
   "effect": {
-   "en": "",
-   "ru": ""
+   "en": "<br><b>Ferrofluid Lance Fling</b> — End the immobilization effect of the Ferrofluid Lance on both you and your target to knock them back 4 spaces in any direction.",
+   "ru": "<br><b>Бросок Феррожидкостного копья</b> — Завершите эффект обездвиживания Феррожидкостного копья для вас и вашей цели, чтобы отбросить её на 4 клетки в любом направлении."
   },
   "on_hit": {
    "en": "1/round, you may force a character hit by this weapon to make a Hull save. On a failure, both you and your target are Immobilized and cannot be moved in any way. For the duration, the target always considers you within range for melee attacks. On any subsequent turn, you can end this effect as a protocol, knocking your target 4 spaces in any direction, or your target can end it by successfully hitting you with a ranged or melee attack. This condition can’t be removed any other way.",
    "ru": "1/раунд вы можете заставить персонажа, поражённого этим оружием, пройти спасбросок Корпуса. При провале вы и ваша цель становитесь Обездвиженными и не можете быть перемещены никаким образом. На протяжении действия эффекта цель всегда считает вас в пределах дальности ближних атак. На любом последующем ходу вы можете как протокол завершить этот эффект, отбросив цель на 4 клетки в любом направлении, либо цель может завершить его, успешно попав по вам дальней или ближней атакой. Это состояние нельзя снять никаким другим способом."
-  },
-  "actions": {
-   "Ferrofluid Lance Fling": {
-    "name": {
-     "en": "Ferrofluid Lance Fling",
-     "ru": "Бросок феррожидкостного копья"
-    },
-    "detail": {
-     "en": "End the immobilization effect of the Ferrofluid Lance on both you and your target to knock them back 4 spaces in any direction.",
-     "ru": "Завершите эффект обездвиживания Феррожидкостного копья для себя и цели, чтобы отбросить её на 4 клетки в любом направлении."
-    }
-   }
   }
  },
  "mw_retort_loop": {
@@ -1292,39 +1288,9 @@
    "en": "",
    "ru": ""
   },
-  "profiles": {
-   "Default": {
-    "name": {
-     "en": "Default",
-     "ru": "По умолчанию"
-    },
-    "on_attack": {
-     "en": "Allied characters caught in the area are not attacked, but instead gain overshield +2. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 2).",
-     "ru": "Союзные персонажи, попавшие в область, не подвергаются атаке, но вместо этого получают Овершилд +2. Этот особый Овершилд не заменяет предыдущий, а увеличивает его, максимум до Овершилда 12 (если у союзника нет Овершилда, он получает Овершилд 2)."
-    }
-   },
-   "Drawn Back": {
-    "name": {
-     "en": "Drawn Back",
-     "ru": "Натянут"
-    },
-    "on_attack": {
-     "en": "Allied characters caught in the area are not attacked, but instead gain overshield +4. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 4).",
-     "ru": "Союзные персонажи, попавшие в область, не подвергаются атаке, но вместо этого получают Овершилд +4. Этот особый Овершилд не заменяет предыдущий, а увеличивает его, максимум до Овершилда 12 (если у союзника нет Овершилда, он получает Овершилд 4)."
-    }
-   }
-  },
-  "actions": {
-   "Draw Back": {
-    "name": {
-     "en": "Draw Back",
-     "ru": "Натянуть"
-    },
-    "detail": {
-     "en": "This weapon can be drawn back with a quick action to use the Drawn Back profile on its next attack. This effect is lost if you move for any reason.",
-     "ru": "Это оружие можно натянуть быстрым действием, чтобы при следующей атаке использовать профиль «Натянут». Эффект теряется, если вы перемещаетесь по любой причине."
-    }
-   }
+  "on_attack": {
+   "en": "Allied characters caught in the area are not attacked, but instead have any Overshield supercharged, increasing it by +4, but clearing all Overshield at the end of their next turn. If they have no Overshield, they instead gain Overshield 2.",
+   "ru": "Союзные персонажи в области не атакуются — вместо этого их Овершилд перегружается: он увеличивается на +4, но весь Овершилд сбрасывается в конце их следующего хода. Если Овершилда у них нет, они получают Овершилд 2."
   }
  },
  "mw_kraul_rifle": {
@@ -1347,8 +1313,8 @@
    "ru": "Клинок Терашима"
   },
   "effect": {
-   "en": "You may begin any fight in any of this weapon's stances and may take a stance or shift between stances as a protocol. Once you have taken a stance, you remain in it until you take a new stance, this weapon is destroyed, or you are STUNNED or JAMMED. You can also drop a stance as a free action.",
-   "ru": "Вы можете начать любой бой в любой из стоек этого оружия и можете принять стойку или сменить стойку как протокол. Приняв стойку, вы остаётесь в ней, пока не примете новую стойку, это оружие не будет уничтожено, либо вы не станете Оглушены или Заклинены. Вы также можете сбросить стойку как свободное действие."
+   "en": "You may begin any fight in any of this weapon's stances and may take a stance or shift between stances as a protocol. Once you have taken a stance, you remain in it until you take a new stance, this weapon is destroyed, or you are STUNNED or JAMMED. You can also drop a stance as a free action.<br><b>Change Stance</b> — Change this weapon's stance.",
+   "ru": "Вы можете начать любой бой в любой из стоек этого оружия и можете принять стойку или сменить стойку как протокол. Приняв стойку, вы остаётесь в ней, пока не примете новую стойку, это оружие не будет уничтожено, либо вы не станете Оглушены или Заклинены. Вы также можете сбросить стойку как свободное действие.<br><b>Сменить стойку</b> — Смените стойку этого оружия."
   },
   "profiles": {
    "No Stance": {
@@ -1369,24 +1335,8 @@
      "ru": "Стойка бури"
     },
     "effect": {
-     "en": "You gain the Storm Stance Reaction.",
-     "ru": "Вы получаете реакцию «Стойка бури»."
-    },
-    "actions": {
-     "Storm Stance Reaction": {
-      "name": {
-       "en": "Storm Stance Reaction",
-       "ru": "Стойка бури"
-      },
-      "trigger": {
-       "en": "After hitting with this weapon while in Storm Stance.",
-       "ru": "После попадания этим оружием в Стойке бури."
-      },
-      "detail": {
-       "en": "You may immediately deal 2 kinetic to all other characters adjacent to you and your target.",
-       "ru": "Вы можете немедленно нанести 2 кинетического урона всем другим персонажам, соседним с вами и вашей целью."
-      }
-     }
+     "en": "You gain the Storm Stance Reaction.<br><b>Storm Stance Reaction</b> — <i>Trigger:</i> After hitting with this weapon while in Storm Stance.<br>You may immediately deal 2 kinetic to all other characters adjacent to you and your target.",
+     "ru": "Вы получаете реакцию «Стойка бури».<br><b>Реакция «Стойка бури»</b> — <i>Триггер:</i> вы попали этим оружием, находясь в Стойке бури.<br>Вы можете немедленно нанести 2 кинетического урона всем остальным персонажам рядом с вами и вашей целью."
     }
    },
    "Lord's Stance": {
@@ -1407,28 +1357,6 @@
     "effect": {
      "en": "After attacking with this weapon, hit or miss, you may move 2 spaces in any direction, ignoring engagement and reactions.",
      "ru": "После атаки этим оружием, попадание или промах, вы можете переместиться на 2 клетки в любом направлении, игнорируя связанность боем и реакции."
-    }
-   }
-  },
-  "actions": {
-   "Change Stance": {
-    "name": {
-     "en": "Change Stance",
-     "ru": "Сменить стойку"
-    },
-    "detail": {
-     "en": "Change this weapon's stance.",
-     "ru": "Сменить стойку этого оружия."
-    }
-   },
-   "Drop Stance": {
-    "name": {
-     "en": "Drop Stance",
-     "ru": "Сбросить стойку"
-    },
-    "detail": {
-     "en": "Drop this weapon's stance.",
-     "ru": "Сбросить стойку этого оружия."
     }
    }
   }
@@ -1487,20 +1415,8 @@
    "ru": "Шлаковая пушка"
   },
   "effect": {
-   "en": "If your target is on the ground or a flat surface, once this attack resolves place a SIZE 1 mound of slag in a free space adjacent to them. The mound is an object with EVASION 5 and 10 HP.",
-   "ru": "Если ваша цель находится на земле или ровной поверхности, после разрешения этой атаки поместите курган шлака Размера 1 на свободную соседнюю с ней клетку. Курган — это объект с Уклонением 5 и 10 ОЗ."
-  },
-  "deployables": {
-   "Slag": {
-    "name": {
-     "en": "Slag",
-     "ru": "Шлак"
-    },
-    "detail": {
-     "en": "Created by the Slag Cannon",
-     "ru": "Создан Шлаковой пушкой"
-    }
-   }
+   "en": "If your target is on the ground or a flat surface, once this attack resolves place a SIZE 1 mound of slag in a free space adjacent to them. The mound is an object with EVASION 5 and 10 HP.<br><b>Deployable — Slag:</b> Created by the Slag Cannon",
+   "ru": "Если ваша цель находится на земле или ровной поверхности, после разрешения этой атаки поместите курган шлака Размера 1 на свободную соседнюю с ней клетку. Курган — это объект с Уклонением 5 и 10 ОЗ.<br><b>Автономный модуль — Шлак:</b> Создаётся Шлаковой пушкой."
   }
  },
  "mw_unraveler": {
@@ -1543,8 +1459,8 @@
    "ru": "D/D 288"
   },
   "effect": {
-   "en": "Unlike other Superheavy weapons, this weapon can be used with the basic profile to Skirmish.<br>You may charge this weapon as a quick action. While charged, you benefit from soft cover, but you are SLOWED, take 2 Heat at the start of your turn, and can no longer use the D/D 288 with SKIRMISH. At the start of any of your turns while it is charged, it has the Charged profile.",
-   "ru": "В отличие от другого Сверхтяжёлого оружия, это оружие можно использовать с базовым профилем для Стычки.<br>Вы можете зарядить это оружие как быстрое действие. Пока оно заряжено, вы получаете преимущества мягкого укрытия, но становитесь Замедлены, получаете 2 Тепла в начале своего хода и больше не можете использовать D/D 288 со Стычкой. В начале любого вашего хода, пока оно заряжено, оно имеет профиль «Заряжено»."
+   "en": "Unlike other Superheavy weapons, this weapon can be used with the basic profile to Skirmish.<br>You may charge this weapon as a quick action. While charged, you benefit from soft cover, but you are SLOWED, take 2 Heat at the start of your turn, and can no longer use the D/D 288 with SKIRMISH. At the start of any of your turns while it is charged, it has the Charged profile.<br><b>Charge D/D 288</b> — Charge the D/D 288. At the start of any of your turns while the D/D 288 is Charged, it uses the \"Charged\" profile. You become SLOWED, and benefit from soft cover. Additionally, gain 2 Heat at the start of your turn.<br>The \"Charged\" profile cannot be used to Skirmish.",
+   "ru": "В отличие от другого Сверхтяжёлого оружия, это оружие можно использовать с базовым профилем для Стычки.<br>Вы можете зарядить это оружие как быстрое действие. Пока оно заряжено, вы получаете преимущества мягкого укрытия, но становитесь Замедлены, получаете 2 Тепла в начале своего хода и больше не можете использовать D/D 288 со Стычкой. В начале любого вашего хода, пока оно заряжено, оно имеет профиль «Заряжено».<br><b>Зарядить D/D 288</b> — Зарядите D/D 288. В начале любого вашего хода, пока D/D 288 заряжено, оно использует профиль «Заряжено». Вы становитесь ЗАМЕДЛЕНЫ и получаете преимущества мягкого укрытия. Кроме того, получайте 2 Тепла в начале своего хода.<br>Профиль «Заряжено» нельзя использовать для Стычки."
   },
   "profiles": {
    "Uncharged": {
@@ -1561,18 +1477,6 @@
     "on_hit": {
      "en": "While charged, this weapon deals 30 AP Kinetic Damage when it hits objects or pieces of terrain. If this destroys objects and pieces of terrain, they explode, dealing 1d6 Kinetic Damage to all adjacent characters other than you and knocking them back 1 space.<br>This weapon loses its charge when you hit a target, when you disperse its charge as a free action, or when you become STUNNED or SHUT DOWN.",
      "ru": "Пока заряжено, это оружие наносит 30 пробивающего броню кинетического урона при попадании по объектам или элементам рельефа. Если это уничтожает объекты и элементы рельефа, они взрываются, нанося 1d6 кинетического урона всем соседним персонажам, кроме вас, и отбрасывая их на 1 клетку.<br>Это оружие теряет заряд, когда вы попадаете по цели, когда вы рассеиваете заряд как свободное действие, либо когда вы становитесь Оглушены или Отключены."
-    }
-   }
-  },
-  "actions": {
-   "Charge D/D 288": {
-    "name": {
-     "en": "Charge D/D 288",
-     "ru": "Зарядить D/D 288"
-    },
-    "detail": {
-     "en": "Charge the D/D 288. At the start of any of your turns while the D/D 288 is Charged, it uses the \"Charged\" profile. You become SLOWED, and benefit from soft cover. Additionally, gain 2 Heat at the start of your turn.<br>The \"Charged\" profile cannot be used to Skirmish.",
-     "ru": "Зарядите D/D 288. В начале любого вашего хода, пока D/D 288 Заряжен, он использует профиль «Заряжено». Вы становитесь Замедлены и получаете преимущества мягкого укрытия. Кроме того, получаете 2 Тепла в начале своего хода.<br>Профиль «Заряжено» нельзя использовать для Стычки."
     }
    }
   }
@@ -1721,20 +1625,8 @@
    "ru": "Легионный узел"
   },
   "effect": {
-   "en": "1/round, after attacking with this weapon, you may expend a charge as a free action to task a team of subalterns to operate independently from the main unit. This counts as a Drone deployed in a free space adjacent to you. You may attack with this weapon without expending or requiring charges, and this weapon can be destroyed (due to critical damage or other effects) even if it has no charges remaining.",
-   "ru": "1/раунд, после атаки этим оружием вы можете потратить заряд как свободное действие, чтобы отправить отряд субалтернов действовать независимо от основного подразделения. Это считается Дроном, развёрнутым на свободной клетке рядом с вами. Вы можете атаковать этим оружием, не тратя и не требуя зарядов, и это оружие может быть уничтожено (из-за критического урона или иных эффектов), даже если у него не осталось зарядов."
-  },
-  "deployables": {
-   "Legion Drone": {
-    "name": {
-     "en": "Legion Drone",
-     "ru": "Легионный дрон"
-    },
-    "detail": {
-     "en": "As a protocol, you may move each deployed legion drone you control up to 3 spaces and order each of them to perform one of the following commands:<ul><li>Suppression Protocols: Choose a hostile character within Range 5 of the drone. Your attacks with the legion nexus against them gain +1 Accuracy until the end of their next turn. This effect does not stack. That character must also pass an Agility save or become Impaired until the end of their next turn.</li><li>Assault Position: A hostile character adjacent to the drone must pass a Hull save or be knocked back 1 space and be knocked Prone. Until the start of your next turn, the drone counts as Size 1 and adjacent allied characters can use it for hard cover.</li></ul>For each deployed legion drone you control, the legion nexus deals +2 damage on hit to a maximum of +6. Legion drones cannot be recalled and expire at the end of the scene.",
-     "ru": "Как протокол, вы можете переместить каждый развёрнутый вами легионный дрон на 3 клетки и отдать каждому из них одну из следующих команд:<ul><li>Протоколы подавления: выберите враждебного персонажа в пределах Дальности 5 от дрона. Ваши атаки Легионным узлом по нему получают +1 Точность до конца его следующего хода. Эффект не суммируется. Этот персонаж также должен пройти спасбросок Ловкости или стать Ослабленным до конца своего следующего хода.</li><li>Штурмовая позиция: враждебный персонаж рядом с дроном должен пройти спасбросок Корпуса или быть отброшен на 1 клетку и опрокинут. До начала вашего следующего хода дрон считается Размера 1, и союзные персонажи рядом с ним могут использовать его как жёсткое укрытие.</li></ul>За каждый развёрнутый вами легионный дрон Легионный узел наносит +2 урона при попадании, максимум +6. Легионные дроны нельзя отозвать, и они исчезают в конце сцены."
-    }
-   }
+   "en": "1/round, after attacking with this weapon, you may expend a charge as a free action to task a team of subalterns to operate independently from the main unit. This counts as a Drone deployed in a free space adjacent to you. You may attack with this weapon without expending or requiring charges, and this weapon can be destroyed (due to critical damage or other effects) even if it has no charges remaining.<br><b>Deployable — Legion Drone:</b> As a protocol, you may move each deployed legion drone you control up to 3 spaces and order each of them to perform one of the following commands:<ul><li>Suppression Protocols: Choose a hostile character within Range 5 of the drone. Your attacks with the legion nexus against them gain +1 Accuracy until the end of their next turn. This effect does not stack. That character must also pass an Agility save or become Impaired until the end of their next turn.</li><li>Assault Position: A hostile character adjacent to the drone must pass a Hull save or be knocked back 1 space and be knocked Prone. Until the start of your next turn, the drone counts as Size 1 and adjacent allied characters can use it for hard cover.</li></ul>For each deployed legion drone you control, the legion nexus deals +2 damage on hit to a maximum of +6. Legion drones cannot be recalled and expire at the end of the scene.",
+   "ru": "1/раунд, после атаки этим оружием вы можете потратить заряд как свободное действие, чтобы отправить отряд субалтернов действовать независимо от основного подразделения. Это считается Дроном, развёрнутым на свободной клетке рядом с вами. Вы можете атаковать этим оружием, не тратя и не требуя зарядов, и это оружие может быть уничтожено (из-за критического урона или иных эффектов), даже если у него не осталось зарядов.<br><b>Автономный модуль — Дрон легиона:</b> Как протокол вы можете переместить каждого развёрнутого дрона легиона под вашим контролем на расстояние до 3 клеток и отдать каждому одну из следующих команд:<ul><li>Протоколы подавления: выберите враждебного персонажа в пределах Дальности 5 от дрона. Ваши атаки Легионным узлом против него получают +1 Точность до конца его следующего хода. Этот эффект не суммируется. Этот персонаж также должен пройти спасбросок Ловкости, иначе станет Ослаблен до конца своего следующего хода.</li><li>Штурмовая позиция: враждебный персонаж рядом с дроном должен пройти спасбросок Корпуса, иначе будет отброшен на 1 клетку и Опрокинут. До начала вашего следующего хода дрон считается объектом Размера 1, и соседние союзные персонажи могут использовать его как твёрдое укрытие.</li></ul>За каждого развёрнутого дрона легиона под вашим контролем Легионный узел наносит +2 урона при попадании, максимум +6. Дронов легиона нельзя отозвать, и они исчезают в конце сцены."
   }
  },
  "mw_shrapnel_cannon": {
@@ -1792,7 +1684,7 @@
   },
   "effect": {
    "en": "",
-   "ru": "«Кто дал мне чёрную метку в день, когда мы приземлились и начали этот танец?» — «Остров сокровищ» (1883)"
+   "ru": ""
   },
   "on_hit": {
    "en": "DRONE, SEEKING, and NEXUS weapons and systems gain +1 Accuracy to attack the target until the end of their next turn.",
@@ -1810,7 +1702,7 @@
   },
   "effect": {
    "en": "",
-   "ru": "Эти расплавленные когти — длинные, похожие на хлысты плазменные плети, которые «Энкиду» может вытягивать или втягивать. Их можно использовать только в ОПАСНОЙ ЗОНЕ."
+   "ru": ""
   }
  },
  "mw_exo_plasma_maul": {
@@ -1830,7 +1722,7 @@
   },
   "effect": {
    "en": "",
-   "ru": "Устаревшая противоматериальная/противобронная винтовка шассийного класса, восходящая к временам Герцинского кризиса — эта конкретная конструкция не производилась уже сотни лет, но продолжает использоваться современными герцинскими силами. Более громоздкая и неуклюжая, чем нынешняя противоматериальная винтовка GMS T-3, эта модель лишена многих усовершенствований, встроенных в более поздние образцы, и предназначена для использования с выделенным наблюдателем, предоставляющим данные наведения. Тем не менее её тяжёлые, высокоскоростные снаряды остаются крайне эффективными против брони и статичной защиты на предельной дальности."
+   "ru": ""
   },
   "on_hit": {
    "en": "Create a Line 5 path from (but not including) your target, continuing in the same direction as the attack. Characters in this path take 5 Kinetic Damage.",

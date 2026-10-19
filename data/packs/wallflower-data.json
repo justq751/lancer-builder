@@ -58,7 +58,27 @@
     "activation": "Protocol",
     "use": "Encounter",
     "passive_name": "Jolly Roger",
-    "passive_effect": "<p>At the start of every combat scene, your Kidd automatically connects to its paired Jolly Roger orbital satellite weapon. The efficacy of the Jolly Roger depends on maintaining a high level of calibration with the Kidd, which is tracked with a JOLLY ROGER DIE - 1d6, starting at 1.</p> <p>The die ticks up by 1 whenever you:</p> <ul> <li>deploy a DRONE or DEPLOYABLE</li> <li>take a tech action that targets at least one allied character.</li> </ul> <p>Each option can only increase the value of the of the JOLLY ROGER DIE once per round independently; however, the die also ticks up by 1 any time a hostile character takes a tech action against an allied character within your SENSORS, with no limit.</p> <p>1/round, you can activate the Jolly Roger as a quick action, resetting the JOLLY ROGER DIE to 1. Choose one of the following effects, based on the value of the die:</p> <p><b class='accent--text'>3+</b> <b>Plunder</b>: SCAN every hostile character in a Blast 1 area and give them LOCK ON.</p> <p><b class='accent--text'>5+</b> <b>Swindle</b>: Every hostile character in a Blast 1 area must succeed on a SYSTEMS save or become IMPAIRED, JAMMED, and SLOWED until the end of their next turn.</p> <p><b class='accent--text'>6</b> <b>Shiver Timbers</b>: Fire a beam weapon, punching a narrow hole through walls and obstructions. One hostile character must succeed on an AGILITY save or take 3d6 AP Energy Damage. On a success, they take half damage</p> <p>You do not require line of sight for any of these effects, they have the effective range of the battlefield, and they easily penetrate objects and terrain, although more potent barriers (e.g., energy shields that prevent effects from crossing them due to line of sight) block them normally</p><br><b>Plunder 3+</b> — SCAN every hostile character in a Blast 1 area and give them LOCK ON.<br><b>Swindle 5+</b> — Every hostile character in a Blast 1 area must succeed on a SYSTEMS save or become IMPAIRED, JAMMED, and SLOWED until the end of their next turn.<br><b>Shiver Timbers 6</b> — Fire a beam weapon, punching a narrow hole through walls and obstructions. One hostile character must succeed on an AGILITY save or take 3d6 AP Energy Damage. On a success, they take half damage.",
+    "passive_effect": "<p>At the start of every combat scene, your Kidd automatically connects to its paired Jolly Roger orbital satellite weapon. The efficacy of the Jolly Roger depends on maintaining a high level of calibration with the Kidd, which is tracked with a JOLLY ROGER DIE - 1d6, starting at 1.</p> <p>The die ticks up by 1 whenever you:</p> <ul> <li>deploy a DRONE or DEPLOYABLE</li> <li>take a tech action that targets at least one allied character.</li> </ul> <p>Each option can only increase the value of the of the JOLLY ROGER DIE once per round independently; however, the die also ticks up by 1 any time a hostile character takes a tech action against an allied character within your SENSORS, with no limit.</p> <p>1/round, you can activate the Jolly Roger as a quick action, resetting the JOLLY ROGER DIE to 1. Choose one of the following effects, based on the value of the die:</p> <p><b class='accent--text'>3+</b> <b>Plunder</b>: SCAN every hostile character in a Blast 1 area and give them LOCK ON.</p> <p><b class='accent--text'>5+</b> <b>Swindle</b>: Every hostile character in a Blast 1 area must succeed on a SYSTEMS save or become IMPAIRED, JAMMED, and SLOWED until the end of their next turn.</p> <p><b class='accent--text'>6</b> <b>Shiver Timbers</b>: Fire a beam weapon, punching a narrow hole through walls and obstructions. One hostile character must succeed on an AGILITY save or take 3d6 AP Energy Damage. On a success, they take half damage</p> <p>You do not require line of sight for any of these effects, they have the effective range of the battlefield, and they easily penetrate objects and terrain, although more potent barriers (e.g., energy shields that prevent effects from crossing them due to line of sight) block them normally</p>",
+    "passive_actions": [
+     {
+      "name": "Plunder 3+",
+      "activation": "Quick",
+      "detail": "SCAN every hostile character in a Blast 1 area and give them LOCK ON.",
+      "frequency": "1/round"
+     },
+     {
+      "name": "Swindle 5+",
+      "activation": "Quick",
+      "detail": "Every hostile character in a Blast 1 area must succeed on a SYSTEMS save or become IMPAIRED, JAMMED, and SLOWED until the end of their next turn.",
+      "frequency": "1/round"
+     },
+     {
+      "name": "Shiver Timbers 6",
+      "activation": "Quick",
+      "detail": "Fire a beam weapon, punching a narrow hole through walls and obstructions. One hostile character must succeed on an AGILITY save or take 3d6 AP Energy Damage. On a success, they take half damage.",
+      "frequency": "1/round"
+     }
+    ],
     "counters": [
      {
       "id": "ctr_jolly_roger",
@@ -624,7 +644,7 @@
     "Exotic Gear"
    ],
    "source": "EXOTIC",
-   "effect": "Expend a charge to immediately clear all Burn from your mech. Additionally, whenever you BRACE you may also expend a charge to reduce all Burn dealt by the attack to 0.<br><b>Quick</b> — Immediately clear all Burn from your mech.",
+   "effect": "Expend a charge to immediately clear all Burn from your mech. Additionally, whenever you BRACE you may also expend a charge to reduce all Burn dealt by the attack to 0.",
    "description": "While sufficient for personal armor, Egregorian chitin on its own is not robust enough to withstand attacks from heavier weapons, nor can it easily be gathered in sufficient quantities to fully outfit a chassis. Regardless, many rangers still utilize carapace-based secondary defensive enhancements anchored over critical systems as an additional layer of ablative protection, most notably against incendiary or caustic/corrosive munitions that might otherwise resist conventional suppression."
   },
   {
@@ -650,16 +670,7 @@
    "ranks": [
     {
      "name": "Sympathetic Precognition",
-     "description": "Your ability to sense the subjectivities of others grants you an uncanny ability to predict your ally’s actions, guiding them with your influence.",
-     "actions": [
-      {
-       "name": "Sympathetic Precognition",
-       "activation": "Reaction",
-       "frequency": "1/scene",
-       "trigger": "An allied character in line of sight makes a skill check, attack, or save.",
-       "detail": "That character may choose not to roll, instead treating their check, attack, or save as if they had rolled a 10 on the d20."
-      }
-     ]
+     "description": "Your ability to sense the subjectivities of others grants you an uncanny ability to predict your ally’s actions, guiding them with your influence.<br><b>Sympathetic Precognition (Reaction, 1/scene)</b> — <i>Trigger:</i> An allied character in line of sight makes a skill check, attack, or save.<br>That character may choose not to roll, instead treating their check, attack, or save as if they had rolled a 10 on the d20."
     },
     {
      "name": "Bend to Will",
@@ -667,19 +678,12 @@
     },
     {
      "name": "Shared Subjectivity",
-     "description": "1/scene as a quick action, you may tap deep reserves of willpower to grant extraordinary awareness to an allied character in line of sight. Your mech immediately becomes STUNNED until the start of your next turn and your perception almost completely merges with that of the other character. Until the end of their next turn, any time that character makes an attack, check, or saving throw, they can choose to roll as normal or instead treat that attack, check, or save as if they had rolled a 10 on the d20. They must decide before rolling.",
-     "actions": [
-      {
-       "name": "Shared Subjectivity",
-       "activation": "Quick",
-       "frequency": "1/scene",
-       "detail": "Your mech immediately becomes STUNNED until the start of your next turn and your perception almost completely merges with that of the other character. Until the end of their next turn, any time that character makes an attack, check, or saving throw, they can choose to roll as normal or instead treat that attack, check, or save as if they had rolled a 10 on the d20. They must decide before rolling."
-      }
-     ]
+     "description": "1/scene as a quick action, you may tap deep reserves of willpower to grant extraordinary awareness to an allied character in line of sight. Your mech immediately becomes STUNNED until the start of your next turn and your perception almost completely merges with that of the other character. Until the end of their next turn, any time that character makes an attack, check, or saving throw, they can choose to roll as normal or instead treat that attack, check, or save as if they had rolled a 10 on the d20. They must decide before rolling."
     }
    ]
   }
  ],
+ "core_bonuses": [],
  "pilot_gear": [
   {
    "id": "ms_exo_anti_armor_signature_weapon",
@@ -728,8 +732,7 @@
    "tags": [
     "Exotic Gear",
     "Gear"
-   ],
-   "effect": ""
+   ]
   },
   {
    "id": "ms_exo_locus",
@@ -739,8 +742,7 @@
    "tags": [
     "Exotic Gear",
     "Gear"
-   ],
-   "effect": ""
+   ]
   },
   {
    "id": "ms_exo_light_carapace_armor",
@@ -843,5 +845,7 @@
     }
    ]
   }
- ]
+ ],
+ "backgrounds": [],
+ "mods": []
 }

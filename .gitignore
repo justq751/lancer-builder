@@ -12,7 +12,7 @@ desktop.ini
 __pycache__/
 *.pyc
 
-# Backups written by tools/merge_frames.py before overwriting a data file
+# Editor/tool backups
 *.bak
 
 # Node (used only by the `skills` CLI / npx tooling)

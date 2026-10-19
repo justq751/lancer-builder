@@ -277,8 +277,7 @@
     ],
     "integrated": [
      "mw_integrated_shock_claws"
-    ],
-    "passive_effect": null
+    ]
    }
   },
   {
@@ -508,7 +507,7 @@
    "tags": [
     "Armor-Piercing (AP)",
     "Limited 2",
-    "Heat Self 1",
+    "Heat 1 (Self)",
     "Unique"
    ],
    "effect": "You may attack with this weapon without expending or requiring charges, and this weapon can be destroyed (due to critical damage or other effects) even if it has no charges remaining.",
@@ -539,24 +538,9 @@
    "tags": [
     "Smart",
     "Limited 3",
-    "Heat Self 2"
+    "Heat 2 (Self)"
    ],
-   "effect": "1/round, after attacking with this weapon, you may expend a charge as a free action to task a team of subalterns to operate independently from the main unit. This counts as a Drone deployed in a free space adjacent to you. You may attack with this weapon without expending or requiring charges, and this weapon can be destroyed (due to critical damage or other effects) even if it has no charges remaining.",
-   "deployables": [
-    {
-     "name": "Legion Drone",
-     "type": "Drone",
-     "detail": "As a protocol, you may move each deployed legion drone you control up to 3 spaces and order each of them to perform one of the following commands:<ul><li>Suppression Protocols: Choose a hostile character within Range 5 of the drone. Your attacks with the legion nexus against them gain +1 Accuracy until the end of their next turn. This effect does not stack. That character must also pass an Agility save or become Impaired until the end of their next turn.</li><li>Assault Position: A hostile character adjacent to the drone must pass a Hull save or be knocked back 1 space and be knocked Prone. Until the start of your next turn, the drone counts as Size 1 and adjacent allied characters can use it for hard cover.</li></ul>For each deployed legion drone you control, the legion nexus deals +2 damage on hit to a maximum of +6. Legion drones cannot be recalled and expire at the end of the scene.",
-     "size": 0.5,
-     "instances": 1,
-     "activation": "Free",
-     "cost": 1,
-     "armor": 1,
-     "hp": 5,
-     "evasion": 10,
-     "edef": 10
-    }
-   ]
+   "effect": "1/round, after attacking with this weapon, you may expend a charge as a free action to task a team of subalterns to operate independently from the main unit. This counts as a Drone deployed in a free space adjacent to you. You may attack with this weapon without expending or requiring charges, and this weapon can be destroyed (due to critical damage or other effects) even if it has no charges remaining.<br><b>Deployable — Legion Drone:</b> As a protocol, you may move each deployed legion drone you control up to 3 spaces and order each of them to perform one of the following commands:<ul><li>Suppression Protocols: Choose a hostile character within Range 5 of the drone. Your attacks with the legion nexus against them gain +1 Accuracy until the end of their next turn. This effect does not stack. That character must also pass an Agility save or become Impaired until the end of their next turn.</li><li>Assault Position: A hostile character adjacent to the drone must pass a Hull save or be knocked back 1 space and be knocked Prone. Until the start of your next turn, the drone counts as Size 1 and adjacent allied characters can use it for hard cover.</li></ul>For each deployed legion drone you control, the legion nexus deals +2 damage on hit to a maximum of +6. Legion drones cannot be recalled and expire at the end of the scene."
   },
   {
    "id": "mw_shrapnel_cannon",
@@ -637,7 +621,7 @@
     "Armor-Piercing (AP)",
     "Overkill",
     "Inaccurate",
-    "Heat Self 2",
+    "Heat 2 (Self)",
     "Exotic Gear"
    ],
    "on_attack": "This weapon automatically deals 30 AP energy damage to objects, cover, and terrain within its area, leaving behind clouds of molten debris in their place that linger until the end of your next turn. Characters other than you that begin their turn in these clouds or who enter them for the first time in a round take 1d6 energy damage. As long as you are at least partially within a cloud, you gain soft cover."
@@ -651,7 +635,7 @@
    "license": "Gilgamesh",
    "license_level": 1,
    "description": "Emergency repair modules are often a mainstay on Armory chassis galaxy-wide. Through a combination of active nanite slurry, hardpatch welding, and shunting to redundant systems in response to immediate damage, they ensure that a chassis will be able to quickly complete nonmassive battlefield repairs in order to remain operational. A number of informal celebratory traditions have arisen throughout the legions to commemorate a pilot's first time taking damage sufficient to trigger an ERM in combat.",
-   "effect": "Whenever you or an adjacent ally Braces, you may expend a charge and spend 1 Repair to restore that character's HP to full immediately after they take damage from the triggering attack. If that character took structure damage from the triggering attack, they also roll one less die on the structure damage check to a minimum of 0 (which results in no effect).<br><b>Emergency Repair</b> — Expend a charge and spend 1 Repair to restore that character's HP to full immediately after they take damage from the triggering attack. If they took structure damage, they roll one less die on the structure damage check (minimum 0, resulting in no effect).",
+   "effect": "Whenever you or an adjacent ally Braces, you may expend a charge and spend 1 Repair to restore that character's HP to full immediately after they take damage from the triggering attack. If that character took structure damage from the triggering attack, they also roll one less die on the structure damage check to a minimum of 0 (which results in no effect).",
    "type": "System",
    "sp": 1,
    "tags": [
@@ -709,16 +693,17 @@
   }
  ],
  "talents": [],
- "pilot_gear": [],
  "core_bonuses": [
   {
    "id": "cb_order_of_leander",
    "name": "Order of Leander",
    "source": "GMS",
-   "effect": "1/scene, you may add +1 Accuracy to any attack, check, or save made by you or an allied character within Range 10, adding an additional +1 Accuracy for each structure damage you have; allied characters who receive this bonus also gain Grit+4 Overshield. If you take structure damage during the scene after this ability is expended, you may use it a second time.<br><br>This core bonus counts as a piece of Exotic Gear.",
+   "effect": "1/scene, you may add +1 Accuracy to any attack, check, or save made by you or an allied character within Range 10, adding an additional +1 Accuracy for each structure damage you have; allied characters who receive this bonus also gain Grit+4 Overshield. If you take structure damage during the scene after this ability is expended, you may use it a second time.<br><br>This core bonus counts as a piece of Exotic Gear.<br><b>Order of Leander</b> — <i>Trigger:</i> You or an allied character within Range 10 makes an attack, check, or save.<br>That character gains +1 Accuracy on the roll, plus an additional +1 Accuracy for each Structure damage you currently have. Allied characters who receive this bonus also gain Grit+4 Overshield.",
    "description": "The Order of Leander is a Leandric States Alliance commendation given to those who have shown \"exemplary character, courage, and determination under great adversity.\" While primarily a military citation, precedent exists for it to be awarded to civilians as well, with a number of noteworthy historical figures having earned it for efforts during natural disasters, search-and-rescue missions, and medical crises. In Cressidium's settled history, no one from any other world has ever earned this award, but whether you come from beyond the stars or not, for your service in defense of both the LSA as well as Cressidium you have earned the right to wear it with pride."
   }
  ],
+ "pilot_gear": [],
+ "backgrounds": [],
  "mods": [
   {
    "id": "mw_bounder_class_comp_con",

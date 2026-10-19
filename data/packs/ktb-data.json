@@ -304,8 +304,7 @@
     ],
     "integrated": [
      "mw_emperor_integrated"
-    ],
-    "passive_effect": null
+    ]
    },
    "license_id": "mf_emperor"
   },
@@ -578,7 +577,7 @@
     }
    ],
    "tags": [
-    "Round 1"
+    "1/Round"
    ],
    "source": "SSC",
    "license": "White Witch",
@@ -593,15 +592,8 @@
      }
     ]
    },
-   "actions": [
-    {
-     "name": "Ferrofluid Lance Fling",
-     "activation": "Protocol",
-     "frequency": "1/round",
-     "detail": "End the immobilization effect of the Ferrofluid Lance on both you and your target to knock them back 4 spaces in any direction."
-    }
-   ],
-   "description": "“To say we can pull this needle from ‘thin air’ is the best-fit phrase, but it’s not accurate. Not entirely. There’s no such thing as thin air, not in the way one means it when they use that phrase. ‘Agreeable atomic space’ – that’s what ‘thin air’ really is. A place where one could – if one could – coalesce utility from useless particulate mass with a thought. With a snap of our finger. Here, watch this –”"
+   "description": "“To say we can pull this needle from ‘thin air’ is the best-fit phrase, but it’s not accurate. Not entirely. There’s no such thing as thin air, not in the way one means it when they use that phrase. ‘Agreeable atomic space’ – that’s what ‘thin air’ really is. A place where one could – if one could – coalesce utility from useless particulate mass with a thought. With a snap of our finger. Here, watch this –”",
+   "effect": "<br><b>Ferrofluid Lance Fling</b> — End the immobilization effect of the Ferrofluid Lance on both you and your target to knock them back 4 spaces in any direction."
   },
   {
    "id": "mw_retort_loop",
@@ -698,15 +690,7 @@
    "license": "White Witch",
    "license_level": 3,
    "effect": "Any time you take damage from a hostile source you may choose to store a charge in this weapon. It fires with an additional +1d6 kinetic damage, Reliable 2, and Knockback 1 for each charge stored, to a maximum of 3 charges. Once fired, it clears all charges, hit or miss.",
-   "description": "“Ultimately, I have to return to the core of what we made, the code we cracked when we finally figured out NO/EM. From a simple prompt, we created a terrible engine. I am more proud of what we did than anything I’ve ever worked on before, but it should never see the light of day. Working with Visual convinced me of this: it’s their job to translate our work to sales, and they could not. If the translator cannot understand the text … then who are they to rewrite it? Who is the reader to attempt to access it? I conclude my summary with this: mothball the platform. There are less terrible paths we can walk.”",
-   "counters": [
-    {
-     "id": "ctr_mw_retort_loop",
-     "name": "Retort Loop",
-     "min": 0,
-     "max": 3
-    }
-   ]
+   "description": "“Ultimately, I have to return to the core of what we made, the code we cracked when we finally figured out NO/EM. From a simple prompt, we created a terrible engine. I am more proud of what we did than anything I’ve ever worked on before, but it should never see the light of day. Working with Visual convinced me of this: it’s their job to translate our work to sales, and they could not. If the translator cannot understand the text … then who are they to rewrite it? Who is the reader to attempt to access it? I conclude my summary with this: mothball the platform. There are less terrible paths we can walk.”"
   },
   {
    "id": "mw_bolt_nexus",
@@ -765,54 +749,24 @@
    "name": "Marathon Arc Bow",
    "mount": "Main",
    "type": "Launcher",
+   "on_attack": {
+    "detail": "Allied characters caught in the area are not attacked, but instead have any Overshield supercharged, increasing it by +4, but clearing all Overshield at the end of their next turn. If they have no Overshield, they instead gain Overshield 2."
+   },
+   "range": [
+    {
+     "type": "Line",
+     "val": 15
+    }
+   ],
+   "damage": [
+    {
+     "type": "Energy",
+     "val": "1d6"
+    }
+   ],
    "description": "“Directed Subjective Convergence Weapon, Pattern 3. Or as Visual calls it, the ‘Marathon Arc’. I suppose it is a better name. Imposing. Inaccurate but Visual has never been accurate. The Arc forces realignment along a superpositional plane, destabilizing targets without the correct pineal hash while imparting sympathetic lensing on those with the correct hash; a simple ‘weapon’ that emulates an Overmind’s corrective/imperative push.”",
    "tags": [
     "Armor-Piercing (AP)"
-   ],
-   "profiles": [
-    {
-     "name": "Default",
-     "range": [
-      {
-       "type": "Line",
-       "val": 10
-      }
-     ],
-     "damage": [
-      {
-       "type": "Energy",
-       "val": "1d6"
-      }
-     ],
-     "on_attack": {
-      "detail": "Allied characters caught in the area are not attacked, but instead gain overshield +2. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 2)."
-     }
-    },
-    {
-     "name": "Drawn Back",
-     "range": [
-      {
-       "type": "Line",
-       "val": 20
-      }
-     ],
-     "damage": [
-      {
-       "type": "Energy",
-       "val": "1d6"
-      }
-     ],
-     "on_attack": {
-      "detail": "Allied characters caught in the area are not attacked, but instead gain overshield +4. This special overshield does not replace the last one created, but rather increases it, up to a maximum of overshield 12 (if an ally has no overshield, they go to overshield 4)."
-     }
-    }
-   ],
-   "actions": [
-    {
-     "name": "Draw Back",
-     "activation": "Quick",
-     "detail": "This weapon can be drawn back with a quick action to use the Drawn Back profile on its next attack. This effect is lost if you move for any reason."
-    }
    ]
   }
  ],
@@ -857,7 +811,7 @@
    "license": "White Witch",
    "license_level": 2,
    "description": "“Manipulating the world around the platform doesn’t end at rearranging the natural/built environment. This was the line that many on the team were afraid to cross, the question we had all asked ourselves once we bracketed the platform: what happens when we apply it to a person? What does existence mean when it can be ended with a thought?”",
-   "effect": "<br><b>Prime Camus's Razor</b> — Your mech is capable of projecting a spot-magnetic force of incredible power. You can prime this system as a quick action. Once primed, you gain one use of the Intervention reaction for the rest of the scene.<br><b>Intervention</b> — You become the target of the action instead. If the action was an area of effect, such as a line, cone, blast, etc, the attacker must now position it so it targets you, or as close as possible, which could change its targets. This transfer takes place even if the original could not have hit you (i.e., it was a melee attack)."
+   "effect": "<br><b>Prime Camus's Razor</b> — Your mech is capable of projecting a spot-magnetic force of incredible power. You can prime this system as a quick action. Once primed, you gain one use of the Intervention reaction for the rest of the scene.<br><b>Intervention</b> — <i>Trigger:</i> An allied character within Range 5 and line of sight is targeted by an action that deals kinetic or explosive damage.<br>You become the target of the action instead. If the action was an area of effect, such as a line, cone, blast, etc, the attacker must now position it so it targets you, or as close as possible, which could change its targets. This transfer takes place even if the original could not have hit you (i.e., it was a melee attack)."
   },
   {
    "id": "ms_ferrospike_barrier",
@@ -992,6 +946,8 @@
    ]
   }
  ],
+ "core_bonuses": [],
  "pilot_gear": [],
- "core_bonuses": []
+ "backgrounds": [],
+ "mods": []
 }

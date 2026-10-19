@@ -2,23 +2,29 @@
 """
 normalize_pack.py
 ------------------
-massif-press/osr-data and massif-press/wallflower-data use a newer
-lancer-data schema than the one baked into this site originally:
+Converts one massif-press data repo (lib/*.json — normally its snapshot in
+upstream/<repo>/, see upstream/README.md) into the site's data file:
+data/lancer-data.json for lancer-data itself, data/packs/<repo>.json for the
+rest. The upstream schema differs from what the renderer reads:
   - tags are objects {"id": "tg_reliable", "val": 2} instead of plain
     strings like "Reliable 2"
   - extra ability text can live in "actions" / "deployables" arrays
     instead of directly in "effect" / "core_system.*_effect"
 
-This script converts items from that newer schema into the flatter
-shape data/lancer-data.json already uses, so the existing renderer
-(index.html) can display them with zero changes:
-  - tag objects -> plain display strings ("Reliable 2", "Armor-Piercing (AP)")
-  - actions/deployables -> folded into "effect" / "*_effect" as extra
-    <br><b>Name</b> — detail lines, so nothing from the source pack is lost
+This script flattens it so the renderer needs no changes:
+  - tag objects -> the display strings of data/tags.json ("Reliable 2",
+    "Heat 2 (Self)", "1/Round")
+  - actions/deployables -> folded into "effect" / rank "description" as extra
+    <br><b>Name</b> — detail lines, unless the prose already says the same
+    (already_described()); frame core systems keep structured actions
+  - engine-hook fields the app never reads (synergies, active_effects,
+    counters, talent_* …, see HOOKS) are dropped
 Unsupported categories (reserves, environments — the app has no UI/tab
 for these at all) are intentionally left out; see README.
 """
+import difflib
 import json
+import re
 import sys
 import pathlib
 
@@ -56,28 +62,63 @@ TAG_WORDS = {
 }
 
 
+# The site's own tag dictionary: {"id": "tg_heat_self", "name": "Heat {VAL} (Self)"}.
+# Its names are the strings the app compares and trTag() translates, so it
+# wins over TAG_WORDS (kept for the few ids tags.json lacks).
+TAG_NAMES = {t["id"]: t["name"] for t in json.loads(
+    (pathlib.Path(__file__).resolve().parent.parent / "data" / "tags.json").read_text(encoding="utf-8"))}
+
+
 def tag_to_string(tag):
     if isinstance(tag, str):
         return tag
     tid = tag.get("id", "")
-    base = TAG_WORDS.get(tid, tid.replace("tg_", "").replace("_", " ").title())
     val = tag.get("val")
-    return f"{base} {val}" if val not in (None, "") else base
+    has_val = val not in (None, "")
+    tpl = TAG_NAMES.get(tid)
+    if tpl and "{VAL}" in tpl:
+        return tpl.replace("{VAL}", str(val)) if has_val else tpl.replace(" {VAL}", "").replace("{VAL}", "")
+    base = tpl or TAG_WORDS.get(tid, tid.replace("tg_", "").replace("_", " ").title())
+    return f"{base} {val}" if has_val else base
 
 
-def fold_actions(base_text, actions):
-    """Append action name/detail pairs as extra <br><b>…</b> lines."""
+def fold_actions(base_text, actions, with_meta=False):
+    """Append action name/detail pairs as extra <br><b>…</b> lines. A
+    reaction's trigger is kept ("<i>Trigger:</i> …"), it is often nowhere
+    else; with_meta also adds "(Reaction, 1/scene)" after the name. Actions
+    the text already_described() are skipped."""
+    actions = [a for a in actions or [] if not already_described(a.get("detail"), base_text)]
     if not actions:
         return base_text
     parts = [base_text] if base_text else []
     for a in actions:
         label = a.get("name") or a.get("activation") or ""
         detail = a.get("detail", "")
+        meta = [m for m in (a.get("activation"), a.get("frequency")) if m] if with_meta else []
+        if meta:
+            label = f"{label} ({', '.join(meta)})"
+        if a.get("trigger"):
+            detail = f"<i>Trigger:</i> {a['trigger']}<br>{detail}"
         if label:
             parts.append(f"<br><b>{label}</b> — {detail}")
         else:
             parts.append(f"<br>{detail}")
     return "".join(parts)
+
+
+def _plain(text):
+    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", text or "")).strip().lower()
+
+
+def already_described(detail, description):
+    """True when description already spells out the action's detail (most
+    talents repeat it in prose): >= 80% of the detail's characters fall in
+    runs of 12+ characters that also occur in the description."""
+    a, b = _plain(detail), _plain(description)
+    if not a:
+        return True
+    m = difflib.SequenceMatcher(None, a, b, autojunk=False)
+    return sum(x.size for x in m.get_matching_blocks() if x.size >= 12) / len(a) >= 0.8
 
 
 def fold_deployables(base_text, deployables):
@@ -93,6 +134,29 @@ def fold_deployables(base_text, deployables):
             adetail = a.get("detail", "")
             parts.append(f"<br><b>{label}</b> — {adetail}")
     return "".join(parts)
+
+
+# Engine hooks for tools that automate play (COMP/CON); the app reads none of
+# them, and data/lancer-data.json never had them.
+HOOKS = ("license_id", "data_type", "bonuses", "synergies", "active_effects", "counters",
+         "add_resist", "ammo", "talent_id", "talent_item", "talent_rank", "no_attack",
+         "no_mods", "no_core_bonus", "no_synergies", "no_bonuses", "barrage", "skirmish",
+         "aptitude", "icon_url", "image_url", "integrated", "special_equipment")
+
+
+def drop(item, keys=HOOKS):
+    for k in keys:
+        item.pop(k, None)
+
+
+def fold_into(item, field, with_meta=False):
+    """Fold item's actions and deployables into item[field] and drop them."""
+    text = fold_actions(item.get(field) or "", item.get("actions"), with_meta)
+    text = fold_deployables(text, item.get("deployables"))
+    if text or field in item:
+        item[field] = text
+    item.pop("actions", None)
+    item.pop("deployables", None)
 
 
 def norm_tags(item):
@@ -131,8 +195,9 @@ def norm_frame(f):
         # side, so folding (or leaving an already-folded tail baked in by
         # the source) would duplicate the action's own detail text a second
         # time. Strip any such tail and leave the rest of the prose as-is.
-        cs["passive_effect"] = _strip_duplicated_action_tail(cs.get("passive_effect"), cs.get("passive_actions"))
-        cs["active_effect"] = _strip_duplicated_action_tail(cs.get("active_effect"), cs.get("active_actions"))
+        for eff, acts in (("passive_effect", "passive_actions"), ("active_effect", "active_actions")):
+            if eff in cs:
+                cs[eff] = _strip_duplicated_action_tail(cs[eff], cs.get(acts))
     for tr in f.get("traits", []) or []:
         tr.pop("bonuses", None)
         tr.pop("synergies", None)
@@ -143,43 +208,40 @@ def norm_frame(f):
 
 def norm_weapon(w):
     norm_tags(w)
+    fold_into(w, "effect")
     for p in w.get("profiles", []) or []:
         norm_tags(p)
-    w.pop("license_id", None)
-    w.pop("data_type", None)
+        fold_into(p, "effect")
+        drop(p)
+    drop(w)
     return w
 
 
 def norm_system(s):
     norm_tags(s)
-    s["effect"] = fold_actions(s.get("effect", ""), s.get("actions"))
-    s["effect"] = fold_deployables(s["effect"], s.get("deployables"))
-    for k in ("actions", "deployables", "license_id", "data_type", "aptitude", "bonuses", "synergies"):
-        s.pop(k, None)
+    fold_into(s, "effect")
+    s.setdefault("type", "System")  # upstream omits the default type
+    drop(s)
     return s
 
 
 def norm_talent(t):
-    # rank-level actions/active_effects/counters/special_equipment/integrated
-    # are structured "engine hook" metadata for tools that auto-trigger
-    # abilities — in every pack checked so far, "description" already spells
-    # out the same effect in full prose, so these are dropped rather than
-    # folded (unlike frame core_system.passive_actions, which IS extra text
-    # not already in passive_effect). If a future pack turns out to rely on
-    # these for text not present in description, this will need revisiting.
-    t.pop("icon_url", None)
+    # rank-level active_effects/counters/special_equipment/integrated are
+    # structured "engine hook" metadata for tools that auto-trigger abilities
+    # and are dropped. Rank "actions" usually repeat the description's prose,
+    # but some packs keep the mechanic only there (Empath, Prospector,
+    # Orator): those not already_described() are folded into the description.
+    drop(t, HOOKS + ("icon",))
     for r in t.get("ranks", []) or []:
-        for k in ("synergies", "bonuses", "actions", "active_effects", "counters",
-                  "special_equipment", "integrated"):
-            r.pop(k, None)
+        fold_into(r, "description", with_meta=True)
+        drop(r, HOOKS + ("exclusive",))
     return t
 
 
 def norm_pilot_gear(g):
     norm_tags(g)
-    g["effect"] = fold_actions(g.get("effect", ""), g.get("actions"))
-    g.pop("actions", None)
-    g.pop("data_type", None)
+    fold_into(g, "effect")
+    drop(g, tuple(k for k in HOOKS if k != "bonuses"))
     # NOTE: do NOT strip "bonuses" here — unlike the unused "bonuses"/
     # "synergies" fields on frame traits/systems/etc., pilot_gear.bonuses is
     # the actual mechanical data for Armor-type gear (pilot_hp, pilot_armor,
@@ -188,11 +250,8 @@ def norm_pilot_gear(g):
 
 
 def norm_core_bonus(c):
-    # Same redundancy as talents: "effect" already carries the full
-    # mechanical text; actions/active_effects/bonuses are unused engine
-    # hooks the renderer never reads.
-    for k in ("actions", "active_effects", "bonuses", "synergies", "icon_url", "image_url"):
-        c.pop(k, None)
+    fold_into(c, "effect")
+    drop(c)
     return c
 
 
@@ -205,8 +264,23 @@ def norm_mod(m):
     # whatever eventually consumes this category can assume list-or-absent.
     if isinstance(m.get("actions"), dict):
         m["actions"] = [m["actions"]]
-    m.pop("license_id", None)
-    m.pop("data_type", None)
+    drop(m, ("license_id", "data_type"))
+    return m
+
+
+def norm_background(b):
+    # Already flat (id/name/description); "skills" — suggested skill ids —
+    # is kept, the app just doesn't show it.
+    return b
+
+
+def norm_skill(s):
+    s.pop("family", None)
+    return s
+
+
+def norm_manufacturer(m):
+    drop(m, ("logo", "logo_url", "light", "dark", "quote"))  # the app styles manufacturers itself
     return m
 
 
@@ -215,10 +289,15 @@ NORMALIZERS = {
     "weapons": norm_weapon,
     "systems": norm_system,
     "talents": norm_talent,
-    "pilot_gear": norm_pilot_gear,
+    "skills": norm_skill,
     "core_bonuses": norm_core_bonus,
+    "pilot_gear": norm_pilot_gear,
+    "backgrounds": norm_background,
+    "manufacturers": norm_manufacturer,
     "mods": norm_mod,
 }
+# Only lancer-data has these; packs don't get empty arrays for them.
+CORE_ONLY = {"skills", "manufacturers"}
 
 
 def build_pack(lib_dir, out_path, item_prefix):
@@ -227,7 +306,8 @@ def build_pack(lib_dir, out_path, item_prefix):
     for cat, fn in NORMALIZERS.items():
         src = lib_dir / f"{cat}.json"
         if not src.exists():
-            out[cat] = []
+            if cat not in CORE_ONLY:
+                out[cat] = []
             continue
         items = json.loads(src.read_text(encoding="utf-8"))
         out[cat] = [fn(it) for it in items]

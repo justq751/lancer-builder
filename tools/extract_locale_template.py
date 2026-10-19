@@ -41,11 +41,17 @@ PACKS_DIR = ROOT / "data" / "packs"
 
 
 def pair(en, old):
-    """Build an {en, ru} pair, preserving a previous ru translation if any."""
-    old_ru = ""
-    if isinstance(old, dict):
-        old_ru = old.get("ru", "")
-    return {"en": en or "", "ru": old_ru}
+    """Build an {en, ru} pair, preserving a previous ru translation if any.
+    Like build_ui(): when the English changed since the translation (an
+    upstream update), the old Russian is kept and marked "stale": true until
+    a translator rechecks it and deletes the marker. An emptied English field
+    drops its translation too, or the Russian would show for nothing."""
+    en = en or ""
+    old = old if isinstance(old, dict) else {}
+    entry = {"en": en, "ru": old.get("ru", "") if en else ""}
+    if entry["ru"] and (("en" in old and old["en"] != en) or old.get("stale")):
+        entry["stale"] = True
+    return entry
 
 
 def build_named_actions(items, old_map):

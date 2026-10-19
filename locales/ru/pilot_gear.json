@@ -145,8 +145,8 @@
    "ru": ""
   },
   "effect": {
-   "en": "As a quick action, pilots wearing stealth hardsuits can become Invisible. They cease to be Invisible if they take any damage.<br><b>Activate Stealth Hardsuit</b> — Become Invisible. You will cease to be Invisible if you take any damage.",
-   "ru": "Быстрым действием пилот в скрытном скафандре может стать Невидимым. Невидимость снимается при получении любого урона.<br><b>Активировать скрытный скафандр</b> — Станьте Невидимым. Невидимость снимется при получении любого урона."
+   "en": "As a quick action, pilots wearing stealth hardsuits can become Invisible. They cease to be Invisible if they take any damage.",
+   "ru": "Быстрым действием пилот в скрытном скафандре может стать Невидимым. Невидимость снимается при получении любого урона."
   }
  },
  "pg_corrective": {
@@ -159,8 +159,8 @@
    "ru": "Этот прозрачный, похожий на пластик лист можно наложить на раны тяжело раненных пилотов. Он немедленно начинает стабилизировать их, вводя лекарства и разворачивая нанитов, чтобы сшить раны."
   },
   "effect": {
-   "en": "Expend a charge to apply correctives to Down and Out pilots, immediately bringing them back to consciousness at 1 HP.<br><b>Use Corrective</b> — Expend a charge to apply correctives to Down and Out pilots, immediately bringing them back to consciousness at 1 HP",
-   "ru": "Потратьте заряд, чтобы применить кориджент к Поверженному пилоту, немедленно приведя его в сознание с 1 ОЗ.<br><b>Использовать кориджент</b> — Потратьте заряд, чтобы применить кориджент к Поверженному пилоту, немедленно приведя его в сознание с 1 ОЗ."
+   "en": "Expend a charge to apply correctives to Down and Out pilots, immediately bringing them back to consciousness at 1 HP.",
+   "ru": "Потратьте заряд, чтобы применить кориджент к Поверженному пилоту, немедленно приведя его в сознание с 1 ОЗ."
   }
  },
  "pg_frag_grenades": {
@@ -187,8 +187,8 @@
    "ru": "«Пластырь» — жаргонное название пилотов для любого современного набора первой помощи, включая распыляемый мед-гель и мгновенно действующие медицинские повязки."
   },
   "effect": {
-   "en": "Expend a charge to apply a patch to either yourself or an adjacent pilot, restoring half their maximum HP. Patches have no effect on Down and Out pilots.<br><b>Use Patch</b> — Expend a charge to apply a patch to either yourself or an adjacent pilot, restoring half their maximum HP. Patches have no effect on Down and Out pilots.",
-   "ru": "Потратьте заряд, чтобы наложить пластырь на себя или соседнего пилота, восстановив половину его максимума ОЗ. На Поверженных пилотов пластыри не действуют.<br><b>Использовать пластырь</b> — Потратьте заряд, чтобы наложить пластырь на себя или соседнего пилота, восстановив половину его максимума ОЗ. На Поверженных пилотов пластыри не действуют."
+   "en": "Expend a charge to apply a patch to either yourself or an adjacent pilot, restoring half their maximum HP. Patches have no effect on Down and Out pilots.",
+   "ru": "Потратьте заряд, чтобы наложить пластырь на себя или соседнего пилота, восстановив половину его максимума ОЗ. На Поверженных пилотов пластыри не действуют."
   }
  },
  "pg_stims": {
@@ -201,8 +201,8 @@
    "ru": "Эти химические стимуляторы иногда автоматически вводятся инжекторами, встроенными в костюм пилота, или даже имплантированными в его тело. Неконтролируемое употребление может вызывать зависимость и опасно для здоровья в долгосрочной перспективе, что является проблемой для некоторых пилотов."
   },
   "effect": {
-   "en": "Expend a charge for one of the following effects:<ul><li><b>Kick:</b> Keeps a pilot awake and alert for up to 30 hours.</li><li><b>Freeze:</b> Keeps a pilot calm and emotionally stable; deadens fear and other strong reactions.</li><li><b>Juice:</b> Heighten senses and alertness, reduce fatigue, and shorten reaction times. Juice occasionally provokes rage in some users.</li></ul><br><b>Use Stim</b> — Expend a charge for one of the following effects:<ul><li><b>Kick:</b> Keeps a pilot awake and alert for up to 30 hours.</li><li><b>Freeze:</b> Keeps a pilot calm and emotionally stable; deadens fear and other strong reactions.</li><li><b>Juice:</b> Heighten senses and alertness, reduce fatigue, and shorten reaction times. Juice occasionally provokes rage in some users.</li></ul>",
-   "ru": "Потратьте заряд для одного из следующих эффектов:<ul><li><b>Кик:</b> Держит пилота бодрствующим и настороже до 30 часов.</li><li><b>Фриз:</b> Сохраняет пилота спокойным и эмоционально стабильным; притупляет страх и другие сильные реакции.</li><li><b>Джус:</b> Обостряет чувства и внимательность, снижает усталость и сокращает время реакции. Джус иногда провоцирует ярость у некоторых пользователей.</li></ul><br><b>Использовать стимулятор</b> — Потратьте заряд для одного из следующих эффектов:<ul><li><b>Кик:</b> Держит пилота бодрствующим и настороже до 30 часов.</li><li><b>Фриз:</b> Сохраняет пилота спокойным и эмоционально стабильным; притупляет страх и другие сильные реакции.</li><li><b>Джус:</b> Обостряет чувства и внимательность, снижает усталость и сокращает время реакции. Джус иногда провоцирует ярость у некоторых пользователей.</li></ul>"
+   "en": "Expend a charge for one of the following effects:<ul><li><b>Kick:</b> Keeps a pilot awake and alert for up to 30 hours.</li><li><b>Freeze:</b> Keeps a pilot calm and emotionally stable; deadens fear and other strong reactions.</li><li><b>Juice:</b> Heighten senses and alertness, reduce fatigue, and shorten reaction times. Juice occasionally provokes rage in some users.</li></ul>",
+   "ru": "Потратьте заряд для одного из следующих эффектов:<ul><li><b>Кик:</b> Держит пилота бодрствующим и настороже до 30 часов.</li><li><b>Фриз:</b> Сохраняет пилота спокойным и эмоционально стабильным; притупляет страх и другие сильные реакции.</li><li><b>Джус:</b> Обостряет чувства и внимательность, снижает усталость и сокращает время реакции. Джус иногда провоцирует ярость у некоторых пользователей.</li></ul>"
   }
  },
  "pg_thermite_charge": {
@@ -549,8 +549,8 @@
    "ru": ""
   },
   "effect": {
-   "en": "<p><b>Requirement</b>: Weapons and Gear with “Madrigal” in the name may only be equipped if the Pilot is wearing the “Madrigal Boarding Carapace”.</p><p>If your pilot is on foot, you gain the Shielded reaction.</p><br><b>Shielded</b> — You may expend a charge to gain Resistance to that damage.",
-   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br>Если ваш пилот вне меха, вы получаете реакцию «Защищён».<br><b>Защищён</b> — Вы можете потратить заряд, чтобы получить Сопротивление этому урону."
+   "en": "<p><b>Requirement</b>: Weapons and Gear with “Madrigal” in the name may only be equipped if the Pilot is wearing the “Madrigal Boarding Carapace”.</p><p>If your pilot is on foot, you gain the Shielded reaction.</p><br><b>Shielded</b> — <i>Trigger:</i> You take damage.<br>You may expend a charge to gain Resistance to that damage.",
+   "ru": "<b>Требование:</b> оружие и снаряжение с «Madrigal» в названии можно надеть только если пилот носит «Абордажный панцирь Madrigal».<br>Если ваш пилот вне меха, вы получаете реакцию «Защищён».<br><b>Защищён</b> — <i>Триггер:</i> вы получаете урон.<br>Вы можете потратить заряд, чтобы получить Сопротивление этому урону."
   }
  },
  "ms_madrigal_shock_field": {

@@ -19,9 +19,9 @@
      "ru": "1/сцену «Эверест» может совершить любое быстрое действие как свободное действие."
     }
    },
-   "Replaceable parts": {
+   "Replaceable Parts": {
     "name": {
-     "en": "Replaceable parts",
+     "en": "Replaceable Parts",
      "ru": "Заменяемые детали"
     },
     "description": {
@@ -1793,7 +1793,7 @@
    "ru": "Саладин"
   },
   "description": {
-   "en": "The Saladin is a hardy and efficient platform for full-squad support shielding. Based on early defense-oriented versions of the Genghis, the Saladin became the stuff of Armory legend following the exploits of Harrison I “Fearkiller” during the Interest War.<br>Since its first iteration, the Saladin has proved successful in a defensive and support role; it has even become a mainstay among Union Department of Justic and Human Rights liberator teams engaged in emancipation and refugee escort missions, despite the ideological (and, often, tactical) friction between the Armory and the DoJ/HR. Records from these engagements indicate that the Saladin’s massive bulk alone was a comfort and morale boost to DoJ/HR troopers and their charges, many of whom referred to the mechs as “Big Sal”. Union-flagged Saladin pilots often report null balances on bar tabs following engagements in emancipated systems.",
+   "en": "The Saladin is a hardy and efficient platform for full-squad support shielding. Based on early defense-oriented versions of the Genghis, the Saladin became the stuff of Armory legend following the exploits of Harrison I “Fearkiller” during the Interest War.<br>Since its first iteration, the Saladin has proved successful in a defensive and support role; it has even become a mainstay among Union Department of Justice and Human Rights liberator teams engaged in emancipation and refugee escort missions, despite the ideological (and, often, tactical) friction between the Armory and the DoJ/HR. Records from these engagements indicate that the Saladin’s massive bulk alone was a comfort and morale boost to DoJ/HR troopers and their charges, many of whom referred to the mechs as “Big Sal”. Union-flagged Saladin pilots often report null balances on bar tabs following engagements in emancipated systems.",
    "ru": "«Саладин» — прочная и эффективная платформа для экранирования поддержки всего отряда. Основанный на ранних оборонительно-ориентированных версиях «Чингисхана», «Саладин» стал частью легенд Арсенала после подвигов Харрисона I «Убийцы страха» во время Войны за интересы.<br>С первой же итерации «Саладин» доказал успешность в оборонительной и поддерживающей роли; он даже стал опорой среди освободительных команд Департамента юстиции и прав человека Юниона, занятых миссиями по освобождению и сопровождению беженцев, несмотря на идеологическое (а зачастую и тактическое) трение между Арсеналом и ДЮПЧ. Записи об этих столкновениях указывают, что одна лишь массивная туша «Саладина» служила утешением и поднимала боевой дух бойцам ДЮПЧ и их подопечным, многие из которых называли эти мехи «Большой Сэл». Пилоты «Саладина» под флагом Юниона часто сообщают об обнулении барных счетов после операций в освобождённых системах."
   },
   "traits": {
@@ -3698,7 +3698,7 @@
     "ru": "«Весёлый Роджер»"
    },
    "passive_effect": {
-    "en": "<p>At the start of every combat scene, your Kidd automatically connects to its paired Jolly Roger orbital satellite weapon. The efficacy of the Jolly Roger depends on maintaining a high level of calibration with the Kidd, which is tracked with a JOLLY ROGER DIE - 1d6, starting at 1.</p> <p>The die ticks up by 1 whenever you:</p> <ul> <li>deploy a DRONE or DEPLOYABLE</li> <li>take a tech action that targets at least one allied character.</li> </ul> <p>Each option can only increase the value of the of the JOLLY ROGER DIE once per round independently; however, the die also ticks up by 1 any time a hostile character takes a tech action against an allied character within your SENSORS, with no limit.</p> <p>1/round, you can activate the Jolly Roger as a quick action, resetting the JOLLY ROGER DIE to 1. Choose one of the following effects, based on the value of the die:</p> <p><b class='accent--text'>3+</b> <b>Plunder</b>: SCAN every hostile character in a Blast 1 area and give them LOCK ON.</p> <p><b class='accent--text'>5+</b> <b>Swindle</b>: Every hostile character in a Blast 1 area must succeed on a SYSTEMS save or become IMPAIRED, JAMMED, and SLOWED until the end of their next turn.</p> <p><b class='accent--text'>6</b> <b>Shiver Timbers</b>: Fire a beam weapon, punching a narrow hole through walls and obstructions. One hostile character must succeed on an AGILITY save or take 3d6 AP Energy Damage. On a success, they take half damage</p> <p>You do not require line of sight for any of these effects, they have the effective range of the battlefield, and they easily penetrate objects and terrain, although more potent barriers (e.g., energy shields that prevent effects from crossing them due to line of sight) block them normally</p><br><b>Plunder 3+</b> — SCAN every hostile character in a Blast 1 area and give them LOCK ON.<br><b>Swindle 5+</b> — Every hostile character in a Blast 1 area must succeed on a SYSTEMS save or become IMPAIRED, JAMMED, and SLOWED until the end of their next turn.<br><b>Shiver Timbers 6</b> — Fire a beam weapon, punching a narrow hole through walls and obstructions. One hostile character must succeed on an AGILITY save or take 3d6 AP Energy Damage. On a success, they take half damage.",
+    "en": "<p>At the start of every combat scene, your Kidd automatically connects to its paired Jolly Roger orbital satellite weapon. The efficacy of the Jolly Roger depends on maintaining a high level of calibration with the Kidd, which is tracked with a JOLLY ROGER DIE - 1d6, starting at 1.</p> <p>The die ticks up by 1 whenever you:</p> <ul> <li>deploy a DRONE or DEPLOYABLE</li> <li>take a tech action that targets at least one allied character.</li> </ul> <p>Each option can only increase the value of the of the JOLLY ROGER DIE once per round independently; however, the die also ticks up by 1 any time a hostile character takes a tech action against an allied character within your SENSORS, with no limit.</p> <p>1/round, you can activate the Jolly Roger as a quick action, resetting the JOLLY ROGER DIE to 1. Choose one of the following effects, based on the value of the die:</p> <p><b class='accent--text'>3+</b> <b>Plunder</b>: SCAN every hostile character in a Blast 1 area and give them LOCK ON.</p> <p><b class='accent--text'>5+</b> <b>Swindle</b>: Every hostile character in a Blast 1 area must succeed on a SYSTEMS save or become IMPAIRED, JAMMED, and SLOWED until the end of their next turn.</p> <p><b class='accent--text'>6</b> <b>Shiver Timbers</b>: Fire a beam weapon, punching a narrow hole through walls and obstructions. One hostile character must succeed on an AGILITY save or take 3d6 AP Energy Damage. On a success, they take half damage</p> <p>You do not require line of sight for any of these effects, they have the effective range of the battlefield, and they easily penetrate objects and terrain, although more potent barriers (e.g., energy shields that prevent effects from crossing them due to line of sight) block them normally</p>",
     "ru": "<p>В начале каждой боевой сцены ваш «Кидд» автоматически подключается к своему парному орбитальному спутниковому оружию «Весёлый Роджер». Эффективность «Весёлого Роджера» зависит от поддержания высокого уровня калибровки с «Киддом», что отслеживается КОСТЬЮ «ВЕСЁЛОГО РОДЖЕРА» — 1d6, начинающейся с 1.</p><p>Кость увеличивается на 1 каждый раз, когда вы:</p><ul><li>развёртываете ДРОНА или РАЗВОРАЧИВАЕМЫЙ ОБЪЕКТ;</li><li>совершаете тех-действие, направленное хотя бы на одного союзного персонажа.</li></ul><p>Каждый вариант может увеличить значение КОСТИ «ВЕСЁЛОГО РОДЖЕРА» только один раз за раунд независимо; однако кость также увеличивается на 1 каждый раз, когда враждебный персонаж совершает тех-действие против союзного персонажа в пределах ваших СЕНСОРОВ, без ограничения.</p><p>1/раунд вы можете активировать «Весёлого Роджера» как быстрое действие, сбрасывая КОСТЬ «ВЕСЁЛОГО РОДЖЕРА» на 1. Выберите один из следующих эффектов, в зависимости от значения кости:</p><p><b class='accent--text'>3+</b> <b>Грабёж</b>: Сканируйте каждого враждебного персонажа в области Взрыв 1 и дайте им Захват цели.</p><p><b class='accent--text'>5+</b> <b>Афера</b>: Каждый враждебный персонаж в области Взрыв 1 должен пройти спасбросок Систем, иначе становится Ослаблен, Заклинившим и Замедлен до конца своего следующего хода.</p><p><b class='accent--text'>6</b> <b>Дрожь досок</b>: Выстрелите лучевым оружием, пробивая узкую дыру в стенах и препятствиях. Один враждебный персонаж должен пройти спасбросок Ловкости, иначе получает 3d6 бронебойного энергетического урона. При успехе он получает половину урона.</p><p>Для всех этих эффектов вам не требуется видимость — они имеют эффективную дальность всего поля боя и легко проникают через объекты и местность, хотя более мощные барьеры (например, энергетические щиты, блокирующие эффекты из-за требования видимости) блокируют их как обычно.</p>"
    },
    "active_name": {
@@ -3708,6 +3708,38 @@
    "active_effect": {
     "en": "For the rest of the scene, Plunder and Swindle become Blast 2 and Shiver Timbers affects all characters in a Line 10 path.",
     "ru": "До конца сцены «Грабёж» и «Афера» получают область Взрыв 2, а «Дрожь досок» поражает всех персонажей по пути линией 10."
+   },
+   "passive_actions": {
+    "Plunder 3+": {
+     "name": {
+      "en": "Plunder 3+",
+      "ru": "Грабёж 3+"
+     },
+     "detail": {
+      "en": "SCAN every hostile character in a Blast 1 area and give them LOCK ON.",
+      "ru": "СКАНИРУЙТЕ каждого враждебного персонажа в области Взрыв 1 и наложите на них ЗАХВАТ ЦЕЛИ."
+     }
+    },
+    "Swindle 5+": {
+     "name": {
+      "en": "Swindle 5+",
+      "ru": "Надувательство 5+"
+     },
+     "detail": {
+      "en": "Every hostile character in a Blast 1 area must succeed on a SYSTEMS save or become IMPAIRED, JAMMED, and SLOWED until the end of their next turn.",
+      "ru": "Каждый враждебный персонаж в области Взрыв 1 должен пройти спасбросок СИСТЕМ, иначе становится ОСЛАБЛЕН, ЗАКЛИНИВШИМ и ЗАМЕДЛЕН до конца своего следующего хода."
+     }
+    },
+    "Shiver Timbers 6": {
+     "name": {
+      "en": "Shiver Timbers 6",
+      "ru": "Дрожь досок 6"
+     },
+     "detail": {
+      "en": "Fire a beam weapon, punching a narrow hole through walls and obstructions. One hostile character must succeed on an AGILITY save or take 3d6 AP Energy Damage. On a success, they take half damage.",
+      "ru": "Выстрелите лучевым оружием, пробивая узкую дыру в стенах и препятствиях. Один враждебный персонаж должен пройти спасбросок ЛОВКОСТИ, иначе получает 3d6 бронебойного энергетического урона. При успехе он получает половину урона."
+     }
+    }
    }
   }
  },
