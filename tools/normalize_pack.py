@@ -218,9 +218,36 @@ def norm_weapon(w):
     return w
 
 
+# How a system is used, shown as short labels next to it. Tags that say it
+# outright ("This system requires a quick action to Activate"):
+ACTIVATION_TAGS = {"tg_quick_action": "Quick", "tg_full_action": "Full", "tg_quick_tech": "Quick Tech",
+                   "tg_full_tech": "Full Tech", "tg_reaction": "Reaction", "tg_protocol": "Protocol",
+                   "tg_free_action": "Free"}
+ACTIVATIONS = ("Quick", "Full", "Quick Tech", "Full Tech", "Invade", "Protocol", "Reaction", "Free")
+
+
+def system_activations(s):
+    """The activation types of a system's actions, deployables and tags, each
+    once, in ACTIVATIONS order ("None"/"Other" are not shown). An action with
+    no activation is Quick only where the rules say so: a Grenade is thrown,
+    and a Deployable (Mine, drone) deployed, as a quick action unless stated
+    otherwise. Anything else is not guessed."""
+    tag_ids = {t.get("id") for t in s.get("tags") or [] if isinstance(t, dict)}
+    found = {ACTIVATION_TAGS[t] for t in tag_ids if t in ACTIVATION_TAGS}
+    for a in s.get("actions") or []:
+        act = a.get("activation")
+        found.add("Quick" if act is None and "tg_grenade" in tag_ids else act)
+    for d in s.get("deployables") or []:
+        found.add(d.get("activation") or "Quick")
+    return [a for a in ACTIVATIONS if a in found]
+
+
 def norm_system(s):
+    acts = system_activations(s)  # before tags and actions are flattened
     norm_tags(s)
     fold_into(s, "effect")
+    if acts:
+        s["activations"] = acts
     s.setdefault("type", "System")  # upstream omits the default type
     drop(s)
     return s

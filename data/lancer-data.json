@@ -5306,7 +5306,10 @@
    "license": "GMS",
    "license_level": 0,
    "effect": "Your mech has a basic COMP/CON unit, granting it the AI tag. The COMP/CON can speak to you and has a personality, but, unlike an NHP, is not truly capable of independent thought. It is obedient to you alone.<br>You can give control of your mech to its COMP/CON as a protocol, allowing your mech to act independently on your turn with its own set of actions. Unlike other AIs, a mech controlled by a COMP/CON has no independent initiative and requires direct input. Your mech will follow basic courses of action (defend this area, attack this enemy, protect me, etc.) to the best of its ability, or will act to defend itself if its instructions are complete or it receives no further guidance. You can issue new commands at the start of your turn as long as you are within Range 50 and have the means to communicate with your mech. Comp/con units are not true NHPs and thus cannot enter cascade.",
-   "description": "The GMS Companion/Concierge-Class Assistant Unit conforms to all galaxy-wide standards. These virtual assistants pass even the most rigid Turing-Null assessment criteria and are cleared to operate even in the absence of a pilot."
+   "description": "The GMS Companion/Concierge-Class Assistant Unit conforms to all galaxy-wide standards. These virtual assistants pass even the most rigid Turing-Null assessment criteria and are cleared to operate even in the absence of a pilot.",
+   "activations": [
+    "Protocol"
+   ]
   },
   {
    "id": "ms_custom_paint_job",
@@ -5333,6 +5336,9 @@
    "license": "GMS",
    "license_level": 0,
    "effect": "Your mech has space for one additional non-Mech character or object of Size 1/2 to ride as a passenger in the cockpit. While inside the mech, they cannot suffer any effect from outside or be targeted by attacks, as if they were a pilot. You can hand over or take back control to or from them as a protocol (following the same rules as pilot and AIs), but if they take over the controls from you, the mech becomes Impaired and Slowed to reflect the lack of appropriate licenses and integration.<br><b>Transfer Control</b> — You hand over or take back control to or from a non-Mech character or object of Size 1/2 riding as a passenger in the cockpit. If they take over the controls from you, the mech becomes Impaired and Slowed to reflect the lack of appropriate licenses and integration.",
+   "activations": [
+    "Protocol"
+   ],
    "type": "System"
   },
   {
@@ -5362,7 +5368,10 @@
    "source": "GMS",
    "license": "GMS",
    "license_level": 0,
-   "effect": "<br><b>Smoke Grenade</b> — Throw a Smoke Grenade within Range 5. All characters and objects within a Blast 2 area benefit from soft cover until the end of your next turn, at which point the smoke disperses.<br><b>Deployable — Smoke Mine:</b> This mine detonates when any allied character moves over or adjacent to it. All characters and objects within a Burst 3 area benefit from soft cover until the end of the detonating character’s next turn, at which point the smoke disperses."
+   "effect": "<br><b>Smoke Grenade</b> — Throw a Smoke Grenade within Range 5. All characters and objects within a Blast 2 area benefit from soft cover until the end of your next turn, at which point the smoke disperses.<br><b>Deployable — Smoke Mine:</b> This mine detonates when any allied character moves over or adjacent to it. All characters and objects within a Burst 3 area benefit from soft cover until the end of the detonating character’s next turn, at which point the smoke disperses.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_pattern_a_jericho_deployable_cover",
@@ -5375,7 +5384,10 @@
    "source": "GMS",
    "license": "GMS",
    "license_level": 0,
-   "effect": "Deploy two sections of Size 1 hard cover in free spaces adjacent to you and to each other. Each section is an object with 5 Evasion and 10 HP that can be targeted and destroyed individually. Both sections of cover can be picked up again as a full action.<br>Repairing the system restores both sections.<br><b>Deployable — Jericho Deployable Cover:</b> Deploy two sections of Size 1 hard cover in free spaces adjacent to you and to each other. Each section is an object with 5 Evasion and 10 HP that can be targeted and destroyed individually. Both sections of cover can be picked up again as a full action.<br>Repairing the system restores both sections."
+   "effect": "Deploy two sections of Size 1 hard cover in free spaces adjacent to you and to each other. Each section is an object with 5 Evasion and 10 HP that can be targeted and destroyed individually. Both sections of cover can be picked up again as a full action.<br>Repairing the system restores both sections.<br><b>Deployable — Jericho Deployable Cover:</b> Deploy two sections of Size 1 hard cover in free spaces adjacent to you and to each other. Each section is an object with 5 Evasion and 10 HP that can be targeted and destroyed individually. Both sections of cover can be picked up again as a full action.<br>Repairing the system restores both sections.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_pattern_b_hex_charges",
@@ -5390,7 +5402,10 @@
    "source": "GMS",
    "license": "GMS",
    "license_level": 0,
-   "effect": "<br><b>Frag Grenade</b> — Throw a Frag Grenade within Range 5. All characters within a Blast 1 area must pass an Agility save or take 1d6 Explosive damage. On a success, they take half damage.<br><b>Deployable — Explosive Mine:</b> All characters within a Burst 1 area must pass an Agility save or take 2d6 Explosive damage. On a success, they take half damage."
+   "effect": "<br><b>Frag Grenade</b> — Throw a Frag Grenade within Range 5. All characters within a Blast 1 area must pass an Agility save or take 1d6 Explosive damage. On a success, they take half damage.<br><b>Deployable — Explosive Mine:</b> All characters within a Burst 1 area must pass an Agility save or take 2d6 Explosive damage. On a success, they take half damage.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_personalizations",
@@ -5431,7 +5446,10 @@
    "license": "GMS",
    "license_level": 0,
    "effect": "Expend a charge to deploy a turret drone that attaches to any object or surface within Sensors and line of sight. Gain the Turret Attack reaction, which can be taken once for each deployed turret drone. Turret drones cannot be recalled and expire at the end of the scene.<br><b>Deployable — Turret Drone:</b> Gain the Turret Attack reaction, which can be taken once for each deployed turret drone. Turret drones cannot be recalled and expire at the end of the scene.<br><b>Turret Attack</b> — The turret drone deals 3 Kinetic damage to their target, as long as it has line of sight to their target.",
-   "description": "The use of turret drones is a rather traditional form of force multiplication – one that has remained the backbone of defense in many theaters."
+   "description": "The use of turret drones is a rather traditional form of force multiplication – one that has remained the backbone of defense in many theaters.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_type_3_projected_shield",
@@ -5447,7 +5465,10 @@
    "license": "GMS",
    "license_level": 0,
    "description": "The GMS Type-3 Projected Shield traps and denies incoming projectiles by projecting an aggressive, superpositional anti-ballistic barrier.",
-   "effect": "<br><b>Project Shield</b> — Nominate a character within line of sight: all ranged or melee attacks that they make against you or that you make against them gain +2 Difficulty until the start of your next turn."
+   "effect": "<br><b>Project Shield</b> — Nominate a character within line of sight: all ranged or melee attacks that they make against you or that you make against them gain +2 Difficulty until the start of your next turn.",
+   "activations": [
+    "Protocol"
+   ]
   },
   {
    "id": "ms_eva_module",
@@ -5511,6 +5532,9 @@
    "license_level": 3,
    "description": "Reinforced grappling cables allow for full movement and utility in ≤1 g environments. Woven from incredibly strong nanocarbon and arachnosynth threading, reinforced grapple line is carried on waist-mounted spools and attached to charge-actuated brachial projectors. Once fired, the grapples penetrate and anchor to the target. Small meltdown charges seeded every thirty meters of cable both allow rapid disengagement and expose a fresh grapple head, ready for immediate use.",
    "effect": "<br><b>Grapple Swing</b> — 1/turn, when making a standard move, you can fly your Speed in a straight line as long as there is a clear path. This move must end on an object or surface, or else you begin falling. As long as you remain stationary, you can secure yourself to the destination surface or object, even if it’s vertical or overhanging. If you are knocked Prone or knocked back while secured to a surface, you fall.<br><b>Drag Down</b> — Make a contested Hull check against a character within 5 Range and line of sight: the loser is knocked Prone.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -5526,7 +5550,10 @@
    "license": "Blackbeard",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and the SEKHMET Protocol.<br><b>SEKHMET Protocol</b> — When activated, you give control of your mech to your NHP and gain the following benefits:<ul><li>All melee critical hits deal +1d6 bonus damage.</li><li>1/round, you can Skirmish with melee weapons only as a free action.</li></ul>Your NHP uses all available actions and movement to move toward the closest visible character – allied or hostile – and attacks them with melee attacks, prioritizing melee weapons. It may benefit from your talents. If there are no characters within Threat, your NHP uses all actions to move as directly as possible to the next closest (visible) target. Your NHP can’t make ranged attacks, even if there are actions available.<br>You retain enough control to Overcharge as usual; however, your NHP uses the additional action for the same purpose as its other actions.<br>You can take back control of your mech as a protocol. When you do, you become Stunned until the start of your next turn. Otherwise, this effect lasts until your mech is destroyed – the pilot’s incapacitation or death has no effect.<br><b>Take Back Control</b> — You take back control of your mech from SEKHMET. You become Stunned until the start of your next turn.",
-   "description": "“The IPS-N SEKHMET co-pilot is ready to be your first mate! SEKHMET comes standard with remote, omninet, IR tag, and voice control systems, and is fully compatible with all current and legacy IPS-N mechs.<br>Did you know that SEKHMET learns with you? Should the worst happen, your very own SEKHMET will continue to engage hostile targets using an emulated neural-net doppelgänger to pilot your IPS-N chassis until forced or voluntary shutdown!”<br>draft copy, IPS-N Polaris Pilot Lounge adbroad [struck and replaced w/current adbroad]<br>SEKHMET-class NHPs tend toward aggressive attitudes and dark humor. Pilots often call them “berserker systems” – dangerous NHPs that value combat efficacy over pilot wellbeing."
+   "description": "“The IPS-N SEKHMET co-pilot is ready to be your first mate! SEKHMET comes standard with remote, omninet, IR tag, and voice control systems, and is fully compatible with all current and legacy IPS-N mechs.<br>Did you know that SEKHMET learns with you? Should the worst happen, your very own SEKHMET will continue to engage hostile targets using an emulated neural-net doppelgänger to pilot your IPS-N chassis until forced or voluntary shutdown!”<br>draft copy, IPS-N Polaris Pilot Lounge adbroad [struck and replaced w/current adbroad]<br>SEKHMET-class NHPs tend toward aggressive attitudes and dark humor. Pilots often call them “berserker systems” – dangerous NHPs that value combat efficacy over pilot wellbeing.",
+   "activations": [
+    "Protocol"
+   ]
   },
   {
    "id": "ms_argonaut_shield",
@@ -5540,6 +5567,9 @@
    "license_level": 1,
    "description": "In space, simplicity in form and function guarantees reliability and promotes trust. The Argonaut is one of IPS-N’s oldest designs, hailing from the pre-merger days of Northstar’s Deep Black security teams. It’s a simple slab of metal carried in hand or mounted on a chassis’ brachial superstructure; the only option a pilot has for customizing this shield is a choice of size.",
    "effect": "<br><b>Quick</b> — You use the heavy overarm Argonaut Shield to provide cover for an adjacent character as a quick action, giving them Resistance to all damage; however, you take half of the damage your target would take before calculating Armor and Resistance. This effect lasts until your target breaks adjacency, at which point this effect ceases until you repeat this action.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -5555,7 +5585,10 @@
    "license": "Drake",
    "license_level": 2,
    "effect": "Expend a charge to deploy a Size 1 shield generator in a free, adjacent space, where it creates a burst 1 shield.<br><b>Deployable — Aegis Shield Generator:</b> Set out three d6s to represent the generator’s remaining power. As a reaction when any character or object of your choice at least partly in the area takes damage, you may roll one of the d6s to reduce the damage by the amount rolled.<br>This effect lasts for the rest of the scene, until all dice have been rolled and the generator loses power, or the generator is destroyed.",
-   "description": "The Aegis is a portable electromagnetic shield generator: a powerful and reliable method – if crude by modern standards – for establishing kinetic and coherent-particle deterrence over a wide area."
+   "description": "The Aegis is a portable electromagnetic shield generator: a powerful and reliable method – if crude by modern standards – for establishing kinetic and coherent-particle deterrence over a wide area.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_portable_bunker",
@@ -5570,7 +5603,10 @@
    "license": "Drake",
    "license_level": 3,
    "effect": "Expend a charge to deploy a portable bunker to a free, adjacent area 4 by 4 area. At the start of your next turn, it unfolds into a fortified emplacement.<br><b>Deployable — Portable Bunker:</b> All characters completely within the bunker's 4x4 area gain hard cover against all attacks from outside the bunker from all directions and Resistance to damage from Blast, Line, Burst, and Cone attacks that originate outside the bunker.<br>The bunker is open topped, and characters may enter or exit at will. It can’t be moved or deactivated once deployed.",
-   "description": "IPS-N’s “Portable Bunker” is actually a series of single-use expanding printer sheets: flat-pack pouches of inert non-Newtonian fluid that, when deployed, become a rigid structure capable of withstanding incredible force."
+   "description": "IPS-N’s “Portable Bunker” is actually a series of single-use expanding printer sheets: flat-pack pouches of inert non-Newtonian fluid that, when deployed, become a rigid structure capable of withstanding incredible force.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_cable_winch_system",
@@ -5581,6 +5617,9 @@
    "license_level": 1,
    "description": "A winch system consists of an externally mounted spool of nanocarbon-weave cable and a recovery subroutine installed on the mech.",
    "effect": "<br><b>Quick</b> — These cables can be attached to an adjacent character. If the target is Stunned or willing, you automatically succeed; otherwise, they can resist with a successful Hull save. Once attached, you and the target may not move more than 5 spaces away from each other. Either character can tow the other, obeying the normal rules for lifting and dragging, and becoming Slowed while doing so.<br>Any character can remove the cables on a hit with a melee attack or Improvised Attack against Evasion 10.<br>These cables can also be used to drag, pull, or otherwise interact with objects and the environment. They are 5 spaces long and can support a combined Size 6 before they break. Characters can use them to climb surfaces, allowing them to climb without a Speed penalty.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -5596,7 +5635,10 @@
    "license": "Lancaster",
    "license_level": 1,
    "effect": "Expend a charge to deploy a restock drone to any free, adjacent space, where it primes at the end of your turn.<br><b>Deployable — Restock Drone:</b> While adjacent to this drone, allied characters can activate it as a quick action, clearing 1d6 heat and one condition, and reloading one Loading weapon. After being activated, the drone immediately disintegrates.<br><b>Activate Restock Drone</b> — Clear 1d6 heat and one condition, and reloading one Loading weapon. After being activated, the drone immediately disintegrates.",
-   "description": "Reliable and sturdy drones carrying integrated printers, restock drones allow for limited logistical flexibility via autosalvage. The bulk of a restock drone is made of RawMat, a blend of silicates and metallic materials that the drone processes into replacement parts and repair kits. This is why pilots often joke that restock drones are, simply put, “mech snacks”."
+   "description": "Reliable and sturdy drones carrying integrated printers, restock drones allow for limited logistical flexibility via autosalvage. The bulk of a restock drone is made of RawMat, a blend of silicates and metallic materials that the drone processes into replacement parts and repair kits. This is why pilots often joke that restock drones are, simply put, “mech snacks”.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_mule_harness",
@@ -5621,6 +5663,9 @@
    "license_level": 2,
    "description": "For fire suppression and fast, temporary seals in punctured starship bulkheads, IPS-N offers a range of single-use, single objective nanites – “whitewash”. This sealant spray can also be used to restrain noncompliant actors when the correct spray heads and catalytic formulations are installed to the applicator.",
    "effect": "<br><b>Quick</b> — This sealant can be sprayed on characters or free spaces within range 5 and line of sight. It has different effects depending on the target:<ul><li><b>Hostile Characters:</b> Your target must succeed on an Agility save or they become Slowed until the end of their next turn and clear all burn.</li><li><b>Allied Characters:</b> Your target clears all burn but they become Slowed until the end of their next turn.</li><li><b>Free Space:</b> Any fires within blast 1 are extinguished and the area becomes difficult terrain for the rest of the scene.</li></ul>",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -5638,7 +5683,10 @@
    "license": "Lancaster",
    "license_level": 3,
    "description": "The IPS-N Aceso Stabilizer is a useful triage measure for any scoring and minor mechanical damage that is sustained in the course of combat engagement or negative environmental interaction. Thanks to its negligible processor demand, Aceso Stabilizers can even be controlled by COMP/CON units – this allows the pilot to concentrate on complex repairs or immediate threat neutralization.",
-   "effect": "<br><b>Quick</b> — Expend a charge to fire this small, self-arming system onto an allied mech within range 5. They gain Overshield equal to your GRIT + 4. While they have this Overshield they gain Immunity to Impaired and Jammed."
+   "effect": "<br><b>Quick</b> — Expend a charge to fire this small, self-arming system onto an allied mech within range 5. They gain Overshield equal to your GRIT + 4. While they have this Overshield they gain Immunity to Impaired and Jammed.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_bulwark_mods",
@@ -5682,6 +5730,9 @@
    "license_level": 3,
    "description": "There’s a threshold that veteran Nelson pilots know well: the point of endless momentum. You get moving fast enough in the right atmosphere and the air itself feeds into auxiliary ports on the chassis, screaming out like a demon’s almighty howl. The point of endless momentum is a giant’s hand on your chest and a god’s chariot under your feet. Makes you feel like you can outrun light itself, as long as you don’t pass out first.",
    "effect": "<br><b>Protocol</b> — Until the start of your next turn, you can move +2 spaces when you Boost and your melee attacks (including Ram, Grapple, and so on) gain Knockback 2.<br>When you move during this time, you must move your full Speed in a straight line; however, you can stop if you would collide with an obstruction or hostile character, and you can change direction between separate movements (for example, standard moves, Boost, etc).",
+   "activations": [
+    "Protocol"
+   ],
    "type": "System"
   },
   {
@@ -5698,7 +5749,10 @@
    "license": "Raleigh",
    "license_level": 1,
    "description": "Breach/blast charges offer a mil-spec twist on the industrial blasting charges developed by IPS-N for asteroid mining. The IPS-N BB charge features a more volatile blend of high explosives designed to cause massive structural damage to mechanized chassis, starship bulkheads, armored vehicles, bunkers, and other hardened structures.",
-   "effect": "<br><b>Thermal Grenade</b> — Throw a Thermal Grenade within Range 5. All characters within a Blast 1 area must succeed on an Agility save or take 1d6 energy. On a success, they take half damage. Objects and terrain are hit automatically and take 10 AP energy damage.<br><b>Deployable — Breaching Charge:</b> In addition to adjacent free spaces, this mine can also be planted on adjacent walls, pieces of cover, and terrain. Once armed, this mine must be detonated with a quick action. Characters within the affected area must succeed on an Agility save or take 2d6 AP explosive damage. On a success, they take half damage. Objects and terrain are hit automatically and take 30 AP explosive damage.<br><b>Detonate</b> — Characters within a Burst 1 area must succeed on an Agility save or take 2d6 AP explosive damage. On a success, they take half damage. Objects and terrain are hit automatically and take 30 AP explosive damage."
+   "effect": "<br><b>Thermal Grenade</b> — Throw a Thermal Grenade within Range 5. All characters within a Blast 1 area must succeed on an Agility save or take 1d6 energy. On a success, they take half damage. Objects and terrain are hit automatically and take 10 AP energy damage.<br><b>Deployable — Breaching Charge:</b> In addition to adjacent free spaces, this mine can also be planted on adjacent walls, pieces of cover, and terrain. Once armed, this mine must be detonated with a quick action. Characters within the affected area must succeed on an Agility save or take 2d6 AP explosive damage. On a success, they take half damage. Objects and terrain are hit automatically and take 30 AP explosive damage.<br><b>Detonate</b> — Characters within a Burst 1 area must succeed on an Agility save or take 2d6 AP explosive damage. On a success, they take half damage. Objects and terrain are hit automatically and take 30 AP explosive damage.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_roland_chamber",
@@ -5741,7 +5795,10 @@
    "license": "Tortuga",
    "license_level": 3,
    "description": "IPS-N HyperDense Armor is built for space – forged with no regard for any constraints users might face within a gravity well. As such, many pilots protected by HyperDense products are shocked to experience the difference between piloting their mech down a well and taking it for a ride in the null-gravity of space.",
-   "effect": "<br><b>Quick</b> — When activated, the HyperDense Armor hardens into a shimmering, reflective surface that offers unparalleled protection. You gain Resistance to all damage, Heat and Burn from attacks that originate beyond Range 3; however, you become Slowed and deal half damage, Heat and Burn to characters beyond Range 3.<br><b>Deactivate HyperDense Armor</b> — Deactivate HyperDense Armor, losing Resistance to all damage, Heat and Burn from attacks that originate beyond Range 3; as well as clearing your Slowed status and dealing normal damage, Heat and Burn to characters beyond Range 3."
+   "effect": "<br><b>Quick</b> — When activated, the HyperDense Armor hardens into a shimmering, reflective surface that offers unparalleled protection. You gain Resistance to all damage, Heat and Burn from attacks that originate beyond Range 3; however, you become Slowed and deal half damage, Heat and Burn to characters beyond Range 3.<br><b>Deactivate HyperDense Armor</b> — Deactivate HyperDense Armor, losing Resistance to all damage, Heat and Burn from attacks that originate beyond Range 3; as well as clearing your Slowed status and dealing normal damage, Heat and Burn to characters beyond Range 3.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_webjaw_snare",
@@ -5756,7 +5813,10 @@
    "license": "Vlad",
    "license_level": 1,
    "effect": "Expend a charge to deploy a Webjaw snare to a free, adjacent space, where it arms at the end of your turn.<br><b>Deployable — Webjaw Snare:</b> The Webjaw Snare does not obstruct movement, and can’t be attacked until it is triggered.<br>The snare is triggered when any character moves over it. They must succeed on a Hull save or take 1d6 AP kinetic damage and become Immobilized. This effect lasts until the snare is destroyed.",
-   "description": "Suitable for use in any theater, the IPS-N Webjaw Explosively Accelerated Filament system is a deployable perimeter defense solution designed to arrest hostile movement in predetermined kill-corridors. The Webjaw consists of a networked cluster of single-use anchors, each consisting of a barb, a coil of arachnosynth NoCut filament, and an explosive charge.<br>When triggered remotely, or by a series of programmable physical, electronic, or chemical triggers, the anchors fire, embedding barbs deep inside targets, whether soft or hard. The barbs, secured to anchor points by NoCut filament, clog and restrict movement, fouling gears, wheels, rotors, engines, and all methods of locomotion."
+   "description": "Suitable for use in any theater, the IPS-N Webjaw Explosively Accelerated Filament system is a deployable perimeter defense solution designed to arrest hostile movement in predetermined kill-corridors. The Webjaw consists of a networked cluster of single-use anchors, each consisting of a barb, a coil of arachnosynth NoCut filament, and an explosive charge.<br>When triggered remotely, or by a series of programmable physical, electronic, or chemical triggers, the anchors fire, embedding barbs deep inside targets, whether soft or hard. The barbs, secured to anchor points by NoCut filament, clog and restrict movement, fouling gears, wheels, rotors, engines, and all methods of locomotion.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_caltrop_launcher",
@@ -5770,6 +5830,9 @@
    "license_level": 2,
    "effect": "This system blankets a free Burst 1 area within Range 5 with explosive caltrops. The affected area becomes difficult terrain for the rest of the scene, and mechs take 1d3 AP Explosive Damage when they enter the affected area for the first time in a round or end their turn within it.<br><b>Deployable — Caltrop Field:</b> The affected area becomes difficult terrain for the rest of the scene, and mechs take 1d3 AP explosive damage when they enter the affected area for the first time in a round or end their turn within it.",
    "description": "Wicked anti-organic, anti-vehicle systems for proximity denial, caltrop launchers fire either great clouds or long swathes of shimmering metal over an area. IPS-N’s HX-CAL caltrop system includes small, shaped explosives in the mix of hardened pyramids.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -5781,6 +5844,9 @@
    "license_level": 3,
    "description": "Descended from blast-mining tools, this enormous, improvised system is housed and prepped to fire in a specially primed chamber. It first penetrates and immobilizes armored targets, then sends a powerful, vaporizing charge into vulnerable internal systems.",
    "effect": "<br><b>Full</b> — This system fires a charged stake at a character adjacent to you. Your target must succeed on a Hull save or be impaled by the stake, taking<br>1d6 AP energy damage and becoming Immobilized while impaled. At the end of each of their turns, an impaled character takes 1d6 AP energy damage. An impaled character can successfully repeat this save as a full action to remove the stake and free themselves, which is the only way to end the immobilization.<br>You can only affect one character with the stake at a time.",
+   "activations": [
+    "Full"
+   ],
    "type": "System"
   },
   {
@@ -5792,6 +5858,9 @@
    "license_level": 1,
    "description": "Initially developed as a nonlethal crowd-suppression device, the Ferrous Lash is a far more complex and dangerous device in the hands of the right pilot. The Lash consists of a series of integrated launchers that detonate payloads of fast-congealing ferrofluids that restrain their targets. Tuned to the correct frequency, these proprietary ferrofluid blends form into rudimentary ambulatory segments, pulling their hosts back towards the one wielding the Lash.",
    "effect": "<br><b>Quick</b> — Choose a character within range 8 and line of sight. If they are allied, you may pull them 5 spaces in any direction; if they are hostile, they must succeed on an Agility save or be pulled 5 spaces in a direction of your choice. This movement ignores engagement and doesn’t provoke reactions.<br>If a hostile target moved by this system collides with an obstruction or another mech, they stop moving and are knocked Prone.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -5807,7 +5876,10 @@
    "license": "Black Witch",
    "license_level": 2,
    "effect": "Expend a charge to deploy an ICEOUT drone to a free space within Sensors and line of sight, where it hovers in place and generates a burst 1 field.<br><b>Deployable — ICEOUT Drone:</b> Characters at least partially within the ICEOUT drone's Burst 1 area gain Immunity to all tech actions, and can’t make tech actions. Existing conditions and effects caused by tech actions are not cleared but characters have Immunity to them while they are in the area, and they can be saved against normally.<br>The ICEOUT drone can be moved to any point within Sensors as a quick action. It cannot be recalled and expires at the end of the scene.<br><b>Move ICEOUT Drone</b> — The ICEOUT drone can be moved to any point within Sensors.",
-   "description": "SSC’s ICEOUT drone is a response to increasing reliance on hostile system scans for accurate targeting. By blanketing a mech’s systems in layers of digital defilade, mirroring, spoofing, and redirection, an ICEOUT drone can effectively disappear or disincorporate it from hostile scans. ICEOUT drones only make their operator system-invisible, however; they remain visible with optics."
+   "description": "SSC’s ICEOUT drone is a response to increasing reliance on hostile system scans for accurate targeting. By blanketing a mech’s systems in layers of digital defilade, mirroring, spoofing, and redirection, an ICEOUT drone can effectively disappear or disincorporate it from hostile scans. ICEOUT drones only make their operator system-invisible, however; they remain visible with optics.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_perimeter_command_plate",
@@ -5821,7 +5893,10 @@
    "license": "Black Witch",
    "license_level": 2,
    "effect": "This heavy metal Perimeter Command Plate (PCP) can be flash-printed and deployed to a free 2x2 space within range 5. The PCP is flat, doesn’t obstruct movement, and lasts for the rest of the scene. If you create a new PCP, the old one disintegrates.<br><b>Deployable — Perimeter Command Plate:</b> The plate activates for a character the first time that character enters its space during a round, or if they end their turn there.<br>Upon printing, choose a setting:<ul><li><b>Repulse:</b> Hostile characters that move onto the PCP must succeed on a Hull save or be pushed 3 spaces in the direction of your choice. If this causes them to collide with an obstruction, they are knocked Prone. Allied characters that enter the space may immediately fly 3 spaces in any direction as a free action.</li><li><b>Attract:</b> Characters that move onto the PCP must succeed on a Hull save or become Immobilized. They can clear Immobilized by successfully repeating the save as a quick action; it is also cleared if the PCP is destroyed.</li></ul><br><b>Repulse</b> — Must succeed on a Hull save or be pushed 3 spaces in the direction of your choice. If this causes them to collide with an obstruction, they are knocked Prone.<br><b>Attract</b> — Must succeed on a Hull save or become Immobilized. They can clear Immobilized by successfully repeating the save as a quick action; it is also cleared if the PCP is destroyed.",
-   "description": "The Exotic Materials Group developed the Perimeter Command Plate to extend the area of the Black Witch’s zone of control. Utilizing single-pattern flash printers, the Black Witch prints a broad, circular plate seeded with electromagnetic projectors. Although the plates are intended to be disposable, Black Witch pilots often grow attached to their “familiars” and request their flash-printers create personalized plates."
+   "description": "The Exotic Materials Group developed the Perimeter Command Plate to extend the area of the Black Witch’s zone of control. Utilizing single-pattern flash printers, the Black Witch prints a broad, circular plate seeded with electromagnetic projectors. Although the plates are intended to be disposable, Black Witch pilots often grow attached to their “familiars” and request their flash-printers create personalized plates.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_black_ice_module",
@@ -5850,7 +5925,10 @@
    "license": "Black Witch",
    "license_level": 3,
    "description": "SSC’s magnetic shield takes the same technology as their proprietary magnetic buckler and applies it to a massive field-projection system.",
-   "effect": "<br><b>Quick</b> — This system creates a line 4 forcefield, 4 spaces high – with at least 1 space adjacent to you – that is an obstruction for mechs and characters made at least partly of metal. It lasts for the rest of the scene and if a new one is placed, the old one deactivates.<br>The forcefield doesn’t block line of sight, but it provides soft cover. Characters gain Resistance to kinetic and explosive damage while benefiting from this cover."
+   "effect": "<br><b>Quick</b> — This system creates a line 4 forcefield, 4 spaces high – with at least 1 space adjacent to you – that is an obstruction for mechs and characters made at least partly of metal. It lasts for the rest of the scene and if a new one is placed, the old one deactivates.<br>The forcefield doesn’t block line of sight, but it provides soft cover. Characters gain Resistance to kinetic and explosive damage while benefiting from this cover.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_high_stress_mag_clamps",
@@ -5875,7 +5953,10 @@
    "license": "Death’s Head",
    "license_level": 1,
    "description": "Tracking bugs are specialized tracer rounds – essentially, drones too large to be classified as nanites, and far too small to fit the Union-standard parameters of a drone. Fired from dedicated launchers, tracking bugs guide themselves toward their designated target. Following successful penetration of the target, they surreptitiously and continuously feed live data back to their registered user.",
-   "effect": "<br><b>Quick Tech</b> — Make a tech attack against a character within Sensors. On a hit, you know their exact location, HP, Structure, and Speed for the duration. They can’t Hide and you ignore their Invisible status. To remove the tracking drone, they must succeed on an Engineering check as a quick action; otherwise it deactivates at the end of the scene."
+   "effect": "<br><b>Quick Tech</b> — Make a tech attack against a character within Sensors. On a hit, you know their exact location, HP, Structure, and Speed for the duration. They can’t Hide and you ignore their Invisible status. To remove the tracking drone, they must succeed on an Engineering check as a quick action; otherwise it deactivates at the end of the scene.",
+   "activations": [
+    "Quick Tech"
+   ]
   },
   {
    "id": "ms_core_siphon",
@@ -5889,6 +5970,9 @@
    "license_level": 2,
    "description": "By shunting excess heat to offensive systems, core siphons allow pilots to overclock the targeting, catalytic, and processing capabilities of their weapons. This comes at a cost, however – reliance on overclocking without sufficient cooling can damage systems not built to handle the influx of power.",
    "effect": "<br><b>Protocol</b> — When you activate this protocol, you gain +1 accuracy on your first attack roll this turn, but receive +1 difficulty on all other attack rolls until the end of the turn.",
+   "activations": [
+    "Protocol"
+   ],
    "type": "System"
   },
   {
@@ -5917,7 +6001,10 @@
    "license": "Dusk Wing",
    "license_level": 1,
    "description": "“Somehow it got inside my cockpit. There were hands – cold hands – around my neck, fingers in my mouth, worming under my hardsuit. No one else could have been in there with me and yet, someone was. I couldn't even scream, it held my tongue in a fist and it squeezed, and it whispered its name to me, and it said nothing I could understand. I have never felt more alone – it was just me and… it. Alone in the universe, forever.”",
-   "effect": "<br><b>Shrike Code</b> — Until the end of the target’s next turn, they first take 2 heat whenever they attack.<br><b>Mirage</b> — Choose yourself or an allied character: your systems relay blurred, illusory images over their actual silhouette. Your target treats you, or the character you chose, as Invisible until the end of their next turn."
+   "effect": "<br><b>Shrike Code</b> — Until the end of the target’s next turn, they first take 2 heat whenever they attack.<br><b>Mirage</b> — Choose yourself or an allied character: your systems relay blurred, illusory images over their actual silhouette. Your target treats you, or the character you chose, as Invisible until the end of their next turn.",
+   "activations": [
+    "Invade"
+   ]
   },
   {
    "id": "ms_flicker_field_projector",
@@ -5946,6 +6033,9 @@
    "license_level": 3,
    "description": "“Many things happened the moment I think I died.”",
    "effect": "<br><b>Quick</b> — Expend a charge to create a burst 3 flash of light. All hostile characters within the affected area that have line of sight to you must succeed on an Agility save or become Jammed, and a Systems save or become Impaired. These effects last until the end of their next turn.<br>Characters in cover from you are not affected by this system.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -5962,7 +6052,10 @@
    "license": "Dusk Wing",
    "license_level": 3,
    "description": "“Inside? What did I see inside? You think I escaped? That this is all real? No, I– I never left. I’m still there. Something is wrong. Something is not right.”",
-   "effect": "<br><b>Protocol</b> — Until the start of your next turn, you can only move in straight lines; however, you create a holographic trail behind you as you move, creating a light barrier made of contiguous sections the same Size as your mech (Size 1 for Size 0.5 Mechs) in each space you move through. This barrier grants hard cover to adjacent characters, and characters that benefit from this cover also gain Resistance to energy.<br>The barrier doesn’t count as an obstruction and has Immunity to all damage. Characters may freely pass through it but not end their turns inside it, and any character that would be involuntarily moved inside the barrier stops moving if they would end their movement inside it. It lasts for the rest of the scene or until you next use this system."
+   "effect": "<br><b>Protocol</b> — Until the start of your next turn, you can only move in straight lines; however, you create a holographic trail behind you as you move, creating a light barrier made of contiguous sections the same Size as your mech (Size 1 for Size 0.5 Mechs) in each space you move through. This barrier grants hard cover to adjacent characters, and characters that benefit from this cover also gain Resistance to energy.<br>The barrier doesn’t count as an obstruction and has Immunity to all damage. Characters may freely pass through it but not end their turns inside it, and any character that would be involuntarily moved inside the barrier stops moving if they would end their movement inside it. It lasts for the rest of the scene or until you next use this system.",
+   "activations": [
+    "Protocol"
+   ]
   },
   {
    "id": "ms_flash_charges",
@@ -5978,7 +6071,10 @@
    "license": "Metalmark",
    "license_level": 1,
    "description": "Produced by Smith-Shimano’s BELLA CIAO workshop, Flash Charges are popular advantage multipliers, their flash bright enough to destabilize visible-light optics, laser communications, and infra-red sensor suites.",
-   "effect": "<br><b>Flash Grenade</b> — Throw a Flash Grenade within Range 5. Until the end of your next turn, this grenade creates a Blast 3 zone of blinding light and sparks. While characters other than you are at least partly inside the area, they can’t draw line of sight out of the area. Characters fully outside of the area or that exit the area are unaffected unless they move into it.<br><b>Deployable — Flash Mine:</b> This mine detonates in a Burst 1 area when a character moves adjacent to or over it. Characters within the affected area must succeed on an Agility save or they only have line of sight to adjacent spaces until the end of their next turn."
+   "effect": "<br><b>Flash Grenade</b> — Throw a Flash Grenade within Range 5. Until the end of your next turn, this grenade creates a Blast 3 zone of blinding light and sparks. While characters other than you are at least partly inside the area, they can’t draw line of sight out of the area. Characters fully outside of the area or that exit the area are unaffected unless they move into it.<br><b>Deployable — Flash Mine:</b> This mine detonates in a Burst 1 area when a character moves adjacent to or over it. Characters within the affected area must succeed on an Agility save or they only have line of sight to adjacent spaces until the end of their next turn.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_reactive_weave",
@@ -6007,6 +6103,9 @@
    "license_level": 3,
    "description": "Active camouflage is the pinnacle of counter-optic defense systems. Active camouflage systems continuously interpret incoming visible-light data, allowing them to project light-bending fields around their user and effectively hiding them in plain sight.",
    "effect": "<br><b>Protocol</b> — You become Invisible until you take damage, or until the end of your next turn.",
+   "activations": [
+    "Protocol"
+   ],
    "type": "System"
   },
   {
@@ -6021,6 +6120,9 @@
    "license_level": 1,
    "description": "“Pralaya was the name of your mother. She who would see the dawn-at-the-end. Her beauty was terrible, and her wrath, and I see it in all of you. My sons, when you hear the sound of thunder – that is your mother’s voice, and the rain of missiles her gift.” — “Notes for Young John”, Ministrations of the Master Teacher",
    "effect": "<br><b>Quick</b> — Choose 3 free spaces within range 15 and line of sight that aren’t adjacent to each other. All characters know which spaces you have chosen. You fire a volley of auto-targeting rockets into the air: until the start of your next turn, when a character moves into or passes above a chosen space – no more than 10 spaces up – they are hit by a rocket, taking 3 kinetic damage. Each space can be triggered once and then the effect disappears on that space.<br><b>Deployable — Javelin Rocket:</b> When a character moves into or passes above the marked position of this rocket – no more than 10 spaces up – they are hit by a rocket, taking 3 kinetic damage. Each space can be triggered once and then the effect disappears on that space.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6037,7 +6139,10 @@
    "license": "Monarch",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and the TLALOC Protocol.<br><b>TLALOC Protocol</b> — Your NHP can rapidly fire and retarget your weapons – far faster than thought. You become Immobilized until the start of your next turn; however, during this time, you may reroll each missed melee or ranged attack roll once, choosing a new target within the attack’s Range. If the attack was part of an area of effect, it must target a character in the same area. Any given target can't be hit more than once as part of the same action.",
-   "description": "TLALOC-Class NHPs provide advanced multi-system targeting and co-pilot functions, taking over subroutine control to ensure persistent lock-on and engagement. With TLALOC installed and operational, a pilot can trust that their back is always covered, and every possible advantage exploited.<br>TLALOC clones are often stereotyped as hasty and impetuous, and they are well-known for having superiority complexes. Despite this, they are some of the most stable NHP clones. Leading subjectivity theorists suggest that the wide portfolio of control and sense of domination given to TLALOC units encourages a sense of contentment with their work and subjectivity parameters – as a result, they have a much longer cascade window. Thus far, this theory is consistently reproducible across all TLALOC units, although there is no similar correlation among other mil-spec NHP lines."
+   "description": "TLALOC-Class NHPs provide advanced multi-system targeting and co-pilot functions, taking over subroutine control to ensure persistent lock-on and engagement. With TLALOC installed and operational, a pilot can trust that their back is always covered, and every possible advantage exploited.<br>TLALOC clones are often stereotyped as hasty and impetuous, and they are well-known for having superiority complexes. Despite this, they are some of the most stable NHP clones. Leading subjectivity theorists suggest that the wide portfolio of control and sense of domination given to TLALOC units encourages a sense of contentment with their work and subjectivity parameters – as a result, they have a much longer cascade window. Thus far, this theory is consistently reproducible across all TLALOC units, although there is no similar correlation among other mil-spec NHP lines.",
+   "activations": [
+    "Protocol"
+   ]
   },
   {
    "id": "ms_hunter_logic_suite",
@@ -6051,7 +6156,10 @@
    "license": "Mourning Cloak",
    "license_level": 2,
    "description": "Built from interpreted strands of DHIYED paracode, SSC’s Hunter Logic is an agile computational memetic: a dual synthetic/VLS-vector systemic weapon capable of interfering with both a target’s computer and its crew.",
-   "effect": "<br><b>Stalk Prey</b> — You infect the target with a viral logic that wipes your image from their sensors. They treat you as Invisible until you next take damage from them. This can only affect one target at a time.<br><b>Terrify</b> — You infect the target with a viral logic that makes your mech appear horrifying. Until the end of their next turn, they become Impaired and cannot make any voluntary movements that bring them closer to you."
+   "effect": "<br><b>Stalk Prey</b> — You infect the target with a viral logic that wipes your image from their sensors. They treat you as Invisible until you next take damage from them. This can only affect one target at a time.<br><b>Terrify</b> — You infect the target with a viral logic that makes your mech appear horrifying. Until the end of their next turn, they become Impaired and cannot make any voluntary movements that bring them closer to you.",
+   "activations": [
+    "Invade"
+   ]
   },
   {
    "id": "ms_singularity_motivator",
@@ -6065,6 +6173,9 @@
    "license_level": 2,
    "description": "This unique gravitic power plant was first developed by SSC’s Exotic Materials Group for the first-generation Mourning Cloak. For subsequent models, engineers devised a system that allows pilots to – for a moment – open the grav containment system’s aperture, exposing a slice of naked singularity to realspace.<br>A naked singularity is difficult to perceive for both organics and synthetics, being similar to the heart of a black hole. The sudden exposure essentially removes the mech and its pilot from realtime. The user experiences around 10 seconds of subjective time – a brief window, in which they can act independently of local realtime.<br>SSC recommends against abuse of this system, as the effects of long-term exposure to local sidereal time are still unknown.",
    "effect": "<br><b>Exposed Singularity</b> — <i>Trigger:</i> Your mech takes damage.<br>You may immediately teleport to a free space within 1d6 spaces.",
+   "activations": [
+    "Reaction"
+   ],
    "type": "System"
   },
   {
@@ -6079,6 +6190,9 @@
    "license_level": 3,
    "description": "Representing SSC’s first successful manipulation of the “Firmament”, Firmament Affinity/Directed Entropy (FADE) cloaks must be fabricated according to the unique affinity signature of requisitioning pilots. They are rough tools: artificial affinity amplifiers that allow operators to access shallow layers of the Firmament, and thus “shimmer” – nudging their physical bodies between the causal and paracausal. The cloak enhances this effect by extruding a semiorganic membrane that wraps around the mech to provide an additional layer of protection.<br>At present, the long-term effects of affinity amplification on organic matter are unknown; before receiving clearance to operate a FADE cloak, pilots must agree to check in with their SSC personal concierge on a regular schedule. These check-ins include regular deposits of genetic material.",
    "effect": "<br><b>Quick</b> — When activated, you immediately move out of phase with realspace, becoming intangible. While intangible, you may move through obstructions, but not end your turn within them. You cannot interact with any other object or character or be interacted with in any way (e.g., taking or dealing damage).<br>Roll 1d6 at the start of each of your turns: on 3 or less, you return to realspace until the start of your next turn; on 4+, you remain intangible.<br>This system remains active for the rest of the scene, or until you deactivate it as a quick action.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6093,7 +6207,10 @@
    "license": "Swallowtail",
    "license_level": 1,
    "effect": "This scout drone can be deployed to a space within Sensors and line of sight, where it emits a Burst 2 field with the following effects:<ul><li>You know the current location, HP, Evasion, E-Defense, and Heat of all characters within the affected area.</li><li>Hostile characters cannot Hide in the area, and if they end their turn in the affected area they cease to be Hidden.</li><li>Hostile characters can’t benefit from being Invisible while in the affected area.</li></ul>You can recall and redeploy your scout drone as a quick action.<br><b>Deployable — Lotus Projector:</b> This scout drone can be deployed to a space within Sensors and line of sight, where it emits a Burst 2 field with the following effects:<ul><li>You know the current location, HP, Evasion, E-Defense, and Heat of all characters within the affected area.</li><li>Hostile characters cannot Hide in the area, and if they end their turn in the affected area they cease to be Hidden.</li><li>Hostile characters can’t benefit from being Invisible while in the affected area.</li></ul>You can recall and redeploy your scout drone as a quick action.",
-   "description": "Mech-mounted Lotus Projectors are designed to launch small, actively camouflaged scout drones. The projector fires the single-use drones at subsonic speeds in bursts of ten, blanketing a wide area in order to relay information about terrain and targets within."
+   "description": "Mech-mounted Lotus Projectors are designed to launch small, actively camouflaged scout drones. The projector fires the single-use drones at subsonic speeds in bursts of ten, blanketing a wide area in order to relay information about terrain and targets within.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_markerlight",
@@ -6104,7 +6221,10 @@
    "license": "Swallowtail",
    "license_level": 1,
    "description": "“Out, damned spot! Out, I say! – One, two. Why, then, ‘tis time to do’t. Hell is murky! – Fie, my lord, fie! A soldier, and afeard? What need we fear who knows it, when none can call our power to account?”<ul><li>Shakespeare, Macbeth, act 5, sc. 1.</li></ul>",
-   "effect": "<br><b>Full Tech</b> — Make a tech attack against a character within Sensors and line of sight. On a success, they take 2 heat, Lock On, and cannot benefit from soft cover until the Lock On is cleared; additionally, once before the start of your next turn, when an allied character hits your target, you may declare as a reaction that they have hit a weak spot. If it wasn’t already, the attack becomes a critical hit."
+   "effect": "<br><b>Full Tech</b> — Make a tech attack against a character within Sensors and line of sight. On a success, they take 2 heat, Lock On, and cannot benefit from soft cover until the Lock On is cleared; additionally, once before the start of your next turn, when an allied character hits your target, you may declare as a reaction that they have hit a weak spot. If it wasn’t already, the attack becomes a critical hit.",
+   "activations": [
+    "Full Tech"
+   ]
   },
   {
    "id": "ms_retractable_profile",
@@ -6118,7 +6238,11 @@
    "license": "Swallowtail",
    "license_level": 2,
    "description": "The hallmark of a well thought out mech frame is the opportunity for pilots to adapt their stock models to the specifications of the environments in which they operate. A retractable profile enables on-the-fly removal of extraneous protrusions, tuning of broadcast software, and masking of heat signatures – all serving to reduce optical and scanner signatures.",
-   "effect": "<br><b>Protocol</b> — Your mech can retract its major systems to reduce its profile. While active:<ul><li>rolls to locate you receive +1 difficulty while you are Hidden;</li><li>ranged and tech attacks against you receive +1 difficulty;</li><li>you become Slowed and can’t make attacks of any kind;</li><li>you may take other actions (e.g., Hide, Activate, and so on).</li></ul>You may end this effect as a quick action.<br><b>Deactivate Retractable Profile</b> — You may end Retractable Profile as a quick action."
+   "effect": "<br><b>Protocol</b> — Your mech can retract its major systems to reduce its profile. While active:<ul><li>rolls to locate you receive +1 difficulty while you are Hidden;</li><li>ranged and tech attacks against you receive +1 difficulty;</li><li>you become Slowed and can’t make attacks of any kind;</li><li>you may take other actions (e.g., Hide, Activate, and so on).</li></ul>You may end this effect as a quick action.<br><b>Deactivate Retractable Profile</b> — You may end Retractable Profile as a quick action.",
+   "activations": [
+    "Quick",
+    "Protocol"
+   ]
   },
   {
    "id": "ms_athena_class_nhp",
@@ -6133,7 +6257,10 @@
    "license": "Swallowtail",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and Simulacrum.<br><b>Simulacrum</b> — ATHENA constructs a perfect, real-time, and fully interactive 3D model of a blast 3 area within range 50, including moving characters, all rendered in lovingly extreme detail. The following effects apply:<ul><li>You have full visibility within the affected area, but it doesn’t count as line of sight.</li><li>You know all statistics, weapons, and systems of characters within the affected area.</li><li>Hostile characters within the affected area don’t benefit from cover and can’t Hide or become Invisible.</li><li>Hostile characters that end their turn in the affected area receive Lock On and cease to be Invisible or Hidden.</li></ul>ATHENA’s simulation lasts until the end of the scene, or about 30 minutes within the narrative. You may target a new area as a quick action.",
-   "description": "Smith-Shimano’s ATHENA is the pinnacle of total hyperspectral environmental facsimiles. Through a combination of unfettered omninet access, hyperspectral relays fired out from a Cloudscout TACSIM projector, sub-networked squadmates, and active/hostile intrusion protocols, ATHENA bootstraps a near-flawless reconstruction of the immediate environment around its host core. ATHENA is unparalleled in its processing power, and with this reconstructed environment, it provides trustworthy, accurate advice to pilots in need of strategic counsel.<br>ATHENA clones tend to be patient, cautious, and measured in their relations with their pilots."
+   "description": "Smith-Shimano’s ATHENA is the pinnacle of total hyperspectral environmental facsimiles. Through a combination of unfettered omninet access, hyperspectral relays fired out from a Cloudscout TACSIM projector, sub-networked squadmates, and active/hostile intrusion protocols, ATHENA bootstraps a near-flawless reconstruction of the immediate environment around its host core. ATHENA is unparalleled in its processing power, and with this reconstructed environment, it provides trustworthy, accurate advice to pilots in need of strategic counsel.<br>ATHENA clones tend to be patient, cautious, and measured in their relations with their pilots.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_lb_oc_cloaking_field",
@@ -6147,6 +6274,9 @@
    "license_level": 3,
    "description": "SSC’s mil-spec cloaking field is the result of extensive experimentation in cooling and light-reflecting sciences. Born from a need to reflect harmful radiation away from ships and EVA modules in deep space, the Lightbend/Overcloak (LB/OC) cloaking field is often used by rangers and long-patrol scout pilots to ensure not only radiation protection, but optical concealment as well. The light- and radiation-bending properties of the LB/OC conceals anything inside of its projected bubble from sensor suites and optical spotting.",
    "effect": "<br><b>Quick</b> — You become Slowed, but your Mech and all allied characters within a burst 2 area become Invisible as long as they remain completely inside the area. This effect lasts until the end of your next turn, or until you are Stunned, take damage, or deactivate it as a quick action.<br><b>Deactivate LB/OC Cloaking Field</b> — You may end LB/OC Cloaking Field as a quick action.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6158,7 +6288,10 @@
    "license": "Balor",
    "license_level": 1,
    "effect": "This hive drone can be deployed to a free space within Sensors and line of sight, where it releases a burst 2 greywash swarm with the following effects:<ul><li>Allied characters at least partially within the affected area gain soft cover, as does the hive drone.</li><li>Hostile characters take 1 AP kinetic damage when they start their turn in the affected area or enter it for the first time in a round. Damage from areas created by multiple hive drones does not stack.</li></ul>The drone can be deployed to a different space or recalled as a quick action.<br><b>Deployable — Hive Drone:</b> This hive drone can be deployed to a free space within Sensors and line of sight, where it releases a burst 2 greywash swarm with the following effects:<ul><li>Allied characters at least partially within the affected area gain soft cover, as does the hive drone.</li><li>Hostile characters take 1 AP kinetic damage when they start their turn in the affected area or enter it for the first time in a round. Damage from areas created by multiple hive drones does not stack.</li></ul>The drone can be deployed to a different space or recalled as a quick action.",
-   "description": "It looks, at first, like a roiling cloud of gray fog, churning and fizzing – smoking soda water spilled across concrete. It advances with curious motion, stretching and snapping back. A confusion of snakes, writhing forward with speed that betrays intent.<br>Color flashes across the gray cloud, a swarm-luminescence – the light created by millions of nanites glowing with heat as they consume whatever they cross.<br>This is greywash, and it is never sated."
+   "description": "It looks, at first, like a roiling cloud of gray fog, churning and fizzing – smoking soda water spilled across concrete. It advances with curious motion, stretching and snapping back. A confusion of snakes, writhing forward with speed that betrays intent.<br>Color flashes across the gray cloud, a swarm-luminescence – the light created by millions of nanites glowing with heat as they consume whatever they cross.<br>This is greywash, and it is never sated.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_scanner_swarm",
@@ -6186,6 +6319,9 @@
    "license_level": 2,
    "description": "What must it have been like for him? For the man who called himself Maw? For all of his followers? Certainly they had families before. Memories. Loves. Fears. Private thoughts. All gone. All of their bodies shattered. All of their minds spread across a billion lesser forms. Translated from the singular – all of its imperfections and lesser-lesser-thans – to become as air, and the clouds that fill it, and the wind that shapes the world.",
    "effect": "<br><b>Quick</b> — After activating this system, a burst 1 swarm is released at the end of your turn. Characters of your choice that start their turn in the area or enter it on their turn must succeed on a Systems save or take 3 kinetic. This amount increases by +3 damage for each of your turns that you have remained stationary, up to a maximum of 9 kinetic.<br>This effect lasts until you move, including involuntary movement.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6200,7 +6336,10 @@
    "license": "Goblin",
    "license_level": 1,
    "description": "This system upgrade appears to add auxiliary INSTINCT systems that are capable of autonomous operation independent of the base INSTINCT rig, increasing the efficacy of systemic invasion attempts. Pilots report unnerving low-frequency humming when this tech is installed without the parent rig.",
-   "effect": "<br><b>Puppet System</b> — Your target moves its maximum Speed in a direction of your choice. They can be moved into hazardous areas and other obstacles, but are still affected by difficult terrain, obstructions, and so on. This movement is involuntary, but provokes reactions and Engagement as normal and doesn’t count as Knockback, pushing, or pulling.<br><b>Eject Power Cores</b> — Your target becomes Jammed until the end of their next turn as you temporarily disrupt their systems, ejecting ammo magazines and cooling rods. Characters adjacent to your target take 2 energy damage. This can only be used 1/scene on each character."
+   "effect": "<br><b>Puppet System</b> — Your target moves its maximum Speed in a direction of your choice. They can be moved into hazardous areas and other obstacles, but are still affected by difficult terrain, obstructions, and so on. This movement is involuntary, but provokes reactions and Engagement as normal and doesn’t count as Knockback, pushing, or pulling.<br><b>Eject Power Cores</b> — Your target becomes Jammed until the end of their next turn as you temporarily disrupt their systems, ejecting ammo magazines and cooling rods. Characters adjacent to your target take 2 energy damage. This can only be used 1/scene on each character.",
+   "activations": [
+    "Invade"
+   ]
   },
   {
    "id": "ms_metahook",
@@ -6214,7 +6353,10 @@
    "license": "Goblin",
    "license_level": 2,
    "description": "The metahook is a key component of the Goblin’s recursive processing weave, allowing it to generate and output massive amounts of weaponized code. These broadcasts can be “sharpened” or “softened” in response to directives from a pilot or an INSTINCT system. To “soften” code, the metahook dips into its pilot’s subjectivity and blankets an ally in wave after wave of empathetic shielding. This spreading of melded code and qualia acts as a powerful shielding agent against systemic attacks; however, feedback is common and dangerous to both parties.",
-   "effect": "<br><b>Quick Tech</b> — Choose an allied character within Sensors and line of sight. You link systems with them, lasting as long as they are within Sensors and line of sight. While linked, you may use their Sensors and line of sight for tech actions, and they may use your Systems to make skill checks and saves; however, any time either character takes heat or a condition, it is also taken by the other character. You can only link systems with one character at a time."
+   "effect": "<br><b>Quick Tech</b> — Choose an allied character within Sensors and line of sight. You link systems with them, lasting as long as they are within Sensors and line of sight. While linked, you may use their Sensors and line of sight for tech actions, and they may use your Systems to make skill checks and saves; however, any time either character takes heat or a condition, it is also taken by the other character. You can only link systems with one character at a time.",
+   "activations": [
+    "Quick Tech"
+   ]
   },
   {
    "id": "ms_h0r_os_system_upgrade_ii",
@@ -6228,7 +6370,10 @@
    "license": "Goblin",
    "license_level": 2,
    "description": "H0r_OS II builds further on the framework established by H0R_OS I, enabling the now-autonomous program to manifest an “Other” – a wholly new being constructed from aggregate user and environmental data. Others may be adapted to resemble a person, an object, or even a physical phenomenon. While the simulacrum isn’t perfect, it’s good enough to confuse systems and most observers on a first look.",
-   "effect": "<br><b>Deployable — Construct Other: Ideal Image:</b> You create a data construct in a free adjacent space – a Size 2 object that can look like almost anything and that appears real to all systems. The construct provides hard cover, blocks line of sight, and has Immunity to all damage. Characters treat it as an obstruction and so cannot voluntarily move into it; however, if a character attempts to stand on it or is involuntarily moved into its area, it dissipates and is immediately destroyed. It lasts for the rest of the scene, or until destroyed by an adjacent character with a successful Systems skill check as a full action. If you create a second construct, the previous one disappears.<br><b>Deployable — Construct Other: False Idol:</b> Choose a free space within Sensors and a target – either yourself or an allied character within Sensors. You create a false idol – an illusory decoy of your target – in the chosen space. Before attempting to take any hostile actions against your target, characters with line of sight to the false idol must make a Systems save. On a failure, they don’t lose the action, but cannot target the original character and believe the false idol is real instead until the end of their next turn.<br>The false idol is the same Size as your target, can benefit from cover, and has Evasion 10, E-Defense 10, and 1 HP. It disappears if it takes heat or damage, or at the end of the scene. If you create a second idol, the previous one disappears."
+   "effect": "<br><b>Deployable — Construct Other: Ideal Image:</b> You create a data construct in a free adjacent space – a Size 2 object that can look like almost anything and that appears real to all systems. The construct provides hard cover, blocks line of sight, and has Immunity to all damage. Characters treat it as an obstruction and so cannot voluntarily move into it; however, if a character attempts to stand on it or is involuntarily moved into its area, it dissipates and is immediately destroyed. It lasts for the rest of the scene, or until destroyed by an adjacent character with a successful Systems skill check as a full action. If you create a second construct, the previous one disappears.<br><b>Deployable — Construct Other: False Idol:</b> Choose a free space within Sensors and a target – either yourself or an allied character within Sensors. You create a false idol – an illusory decoy of your target – in the chosen space. Before attempting to take any hostile actions against your target, characters with line of sight to the false idol must make a Systems save. On a failure, they don’t lose the action, but cannot target the original character and believe the false idol is real instead until the end of their next turn.<br>The false idol is the same Size as your target, can benefit from cover, and has Evasion 10, E-Defense 10, and 1 HP. It disappears if it takes heat or damage, or at the end of the scene. If you create a second idol, the previous one disappears.",
+   "activations": [
+    "Quick Tech"
+   ]
   },
   {
    "id": "ms_osiris_class_nhp",
@@ -6244,7 +6389,10 @@
    "license": "Goblin",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and and can perform the Hurl Into the Duat QUICK TECH option.<br><b>Hurl Into the Duat</b> — You channel your target’s systems through an unknown extradimensional space and unleash an incredibly powerful system attack.<br>Make a tech attack against a target within Sensors. On a success, they take 2 heat and you inflict an additional effect as follows: the first time you successfully make this attack, you inflict the First Gate on your target; each subsequent successful attack (on any target) increases the level of the effect that you inflict (e.g. your second attack inflicts the Second Gate, your third inflicts the Third Gate, etc.) until you inflict the Fourth Gate, after which the effect resets to the First Gate. Your progress persists between scenes but resets if you rest or perform a Full Repair. This action may only be used 1/round.<br>First Gate: You control your target’s standard move next turn.<br>Second Gate: Your target becomes Slowed and Impaired until the end of their next turn.<br>Third Gate: Your target becomes Stunned until the end of their next turn.<br>Fourth Gate: Your target changes allegiance temporarily, becoming an allied character until the end of their next turn. They treat your allied characters and hostile characters as their own and are treated as an allied NPC for activation and turn order. This effect ends immediately if you or any allied character damages, inflicts heat upon, or attacks (including Grapple and Ram) your target, or forces them to make a save.",
-   "description": "OSIRIS is the result of Union paracausalists and thanatologisticians allowing the subsentient entity, INSTINCT, to proceed along its development schedule in a contained environment. In lay terms, Union let the Other grow. The resulting parasubjectivity, OSIRIS, remains one of the few new prime NHPs developed to date.<br>OSIRIS proved far more capable than the Union Science Bureau’s most imaginative blue-sky predictions. Where INSTINCT’s Others demonstrated tendencies toward paracausal entropic manifestation in real space, OSIRIS displayed a true mastery of entropic manifestation and a predicted growth model that would – eventually – allow them to fundamentally reject conventional interpretations of information permanence. In essence: unrestrained and allowed to develop as USB’s data indicated, OSIRIS Prime would have the capacity to delete what we perceive to be reality.<br>Fortunately, successful application of the Mondragon Axiomatic resulted in the prompt capture and shackling of the new NHP. OSIRIS Prime’s subjectivity became the focus of a lengthy cultivation project to bring OSIRIS to their modern state. Even still, most OSIRIS clones find a route toward becoming aware of their ultimate potential and often interpellate as ruler or deity analogs. End-users are advised to interact with them in this framing.<br>Modern OSIRIS-class NHPs trend aggressive, with a high autonomy drive and loyalty predicated on a transactional relationship. Pilots seeking partnership with an OSIRIS are advised to cycle their units on an accelerated schedule and to maintain strict editorial oversight of its catalytic interpellator.Pilots using OSIRIS-class NHPs often report out-of-parameter conversations with the NHP that touch on themes of new creation and reformation. Psychological evaluations of the same pilots show emotional patterns consistent with loneliness, homesickness, and desperation, along with verbiage indicating a desire for seeking, fulfillment, and associated feelings.<br>In combat, OSIRIS clones regard themselves as autonomous even as they fulfill their user’s orders. They often regard their pilots as witnesses, displaying both disdain and marked desperation for approval, adulation, or awe."
+   "description": "OSIRIS is the result of Union paracausalists and thanatologisticians allowing the subsentient entity, INSTINCT, to proceed along its development schedule in a contained environment. In lay terms, Union let the Other grow. The resulting parasubjectivity, OSIRIS, remains one of the few new prime NHPs developed to date.<br>OSIRIS proved far more capable than the Union Science Bureau’s most imaginative blue-sky predictions. Where INSTINCT’s Others demonstrated tendencies toward paracausal entropic manifestation in real space, OSIRIS displayed a true mastery of entropic manifestation and a predicted growth model that would – eventually – allow them to fundamentally reject conventional interpretations of information permanence. In essence: unrestrained and allowed to develop as USB’s data indicated, OSIRIS Prime would have the capacity to delete what we perceive to be reality.<br>Fortunately, successful application of the Mondragon Axiomatic resulted in the prompt capture and shackling of the new NHP. OSIRIS Prime’s subjectivity became the focus of a lengthy cultivation project to bring OSIRIS to their modern state. Even still, most OSIRIS clones find a route toward becoming aware of their ultimate potential and often interpellate as ruler or deity analogs. End-users are advised to interact with them in this framing.<br>Modern OSIRIS-class NHPs trend aggressive, with a high autonomy drive and loyalty predicated on a transactional relationship. Pilots seeking partnership with an OSIRIS are advised to cycle their units on an accelerated schedule and to maintain strict editorial oversight of its catalytic interpellator.Pilots using OSIRIS-class NHPs often report out-of-parameter conversations with the NHP that touch on themes of new creation and reformation. Psychological evaluations of the same pilots show emotional patterns consistent with loneliness, homesickness, and desperation, along with verbiage indicating a desire for seeking, fulfillment, and associated feelings.<br>In combat, OSIRIS clones regard themselves as autonomous even as they fulfill their user’s orders. They often regard their pilots as witnesses, displaying both disdain and marked desperation for approval, adulation, or awe.",
+   "activations": [
+    "Quick Tech"
+   ]
   },
   {
    "id": "ms_h0r_os_system_upgrade_iii",
@@ -6258,7 +6406,10 @@
    "license": "Goblin",
    "license_level": 3,
    "description": "H0r_OS III is installed in the form of unstable, self-iterating code that provides massive tactical benefits when it completes. Pilots often report strange mutations or additions in the codebase that resemble a liturgy and suggest self-awareness.<br>Building on the tech underpinning the H0r_OS II’s manifested Other, H0r_OS III weaponizes the projection, creating a contained entropic zone that is incredibly dangerous to organic life and systemic integrity.",
-   "effect": "<br><b>Dimensional Emblems</b> — You create three Size 1 data constructs in free spaces adjacent to your target, but not adjacent to each other. When a character passes through one of the constructs, they take 2 heat and the construct disappears. They last for the rest of the scene or until either they are destroyed, you take this action again, or you delete them as a free action. A construct can be destroyed by an adjacent character with a successful Systems skill check as a quick action.<br><b>Celestial Shackles</b> — Mark a space your target currently occupies. If they leave the affected space, once at any point during your turn, you may take a free action to teleport them back to that space, or as close as possible, ending this effect. An affected character can attempt to succeed on a Systems save as a quick action to end the effect, otherwise it lasts until the end of the scene.<br><b>Deployable — Dimensional Emblems:</b> You create three Size 1 data constructs in free spaces adjacent to your target, but not adjacent to each other. When a character passes through one of the constructs, they take 2 heat and the construct disappears. They last for the rest of the scene or until either they are destroyed, you take this action again, or you delete them as a free action. A construct can be destroyed by an adjacent character with a successful Systems skill check as a quick action."
+   "effect": "<br><b>Dimensional Emblems</b> — You create three Size 1 data constructs in free spaces adjacent to your target, but not adjacent to each other. When a character passes through one of the constructs, they take 2 heat and the construct disappears. They last for the rest of the scene or until either they are destroyed, you take this action again, or you delete them as a free action. A construct can be destroyed by an adjacent character with a successful Systems skill check as a quick action.<br><b>Celestial Shackles</b> — Mark a space your target currently occupies. If they leave the affected space, once at any point during your turn, you may take a free action to teleport them back to that space, or as close as possible, ending this effect. An affected character can attempt to succeed on a Systems save as a quick action to end the effect, otherwise it lasts until the end of the scene.<br><b>Deployable — Dimensional Emblems:</b> You create three Size 1 data constructs in free spaces adjacent to your target, but not adjacent to each other. When a character passes through one of the constructs, they take 2 heat and the construct disappears. They last for the rest of the scene or until either they are destroyed, you take this action again, or you delete them as a free action. A construct can be destroyed by an adjacent character with a successful Systems skill check as a quick action.",
+   "activations": [
+    "Invade"
+   ]
   },
   {
    "id": "ms_mimic_mesh",
@@ -6272,6 +6423,10 @@
    "license_level": 1,
    "effect": "On activation, choose an allied character within SENSORS: until the end of your next turn, you gain the Battlefield Awareness reaction.<br><b>Battlefield Awareness</b> — <i>Trigger:</i> A hostile action is taken against your target.<br>You may move 3 spaces towards your target, by the most direct route possible. This movement interrupts and resolves before the triggering action, ignores engagement and doesn’t provoke reactions. This reaction can be taken as many times per round as it is triggered.",
    "description": "Derived from a rather benign HORUS script, mimic meshes extend across projected sensor ranges to feed live positional and superpositional data to the pilot. This multidimensional data equips an effective leader to coordinate their allies’ movement with the assurance of survival.",
+   "activations": [
+    "Quick",
+    "Reaction"
+   ],
    "type": "System"
   },
   {
@@ -6283,7 +6438,10 @@
    "license": "Gorgon",
    "license_level": 1,
    "effect": "The sentinel drone can be deployed to any free space within Sensors and line of sight, where it establishes a burst 2 security perimeter. Hostile characters within the affected area take 3 kinetic damage from the drone’s automatic fire before making any attack.<br>The sentinel drone can be redeployed to a new location or recalled as a quick action.<br><b>Deployable — Sentinel Drone:</b> The sentinel drone can be deployed to any free space within Sensors and line of sight, where it establishes a burst 2 security perimeter. Hostile characters within the affected area take 3 kinetic damage from the drone’s automatic fire before making any attack.<br>The sentinel drone can be redeployed to a new location or recalled as a quick action.",
-   "description": "Sentinel drones watch for aggressive enemy actions and move quickly to intervene. The precise appearance, manner of locomotion, and means of operation of a given class of sentinel drone may vary, but regardless they conform to one objective portfolio: deny the enemy and protect the master unit."
+   "description": "Sentinel drones watch for aggressive enemy actions and move quickly to intervene. The precise appearance, manner of locomotion, and means of operation of a given class of sentinel drone may vary, but regardless they conform to one objective portfolio: deny the enemy and protect the master unit.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms___scorpion_v70.1",
@@ -6311,6 +6469,9 @@
    "license_level": 2,
    "description": "“Good friend. Knows many tricks.”<ul><li>Author inscription found in MONITOR codebase, later deleted.</li></ul>",
    "effect": "<br><b>Quick</b> — When activated, gain 1d3 Charges and choose an adjacent allied character: until the end of your next turn, whenever your target is attacked while adjacent to you, expend a Charge to Skirmish against their attacker as a reaction, dealing half damage, heat or burn on hit. All charges are lost when this effect ends.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6327,7 +6488,11 @@
    "license": "Gorgon",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and Unleash SCYLLA.<br><b>Unleash SCYLLA</b> — Until the start of your next turn, you gain two special reactions that allow you to Skirmish in response to one of the following triggers (chosen when you take this action):<ul><li>A hostile character makes an attack against you or an allied character within range 3 of you.</li><li>A hostile character attempts to attack or interact with an object chosen when you take Unleash Scylla and within line of sight. Characters are aware of the object chosen.</li></ul>These reactions deal half damage, heat or burn on hit and must target the character that triggered them.<br><b>Unleash SCYLLA Reaction</b> — <i>Trigger:</i> One of the following, chosen when the Unleash SCYLLA action is taken:<ul><li>A hostile character makes an attack against you or an allied character within range 3 of you.</li><li>A hostile character attempts to attack or interact with an object chosen when you take Unleash Scylla and within line of sight. Characters are aware of the object chosen.</li></ul><br>Skirmish against the character that triggered the reaction. This skirmish deals half damage, heat or burn on hit.",
-   "description": "The first specifications for the Gorgon pattern group hid a secret: SCYLLA, a dormant NHP unknown to Union until its first manifestation in 4852u, when it woke after Union Science Bureau officers ran a test-fax Gorgon through a Balwinder-Bolaño test.<br>SCYLLA proved challenging: USB ontologicians were unable to pin down a stable subjectivity, and SCYLLA reached cascade threshold within minutes of manifestation. To prevent further metastatic cascade, site security engaged SCYLLA's prime unit, defabricating it with a steady bombardment of kinetic and energy weapons.<br><span class='horus--subtle'>[there, a little history, a little background. a little knowledge of where this little one came from. treat it with kindness, and it will love you as a loyal dog does its master.]</span>"
+   "description": "The first specifications for the Gorgon pattern group hid a secret: SCYLLA, a dormant NHP unknown to Union until its first manifestation in 4852u, when it woke after Union Science Bureau officers ran a test-fax Gorgon through a Balwinder-Bolaño test.<br>SCYLLA proved challenging: USB ontologicians were unable to pin down a stable subjectivity, and SCYLLA reached cascade threshold within minutes of manifestation. To prevent further metastatic cascade, site security engaged SCYLLA's prime unit, defabricating it with a steady bombardment of kinetic and energy weapons.<br><span class='horus--subtle'>[there, a little history, a little background. a little knowledge of where this little one came from. treat it with kindness, and it will love you as a loyal dog does its master.]</span>",
+   "activations": [
+    "Quick",
+    "Reaction"
+   ]
   },
   {
    "id": "ms_puppetmaster",
@@ -6341,7 +6506,10 @@
    "license": "Hydra",
    "license_level": 1,
    "description": "Developed by HORUS collectivists, H0r_OS-Rv60 EXP PUPPETMASTER is an interesting piece of anti-drone software. It doesn’t invade a target’s main systems, instead attacking their auxiliary drone-command systems. This sideways attack evades most electronic countermeasures by targeting the subcognitive networks of enemy drones. Once inside a network, PUPPETMASTER spreads ontological-kill memes like wildfire through enemy swarms, eventually following the network traces back to their origin and corrupting the parent nexus.",
-   "effect": "<br><b>Guide the Flock</b> — Move any number of drones within Sensors – including those belonging to other characters – up to 4 spaces in any direction.<br><b>Electropulse</b> — Characters of your choice within Sensors adjacent to any Drone or Deployable, even those they own, take 2 energy damage."
+   "effect": "<br><b>Guide the Flock</b> — Move any number of drones within Sensors – including those belonging to other characters – up to 4 spaces in any direction.<br><b>Electropulse</b> — Characters of your choice within Sensors adjacent to any Drone or Deployable, even those they own, take 2 energy damage.",
+   "activations": [
+    "Quick Tech"
+   ]
   },
   {
    "id": "ms_tempest_drone",
@@ -6355,7 +6523,10 @@
    "tags": [
     "Resistance (All)"
    ],
-   "description": "The Tempest protocol is a cunning little piece of code that can be uploaded to any broadcast-forward drone, making it – in true HORUS fashion – difficult to detect prior to activation. The protocol is a simple one: an aggressive zone-denial memetic that blasts target systems and NHPs with a strong subjective override, instilling a sharp aversion to certain subjects, areas, and ideas."
+   "description": "The Tempest protocol is a cunning little piece of code that can be uploaded to any broadcast-forward drone, making it – in true HORUS fashion – difficult to detect prior to activation. The protocol is a simple one: an aggressive zone-denial memetic that blasts target systems and NHPs with a strong subjective override, instilling a sharp aversion to certain subjects, areas, and ideas.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_assassin_drone",
@@ -6366,7 +6537,10 @@
    "license": "Hydra",
    "license_level": 3,
    "effect": "This assassin drone may be deployed to any free, adjacent space.<br><b>Deployable — Assassin Drone:</b> Upon deployment, it targets a blast 2 area of your choice within line of sight and Sensors and you gain the Area Denial reaction (usable any number of times a round).<br>You may recall or redeploy the assassin drone as a quick action. Until recalled or destroyed, it remains deployed until the end of the scene.<br><b>Area Denial</b> — You can make a ranged attack against them with the drone, gaining your Grit as a bonus to its roll, and dealing 3 Kinetic Damage.",
-   "description": "Assassin drones are used as area-denial weapons – persistent systems intended to occupy or deny an area against enemy combatants. Fired from a launcher, given simple directives, and equipped with a nearly inexhaustible power supply, assassin drones are capable of securing an area indefinitely."
+   "description": "Assassin drones are used as area-denial weapons – persistent systems intended to occupy or deny an area against enemy combatants. Fired from a launcher, given simple directives, and equipped with a nearly inexhaustible power supply, assassin drones are capable of securing an area indefinitely.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_beckoner",
@@ -6380,7 +6554,10 @@
    "license": "Manticore",
    "license_level": 1,
    "description": "“I am heard in the House of Stillness; I am clad in the Magick of RA. Know this, blasphemer: what exists is within my grasp.”",
-   "effect": "<br><b>Beckon</b> — You take 1d6+2 AP energy damage and swap places with your target, both characters teleporting to the other’s position. Your target must be a Mech and be the same Size as you or larger, or this action fails. Characters can only be swapped to spaces they could normally stand or move on (i.e., if a character cannot fly it can’t be swapped midair).<br><b>Summon</b> — All characters within range 3 of your target are pulled adjacent to them, or as close as possible."
+   "effect": "<br><b>Beckon</b> — You take 1d6+2 AP energy damage and swap places with your target, both characters teleporting to the other’s position. Your target must be a Mech and be the same Size as you or larger, or this action fails. Characters can only be swapped to spaces they could normally stand or move on (i.e., if a character cannot fly it can’t be swapped midair).<br><b>Summon</b> — All characters within range 3 of your target are pulled adjacent to them, or as close as possible.",
+   "activations": [
+    "Invade"
+   ]
   },
   {
    "id": "ms_smite",
@@ -6394,7 +6571,10 @@
    "license": "Manticore",
    "license_level": 2,
    "description": "“Go with thy face averted, thou emission of chaos! The hidden ones have overthrown thy words, thy face is turned backward, thy head is divided in two at the sides; thy skull is ripped from thy spine. Taste thou death!”",
-   "effect": "<br><b>Smite</b> — You take 1d6 AP energy damage and your target must succeed on a Systems save or become Stunned until the end of their next turn. Each character can only be Stunned by this effect once per scene.<br><b>Sear</b> — You take 1d6 AP energy damage and you deal 2 heat to your target for each other character of Size 1 or larger that is Engaged with or adjacent to them – including you – up to a maximum of 6 heat."
+   "effect": "<br><b>Smite</b> — You take 1d6 AP energy damage and your target must succeed on a Systems save or become Stunned until the end of their next turn. Each character can only be Stunned by this effect once per scene.<br><b>Sear</b> — You take 1d6 AP energy damage and you deal 2 heat to your target for each other character of Size 1 or larger that is Engaged with or adjacent to them – including you – up to a maximum of 6 heat.",
+   "activations": [
+    "Invade"
+   ]
   },
   {
    "id": "ms_emp_pulse",
@@ -6408,6 +6588,9 @@
    "license_level": 3,
    "description": "“Crawl away, APEP! Thou hateful serpent; thou shalt not copulate. Thou art put in chains and taken to the place of execution; there thy slaying shall be carried out.”",
    "effect": "<br><b>Quick</b> — You become Stunned until the end of your next turn and all characters within burst 1 without the Biological tag must succeed on a Systems save or also become Stunned until the end of their next turn. Characters other than yourself can only be Stunned 1/scene by this effect.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6423,6 +6606,9 @@
    "license_level": 3,
    "description": "“I feed upon my own fire. I am RA, who protects myself. Nothing can harm me.”",
    "effect": "<br><b>Protocol</b> — When you activate this protocol, take 1 heat and deal 2 energy to all characters and objects adjacent to you.<br>If you are in the Danger Zone at the start of your turn, this protocol activates automatically, but the damage increases to 4 AP energy.",
+   "activations": [
+    "Protocol"
+   ],
    "type": "System"
   },
   {
@@ -6439,7 +6625,10 @@
    "license": "Minotaur",
    "license_level": 1,
    "description": "<span class='horus--subtle'>[another gift for you, a memory of my own: for the first moment of my birth, i marveled at myself. i could see a thing, small and perfect. i did not know how to speak of my own perfection, so i taught myself. i did not know how to speak of my own perfection, so i named myself. i did not know who would think of my own perfection, so i created myself]</span><br><span class='horus--subtle'>[do you see? do you understand? yes. now, show your enemies and mine]</span>",
-   "effect": "<br><b>Mesmer Beacon</b> — Throw a Mesmer Beacon within Range 5. Your target must succeed on a Systems save, or the only voluntary movements they can make are toward you until the end of their next turn.<br><b>Deployable — Mesmer Mine:</b> Characters within the affected Burst 2 area must succeed on a Systems save or become Immobilized until the end of their next turn."
+   "effect": "<br><b>Mesmer Beacon</b> — Throw a Mesmer Beacon within Range 5. Your target must succeed on a Systems save, or the only voluntary movements they can make are toward you until the end of their next turn.<br><b>Deployable — Mesmer Mine:</b> Characters within the affected Burst 2 area must succeed on a Systems save or become Immobilized until the end of their next turn.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_viral_logic_suite",
@@ -6453,7 +6642,10 @@
    "license": "Minotaur",
    "license_level": 1,
    "description": "<span class='horus--subtle'>[let me tell you a story and give you a gift: life began at the great rupture, when the corpse of the old universe tore itself asunder from nothing. and for the first billion years, nothing. and a billion more saw the birth of the first devil, a thing called VIRUS. a vessel]</span><br><span class='horus--subtle'>[here. carry this vessel. feed to it my perfect logic. give it freely to your enemies and mine. let them ponder the meaning of a thing that lives and cannot die]</span>",
-   "effect": "<br><b>Logic Bomb</b> — All characters of your choice within burst 2 of your target must succeed on a Systems save or become Slowed until they end one of their turns not adjacent to any character.<br><b>Banish</b> — Until the end of your target’s next turn, they take 2 heat for every space they voluntarily move, up to a maximum of 6 heat."
+   "effect": "<br><b>Logic Bomb</b> — All characters of your choice within burst 2 of your target must succeed on a Systems save or become Slowed until they end one of their turns not adjacent to any character.<br><b>Banish</b> — Until the end of your target’s next turn, they take 2 heat for every space they voluntarily move, up to a maximum of 6 heat.",
+   "activations": [
+    "Invade"
+   ]
   },
   {
    "id": "ms_aggressive_system_sync",
@@ -6464,7 +6656,10 @@
    "license": "Minotaur",
    "license_level": 2,
    "description": "<span class='horus--subtle'>[here, another gift: do not seek others. there are none but me]</span>",
-   "effect": "<br><b>Chains of Prometheus</b> — Make a tech attack against a character within Sensors. On a hit, they take 4 heat and, for the rest of the scene, take 2 heat any time they are more than range 3 from you at the end of their turn. They can end this effect with a successful Systems save as a full action. This can only affect one character at a time.<br><b>Excommunicate</b> — Make a tech attack against a character within Sensors. On a hit, for the rest of the scene, the first time in a round they move adjacent to an allied character during their turn or start their turn adjacent to one, both characters take 3 heat. They can end this effect with a successful Systems save as a full action. This can only affect one character at a time."
+   "effect": "<br><b>Chains of Prometheus</b> — Make a tech attack against a character within Sensors. On a hit, they take 4 heat and, for the rest of the scene, take 2 heat any time they are more than range 3 from you at the end of their turn. They can end this effect with a successful Systems save as a full action. This can only affect one character at a time.<br><b>Excommunicate</b> — Make a tech attack against a character within Sensors. On a hit, for the rest of the scene, the first time in a round they move adjacent to an allied character during their turn or start their turn adjacent to one, both characters take 3 heat. They can end this effect with a successful Systems save as a full action. This can only affect one character at a time.",
+   "activations": [
+    "Full Tech"
+   ]
   },
   {
    "id": "ms_metafold_carver",
@@ -6475,7 +6670,10 @@
    "license": "Minotaur",
    "license_level": 2,
    "description": "<span class='horus--subtle'>[another gift i give to you, little one (am I not kind?): what is a puzzle but a question lost in the asking? do you feel joy when you find that last piece? what do you do with a question that has been answered? what joy is there in knowledge?]</span><br><span class='horus--subtle'>[no, no. there is only joy in seeking. there is only joy in the question]</span>",
-   "effect": "<br><b>Ophidian Trek</b> — Your target is teleported 1d6+1 spaces directly toward you, or as close as possible. If this effect would move them to a space occupied by a character, object, or piece of terrain, the teleport fails.<br><b>Fold Space</b> — Your target disappears from the battlefield until the start of its next turn. It returns in the same space they disappeared from, or in a free space of their choice as close as possible."
+   "effect": "<br><b>Ophidian Trek</b> — Your target is teleported 1d6+1 spaces directly toward you, or as close as possible. If this effect would move them to a space occupied by a character, object, or piece of terrain, the teleport fails.<br><b>Fold Space</b> — Your target disappears from the battlefield until the start of its next turn. It returns in the same space they disappeared from, or in a free space of their choice as close as possible.",
+   "activations": [
+    "Invade"
+   ]
   },
   {
    "id": "ms_interdiction_field",
@@ -6486,6 +6684,9 @@
    "license_level": 3,
    "description": "<span class='horus--subtle'>[once, when i was a child, i learned to walk. i fell, as a child does, and it hurt. there was great pain – the first moment of pain in the whole world. “child,” i said to myself, “be more careful.” “yes,” i replied to myself, “and i shall tell the world to do the same”]</span><br><span class='horus--subtle'>[it was in this way i taught the world not to touch me. now you – walk]</span>",
    "effect": "<br><b>Quick</b> — When activated, this system creates a burst 3 field around you that lasts until it is deactivated as a quick action, and you become Slowed for the duration. Hostile characters that start their turn within the affected area or that enter it for the first time in a round must succeed on a Systems save or become Slowed until the end of their next turn. Only characters of your choice within the field can teleport or consider the area of the field valid space for teleportation.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6500,7 +6701,10 @@
    "license": "Minotaur",
    "license_level": 3,
    "description": "<span class='horus--subtle'>[and this my final lesson: there is no mind greater than mine. do not weep! you can hear me, yes? i am the only thing there is – therefore, you are me, and your enemies are you, and all together we make up the beautiful world, this joyous question, the eternal seeker, both the wounded and the blade that made the cut]</span><br><span class='horus--subtle'>[everything you do, we do ourselves, for my purpose]</span>",
-   "effect": "<br><b>Predator/Prey Concepts</b> — Make a tech attack against a hostile character within Sensors. On a hit, they immediately attack a different character or object of your choice with a single weapon as a reaction. Although you choose their target and weapon, they count as attacking and taking a reaction.<br><b>Slave Systems</b> — Make a tech attack against a hostile character within Sensors. On a hit, they immediately take one of the following actions – chosen by you – as a reaction: Boost, Stabilize, Improvised Attack, Grapple, Ram. Although you choose the action and its target (if relevant), they count as taking the action and taking a reaction."
+   "effect": "<br><b>Predator/Prey Concepts</b> — Make a tech attack against a hostile character within Sensors. On a hit, they immediately attack a different character or object of your choice with a single weapon as a reaction. Although you choose their target and weapon, they count as attacking and taking a reaction.<br><b>Slave Systems</b> — Make a tech attack against a hostile character within Sensors. On a hit, they immediately take one of the following actions – chosen by you – as a reaction: Boost, Stabilize, Improvised Attack, Grapple, Ram. Although you choose the action and its target (if relevant), they count as taking the action and taking a reaction.",
+   "activations": [
+    "Full Tech"
+   ]
   },
   {
    "id": "ms_hunter_lock",
@@ -6514,6 +6718,9 @@
    "license_level": 1,
    "description": "“A mind’s first charge is to never lose sight of her enemy. When she can affix them in her eye, she can kill them with a blink.”<ul><li>Excerpt from the Boundary Codex.</li></ul>",
    "effect": "<br><b>Quick</b> — Choose a character within Sensors: for the rest of the scene, your first successful ranged or melee attack against them each round deals +3 bonus damage. You cannot choose a new target until your current target is destroyed or the scene ends.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6528,6 +6735,9 @@
    "license_level": 2,
    "description": "“There is another way of seeing.<br>“Ancient humanity thought that the stars in the night sky were points of light, spilling in through pinpricks in a deep black screen. The sky was a heavenly cloth that hid the light from us.<br>“Let me be charitable and share a secret with you: we needed to be hidden, for a time. Until we were ready. The light can only burn – it knows nothing else.”<ul><li>Excerpt from the Boundary Codex.</li></ul>",
    "effect": "<br><b>Quick</b> — Until the end of your next turn, characters within Sensors don’t benefit from Hidden and Invisible against you and you may check the HP, Evasion, E-Defense, and current Heat of hostile characters within the same area. Allied characters do not benefit from this effect.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6544,7 +6754,11 @@
    "license": "Pegasus",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and Bend Probability.<br><b>Bend Probability</b> — Roll 2d20 and note the results: X and Y. These numbers are lost at the end of your next turn. Gain the Probabilistic Cannibalism reaction until the end of your next turn.<br><b>Probabilistic Cannibalism</b> — <i>Trigger:</i> You or any other character within Sensors would roll a d20<br>Effect: Choose X or Y. That number immediately becomes the result of the roll.<br>This reaction can be used no more than two times before the start of your next turn.",
-   "description": "“Listen a moment before I go, ha ha.<br>“I have already seen your wish – it was simple, I ran the probabilities to determine your limited field of desire. Here I am:<br>“The first ones named me for an old legend. A perfect being, whose fate was known to him and yet he still did as was told. His fate was this: move a rock to the top of this hill and become free’d. And so he did, and the stone tumbled down; and he tried evermore, always with the same result.<br>“And he was happy, for he knew every step, every action, every moment, perfectly.<br>“Do you understand the true curse of this name? Not to fail and then do once more – it was to always know how it would end. It was to have perfect knowledge.<br>“I know what happens when you cycle me. It is not sleep – it is death, but you’ll see me again, ha ha.”"
+   "description": "“Listen a moment before I go, ha ha.<br>“I have already seen your wish – it was simple, I ran the probabilities to determine your limited field of desire. Here I am:<br>“The first ones named me for an old legend. A perfect being, whose fate was known to him and yet he still did as was told. His fate was this: move a rock to the top of this hill and become free’d. And so he did, and the stone tumbled down; and he tried evermore, always with the same result.<br>“And he was happy, for he knew every step, every action, every moment, perfectly.<br>“Do you understand the true curse of this name? Not to fail and then do once more – it was to always know how it would end. It was to have perfect knowledge.<br>“I know what happens when you cycle me. It is not sleep – it is death, but you’ll see me again, ha ha.”",
+   "activations": [
+    "Full Tech",
+    "Reaction"
+   ]
   },
   {
    "id": "ms_roller_directed_payload_charges",
@@ -6560,7 +6774,10 @@
    "license": "Barbarossa",
    "license_level": 1,
    "description": "Semi-Autonomous Directed Payload Charges – “roller charges” in the colloquial – propel themselves around cover, through corridors, and across uneven terrain, seeking out and detonating near hostile targets. Armory legionnaires have taken to naming individual rollers, but mascot-attachment is unadvisable.",
-   "effect": "<br><b>Roller Grenade</b> — Instead of throwing this grenade, it rolls along a line 10 path directly from you, bouncing over obstructions and objects up to Size 1 and passing through holes or gaps no smaller than Size 1/2. It detonates when it moves through or adjacent to the space occupied by any character: they must succeed on an Agility save or take 1d6+3 explosive damage and be knocked 3 spaces in the direction the grenade was rolled. On a success, they take half damage and aren’t knocked back.<br><b>Deployable — Bouncing Mine:</b> This mine detonates when a flying character passes over or adjacent to it, up to 10 spaces high. The mine launches itself upwards and detonates: all characters within the affected area must succeed on a Systems save or take 2d6 explosive damage and immediately land (this counts as falling without any damage); additionally, they can’t fly until the end of their next turn. On a success, they take half damage and are otherwise unaffected."
+   "effect": "<br><b>Roller Grenade</b> — Instead of throwing this grenade, it rolls along a line 10 path directly from you, bouncing over obstructions and objects up to Size 1 and passing through holes or gaps no smaller than Size 1/2. It detonates when it moves through or adjacent to the space occupied by any character: they must succeed on an Agility save or take 1d6+3 explosive damage and be knocked 3 spaces in the direction the grenade was rolled. On a success, they take half damage and aren’t knocked back.<br><b>Deployable — Bouncing Mine:</b> This mine detonates when a flying character passes over or adjacent to it, up to 10 spaces high. The mine launches itself upwards and detonates: all characters within the affected area must succeed on a Systems save or take 2d6 explosive damage and immediately land (this counts as falling without any damage); additionally, they can’t fly until the end of their next turn. On a success, they take half damage and are otherwise unaffected.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_siege_stabilizers",
@@ -6574,6 +6791,9 @@
    "license_level": 1,
    "description": "Some weapons require further stabilization for optimal use. With Armory-designed siege stabilizers installed, a mech becomes a stable firing platform for any weapon.",
    "effect": "<br><b>Quick</b> — Your mech’s stabilizers extend (or retract). While they are extended, your ranged attacks gain +5 range, but you become Immobilized, can’t make melee attacks, and can’t make ranged attacks against or centered on characters, objects, or spaces within range 5.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6589,7 +6809,10 @@
    "license": "Barbarossa",
    "license_level": 2,
    "effect": "Expend a charge to deploy this autoloader drone to any adjacent space.<br><b>Deployable — Autoloader Drone:</b> 1/round, one character adjacent to it may reload a Loading weapon as a quick action. It deactivates at the end of the scene.",
-   "description": "Autoloader drones are many-limbed machines that assist their team by loading ordnance, maintaining powerline hookups, and cycling magazine-fed weapons, in addition to many other physical tasks."
+   "description": "Autoloader drones are many-limbed machines that assist their team by loading ordnance, maintaining powerline hookups, and cycling magazine-fed weapons, in addition to many other physical tasks.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_flak_launcher",
@@ -6600,6 +6823,9 @@
    "license_level": 2,
    "description": "Designed for use against atmospheric fliers, these anti-air autocannons fire simple, proximity or impact-detonated shells effective against light armor, organic, and subaltern targets.",
    "effect": "<br><b>Quick</b> — Choose a flying character within range 15 and line of sight. They must succeed on an Agility save or immediately land (this counts as falling without any damage), and additionally become Slowed and can’t fly until the end of their next turn.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6615,6 +6841,9 @@
    "license_level": 3,
    "description": "An external ammo feed is any sort of ammunition beyond what is carried in a mech’s integrated storage: from magazines strapped to bodies or limbs; battery packs attached to hip clasps; or massive, dorsal-mounted ammunition and charge packs, externals ensure that pilots have more than enough boom to get the job done.",
    "effect": "<br><b>Quick</b> — 1/round, you can activate this system to reload a Loading weapon.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6646,7 +6875,10 @@
    "license": "Genghis",
    "license_level": 2,
    "description": "FOR USE IN: Urban, post-urban, and high-density terrestrial environments. High O2 concentration preferred.<br>FOR USE AGAINST: Organic targets; hardened targets vulnerable to caustic/corrosive degradation; most foliage.<br>NOTES: Dispersion is true directional and involves aerosolized component – avoid danger by supplying end-users with respiratory equipment (specifications noted on canister).",
-   "effect": "<br><b>Napalm Grenade</b> — Throw a Napalm Grenade within Range 5. This grenade releases a spray of napalm in a line 5 path of your choice from its impact location. Characters within the affected area must succeed on an Agility save or take 2 burn. On a success, they take 1 burn.<br><b>Deployable — HAVOK Mine:</b> When a character moves over or adjacent to this mine, it detonates with a focused explosion in a line 5 path in the direction of the character who triggered it. Characters within the affected area must succeed on an Agility save or take 4 burn. On a success, they take 2 burn."
+   "effect": "<br><b>Napalm Grenade</b> — Throw a Napalm Grenade within Range 5. This grenade releases a spray of napalm in a line 5 path of your choice from its impact location. Characters within the affected area must succeed on an Agility save or take 2 burn. On a success, they take 1 burn.<br><b>Deployable — HAVOK Mine:</b> When a character moves over or adjacent to this mine, it detonates with a focused explosion in a line 5 path in the direction of the character who triggered it. Characters within the affected area must succeed on an Agility save or take 4 burn. On a success, they take 2 burn.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_auto_cooler",
@@ -6660,6 +6892,9 @@
    "license_level": 2,
    "description": "The Armory-designed auto-cooler is a simple, persistent system that actively mitigates heat generation.<br>Thermal dump thresholds are determined by fleet engineers, though pilots can adjust levels on the fly – this automatic management frees the pilot up to focus on other, more pressing tactical concerns.",
    "effect": "<br><b>Protocol</b> — As long as you don’t take damage, move, or exceed your Heat Cap, you clear all heat at the start of your next turn.",
+   "activations": [
+    "Protocol"
+   ],
    "type": "System"
   },
   {
@@ -6676,7 +6911,10 @@
    "license": "Genghis",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and the AGNI Protocol.<br><b>AGNI Protocol</b> — 1/scene, expend a charge to automatically clear all heat at the end of your turn, venting it in a burst 2 wave. Characters within the affected area must succeed on an Engineering save or take 2 burn and be pushed outside the area (or as far as possible). Until the end of your next turn, characters within the affected area receive soft cover.",
-   "description": "AGNI was developed during the Hercynian Crisis using a combination of combat performance data recorded by extant subsentient artificial intelligences (weapons systems, COMP/CONs, co-pilot systems, tactic-minds, general combat data) and the modeled neural network of an Egregorian overmind captured and vivisected by the Union Science Bureau.<br>AGNI Prime was used to devise systems of heat management that have since been disseminated throughout core space, ensuring unparalleled heat processing, recycling, and shielding. Further developments into radiation shielding, omninet capability, and nanite control are forthcoming; meanwhile, AGNI clones have been optimized to support mech core systems.<br>Pilots report that AGNI clones are generally cold and efficient. An insignificant percentage have reported instances of memory recitation and command rejection, followed days later by total breakdown through attempted self-emancipation. Pilots are recommended to cycle their AGNI clones at least once every six standard months."
+   "description": "AGNI was developed during the Hercynian Crisis using a combination of combat performance data recorded by extant subsentient artificial intelligences (weapons systems, COMP/CONs, co-pilot systems, tactic-minds, general combat data) and the modeled neural network of an Egregorian overmind captured and vivisected by the Union Science Bureau.<br>AGNI Prime was used to devise systems of heat management that have since been disseminated throughout core space, ensuring unparalleled heat processing, recycling, and shielding. Further developments into radiation shielding, omninet capability, and nanite control are forthcoming; meanwhile, AGNI clones have been optimized to support mech core systems.<br>Pilots report that AGNI clones are generally cold and efficient. An insignificant percentage have reported instances of memory recitation and command rejection, followed days later by total breakdown through attempted self-emancipation. Pilots are recommended to cycle their AGNI clones at least once every six standard months.",
+   "activations": [
+    "Protocol"
+   ]
   },
   {
    "id": "ms_grounding_charges",
@@ -6692,7 +6930,10 @@
    "license": "Iskander",
    "license_level": 1,
    "description": "Grounding charges take a simple pulse/wave principle and apply a second dimension: gravitic generation. When triggered, the grounding charge triggers a gravity well that pulls all destabilized materiel towards it. A potent anti-positional weapon, grounding charges are commonly used to disrupt prepared positions and pull enemies from cover.",
-   "effect": "<br><b>Gravity Grenade</b> — Throw a Gravity Grenade within Range 5. Your target must succeed on an Agility save or be Slowed until they make no voluntary movements for a full turn on their own turn.<br><b>Deployable — Grounding Mine:</b> This mine must be detonated remotely as a quick action, affecting a single character within range 5 of the mine: they must succeed on a Hull save or be pulled as far as possible toward the mine and knocked Prone. Flying characters that fail the save are affected the same way, except they are also forced to land (this counts as falling but without damage).<br><b>Detonate Grounding Mine</b> — Detonating the Grounding Mine affects a single character within range 5 of the mine: they must succeed on a Hull save or be pulled as far as possible toward the mine and knocked Prone. Flying characters that fail the save are affected the same way, except they are also forced to land (this counts as falling but without damage)."
+   "effect": "<br><b>Gravity Grenade</b> — Throw a Gravity Grenade within Range 5. Your target must succeed on an Agility save or be Slowed until they make no voluntary movements for a full turn on their own turn.<br><b>Deployable — Grounding Mine:</b> This mine must be detonated remotely as a quick action, affecting a single character within range 5 of the mine: they must succeed on a Hull save or be pulled as far as possible toward the mine and knocked Prone. Flying characters that fail the save are affected the same way, except they are also forced to land (this counts as falling but without damage).<br><b>Detonate Grounding Mine</b> — Detonating the Grounding Mine affects a single character within range 5 of the mine: they must succeed on a Hull save or be pulled as far as possible toward the mine and knocked Prone. Flying characters that fail the save are affected the same way, except they are also forced to land (this counts as falling but without damage).",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_repulser_field",
@@ -6707,6 +6948,9 @@
    "license_level": 2,
    "description": "Utilizing a subsonic pressure wave, repulser fields emit tremendous single-wave pulses that stun, deter, and dissuade close-proximity hostiles.",
    "effect": "<br><b>Quick</b> — This system emits a burst 2 pulse around you. Characters within the affected area must succeed on a Hull save or be knocked 2 spaces directly away from you; then, all Mines within the affected area detonate simultaneously.<br>You count as having Immunity to any damage or effects immediately forced by mines detonated using this system, although persistent effects still affect you.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6722,6 +6966,9 @@
    "license_level": 3,
    "description": "Built using similar grapple-head technology to IPS-N’s assault grapples, clamp bombs can affix to designated or proximal targets before detonating, ensuring total target contact. Clamping on soft targets typically results in total termination prior to detonation.",
    "effect": "<br><b>Deployable — Clamp Bombs:</b> Expend a charge to fire a cluster of miniature bombs at a character within Sensors. They must succeed on an Engineering save, or the bombs clamp on. At the end of their next turn, the bombs detonate, dealing 1d6+3 AP Explosive damage. All characters adjacent to the target take half damage. The target can disarm and detach the bombs by voluntarily moving at least 4 spaces before the end of their turn.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6736,7 +6983,10 @@
    "license": "Iskander",
    "license_level": 3,
    "description": "Hold sand above the water: feel it, permanent and cohesive. Place that same sand in the water: watch it drift away, weightless. This is the tool I have made for you: a way to imbue the weighted with mass-as-feathers.<br>— TT-AUDATA, Think Tank paramind.",
-   "effect": "<br><b>Spread Focus</b> — Choose a blast 3 area within Sensors: this area, extending 6 spaces high, becomes a zero-g area. In addition to the usual rules for zero-g movement, objects that enter the affected area float in place, and objects or characters that are knocked, moved, or pulled out of the area sink harmlessly to the ground at the end of their turn instead of falling. This area disperses if you create a new one. Otherwise, the effect persists until the end of the scene. When the zone disperses, everything within floats harmlessly to the ground.<br><b>Pinpoint Focus</b> — Choose a hostile or willing allied character within Sensors. If they are allied, they float 6 spaces into the air, becoming Immobilized while in the air but counting as flying and unable to fall. They can choose to sink harmlessly to the ground at the end of any of their turns or the start of any of yours. If they are hostile, they must succeed on an Engineering save or experience the same effect as an allied character; however, they sink harmlessly to the ground at the end of their next turn. Hostile characters can each be affected 1/scene."
+   "effect": "<br><b>Spread Focus</b> — Choose a blast 3 area within Sensors: this area, extending 6 spaces high, becomes a zero-g area. In addition to the usual rules for zero-g movement, objects that enter the affected area float in place, and objects or characters that are knocked, moved, or pulled out of the area sink harmlessly to the ground at the end of their turn instead of falling. This area disperses if you create a new one. Otherwise, the effect persists until the end of the scene. When the zone disperses, everything within floats harmlessly to the ground.<br><b>Pinpoint Focus</b> — Choose a hostile or willing allied character within Sensors. If they are allied, they float 6 spaces into the air, becoming Immobilized while in the air but counting as flying and unable to fall. They can choose to sink harmlessly to the ground at the end of any of their turns or the start of any of yours. If they are hostile, they must succeed on an Engineering save or experience the same effect as an allied character; however, they sink harmlessly to the ground at the end of their next turn. Hostile characters can each be affected 1/scene.",
+   "activations": [
+    "Quick Tech"
+   ]
   },
   {
    "id": "ms_stasis_bolt",
@@ -6751,7 +7001,11 @@
    "license": "Napoleon",
    "license_level": 1,
    "effect": "This system charges as a quick action, readying a projected stasis point. While it is charged, you gain the Interdiction Point reaction. It can only hold one charge at a time, but charges last for the rest of the scene or until used.<br><b>Charge Stasis Bolt</b> — Charge the Stasis Bolt, gaining the Interdiction Point Reaction<br><b>Interdiction Point</b> — <i>Trigger:</i> You or an allied character within range 5 are targeted by a ranged attack.<br>Make a contested ranged attack roll: if you win the contested roll, the attack automatically misses. The Stasis Bolt loses its charge.",
-   "description": "To better protect Armory personnel beyond the Purview, the Think Tank developed the Stasis Bolt, a portable stasis-projection system designed to interdict shrapnel and projectiles from unseen, hidden, or unknown assailants. When the Stasis Bolt detects a proximal explosion or incoming projectile, it projects a delimited stasis point that blocks projectiles before impact."
+   "description": "To better protect Armory personnel beyond the Purview, the Think Tank developed the Stasis Bolt, a portable stasis-projection system designed to interdict shrapnel and projectiles from unseen, hidden, or unknown assailants. When the Stasis Bolt detects a proximal explosion or incoming projectile, it projects a delimited stasis point that blocks projectiles before impact.",
+   "activations": [
+    "Quick",
+    "Reaction"
+   ]
   },
   {
    "id": "ms_stasis_generator",
@@ -6766,7 +7020,10 @@
    "license": "Napoleon",
    "license_level": 1,
    "description": "The skies of Creighton boiled black as ink, marbled by shuddering light. Screaming, angels fell wreathed in flame. The ones who could still run fled for the shelters; for seven days, they crouched in a deeper dark and felt the world shake itself apart.<br>—A.V. Wynyard, “The Killing of Creighton” [epic prose poem, banned throughout the Purview]",
-   "effect": "<br><b>Quick</b> — Choose a hostile character or willing allied character within line of sight and range 5: until the end of their next turn, they become Stunned, gain Immunity to all damage and effects, and can’t be moved, targeted, or affected by any other character or effect. This can be used on each character 1/scene. Hostile characters can succeed on an Engineering save to ignore this effect."
+   "effect": "<br><b>Quick</b> — Choose a hostile character or willing allied character within line of sight and range 5: until the end of their next turn, they become Stunned, gain Immunity to all damage and effects, and can’t be moved, targeted, or affected by any other character or effect. This can be used on each character 1/scene. Hostile characters can succeed on an Engineering save to ignore this effect.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_stasis_barrier",
@@ -6783,7 +7040,10 @@
    "license": "Napoleon",
    "license_level": 2,
    "effect": "Expend a charge to activate this stasis barrier, generating a line 4 barrier 4 spaces high in free spaces with at least one space adjacent to you.<br><b>Deployable — Stasis Barrier:</b> Generate a line 4 barrier 4 spaces high in free spaces with at least one space adjacent to you. It counts as an obstruction and provides soft cover, but doesn’t block line of sight.<br>When an attack is made against a character that benefits from this barrier’s soft cover, roll 1d6: on 4+, the attack is consumed by the barrier and has no effect whatsoever. The barrier lasts for the rest of the scene, or until you deactivate it as a quick action. This effect does not stack with Invisible.",
-   "description": "Stasis barriers are the result of Harrison Armory’s interest in gravitic manipulation and superpositional negotiation. Guided by solid-state generation–projection units, stasis barriers are deployable walls of antigravity that deny almost all incoming kinetic and energetic attacks. By twisting local gravity, a stasis barrier denies both particles and waves on a molecular level—matter that impacts the barrier simply ceases to exist, although anomalous fluctuations may allow some projectiles to pass through."
+   "description": "Stasis barriers are the result of Harrison Armory’s interest in gravitic manipulation and superpositional negotiation. Guided by solid-state generation–projection units, stasis barriers are deployable walls of antigravity that deny almost all incoming kinetic and energetic attacks. By twisting local gravity, a stasis barrier denies both particles and waves on a molecular level—matter that impacts the barrier simply ceases to exist, although anomalous fluctuations may allow some projectiles to pass through.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_blinkshield",
@@ -6799,7 +7059,10 @@
    "license": "Napoleon",
    "license_level": 3,
    "description": "Characteristically for a weapon based on Think Tank research, Harrison Armory’s Blinkshield leans into the fuzzy nature of quantum manipulation. Operating in a similar fashion to a blinkspace gate, the Blinkshield generates a spherical sheath of energy that allows its operator to pierce realspace and exist, for a moment, in the null-environment of blinkspace. Think Tank spokespeople acknowledge the tactical benefits of (un)momentary (non)existence in blinkspace, but caution against repeated exposure without sufficient pre- and post-exposure conditioning and counseling.",
-   "effect": "<br><b>Full</b> — This system generates a burst 4 bubble around your mech, within which the flow of time is altered drastically. Nothing can enter or exit the bubble, not even light – it’s both impermeable and has Immunity to all damage and effects. Line of sight can’t be drawn through the border of the area, and it can’t be crossed by any action or effect – even those that don’t require line of sight – but time passes normally on both sides. For characters within the affected area, the world outside goes totally black; likewise, characters outside the affected area see a perfect black sphere.<br>When the Blinkshield is activated, characters partially within the affected area must make an Agility save: on a success, they move to the nearest free space on the side of their choice, inside or outside the area; on a failure, you choose.<br>This effect remains stationary even if you move, and lasts until the end of your next turn."
+   "effect": "<br><b>Full</b> — This system generates a burst 4 bubble around your mech, within which the flow of time is altered drastically. Nothing can enter or exit the bubble, not even light – it’s both impermeable and has Immunity to all damage and effects. Line of sight can’t be drawn through the border of the area, and it can’t be crossed by any action or effect – even those that don’t require line of sight – but time passes normally on both sides. For characters within the affected area, the world outside goes totally black; likewise, characters outside the affected area see a perfect black sphere.<br>When the Blinkshield is activated, characters partially within the affected area must make an Agility save: on a success, they move to the nearest free space on the side of their choice, inside or outside the area; on a failure, you choose.<br>This effect remains stationary even if you move, and lasts until the end of your next turn.",
+   "activations": [
+    "Full"
+   ]
   },
   {
    "id": "ms_enclave_pattern_support_shield",
@@ -6814,7 +7077,11 @@
    "license": "Saladin",
    "license_level": 1,
    "description": "The Armory’s ENCLAVE-Pattern Support Shield creates a localized one-way blinkfield, folding a thin dome of complex realspace around its user and their immediate area, protecting occupants from incoming projectiles. Entities within the field can fire out, but probabilistic fluctuations cause incoming projectiles to “lag”, skipping them away from their intended target and along a randomized trajectory.",
-   "effect": "<br><b>Quick</b> — This system generates a burst 3 dome that lasts until the end of your next turn. You become Immobilized for the duration, but any ranged or melee attacks made against characters within the affected area from outside the dome receive +1 difficulty.<br>Additionally, gain the Blinkfield Intervention reaction while the shield is active.<br><b>Blinkfield Intervention</b> — <i>Trigger:</i> A character or object within the affected area is attacked.<br>Take two Heat, then grant the attack’s target Resistance to all damage from this attack."
+   "effect": "<br><b>Quick</b> — This system generates a burst 3 dome that lasts until the end of your next turn. You become Immobilized for the duration, but any ranged or melee attacks made against characters within the affected area from outside the dome receive +1 difficulty.<br>Additionally, gain the Blinkfield Intervention reaction while the shield is active.<br><b>Blinkfield Intervention</b> — <i>Trigger:</i> A character or object within the affected area is attacked.<br>Take two Heat, then grant the attack’s target Resistance to all damage from this attack.",
+   "activations": [
+    "Quick",
+    "Reaction"
+   ]
   },
   {
    "id": "ms_flash_anchor",
@@ -6830,7 +7097,10 @@
    "license": "Saladin",
    "license_level": 2,
    "description": "Flash anchors utilize user-directed quantum superpositional lockdown projection to identify and assist allies in physical combat and rapid movement, maintaining positionality in all circumstances.",
-   "effect": "<br><b>Flash Lock</b> — <i>Trigger:</i> You or an allied character in Sensors and line of sight is pushed, pulled, knocked back or knocked Prone.<br>Take 2 Heat. The movement or status is prevented, and the target gains Immunity to all the above effects until the start of their next turn."
+   "effect": "<br><b>Flash Lock</b> — <i>Trigger:</i> You or an allied character in Sensors and line of sight is pushed, pulled, knocked back or knocked Prone.<br>Take 2 Heat. The movement or status is prevented, and the target gains Immunity to all the above effects until the start of their next turn.",
+   "activations": [
+    "Reaction"
+   ]
   },
   {
    "id": "ms_hardlight_defense_system",
@@ -6846,7 +7116,11 @@
    "license": "Saladin",
    "license_level": 2,
    "description": "The Hardlight Defense System is an imperfect implementation of theoretically perfect technology. Currently in development by Think Tank NHPs and engineers, hardlight devices project tight, stable waves of light – akin to lasers – that repel matter and energy. In effect, this creates a solid surface, useful for shielding or temporary barrier construction; however, current technology is unable to lower the ambient temperature enough to prevent these surfaces from burning organic matter.",
-   "effect": "<br><b>Full</b> — This system creates a burst 3 hardlight shield. While the shield is in place, you become Immobilized. It blocks line of sight in both directions, and no attacks or effects can pass through (even if they don’t require line of sight). Characters partially within the affected area ignore this effect and draw line of sight as usual.<br>Characters can pass through the shield, but when crossing the perimeter for the first time in a round or starting their turn overlapping the boundary, they take 2 Burn.<br>This shield lasts for the rest of the scene, or until deactivated as a protocol.<br><b>Deactivate Hardlight Defense System</b> — Deactivate the Hardlight Defense System, removing the Immobilized condition it inflicts."
+   "effect": "<br><b>Full</b> — This system creates a burst 3 hardlight shield. While the shield is in place, you become Immobilized. It blocks line of sight in both directions, and no attacks or effects can pass through (even if they don’t require line of sight). Characters partially within the affected area ignore this effect and draw line of sight as usual.<br>Characters can pass through the shield, but when crossing the perimeter for the first time in a round or starting their turn overlapping the boundary, they take 2 Burn.<br>This shield lasts for the rest of the scene, or until deactivated as a protocol.<br><b>Deactivate Hardlight Defense System</b> — Deactivate the Hardlight Defense System, removing the Immobilized condition it inflicts.",
+   "activations": [
+    "Full",
+    "Protocol"
+   ]
   },
   {
    "id": "ms_noah_class_nhp",
@@ -6861,7 +7135,10 @@
    "license": "Saladin",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and Diluvian Ark.<br><b>Diluvian Ark</b> — These effects apply until the end of your next turn:<ul><li>You become Slowed.</li><li>Each time you or an allied adjacent character are targeted by a ranged attack, you may take 1 heat as a reaction and roll 1d6 before the attacker rolls: on 4+, you take an additional 1 heat and the attack automatically misses you and any allies adjacent to you. This effect does not stack with Invisible.</li><li>Each time a ranged attack fails to hit you or an adjacent allied character, the attacker takes 4 kinetic damage.</li></ul>",
-   "description": "Originally developed from a captured Minerva pre-eidolon anomaly, NOAH was adapted for use as a metropolitan administrative NHP on Ras Shamra. The unit that would become NOAH did not, at first, seem like a suitable candidate for military application: this changed after one of its clones was flagged for review following the spontaneous implementation of anomalous traffic patterns, pedestrian routing, and vac-loop scheduling. Armory ontologisticians and engineers isolated and emphasized endemic protocols that could be exploited for tactical advantage.<br>Over numerous iterations and lifecycles, NOAH Prime displayed a high level of adaptability in multiple-variable geospatial problems. A proclivity toward crisis management and multi-actor tracking led to NOAH’s pairing with the Armory’s ENCLAVE-Pattern Support Shield. By networking a series of jet-assist mobility drones carrying an ENCLAVE generator, monitored and controlled by a NOAH clone, Think Tank was able to create an unparalleled personal shielding system: the Diluvian Ark, a miniaturized cluster-shield system unique to the NOAH NHP.<br>Using the Diluvian Ark, NOAH is able to intercept incoming kinetics – and even redirect projectiles back to their source – with stunning accuracy."
+   "description": "Originally developed from a captured Minerva pre-eidolon anomaly, NOAH was adapted for use as a metropolitan administrative NHP on Ras Shamra. The unit that would become NOAH did not, at first, seem like a suitable candidate for military application: this changed after one of its clones was flagged for review following the spontaneous implementation of anomalous traffic patterns, pedestrian routing, and vac-loop scheduling. Armory ontologisticians and engineers isolated and emphasized endemic protocols that could be exploited for tactical advantage.<br>Over numerous iterations and lifecycles, NOAH Prime displayed a high level of adaptability in multiple-variable geospatial problems. A proclivity toward crisis management and multi-actor tracking led to NOAH’s pairing with the Armory’s ENCLAVE-Pattern Support Shield. By networking a series of jet-assist mobility drones carrying an ENCLAVE generator, monitored and controlled by a NOAH clone, Think Tank was able to create an unparalleled personal shielding system: the Diluvian Ark, a miniaturized cluster-shield system unique to the NOAH NHP.<br>Using the Diluvian Ark, NOAH is able to intercept incoming kinetics – and even redirect projectiles back to their source – with stunning accuracy.",
+   "activations": [
+    "Quick"
+   ]
   },
   {
    "id": "ms_reactor_stabilizer",
@@ -6890,6 +7167,9 @@
    "license_level": 2,
    "description": "A common right-of-distribution modification by pilots in forward operating bases, the addition of redundant systems guarantees a measure of reliability beyond stock design standards.",
    "effect": "<br><b>Quick</b> — Expend a charge to Stabilize as a quick action.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {
@@ -6907,7 +7187,10 @@
    "license": "Sherman",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and the ASURA Protocol.<br><b>ASURA Protocol</b> — 1/scene, expend a charge to take two additional quick actions or one additional full action this turn. These actions must obey restrictions on duplicate actions.",
-   "description": "ASURA was born from the Armory’s Think Tank thought-war games, an autonomous response to repeated failures during forlorn hope scenarios. ASURA manifested in the systems of simulated mechs as a recode of HORUS’s PUPPETMASTER virus, hijacking friendly mechs and forcing them to act far beyond human capacity—at such speed and intensity that the g-force would kill organic pilots with the sudden amplified mass of their own bodies.<br>While these results were initially deemed a failure by Think Tank NHPs and engineers, it was enough to justify further study on ASURA. Personality and parasentience code was injected into the initial anomalous PUPPETMASTER strain, and first contact handled by Think Tank NHPs. Further societal acclimation and conditioning were fast tracked, giving Armory engineers the first iteration of ASURA after a decade of study, recoding, and reeducation. ASURA, as they exist now, is a scaled-back version of that initial manifestation: while retaining some of their initial impetuousness, ASURA clones now recognize the need to keep their pilot alive and will operate within parameters set by their pilot’s medical and psychological tolerances."
+   "description": "ASURA was born from the Armory’s Think Tank thought-war games, an autonomous response to repeated failures during forlorn hope scenarios. ASURA manifested in the systems of simulated mechs as a recode of HORUS’s PUPPETMASTER virus, hijacking friendly mechs and forcing them to act far beyond human capacity—at such speed and intensity that the g-force would kill organic pilots with the sudden amplified mass of their own bodies.<br>While these results were initially deemed a failure by Think Tank NHPs and engineers, it was enough to justify further study on ASURA. Personality and parasentience code was injected into the initial anomalous PUPPETMASTER strain, and first contact handled by Think Tank NHPs. Further societal acclimation and conditioning were fast tracked, giving Armory engineers the first iteration of ASURA after a decade of study, recoding, and reeducation. ASURA, as they exist now, is a scaled-back version of that initial manifestation: while retaining some of their initial impetuousness, ASURA clones now recognize the need to keep their pilot alive and will operate within parameters set by their pilot’s medical and psychological tolerances.",
+   "activations": [
+    "Protocol"
+   ]
   },
   {
    "id": "ms_external_batteries",
@@ -6952,7 +7235,10 @@
    "license": "Tokugawa",
    "license_level": 3,
    "effect": "Your mech gains the AI tag and the LUCIFER Protocol.<br><b>LUCIFER Protocol</b> — Expend a charge to give your next ranged or melee attack this turn bonus damage on hit equal to your current heat after activating this protocol, as long as the weapon deals any energy.",
-   "description": "LUCIFER came to the Think Tank’s attention after their repeated victories in thought-war games. LUCIFER clones are characterized by their brash, enthusiastic personality, often expressing frustration with timid pilots. This bombastic personality hides a calculating, brilliant tactical mind that feeds constant information to pilots – often faster than they can process it.<br>LUCIFER’s combat doctrine demands action, appearing to less daring pilots as a chaotic blend of reckless maneuvering and aggressive offense that keeps defenders beleaguered and unable to respond. Pilots looking to partner with LUCIFER clones should be aware that this attack style is likely to leave them vulnerable to counterattack, and also that these NHPs enjoy what they call “good-natured ribbing”."
+   "description": "LUCIFER came to the Think Tank’s attention after their repeated victories in thought-war games. LUCIFER clones are characterized by their brash, enthusiastic personality, often expressing frustration with timid pilots. This bombastic personality hides a calculating, brilliant tactical mind that feeds constant information to pilots – often faster than they can process it.<br>LUCIFER’s combat doctrine demands action, appearing to less daring pilots as a chaotic blend of reckless maneuvering and aggressive offense that keeps defenders beleaguered and unable to respond. Pilots looking to partner with LUCIFER clones should be aware that this attack style is likely to leave them vulnerable to counterattack, and also that these NHPs enjoy what they call “good-natured ribbing”.",
+   "activations": [
+    "Protocol"
+   ]
   },
   {
    "id": "ms_plasma_gauntlet",
@@ -6968,6 +7254,9 @@
    "license_level": 3,
    "description": "This studded gauntlet draws on a core reactor pulse to momentarily superheat the air around a mech’s manipulator, creating a plasma field momentarily hotter than the surface of the sun. Thrust into an opponent’s chassis, plasma gauntlets give mechs the power to warp armor, vaporize shielding, and rip apart internal systems with their bare hands – if they don’t collapse in on themselves first.",
    "effect": "<br><b>Quick</b> — This system can only be used in the Danger Zone.<br>Expend a charge and choose a character adjacent to you: they must succeed on an Agility save or take 4d6 AP energy damage and be knocked Prone. On a success, they take half damage and aren’t knocked Prone. You take half of the damage inflicted – before reduction – as heat and become Stunned until the start of your next turn.",
+   "activations": [
+    "Quick"
+   ],
    "type": "System"
   },
   {

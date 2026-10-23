@@ -206,3 +206,13 @@ test("over-budget tabs are flagged", async ({ page }) => {
     await expect(page.locator(`#tab-btn-${id} .dot.warn`), id).toBeVisible();
   }
 });
+
+test("a system shows how it is used — its action type", async ({ page }) => {
+  await openApp(page, { build: FULL_BUILD });
+  await openTab(page, "loadout");
+  await page.locator("#add-system").click();
+  const row = page.locator('#sy-list .listrow[data-s="ms_comp_con_class_assistant_unit"]');
+  await expect(row.locator(".rowtag.act")).toHaveText("ПРОТОКОЛ");
+  // The "Protocol" tag only said the same thing; the opened card keeps it.
+  await expect(row.locator(".rowtag:not(.act)", { hasText: /^Протокол$/i })).toHaveCount(0);
+});

@@ -1751,6 +1751,70 @@
   "en": "Grid",
   "ru": "Сетка"
  },
+ "term.act.Free": {
+  "en": "FREE",
+  "ru": "СВОБ."
+ },
+ "term.act.Full": {
+  "en": "FULL",
+  "ru": "ПОЛН."
+ },
+ "term.act.FullTech": {
+  "en": "FULL TECH",
+  "ru": "ПОЛН. ТЕХ."
+ },
+ "term.act.Invade": {
+  "en": "INVADE",
+  "ru": "ВТОРЖ."
+ },
+ "term.act.Protocol": {
+  "en": "PROTOCOL",
+  "ru": "ПРОТОКОЛ"
+ },
+ "term.act.Quick": {
+  "en": "QUICK",
+  "ru": "БЫСТР."
+ },
+ "term.act.QuickTech": {
+  "en": "QUICK TECH",
+  "ru": "БЫСТР. ТЕХ."
+ },
+ "term.act.Reaction": {
+  "en": "REACTION",
+  "ru": "РЕАКЦ."
+ },
+ "term.act_name.Free": {
+  "en": "Free action",
+  "ru": "Свободное действие"
+ },
+ "term.act_name.Full": {
+  "en": "Full action",
+  "ru": "Полное действие"
+ },
+ "term.act_name.FullTech": {
+  "en": "Full tech action",
+  "ru": "Полное тех-действие"
+ },
+ "term.act_name.Invade": {
+  "en": "Invade option (quick tech action)",
+  "ru": "Вариант Вторжения (быстрое тех-действие)"
+ },
+ "term.act_name.Protocol": {
+  "en": "Protocol: free action at the start of your turn",
+  "ru": "Протокол: свободное действие в начале хода"
+ },
+ "term.act_name.Quick": {
+  "en": "Quick action",
+  "ru": "Быстрое действие"
+ },
+ "term.act_name.QuickTech": {
+  "en": "Quick tech action",
+  "ru": "Быстрое тех-действие"
+ },
+ "term.act_name.Reaction": {
+  "en": "Reaction",
+  "ru": "Реакция"
+ },
  "term.dmg.Burn": {
   "en": "BURN",
   "ru": "ОГОНЬ"

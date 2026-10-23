@@ -113,7 +113,7 @@ function renderLoadout(){
     const sy=M.system[id];
     const open=eqSystemExpanded.has(si);
     const row=`<div class="listrow">
-      <div class="info clickable has-cardlink"><div class="nm">${cardLinkHTML("system", si, esc(sy.name))} <span class="tag sp">${sy.sp} SP</span></div>
+      <div class="info clickable has-cardlink"><div class="nm">${cardLinkHTML("system", si, esc(sy.name))} <span class="tag sp">${sy.sp} SP</span>${actLabelsHTML(sy,"tag")}</div>
         <div class="ds">${esc(tr(sy.type))} · ${esc(sy.source)}${sy.effect?" · "+esc(truncateWords(stripHTML(sy.effect),140)):""}</div></div>
       <div style="display:flex;align-items:center;gap:8px">
         <button class="xbtn expand" data-exps="${si}" title="${t("common.show_details")}" aria-label="${t(open?"common.collapse_details":"common.expand_details")}">${open?'⌄':'›'}</button>

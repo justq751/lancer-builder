@@ -45,6 +45,19 @@ function rowTagsHTML(tags, skip){
   return list.slice(0,ROW_TAG_MAX).map(tg=>`<span class="rowtag">${esc(tg)}</span>`).join("")
     + (rest.length?`<span class="rowtag more" title="${esc(rest.join(", "))}">+${rest.length}</span>`:"");
 }
+/* How a system is used (item.activations — Quick, Protocol, Reaction…, see
+   tools/normalize_pack.py): short mono labels, the full name on hover. Like
+   the damage/range short forms they have no dictionary in the data, so they
+   are interface strings. The tags that only say the same thing ("Quick
+   Action") are left off the collapsed row. */
+// i18n-dynamic: term.act.Quick, term.act.Full, term.act.QuickTech, term.act.FullTech, term.act.Invade, term.act.Protocol, term.act.Reaction, term.act.Free, term.act_name.Quick, term.act_name.Full, term.act_name.QuickTech, term.act_name.FullTech, term.act_name.Invade, term.act_name.Protocol, term.act_name.Reaction, term.act_name.Free
+const ACTIVATION_TAGS = ["Quick Action","Full Action","Quick Tech","Full Tech","Reaction","Protocol","Free Action"];
+function actLabelsHTML(item, cls){
+  return (item.activations||[]).map(a=>{
+    const k=a.replace(/ /g,"");
+    return `<span class="${cls} act" title="${esc(tText(`term.act_name.${k}`))}">${t(`term.act.${k}`)}</span>`;
+  }).join("");
+}
 function rowBadgeHTML(item){
   if(!(item.license_level>0)) return "";
   const lk=!unlocked(item);
@@ -88,7 +101,7 @@ function systemPickRow(s, open){
     <span class="src"></span>
     <div class="info">
       <div class="nmline"><span class="nm">${esc(s.name)}</span>${rowBadgeHTML(s)}</div>
-      <div class="clsline"><span class="cls">${esc(tr(s.type))}</span>${rowTagsHTML(s.tags,[tr(s.type)])}</div>
+      <div class="clsline"><span class="cls">${esc(tr(s.type))}</span>${actLabelsHTML(s,"rowtag")}${rowTagsHTML(s.tags,[tr(s.type), ...ACTIVATION_TAGS.map(trTag)])}</div>
     </div>
     <div class="rowstats">${rowStat("SP", s.sp)}</div>
     <span class="chevron">${open?'⌄':'›'}</span>
@@ -249,7 +262,7 @@ function weaponCardHTML(w){
 function systemCardBody(s, uid){
   const tagsId = uid?`sy-tags-${uid}`:"sy-tags", descId = uid?`sy-tagdesc-${uid}`:"sy-tagdesc";
   return `<div class="tags" id="${tagsId}">
-      <span class="tag sp">${s.sp} SP</span>
+      <span class="tag sp">${s.sp} SP</span>${actLabelsHTML(s,"tag")}
       ${(s.tags||[]).map((tg,i)=>`<button type="button" class="tag glossary" data-tgi="${i}" aria-expanded="false">${esc(trTag(tg))}</button>`).join("")}
     </div>
     <div id="${descId}"></div>

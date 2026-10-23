@@ -473,6 +473,8 @@ button{font-family:inherit; cursor:pointer}
    so they read as a tier above secondary tags (SP, mount type, flavor). */
 .tag.stat{font-size:12px; font-weight:600; padding:3px 6px}
 .tag.sp{color:var(--amber); background:var(--amber-glow)}
+/* Action type (Quick, Protocol…): how the system is used, read before its tags. */
+.tag.act{color:var(--ink); background:var(--panel-3)}
 .tag.dmg{color:#ffcaa0; background:rgba(229,96,79,.16)}
 .tag.rng{color:#a9c9ff; background:rgba(63,143,214,.16)}
 /* A <button> since 2026-10-15 (it toggles a description): the UA's button box
@@ -573,6 +575,7 @@ button{font-family:inherit; cursor:pointer}
    stance of several", not a property of the weapon. */
 .rowtag.stance{color:var(--accent); border-color:var(--accent-deep)}
 .rowtag.sp{color:var(--amber); border-color:color-mix(in srgb, var(--amber) 45%, transparent)}
+.rowtag.act{color:var(--ink); border-color:var(--line-bright)}
 .rowstats{display:flex; align-items:center; gap:14px; flex-shrink:0}
 /* Fixed width: the open row's ⌄ is wider than the closed ›, and without this
    expanding a row nudges every number in it out of the column. */

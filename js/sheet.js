@@ -159,7 +159,7 @@ function deckSystemCardHTML(sy){
       <span class="nm">${esc(sy.name)}</span>
       <span class="slot">${esc(tr(sy.type||"System"))}${lk?" · 🔒":""}</span>
     </div>
-    <div class="keyline">${sy.sp?shKey("SP",sy.sp):""}</div>
+    <div class="keyline">${sy.sp?shKey("SP",sy.sp):""}${actLabelsHTML(sy,"tag")}</div>
     ${shTags(sy.tags)}
     ${shEff(t("sheet.effect"), sy.effect)}
   </article>`;
