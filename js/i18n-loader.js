@@ -94,7 +94,12 @@ const CONTENT_PACKS = [
    from content that really is gone, and to keep autosave off the stored
    build until the data is complete again. */
 let PACK_LOAD_FAILURES = [];
-const packLabel = url => url.replace(/^.*\//, "").replace(/-data\.json$/, "").toUpperCase();
+const packId = url => url.replace(/^.*\//, "").replace(/-data\.json$/, "");
+const packLabel = url => packId(url).toUpperCase();
+/* Which pack each merged item came from: "weapons:mw_foo" -> "long-rim".
+   Core-book items are not in it. Read by the content selection
+   (js/app/content.js) — the items themselves stay untouched. */
+let CONTENT_ORIGIN = new Map();
 
 async function loadBaseData() {
   try {
@@ -123,12 +128,16 @@ async function loadBaseData() {
       ]);
     Object.assign(core, { tags, glossary, stat_labels, core_stat_mods, core_terse, frame_images });
     PACK_LOAD_FAILURES = CONTENT_PACKS.filter((url, i) => !packs[i]).map(packLabel);
-    for (const pack of packs) {
-      if (!pack) continue;
+    const origin = new Map();
+    packs.forEach((pack, i) => {
+      if (!pack) return;
       for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses", "mods", "backgrounds"]) {
-        if (pack[cat] && pack[cat].length) core[cat] = (core[cat] || []).concat(pack[cat]);
+        if (!pack[cat] || !pack[cat].length) continue;
+        core[cat] = (core[cat] || []).concat(pack[cat]);
+        pack[cat].forEach(it => origin.set(cat + ":" + it.id, packId(CONTENT_PACKS[i])));
       }
-    }
+    });
+    CONTENT_ORIGIN = origin;
     return core;
   } catch (e) {
     // Shown by startApp() (showLoadError), which by then has the interface
@@ -187,7 +196,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever the app's code (index.html, css/, js/) changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-10-19-upstream-sync";
+const APP_BUILD = "2026-10-23-build-rules-content";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {

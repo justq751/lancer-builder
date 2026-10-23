@@ -27,7 +27,7 @@ function renderTalents(){
     renderTalents();
   });
   const remaining=d.b.talent.cap-d.b.talent.used;
-  $("#tal-list").innerHTML = L.talents.map(tal=>{
+  $("#tal-list").innerHTML = offered("talents", tal=>state.talents[tal.id]).map(tal=>{
     const v=state.talents[tal.id]||0;
     const capExceeded=v>rankCap;
     const canInc=v<3 && v<rankCap && remaining>=1;

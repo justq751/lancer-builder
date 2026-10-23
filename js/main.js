@@ -1,6 +1,7 @@
 /* ============ TOPBAR WIRING ============ */
 function wireTopbar(){
   $("#t-export").onclick=exportBuild;
+  $("#t-content").onclick=openContentSettings;
   $("#t-import").onclick=()=>$("#import-file").click();
   $("#import-file").onchange=e=>{ const f=e.target.files[0]; e.target.value=""; if(f) importBuild(f); };
   $("#t-reset").onclick=()=>{

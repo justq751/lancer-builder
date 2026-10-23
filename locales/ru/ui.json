@@ -131,6 +131,54 @@
   "en": "Show details",
   "ru": "Показать подробности"
  },
+ "content.cat.backgrounds": {
+  "en": "Backgrounds",
+  "ru": "Предыстории"
+ },
+ "content.cat.core_bonuses": {
+  "en": "CORE bonuses",
+  "ru": "CORE-бонусы"
+ },
+ "content.cat.frames": {
+  "en": "Frames",
+  "ru": "Шасси"
+ },
+ "content.cat.mods": {
+  "en": "Mods",
+  "ru": "Моды"
+ },
+ "content.cat.pilot_gear": {
+  "en": "Pilot gear",
+  "ru": "Снаряжение пилота"
+ },
+ "content.cat.systems": {
+  "en": "Systems",
+  "ru": "Системы"
+ },
+ "content.cat.talents": {
+  "en": "Talents",
+  "ru": "Таланты"
+ },
+ "content.cat.weapons": {
+  "en": "Weapons",
+  "ru": "Оружие"
+ },
+ "content.defaults": {
+  "en": "Restore defaults",
+  "ru": "Вернуть по умолчанию"
+ },
+ "content.in_build": {
+  "en": "Your build uses content that is switched off — it stays in the build: {list}",
+  "ru": "В сборке есть выключенный контент — он в ней остаётся: {list}"
+ },
+ "content.lead": {
+  "en": "Choose what each official supplement adds to the lists. Switching something off only hides it from picking: a build that already uses it keeps working, and so do share links. The core book is always on.",
+  "ru": "Выберите, что каждое официальное дополнение добавляет в списки. Выключенное только скрывается из выбора: сборка, где оно уже есть, продолжает работать, как и ссылки на сборки. Основная книга включена всегда."
+ },
+ "content.title": {
+  "en": "Supplement content",
+  "ru": "Контент дополнений"
+ },
  "core.cap_info": {
   "en": "CORE bonuses open at LL3, then one more for every 3 license levels (LL6, LL9…).",
   "ru": "CORE-бонусы открываются с LL3, и затем ещё по одному за каждые 3 уровня лицензий (LL6, LL9…)."
@@ -1918,6 +1966,10 @@
  "term.stat.tech_attack": {
   "en": "TECH ATK",
   "ru": "ТЕХ-АТК"
+ },
+ "topbar.content": {
+  "en": "CONTENT",
+  "ru": "ДОПОЛНЕНИЯ"
  },
  "topbar.editor": {
   "en": "EDITOR",

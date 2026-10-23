@@ -51,7 +51,7 @@ function renderCore(){
   });
 
   const drawList=()=>{
-    const list=L.core_bonuses
+    const list=offered("core_bonuses")
       .filter(c=>!state.cores.includes(c.id))
       .filter(c=>coreFilter==="ALL"||c.source===coreFilter)
       .filter(c=>!coreSearch||(c.name+" "+c.source).toLowerCase().includes(coreSearch.toLowerCase()));

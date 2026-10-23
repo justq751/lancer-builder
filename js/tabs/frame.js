@@ -108,7 +108,7 @@ function renderFrame(){
     + `<div class="filters" id="frame-filters">
         ${["ALL","GMS","IPS-N","SSC","HORUS","HA"].map(s=>`<button class="chip ${frameFilter===s?'on':''}" data-ff="${s}">${s==="ALL"?t("common.all"):s}</button>`).join("")}
        </div><div id="frame-list"></div>`;
-  const list=L.frames.filter(f=>frameFilter==="ALL"||f.source===frameFilter);
+  const list=offered("frames", f=>f.id===state.mech.frameId).filter(f=>frameFilter==="ALL"||f.source===frameFilter);
   // Group by manufacturer (GMS first, then IPS-N/SSC/HORUS/HA in that fixed
   // order) so each source gets its own row instead of interleaving — each
   // group is its own <div class="grid cards">, which is what forces the

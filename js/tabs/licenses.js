@@ -11,11 +11,12 @@ function stepLicense(name, dir){
    unlocks (and vice versa), since they're the same license. */
 function licenseRanksHTML(f){
   const key = licenseKeyFor(f);
-  const siblingFrames = L.frames.filter(fr=>licenseKeyFor(fr)===key);
+  // Only what the content selection offers (js/app/content.js).
+  const siblingFrames = offered("frames", fr=>fr.id===state.mech.frameId).filter(fr=>licenseKeyFor(fr)===key);
   const items=[
-    ...L.weapons.filter(it=>it.license===key).map(it=>({...it,_kind:"w"})),
-    ...L.systems.filter(it=>it.license===key).map(it=>({...it,_kind:"s"})),
-    ...(L.mods||[]).filter(it=>it.license===key).map(it=>({...it,_kind:"m"})),
+    ...offered("weapons").filter(it=>it.license===key).map(it=>({...it,_kind:"w"})),
+    ...offered("systems").filter(it=>it.license===key).map(it=>({...it,_kind:"s"})),
+    ...offered("mods").filter(it=>it.license===key).map(it=>({...it,_kind:"m"})),
   ];
   const byRank={1:[],2:[],3:[]};
   items.forEach(it=>{ const r=it.license_level||1; if(byRank[r]) byRank[r].push(it); });
@@ -42,7 +43,7 @@ function licenseRanksHTML(f){
 function openLicenseDetail(fid){
   const f=M.frame[fid], key=licenseKeyFor(f), v=licRank(key), d=derived();
   const remaining=d.b.license.cap-d.b.license.used;
-  const siblings=L.frames.filter(fr=>licenseKeyFor(fr)===key && fr.id!==f.id).map(fr=>dispName(fr));
+  const siblings=offered("frames").filter(fr=>licenseKeyFor(fr)===key && fr.id!==f.id).map(fr=>dispName(fr));
   const img=frameImageURL(f);
   const imgHTML = img ? `<a href="${img}" target="_blank" rel="noopener" title="${t("licenses.img_source")}">
     <img src="${img}" alt="" loading="lazy" onerror="this.closest('a').remove()"
@@ -91,7 +92,7 @@ function renderLicenses(){
   const d=derived();
   const over=d.b.license.used>d.b.license.cap;
   const remaining=d.b.license.cap-d.b.license.used;
-  const licFrames=L.frames.filter(f=>f.source!=="GMS");
+  const licFrames=L.frames.filter(f=>f.source!=="GMS" && licenseOffered(f));
   // group by manufacturer
   const groups={};
   licFrames.forEach(f=>(groups[f.source]=groups[f.source]||[]).push(f));
@@ -103,7 +104,7 @@ function renderLicenses(){
       <div class="grid cards">${fr.map(f=>{
         const key=licenseKeyFor(f);
         const v=licRank(key);
-        const nUnlock = [...L.weapons,...L.systems,...(L.mods||[])].filter(it=>it.license===key && (it.license_level||0)<=v).length;
+        const nUnlock = [...offered("weapons"),...offered("systems"),...offered("mods")].filter(it=>it.license===key && (it.license_level||0)<=v).length;
         const nm=dispName(f);
         return `<div class="item has-cardlink ${v?'sel':''} clickable" data-openlic="${f.id}">
           <div class="src" style="background:${srcColor(src)}"></div>

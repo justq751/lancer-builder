@@ -760,6 +760,21 @@ button{font-family:inherit; cursor:pointer}
 .dialog .losslist li.plain{color:var(--ink); word-break:break-all}
 .dialog .losslist li.plain::before{content:none}
 .dialog .losslist.scroll{max-height:34vh; overflow:auto}
+/* Content selection: a block per supplement — its own switch, then a chip per
+   category it has. The checkboxes are real (keyboard, screen readers); the
+   chip is their face, like the language panel's radios. */
+.content-settings{display:flex; flex-direction:column; gap:12px}
+.content-settings > .hint{line-height:1.5}
+.cpack{border:1px solid var(--line); border-radius:8px; margin:0; padding:4px 14px 14px; background:var(--panel-2)}
+.cpack legend{padding:0 6px; margin-left:-6px}
+.cpack legend label{display:inline-flex; align-items:center; gap:9px; cursor:pointer; min-height:36px}
+.cpack legend input{width:18px; height:18px; accent-color:var(--select); margin:0}
+.cpack .cp-title{font-family:"Chakra Petch",sans-serif; font-size:16.5px; color:var(--ink)}
+.cp-cats{display:flex; flex-wrap:wrap; gap:8px}
+.cp-cats .chip{position:relative; cursor:pointer; display:inline-flex; align-items:center; gap:6px; min-height:36px}
+.cp-cats .chip input{position:absolute; opacity:0; inset:0; margin:0; cursor:pointer}
+.cp-cats .chip:has(input:focus-visible){outline:2px solid var(--accent); outline-offset:2px}
+.cp-cats .cp-n{opacity:.7; font-weight:400}
 /* Choosing a mount: one button per mount, with what it would cost under it. */
 .mountchoices{display:flex; flex-direction:column; gap:8px; margin-top:14px}
 .mountchoices .ghostbtn{display:flex; flex-direction:column; align-items:flex-start; gap:4px; text-align:left}

@@ -3,7 +3,7 @@
 const llValueText=ll=>tText("pilot.ll.valuetext", {ll, grit:Math.ceil(ll/2)});
 function renderPilot(){
   const p=state.pilot;
-  const bgOpts = `<option value="">${t("pilot.bg_none")}</option>`+L.backgrounds
+  const bgOpts = `<option value="">${t("pilot.bg_none")}</option>`+offered("backgrounds", b=>b.id===p.background)
     .map(b=>`<option value="${b.id}" ${p.background===b.id?"selected":""}>${esc(b.name)}</option>`).join("");
   $("#tab").innerHTML = sechead(t("pilot.mark"),t("pilot.title"),t("pilot.lead"))
    + `<div class="row2">

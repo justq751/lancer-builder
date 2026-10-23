@@ -68,6 +68,7 @@ test("no Cyrillic anywhere with English interface and data — full build", asyn
     "core detail": () => openCoreDetail("cb_neurolink_targeting"),
     "reset dialog": () => $("#t-reset").click(),
     "frame swap dialog": () => pickFrame("mf_standard_pattern_i_everest"),
+    "content settings": () => openContentSettings(),
   };
   for (const [where, fn] of Object.entries(dialogs)) {
     await open(page, fn);

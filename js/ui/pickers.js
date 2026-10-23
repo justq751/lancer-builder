@@ -406,7 +406,7 @@ function openWeaponPicker(mi){
   const drawList=(keepScroll)=>{
     const mbd=$("#modal .mbd");
     const savedScroll = keepScroll ? mbd.scrollTop : null;
-    const base=L.weapons.filter(w=>allow.includes(w.mount) && w.type!=="???" && w.source)
+    const base=offered("weapons").filter(w=>allow.includes(w.mount) && w.type!=="???" && w.source)
       .filter(w=>wpFilter==="ALL"?w.source!=="EXOTIC":w.source===wpFilter);
     // Facet options are derived from `base` (post mount-size + source, pre
     // everything else) and intentionally don't narrow each other further —
@@ -508,7 +508,7 @@ function openPilotGearPicker(slotKind, onInstall){
   const drawList=(keepScroll)=>{
     const mbd=$("#modal .mbd");
     const savedScroll = keepScroll ? mbd.scrollTop : null;
-    const list=L.pilot_gear.filter(g=>g.type===slotKind && !(g.tags||[]).includes("Exotic Gear"))
+    const list=offered("pilot_gear").filter(g=>g.type===slotKind && !(g.tags||[]).includes("Exotic Gear"))
       .filter(g=>!pgSearch||(g.name+" "+(g.tags||[]).map(trTag).join(" ")).toLowerCase().includes(pgSearch.toLowerCase()))
       .sort((a,b)=>a.name.localeCompare(b.name));
     // i18n-dynamic: picker.gear_title.Armor, picker.gear_title.Weapon, picker.gear_title.Gear
@@ -637,7 +637,7 @@ function openModPicker(mi, wi){
   const drawList=(keepScroll)=>{
     const mbd=$("#modal .mbd");
     const savedScroll = keepScroll ? mbd.scrollTop : null;
-    const list=(L.mods||[]).filter(m=>modCompatible(m,w))
+    const list=offered("mods").filter(m=>modCompatible(m,w))
       .filter(m=>mpFilter==="ALL"?m.source!=="EXOTIC":m.source===mpFilter)
       .filter(m=>!mpSearch||(m.name+" "+m.source+" "+(m.tags||[]).map(trTag).join(" ")).toLowerCase().includes(mpSearch.toLowerCase()))
       .sort(pickerOrder);
@@ -776,7 +776,7 @@ function openSystemPicker(){
   const drawList=(keepScroll)=>{
     const mbd=$("#modal .mbd");
     const savedScroll = keepScroll ? mbd.scrollTop : null;
-    const list=L.systems
+    const list=offered("systems")
       .filter(s=>s.source)
       .filter(s=>syFilter==="ALL"?s.source!=="EXOTIC":s.source===syFilter)
       .filter(s=>!state.mech.systems.includes(s.id))

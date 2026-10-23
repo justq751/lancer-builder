@@ -54,7 +54,7 @@ function renderLoadout(){
               ${extraMountCandidates(mounts, mi).length?`<button class="ghostbtn" data-shextra="${key}">${t("loadout.sh_choose")}</button>`:""}</div>`;
 
       // mod sub-row: install button if none, else name + expand/remove
-      const compatMods = (L.mods||[]).filter(m=>modCompatible(m,w));
+      const compatMods = offered("mods").filter(m=>modCompatible(m,w));
       const modOpen = eqModExpanded.has(key);
       let modRow="";
       if(mod){
