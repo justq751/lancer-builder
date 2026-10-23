@@ -124,8 +124,8 @@
   "ru": "CORE-бонусы открываются с LL3, и затем ещё по одному за каждые 3 уровня лицензий (LL6, LL9…)."
  },
  "core.lead": {
-  "en": "Selected {n} of {cap}. A manufacturer's bonuses open when you have 3+ license ranks in any of that manufacturer's frames — otherwise only GMS bonuses are available.",
-  "ru": "Выбрано {n} из {cap}. Бонусы конкретного производителя открываются, когда у вас есть 3+ ранга лицензии на любое шасси этого производителя — иначе доступны только бонусы GMS."
+  "en": "Selected {n} of {cap}. Each CORE bonus from a manufacturer needs 3 license ranks with it, summed across all its frames: the first needs 3, the second 6. GMS bonuses are always available.",
+  "ru": "Выбрано {n} из {cap}. Каждый CORE-бонус производителя требует 3 ранга его лицензий, суммарно по всем его шасси: первый — 3, второй — 6. Бонусы GMS доступны всегда."
  },
  "core.limit": {
   "en": "Limit reached ({n}/{cap})",
@@ -168,8 +168,8 @@
   "ru": "Убрать этот CORE-бонус"
  },
  "core.requires": {
-  "en": "Requires 3+ license ranks in a {source} frame (now: {rank}).",
-  "ru": "Требуется 3+ ранга лицензии на шасси {source} (сейчас: {rank})."
+  "en": "Requires {need} license ranks across {source} frames (now: {rank}).",
+  "ru": "Нужно рангов лицензий {source} (суммарно по всем шасси): {need}, сейчас: {rank}."
  },
  "core.search": {
   "en": "Search CORE bonuses",
@@ -1798,6 +1798,10 @@
  "topbar.sheet": {
   "en": "SHEET",
   "ru": "ЛИСТ"
+ },
+ "viol.core_locked": {
+  "en": "CORE bonus {name} — needs {need} {source} license ranks, have {rank}",
+  "ru": "CORE-бонус {name} — рангов лицензий {source}: {rank} из {need}"
  },
  "viol.cores": {
   "en": "CORE bonuses over budget: {n} of {cap}",

@@ -119,16 +119,25 @@ const pickerOrder = (a,b) =>
      (unlocked(b)-unlocked(a))
   || (sourceOrder(a.source)-sourceOrder(b.source))
   || a.name.localeCompare(b.name);
-/* Highest license rank the pilot has invested among all frames of a given
-   manufacturer (e.g. rank 2 in "Minotaur" and rank 2 in "Genghis" both count
-   toward HORUS/HA respectively, but neither reaches the 3 needed to unlock
-   that manufacturer's CORE Bonuses). GMS has no such requirement. */
+/* License ranks the pilot has invested across all of a manufacturer's frames,
+   summed: rank 1 in three different HORUS frames counts as 3 HORUS ranks.
+   Variant frames share their base frame's track (licenseKeyFor), so each
+   track is counted once. GMS has no such requirement. */
 function manufacturerRank(source){
-  const ranks = L.frames.filter(f=>f.source===source).map(f=>licRank(licenseKeyFor(f)));
-  return ranks.length ? Math.max(...ranks) : 0;
+  const keys = new Set(L.frames.filter(f=>f.source===source).map(licenseKeyFor));
+  return [...keys].reduce((sum,k)=>sum+licRank(k), 0);
+}
+/* Each CORE bonus from a manufacturer costs 3 of its license ranks: the
+   first needs 3, the second 6, and so on. A selected bonus is checked by its
+   place among the selected bonuses of the same manufacturer (the earliest
+   ones are the legal ones); an unselected one as the next to be taken. */
+function coreBonusRanksNeeded(c){
+  const same = state.cores.filter(id=>M.core[id] && M.core[id].source===c.source);
+  const at = same.indexOf(c.id);
+  return 3*((at<0 ? same.length : at)+1);
 }
 function coreBonusUnlocked(c){
-  return c.source==="GMS" || manufacturerRank(c.source)>=3;
+  return c.source==="GMS" || manufacturerRank(c.source)>=coreBonusRanksNeeded(c);
 }
 function unlocked(item){
   if(item.source==="GMS"||item.license==="GMS"||(item.license_level||0)===0) return true;

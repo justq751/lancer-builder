@@ -5,7 +5,7 @@ let coreFilter="ALL", coreSearch="";
    already-selected bonus and when browsing the add-picker. */
 function coreCardBody(c){
   const unl=coreBonusUnlocked(c);
-  return `${unl?"":`<div class="hint" style="margin-top:2px">${t("core.requires", {source:c.source, rank:manufacturerRank(c.source)})}</div>`}
+  return `${unl?"":`<div class="hint" style="margin-top:2px">${t("core.requires", {source:c.source, need:coreBonusRanksNeeded(c), rank:manufacturerRank(c.source)})}</div>`}
     <div class="desc" style="margin-top:10px">${rich(c.effect)}</div>
     ${c.mounted_effect?`<div class="desc" style="margin-top:9px"><b>${t("core.mounted")}</b> ${rich(c.mounted_effect)}</div>`:""}`;
 }
@@ -14,7 +14,7 @@ function coreCardHTML(c){
   return `<div class="item static">
     <div class="src" style="background:${srcColor(c.source)}"></div>
     <div class="top"><div class="nm" style="font-size:21px">${esc(c.name)}</div>
-      <div class="badge ${unl?'mfg':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
+      <div class="badge ${unl?'mfg':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" "+coreBonusRanksNeeded(c)+"+"}</div></div>
     <div style="margin-top:11px">${coreCardBody(c)}</div>
   </div>`;
 }
@@ -72,7 +72,7 @@ function renderCore(){
           return `<div class="item has-cardlink ${!unl?'locked':''}" data-c="${c.id}">
             <div class="src" style="background:${srcColor(c.source)}"></div>
             <div class="top">${cardLinkHTML("core", c.id, esc(c.name), "nm")}
-              <div class="badge ${unl?'mfg':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" 3+"}</div></div>
+              <div class="badge ${unl?'mfg':'lock'}" ${unl?`style="--src:${srcColor(c.source)}"`:''}>${unl?esc(c.source):"🔒 "+esc(c.source)+" "+coreBonusRanksNeeded(c)+"+"}</div></div>
             ${terse?`<div class="desc" style="margin-top:8px">${esc(terse)}</div>`:""}
             <button class="ghostbtn ${slotsFull?'':(unl?'':'warn')}" data-pickcore="${c.id}" ${slotsFull?"disabled":""}
               style="margin-top:11px; width:100%; text-align:center">${slotsFull?`⚠ ${t("core.limit", {n:state.cores.length, cap:dNow.b.core.cap})}`:(unl?"✓ "+t("core.pick"):"⚠ "+t("core.pick_anyway"))}</button>

@@ -46,10 +46,30 @@ test("unlocked / frameUnlocked follow license ranks; GMS is always open", () => 
   assert.equal(run("frameUnlocked(M.frame.mf_standard_pattern_i_everest)"), true);
 });
 
-test("coreBonusUnlocked needs rank 3 in some frame of that manufacturer", () => {
-  const ipsn = withState(FULL_BUILD)("L.core_bonuses.find(c => c.source === 'IPS-N').id");
-  assert.equal(withState({ ...FULL_BUILD, licenses: { Blackbeard: 2 } })(`coreBonusUnlocked(M.core.${ipsn})`), false);
-  assert.equal(withState({ ...FULL_BUILD, licenses: { Blackbeard: 3 } })(`coreBonusUnlocked(M.core.${ipsn})`), true);
+test("coreBonusUnlocked needs 3 manufacturer ranks per bonus, summed across its frames", () => {
+  const [a, b] = plain(withState(FULL_BUILD)("L.core_bonuses.filter(c => c.source === 'IPS-N').map(c => c.id)"));
+  const run = (licenses, cores = []) => withState({ ...FULL_BUILD, licenses, cores });
+  assert.equal(run({ Blackbeard: 2 })(`coreBonusUnlocked(M.core.${a})`), false);
+  assert.equal(run({ Blackbeard: 3 })(`coreBonusUnlocked(M.core.${a})`), true);
+  // Rank 1 in three different IPS-N frames is 3 IPS-N ranks.
+  assert.equal(run({ Blackbeard: 1, Drake: 1, Lancaster: 1 })(`manufacturerRank("IPS-N")`), 3);
+  assert.equal(run({ Blackbeard: 1, Drake: 1, Lancaster: 1 })(`coreBonusUnlocked(M.core.${a})`), true);
+  // The second IPS-N bonus needs 6; the first selected one stays legal.
+  const two = run({ Blackbeard: 3 }, [a]);
+  assert.equal(two(`coreBonusRanksNeeded(M.core.${b})`), 6);
+  assert.equal(two(`coreBonusUnlocked(M.core.${b})`), false);
+  assert.equal(two(`coreBonusUnlocked(M.core.${a})`), true);
+  assert.equal(run({ Blackbeard: 3, Drake: 3 }, [a, b])(`coreBonusUnlocked(M.core.${b})`), true);
+  assert.equal(run({ Blackbeard: 3 }, [a, b])(`coreBonusUnlocked(M.core.${b})`), false);
+});
+
+test("manufacturerRank counts a variant frame's shared track once", () => {
+  const { L, M } = coreData();
+  const base = L.frames.find(f => f.name === "Tokugawa");
+  L.frames.push({ ...base, id: "mf_test_variant", name: "Variant", variant: "Tokugawa" });
+  const run = loadScripts(["js/core/build.js", "js/core/rules.js"],
+    { L, M, state: { ...structuredClone(FULL_BUILD), licenses: { Tokugawa: 2 } } });
+  assert.equal(run(`manufacturerRank("${base.source}")`), 2);
 });
 
 test("pickerOrder: unlocked first, then manufacturer order, then name", () => {

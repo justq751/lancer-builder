@@ -42,6 +42,11 @@ function buildViolations(){
     const sy=M.system[id];
     if(sy && !unlocked(sy)) out.push(tText("viol.item_locked", {name:sy.name}));
   });
+  state.cores.forEach(id=>{
+    const c=M.core[id];
+    if(c && !coreBonusUnlocked(c))
+      out.push(tText("viol.core_locked", {name:c.name, need:coreBonusRanksNeeded(c), source:c.source, rank:manufacturerRank(c.source)}));
+  });
   return out;
 }
 
