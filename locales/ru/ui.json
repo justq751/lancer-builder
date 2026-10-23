@@ -1439,6 +1439,22 @@
   "en": "Pilot skills",
   "ru": "Навыки пилота"
  },
+ "sp_over.install": {
+  "en": "Install over the limit",
+  "ru": "Установить сверх лимита"
+ },
+ "sp_over.lead": {
+  "en": "Installing <b>{name}</b> costs {sp} SP: the mech will use {used} of {cap}, {n} over the limit. The sheet will flag the build as not legal.",
+  "ru": "Установка <b>{name}</b> стоит {sp} SP: будет занято {used} из {cap}, на {n} больше лимита. Лист отметит сборку как недопустимую."
+ },
+ "sp_over.locked": {
+  "en": "License not unlocked either: {license} {rank}",
+  "ru": "Также не открыта лицензия: {license} {rank}"
+ },
+ "sp_over.title": {
+  "en": "Over the SP limit",
+  "ru": "Превышение лимита SP"
+ },
  "summary.background": {
   "en": "BACKGROUND",
   "ru": "ПРОИСХОЖДЕНИЕ"

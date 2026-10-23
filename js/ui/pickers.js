@@ -320,13 +320,52 @@ function modCardHTML(mod){
 let wpSearch="", wpFilter="ALL", wpSizeFilter="ALL", wpTypeFilter="ALL", wpDmgFilter="ALL", wpExpanded=null;
 let pgExpanded=null; // pilot-gear picker: "mi:wi"-style expand state, but keyed by slot type + index
 let pilotGearOpenSet=new Set(); // separate from eqWeaponExpanded — that Set is cleaned up by renderLoadout's own loop, which would wrongly delete pilot-gear keys
+/* ---- SP over the cap -------------------------------------------------------
+   Going over the SP cap is allowed (the sheet flags it), but never by
+   accident: an install that would overspend first swaps the picker's body for
+   a confirmation. "Back" returns to the picker where it was — same list, same
+   scroll, focus on the install button. A license lock on the same item is
+   named in the same step, so one confirmation covers both. `extraSp` is what
+   the install adds (for a mod replacing another one, the difference). */
+function installWithSpCheck(item, extraSp, install, back){
+  const d=derived();
+  const after=d.sp.used+(extraSp||0);
+  if(!d.mech || !(extraSp>0) || after<=d.sp.cap){ install(); return; }
+  const h3=$("#modal .mhd h3"), title=h3.textContent;
+  const scroll=$("#modal .mbd").scrollTop;
+  h3.textContent=tText("sp_over.title");
+  $("#modal .panel").classList.add("narrow"); // the dialog shell, as confirmDialog()
+  const lk=!unlocked(item);
+  setModalBody(`<div class="dialog">
+    <p>${t("sp_over.lead", {name:item.name, sp:extraSp, used:after, cap:d.sp.cap, n:after-d.sp.cap})}</p>
+    ${lk?`<ul class="losslist"><li class="drop">${t("sp_over.locked", {license:licenseDisplayName(item.license), rank:item.license_level})}</li></ul>`:""}
+    <div class="dialog-actions">
+      <button class="ghostbtn warn" id="sp-over-yes">⚠ ${t("sp_over.install")}</button>
+      <button class="ghostbtn" id="sp-over-back">← ${t("picker.back")}</button>
+    </div>
+  </div>`);
+  const restore=()=>{
+    h3.textContent=title; $("#modal .panel").classList.remove("narrow");
+    back(); $("#modal .mbd").scrollTop=scroll;
+  };
+  $("#sp-over-yes").focus();
+  // The picker is put back first: an install that keeps the picker open (the
+  // system picker does) finds its list as the person left it.
+  $("#sp-over-yes").onclick=()=>{ restore(); install(); };
+  $("#sp-over-back").onclick=()=>{
+    restore();
+    const again=$("#modal .mbd [id$='-install-inline'], #modal .mbd [id$='-install']");
+    if(again) again.focus();
+  };
+}
 function openWeaponPicker(mi){
   const mt=state.mech.mounts[mi];
   const sizes=mt.items.map(slot=>M.weapon[slot.id]?.mount);
   const allow=allowedNext(mt.type,sizes);
   wpSearch=""; wpFilter="ALL"; wpSizeFilter="ALL"; wpTypeFilter="ALL"; wpDmgFilter="ALL"; wpExpanded=null;
 
-  const install=id=>{ state.mech.mounts[mi].items.push({id, mod:null}); closeModal(); render(); };
+  const install=(id, back)=>installWithSpCheck(M.weapon[id], M.weapon[id].sp,
+    ()=>{ state.mech.mounts[mi].items.push({id, mod:null}); closeModal(); render(); }, back);
 
   const drawDetail=(id)=>{
     const w=M.weapon[id], lk=!unlocked(w);
@@ -341,7 +380,7 @@ function openWeaponPicker(mi){
     wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
     wireProfileChips("#wp-profiles", ()=>drawDetail(id));
     $("#wp-back").onclick=drawList;
-    $("#wp-install").onclick=()=>install(w.id);
+    $("#wp-install").onclick=()=>install(w.id, ()=>drawDetail(id));
   };
 
   const drawList=(keepScroll)=>{
@@ -410,7 +449,7 @@ function openWeaponPicker(mi){
       const w=M.weapon[wpExpanded];
       wireTagGlossary("#wp-tags", "#wp-tagdesc", weaponDisplayTags(w, profileViewIdx));
       wireProfileChips("#wp-profiles", ()=>drawList(true));
-      $("#wp-install-inline").onclick=()=>install(w.id);
+      $("#wp-install-inline").onclick=()=>install(w.id, ()=>drawList());
     }
   };
 
@@ -554,7 +593,11 @@ function openModPicker(mi, wi){
   const slot=state.mech.mounts[mi].items[wi], w=M.weapon[slot.id];
   mpFilter="ALL"; mpSearch=""; mpExpanded=null;
 
-  const install=id=>{ slot.mod=id; closeModal(); render(); };
+  const install=(id, back)=>{
+    const prev=slot.mod && M.mod[slot.mod];
+    installWithSpCheck(M.mod[id], (M.mod[id].sp||0)-((prev&&prev.sp)||0),
+      ()=>{ slot.mod=id; closeModal(); render(); }, back);
+  };
 
   const drawDetail=(id)=>{
     const m=M.mod[id], lk=!unlocked(m);
@@ -568,7 +611,7 @@ function openModPicker(mi, wi){
       </button>`);
     wireTagGlossary("#md-tags", "#md-tagdesc", m.tags||[]);
     $("#mp-back").onclick=drawList;
-    $("#mp-install").onclick=()=>install(m.id);
+    $("#mp-install").onclick=()=>install(m.id, ()=>drawDetail(id));
   };
 
   const drawList=(keepScroll)=>{
@@ -619,7 +662,7 @@ function openModPicker(mi, wi){
     if(pickerViewMode==="inline" && mpExpanded){
       const m=M.mod[mpExpanded];
       wireTagGlossary("#md-tags", "#md-tagdesc", m.tags||[]);
-      $("#mp-install-inline").onclick=()=>install(m.id);
+      $("#mp-install-inline").onclick=()=>install(m.id, ()=>drawList());
     }
   };
 
@@ -677,7 +720,8 @@ let syFilter="ALL", sySearch="", syExpanded=null;
 function openSystemPicker(){
   syFilter="ALL"; sySearch=""; syExpanded=null;
 
-  const install=id=>{
+  const install=(id, back)=>installWithSpCheck(M.system[id], M.system[id].sp, ()=>commit(id), back);
+  const commit=id=>{
     const at=$$("#sy-list .listrow").findIndex(r=>r.dataset.s===id);
     state.mech.systems.push(id);
     syExpanded=null;
@@ -706,7 +750,7 @@ function openSystemPicker(){
       </button>`);
     wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
     $("#sy-back").onclick=drawList;
-    $("#sy-install").onclick=()=>install(s.id);
+    $("#sy-install").onclick=()=>install(s.id, ()=>drawDetail(id));
   };
 
   const drawList=(keepScroll)=>{
@@ -752,7 +796,7 @@ function openSystemPicker(){
     if(pickerViewMode==="inline" && syExpanded){
       const s=M.system[syExpanded];
       wireTagGlossary("#sy-tags", "#sy-tagdesc", s.tags||[]);
-      $("#sy-install-inline").onclick=()=>install(s.id);
+      $("#sy-install-inline").onclick=()=>install(s.id, ()=>drawList());
     }
   };
 

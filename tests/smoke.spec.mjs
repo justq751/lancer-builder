@@ -110,6 +110,7 @@ test("weapons and systems can be installed with the keyboard alone", async ({ pa
   // Tab cycled filters/search/close and never reached the list.
   const build = structuredClone(FULL_BUILD);
   build.mech.mounts[2].items = []; // free the Heavy mount
+  build.mech.systems = []; // room in the SP budget — going over asks first (tested below)
   const errors = await openApp(page, { build });
   await openTab(page, "loadout");
   const names = await page.evaluate(() => ({ w: M.weapon.mw_howitzer.name, s: M.system.ms_manipulators.name }));
@@ -155,6 +156,30 @@ test("weapons and systems can be installed with the keyboard alone", async ({ pa
   expect(await active()).toMatchObject({ inModal: true });
   await page.keyboard.press("Escape");
   await expect(page.locator("#add-system")).toBeFocused();
+  expect(errors).toEqual([]);
+});
+
+test("installing over the SP cap asks first; Back returns to the list where it was", async ({ page }) => {
+  const errors = await openApp(page, { build: FULL_BUILD }); // SP 6 of 6
+  await openTab(page, "loadout");
+  await page.locator("#add-system").click();
+  await page.locator("#sy-search").fill(await page.evaluate(() => M.system.ms_manipulators.name));
+  await page.locator('#sy-list .listrow[data-s="ms_manipulators"]').click();
+  await page.locator("#sy-install-inline").click();
+
+  // Not installed yet: the picker shows the confirmation instead.
+  await expect(page.locator("#sp-over-yes")).toBeFocused();
+  expect((await getState(page)).mech.systems).not.toContain("ms_manipulators");
+  await page.locator("#sp-over-back").click();
+  await expect(page.locator("#sy-install-inline")).toBeFocused();
+  await expect(page.locator("#sy-search")).toHaveValue(/.+/);
+
+  await page.locator("#sy-install-inline").click();
+  await page.locator("#sp-over-yes").click();
+  expect((await getState(page)).mech.systems).toContain("ms_manipulators");
+  await expect(modal(page)).toBeVisible(); // the system picker stays open, as without the check
+  const d = await page.evaluate(() => derived().sp);
+  expect(d.used).toBeGreaterThan(d.cap);
   expect(errors).toEqual([]);
 });
 
