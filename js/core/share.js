@@ -37,7 +37,13 @@ function packBuild(){
   if(state.cores.length) o.cb=state.cores;
   if(state.mech.frameId){
     o.f=state.mech.frameId;
-    o.m=(state.mech.mounts||[]).map(mt=>[mt.type,(mt.items||[]).map(s=>s.mod?[s.id,s.mod]:[s.id])]);
+    // Mount: [type, slots] + [cb, retro] when set; slot: [id], [id, mod] or
+    // [id, mod|0, extra] for a superheavy weapon's second mount.
+    o.m=(state.mech.mounts||[]).map(mt=>{
+      const a=[mt.type,(mt.items||[]).map(s=>s.extra!==undefined?[s.id,s.mod||0,s.extra]:s.mod?[s.id,s.mod]:[s.id])];
+      if(mt.cb||mt.retro) a.push(mt.cb||0, mt.retro||0);
+      return a;
+    });
     if(state.mech.systems.length) o.sy=state.mech.systems;
   }
   return o;
@@ -55,7 +61,16 @@ function unpackBuild(o){
     cores:o.cb||[],
     mech:{
       frameId:o.f||null,
-      mounts:(o.m||[]).map(a=>({type:a[0], items:(a[1]||[]).map(s=>({id:s[0], mod:s[1]||null}))})),
+      mounts:(o.m||[]).map(a=>{
+        const mt={type:a[0], items:(a[1]||[]).map(s=>{
+          const slot={id:s[0], mod:s[1]||null};
+          if(Number.isInteger(s[2])) slot.extra=s[2];
+          return slot;
+        })};
+        if(a[2]) mt.cb=a[2];
+        if(a[3]) mt.retro=a[3];
+        return mt;
+      }),
       systems:o.sy||[],
     },
   };

@@ -100,3 +100,84 @@ test("buildMounts adds a pre-filled Integrated mount for frames with a built-in 
   assert.deepEqual(mounts.at(-1), { type: "Integrated", items: [{ id: "mw_lancaster_integrated", mod: null }] });
   assert.ok(plain(run("buildMounts(M.frame.mf_blackbeard)")).every(m => m.items.length === 0));
 });
+
+test("superheavy: a Heavy mount offers it only when a second mount is free to take", () => {
+  const run = setup();
+  run.ctx.m = [{ type: "Heavy", items: [] }, { type: "Main", items: [] }, { type: "Integrated", items: [] }];
+  assert.ok(plain(run("mountAllows(m, 0)")).includes("Superheavy"));
+  assert.deepEqual(plain(run("extraMountCandidates(m, 0)")), [1], "never an integrated mount");
+  run.ctx.m = [{ type: "Heavy", items: [] }, { type: "Integrated", items: [] }];
+  assert.ok(!plain(run("mountAllows(m, 0)")).includes("Superheavy"));
+});
+
+test("superheavy: the second mount is cleared, then holds nothing else", () => {
+  const run = setup();
+  run.ctx.m = [{ type: "Heavy", items: [] }, { type: "Main", items: [{ id: "mw_assault_rifle", mod: null }] }];
+  run("m[0].items.push({ id: 'mw_siege_cannon', mod: null })");
+  const lost = plain(run("claimExtraMount(m, 0, 0, 1)"));
+  assert.deepEqual(lost, [{ id: "mw_assault_rifle", mod: null }]);
+  assert.equal(run("m[0].items[0].extra"), 1);
+  assert.deepEqual(plain(run("mountAllows(m, 1)")), []);
+  assert.deepEqual(plain(run("extraOwner(m, 1)")), { mi: 0, wi: 0 });
+  assert.deepEqual(plain(run("superheavyMissingExtra(m)")), []);
+});
+
+test("removeMountAt keeps superheavy links pointing at the same mounts", () => {
+  const run = setup();
+  run.ctx.m = [
+    { type: "Main", items: [] }, { type: "Flex", items: [], cb: "cb_improved_armament" },
+    { type: "Heavy", items: [{ id: "mw_siege_cannon", mod: null, extra: 0 }] },
+    { type: "Superheavy", items: [{ id: "mw_tachyon_lance", mod: null, extra: 1 }], cb: "cb_superheavy_mounting" },
+  ];
+  const next = plain(run("removeMountAt(m, 1)"));
+  assert.equal(next[1].items[0].extra, 0, "below the removed mount: unchanged");
+  assert.equal(next[2].items[0].extra, undefined, "its second mount is gone");
+});
+
+test("planCoreMounts: Improved Armament adds a Flex only below three mounts; Integrated Weapon takes one Aux", () => {
+  const run = setup();
+  const plan = (frame, cores) => plain(run(`planCoreMounts(M.frame.${frame}, ${JSON.stringify(cores)}, buildMounts(M.frame.${frame}))`));
+  assert.deepEqual(plan("mf_tortuga", ["cb_improved_armament"]).mounts.at(-1), { type: "Flex", items: [], cb: "cb_improved_armament" });
+  assert.equal(plan("mf_blackbeard", ["cb_improved_armament"]).mounts.length, 3);
+  run.ctx.m = plan("mf_blackbeard", ["cb_integrated_weapon"]).mounts;
+  assert.deepEqual(run.ctx.m.at(-1), { type: "Integrated", items: [], cb: "cb_integrated_weapon" });
+  assert.deepEqual(plain(run("mountAllows(m, 3)")), ["Auxiliary"]);
+});
+
+test("planCoreMounts: removing the bonus takes its mount away and names what was on it", () => {
+  const run = setup();
+  run.ctx.m = [{ type: "Main", items: [] }, { type: "Heavy", items: [] },
+    { type: "Flex", items: [{ id: "mw_assault_rifle", mod: null }], cb: "cb_improved_armament" }];
+  const { mounts, lost } = plain(run("planCoreMounts(M.frame.mf_tortuga, [], m)"));
+  assert.equal(mounts.length, 2);
+  assert.deepEqual(lost, [{ id: "mw_assault_rifle", mod: null }]);
+  assert.equal(run.ctx.m.length, 3, "the input is not mutated");
+});
+
+test("Mount Retrofitting: a chosen mount becomes Main/Aux and gets its type back with the bonus", () => {
+  const run = setup();
+  run.ctx.m = [{ type: "Flex", items: [] }, { type: "Main", items: [] }, { type: "Heavy", items: [{ id: "mw_heavy_machine_gun", mod: null }] }];
+  assert.deepEqual(plain(run("retrofitCandidates(m)")), [0, 1, 2]);
+  const r = plain(run("retrofitMount(m, 2)"));
+  assert.deepEqual(r.mounts[2], { type: "Main/Aux", items: [], retro: "Heavy" });
+  assert.deepEqual(r.lost, [{ id: "mw_heavy_machine_gun", mod: null }], "a Heavy weapon does not fit Main/Aux");
+  run.ctx.r = r.mounts;
+  const back = plain(run("planCoreMounts(M.frame.mf_blackbeard, [], r)"));
+  assert.deepEqual(back.mounts[2], { type: "Heavy", items: [] });
+});
+
+test("applyBuildState: an older save gets its bonus mounts; a broken superheavy link is dropped", () => {
+  const run = setup();
+  run.ctx.raw = {
+    ...structuredClone(FULL_BUILD), cores: ["cb_improved_armament"],
+    mech: { frameId: "mf_tortuga", systems: [], mounts: [
+      { type: "Main", items: [{ id: "mw_assault_rifle", mod: null }] },
+      { type: "Heavy", items: [{ id: "mw_siege_cannon", mod: null, extra: 0 }] },
+    ] },
+  };
+  run("applyBuildState(raw)");
+  const mounts = plain(run("state.mech.mounts"));
+  assert.deepEqual(mounts.at(-1), { type: "Flex", items: [], cb: "cb_improved_armament" });
+  assert.equal(mounts[1].items[0].extra, undefined, "mount 0 is not empty, so it cannot be the second mount");
+  assert.deepEqual(plain(run("superheavyMissingExtra(state.mech.mounts)")), [{ mi: 1, wi: 0 }]);
+});

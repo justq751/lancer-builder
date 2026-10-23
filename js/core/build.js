@@ -68,6 +68,7 @@ function allowedNext(type,sizes){
   const n=sizes.length;
   if(type==="Main")  return n<1?["Main","Auxiliary"]:[];
   if(type==="Heavy") return n<1?["Heavy","Main","Auxiliary","Superheavy"]:[];
+  if(type==="Superheavy") return n<1?["Superheavy"]:[];
   if(type==="Aux/Aux") return n<2?["Auxiliary"]:[];
   if(type==="Flex"){
     if(n>=2||sizes.includes("Main")) return [];
@@ -101,6 +102,146 @@ const FRAME_INTEGRATED_WEAPON = {
   "mf_Empakaai_alt_blackbeard": "mw_empakaai_alt_blackbeard_integrated",
   "mf_lycan": "mw_integrated_shock_claws",
 };
+/* ---------------- MOUNTS: superheavy weapons, CORE bonus mounts ----------------
+   A mount is {type, items:[slot]}; a slot is {id, mod} plus, for a superheavy
+   weapon, `extra`: the index of the second mount it takes up (the rules: a
+   Heavy mount and one more mount of any size, which can hold nothing else).
+   A mount added by a CORE bonus carries `cb` (the bonus id); a mount Mount
+   Retrofitting turned into Main/Aux carries `retro` (its own type before). */
+const MOUNT_RETROFIT_CB = "cb_mount_retrofitting";
+/* Mounts a CORE bonus adds, appended after the frame's own. `fewerThan3`:
+   only when the frame has fewer than three mounts (integrated excluded) —
+   counted on the frame's own mounts, so two such bonuses do not cancel out. */
+const CORE_BONUS_MOUNTS = {
+  "cb_improved_armament":   {type:"Flex", fewerThan3:true},
+  "cb_integrated_weapon":   {type:"Integrated"},   // one Auxiliary, no mods
+  "cb_superheavy_mounting": {type:"Superheavy", fewerThan3:true},
+};
+const isFrameIntegratedMount = mt => mt.type==="Integrated" && !mt.cb;
+// Neither kind of integrated mount can lend itself to a superheavy weapon.
+const isIntegratedMount = mt => mt.type==="Integrated";
+const slotMount = slot => M.weapon[slot.id] && M.weapon[slot.id].mount;
+const hostsSuperheavy = mt => (mt.items||[]).some(s=>slotMount(s)==="Superheavy");
+/* The slot whose superheavy weapon takes up mount `mi` as its second mount. */
+function extraOwner(mounts, mi){
+  for(let i=0;i<mounts.length;i++){
+    const wi=(mounts[i].items||[]).findIndex(s=>s.extra===mi);
+    if(wi>=0) return {mi:i, wi};
+  }
+  return null;
+}
+/* Mounts a superheavy weapon on mount `hi` may take as its second one —
+   occupied ones included (what is on them comes off; the caller says so).
+   Superheavy Mounting's own mount must pair with a Heavy mount if there is
+   one. */
+function extraMountCandidates(mounts, hi){
+  const ok=mounts.map((mt,i)=>i).filter(i=>i!==hi
+    && !isIntegratedMount(mounts[i]) && !hostsSuperheavy(mounts[i])
+    && !extraOwner(mounts, i));
+  if(mounts[hi] && mounts[hi].cb==="cb_superheavy_mounting"){
+    const heavy=ok.filter(i=>mounts[i].type==="Heavy");
+    if(heavy.length) return heavy;
+  }
+  return ok;
+}
+/* What mount `mi` still accepts, as weapon mount sizes. */
+function mountAllows(mounts, mi){
+  const mt=mounts[mi];
+  if(!mt || isFrameIntegratedMount(mt) || extraOwner(mounts, mi)) return [];
+  const sizes=mt.items.map(slotMount);
+  if(mt.type==="Integrated") return sizes.length<1?["Auxiliary"]:[];
+  const allow=allowedNext(mt.type, sizes);
+  return allow.includes("Superheavy") && !extraMountCandidates(mounts, mi).length
+    ? allow.filter(x=>x!=="Superheavy") : allow;
+}
+/* Puts weapons into a mount of `type` in order; what no longer fits is
+   returned as `lost` (slots). */
+function refitItems(type, items){
+  const kept=[], lost=[];
+  items.forEach(slot=>{
+    if(allowedNext(type, kept.map(slotMount)).includes(slotMount(slot))) kept.push(slot);
+    else lost.push(slot);
+  });
+  return {kept, lost};
+}
+/* Removes mount `mi`, keeping every slot.extra pointing at the same mount;
+   a superheavy weapon whose second mount was the removed one loses it. */
+function removeMountAt(mounts, mi){
+  const next=mounts.filter((mt,i)=>i!==mi);
+  next.forEach(mt=>mt.items.forEach(s=>{
+    if(s.extra===mi) delete s.extra;
+    else if(s.extra>mi) s.extra--;
+  }));
+  return next;
+}
+const cloneMounts = mounts => mounts.map(mt=>({...mt, items:(mt.items||[]).map(s=>({...s}))}));
+/* The mount layout `frame` should have with CORE bonuses `cores`, starting
+   from `mounts` (not mutated). Returns {mounts, lost}: lost are the slots
+   that had to come off — on a bonus mount that is going away, or no longer
+   fitting a mount Mount Retrofitting gives back. Applying Mount Retrofitting
+   needs a choice of mount (retrofitMount()), so it is never done here. */
+function planCoreMounts(frame, cores, mounts){
+  let next=cloneMounts(mounts);
+  const lost=[];
+  if(!frame) return {mounts:next, lost};
+  const want=Object.keys(CORE_BONUS_MOUNTS).filter(id=>cores.includes(id)
+    && (!CORE_BONUS_MOUNTS[id].fewerThan3 || frame.mounts.length<3));
+  for(let i=next.length-1;i>=0;i--){
+    if(next[i].cb && !want.includes(next[i].cb)){ lost.push(...next[i].items); next=removeMountAt(next, i); }
+  }
+  want.forEach(id=>{
+    if(!next.some(mt=>mt.cb===id)) next.push({type:CORE_BONUS_MOUNTS[id].type, items:[], cb:id});
+  });
+  if(!cores.includes(MOUNT_RETROFIT_CB)) next.forEach(mt=>{
+    if(!mt.retro) return;
+    mt.type=mt.retro; delete mt.retro;
+    const r=refitItems(mt.type, mt.items);
+    mt.items=r.kept; lost.push(...r.lost);
+  });
+  return {mounts:next, lost};
+}
+/* Mounts Mount Retrofitting may turn into Main/Aux: the frame's own, not
+   integrated, not already Main/Aux. */
+const retrofitCandidates = mounts =>
+  mounts.map((mt,i)=>i).filter(i=>!mounts[i].cb && !isIntegratedMount(mounts[i]) && mounts[i].type!=="Main/Aux");
+/* Mount Retrofitting applied to mount `mi`: {mounts, lost}, nothing mutated. */
+function retrofitMount(mounts, mi){
+  const next=cloneMounts(mounts);
+  const mt=next[mi];
+  mt.retro=mt.type; mt.type="Main/Aux";
+  const r=refitItems(mt.type, mt.items);
+  mt.items=r.kept;
+  return {mounts:next, lost:r.lost};
+}
+/* Superheavy weapon at mounts[hi].items[wi] takes mount `xi` as its second
+   one; whatever was on `xi` comes off and is returned. Mutates `mounts`. */
+function claimExtraMount(mounts, hi, wi, xi){
+  const lost=mounts[xi].items;
+  mounts[xi].items=[];
+  mounts[hi].items[wi].extra=xi;
+  return lost;
+}
+/* Drops `extra` links that do not hold: not a superheavy weapon, a mount that
+   is gone, integrated or not empty, or claimed twice. The weapon stays; the
+   sheet flags it as missing its second mount. */
+function checkExtraMounts(mounts){
+  const claimed=new Set();
+  mounts.forEach((mt,mi)=>mt.items.forEach(s=>{
+    if(s.extra===undefined) return;
+    const x=s.extra, target=mounts[x];
+    if(slotMount(s)!=="Superheavy" || !Number.isInteger(x) || x===mi || !target
+      || isIntegratedMount(target) || target.items.length || claimed.has(x)) delete s.extra;
+    else claimed.add(x);
+  }));
+}
+/* Superheavy weapons with no second mount, as {mi, wi}. */
+function superheavyMissingExtra(mounts){
+  const out=[];
+  mounts.forEach((mt,mi)=>mt.items.forEach((s,wi)=>{
+    if(slotMount(s)==="Superheavy" && s.extra===undefined) out.push({mi, wi});
+  }));
+  return out;
+}
 /* Copies an untrusted build object — restored autosave or an imported file —
    into `state`, keeping only what the currently loaded dataset can render.
    Anything pointing at an id we don't have (a pack that isn't loaded, someone
@@ -173,17 +314,30 @@ function applyBuildState(raw){
     dropped.push(tText("dropped.system", {id})); return false;
   });
   if(next.mech.frameId){
-    next.mech.mounts=arr(m.mounts).map(mt=>({
-      type: typeof (mt&&mt.type)==="string" ? mt.type : "Main",
-      items: arr(mt&&mt.items).map(slot=>{
-        const id = typeof slot==="string" ? slot : (slot && slot.id);
-        if(!M.weapon[id]){ if(id) dropped.push(tText("dropped.weapon", {id})); return null; }
-        const mod = slot && slot.mod;
-        if(mod && !M.mod[mod]){ dropped.push(tText("dropped.mod", {id:mod})); return {id, mod:null}; }
-        return {id, mod: mod||null};
-      }).filter(Boolean),
-    }));
+    next.mech.mounts=arr(m.mounts).map(mt=>{
+      const out={
+        type: typeof (mt&&mt.type)==="string" ? mt.type : "Main",
+        items: arr(mt&&mt.items).map(slot=>{
+          const id = typeof slot==="string" ? slot : (slot && slot.id);
+          if(!M.weapon[id]){ if(id) dropped.push(tText("dropped.weapon", {id})); return null; }
+          const mod = slot && slot.mod;
+          const kept = {id, mod:null};
+          if(mod && !M.mod[mod]) dropped.push(tText("dropped.mod", {id:mod}));
+          else kept.mod = mod||null;
+          if(slot && Number.isInteger(slot.extra)) kept.extra = slot.extra;
+          return kept;
+        }).filter(Boolean),
+      };
+      if(mt && CORE_BONUS_MOUNTS[mt.cb]) out.cb = mt.cb;
+      if(mt && typeof mt.retro==="string" && out.type==="Main/Aux") out.retro = mt.retro;
+      return out;
+    });
     if(!next.mech.mounts.length) next.mech.mounts=buildMounts(M.frame[next.mech.frameId]);
+    // Bonus mounts follow the selected bonuses (an older save has none yet).
+    const plan=planCoreMounts(M.frame[next.mech.frameId], next.cores, next.mech.mounts);
+    plan.lost.forEach(slot=>dropped.push(tText("dropped.weapon_no_mount", {name:M.weapon[slot.id].name})));
+    next.mech.mounts=plan.mounts;
+    checkExtraMounts(next.mech.mounts);
   } else if(m.mounts && arr(m.mounts).length){
     // Frame is gone, so its mounts have nothing to hang on.
     arr(m.mounts).forEach(mt=>arr(mt&&mt.items).forEach(slot=>{

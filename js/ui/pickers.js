@@ -360,12 +360,19 @@ function installWithSpCheck(item, extraSp, install, back){
 }
 function openWeaponPicker(mi){
   const mt=state.mech.mounts[mi];
-  const sizes=mt.items.map(slot=>M.weapon[slot.id]?.mount);
-  const allow=allowedNext(mt.type,sizes);
+  const allow=mountAllows(state.mech.mounts, mi);
   wpSearch=""; wpFilter="ALL"; wpSizeFilter="ALL"; wpTypeFilter="ALL"; wpDmgFilter="ALL"; wpExpanded=null;
 
-  const install=(id, back)=>installWithSpCheck(M.weapon[id], M.weapon[id].sp,
-    ()=>{ state.mech.mounts[mi].items.push({id, mod:null}); closeModal(); render(); }, back);
+  // A superheavy weapon also takes a second mount — chosen here, after the SP check.
+  const install=(id, back)=>installWithSpCheck(M.weapon[id], M.weapon[id].sp, ()=>{
+    const w=M.weapon[id], mounts=state.mech.mounts;
+    const put=xi=>{
+      mounts[mi].items.push({id, mod:null});
+      if(xi!==undefined) claimExtraMount(mounts, mi, mounts[mi].items.length-1, xi);
+      closeModal(); render();
+    };
+    if(w.mount==="Superheavy") chooseExtraMount(mounts, mi, w.name, put, back); else put();
+  }, back);
 
   const drawDetail=(id)=>{
     const w=M.weapon[id], lk=!unlocked(w);

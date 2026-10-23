@@ -46,7 +46,8 @@ function renderCore(){
   }).join("") + `</div>` : `<div class="hint">${t("core.none")}</div>`;
 
   $$("#core-selected .xbtn[data-rmcore]").forEach(b=>b.onclick=()=>{
-    state.cores.splice(+b.dataset.rmcore,1); render();
+    const ci=+b.dataset.rmcore;
+    changeCores(state.cores.filter((id,i)=>i!==ci));
   });
 
   const drawList=()=>{
@@ -82,7 +83,7 @@ function renderCore(){
     $$("#core-list [data-pickcore]").forEach(b=>b.onclick=()=>{
       const id=b.dataset.pickcore, dd=derived();
       if(state.cores.length>=dd.b.core.cap) return;
-      state.cores.push(id); render();
+      changeCores([...state.cores, id]);
     });
   };
   $$("#core-filters .chip").forEach(ch=>ch.onclick=()=>{
@@ -101,7 +102,7 @@ function viewSelectedCore(ci){
   const c=M.core[state.cores[ci]];
   modal(c.name, coreCardHTML(c) +
     `<button class="ghostbtn warn block mt-16" id="core-remove">✕ ${t("core.remove_this")}</button>`);
-  $("#core-remove").onclick=()=>{ state.cores.splice(ci,1); closeModal(); render(); };
+  $("#core-remove").onclick=()=>{ closeModal(); changeCores(state.cores.filter((id,i)=>i!==ci)); };
 }
 
 /* Detail view for a not-yet-selected bonus, opened by clicking a card in the
@@ -117,6 +118,6 @@ function openCoreDetail(id){
     </button>`);
   $("#core-select").onclick=()=>{
     if(full) return;
-    state.cores.push(id); closeModal(); render();
+    closeModal(); changeCores([...state.cores, id]);
   };
 }

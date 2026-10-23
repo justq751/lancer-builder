@@ -42,6 +42,10 @@ function buildViolations(){
     const sy=M.system[id];
     if(sy && !unlocked(sy)) out.push(tText("viol.item_locked", {name:sy.name}));
   });
+  superheavyMissingExtra(state.mech.mounts||[]).forEach(({mi,wi})=>
+    out.push(tText("viol.superheavy_extra", {name:M.weapon[state.mech.mounts[mi].items[wi].id].name})));
+  if(d.frame && state.cores.includes(MOUNT_RETROFIT_CB) && !(state.mech.mounts||[]).some(mt=>mt.retro))
+    out.push(tText("viol.retro_pending", {name:M.core[MOUNT_RETROFIT_CB]?.name||""}));
   state.cores.forEach(id=>{
     const c=M.core[id];
     if(c && !coreBonusUnlocked(c))

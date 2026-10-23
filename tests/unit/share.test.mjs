@@ -36,3 +36,15 @@ test("unpackBuild ignores garbage", () => {
   assert.equal(load()("unpackBuild(null)"), null);
   assert.equal(load()("unpackBuild('nope')"), null);
 });
+
+test("pack → unpack keeps CORE bonus mounts and a superheavy weapon's second mount", () => {
+  const build = structuredClone(FULL_BUILD);
+  build.mech.mounts = [
+    { type: "Main/Aux", items: [], retro: "Flex" },
+    { type: "Main", items: [] },
+    { type: "Heavy", items: [{ id: "mw_siege_cannon", mod: null, extra: 1 }] },
+    { type: "Integrated", items: [{ id: "mw_pistol", mod: null }], cb: "cb_integrated_weapon" },
+  ];
+  const run = load({ state: build });
+  assert.deepEqual(plain(run("unpackBuild(packBuild())")).mech.mounts, build.mech.mounts);
+});

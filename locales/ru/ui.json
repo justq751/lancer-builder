@@ -55,6 +55,18 @@
   "en": "TALENTS",
   "ru": "ТАЛАНТЫ"
  },
+ "cbmount.remove_confirm": {
+  "en": "Remove them and continue",
+  "ru": "Снять и продолжить"
+ },
+ "cbmount.remove_lead": {
+  "en": "This change takes away a mount the CORE bonus gave (or gives a retrofitted mount back its own type). These weapons come off:",
+  "ru": "Изменение убирает крепление, которое дал CORE-бонус (или возвращает переделанному креплению прежний тип). Будет снято оружие:"
+ },
+ "cbmount.remove_title": {
+  "en": "CORE bonus and mounts",
+  "ru": "CORE-бонус и крепления"
+ },
  "common.all": {
   "en": "ALL",
   "ru": "ВСЕ"
@@ -326,6 +338,10 @@
  "dropped.weapon_no_frame": {
   "en": "weapon “{name}” (no frame)",
   "ru": "оружие «{name}» (нет шасси)"
+ },
+ "dropped.weapon_no_mount": {
+  "en": "weapon “{name}” (its mount is gone)",
+  "ru": "оружие «{name}» (его крепления больше нет)"
  },
  "error.load.dev": {
   "en": "Could not load data/lancer-data.json.<br><br>If you opened index.html straight from the file system (file://), the browser blocks fetch() of local files. Start a local server, for example:<br><br><code>python3 -m http.server</code><br><br>…in the project folder and open http://localhost:8000/ — see README.md.",
@@ -699,6 +715,14 @@
   "en": "ADD SYSTEM",
   "ru": "ДОБАВИТЬ СИСТЕМУ"
  },
+ "loadout.extra_cap": {
+  "en": "second mount",
+  "ru": "второе крепление"
+ },
+ "loadout.extra_taken": {
+  "en": "Taken up by the superheavy {name} (on the {mount} mount)",
+  "ru": "Занято сверхтяжёлым оружием {name} (стоит на креплении {mount})"
+ },
  "loadout.filled": {
   "en": "full",
   "ru": "заполнено"
@@ -762,6 +786,34 @@
  "loadout.restore_integrated": {
   "en": "RESTORE INTEGRATED WEAPON",
   "ru": "ВОССТАНОВИТЬ ИНТЕГРИРОВАННОЕ ОРУЖИЕ"
+ },
+ "loadout.retro_change": {
+  "en": "Retrofit another mount",
+  "ru": "Переделать другое крепление"
+ },
+ "loadout.retro_pending": {
+  "en": "{name}: choose the mount it turns into Main/Aux.",
+  "ru": "{name}: выберите крепление, которое станет Main/Aux."
+ },
+ "loadout.retro_pick": {
+  "en": "Choose a mount",
+  "ru": "Выбрать крепление"
+ },
+ "loadout.retro_was": {
+  "en": "was {type}",
+  "ru": "было: {type}"
+ },
+ "loadout.sh_choose": {
+  "en": "Choose a mount",
+  "ru": "Выбрать крепление"
+ },
+ "loadout.sh_extra": {
+  "en": "Also takes up: {mount}",
+  "ru": "Также занимает: {mount}"
+ },
+ "loadout.sh_missing": {
+  "en": "A superheavy weapon needs a second mount",
+  "ru": "Сверхтяжёлому оружию нужно второе крепление"
  },
  "loadout.systems_head": {
   "en": "// SYSTEMS",
@@ -874,6 +926,14 @@
    "few": "{n} единицы оружия",
    "many": "{n} единиц оружия"
   }
+ },
+ "mountchoice.empty": {
+  "en": "empty",
+  "ru": "пусто"
+ },
+ "mountchoice.lost": {
+  "en": "comes off: {list}",
+  "ru": "будет снято: {list}"
  },
  "page.description": {
   "en": "Pilot and mech builder for the Lancer tabletop RPG. Data: massif-press/lancer-data.",
@@ -1219,6 +1279,14 @@
   "en": "Weapons:",
   "ru": "Оружие:"
  },
+ "retro.lead": {
+  "en": "Choose the mount to replace with a Main/Aux mount. Weapons that do not fit Main/Aux come off.",
+  "ru": "Выберите крепление, которое станет креплением Main/Aux. Оружие, которое в Main/Aux не помещается, будет снято."
+ },
+ "retro.none": {
+  "en": "This frame has no mount that could become Main/Aux.",
+  "ru": "У этого шасси нет крепления, которое можно переделать в Main/Aux."
+ },
  "save.failed_title": {
   "en": "The browser won't let the build be saved (private mode or full storage). Export it with SAVE.",
   "ru": "Браузер не даёт сохранить сборку (приватный режим или переполнено хранилище). Выгрузите её кнопкой СОХРАНИТЬ."
@@ -1539,6 +1607,14 @@
   "en": "WEAPONS",
   "ru": "ОРУЖИЕ"
  },
+ "superheavy.lead": {
+  "en": "<b>{name}</b> is a superheavy weapon: it also takes up one more mount, which can hold nothing else. Choose it:",
+  "ru": "<b>{name}</b> — сверхтяжёлое оружие: оно занимает ещё одно крепление, на котором больше ничего не может стоять. Выберите его:"
+ },
+ "superheavy.title": {
+  "en": "Second mount",
+  "ru": "Второе крепление"
+ },
  "swap.all": {
   "en": "All weapons carry over:",
   "ru": "Всё вооружение переносится:"
@@ -1843,6 +1919,10 @@
   "en": "{label}: {used} of {cap}",
   "ru": "{label}: {used} из {cap}"
  },
+ "viol.retro_pending": {
+  "en": "{name} — no mount chosen",
+  "ru": "{name} — крепление не выбрано"
+ },
  "viol.skills": {
   "en": "Skills over budget",
   "ru": "Перебор навыков"
@@ -1850,6 +1930,10 @@
  "viol.sp": {
   "en": "System points over budget: {used} of {cap} SP",
   "ru": "Перебор системных очков: {used} из {cap} SP"
+ },
+ "viol.superheavy_extra": {
+  "en": "{name} — superheavy, needs a second mount",
+  "ru": "{name} — сверхтяжёлое, нужно второе крепление"
  },
  "viol.talent_rank": {
   "en": "{name}: rank {rank} is above what LL{ll} allows",

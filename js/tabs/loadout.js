@@ -11,6 +11,7 @@ function renderLoadout(){
     t("loadout.lead", {used:d.sp.used, cap:d.sp.cap}))
     + (over?`<div class="warnbox">⚠ ${t("loadout.over", {n:d.sp.used-d.sp.cap})}</div>`:"")
     + `<h3 class="subhead" style="margin:6px 0 12px">${t("loadout.mounts_head")}</h3>
+       <div id="retro-pending"></div>
        <div id="mounts"></div>
        <h3 class="subhead" style="margin:24px 0 6px">${t("loadout.systems_head")} <span class="mono" style="font-size:12px;color:var(--faint)">(SP ${d.sp.used}/${d.sp.cap})</span></h3>
        <div class="spacer-sm"></div>
@@ -18,11 +19,21 @@ function renderLoadout(){
        <div class="grid" id="syslist" style="margin-top:12px"></div>`;
 
   // mounts
-  $("#mounts").innerHTML = state.mech.mounts.map((mt,mi)=>{
-    const isInt = mt.type==="Integrated";
-    const sizes=mt.items.map(slot=>M.weapon[slot.id]?.mount);
-    const can = isInt ? false : allowedNext(mt.type,sizes).length>0;
-    const slots = mt.items.map((slot,wi)=>{
+  const mounts=state.mech.mounts;
+  // Mount Retrofitting is selected but no mount has been chosen for it yet.
+  $("#retro-pending").innerHTML = state.cores.includes(MOUNT_RETROFIT_CB) && !mounts.some(mt=>mt.retro)
+    ? `<div class="warnbox">⚠ ${t("loadout.retro_pending", {name:M.core[MOUNT_RETROFIT_CB]?.name||""})}
+        <button class="ghostbtn mt-10" data-retro="pick">${t("loadout.retro_pick")}</button></div>` : "";
+  const cbName = id => esc(M.core[id]?.name||id);
+  $("#mounts").innerHTML = mounts.map((mt,mi)=>{
+    const isInt = isFrameIntegratedMount(mt);
+    const allow = mountAllows(mounts, mi);
+    const can = allow.length>0;
+    // A superheavy weapon on another mount uses this one as its second mount.
+    const owner = extraOwner(mounts, mi);
+    const ownerW = owner && M.weapon[mounts[owner.mi].items[owner.wi].id];
+    const slots = owner ? `<div class="slot"><div class="hint">${t("loadout.extra_taken", {name:ownerW.name, mount:tr(mounts[owner.mi].type)})}</div></div>`
+      : mt.items.map((slot,wi)=>{
       const w=M.weapon[slot.id];
       const mod = slot.mod ? M.mod[slot.mod] : null;
       const ew = effectiveWeapon(w, mod); // mod's added_tags/range/damage folded in, for display only
@@ -36,6 +47,11 @@ function renderLoadout(){
         </div>
       </div>`;
       const expand=open?`<div class="expand-detail">${weaponCardBody(ew, dk, eqWeaponProfIdx.get(key)||0)}</div>`:"";
+      const shRow = w.mount!=="Superheavy" ? ""
+        : slot.extra!==undefined
+          ? `<div class="hint mt-10">${t("loadout.sh_extra", {mount:tr(mounts[slot.extra].type)})}</div>`
+          : `<div class="warnline mt-10">⚠ ${t("loadout.sh_missing")}
+              ${extraMountCandidates(mounts, mi).length?`<button class="ghostbtn" data-shextra="${key}">${t("loadout.sh_choose")}</button>`:""}</div>`;
 
       // mod sub-row: install button if none, else name + expand/remove
       const compatMods = (L.mods||[]).filter(m=>modCompatible(m,w));
@@ -51,22 +67,26 @@ function renderLoadout(){
             <button class="xbtn" data-rmmod="${key}" aria-label="${t("loadout.remove_mod")}">✕</button>
           </div>
         </div>${modOpen?`<div class="expand-detail">${modCardBody(mod, dk+"-mod")}</div>`:""}`;
-      } else if(compatMods.length){
+      } else if(compatMods.length && mt.type!=="Integrated"){ // Integrated Weapon: "can't be modified"
         modRow = `<button class="ghostbtn block mt-10" data-addmod="${key}">+ ${t("loadout.install_mod")}</button>`;
       }
-      return `<div class="slot">${row}${expand}${modRow}</div>`;
+      return `<div class="slot">${row}${expand}${shRow}${modRow}</div>`;
     }).join("");
-    const capLine = isInt
-      ? t("loadout.integrated", {n:mt.items.length})
-      : `${mt.items.length} / ${mt.type.includes("/")||mt.type==="Flex"?2:1} · ${allowedNext(mt.type,sizes).map(tr).join("/")||t("loadout.filled")}`;
+    const capLine = owner ? t("loadout.extra_cap")
+      : isInt ? t("loadout.integrated", {n:mt.items.length})
+      : `${mt.items.length} / ${mt.type==="Integrated"?1:mt.type.includes("/")||mt.type==="Flex"?2:1} · ${allow.map(tr).join("/")||t("loadout.filled")}`;
+    const origin = mt.cb ? `<span class="mcb">CORE · ${cbName(mt.cb)}</span>`
+      : mt.retro ? `<span class="mcb">CORE · ${cbName(MOUNT_RETROFIT_CB)} · ${t("loadout.retro_was", {type:tr(mt.retro)})}</span>` : "";
+    const retroBtn = mt.retro
+      ? `<div class="slot"><button class="ghostbtn" data-retro="change">↺ ${t("loadout.retro_change")}</button></div>` : "";
     const restoreBtn = (isInt && !mt.items.length)
       ? `<div class="slot"><button class="ghostbtn" data-restoreint="${mi}">+ ${t("loadout.restore_integrated")}</button></div>` : "";
     return `<div class="mount ${isInt?'integrated':''}">
-      <div class="mhead"><span class="mt">${tr(mt.type)}</span>
+      <div class="mhead"><span class="mtwrap"><span class="mt">${tr(mt.type)}</span>${origin}</span>
         <span class="cap">${capLine}</span></div>
       ${slots}
       ${can?`<div class="slot"><button class="ghostbtn" data-addw="${mi}">+ ${t("loadout.install_weapon")}</button></div>`:""}
-      ${restoreBtn}
+      ${restoreBtn}${retroBtn}
     </div>`;
   }).join("");
   eqWeaponExpanded.forEach(key=>{
@@ -112,6 +132,11 @@ function renderLoadout(){
 
   $$("#mounts .ghostbtn[data-addw]").forEach(b=>b.onclick=()=>openWeaponPicker(+b.dataset.addw));
   $$("#mounts .ghostbtn[data-restoreint]").forEach(b=>b.onclick=()=>openIntegratedPicker(+b.dataset.restoreint));
+  $$("#mounts .ghostbtn[data-shextra]").forEach(b=>b.onclick=()=>{
+    const [mi,wi]=b.dataset.shextra.split(":").map(Number);
+    openExtraMountChooser(mi,wi);
+  });
+  $$("#tab .ghostbtn[data-retro]").forEach(b=>b.onclick=openRetrofitChooser);
   $$("#mounts .xbtn[data-rmw]").forEach(b=>b.onclick=e=>{
     e.stopPropagation();
     const key=b.dataset.rmw, [mi,wi]=key.split(":").map(Number);
