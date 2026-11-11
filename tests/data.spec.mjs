@@ -27,6 +27,8 @@ const LOGIC_FIELDS = {
   mods: ["source", "license", "license_level", "tags", "sp", "allowed_types", "allowed_sizes"],
   core_bonuses: ["source"],
   pilot_gear: ["type", "tags"],
+  actions: ["activation", "pilot"],
+  statuses: ["type"],
 };
 
 test("translation never touches logic keys", async ({ page }) => {

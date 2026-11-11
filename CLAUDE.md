@@ -64,7 +64,7 @@ All scripts are classic (non-module) scripts sharing one global scope, loaded by
 | `js/i18n-loader.js` | fetching data/packs/locales, `tr()`/`trTag()`, `fetchAndLocalize()`, `UI`/`UI_LANG` + `loadUiStrings()`/`applyStaticStrings()`, `APP_BUILD`. |
 | `js/app/*.js` | shared globals and helpers (`base`), `state` + autosave (`state`), content selection (`content`: `offered(cat)`, `contentOn()`), license labels, frame swap + CORE bonus mounts (`frame-swap`), `render()`/HUD/tab bar (`render`), export/import (`transfer`). |
 | `js/tabs/*.js` | one file per editor tab (`render<Tab>()`). |
-| `js/ui/*.js` | modal + dialogs, weapon/system/gear/mod pickers. |
+| `js/ui/*.js` | modal + dialogs, weapon/system/gear/mod pickers, the rules quick reference (`reference.js`: `L.actions`, `L.statuses`). |
 | `js/sheet.js`, `js/print.js`, `js/main.js` | read-only sheet view + share link I/O, print sheet, topbar wiring/boot. |
 | `css/fonts.css`, `css/app.css`, `css/sheet.css` | self-hosted fonts (paths relative to `css/`), app styles, sheet/print styles — in cascade order. |
 

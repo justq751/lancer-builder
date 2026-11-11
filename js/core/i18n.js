@@ -135,6 +135,9 @@ function localizeData(base, locale) {
   overlayKeyedPairs(L.backgrounds, locale.backgrounds || {}, ["name", "description"]);
   overlayKeyedPairs(L.manufacturers || [], (locale.manufacturers || {}), ["name", "description"]);
   overlayKeyedPairs(L.tags || [], (locale.tags || {}), ["name", "description"]);
+  // The reference (? button): activation/pilot/type stay English — they group the list.
+  overlayKeyedPairs(L.actions || [], (locale.actions || {}), ["name", "terse", "detail"]);
+  overlayKeyedPairs(L.statuses || [], (locale.statuses || {}), ["name", "terse", "effects"]);
 
   // glossary: a dict keyed by our internal stat key (hp/armor/...), not an
   // array with .id like everything else — overlay it directly.

@@ -316,6 +316,22 @@ def build_stat_labels(data, old):
         out[key] = pair(text, old.get(key))
     return out
 
+def build_actions(data, old):
+    """Basic actions for the reference (? button)."""
+    return _build_simple(data.get("actions", []), old, ("name", "terse", "detail"))
+
+
+def build_statuses(data, old):
+    return _build_simple(data.get("statuses", []), old, ("name", "terse", "effects"))
+
+
+def _build_simple(items, old, fields):
+    out = {}
+    for it in items:
+        old_e = old.get(it["id"], {})
+        out[it["id"]] = {f: pair(it.get(f), old_e.get(f)) for f in fields}
+    return out
+
 
 BUILDERS = {
     "frames.json": build_frames,
@@ -331,6 +347,8 @@ BUILDERS = {
     "glossary.json": build_glossary,
     "stat_labels.json": build_stat_labels,
     "mods.json": build_mods,
+    "actions.json": build_actions,
+    "statuses.json": build_statuses,
 }
 
 

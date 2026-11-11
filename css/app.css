@@ -163,13 +163,15 @@ button{font-family:inherit; cursor:pointer}
    The full HUD is one tap away as a bottom sheet. */
 @media(max-width:1020px){
   :root{--dock-h:112px}
-  .topbar{position:relative; display:grid; grid-template-columns:1fr auto auto;
-    grid-template-areas:"brand sheet more" "save sheet more"; gap:0 8px; padding:8px 14px}
+  .topbar{position:relative; display:grid; grid-template-columns:1fr auto auto auto;
+    grid-template-areas:"brand ref sheet more" "save ref sheet more"; gap:0 8px; padding:8px 14px}
   .topbar .spacer{display:none}
   .brand{grid-area:brand; min-width:0}
   .brand .name{white-space:nowrap}
   .savestate{grid-area:save}
   #t-sheet{grid-area:sheet}
+  #t-ref{grid-area:ref; width:44px; padding:0; font-size:17.5px}
+  #t-ref .lbl{display:none}
   /* The mode button grows to «◀ МОЯ СБОРКА» in the sheet; the wordmark is
      what gives way, never the controls. */
   @media(max-width:560px){
@@ -781,6 +783,36 @@ button{font-family:inherit; cursor:pointer}
 .mountchoices .mc-lost{color:var(--amber); font-size:11.5px; text-transform:none; letter-spacing:.02em}
 .dialog-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px}
 .dialog-actions .ghostbtn{flex:1 1 200px; text-align:center}
+
+/* Quick reference (js/ui/reference.js): groups of one-line rules, each
+   opening into the full text; the left rule is the activation color of
+   .action-block. */
+.ref{display:flex; flex-direction:column; gap:18px}
+.ref-grp h4{font-family:"Chakra Petch",sans-serif; font-size:16.5px; letter-spacing:.04em; margin:0 0 6px;
+  padding-left:10px; border-left:3px solid var(--line-bright)}
+.ref-quick h4{border-left-color:#8b7fe8}
+.ref-full h4{border-left-color:var(--amber)}
+.ref-reaction h4{border-left-color:#e87f9e}
+.ref-free h4{border-left-color:var(--faint)}
+.ref-move h4,.ref-status h4{border-left-color:var(--accent)}
+.ref-it{border-bottom:1px solid var(--line)}
+.ref-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; padding:8px 4px; list-style:none}
+summary.ref-head{cursor:pointer}
+summary.ref-head::-webkit-details-marker{display:none}
+summary.ref-head::before{content:"▸"; color:var(--accent); font-size:12px; width:10px}
+details[open] > summary.ref-head::before{content:"▾"}
+div.ref-head{padding-left:24px}
+summary.ref-head:hover .ref-nm{color:var(--accent)}
+summary.ref-head:focus-visible{outline:2px solid var(--accent); outline-offset:-2px; border-radius:4px}
+.ref-nm{font-family:"Chakra Petch",sans-serif; font-size:15px; color:var(--ink)}
+.ref-foot{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.08em; color:var(--mute);
+  border:1px solid var(--line-bright); border-radius:4px; padding:1px 6px}
+.ref-terse{flex-basis:100%; padding-left:20px; color:var(--mute); font-size:13.5px; line-height:1.45}
+div.ref-head .ref-terse{padding-left:0}
+.ref-body{padding:0 4px 12px 24px; font-size:13.5px; line-height:1.55; color:var(--ink)}
+.ref-body p{margin:0}
+.ref-kids{margin-top:10px; border-left:1px solid var(--line-bright); padding-left:8px}
+.ref-kids .ref-it:last-child{border-bottom:0}
 
 /* summary sheet */
 .sheet{display:grid; grid-template-columns:1fr 1fr; gap:16px}

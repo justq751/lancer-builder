@@ -1,0 +1,548 @@
+{
+ "act_move": {
+  "name": {
+   "en": "Move",
+   "ru": "Перемещение"
+  },
+  "terse": {
+   "en": "Move your character up to its Speed in any direction.",
+   "ru": "Переместите персонажа на расстояние до его Скорости в любом направлении."
+  },
+  "detail": {
+   "en": "On their turn, characters can always move spaces equal to their SPEED, in addition to any other actions. This is called a standard move to distinguish it from movement granted by systems or talents.<br>A character only counts as moving if they move 1 or more spaces.<br>Characters can move into any adjacent space, even diagonally, as long as the space isn’t occupied by an obstruction (and is one that they would be able to move in – characters can't move straight up unless they can fly, for example). There are several factors that can affect movement, which are detailed here.",
+   "ru": "В свой ход персонаж всегда может переместиться на число клеток, равное его Скорости, помимо любых других действий. Это называется стандартным перемещением, чтобы отличать его от перемещения, которое дают системы или таланты.<br>Персонаж считается переместившимся, только если сдвинулся на 1 клетку или больше.<br>Персонаж может перейти в любую соседнюю клетку, даже по диагонали, если в ней нет препятствия (и в неё вообще можно попасть: например, нельзя подняться прямо вверх, если не умеешь летать). На перемещение влияет ряд факторов, они описаны в правилах."
+  }
+ },
+ "act_overcharge": {
+  "name": {
+   "en": "Overcharge",
+   "ru": "Форсаж"
+  },
+  "terse": {
+   "en": "Overcharging immediately allows you to make any quick action of your choice as a Free Action, even one you already made this turn.",
+   "ru": "Форсаж сразу даёт совершить любое быстрое действие на выбор как свободное, даже уже совершённое в этот ход."
+  },
+  "detail": {
+   "en": "When you OVERCHARGE, you briefly push your mech beyond factory specifications for a tactical advantage. Moments of intense action won’t tax your mech’s systems too much, but sustained action beyond prescribed limits takes a toll.<br>Once per turn, you can OVERCHARGE your mech, allowing you to make any quick action as a free action – even actions you have already taken this turn.<br>The first time you OVERCHARGE, take 1 heat.<br>The second time you OVERCHARGE, take 1d3 heat.<br>The third time, take 1d6 heat, and each time thereafter take 1d6+4 heat.<br>A FULL REPAIR resets this counter.",
+   "ru": "Уходя в Форсаж, вы ненадолго выводите меха за пределы заводских характеристик ради тактического преимущества. Короткие вспышки активности не слишком нагружают системы меха, но затяжная работа за пределами нормы берёт своё.<br>Раз в ход вы можете включить Форсаж и совершить любое быстрое действие как свободное — даже то, которое уже совершили в этот ход.<br>В первый раз за Форсаж вы получаете 1 тепло.<br>Во второй раз — 1d3 тепла.<br>В третий раз — 1d6 тепла, а каждый следующий раз — 1d6+4 тепла.<br>Полный ремонт сбрасывает этот счётчик."
+  }
+ },
+ "act_skirmish": {
+  "name": {
+   "en": "Skirmish",
+   "ru": "Стычка"
+  },
+  "terse": {
+   "en": "Attack with a single weapon. In addition to your primary attack, you may also attack with a different Auxiliary weapon on the same mount.",
+   "ru": "Атака одним оружием. Помимо основной атаки можно атаковать и другим Вспомогательным оружием на том же креплении."
+  },
+  "detail": {
+   "en": "When you SKIRMISH, you attack with a single weapon.<br>To SKIRMISH, choose a weapon and a valid target within RANGE (or THREAT) then make an attack.<br>• In addition to your primary attack, you may also attack with a different AUXILIARY weapon on the same mount. That weapon doesn’t deal bonus damage.<br>• SUPERHEAVY weapons are too cumbersome to use in a SKIRMISH, and can only be fired as part of a BARRAGE.",
+   "ru": "В Стычке вы атакуете одним оружием.<br>Выберите оружие и подходящую цель в пределах Дальности (или Угрозы) и совершите атаку.<br>• Помимо основной атаки вы можете атаковать и другим Вспомогательным оружием на том же креплении. Это оружие не наносит бонусного урона.<br>• Сверхтяжёлое оружие слишком громоздко для Стычки и стреляет только в Залпе."
+  }
+ },
+ "act_boost": {
+  "name": {
+   "en": "Boost",
+   "ru": "Рывок"
+  },
+  "terse": {
+   "en": "Take an extra movement of at least 1 space, up to your SPEED.",
+   "ru": "Дополнительное перемещение минимум на 1 клетку, до вашей Скорости."
+  },
+  "detail": {
+   "en": "When you BOOST, you move at least 1 space, up to your SPEED. This allows you to make an extra movement, on top of your standard move. Certain talents and systems can only be used when you BOOST, not when you make a standard move.",
+   "ru": "Совершая Рывок, вы перемещаетесь минимум на 1 клетку и не дальше своей Скорости. Это дополнительное перемещение сверх стандартного. Некоторые таланты и системы работают только при Рывке, а не при стандартном перемещении."
+  }
+ },
+ "act_ram": {
+  "name": {
+   "en": "Ram",
+   "ru": "Таран"
+  },
+  "terse": {
+   "en": "Attempt to knock down or knock back your target. On a success the target is knocked Prone and you may choose to knock them back one space.",
+   "ru": "Попытка сбить цель с ног или отбросить. При успехе цель Опрокинута, и её можно отбросить на одну клетку."
+  },
+  "detail": {
+   "en": "When you RAM, you make a melee attack with the aim of knocking a target down or back.<br>To RAM, make a melee attack against an adjacent character the same SIZE or smaller than you. On a success, your target is knocked PRONE and you may also choose to knock them back by one space, directly away from you.",
+   "ru": "Тараня, вы проводите атаку ближнего боя, чтобы сбить цель с ног или оттолкнуть её.<br>Совершите атаку ближнего боя против соседнего персонажа вашего Размера или меньше. При успехе цель становится Опрокинутой, и вы можете также отбросить её на одну клетку прямо от себя."
+  }
+ },
+ "act_grapple": {
+  "name": {
+   "en": "Grapple",
+   "ru": "Захват"
+  },
+  "terse": {
+   "en": "Attempt to grab on your target, potentially immobilizing it or riding it.",
+   "ru": "Попытка схватить цель — обездвижить её или оседлать."
+  },
+  "detail": {
+   "en": "When you GRAPPLE, you try to grab hold of a target and overpower them – disarming, subduing, or damaging them so they can’t do the same to you.<br>To GRAPPLE, choose an adjacent character and make a melee attack. On a hit:<br>• both characters become ENGAGED;<br>• neither character can BOOST or take reactions for the duration of the grapple;<br>• the smaller character becomes IMMOBILIZED but moves when the larger party moves, mirroring their movement. If both parties are the same SIZE, either can make contested HULL checks at the start of their turn: the winner counts as larger than the loser until this contest is repeated.<br>A GRAPPLE ends when:<br>• either character breaks adjacency, such as if they are knocked back by another effect;<br>• the attacker chooses to end the grapple as a free action;<br>• The defender breaks free by succeeding on a contested HULL check as a quick action.<br>If a GRAPPLE involves more than two characters, the same rules apply, but when counting SIZE, add together the SIZE of all characters on each side. For example, if two SIZE 1 allied characters are grappling a single SIZE 2 enemy, the allied characters count as a combined SIZE 2 and can try to drag their foe around.",
+   "ru": "При Захвате вы пытаетесь вцепиться в цель и одолеть её — обезоружить, скрутить или повредить, чтобы она не сделала того же с вами.<br>Выберите соседнего персонажа и совершите атаку ближнего боя. При попадании:<br>• оба персонажа становятся Связанными боем;<br>• пока длится Захват, ни один из них не может совершать Рывок и реакции;<br>• меньший персонаж становится Обездвиженным, но перемещается вслед за большим, повторяя его движение. Если оба одного Размера, любой из них в начале своего хода может совершить состязательную проверку Корпуса: победитель считается больше проигравшего до следующего такого состязания.<br>Захват заканчивается, когда:<br>• персонажи перестают быть соседними — например, одного отбросило другим эффектом;<br>• атакующий прекращает Захват свободным действием;<br>• защищающийся вырывается, выиграв состязательную проверку Корпуса быстрым действием.<br>Если в Захвате больше двух персонажей, правила те же, но Размер каждой стороны — сумма Размеров всех её участников. Например, два союзника Размера 1, держащие одного врага Размера 2, считаются вместе Размером 2 и могут таскать противника за собой."
+  }
+ },
+ "act_quick_tech": {
+  "name": {
+   "en": "Quick Tech",
+   "ru": "Быстрое тех-действие"
+  },
+  "terse": {
+   "en": "Perform quick electronic warfare or systems-boosting activities.",
+   "ru": "Быстрые действия радиоэлектронной борьбы или усиления систем."
+  },
+  "detail": {
+   "en": "When you use QUICK TECH, you engage in electronic warfare, countermeasures, and other technical actions, often aided by a mech’s powerful computing and simulation cores.<br>Each time you take this action, you choose an option from the QUICK TECH list. All mechs have access to these options, but some systems enhance them or make new options available.<br>Unlike other quick actions, QUICK TECH can be taken more than once per turn; however, a different option must be chosen every time, unless specified otherwise or granted as a free action.",
+   "ru": "Совершая быстрое тех-действие, вы ведёте радиоэлектронную борьбу, ставите помехи и выполняете другие технические действия, часто опираясь на мощные вычислительные и симуляционные ядра меха.<br>Каждый раз вы выбираете вариант из списка быстрых тех-действий. Эти варианты доступны всем мехам, но некоторые системы усиливают их или добавляют новые.<br>В отличие от других быстрых действий, быстрое тех-действие можно совершать больше одного раза за ход, но каждый раз нужно выбирать другой вариант — если не сказано иное и если это не свободное действие."
+  }
+ },
+ "act_bolster": {
+  "name": {
+   "en": "Bolster",
+   "ru": "Усиление"
+  },
+  "terse": {
+   "en": "Enhance another character’s systems.",
+   "ru": "Усильте системы другого персонажа."
+  },
+  "detail": {
+   "en": "When you BOLSTER, you use your mech’s formidable processing power to enhance another character’s systems.<br>To BOLSTER, choose a character within SENSORS. They receive +2 Accuracy on the next skill check or save they make between now and the end of their next turn. Characters can only benefit from one BOLSTER at a time.",
+   "ru": "При Усилении вы направляете мощь процессоров своего меха на системы другого персонажа.<br>Выберите персонажа в пределах Сенсора. Он получает +2 Точности на следующую проверку навыка или спасбросок, совершённые до конца его следующего хода. Персонаж может получать пользу только от одного Усиления одновременно."
+  }
+ },
+ "act_scan": {
+  "name": {
+   "en": "Scan",
+   "ru": "Сканирование"
+  },
+  "terse": {
+   "en": "Perform a deep scan on an enemy",
+   "ru": "Глубокое сканирование противника."
+  },
+  "detail": {
+   "en": "When you SCAN, you use your mech’s powerful sensors to perform a deep scan on an enemy.<br>To SCAN, choose a character or object within SENSORS and line of sight, then ask the GM for one of the following pieces of information, which they must answer honestly:<br>• Your target’s weapons, systems, and full statistics (HP, SPEED, EVASION, ARMOR, MECH SKILLS, and so on).<br>• One piece of hidden information about the target, such as confidential cargo or data, current mission, the identity of the pilot, and so on.<br>• Generic or public information about the target that can be pulled from an info bank or records, such as the model number of a mech.<br>Any information gathered is only current at the time of the SCAN – if the target later takes damage, for instance, you don’t receive an update.",
+   "ru": "При Сканировании вы используете мощные сенсоры меха, чтобы глубоко просканировать противника.<br>Выберите персонажа или объект в пределах Сенсора и линии видимости, затем запросите у ведущего одно из следующего — он обязан ответить честно:<br>• оружие, системы и полные характеристики цели (ОЗ, Скорость, Уклонение, Броня, мех-навыки и так далее);<br>• один скрытый факт о цели: секретный груз или данные, текущая задача, личность пилота и так далее;<br>• общие или открытые сведения о цели из баз данных или реестров, например номер модели меха.<br>Сведения верны только на момент Сканирования: если цель потом, например, получит урон, обновления вы не получите."
+  }
+ },
+ "act_lockon": {
+  "name": {
+   "en": "Lock On",
+   "ru": "Захват цели"
+  },
+  "terse": {
+   "en": "Digitally mark a target",
+   "ru": "Цифровая метка на цели."
+  },
+  "detail": {
+   "en": "When you LOCK ON, you digitally mark a target, lighting them up for your teammates’ targeting systems and exposing weak points.<br>To LOCK ON, choose a character within SENSORS and line of sight. They gain the LOCK ON condition. Any character making an attack against a character with LOCK ON may choose to gain +1 Accuracy on that attack and then clear the LOCK ON condition after that attack resolves. This is called consuming LOCK ON.",
+   "ru": "Захватывая цель, вы ставите на неё цифровую метку: подсвечиваете её для систем наведения союзников и вскрываете уязвимые места.<br>Выберите персонажа в пределах Сенсора и линии видимости. Он получает состояние Захват цели. Любой, кто атакует такого персонажа, может получить +1 Точности на эту атаку, после чего Захват цели снимается, когда атака разрешится. Это называется израсходовать Захват цели."
+  }
+ },
+ "act_invade": {
+  "name": {
+   "en": "Invade",
+   "ru": "Вторжение"
+  },
+  "terse": {
+   "en": "Mount a direct electronic attack against a target",
+   "ru": "Прямая электронная атака на цель."
+  },
+  "detail": {
+   "en": "When you INVADE, you mount a direct electronic attack against a target. To INVADE, make a tech attack against a character within SENSORS and line of sight. On a success, your target takes 2 heat and you choose one of the INVASION options available to you. FRAGMENT SIGNAL is available to all characters, and additional options are granted by certain systems and equipment with the INVADE tag.  You can also INVADE willing allied characters to create certain effects. If your target is willing and allied, you are automatically successful, it doesn’t count as an attack, and your target doesn’t take any heat.",
+   "ru": "При Вторжении вы проводите прямую электронную атаку на цель. Совершите тех-атаку против персонажа в пределах Сенсора и линии видимости. При успехе цель получает 2 тепла, а вы выбираете один из доступных вам вариантов Вторжения. Фрагментация сигнала доступна всем; другие варианты дают некоторые системы и снаряжение с тегом Вторжение.<br>Вторгаться можно и в согласных союзников ради особых эффектов. Если цель — согласный союзник, Вторжение удаётся автоматически, не считается атакой, и цель не получает тепла."
+  }
+ },
+ "act_inv_fragment_signal": {
+  "name": {
+   "en": "Fragment Signal",
+   "ru": "Фрагментация сигнала"
+  },
+  "terse": {
+   "en": "IMPAIR and SLOW a character until the end of their next turn.",
+   "ru": "Персонаж Ослаблен и Замедлен до конца своего следующего хода."
+  },
+  "detail": {
+   "en": "You feed false information, obscene messages, or phantom signals to your target’s computing core. They become IMPAIRED and SLOWED until the end of their next turn.",
+   "ru": "Вы скармливаете вычислительному ядру цели ложные данные, непристойные сообщения или фантомные сигналы. Цель становится Ослабленной и Замедленной до конца своего следующего хода."
+  }
+ },
+ "act_hide": {
+  "name": {
+   "en": "Hide",
+   "ru": "Скрыться"
+  },
+  "terse": {
+   "en": "Obscure the position of your mech, becoming HIDDEN and unable to be identified, precisely located, or be targeted directly by attacks or hostile actions",
+   "ru": "Скройте позицию меха: вы становитесь Скрытым, вас нельзя опознать, точно обнаружить или выбрать прямой целью атак и враждебных действий."
+  },
+  "detail": {
+   "en": "<p>When you HIDE, you obscure the position of your mech in order to reposition, avoid incoming fire, repair, or ambush.</p><p>To HIDE, you must not be ENGAGED and you must either be outside of any enemies’ line of sight, obscured by sufficient cover, or invisible. If you HIDE while meeting one of these criteria, you gain the HIDDEN status.</p><p>Hard cover is sufficient to HIDE as long as it is large enough to totally conceal you, but soft cover is only sufficient if you are completely inside an area or zone that grants soft cover – many systems and talents that grant soft cover or plain old obscurement just don’t provide enough to hide behind!</p><p>If you are INVISIBLE, you can always HIDE, regardless of cover, unless you’re ENGAGED.</p><p>The exact location of HIDDEN targets cannot be identified and they cannot be targeted directly by attacks or hostile actions, but they can still be hit by attacks that affect an area. Although NPCs cannot perfectly locate a HIDDEN character, they might still know an approximate location. Thus, an NPC could flush an area with a flamethrower even if they don’t know exactly where a HIDDEN player is lurking.</p><p>Additionally, other characters ignore engagement with you while you are HIDDEN – it’s assumed you’re trying to stay stealthy.</p><p>You cease to be HIDDEN if you make an attack (melee, ranged, or tech) or if your mech takes a hostile action (such as forcing a target to make a save). Using BOOST or taking reactions with your mech also causes you to lose HIDDEN. Other actions can be taken as normal.</p><p>You also immediately lose HIDDEN if your cover disappears or is destroyed, or if you lose cover due to line of sight (e.g., if a mech jumps over a wall and can now draw unbroken line of sight to you). If you’re hiding while INVISIBLE, you lose HIDDEN when you cease to be INVISIBLE unless you are in cover.</p>",
+   "ru": "<p>Скрываясь, вы прячете позицию меха, чтобы сменить её, уйти из-под огня, отремонтироваться или устроить засаду.</p><p>Чтобы скрыться, вы не должны быть Связаны боем и должны либо находиться вне линии видимости всех врагов, либо быть за достаточным укрытием, либо быть Невидимым. Если одно из условий выполнено, вы получаете статус Скрыт.</p><p>Жёсткого укрытия достаточно, если оно полностью вас закрывает; мягкого — только если вы целиком внутри области или зоны, дающей мягкое укрытие. Многие системы и таланты, дающие мягкое укрытие или просто затрудняющие обзор, не позволяют за ними спрятаться!</p><p>Невидимый может скрыться всегда, независимо от укрытия, если только не Связан боем.</p><p>Точное положение Скрытых целей нельзя установить, их нельзя выбрать прямой целью атак или враждебных действий, но по ним всё ещё попадают атаки по области. Даже не зная точно, где Скрытый персонаж, NPC могут знать примерное место. Так что NPC может залить область огнемётом, даже не зная, где именно затаился Скрытый игрок.</p><p>Кроме того, пока вы Скрыты, другие персонажи не считаются Связанными с вами боем: предполагается, что вы стараетесь не выдать себя.</p><p>Вы перестаёте быть Скрытым, если атакуете (в ближнем бою, дальнем или тех-атакой) или ваш мех совершает враждебное действие (например, вынуждает цель делать спасбросок). Рывок и реакции меха тоже снимают статус Скрыт. Остальные действия можно совершать как обычно.</p><p>Вы также сразу теряете статус Скрыт, если ваше укрытие исчезает или разрушается либо перестаёт закрывать линию видимости (например, мех перепрыгнул стену и видит вас напрямую). Если вы скрылись, будучи Невидимым, вы теряете статус Скрыт, когда перестаёте быть Невидимым, — если только вы не в укрытии.</p>"
+  }
+ },
+ "act_search": {
+  "name": {
+   "en": "Search",
+   "ru": "Поиск"
+  },
+  "terse": {
+   "en": "Look for a hidden target.",
+   "ru": "Найти скрытую цель."
+  },
+  "detail": {
+   "en": "When you SEARCH, you attempt to identify hidden characters. To SEARCH in a mech, choose a character within your SENSORS that you suspect is HIDDEN and make a contested SYSTEMS check against their AGILITY.<br>Once a HIDDEN character has been found using SEARCH, they immediately lose HIDDEN and can be located again by any character.",
+   "ru": "При Поиске вы пытаетесь обнаружить Скрытых персонажей. Чтобы искать в мехе, выберите персонажа в пределах Сенсора, которого подозреваете в том, что он Скрыт, и совершите состязательную проверку Систем против его Ловкости.<br>Найденный Поиском Скрытый персонаж сразу теряет статус Скрыт, и его снова может обнаружить любой."
+  }
+ },
+ "act_search_pilot": {
+  "name": {
+   "en": "Search",
+   "ru": "Поиск"
+  },
+  "terse": {
+   "en": "Look for a hidden target.",
+   "ru": "Найти скрытую цель."
+  },
+  "detail": {
+   "en": "To SEARCH as a pilot on foot, make a contested skill check, adding bonuses from triggers as normal. This can be used to reveal characters within RANGE 5.<br>Once a HIDDEN character has been found using SEARCH, they immediately lose HIDDEN and can be located again by any character.",
+   "ru": "Чтобы искать пешком, пилот совершает состязательную проверку навыка, как обычно добавляя бонусы триггеров. Так можно обнаружить персонажей в пределах Дальности 5.<br>Найденный Поиском Скрытый персонаж сразу теряет статус Скрыт, и его снова может обнаружить любой."
+  }
+ },
+ "act_activate_quick": {
+  "name": {
+   "en": "Quick Activation",
+   "ru": "Быстрая активация"
+  },
+  "terse": {
+   "en": "Activate a system or piece of gear that uses a quick action.",
+   "ru": "Активировать систему или снаряжение, требующее быстрого действия."
+  },
+  "detail": {
+   "en": "When you ACTIVATE, you use a system or piece of gear that requires either a quick or full action. These systems have the QUICK ACTION or FULL ACTION tags. You can ACTIVATE any number of times a turn but can’t ACTIVATE the same system more than once unless you can do so as a free action.",
+   "ru": "Активируя, вы используете систему или снаряжение, требующие быстрого или полного действия. У таких систем есть теги «Быстрое действие» или «Полное действие». Активировать можно сколько угодно раз за ход, но одну и ту же систему — не больше одного раза, если только это не свободное действие."
+  }
+ },
+ "act_eject": {
+  "name": {
+   "en": "Eject",
+   "ru": "Катапультирование"
+  },
+  "terse": {
+   "en": "Eject from your mech, flying 6 spaces in the direction of your choice.",
+   "ru": "Катапультируйтесь из меха и пролетите 6 клеток в выбранном направлении."
+  },
+  "detail": {
+   "en": "You can also EJECT as a quick action, flying 6 spaces in the direction of your choice; however, this is a single-use system for emergency use only – it leaves your mech IMPAIRED. Your mech remains IMPAIRED and you cannot EJECT again until your next FULL REPAIR.",
+   "ru": "Быстрым действием вы можете катапультироваться и пролететь 6 клеток в выбранном направлении. Но эта система одноразовая и только для экстренных случаев: после неё мех Ослаблен. Мех остаётся Ослабленным, а катапультироваться снова нельзя до следующего Полного ремонта."
+  }
+ },
+ "act_prepare": {
+  "name": {
+   "en": "Prepare",
+   "ru": "Подготовка"
+  },
+  "terse": {
+   "en": "Ready a quick action for a specified trigger. Until the start of your next turn, when it is triggered, you can take your prepared action as a reaction. Your preparation counts as taking the action, so it follows all usual restrictions on that action and on taking multiple actions.",
+   "ru": "Подготовьте быстрое действие на заданный триггер. До начала вашего следующего хода, когда триггер сработает, вы можете совершить подготовленное действие как реакцию. Подготовка считается совершением действия и подчиняется всем его ограничениям, в том числе на повтор действий."
+  },
+  "detail": {
+   "en": "When you PREPARE, you get ready to take an action at a specific time or when a specific condition is met (a more advantageous shot, for example).<br>As a quick action, you can PREPARE any other quick action and specify a trigger. Until the start of your next turn, when it is triggered, you can take this action as a reaction.<br>The trigger for your prepared action must be phrased as “When X, then Y,” where X is a reaction, action or move taken by a hostile or allied character and Y is your action. For example, “when an allied character moves adjacent to me, I want to throw a smoke grenade,” or “when a hostile character moves adjacent to me, I want to ram them”.<br>Your preparation counts as taking the action, so it follows all usual restrictions on that action and on taking multiple actions. You can’t, for example, SKIRMISH and then prepare to SKIRMISH again; you also can’t move and then PREPARE to SKIRMISH with an ORDNANCE weapon, which normally needs to be fired before moving or doing anything else on your turn. Additionally, after you PREPARE an action, you can’t move or take any other actions or reactions until the start of your next turn or until your action has been triggered, whichever comes first.<br>Although you can’t take reactions while holding a prepared action, you can take them normally after it has been triggered. You can also drop your prepared action, allowing you to take reactions as usual. If the trigger condition isn’t met, you lose your prepared action.<br>When you PREPARE, it is visible to casual observers (e.g., you clearly take aim or cycle up systems).",
+   "ru": "Готовясь, вы собираетесь совершить действие в определённый момент или при определённом условии (например, когда появится удобный выстрел).<br>Быстрым действием вы можете подготовить любое другое быстрое действие и назвать триггер. До начала вашего следующего хода, когда триггер сработает, вы можете совершить это действие как реакцию.<br>Триггер формулируется как «Когда X, то Y», где X — реакция, действие или перемещение враждебного или союзного персонажа, а Y — ваше действие. Например: «когда союзник подойдёт ко мне вплотную, я брошу дымовую гранату» или «когда враг подойдёт ко мне вплотную, я его протараню».<br>Подготовка считается совершением действия и подчиняется всем его ограничениям, в том числе на повтор действий. Например, нельзя провести Стычку и затем подготовить ещё одну Стычку; нельзя и переместиться, а потом подготовить Стычку с оружием с тегом Боеприпас, которое обычно нужно применять до перемещения и любых других дел в ход. Кроме того, после Подготовки вы не можете перемещаться и совершать другие действия и реакции до начала следующего хода или пока действие не сработает — смотря что раньше.<br>Пока вы держите подготовленное действие, реакции недоступны, но после срабатывания их можно совершать как обычно. Можно и отменить подготовленное действие, чтобы снова свободно реагировать. Если триггер так и не сработал, подготовленное действие пропадает.<br>Подготовка заметна со стороны: видно, как вы целитесь или раскручиваете системы."
+  }
+ },
+ "act_self_destruct": {
+  "name": {
+   "en": "Self Destruct",
+   "ru": "Самоуничтожение"
+  },
+  "terse": {
+   "en": "As a last ditch measure, set your reactor to go critical and explode.",
+   "ru": "Крайняя мера: доведите реактор до критического состояния и взорвите его."
+  },
+  "detail": {
+   "en": "When you SELF DESTRUCT, you overload your mech’s reactor in a final, catastrophic play if there’s no other option for escape or you deem your sacrifice necessary.<br>You can SELF DESTRUCT as a quick action, initiating a reactor meltdown. At the end of your next turn, or at the end of one of your turns within the following two rounds (your choice), your mech explodes as though it suffered a reactor meltdown. The explosion annihilates your mech, killing anyone inside and causing a BURST 2 explosion that deals 4d6 explosive damage. Characters caught in the explosion that succeed on an AGILITY save take half of this damage.",
+   "ru": "Самоуничтожение — перегрузка реактора меха в последнем, катастрофическом ходе, когда бежать некуда или вы считаете жертву необходимой.<br>Быстрым действием вы запускаете расплавление реактора. В конце вашего следующего хода или в конце одного из ваших ходов в течение двух следующих раундов (на ваш выбор) мех взрывается, как при расплавлении реактора. Взрыв уничтожает меха, убивает всех внутри и создаёт Вспышку 2, наносящую 4d6 взрывного урона. Персонажи в зоне взрыва, прошедшие спасбросок Ловкости, получают половину урона."
+  }
+ },
+ "act_shut_down": {
+  "name": {
+   "en": "Shut Down",
+   "ru": "Отключение"
+  },
+  "terse": {
+   "en": "Shut down your mech as a desperate measure, to end system attacks, regain control of AI, and cool your mech. The mech is STUNNED until rebooted via the BOOT UP action.",
+   "ru": "Крайняя мера: отключите меха, чтобы прекратить атаки на системы, вернуть контроль над ИИ и остудить меха. Мех Оглушён, пока его не запустят действием Перезапуск."
+  },
+  "detail": {
+   "en": "When you SHUT DOWN, your mech powers completely off and enters a rest state. It’s always risky to do in the field, but it’s sometimes necessary to prevent a catastrophic systems overload or an NHP cascading.<br>You can SHUT DOWN your mech as a quick action. Your mech takes the SHUT DOWN status, with these effects:<br>• all heat is cleared, as is EXPOSED;<br>• any cascading NHPs return to a normal state;<br>• any statuses or conditions affecting the mech caused by tech actions, such as LOCK ON, immediately end;<br>• the mech gains IMMUNITY to all tech actions and attacks, including any from allied characters;<br>• the mech is STUNNED indefinitely. Nothing can prevent this condition, and it remains until the mech ceases to be SHUT DOWN.<br>The only way to remove the SHUT DOWN status is to BOOT UP the mech.",
+   "ru": "Отключаясь, мех полностью обесточивается и переходит в режим покоя. В бою это всегда риск, но иногда только так можно предотвратить катастрофическую перегрузку систем или каскад NHP.<br>Вы можете отключить меха быстрым действием. Мех получает статус Отключён со следующими эффектами:<br>• всё тепло сбрасывается, статус Открыт снимается;<br>• каскадирующие NHP возвращаются в нормальное состояние;<br>• все статусы и состояния меха, вызванные тех-действиями (например, Захват цели), сразу заканчиваются;<br>• мех получает Иммунитет ко всем тех-действиям и тех-атакам, в том числе союзным;<br>• мех Оглушён на неопределённый срок. Ничто не может это предотвратить, и состояние длится, пока мех Отключён.<br>Снять статус Отключён можно только Перезапуском меха."
+  }
+ },
+ "act_reload": {
+  "name": {
+   "en": "Reload",
+   "ru": "Перезарядка"
+  },
+  "terse": {
+   "en": "Reload one weapon as a pilot.",
+   "ru": "Перезарядите одно оружие пилота."
+  },
+  "detail": {
+   "en": "When you RELOAD, you reload one Pilot Weapon with the LOADING tag, making it usable again.",
+   "ru": "Перезаряжая, вы перезаряжаете одно оружие пилота с тегом Перезаряжаемое, и им снова можно пользоваться."
+  }
+ },
+ "act_barrage": {
+  "name": {
+   "en": "Barrage",
+   "ru": "Залп"
+  },
+  "terse": {
+   "en": "Attack with two weapons, or attack with a single superheavy weapon.",
+   "ru": "Атака двумя оружиями или одним сверхтяжёлым."
+  },
+  "detail": {
+   "en": "When you BARRAGE, you attack with two weapons, or with one SUPERHEAVY weapon.<br>To BARRAGE, choose your weapons and either one target or different targets – within range – then make an attack with each weapon.<br>• In addition to your primary attacks, you may also attack with an AUXILIARY weapon on each mount that was fired, so long as the AUXILIARY weapon hasn’t yet been fired this action. These AUXILIARY weapons don’t deal bonus damage.<br>• SUPERHEAVY weapons can only be fired as part of a BARRAGE.",
+   "ru": "В Залпе вы атакуете двумя оружиями или одним Сверхтяжёлым.<br>Выберите оружие и одну или разные цели в пределах дальности, затем совершите атаку каждым оружием.<br>• Помимо основных атак вы можете атаковать Вспомогательным оружием на каждом задействованном креплении, если это Вспомогательное оружие ещё не стреляло в этом действии. Оно не наносит бонусного урона.<br>• Сверхтяжёлое оружие стреляет только в Залпе."
+  }
+ },
+ "act_full_tech": {
+  "name": {
+   "en": "Full Tech",
+   "ru": "Полное тех-действие"
+  },
+  "terse": {
+   "en": "Choose and perform two Quick Tech options, or perform a full tech action. If you choose two Quick Tech options, you can choose the same option multiple times.",
+   "ru": "Выберите и выполните два варианта быстрого тех-действия или одно полное тех-действие. Два варианта быстрого тех-действия могут совпадать."
+  },
+  "detail": {
+   "en": "When you use FULL TECH, you perform multiple tech actions or a single, more complex action.<br>To use FULL TECH, choose two QUICK TECH options or a single system or tech option that requires FULL TECH to activate. If you choose two QUICK TECH options, you can choose the same option multiple times.",
+   "ru": "Совершая полное тех-действие, вы выполняете несколько тех-действий или одно, более сложное.<br>Выберите два варианта быстрого тех-действия или одну систему либо тех-вариант, которые требуют полного тех-действия. Если выбраны два варианта быстрого тех-действия, они могут совпадать."
+  }
+ },
+ "act_stabilize": {
+  "name": {
+   "en": "Stabilize",
+   "ru": "Стабилизация"
+  },
+  "terse": {
+   "en": "Heal and cool down your mech, reload, or attempt to end conditions affecting it.",
+   "ru": "Подлатайте и остудите меха, перезарядитесь или попробуйте снять наложенные на него состояния."
+  },
+  "detail": {
+   "en": "When you STABILIZE, you enact emergency protocols to purge your mech’s systems of excess heat, repair your chassis where you can, or eliminate hostile code.<br>To STABILIZE, choose one of the following:<br>• Cool your mech, clearing all heat and EXPOSED.<br>• Mark 1 REPAIR to restore all HP.<br>Additionally, choose one of the following:<br>• Reload all LOADING weapons.<br>• Clear any burn currently affecting your mech.<br>• Clear a condition that wasn’t caused by one of your own systems, talents, etc.<br>• Clear an adjacent allied character’s condition that wasn’t caused by one of their own systems, talents, etc.",
+   "ru": "Стабилизируясь, вы запускаете аварийные протоколы: сбрасываете лишнее тепло, латаете корпус, где можно, или вычищаете враждебный код.<br>Выберите одно:<br>• остудить меха: сбросить всё тепло и статус Открыт;<br>• отметить 1 Ремонт и восстановить все ОЗ.<br>И дополнительно одно:<br>• перезарядить всё оружие с тегом Перезаряжаемое;<br>• снять весь Огонь, действующий на меха;<br>• снять одно состояние, вызванное не вашими собственными системами, талантами и т. п.;<br>• снять с соседнего союзника одно состояние, вызванное не его собственными системами, талантами и т. п."
+  }
+ },
+ "act_disengage": {
+  "name": {
+   "en": "Disengage",
+   "ru": "Отход"
+  },
+  "terse": {
+   "en": "Disengage safely from a dangerous situation. Until the end of your current turn, you ignore engagement and your movement does not provoke reactions.",
+   "ru": "Безопасно выйдите из опасной ситуации. До конца текущего хода вы игнорируете связанность боем, а ваше перемещение не вызывает реакций."
+  },
+  "detail": {
+   "en": "When you DISENGAGE, you attempt to extricate yourself safely from a dangerous situation, make a steady and measured retreat, or rely on your mech’s agility to slip in and out of threat ranges faster than an enemy can strike.<br>Until the end of your current turn, you ignore engagement and your movement does not provoke reactions.",
+   "ru": "Отходя, вы пытаетесь безопасно выбраться из опасной ситуации, отступить размеренно и организованно или положиться на ловкость меха, чтобы проскользнуть сквозь зоны угрозы быстрее, чем враг успеет ударить.<br>До конца текущего хода вы игнорируете связанность боем, а ваше перемещение не вызывает реакций."
+  }
+ },
+ "act_improvised_attack": {
+  "name": {
+   "en": "Improvised Attack",
+   "ru": "Импровизированная атака"
+  },
+  "terse": {
+   "en": "Attack with a fist, rifle butt, or improvised weapon in melee.",
+   "ru": "Атака в ближнем бою кулаком, прикладом или подручным оружием."
+  },
+  "detail": {
+   "en": "When you make an IMPROVISED ATTACK, you attack with a rifle butt, fist, or another improvised melee weapon. You can use anything from the butt of a weapon to a slab of concrete or a length of hull plating – the flavor of the attack is up to you!<br>To make an IMPROVISED ATTACK, make a melee attack against an adjacent target. On a success, they take 1d6 kinetic damage.",
+   "ru": "Импровизированная атака — удар прикладом, кулаком или другим подручным оружием ближнего боя. Сгодится что угодно, от приклада до бетонной плиты или куска обшивки, — как это выглядит, решаете вы!<br>Совершите атаку ближнего боя против соседней цели. При успехе она получает 1d6 кинетического урона."
+  }
+ },
+ "act_activate_full": {
+  "name": {
+   "en": "Full Activation",
+   "ru": "Полная активация"
+  },
+  "terse": {
+   "en": "Activate a system or piece of gear that uses a full action.",
+   "ru": "Активировать систему или снаряжение, требующее полного действия."
+  },
+  "detail": {
+   "en": "When you ACTIVATE, you use a system or piece of gear that requires either a quick or full action. These systems have the QUICK ACTION or FULL ACTION tags. You can ACTIVATE any number of times a turn but can’t ACTIVATE the same system more than once unless you can do so as a free action.",
+   "ru": "Активируя, вы используете систему или снаряжение, требующие быстрого или полного действия. У таких систем есть теги «Быстрое действие» или «Полное действие». Активировать можно сколько угодно раз за ход, но одну и ту же систему — не больше одного раза, если только это не свободное действие."
+  }
+ },
+ "act_boot_up": {
+  "name": {
+   "en": "Boot Up",
+   "ru": "Перезапуск"
+  },
+  "terse": {
+   "en": "Fire up your mech from Shut Down.",
+   "ru": "Запустите Отключённого меха."
+  },
+  "detail": {
+   "en": "You can BOOT UP a mech that you are piloting as a full action, clearing SHUT DOWN and restoring your mech to a powered state.",
+   "ru": "Полным действием вы можете перезапустить меха, которым управляете: статус Отключён снимается, и мех снова под питанием."
+  }
+ },
+ "act_mount": {
+  "name": {
+   "en": "Mount",
+   "ru": "Посадка"
+  },
+  "terse": {
+   "en": "Get in to your mech.",
+   "ru": "Сесть в своего меха."
+  },
+  "detail": {
+   "en": "When you MOUNT, you climb onto a mech. Mounting is the preferred term among most pilots. You don’t “get in” or “climb aboard” – you mount. You’re the cavalry, after all.<br>You can MOUNT as a full action. You must be adjacent your mech to MOUNT. <br>Additionally, you can also MOUNT willing allied mechs or vehicles. When you do so, move into the same space and then move with them.",
+   "ru": "При Посадке вы забираетесь на меха. Большинство пилотов говорят именно так: в меха не «залезают» и не «поднимаются на борт» — в него садятся, как в седло. Вы же кавалерия, в конце концов.<br>Посадка — полное действие. Для неё нужно стоять рядом со своим мехом.<br>Кроме того, можно садиться на согласных союзных мехов или машины. Тогда вы переходите в их клетку и дальше перемещаетесь вместе с ними."
+  }
+ },
+ "act_dismount": {
+  "name": {
+   "en": "Dismount",
+   "ru": "Высадка"
+  },
+  "terse": {
+   "en": "Get out of your mech.",
+   "ru": "Выйти из своего меха."
+  },
+  "detail": {
+   "en": "When you DISMOUNT, you climb off of a mech. Dismounting is the preferred term among most pilots.<br>You can DISMOUNT as a full action. When you DISMOUNT, you are placed in an adjacent space – if there are no free spaces, you cannot DISMOUNT.<br>Additionally, you can also DISMOUNT willing allied mechs or vehicles you have MOUNTED.",
+   "ru": "При Высадке вы слезаете с меха. Большинство пилотов говорят именно так.<br>Высадка — полное действие. Вы оказываетесь в соседней клетке; если свободных клеток нет, высадиться нельзя.<br>Кроме того, можно высаживаться из согласных союзных мехов или машин, в которые вы сели."
+  }
+ },
+ "act_skill_check": {
+  "name": {
+   "en": "Skill Check",
+   "ru": "Проверка навыка"
+  },
+  "terse": {
+   "en": "Perform an activity with a clear goal that would take a skill check.",
+   "ru": "Сделать что-то с ясной целью, что требует проверки навыка."
+  },
+  "detail": {
+   "en": "When you make a SKILL CHECK, you undertake an activity that isn’t covered by other actions but has a clear goal and is sufficiently complex to require a roll. The parameters and outcomes of SKILL CHECKS are up to the GM, but they must be involved enough to require a full action. If you want to do something that can be done quickly, no action is required.",
+   "ru": "Проверка навыка — это действие, которое не описано другими действиями, но имеет ясную цель и достаточно сложно, чтобы требовать броска. Условия и последствия Проверки навыка определяет ведущий, но действие должно быть достаточно трудоёмким, чтобы занять полное действие. Если задуманное делается быстро, действие не требуется."
+  }
+ },
+ "act_fight": {
+  "name": {
+   "en": "Fight",
+   "ru": "Драка"
+  },
+  "terse": {
+   "en": "Attack with one weapon as a pilot.",
+   "ru": "Атака одним оружием пилота."
+  },
+  "detail": {
+   "en": "When you FIGHT, you attack (melee or ranged) with one weapon.<br>To FIGHT, choose a weapon and attack a target within RANGE or THREAT and line of sight as a full action. Ranged attacks are affected by cover and receive +1 difficulty if you’re ENGAGED.",
+   "ru": "В Драке вы атакуете одним оружием (ближнего или дальнего боя).<br>Полным действием выберите оружие и атакуйте цель в пределах Дальности или Угрозы и линии видимости. На атаки дальнего боя влияет укрытие, и они получают +1 Сложность, если вы Связаны боем."
+  }
+ },
+ "act_jockey": {
+  "name": {
+   "en": "Jockey",
+   "ru": "Оседлать"
+  },
+  "terse": {
+   "en": "Attempt to attack a mech on foot as a pilot.",
+   "ru": "Пешком атаковать меха."
+  },
+  "detail": {
+   "en": "When you JOCKEY, you aggressively attack an enemy mech while on foot. It cannot be emphasized enough how foolhardy and dangerous this is.<br>To JOCKEY, you must be adjacent to a mech. As a full action, make a contested skill check against the mech, using GRIT (or a relevant trigger, at the GM’s discretion). The mech contests with HULL. On a success, you manage to climb onto the mech, sharing its space and moving with it. The mech can attempt to shake you off by succeeding on another contested skill check as a full action; alternatively, you can jump off as part of your movement on your turn.",
+   "ru": "Седлая меха, вы яростно атакуете вражеского меха, будучи пешком. Нельзя переоценить, насколько это безрассудно и опасно.<br>Нужно стоять рядом с мехом. Полным действием совершите состязательную проверку навыка против меха, используя GRIT (или подходящий триггер на усмотрение ведущего). Мех противопоставляет ей Корпус. При успехе вы забираетесь на меха, занимаете его клетку и перемещаетесь вместе с ним. Мех может попытаться стряхнуть вас, выиграв ещё одну состязательную проверку полным действием; а вы можете спрыгнуть в рамках своего перемещения в свой ход."
+  }
+ },
+ "act_jockey_distract": {
+  "name": {
+   "en": "Distract",
+   "ru": "Отвлечь"
+  },
+  "terse": {
+   "en": "IMPAIR and SLOW a mech until the end of its next turn.",
+   "ru": "Мех Ослаблен и Замедлен до конца своего следующего хода."
+  },
+  "detail": {
+   "en": "IMPAIR and SLOW a mech until the end of its next turn.",
+   "ru": "Мех Ослаблен и Замедлен до конца своего следующего хода."
+  }
+ },
+ "act_jockey_shred": {
+  "name": {
+   "en": "Shred",
+   "ru": "Раскурочить"
+  },
+  "terse": {
+   "en": "Deal 2 Heat",
+   "ru": "Нанести 2 тепла."
+  },
+  "detail": {
+   "en": "Deal 2 heat to the mech by ripping at wiring, paneling, and so on.",
+   "ru": "Нанесите меху 2 тепла, обрывая проводку, срывая панели и так далее."
+  }
+ },
+ "act_jockey_damage": {
+  "name": {
+   "en": "Damage",
+   "ru": "Повредить"
+  },
+  "terse": {
+   "en": "Deal 4 Kinetic Damage",
+   "ru": "Нанести 4 кинетического урона."
+  },
+  "detail": {
+   "en": "Deal 4 kinetic damage to the mech by attacking joints, hatches, and so on.",
+   "ru": "Нанесите меху 4 кинетического урона, атакуя сочленения, люки и так далее."
+  }
+ },
+ "act_brace": {
+  "name": {
+   "en": "Brace",
+   "ru": "Стойка"
+  },
+  "terse": {
+   "en": "Brace your mech for impact, reducing damage at the cost of your next turn’s actions.",
+   "ru": "Приготовьте меха к удару: урон меньше, но в следующий ход действий меньше."
+  },
+  "detail": {
+   "en": "You count as having RESISTANCE to all damage, burn, and heat from the triggering attack, and until the end of your next turn, all other attacks against you are made at +1 difficulty.<br>Due to the stress of bracing, you cannot take reactions until the end of your next turn and on that turn, you can only take one quick action – you cannot OVERCHARGE, move normally, take full actions, or take free actions.",
+   "ru": "У вас Сопротивление всему урону, Огню и теплу от вызвавшей реакцию атаки, а до конца вашего следующего хода все остальные атаки против вас совершаются с +1 Сложностью.<br>Из-за нагрузки от Стойки вы не можете совершать реакции до конца следующего хода, а в этот ход можете совершить только одно быстрое действие: нельзя Форсаж, обычное перемещение, полные и свободные действия."
+  }
+ },
+ "act_overwatch": {
+  "name": {
+   "en": "Overwatch",
+   "ru": "Дозор"
+  },
+  "terse": {
+   "en": "Attack a close-by target attempting to move.",
+   "ru": "Атаковать ближнюю цель, которая пытается переместиться."
+  },
+  "detail": {
+   "en": "When a weapon is triggered through OVERWATCH, immediately use that weapon to SKIRMISH against the triggering character as a reaction, before they move.",
+   "ru": "Когда оружие срабатывает по Дозору, немедленно проведите им Стычку против вызвавшего реакцию персонажа — реакцией, до того как он переместится."
+  }
+ },
+ "act_free_action": {
+  "name": {
+   "en": "Free Action",
+   "ru": "Свободное действие"
+  },
+  "terse": {
+   "en": "Characters may perform any number of Free Actions on their turn.",
+   "ru": "Персонаж может совершить в свой ход сколько угодно свободных действий."
+  },
+  "detail": {
+   "en": "Free actions are often granted by systems, talents, gear, or OVERCHARGE. Characters may perform any number of free actions on their turn, but only on their turn, and only those granted to them. Free actions can always be used to make duplicate actions.<br>The most common type of free action is a PROTOCOL, which is granted by gear or systems and can be activated or deactivated only at the start of a turn. Each Protocol can only be taken once per turn.",
+   "ru": "Свободные действия обычно дают системы, таланты, снаряжение или Форсаж. Персонаж может совершать сколько угодно свободных действий в свой ход — но только в свой ход и только те, что ему даны. Свободным действием всегда можно повторить действие.<br>Самый частый вид свободного действия — Протокол: его дают снаряжение или системы, а включать и выключать его можно только в начале хода. Каждый Протокол — не чаще раза за ход."
+  }
+ }
+}

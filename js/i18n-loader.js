@@ -66,7 +66,8 @@ function applyStaticStrings(root = document) {
 
 const LOCALE_CATEGORY_FILES = [
   "enums", "frames", "weapons", "systems", "talents",
-  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags", "glossary", "stat_labels", "mods"
+  "skills", "core_bonuses", "pilot_gear", "backgrounds", "manufacturers", "tags", "glossary", "stat_labels", "mods",
+  "actions", "statuses"
 ];
 
 async function fetchJSON(url) {
@@ -79,9 +80,9 @@ async function fetchJSON(url) {
    Each pack file is pre-normalized (see tools/normalize_pack.py) into the
    same flat shape as data/lancer-data.json, so no renderer changes are
    needed. Packs only cover categories the app already has a UI for
-   (frames/weapons/systems/talents/pilot_gear/core_bonuses/mods/backgrounds) — pack
-   categories with no app support (e.g. reserves, environments) are
-   intentionally omitted; see README. */
+   (frames/weapons/systems/talents/pilot_gear/core_bonuses/mods/backgrounds,
+   and statuses for the reference) — pack categories with no app support
+   (e.g. reserves, environments) are intentionally omitted; see README. */
 const CONTENT_PACKS = [
   "data/packs/osr-data.json", "data/packs/wallflower-data.json",
   "data/packs/ows-data.json", "data/packs/long-rim-data.json",
@@ -131,7 +132,7 @@ async function loadBaseData() {
     const origin = new Map();
     packs.forEach((pack, i) => {
       if (!pack) return;
-      for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses", "mods", "backgrounds"]) {
+      for (const cat of ["frames", "weapons", "systems", "talents", "pilot_gear", "core_bonuses", "mods", "backgrounds", "statuses"]) {
         if (!pack[cat] || !pack[cat].length) continue;
         core[cat] = (core[cat] || []).concat(pack[cat]);
         pack[cat].forEach(it => origin.set(cat + ":" + it.id, packId(CONTENT_PACKS[i])));
@@ -196,7 +197,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever the app's code (index.html, css/, js/) changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-10-23-build-rules-content";
+const APP_BUILD = "2026-11-11-reference";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {

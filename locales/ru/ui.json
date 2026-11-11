@@ -1327,6 +1327,46 @@
   "en": "Weapons:",
   "ru": "Оружие:"
  },
+ "ref.conditions": {
+  "en": "Conditions",
+  "ru": "Состояния"
+ },
+ "ref.group.free": {
+  "en": "Free actions",
+  "ru": "Свободные действия"
+ },
+ "ref.group.full": {
+  "en": "Full actions",
+  "ru": "Полные действия"
+ },
+ "ref.group.move": {
+  "en": "Movement",
+  "ru": "Перемещение"
+ },
+ "ref.group.quick": {
+  "en": "Quick actions",
+  "ru": "Быстрые действия"
+ },
+ "ref.group.reaction": {
+  "en": "Reactions",
+  "ru": "Реакции"
+ },
+ "ref.on_foot": {
+  "en": "ON FOOT",
+  "ru": "ПЕШКОМ"
+ },
+ "ref.on_foot_hint": {
+  "en": "A pilot on foot can take this action too",
+  "ru": "Это действие доступно и пилоту без меха"
+ },
+ "ref.statuses": {
+  "en": "Statuses",
+  "ru": "Статусы"
+ },
+ "ref.title": {
+  "en": "Quick reference",
+  "ru": "Памятка"
+ },
  "retro.lead": {
   "en": "Choose the mount to replace with a Main/Aux mount. Weapons that do not fit Main/Aux come off.",
   "ru": "Выберите крепление, которое станет креплением Main/Aux. Оружие, которое в Main/Aux не помещается, будет снято."
@@ -1998,6 +2038,10 @@
  "topbar.print": {
   "en": "PRINT",
   "ru": "ПЕЧАТЬ"
+ },
+ "topbar.ref": {
+  "en": "REFERENCE",
+  "ru": "ПАМЯТКА"
  },
  "topbar.reset": {
   "en": "RESET",

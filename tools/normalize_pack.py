@@ -19,6 +19,8 @@ This script flattens it so the renderer needs no changes:
     (already_described()); frame core systems keep structured actions
   - engine-hook fields the app never reads (synergies, active_effects,
     counters, talent_* …, see HOOKS) are dropped
+Basic actions and statuses/conditions feed the in-app reference (? button):
+NPC duplicates ("act_*_npc") are dropped — the app builds player characters.
 Unsupported categories (reserves, environments — the app has no UI/tab
 for these at all) are intentionally left out; see README.
 """
@@ -312,6 +314,18 @@ def norm_manufacturer(m):
     return m
 
 
+def norm_action(a):
+    """Basic actions for the reference. Engine fields (add_status, damage, …)
+    are dropped; None drops the item itself."""
+    if a["id"].endswith("_npc"):
+        return None
+    return {k: a[k] for k in ("id", "name", "activation", "terse", "detail", "pilot") if k in a}
+
+
+def norm_status(s):
+    return {k: s[k] for k in ("id", "name", "type", "terse", "effects") if k in s}
+
+
 NORMALIZERS = {
     "frames": norm_frame,
     "weapons": norm_weapon,
@@ -323,9 +337,14 @@ NORMALIZERS = {
     "backgrounds": norm_background,
     "manufacturers": norm_manufacturer,
     "mods": norm_mod,
+    "actions": norm_action,
+    "statuses": norm_status,
 }
 # Only lancer-data has these; packs don't get empty arrays for them.
-CORE_ONLY = {"skills", "manufacturers"}
+CORE_ONLY = {"skills", "manufacturers", "actions"}
+# Read from lancer-data only: a pack's actions.json holds downtime actions
+# (Long Rim), which the reference leaves out.
+PACKS_SKIP = {"actions"}
 
 
 def fingerprint(item):
@@ -364,6 +383,8 @@ def build_pack(lib_dir, out_path, item_prefix):
     overrides = load_overrides(lib_dir)
     out = {}
     for cat, fn in NORMALIZERS.items():
+        if cat in PACKS_SKIP and lib_dir.name != "lancer-data":
+            continue
         src = lib_dir / f"{cat}.json"
         if not src.exists():
             if cat not in CORE_ONLY:
@@ -376,7 +397,7 @@ def build_pack(lib_dir, out_path, item_prefix):
                 apply_override(it, patches.pop(it["id"]), f"{cat}/{it['id']}")
         for missing in patches:
             print(f"  ! override {cat}/{missing}: no such item upstream")
-        out[cat] = [fn(it) for it in items]
+        out[cat] = [x for x in map(fn, items) if x is not None]
     pathlib.Path(out_path).write_text(
         json.dumps(out, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
     )
