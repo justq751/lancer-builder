@@ -26,6 +26,12 @@
   --ok:#4fae6e;          /* unlocked license requirement met */
   --amber-glow:rgba(244,169,58,.14);
   --red:#e5604f;
+  /* Action types: one hue per activation, shared by action blocks and the
+     quick reference. Free is a cool steel, bright enough to read as a colour. */
+  --act-full:#ffb020; --act-quick:#8b7fe8; --act-move:#37e0c0; --act-overcharge:#f0644e;
+  --act-reaction:#e87f9e; --act-free:#8fb3d9; --act-protocol:#37e0c0;
+  /* Quick reference: statuses are system facts, conditions are done to you. */
+  --ref-status:#37e0c0; --ref-cond:#ef8a6a;
   --gms:#d8604c; --ipsn:#3f8fd6; --ssc:#d8c160; --horus:#52b585; --ha:#9d6fdd; --exotic:#e8398a;
   --shadow:0 18px 50px -20px rgba(0,0,0,.8);
   /* Paper is its own surface, not the dark UI inverted: printed output has
@@ -495,11 +501,11 @@ button{font-family:inherit; cursor:pointer}
    per activation type so Quick/Protocol/Full read apart at a glance. */
 .action-block{background:var(--panel-2); border:1px solid var(--line); border-left:3px solid var(--line-bright);
   border-radius:8px; padding:12px 14px; margin-top:10px}
-.action-block.act-quick{border-left-color:#8b7fe8}
-.action-block.act-protocol{border-left-color:var(--accent)}
-.action-block.act-full{border-left-color:var(--amber)}
-.action-block.act-reaction{border-left-color:#e87f9e}
-.action-block.act-free{border-left-color:var(--faint)}
+.action-block.act-quick{border-left-color:var(--act-quick)}
+.action-block.act-protocol{border-left-color:var(--act-protocol)}
+.action-block.act-full{border-left-color:var(--act-full)}
+.action-block.act-reaction{border-left-color:var(--act-reaction)}
+.action-block.act-free{border-left-color:var(--act-free)}
 .action-head{display:flex; align-items:center; justify-content:space-between; gap:10px}
 .action-nm{font-family:"Chakra Petch",sans-serif; font-size:14.5px; letter-spacing:.02em}
 .action-badge{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.08em; color:var(--mute);
@@ -784,35 +790,101 @@ button{font-family:inherit; cursor:pointer}
 .dialog-actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px}
 .dialog-actions .ghostbtn{flex:1 1 200px; text-align:center}
 
-/* Quick reference (js/ui/reference.js): groups of one-line rules, each
-   opening into the full text; the left rule is the activation color of
-   .action-block. */
-.ref{display:flex; flex-direction:column; gap:18px}
-.ref-grp h4{font-family:"Chakra Petch",sans-serif; font-size:16.5px; letter-spacing:.04em; margin:0 0 6px;
-  padding-left:10px; border-left:3px solid var(--line-bright)}
-.ref-quick h4{border-left-color:#8b7fe8}
-.ref-full h4{border-left-color:var(--amber)}
-.ref-reaction h4{border-left-color:#e87f9e}
-.ref-free h4{border-left-color:var(--faint)}
-.ref-move h4,.ref-status h4{border-left-color:var(--accent)}
-.ref-it{border-bottom:1px solid var(--line)}
-.ref-head{display:flex; flex-wrap:wrap; align-items:baseline; gap:2px 10px; padding:8px 4px; list-style:none}
+/* Quick reference (js/ui/reference.js). Colour is the navigation: --k is the
+   entry's type hue, set once per type class and reused by the turn strip,
+   the section heading and the card band. */
+.k-full{--k:var(--act-full)} .k-quick{--k:var(--act-quick)} .k-move{--k:var(--act-move)}
+.k-overcharge{--k:var(--act-overcharge)} .k-reaction{--k:var(--act-reaction)} .k-free{--k:var(--act-free)}
+.k-status{--k:var(--ref-status)} .k-cond{--k:var(--ref-cond)}
+.ref .ic{width:18px; height:18px; flex-shrink:0; color:var(--k)}
+.ref-tabs{display:flex; gap:4px; border-bottom:1px solid var(--line); margin:-4px 0 18px}
+.ref-tab{background:none; border:0; border-bottom:2px solid transparent; margin-bottom:-1px; color:var(--mute);
+  font-family:"JetBrains Mono",monospace; font-size:12.5px; letter-spacing:.08em; text-transform:uppercase;
+  padding:10px 14px; min-height:44px; cursor:pointer}
+.ref-tab:hover{color:var(--ink)}
+.ref-tab[aria-selected="true"]{color:var(--select); border-bottom-color:var(--select)}
+.ref-panel{display:flex; flex-direction:column; gap:26px}
+.ref-panel[hidden]{display:none}
+
+/* Turn strip: the action economy as five tiles; legend and filter at once. */
+.ref-turn{display:grid; grid-template-columns:2.2fr repeat(4,1fr); gap:8px}
+.rt-pair{display:flex; align-items:stretch; gap:6px}
+.rt-pair .rt-tile{flex:1}
+.rt-or{align-self:center; font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.08em;
+  color:var(--mute); text-transform:uppercase}
+.rt-tile{display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px;
+  min-height:96px; padding:12px 8px; border-radius:8px; cursor:pointer; color:var(--ink);
+  border:1px solid color-mix(in srgb,var(--k) 55%,transparent);
+  background:color-mix(in srgb,var(--k) 15%,var(--panel)); transition:background .15s, opacity .15s, border-color .15s}
+.rt-tile .rt-ic{width:34px; height:34px}
+.rt-l{font-family:"Chakra Petch",sans-serif; font-size:15px; font-weight:600; letter-spacing:.03em; text-align:center}
+.rt-lim{font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.06em; white-space:nowrap;
+  color:color-mix(in srgb,var(--k) 55%,var(--ink))}
+.rt-tile:hover{background:color-mix(in srgb,var(--k) 26%,var(--panel)); border-color:var(--k)}
+.rt-tile[aria-pressed="true"]{background:color-mix(in srgb,var(--k) 34%,var(--panel)); border-color:var(--k)}
+.ref.filtered .rt-tile[aria-pressed="false"]{opacity:.45}
+.ref.filtered .rt-tile[aria-pressed="false"]:hover{opacity:.8}
+.ref-hint{display:flex; align-items:center; gap:12px; flex-wrap:wrap; margin:-16px 0 0; min-height:36px;
+  color:var(--mute); font-size:13px}
+.ref-hint .ghostbtn{min-height:36px; padding:6px 12px}
+
+/* Sections and cards */
+.ref-sh{display:flex; align-items:center; gap:9px; margin:0 0 10px; color:var(--k);
+  font-family:"Chakra Petch",sans-serif; font-size:18px; font-weight:600; letter-spacing:.03em}
+.ref-sh .ic{width:22px; height:22px}
+.k-status .rc-band .ic,.k-cond .rc-band .ic{width:22px; height:22px}
+.ref-n{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--mute); font-weight:400}
+.ref-sec[hidden]{display:none}
+.ref-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:10px; align-items:start}
+.rc{background:var(--panel-2); border:1px solid color-mix(in srgb,var(--k) 38%,var(--line)); border-radius:8px; overflow:hidden}
+.rc[open]{grid-column:1/-1; border-color:color-mix(in srgb,var(--k) 70%,var(--line))}
+.ref-head{display:flex; flex-direction:column; list-style:none}
 summary.ref-head{cursor:pointer}
 summary.ref-head::-webkit-details-marker{display:none}
-summary.ref-head::before{content:"▸"; color:var(--accent); font-size:12px; width:10px}
-details[open] > summary.ref-head::before{content:"▾"}
-div.ref-head{padding-left:24px}
-summary.ref-head:hover .ref-nm{color:var(--accent)}
-summary.ref-head:focus-visible{outline:2px solid var(--accent); outline-offset:-2px; border-radius:4px}
-.ref-nm{font-family:"Chakra Petch",sans-serif; font-size:15px; color:var(--ink)}
-.ref-foot{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.08em; color:var(--mute);
-  border:1px solid var(--line-bright); border-radius:4px; padding:1px 6px}
-.ref-terse{flex-basis:100%; padding-left:20px; color:var(--mute); font-size:13.5px; line-height:1.45}
-div.ref-head .ref-terse{padding-left:0}
-.ref-body{padding:0 4px 12px 24px; font-size:13.5px; line-height:1.55; color:var(--ink)}
-.ref-body p{margin:0}
-.ref-kids{margin-top:10px; border-left:1px solid var(--line-bright); padding-left:8px}
-.ref-kids .ref-it:last-child{border-bottom:0}
+.rc-band{display:flex; align-items:center; gap:9px; padding:9px 12px; min-height:42px;
+  background:color-mix(in srgb,var(--k) 20%,transparent);
+  border-bottom:1px solid color-mix(in srgb,var(--k) 40%,transparent)}
+.ref-nm{font-family:"Chakra Petch",sans-serif; font-size:15.5px; font-weight:600; letter-spacing:.02em; color:var(--ink)}
+.ref-foot{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.08em; color:var(--ink);
+  border:1px solid var(--line-bright); border-radius:4px; padding:1px 6px; background:var(--panel)}
+.chev{margin-left:auto; width:8px; height:8px; flex-shrink:0; border-right:2px solid var(--k); border-bottom:2px solid var(--k);
+  transform:translateY(-2px) rotate(45deg); transition:transform .18s}
+details[open] > summary .chev{transform:translateY(2px) rotate(-135deg)}
+.rc .ref-terse{padding:10px 12px 12px; color:var(--mute); font-size:13.5px; line-height:1.5}
+.rc-opts{display:flex; flex-wrap:wrap; align-items:center; gap:5px; padding:0 12px 12px; margin-top:-4px}
+.rc-opts-l{font-family:"JetBrains Mono",monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute); margin-right:3px}
+.rc-chip{font-size:12px; padding:2px 8px; border-radius:4px; color:var(--ink);
+  background:color-mix(in srgb,var(--k) 16%,transparent); border:1px solid color-mix(in srgb,var(--k) 35%,transparent)}
+.rc[open] .rc-opts{display:none}
+summary.ref-head:hover .ref-nm{color:color-mix(in srgb,var(--k) 45%,var(--ink))}
+summary.ref-head:focus-visible{outline:2px solid var(--k); outline-offset:-2px}
+.rc > summary.ref-head:focus-visible{border-radius:8px 8px 0 0}
+.ref-body{padding:2px 12px 14px; font-size:14px; line-height:1.6; color:var(--ink)}
+.rc > .ref-body{border-top:1px solid var(--line); padding-top:12px}
+.ref-text{max-width:78ch}
+.ref-text p{margin:0 0 8px}
+.ref-kids{margin-top:14px}
+.rk-h{font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:400; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--k); margin:0 0 4px}
+.rk{border-top:1px solid var(--line)}
+.rk-line{display:flex; align-items:center; gap:9px; padding:9px 0 2px}
+.rk .ref-terse{padding:0 0 9px 17px; color:var(--mute); font-size:13.5px}
+div.rk .ref-terse{padding-left:0}
+.rk .chev{margin-left:0; width:7px; height:7px; transform:translateY(-1px) rotate(-45deg)}
+.rk[open] > summary .chev{transform:translateY(-3px) rotate(45deg)}
+.rk .ref-body{padding:0 0 12px 17px}
+.rk .ref-kids{margin-top:8px; padding-left:12px; border-left:1px solid color-mix(in srgb,var(--k) 45%,transparent)}
+@media(max-width:760px){
+  .ref-turn{grid-template-columns:1fr 1fr; gap:6px}
+  .rt-pair{grid-column:1/-1}
+  .rt-tile{min-height:0; min-width:0; display:grid; grid-template-columns:auto minmax(0,1fr); column-gap:9px; row-gap:1px;
+    justify-items:start; padding:8px 10px}
+  .rt-tile .rt-ic{width:24px; height:24px; grid-row:span 2}
+  .rt-l{font-size:14px; text-align:left}
+  .ref-hint{margin-top:-14px; font-size:12.5px}
+  .ref-grid{grid-template-columns:minmax(0,1fr)}
+}
+@media(prefers-reduced-motion:reduce){.chev,.rt-tile{transition:none}}
 
 /* summary sheet */
 .sheet{display:grid; grid-template-columns:1fr 1fr; gap:16px}

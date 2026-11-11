@@ -197,7 +197,7 @@ const dispName = f => (f && (f.display_name || f.name)) || "";
 /* Bump this string whenever the app's code (index.html, css/, js/) changes — printed on load so you can
    verify in the browser console (F12) that the deployed copy is current,
    instead of guessing whether a cached/older file is being served. */
-const APP_BUILD = "2026-11-11-reference";
+const APP_BUILD = "2026-11-11-reference-v2";
 console.log("[Lancer Registry] build:", APP_BUILD);
 
 async function fetchAndLocalize(lang) {

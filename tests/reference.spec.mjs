@@ -15,8 +15,10 @@ test("the reference lists every action and status, nested where chosen inside an
   const total = await page.evaluate(() => L.actions.length + L.statuses.length);
   await expect(page.locator("#modal .ref-it")).toHaveCount(total);
   expect(await page.evaluate(() => L.actions.some(a => a.id.endsWith("_npc")))).toBe(false);
-  await expect(page.locator("#modal .ref-grp h4")).toHaveText(
-    ["Перемещение", "Быстрые действия", "Полные действия", "Реакции", "Свободные действия", "Статусы", "Состояния"]);
+  // Sections follow the turn strip; Overcharge has its own type.
+  await expect(page.locator("#ref-panel-actions .ref-sh")).toHaveText(
+    ["Полные действия12", "Быстрые действия14", "Перемещение1", "Форсаж1", "Реакции2", "Свободные действия1"]);
+  await expect(page.locator("#ref-panel-statuses .ref-sh")).toHaveText(["Статусы9", "Состояния7"]);
 
   await expect(ref(page, "act_quick_tech").locator(":scope > .ref-body > .ref-kids > .ref-it")).toHaveCount(4);
   await expect(ref(page, "act_invade").locator('.ref-it[data-ref="act_inv_fragment_signal"]')).toHaveCount(1);
@@ -42,5 +44,30 @@ test("a supplement's status shows only while the supplement is on", async ({ pag
   await page.locator("#t-ref").click();
   await expect(ref(page, "intangible")).toHaveCount(0);
   await expect(ref(page, "prone")).toHaveCount(1);
+  expect(errors).toEqual([]);
+});
+
+test("a turn-strip tile filters the actions; the open tab is remembered", async ({ page }) => {
+  const errors = await openApp(page);
+  await page.locator("#t-ref").click();
+  const sections = page.locator("#ref-panel-actions .ref-sec:visible");
+  await expect(sections).toHaveCount(6);
+
+  await page.locator('.rt-tile[data-kind="reaction"]').click();
+  await expect(page.locator('.rt-tile[data-kind="reaction"]')).toHaveAttribute("aria-pressed", "true");
+  await expect(sections).toHaveCount(1);
+  await expect(ref(page, "act_brace")).toBeVisible();
+  await page.locator('.rt-tile[data-kind="reaction"]').click(); // again: everything back
+  await expect(sections).toHaveCount(6);
+  await page.locator('.rt-tile[data-kind="move"]').click();
+  await page.locator("#modal .ref-all").click();
+  await expect(sections).toHaveCount(6);
+
+  await page.locator("#ref-tab-statuses").click();
+  await expect(ref(page, "prone")).toBeVisible();
+  await expect(ref(page, "act_brace")).toBeHidden();
+  await page.evaluate(() => closeModal());
+  await page.locator("#t-ref").click();
+  await expect(page.locator("#ref-tab-statuses")).toHaveAttribute("aria-selected", "true");
   expect(errors).toEqual([]);
 });

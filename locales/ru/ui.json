@@ -1343,6 +1343,10 @@
   "en": "Movement",
   "ru": "Перемещение"
  },
+ "ref.group.overcharge": {
+  "en": "Overcharge",
+  "ru": "Форсаж"
+ },
  "ref.group.quick": {
   "en": "Quick actions",
   "ru": "Быстрые действия"
@@ -1350,6 +1354,22 @@
  "ref.group.reaction": {
   "en": "Reactions",
   "ru": "Реакции"
+ },
+ "ref.limit.any": {
+  "en": "any number",
+  "ru": "без лимита"
+ },
+ "ref.limit.round": {
+  "en": "1 / round",
+  "ru": "1 / раунд"
+ },
+ "ref.limit.turn": {
+  "en": "1 / turn",
+  "ru": "1 / ход"
+ },
+ "ref.limit.two": {
+  "en": "2 / turn",
+  "ru": "2 / ход"
  },
  "ref.on_foot": {
   "en": "ON FOOT",
@@ -1359,13 +1379,65 @@
   "en": "A pilot on foot can take this action too",
   "ru": "Это действие доступно и пилоту без меха"
  },
+ "ref.options": {
+  "en": "Options",
+  "ru": "Варианты"
+ },
+ "ref.show_all": {
+  "en": "Show all",
+  "ru": "Показать все"
+ },
  "ref.statuses": {
   "en": "Statuses",
   "ru": "Статусы"
  },
+ "ref.tab.actions": {
+  "en": "Actions",
+  "ru": "Действия"
+ },
+ "ref.tab.statuses": {
+  "en": "Statuses & conditions",
+  "ru": "Статусы и состояния"
+ },
+ "ref.tile.free": {
+  "en": "Free",
+  "ru": "Свободное"
+ },
+ "ref.tile.full": {
+  "en": "Full",
+  "ru": "Полное"
+ },
+ "ref.tile.move": {
+  "en": "Move",
+  "ru": "Перемещение"
+ },
+ "ref.tile.overcharge": {
+  "en": "Overcharge",
+  "ru": "Форсаж"
+ },
+ "ref.tile.quick": {
+  "en": "Quick",
+  "ru": "Быстрое"
+ },
+ "ref.tile.reaction": {
+  "en": "Reaction",
+  "ru": "Реакция"
+ },
  "ref.title": {
   "en": "Quick reference",
   "ru": "Памятка"
+ },
+ "ref.turn": {
+  "en": "What a turn allows — pick a type to show only its actions",
+  "ru": "Что можно сделать за ход — выберите тип, чтобы оставить только его действия"
+ },
+ "ref.turn.or": {
+  "en": "or",
+  "ru": "или"
+ },
+ "ref.turn_hint": {
+  "en": "Pick a type above to show only its actions.",
+  "ru": "Выберите тип выше, чтобы оставить только его действия."
  },
  "retro.lead": {
   "en": "Choose the mount to replace with a Main/Aux mount. Weapons that do not fit Main/Aux come off.",

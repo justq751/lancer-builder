@@ -69,8 +69,12 @@ test("no Cyrillic anywhere with English interface and data — full build", asyn
     "reset dialog": () => $("#t-reset").click(),
     "frame swap dialog": () => pickFrame("mf_standard_pattern_i_everest"),
     "content settings": () => openContentSettings(),
-    // Folded rules are not in innerText: open every one.
-    "reference": () => { openReference(); document.querySelectorAll("#modal details").forEach(d => { d.open = true; }); },
+    // Folded rules and the other tab are not in innerText: show them all.
+    "reference": () => {
+      openReference();
+      document.querySelectorAll("#modal details").forEach(d => { d.open = true; });
+      document.querySelectorAll("#modal .ref-panel").forEach(p => { p.hidden = false; });
+    },
   };
   for (const [where, fn] of Object.entries(dialogs)) {
     await open(page, fn);

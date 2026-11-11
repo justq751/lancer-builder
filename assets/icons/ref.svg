@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+<!-- Quick reference icons (js/ui/reference.js): one 24×24 grid, 2px stroke,
+     drawn for this app. Activation types share the hex of a mech's action
+     economy; statuses are pictograms. Colour comes from currentColor. -->
+<defs>
+<symbol id="act-full" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+  <path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"/>
+  <path d="M12 7.2l4.15 2.4v4.8L12 16.8l-4.15-2.4V9.6z" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="act-quick" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+  <path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"/>
+  <path d="M12 7.2v9.6l-4.15-2.4V9.6z" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="act-move" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z"/>
+  <path d="M7.5 12h8M12.5 8.5L16 12l-3.5 3.5"/>
+</symbol>
+<symbol id="act-overcharge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round">
+  <path d="M12 2.5l1.9 4.9 4.8-2.1-2.1 4.8 4.9 1.9-4.9 1.9 2.1 4.8-4.8-2.1-1.9 4.9-1.9-4.9-4.8 2.1 2.1-4.8L2.5 12l4.9-1.9-2.1-4.8 4.8 2.1z"/>
+  <circle cx="12" cy="12" r="2.2" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="act-reaction" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+  <path d="M13.5 2.5L5 13.5h6l-1 8 9-11.5h-6z"/>
+</symbol>
+<symbol id="act-free" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2.5 12h1.5M6.5 12h1.5M10.5 12h10M16 7.5l4.5 4.5-4.5 4.5"/>
+</symbol>
+
+<symbol id="st-dangerzone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10 4.5a2 2 0 0 1 4 0v8.9a4.2 4.2 0 1 1-4 0z"/>
+  <circle cx="12" cy="17" r="1.6" fill="currentColor" stroke="none"/>
+  <path d="M12 9v6"/>
+</symbol>
+<symbol id="st-downandout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2.5 13h4.5l2-4.5 3 9 2-4.5h7.5"/>
+</symbol>
+<symbol id="st-engaged" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <circle cx="8.5" cy="12" r="5.5"/><circle cx="15.5" cy="12" r="5.5"/>
+</symbol>
+<symbol id="st-exposed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M12 2.5l7.5 3v6.2c0 4.6-3.1 7.8-7.5 9.8-4.4-2-7.5-5.2-7.5-9.8V5.5z"/>
+  <path d="M12.8 6.5L10 11.5h4l-2.6 5"/>
+</symbol>
+<symbol id="st-hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z"/>
+  <circle cx="12" cy="12" r="2.8"/><path d="M4 20L20 4"/>
+</symbol>
+<symbol id="st-invisible" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+  <circle cx="12" cy="12" r="8.5" stroke-dasharray="2.6 3"/>
+  <circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="st-prone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3.5 20h17M12 3.5v11M7.5 10.5l4.5 4.5 4.5-4.5"/>
+</symbol>
+<symbol id="st-shut-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+  <path d="M12 3v8.5M7 6.3a7.5 7.5 0 1 0 10 0"/>
+</symbol>
+<symbol id="st-immobilized" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3.5 12h10M10 8l4 4-4 4M18.5 4.5v15"/>
+</symbol>
+<symbol id="st-impaired" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M3.5 17a8.5 8.5 0 0 1 17 0"/><path d="M12 17l-4.5-5"/>
+  <circle cx="12" cy="17" r="1.4" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="st-jammed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+  <path d="M4.5 13a7.5 7.5 0 0 1 15 0M8 13a4 4 0 0 1 8 0"/>
+  <circle cx="12" cy="13" r="1.3" fill="currentColor" stroke="none"/>
+  <path d="M4 20.5L20 4.5"/>
+</symbol>
+<symbol id="st-lockon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+  <circle cx="12" cy="12" r="6.5"/>
+  <path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/>
+  <circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none"/>
+</symbol>
+<symbol id="st-shredded" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+  <path d="M7.5 3.5L4.5 11M12.5 3.5L7.5 16M17.5 3.5l-6.5 17M20.5 9l-4 11.5"/>
+</symbol>
+<symbol id="st-slow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M6.5 3h11M6.5 21h11M8 3c0 5 8 5.5 8 9s-8 4-8 9M16 3c0 5-8 5.5-8 9s8 4 8 9"/>
+</symbol>
+<symbol id="st-stunned" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+  <path d="M12 12a1.6 1.6 0 1 1 1.6 1.6 3.6 3.6 0 1 1 1.8-6.4 6 6 0 1 1-7.9 0.2"/>
+</symbol>
+<symbol id="st-intangible" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round">
+  <path d="M12 2.5l8.2 4.75v9.5L12 21.5l-8.2-4.75v-9.5z" stroke-dasharray="2.6 2.6"/>
+  <path d="M12 8.5l3 1.75v3.5L12 15.5l-3-1.75v-3.5z" fill="currentColor" stroke="none" opacity=".55"/>
+</symbol>
+<symbol id="st-generic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+  <rect x="4" y="4" width="16" height="16" rx="2"/><circle cx="12" cy="12" r="2.5" fill="currentColor" stroke="none"/>
+</symbol>
+</defs>
+</svg>
