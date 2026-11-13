@@ -216,3 +216,15 @@ UI, а не по переводу.
 
 Обновление паков — так же, как core: см. `upstream/README.md`.
 
+## Перевод контента для Foundry VTT 13
+
+Модуль LANCER 3.1.3 находится в [`foundry/lancer-ru-content`](foundry/lancer-ru-content/README.md).
+Он использует существующие локали сайта через Babele; исходники сайта не меняются.
+
+```text
+npm run foundry:build
+npm run test:foundry
+```
+
+ZIP для установки: `foundry/releases/lancer-ru-content.zip`. На Windows при запрете `.ps1` используйте `npm.cmd`.
+

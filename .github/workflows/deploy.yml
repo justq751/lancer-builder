@@ -52,6 +52,9 @@ jobs:
       - name: Unit tests
         run: npm run test:unit
 
+      - name: Foundry translation tests
+        run: npm run test:foundry
+
       # Только информация — частичный перевод не ошибка (фолбэк на
       # английский). Таблица — во вкладке Actions → Summary этого запуска.
       - name: Locale coverage

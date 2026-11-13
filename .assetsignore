@@ -21,6 +21,7 @@ wrangler.jsonc
 
 # Инструменты, тесты, документация
 tools
+foundry
 tests
 upstream
 docs

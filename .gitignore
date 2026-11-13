@@ -34,3 +34,4 @@ npm-debug.log*
 # Playwright test runner output (tests/ — see tests/README.md)
 test-results/
 playwright-report/
+foundry/releases/

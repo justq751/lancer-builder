@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "serve": "node tests/serve.mjs",
-    "test": "npm run test:json && npm run test:unit && npm run test:e2e",
+    "test": "npm run test:json && npm run test:unit && npm run test:foundry && npm run test:e2e",
     "test:json": "node tests/validate-json.mjs",
     "test:unit": "node --test \"tests/unit/*.test.mjs\"",
+    "foundry:build": "python tools/export_foundry_locale.py --zip",
+    "test:foundry": "python tools/export_foundry_locale.py --check && python -m unittest discover -s tests/foundry -p test_*.py && node --test tests/foundry/*.test.mjs",
     "test:e2e": "playwright test",
     "test:update": "playwright test --update-snapshots"
   },
