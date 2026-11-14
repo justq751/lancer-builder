@@ -125,7 +125,7 @@ def raw_data(base):
 
 def build_ui():
     locales = {name: read_json(ROOT / "locales" / "ru" / f"{name}.json")
-               for name in ["stat_labels", "ui", "enums", "actions"]}
+               for name in ["stat_labels", "ui", "enums", "actions", "statuses"]}
 
     def translated(file, *keys):
         entry = locales[file]
@@ -207,6 +207,30 @@ def build_ui():
         "SPEED": "speed", "SAVE": "save", "SENSORS": "sensor_range",
     }.items()}
     labels["mechPreviewStats"] = preview_stats
+    hud = {
+        "Flat Modifier": "Модификатор", "Manual Adjust": "Вручную",
+        "Total": "Итого", "Total:": "Итого:", "Grit:": "GRIT:",
+        "Accuracy": "Точность", "Difficulty": "Сложность", "Targeting": "Выбор цели",
+        "Tech Attack:": translated("stat_labels", "tech_attack").capitalize() + ":",
+        "Tech Item Base:": "Бонус тех-системы:", "Weapon Base:": "Бонус оружия:", "Tier:": "Ранг:",
+        "Roll": "Бросок", "Cancel": translated("ui", "common.cancel").capitalize(),
+        "No Cover": "Без укрытия", "Soft Cover (-1)": "Мягкое укрытие (-1)",
+        "Hard Cover (-2)": "Твёрдое укрытие (-2)",
+        "Increase flat bonus": "Увеличить модификатор", "Decrease flat bonus": "Уменьшить модификатор",
+        "Increase accuracy": "Увеличить точность", "Increase difficulty": "Увеличить сложность",
+        "Add global accuracy": "Добавить точность", "Add global difficulty": "Добавить сложность",
+        "Global Accuracy/Difficulty Adjustment": "Общая поправка точности и сложности",
+    }
+    for name, suffix in {"Accurate": "(+1)", "Inaccurate": "(-1)", "Smart": "(*)",
+                         "Seeking": "(*)", "Thrown": "(*)"}.items():
+        hud[f"{name} {suffix}"] = translated("enums", "tag_words", name).capitalize() + " " + suffix
+    for name, lid, suffix in [("Impaired", "impaired", "(-1)"), ("Engaged", "engaged", "(-1)"),
+                              ("Prone", "prone", "(+1)"), ("Lock On", "lockon", "(+1)")]:
+        hud[f"{name} {suffix}"] = translated("statuses", lid, "name").capitalize() + " " + suffix
+    hud["Stunned"] = translated("statuses", "stunned", "name").capitalize()
+    hud["Stunned (EVA=5)"] = hud["Stunned"] + " (УКЛОН=5)"
+    hud["Consume Lock On (+1)"] = "Потратить " + hud["Lock On (+1)"].lower()
+    labels["attackHud"] = hud
     return lang, labels
 
 
