@@ -41,9 +41,12 @@ Hooks.on("babele.ready", async () => {
   }
 });
 
-Hooks.on("renderApplication", (app, html) => {
-  if (!russianLancer()) return;
-  const root = html[0] ?? html;
-  if (app.item?.type === "frame") translateSheetLabels(root);
-  if (app.actor?.type === "pilot") translateMechPreview(root);
-});
+// Foundry 13 ends each sheet's render hook chain at ActorSheet or ItemSheet.
+for (const hook of ["renderActorSheet", "renderItemSheet"]) {
+  Hooks.on(hook, (app, html) => {
+    if (!russianLancer()) return;
+    const root = html[0] ?? html;
+    if (app.item?.type === "frame") translateSheetLabels(root);
+    if (app.actor?.type === "pilot") translateMechPreview(root);
+  });
+}

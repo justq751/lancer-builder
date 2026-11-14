@@ -204,16 +204,21 @@ test("Everest built-in Replaceable parts translates without relaxing text guards
   assert.deepEqual(overlay(renamed, entry.content), renamed);
 });
 
-test("pilot render translates embedded mech stat labels only in Russian LANCER", async t => {
+test("sheet render hooks translate pilot mech stats and frame labels only in Russian LANCER", async t => {
   const hooks = new Map();
-  for (const key of ["Hooks", "game"]) {
+  for (const key of ["Hooks", "game", "NodeFilter"]) {
     const original = Object.getOwnPropertyDescriptor(globalThis, key);
     t.after(() => original ? Object.defineProperty(globalThis, key, original) : delete globalThis[key]);
   }
   globalThis.Hooks = { once() {}, on: (name, handler) => hooks.set(name, handler) };
   globalThis.game = { system: { id: "lancer" }, i18n: { lang: "ru" } };
   await import("../../foundry/lancer-ru-content/scripts/main.js");
-  const render = hooks.get("renderApplication");
+  // Foundry 13 stops actor sheet render hooks at ActorSheet, before Application.
+  const render = (app, html) => {
+    for (const hook of ["renderLancerPilotSheet", "renderLancerActorSheet", "renderActorSheet"]) {
+      hooks.get(hook)?.(app, html);
+    }
+  };
   const english = ["HP", "HEAT", "EVASION", "ARMOR", "STRUCTURE", "STRESS", "E-DEF", "SPEED", "SAVE", "SENSORS"];
   const nodes = english.map(textContent => ({ textContent }));
   const root = { querySelectorAll: selector => {
@@ -230,4 +235,16 @@ test("pilot render translates embedded mech stat labels only in Russian LANCER",
     render({ actor: { type } }, root);
     assert.deepEqual(nodes.map(n => n.textContent), english);
   }
+  game.i18n.lang = "ru";
+  game.system.id = "lancer";
+  globalThis.NodeFilter = { SHOW_TEXT: 4 };
+  const label = { textContent: "CORE SYSTEM", parentElement: { closest: () => null } };
+  const frameRoot = { ownerDocument: { createTreeWalker: () => {
+    let visited = false;
+    return { currentNode: label, nextNode: () => !visited && (visited = true) };
+  } } };
+  for (const hook of ["renderLancerFrameSheet", "renderLancerItemSheet", "renderItemSheet"]) {
+    hooks.get(hook)?.({ item: { type: "frame" } }, [frameRoot]);
+  }
+  assert.equal(label.textContent, "CORE-СИСТЕМА");
 });
