@@ -228,7 +228,7 @@ test("sheet render hooks translate pilot mech stats and frame labels only in Rus
   const app = { actor: { type: "pilot" } };
   render(app, [root]);
   assert.deepEqual(nodes.map(n => n.textContent), ["ОЗ", "ТЕПЛО", "УКЛОН", "БРОНЯ", "СТРУКТ.", "СТРЕСС", "Э-ЗАЩ", "СКОР.", "СПАС.", "СЕНСОР"]);
-  for (const [language, system, type] of [["en", "lancer", "pilot"], ["ru", "other", "pilot"], ["ru", "lancer", "mech"]]) {
+  for (const [language, system, type] of [["en", "lancer", "pilot"], ["ru", "other", "pilot"], ["ru", "lancer", "npc"]]) {
     nodes.forEach((n, i) => { n.textContent = english[i]; });
     game.i18n.lang = language;
     game.system.id = system;

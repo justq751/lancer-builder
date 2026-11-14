@@ -26,6 +26,26 @@ export default {
     "SAVE": "СПАС.",
     "SENSORS": "СЕНСОР"
   },
+  "mechLoadout": {
+    "MOUNTED WEAPONS": "УСТАНОВЛЕННОЕ ОРУЖИЕ",
+    "MOUNTED SYSTEMS": "УСТАНОВЛЕННЫЕ СИСТЕМЫ",
+    "Unknown Weapon Mount": "НЕИЗВЕСТНОЕ ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Insert any weapon": "Установить любое оружие",
+    "Main Weapon Mount": "ОСНОВНОЕ ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Heavy Weapon Mount": "ТЯЖЁЛОЕ ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Aux/Aux Weapon Mount": "ВСПОМ./ВСПОМ. ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Aux Weapon Mount": "ВСПОМОГАТЕЛЬНОЕ ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Main/Aux Weapon Mount": "ОСНОВНОЕ/ВСПОМ. ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Flex Weapon Mount": "ГИБКОЕ ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Integrated Weapon Mount": "ИНТЕГРИРОВАННОЕ ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Superheavy Weapon Mount": "СВЕРХТЯЖЁЛОЕ ОРУЖЕЙНОЕ КРЕПЛЕНИЕ",
+    "Insert Main weapon": "Установить основное оружие",
+    "Insert Auxiliary weapon": "Установить вспомогательное оружие",
+    "Insert Heavy weapon": "Установить тяжёлое оружие",
+    "Insert Superheavy weapon": "Установить сверхтяжёлое оружие",
+    "Insert Integrated weapon": "Установить интегрированное оружие",
+    "Insert Main || Auxiliary weapon": "Установить основное или вспомогательное оружие"
+  },
   "attackHud": {
     "Flat Modifier": "Модификатор",
     "Manual Adjust": "Вручную",

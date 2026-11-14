@@ -207,6 +207,15 @@ def build_ui():
         "SPEED": "speed", "SAVE": "save", "SENSORS": "sensor_range",
     }.items()}
     labels["mechPreviewStats"] = preview_stats
+    loadout = {"MOUNTED WEAPONS": "УСТАНОВЛЕННОЕ ОРУЖИЕ", "MOUNTED SYSTEMS": "УСТАНОВЛЕННЫЕ СИСТЕМЫ",
+               "Unknown Weapon Mount": "НЕИЗВЕСТНОЕ ОРУЖЕЙНОЕ КРЕПЛЕНИЕ", "Insert any weapon": "Установить любое оружие"}
+    for mount, source in {"Main": "Main", "Heavy": "Heavy", "Aux/Aux": "Aux/Aux", "Aux": "Auxiliary",
+                          "Main/Aux": "Main/Aux", "Flex": "Flex", "Integrated": "Integrated", "Superheavy": "Superheavy"}.items():
+        loadout[f"{mount} Weapon Mount"] = translated("enums", "mount_types", source) + " ОРУЖЕЙНОЕ КРЕПЛЕНИЕ"
+    for size in ["Main", "Auxiliary", "Heavy", "Superheavy", "Integrated"]:
+        loadout[f"Insert {size} weapon"] = "Установить " + translated("enums", "mount_types", size).lower() + " оружие"
+    loadout["Insert Main || Auxiliary weapon"] = "Установить " + translated("enums", "mount_types", "Main").lower() + " или " + translated("enums", "mount_types", "Auxiliary").lower() + " оружие"
+    labels["mechLoadout"] = loadout
     hud = {
         "Flat Modifier": "Модификатор", "Manual Adjust": "Вручную",
         "Total": "Итого", "Total:": "Итого:", "Grit:": "GRIT:",

@@ -1,8 +1,8 @@
 import LABELS from "../generated/ui-labels.js";
 
-export function translateLabel(text) {
+export function translateLabel(text, labels = LABELS) {
   return text.replace(/^(\s*(?:\/\/\s*)?)(.*?)(\s*)$/, (original, before, label, after) =>
-    typeof LABELS[label] === "string" ? before + LABELS[label] + after : original);
+    typeof labels[label] === "string" ? before + labels[label] + after : original);
 }
 
 export function translateSheetLabels(root) {
@@ -17,5 +17,11 @@ export function translateSheetLabels(root) {
 export function translateMechPreview(root) {
   for (const label of root.querySelectorAll(".mech-preview-stat-wrapper > span:first-of-type")) {
     label.textContent = LABELS.mechPreviewStats[label.textContent] ?? label.textContent;
+  }
+}
+
+export function translateMechLoadout(root) {
+  for (const label of root.querySelectorAll(".loadout-category > span:first-of-type, .mount-type-ctx-root > span, .mount .mech_weapon.slot.drop-settable > span.major")) {
+    label.textContent = translateLabel(label.textContent, LABELS.mechLoadout);
   }
 }

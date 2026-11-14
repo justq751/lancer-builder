@@ -1,6 +1,6 @@
 import runtime from "../generated/runtime-data.js";
 import { overlay, registerBabele, refreshIndexes } from "./overlay.js";
-import { translateSheetLabels, translateMechPreview } from "./ui.js";
+import { translateSheetLabels, translateMechPreview, translateMechLoadout } from "./ui.js";
 import { observeRollHuds } from "./roll-hud.js";
 
 const ID = "lancer-ru-content";
@@ -53,5 +53,6 @@ for (const hook of ["renderActorSheet", "renderItemSheet"]) {
     const root = html[0] ?? html;
     if (app.item?.type === "frame") translateSheetLabels(root);
     if (app.actor?.type === "pilot") translateMechPreview(root);
+    if (app.actor?.type === "mech") translateMechLoadout(root);
   });
 }
