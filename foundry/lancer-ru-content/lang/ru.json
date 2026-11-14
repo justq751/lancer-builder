@@ -1,20 +1,86 @@
 {
   "lancer": {
     "common-sheet": {
+      "headers": {
+        "combatUtilities": "БОЕВЫЕ ДЕЙСТВИЯ"
+      },
+      "buttons": {
+        "basicAttack": "БЛИЖНЯЯ/ДАЛЬНЯЯ АТАКА",
+        "damage": "УРОН",
+        "fullRepair": "ПОЛНЫЙ РЕМОНТ",
+        "overheat": "ПЕРЕГРЕВ",
+        "scan": "СКАНИРОВАНИЕ",
+        "stabilize": "СТАБИЛИЗАЦИЯ",
+        "structure": "СТРУКТУРА",
+        "tech": "ТЕХ-ДЕЙСТВИЕ"
+      },
       "shortStats": {
-        "HP": "ПЗ",
+        "hp": "ОЗ",
+        "evasion": "УКЛОН",
+        "armor": "БРОНЯ",
+        "structure": "СТРУКТ.",
+        "edef": "Э-ЗАЩ",
+        "stress": "СТРЕСС",
+        "speed": "СКОР.",
+        "save": "СПАС.",
+        "sensor_range": "СЕНСОР",
+        "tech_attack": "ТЕХ-АТК",
+        "size": "РАЗМЕР",
+        "hull": "КОРПУС",
+        "agi": "ЛОВКОСТЬ",
+        "sys": "СИСТЕМЫ",
+        "eng": "ИНЖЕНЕРИЯ",
+        "level": "LL",
+        "grit": "GRIT",
+        "tier": "РАНГ",
+        "activations": "АКТ",
+        "heat": "ТЕПЛО",
+        "heatcap": "ТЕПЛОЁМКОСТЬ",
+        "overcharge": "ФОРСАЖ",
+        "burn": "ОГОНЬ",
+        "overshield": "ОВЕРШИЛД",
+        "repairs": "РЕМОНТ",
+        "cost": "СТОИМОСТЬ",
+        "HP": "ОЧКИ ЗДОРОВЬЯ",
         "ARMOR": "БРОНЯ",
         "REPAIRS": "РЕМОНТ",
         "EVASION": "УКЛОНЕНИЕ",
         "E-DEF": "Э-ЗАЩИТА",
         "e-def": "Э-ЗАЩИТА",
-        "HEAT CAP": "ПРЕДЕЛ НАГРЕВА",
+        "HEAT CAP": "ТЕПЛОЁМКОСТЬ",
         "SPEED": "СКОРОСТЬ",
-        "TECH ATK": "ТЕХ. АТАКА",
-        "SENSORS": "СЕНСОРЫ",
+        "TECH ATK": "ТЕХ-АТАКА",
+        "SENSORS": "СЕНСОР",
         "SAVE": "СПАСБРОСОК",
-        "SYS POINTS": "ОЧКИ СИСТЕМ",
+        "SYS POINTS": "ОЧКИ СИСТЕМЫ",
         "SIZE": "РАЗМЕР"
+      }
+    },
+    "deployable-sheet": {
+      "header": {
+        "owner": "Владелец"
+      }
+    },
+    "mech-sheet": {
+      "header": {
+        "inactive-warning": "Внимание: неактивный мех — бонусы пилота не учитываются"
+      }
+    },
+    "npc-sheet": {
+      "header": {
+        "templates": "ШАБЛОНЫ"
+      }
+    },
+    "pilot-sheet": {
+      "cloud-download": {
+        "description": "Импортируйте пилота по коду из Comp/Con."
+      },
+      "json-import": {
+        "description": "Импортируйте JSON-файл пилота, экспортированный из Comp/Con.",
+        "placeholder": "Выберите JSON-файл…"
+      },
+      "dossier": {
+        "background": "ПРОИСХОЖДЕНИЕ"
       }
     }
   }

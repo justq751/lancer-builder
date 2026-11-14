@@ -1,19 +1,4 @@
-const LABELS = {
-  "DESCRIPTION": "ОПИСАНИЕ",
-  "AVAILABLE WEAPON MOUNTS": "ДОСТУПНЫЕ ОРУЖЕЙНЫЕ КРЕПЛЕНИЯ",
-  "TRAITS": "ОСОБЕННОСТИ",
-  "BONUSES": "БОНУСЫ",
-  "CORE SYSTEM": "СИСТЕМА ЯДРА",
-  "RANK": "РАНГ",
-  "AUX/AUX": "ВСПОМ./ВСПОМ.",
-  "MAIN": "ОСНОВНОЕ",
-  "MAIN/AUX": "ОСНОВНОЕ/ВСПОМ.",
-  "FLEX": "ГИБКОЕ",
-  "HEAVY": "ТЯЖЁЛОЕ",
-  "INTEGRATED": "ВСТРОЕННОЕ",
-  "SUPERHEAVY": "СВЕРХТЯЖЁЛОЕ",
-  "DELETE": "УДАЛИТЬ",
-};
+import LABELS from "../generated/ui-labels.js";
 
 export function translateLabel(text) {
   return text.replace(/^(\s*(?:\/\/\s*)?)(.*?)(\s*)$/, (original, before, label, after) =>

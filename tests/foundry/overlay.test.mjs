@@ -148,4 +148,37 @@ test("frame UI covers uppercase helper arguments without altering mount values",
   assert.equal(translateLabel("AVAILABLE WEAPON MOUNTS"), "ДОСТУПНЫЕ ОРУЖЕЙНЫЕ КРЕПЛЕНИЯ");
   assert.equal(translateLabel("MAIN"), "ОСНОВНОЕ");
   assert.equal(translateLabel("Player's custom name"), "Player's custom name");
+  assert.equal(translateLabel("CORE SYSTEM"), "CORE-СИСТЕМА");
+  assert.equal(translateLabel("INTEGRATED"), "ИНТЕГРИРОВАННОЕ");
+  assert.equal(translateLabel("  // MAIN/AUX "), "  // ОСНОВНОЕ/ВСПОМ. ");
+});
+
+test("merged UI retains every patch key and uses builder terminology", () => {
+  const lang = JSON.parse(readFileSync(new URL("../../foundry/lancer-ru-content/lang/ru.json", import.meta.url))).lancer;
+  const common = lang["common-sheet"];
+  assert.ok(common.headers.combatUtilities);
+  for (const key of ["basicAttack", "damage", "fullRepair", "overheat", "scan", "stabilize", "structure", "tech"]) {
+    assert.ok(common.buttons[key], key);
+  }
+  for (const key of ["hull", "agi", "sys", "eng", "level", "grit", "tier", "activations", "hp", "evasion", "armor",
+    "structure", "heat", "heatcap", "edef", "stress", "speed", "save", "sensor_range", "tech_attack", "overcharge",
+    "burn", "overshield", "repairs", "size", "cost"]) {
+    assert.ok(common.shortStats[key], key);
+  }
+  assert.ok(lang["deployable-sheet"].header.owner);
+  assert.ok(lang["mech-sheet"].header["inactive-warning"]);
+  assert.ok(lang["npc-sheet"].header.templates);
+  assert.ok(lang["pilot-sheet"]["cloud-download"].description);
+  assert.ok(lang["pilot-sheet"]["json-import"].description);
+  assert.ok(lang["pilot-sheet"]["json-import"].placeholder);
+  assert.equal(lang["pilot-sheet"].dossier.background, "ПРОИСХОЖДЕНИЕ");
+  assert.equal(common.shortStats.grit, "GRIT");
+  assert.equal(common.shortStats.overcharge, "ФОРСАЖ");
+  assert.equal(common.shortStats.overshield, "ОВЕРШИЛД");
+  assert.equal(common.shortStats.burn, "ОГОНЬ");
+  assert.equal(common.shortStats["e-def"], common.shortStats["E-DEF"]);
+  const manifest = JSON.parse(readFileSync(new URL("../../foundry/lancer-ru-content/module.json", import.meta.url)));
+  assert.ok(!manifest.relationships.recommends.some(module => module.id === "lancer-ru-ui-patch"));
+  assert.equal(manifest.languages[0].system, "lancer");
+  assert.equal(manifest.languages[0].lang, "ru");
 });

@@ -1,8 +1,8 @@
 {
   "id": "lancer-ru-content",
   "title": "LANCER — русский перевод контента",
-  "description": "Перевод справочников LANCER из lancer-builder. Дополнение к ru-ru и lancer-ru-ui-patch.",
-  "version": "0.1.1",
+  "description": "Перевод справочников и дополнительных подписей интерфейса LANCER из lancer-builder. Дополнение к ru-ru; включает lancer-ru-ui-patch.",
+  "version": "0.1.2",
   "authors": [{"name": "lancer-builder contributors"}],
   "compatibility": {"minimum": "13", "verified": "13", "maximum": "13"},
   "relationships": {
@@ -11,7 +11,7 @@
       {"id": "babele", "type": "module", "compatibility": {"minimum": "2.9.1"}},
       {"id": "lib-wrapper", "type": "module"}
     ],
-    "recommends": [{"id": "ru-ru", "type": "module"}, {"id": "lancer-ru-ui-patch", "type": "module"}]
+    "recommends": [{"id": "ru-ru", "type": "module"}]
   },
   "esmodules": ["scripts/main.js"],
   "languages": [{"lang": "ru", "name": "Русский — LANCER контент", "path": "lang/ru.json", "system": "lancer"}]
