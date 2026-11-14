@@ -27,8 +27,9 @@ export function translateMechLoadout(root) {
 }
 
 export function translateStabilizeDialog(root) {
-  if (!root.querySelector(".stabilize-wrapper")) return;
+  if (!root.querySelector(".stabilize-wrapper")) return false;
   translateSheetLabels(root, LABELS.stabilizeDialog);
   const title = root.querySelector(".window-title");
   if (title) title.textContent = title.textContent.replace(/^STABILIZE - /, `${LABELS.stabilizeDialog.STABILIZE} - `);
+  return true;
 }

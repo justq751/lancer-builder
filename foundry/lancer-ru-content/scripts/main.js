@@ -47,7 +47,8 @@ Hooks.on("babele.ready", async () => {
 });
 
 Hooks.on("renderDialog", (app, html) => {
-  if (russianLancer()) translateStabilizeDialog(app.element?.[0] ?? html[0] ?? html);
+  if (!russianLancer()) return;
+  if (translateStabilizeDialog(app.element?.[0] ?? html[0] ?? html)) app.setPosition({ height: "auto" });
 });
 
 // Foundry 13 ends each sheet's render hook chain at ActorSheet or ItemSheet.
