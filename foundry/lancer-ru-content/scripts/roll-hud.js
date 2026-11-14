@@ -9,7 +9,8 @@ function translate(text, labels) {
 
 export function translateRollHud(root) {
   const damage = root.matches("form.damage-hud");
-  const labels = damage ? LABELS.damageHud : LABELS.attackHud;
+  const struss = root.matches("form.structstress");
+  const labels = struss ? LABELS.structStressHud : damage ? LABELS.damageHud : LABELS.attackHud;
   const walker = root.ownerDocument.createTreeWalker(root, 4 /* SHOW_TEXT */);
   while (walker.nextNode()) {
     const node = walker.currentNode;
@@ -20,11 +21,23 @@ export function translateRollHud(root) {
         const [title, ...actor] = node.nodeValue.split(" -- ");
         const value = [title.replace(/ DAMAGE$/i, ` ${labels.DAMAGE}`), ...actor].join(" -- ");
         if (value !== node.nodeValue) node.nodeValue = value;
+      } else if (struss) {
+        const [title, ...actor] = node.nodeValue.split(" -- ");
+        const value = [translate(title, labels), ...actor].join(" -- ");
+        if (value !== node.nodeValue) node.nodeValue = value;
       }
       continue;
     }
     if (node.parentElement.matches("option") && !node.parentElement.hasAttribute("value")) continue;
-    const value = translate(node.nodeValue, labels);
+    let value = translate(node.nodeValue, labels);
+    if (struss && node.parentElement.matches("h4")) {
+      value = value.replace(/^(.*) has taken (structure|reactor) damage!$/,
+        (_, name, stat) => labels[`${stat}DamageMessage`].replace("{name}", () => name));
+    }
+    if (struss && node.parentElement.matches(".message")) {
+      value = value.replace(/^Roll (\d+)d6 to determine what happens\.$/,
+        (_, dice) => labels.rollMessage.replace("{dice}", () => dice));
+    }
     if (value !== node.nodeValue) node.nodeValue = value;
   }
   for (const element of root.querySelectorAll("[title], [aria-label], [data-tooltip], [aria-lable]")) {
@@ -53,7 +66,7 @@ export function observeRollHuds(doc) {
       observer.observe(zone, { childList: true, subtree: true, characterData: true,
         attributes: true, attributeFilter: ["title", "aria-label", "data-tooltip"] });
     }
-    for (const hud of zone.querySelectorAll("form.accdiff, form.damage-hud")) translateRollHud(hud);
+    for (const hud of zone.querySelectorAll("form.accdiff, form.damage-hud, form.structstress")) translateRollHud(hud);
   };
   const observer = new doc.defaultView.MutationObserver(refresh);
   observer.observe(doc.body, { childList: true });

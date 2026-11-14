@@ -209,6 +209,22 @@ def build_ui():
             "shunt": f"Системам охлаждения удаётся сдержать растущее тепло, но ваш мех получает состояние {impaired} до конца вашего следующего хода.",
         },
     }}
+    stunned = "@LancerID[stunned]{" + translated("statuses", "stunned", "name", uppercase=False) + "}"
+    hull = translated("ui", "hase.hull.name")
+    lang["lancer"]["tables"]["structure"] = {
+        "title": {"crushing": "Сокрушительное попадание", "direct": "Прямое попадание",
+                  "trauma": "Повреждение систем", "glancing": "Скользящий удар"},
+        "description": {
+            "crushing": "Ваш мех повреждён без возможности восстановления — он уничтожен. Вы всё ещё можете покинуть его обычным способом.",
+            "direct": {
+                "3plus": f"Ваш мех получает состояние {stunned} до конца вашего следующего хода.",
+                "2": f"Совершите проверку мех-навыка «{hull}». При успехе ваш мех получает состояние {stunned} до конца вашего следующего хода. При провале ваш мех уничтожен.",
+                "1": "Ваш мех уничтожен.",
+            },
+            "trauma": "Повреждение отрывает части вашего меха. Бросьте 1d6. При результате 1–3 уничтожается всё оружие на одном креплении по вашему выбору; при 4–6 — одна система по вашему выбору. Оружие и системы с тегом «Лимит», у которых закончились заряды, выбирать нельзя. Если подходящих вариантов нет, применяется другой результат. Если не осталось ни подходящих систем, ни оружия, вместо этого применяется результат «Прямое попадание».",
+            "glancing": f"Аварийные системы срабатывают и стабилизируют меха, но он получает состояние {impaired} до конца вашего следующего хода.",
+        },
+    }
     labels = {
         "statusIconsNames": lang["lancer"]["statusIconsNames"],
         "DESCRIPTION": translated("ui", "skills.editor.desc"),
@@ -293,6 +309,21 @@ def build_ui():
         "Submit": "Применить", "Cancel": hud["Cancel"],
     }
     labels["overheatChat"] = {"ENGINEERING": engineering}
+    labels["structureChat"] = {"HULL": hull, "TEAR OFF": "ОПРЕДЕЛИТЬ ПОВРЕЖДЕНИЕ",
+                               "CASCADE CHECK": "ПРОВЕРКА КАСКАДА", "ROLL DAMAGE": "БРОСОК УРОНА"}
+    labels["structureSecondaryChat"] = {
+        "// Weapon Destruction //": "// УНИЧТОЖЕНИЕ ОРУЖИЯ //",
+        "// System Destruction //": "// УНИЧТОЖЕНИЕ СИСТЕМЫ //",
+        "On a 1–3, all weapons on one mount of your choice are destroyed": "При результате 1–3 уничтожается всё оружие на одном креплении по вашему выбору.",
+        "On a 4–6, a system of your choice is destroyed": "При результате 4–6 уничтожается одна система по вашему выбору.",
+    }
+    labels["structStressHud"] = {
+        "Structure Damage": "СТРУКТУРНЫЙ УРОН", "Stress Damage": "ПЕРЕГРЕВ",
+        "structureDamageMessage": "{name} получает структурный урон!",
+        "reactorDamageMessage": "Реактор меха {name} получает повреждение!",
+        "rollMessage": "Бросьте {dice}d6, чтобы определить последствия.",
+        "Roll": hud["Roll"], "Cancel": hud["Cancel"],
+    }
     return lang, labels
 
 

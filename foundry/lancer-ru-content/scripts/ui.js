@@ -40,3 +40,18 @@ export function translateOverheatChat(root) {
     translateSheetLabels(button, LABELS.overheatChat);
   }
 }
+
+export function translateStructureChat(root) {
+  if (root.querySelector(".struct-stress .cci-structure")) {
+    for (const button of root.querySelectorAll('a.flow-button[data-flow-type="check"][data-check-type="hull"], a.flow-button[data-flow-type="secondaryStructure"], a.flow-button[data-flow-type="cascade"], a.flow-button[data-flow-type="dismembermentDamage"]')) {
+      translateSheetLabels(button, LABELS.structureChat);
+    }
+  } else {
+    const header = root.querySelector(".struct-stress");
+    if (!header || !Object.hasOwn(LABELS.structureSecondaryChat, header.textContent.trim())) return;
+    header.textContent = LABELS.structureSecondaryChat[header.textContent.trim()];
+    for (const text of root.querySelectorAll(".effect-text")) {
+      translateSheetLabels(text, LABELS.structureSecondaryChat);
+    }
+  }
+}

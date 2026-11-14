@@ -82,6 +82,21 @@ class ExportTests(unittest.TestCase):
         self.assertIn("1d6", table["description"]["meltdown"]["2"])
         self.assertEqual(labels["overheatChat"]["ENGINEERING"], "ИНЖЕНЕРИЯ")
 
+    def test_structure_table_preserves_rules_and_uses_localized_status_links(self):
+        lang, labels = export.build_ui()
+        table = lang["lancer"]["tables"]["structure"]
+        self.assertEqual(set(table["title"]), {"crushing", "direct", "trauma", "glancing"})
+        self.assertEqual(set(table["description"]["direct"]), {"3plus", "2", "1"})
+        links = re.findall(r"@LancerID\[([^\]]+)\]\{([^}]+)\}", json.dumps(table, ensure_ascii=False))
+        self.assertEqual([lid for lid, _ in links], ["stunned", "stunned", "impaired"])
+        statuses = export.read_json(export.ROOT / "locales/ru/statuses.json")
+        for lid, name in links:
+            self.assertEqual(name, statuses[lid]["name"]["ru"])
+        for token in ["1d6", "1–3", "4–6", "Лимит", table["title"]["direct"]]:
+            self.assertIn(token, table["description"]["trauma"])
+        self.assertIn("{dice}", labels["structStressHud"]["rollMessage"])
+        self.assertIn("{name}", labels["structStressHud"]["structureDamageMessage"])
+
     def test_complete_export_is_deterministic_and_contains_no_mechanics(self):
         files, report = export.build()
         self.assertEqual(files, export.build()[0])

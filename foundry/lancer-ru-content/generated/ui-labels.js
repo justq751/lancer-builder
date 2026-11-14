@@ -135,5 +135,26 @@ export default {
   },
   "overheatChat": {
     "ENGINEERING": "ИНЖЕНЕРИЯ"
+  },
+  "structureChat": {
+    "HULL": "КОРПУС",
+    "TEAR OFF": "ОПРЕДЕЛИТЬ ПОВРЕЖДЕНИЕ",
+    "CASCADE CHECK": "ПРОВЕРКА КАСКАДА",
+    "ROLL DAMAGE": "БРОСОК УРОНА"
+  },
+  "structureSecondaryChat": {
+    "// Weapon Destruction //": "// УНИЧТОЖЕНИЕ ОРУЖИЯ //",
+    "// System Destruction //": "// УНИЧТОЖЕНИЕ СИСТЕМЫ //",
+    "On a 1–3, all weapons on one mount of your choice are destroyed": "При результате 1–3 уничтожается всё оружие на одном креплении по вашему выбору.",
+    "On a 4–6, a system of your choice is destroyed": "При результате 4–6 уничтожается одна система по вашему выбору."
+  },
+  "structStressHud": {
+    "Structure Damage": "СТРУКТУРНЫЙ УРОН",
+    "Stress Damage": "ПЕРЕГРЕВ",
+    "structureDamageMessage": "{name} получает структурный урон!",
+    "reactorDamageMessage": "Реактор меха {name} получает повреждение!",
+    "rollMessage": "Бросьте {dice}d6, чтобы определить последствия.",
+    "Roll": "Бросок",
+    "Cancel": "Отмена"
   }
 };
