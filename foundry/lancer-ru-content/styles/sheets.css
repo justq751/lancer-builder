@@ -1,0 +1,4 @@
+/* Long HASE labels stack the cards; grow rows so they stay above the macros. */
+.lancer.actor.mech.sheet .stat-grid {
+  grid-template-rows: repeat(5, minmax(5em, auto));
+}
