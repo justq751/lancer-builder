@@ -1,3 +1,6 @@
 {
-  "statuses": {"shut-down": "shutdown"}
+  "statuses": {"shut-down": "shutdown"},
+  "frame_traits": {
+    "mf_standard_pattern_i_everest": {"Replaceable Parts": ["Replaceable parts"]}
+  }
 }

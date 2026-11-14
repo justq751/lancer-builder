@@ -55,6 +55,8 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(stats["hp"], ui["term.stat.hp"]["ru"].upper())
         self.assertEqual(stats["HP"], stat_labels["hp"]["ru"].upper())
         self.assertEqual(labels["CORE SYSTEM"], ui["sheet.core_system"]["ru"].upper())
+        self.assertEqual(labels["mechPreviewStats"]["HEAT"], stats["heat"])
+        self.assertEqual(labels["mechPreviewStats"]["HP"], stats["hp"])
 
     def test_complete_export_is_deterministic_and_contains_no_mechanics(self):
         files, report = export.build()

@@ -14,7 +14,7 @@ export function overlay(value, tree) {
     if (!tree.$items) return value;
     return value.map(item => {
       const entries = Object.entries(tree.$items).filter(([name, entry]) =>
-        item.name === name || item.name === entry.name?.ru);
+        item.name === name || item.name === entry.name?.ru || entry.name?.en?.includes(item.name));
       if (entries.length !== 1) return item;
       // Repeated names in a source array cannot identify a stable element.
       if (value.filter(other => other.name === item.name).length !== 1) return item;

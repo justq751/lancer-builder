@@ -1,6 +1,6 @@
 import runtime from "../generated/runtime-data.js";
 import { overlay, registerBabele, refreshIndexes } from "./overlay.js";
-import { translateSheetLabels } from "./ui.js";
+import { translateSheetLabels, translateMechPreview } from "./ui.js";
 
 const ID = "lancer-ru-content";
 const russianLancer = () => game.system.id === "lancer" && game.i18n.lang === "ru";
@@ -42,5 +42,8 @@ Hooks.on("babele.ready", async () => {
 });
 
 Hooks.on("renderApplication", (app, html) => {
-  if (russianLancer() && app.item?.type === "frame") translateSheetLabels(html[0] ?? html);
+  if (!russianLancer()) return;
+  const root = html[0] ?? html;
+  if (app.item?.type === "frame") translateSheetLabels(root);
+  if (app.actor?.type === "pilot") translateMechPreview(root);
 });

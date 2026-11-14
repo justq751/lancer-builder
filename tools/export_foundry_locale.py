@@ -201,6 +201,12 @@ def build_ui():
         "HEAVY": "Heavy", "INTEGRATED": "Integrated", "SUPERHEAVY": "Superheavy",
     }.items():
         labels[target] = translated("enums", "mount_types", source)
+    preview_stats = {target: stats[source] for target, source in {
+        "HP": "hp", "HEAT": "heat", "EVASION": "evasion", "ARMOR": "armor",
+        "STRUCTURE": "structure", "STRESS": "stress", "E-DEF": "edef",
+        "SPEED": "speed", "SAVE": "save", "SENSORS": "sensor_range",
+    }.items()}
+    labels["mechPreviewStats"] = preview_stats
     return lang, labels
 
 
@@ -255,6 +261,8 @@ def build():
             content = fields(entry, source, FIELDS[category], path, report)
             if category == "frames":
                 content["traits"] = named(entry.get("traits"), source.get("traits"), ["name", "description"], path + "/traits", report)
+                for trait_name, variants in aliases.get("frame_traits", {}).get(lid, {}).items():
+                    content["traits"]["$items"][trait_name]["name"]["en"].extend(variants)
                 cs = source.get("core_system", {})
                 content["core_system"] = fields(entry.get("core_system", {}), cs, CORE_FIELDS, path + "/core_system", report)
                 for mode in ["active_actions", "passive_actions"]:

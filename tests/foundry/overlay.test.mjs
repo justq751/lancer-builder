@@ -148,6 +148,7 @@ test("frame UI covers uppercase helper arguments without altering mount values",
   assert.equal(translateLabel("AVAILABLE WEAPON MOUNTS"), "ДОСТУПНЫЕ ОРУЖЕЙНЫЕ КРЕПЛЕНИЯ");
   assert.equal(translateLabel("MAIN"), "ОСНОВНОЕ");
   assert.equal(translateLabel("Player's custom name"), "Player's custom name");
+  assert.equal(translateLabel("mechPreviewStats"), "mechPreviewStats");
   assert.equal(translateLabel("CORE SYSTEM"), "CORE-СИСТЕМА");
   assert.equal(translateLabel("INTEGRATED"), "ИНТЕГРИРОВАННОЕ");
   assert.equal(translateLabel("  // MAIN/AUX "), "  // ОСНОВНОЕ/ВСПОМ. ");
@@ -181,4 +182,52 @@ test("merged UI retains every patch key and uses builder terminology", () => {
   assert.ok(!manifest.relationships.recommends.some(module => module.id === "lancer-ru-ui-patch"));
   assert.equal(manifest.languages[0].system, "lancer");
   assert.equal(manifest.languages[0].lang, "ru");
+});
+
+test("Everest built-in Replaceable parts translates without relaxing text guards", () => {
+  const entry = pack("mech-items").entries["frame:mf_standard_pattern_i_everest"];
+  assert.equal(entry.name.ru, "Эверест");
+  const expected = entry.content.traits.$items["Replaceable Parts"];
+  const value = { traits: [{
+    name: "Replaceable parts",
+    description: "While resting, the Everest can be repaired at a rate of 1 Repair per 1 structure damage, instead of 2 Repairs.",
+    bonuses: [{ id: "cheap_struct", val: 1 }],
+  }] };
+  const result = overlay(value, entry.content);
+  assert.equal(result.traits[0].name, expected.name.ru);
+  assert.equal(result.traits[0].description, expected.description.ru);
+  assert.deepEqual(result.traits[0].bonuses, value.traits[0].bonuses);
+  assert.deepEqual(overlay(result, entry.content), result);
+  const custom = { traits: [{ name: "Replaceable parts", description: "Custom rule" }] };
+  assert.equal(overlay(custom, entry.content).traits[0].description, "Custom rule");
+  const renamed = { traits: [{ name: "REPLACEABLE PARTS", description: value.traits[0].description }] };
+  assert.deepEqual(overlay(renamed, entry.content), renamed);
+});
+
+test("pilot render translates embedded mech stat labels only in Russian LANCER", async t => {
+  const hooks = new Map();
+  for (const key of ["Hooks", "game"]) {
+    const original = Object.getOwnPropertyDescriptor(globalThis, key);
+    t.after(() => original ? Object.defineProperty(globalThis, key, original) : delete globalThis[key]);
+  }
+  globalThis.Hooks = { once() {}, on: (name, handler) => hooks.set(name, handler) };
+  globalThis.game = { system: { id: "lancer" }, i18n: { lang: "ru" } };
+  await import("../../foundry/lancer-ru-content/scripts/main.js");
+  const render = hooks.get("renderApplication");
+  const english = ["HP", "HEAT", "EVASION", "ARMOR", "STRUCTURE", "STRESS", "E-DEF", "SPEED", "SAVE", "SENSORS"];
+  const nodes = english.map(textContent => ({ textContent }));
+  const root = { querySelectorAll: selector => {
+    assert.equal(selector, ".mech-preview-stat-wrapper > span:first-of-type");
+    return nodes;
+  } };
+  const app = { actor: { type: "pilot" } };
+  render(app, [root]);
+  assert.deepEqual(nodes.map(n => n.textContent), ["ОЗ", "ТЕПЛО", "УКЛОН", "БРОНЯ", "СТРУКТ.", "СТРЕСС", "Э-ЗАЩ", "СКОР.", "СПАС.", "СЕНСОР"]);
+  for (const [language, system, type] of [["en", "lancer", "pilot"], ["ru", "other", "pilot"], ["ru", "lancer", "mech"]]) {
+    nodes.forEach((n, i) => { n.textContent = english[i]; });
+    game.i18n.lang = language;
+    game.system.id = system;
+    render({ actor: { type } }, root);
+    assert.deepEqual(nodes.map(n => n.textContent), english);
+  }
 });

@@ -13,5 +13,17 @@ export default {
   "FLEX": "ГИБКОЕ",
   "HEAVY": "ТЯЖЁЛОЕ",
   "INTEGRATED": "ИНТЕГРИРОВАННОЕ",
-  "SUPERHEAVY": "СВЕРХТЯЖЁЛОЕ"
+  "SUPERHEAVY": "СВЕРХТЯЖЁЛОЕ",
+  "mechPreviewStats": {
+    "HP": "ОЗ",
+    "HEAT": "ТЕПЛО",
+    "EVASION": "УКЛОН",
+    "ARMOR": "БРОНЯ",
+    "STRUCTURE": "СТРУКТ.",
+    "STRESS": "СТРЕСС",
+    "E-DEF": "Э-ЗАЩ",
+    "SPEED": "СКОР.",
+    "SAVE": "СПАС.",
+    "SENSORS": "СЕНСОР"
+  }
 };
