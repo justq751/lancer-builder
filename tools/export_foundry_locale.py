@@ -127,7 +127,7 @@ def build_ui():
     locales = {name: read_json(ROOT / "locales" / "ru" / f"{name}.json")
                for name in ["stat_labels", "ui", "enums", "actions", "statuses"]}
 
-    def translated(file, *keys):
+    def translated(file, *keys, uppercase=True):
         entry = locales[file]
         for key in keys:
             entry = entry[key]
@@ -135,7 +135,7 @@ def build_ui():
             raise ValueError(f"Foundry UI: missing or stale translation {file}/{'/'.join(keys)}")
         if re.search(r"\{[A-Za-z_]\w*\}", entry["ru"]):
             raise ValueError(f"Foundry UI: unexpected placeholder {file}/{'/'.join(keys)}")
-        return entry["ru"].upper()
+        return entry["ru"].upper() if uppercase else entry["ru"]
 
     stats = {key: translated("ui", f"term.stat.{key}") for key in [
         "hp", "evasion", "armor", "structure", "edef", "stress", "speed",
@@ -231,6 +231,27 @@ def build_ui():
     hud["Stunned (EVA=5)"] = hud["Stunned"] + " (УКЛОН=5)"
     hud["Consume Lock On (+1)"] = "Потратить " + hud["Lock On (+1)"].lower()
     labels["attackHud"] = hud
+    damage = {
+        "Base Damage": "Базовый урон", "Bonus Damage": "Дополнительный урон", "Bonus": "Бонус",
+        "Configuration": "Настройки", "Cannot be Reduced": "Не снижается",
+        "Half Damage": "Половина урона", "DAMAGE": translated("ui", "picker.damage"),
+        "Roll": hud["Roll"], "Cancel": hud["Cancel"],
+        "Crit": "Критическое попадание", "Hit": "Попадание", "Miss": "Промах",
+        "Add new base damage type": "Добавить тип базового урона",
+        "Add a base damage type": "Добавить тип базового урона",
+        "Add new bonus damage type": "Добавить тип дополнительного урона",
+        "Add a bonus damage type": "Добавить тип дополнительного урона",
+        "Remove this damage type": "Удалить этот тип урона",
+        "Add a bonus damage type for only this target": "Добавить дополнительный урон только этой цели",
+        "For 'cannot be reduced' effects like the Paracausal mod": "Для эффектов, запрещающих снижение урона, например паракаузальной модификации",
+        "For effects which cause the attacker to deal half damage in addition to resistance, like Heavy Gunner": "Для эффектов, уменьшающих наносимый урон вдвое дополнительно к сопротивлению, например таланта «Тяжёлый стрелок»",
+    }
+    for name in locales["enums"]["damage_types"]:
+        damage[name] = translated("enums", "damage_types", name, uppercase=False)
+    for target, source in {"Armor Piercing (AP)": "Armor-Piercing (AP)",
+                           "Overkill": "Overkill", "Reliable": "Reliable"}.items():
+        damage[target] = translated("enums", "tag_words", source, uppercase=False)
+    labels["damageHud"] = damage
     return lang, labels
 
 

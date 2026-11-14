@@ -2,7 +2,7 @@
   "id": "lancer-ru-content",
   "title": "LANCER — русский перевод контента",
   "description": "Перевод справочников и дополнительных подписей интерфейса LANCER из lancer-builder. Дополнение к ru-ru; включает lancer-ru-ui-patch.",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "authors": [{"name": "lancer-builder contributors"}],
   "compatibility": {"minimum": "13", "verified": "13", "maximum": "13"},
   "relationships": {

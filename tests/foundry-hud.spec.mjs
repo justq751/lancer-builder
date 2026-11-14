@@ -26,6 +26,27 @@ const hud = `<form id="accdiff-hud" class="accdiff">
   <button type="button">Cancel</button>
 </form>`;
 
+const damageHud = `<form id="damage-hud" class="damage-hud">
+  <div class="lancer-header"><span>DAMAGE Rifle DAMAGE -- DAMAGE</span></div>
+  <h4>Base Damage <button type="button" aria-label="Add new base damage type">+</button></h4>
+  <div class="damage-input-container">
+    <i data-tooltip="Kinetic"></i>
+    <select class="damage-input-type"><option value="Kinetic">Kinetic</option><option value="Energy">Energy</option>
+      <option value="Explosive">Explosive</option><option value="Burn">Burn</option><option value="Heat">Heat</option></select>
+    <input class="damage-input-val" value="1d6 + 2">
+    <button type="button" class="damage-delete" data-tooltip="Remove this damage type">−</button>
+  </div>
+  <h4>Bonus Damage <button type="button" id="add-damage" aria-lable="Add new bonus damage type">+</button></h4>
+  <h4>Configuration</h4>
+  <label><input type="checkbox" id="ap">Armor Piercing (AP)</label>
+  <label>Overkill</label><label>Cannot be Reduced</label><label>Half Damage</label><label>Reliable</label>
+  <span class="target-name">Energy</span>
+  <label data-tooltip="Crit"><input type="radio" name="quality" value="2">Crit</label>
+  <label><input type="radio" name="quality" value="1" checked>Hit</label>
+  <label><input type="radio" name="quality" value="0">Miss</label>
+  <button type="button">Roll</button><button type="button">Cancel</button>
+</form>`;
+
 test("attack HUD translates after mounting and reactive updates without changing controls", async ({ page }) => {
   await boot(page);
   await page.evaluate(html => {
@@ -74,13 +95,55 @@ test("attack HUD translates after mounting and reactive updates without changing
   await expect(page.locator("h4")).toHaveText(["Точность", "Сложность"]);
 });
 
+test("damage HUD translates labels and dynamic rows while preserving damage values and events", async ({ page }) => {
+  await boot(page);
+  await page.evaluate(html => {
+    document.body.insertAdjacentHTML("beforeend", `<div id="hudzone">${html}</div>`);
+    window.originalDamageSelect = document.querySelector("select");
+    originalDamageSelect.addEventListener("change", () => {
+      document.querySelector("#ap").checked = true;
+    });
+    document.querySelector("#add-damage").addEventListener("click", () => {
+      const row = document.querySelector(".damage-input-container").cloneNode(true);
+      row.querySelector("option").firstChild.data = "Kinetic";
+      row.querySelector("input").value = "2d6";
+      document.querySelector("form").append(row);
+    });
+  }, damageHud);
+  await expect(page.locator("h4")).toHaveText(["Базовый урон +", "Дополнительный урон +", "Настройки"]);
+  await expect(page.locator("select").first().locator("option")).toHaveText([
+    "Кинетический", "Энергетический", "Взрывной", "Огонь", "Тепло",
+  ]);
+  await expect(page.locator(".damage-input-val")).toHaveValue("1d6 + 2");
+  await expect(page.locator("#ap").locator("..")).toHaveText("Бронебойное (AP)");
+  await expect(page.locator("#add-damage")).toHaveAccessibleName("Добавить тип дополнительного урона");
+  await expect(page.locator(".damage-delete")).toHaveAttribute("data-tooltip", "Удалить этот тип урона");
+  await expect(page.locator(".lancer-header")).toHaveText("DAMAGE Rifle УРОН -- DAMAGE");
+  await expect(page.locator(".target-name")).toHaveText("Energy");
+  await expect(page.locator("input[name=quality]:checked")).toHaveValue("1");
+  await page.locator("select").selectOption("Energy");
+  await expect(page.locator("select")).toHaveValue("Energy");
+  await expect(page.locator("#ap")).toBeChecked();
+  expect(await page.evaluate(() => originalDamageSelect === document.querySelector("select"))).toBe(true);
+  expect(await page.locator("select option").evaluateAll(options => options.map(o => o.value)))
+    .toEqual(["Kinetic", "Energy", "Explosive", "Burn", "Heat"]);
+  await page.locator("#add-damage").click();
+  await expect(page.locator("select").nth(1).locator("option").first()).toHaveText("Кинетический");
+  await expect(page.locator(".damage-input-val").nth(1)).toHaveValue("2d6");
+  await page.locator(".damage-delete").first().evaluate(button => { button.dataset.tooltip = "Remove this damage type"; });
+  await expect(page.locator(".damage-delete").first()).toHaveAttribute("data-tooltip", "Удалить этот тип урона");
+  await expect(page.locator(".lancer-header")).toHaveText("DAMAGE Rifle УРОН -- DAMAGE");
+});
+
 for (const [lang, system] of [["en", "lancer"], ["ru", "other"]]) {
   test(`HUD remains unchanged for ${lang}/${system}`, async ({ page }) => {
     await boot(page, lang, system);
     await page.evaluate(html => {
       document.body.insertAdjacentHTML("beforeend", `<div id="hudzone">${html}</div>`);
-    }, hud);
-    await expect(page.locator("h4")).toHaveText(["Accuracy", "Difficulty"]);
+    }, hud + damageHud);
+    await expect(page.locator("#accdiff-hud h4")).toHaveText(["Accuracy", "Difficulty"]);
     await expect(page.locator("#bonus")).toHaveValue("3");
+    await expect(page.locator("#damage-hud h4").first()).toHaveText("Base Damage +");
+    await expect(page.locator("select option").first()).toHaveText("Kinetic");
   });
 }

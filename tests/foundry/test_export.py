@@ -57,6 +57,10 @@ class ExportTests(unittest.TestCase):
         self.assertEqual(labels["CORE SYSTEM"], ui["sheet.core_system"]["ru"].upper())
         self.assertEqual(labels["mechPreviewStats"]["HEAT"], stats["heat"])
         self.assertEqual(labels["mechPreviewStats"]["HP"], stats["hp"])
+        enums = export.read_json(export.ROOT / "locales/ru/enums.json")
+        for damage_type, source in enums["damage_types"].items():
+            self.assertEqual(labels["damageHud"][damage_type], source["ru"])
+        self.assertEqual(labels["damageHud"]["Armor Piercing (AP)"], enums["tag_words"]["Armor-Piercing (AP)"]["ru"])
 
     def test_complete_export_is_deterministic_and_contains_no_mechanics(self):
         files, report = export.build()

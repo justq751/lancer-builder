@@ -1,13 +1,13 @@
 import runtime from "../generated/runtime-data.js";
 import { overlay, registerBabele, refreshIndexes } from "./overlay.js";
 import { translateSheetLabels, translateMechPreview } from "./ui.js";
-import { observeAttackHud } from "./attack-hud.js";
+import { observeRollHuds } from "./roll-hud.js";
 
 const ID = "lancer-ru-content";
 const russianLancer = () => game.system.id === "lancer" && game.i18n.lang === "ru";
 
 Hooks.once("ready", () => {
-  if (russianLancer()) observeAttackHud(document);
+  if (russianLancer()) observeRollHuds(document);
 });
 
 Hooks.once("babele.init", babele => {
