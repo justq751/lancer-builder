@@ -33,3 +33,10 @@ export function translateStabilizeDialog(root) {
   if (title) title.textContent = title.textContent.replace(/^STABILIZE - /, `${LABELS.stabilizeDialog.STABILIZE} - `);
   return true;
 }
+
+export function translateOverheatChat(root) {
+  if (!root.querySelector(".struct-stress .cci-reactor")) return;
+  for (const button of root.querySelectorAll('a.flow-button[data-flow-type="check"][data-check-type="eng"]')) {
+    translateSheetLabels(button, LABELS.overheatChat);
+  }
+}

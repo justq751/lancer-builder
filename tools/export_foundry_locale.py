@@ -189,7 +189,28 @@ def build_ui():
             "dossier": {"background": translated("ui", "summary.background")},
         },
     }}
+    lang["lancer"]["statusIconsNames"] = {"exposed": translated("statuses", "exposed", "name", uppercase=False)}
+    exposed = "@LancerID[exposed]{" + lang["lancer"]["statusIconsNames"]["exposed"] + "}"
+    impaired = "@LancerID[impaired]{" + translated("statuses", "impaired", "name", uppercase=False) + "}"
+    engineering = translated("ui", "hase.engineering.name")
+    lang["lancer"]["tables"] = {"overheat": {
+        "title": {
+            "irreversible": "Необратимое расплавление реактора", "meltdown": "Расплавление реактора",
+            "destabilized": "Нестабильная силовая установка", "shunt": "Аварийный сброс тепла",
+        },
+        "description": {
+            "irreversible": "Реактор достигает критического состояния. В конце вашего следующего хода реактор меха расплавляется.",
+            "meltdown": {
+                "3plus": f"Ваш мех получает состояние {exposed}.",
+                "2": f"Совершите проверку мех-навыка «{engineering}». При успехе ваш мех получает состояние {exposed}. При провале его реактор расплавляется через 1d6 ваших ходов (бросок делает ведущий). Расплавление можно предотвратить, повторив проверку мех-навыка «{engineering}» полным действием.",
+                "1": "В конце вашего следующего хода реактор меха расплавляется.",
+            },
+            "destabilized": f"Силовая установка становится нестабильной и начинает выбрасывать струи плазмы. Ваш мех получает состояние {exposed}.",
+            "shunt": f"Системам охлаждения удаётся сдержать растущее тепло, но ваш мех получает состояние {impaired} до конца вашего следующего хода.",
+        },
+    }}
     labels = {
+        "statusIconsNames": lang["lancer"]["statusIconsNames"],
         "DESCRIPTION": translated("ui", "skills.editor.desc"),
         "AVAILABLE WEAPON MOUNTS": "ДОСТУПНЫЕ ОРУЖЕЙНЫЕ КРЕПЛЕНИЯ",
         "TRAITS": translated("ui", "frame.traits"), "BONUSES": "БОНУСЫ",
@@ -271,6 +292,7 @@ def build_ui():
         "Clear Own Condition": "Снять своё состояние", "Clear Ally Condition": "Снять состояние союзника",
         "Submit": "Применить", "Cancel": hud["Cancel"],
     }
+    labels["overheatChat"] = {"ENGINEERING": engineering}
     return lang, labels
 
 

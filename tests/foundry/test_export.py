@@ -1,5 +1,6 @@
 import json
 import pathlib
+import re
 import sys
 import unittest
 from unittest.mock import patch
@@ -61,6 +62,25 @@ class ExportTests(unittest.TestCase):
         for damage_type, source in enums["damage_types"].items():
             self.assertEqual(labels["damageHud"][damage_type], source["ru"])
         self.assertEqual(labels["damageHud"]["Armor Piercing (AP)"], enums["tag_words"]["Armor-Piercing (AP)"]["ru"])
+
+    def test_overheat_table_uses_native_lid_links_with_site_status_names(self):
+        lang, labels = export.build_ui()
+        table = lang["lancer"]["tables"]["overheat"]
+        self.assertEqual(set(table["title"]), {"irreversible", "meltdown", "destabilized", "shunt"})
+        self.assertEqual(set(table["description"]["meltdown"]), {"3plus", "2", "1"})
+        serialized = json.dumps(table, ensure_ascii=False)
+        self.assertNotIn("@Compendium", serialized)
+        links = re.findall(r"@LancerID\[([^\]]+)\]\{([^}]+)\}", serialized)
+        self.assertEqual([lid for lid, _ in links], ["exposed", "exposed", "exposed", "impaired"])
+        statuses = export.read_json(export.ROOT / "locales/ru/statuses.json")
+        self.assertEqual(lang["lancer"]["statusIconsNames"]["exposed"], statuses["exposed"]["name"]["ru"])
+        self.assertEqual(labels["statusIconsNames"], lang["lancer"]["statusIconsNames"])
+        pack = export.read_json(export.MODULE / "compendium/world.status-items.json")
+        for lid, name in links:
+            self.assertEqual(name, statuses[lid]["name"]["ru"])
+            self.assertIn(f"status:{lid}", pack["entries"])
+        self.assertIn("1d6", table["description"]["meltdown"]["2"])
+        self.assertEqual(labels["overheatChat"]["ENGINEERING"], "ИНЖЕНЕРИЯ")
 
     def test_complete_export_is_deterministic_and_contains_no_mechanics(self):
         files, report = export.build()

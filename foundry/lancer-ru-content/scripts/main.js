@@ -1,10 +1,16 @@
 import runtime from "../generated/runtime-data.js";
+import labels from "../generated/ui-labels.js";
 import { overlay, registerBabele, refreshIndexes } from "./overlay.js";
-import { translateSheetLabels, translateMechPreview, translateMechLoadout, translateStabilizeDialog } from "./ui.js";
+import { translateSheetLabels, translateMechPreview, translateMechLoadout, translateStabilizeDialog, translateOverheatChat } from "./ui.js";
 import { observeRollHuds } from "./roll-hud.js";
 
 const ID = "lancer-ru-content";
 const russianLancer = () => game.system.id === "lancer" && game.i18n.lang === "ru";
+
+Hooks.once("i18nInit", () => {
+  // Apply after language files so ru-ru's load order cannot replace the builder term.
+  if (russianLancer()) game.i18n.translations.lancer.statusIconsNames.exposed = labels.statusIconsNames.exposed;
+});
 
 Hooks.once("ready", () => {
   if (russianLancer()) observeRollHuds(document);
@@ -49,6 +55,10 @@ Hooks.on("babele.ready", async () => {
 Hooks.on("renderDialog", (app, html) => {
   if (!russianLancer()) return;
   if (translateStabilizeDialog(app.element?.[0] ?? html[0] ?? html)) app.setPosition({ height: "auto" });
+});
+
+Hooks.on("renderChatMessageHTML", (_message, html) => {
+  if (russianLancer()) translateOverheatChat(html);
 });
 
 // Foundry 13 ends each sheet's render hook chain at ActorSheet or ItemSheet.
