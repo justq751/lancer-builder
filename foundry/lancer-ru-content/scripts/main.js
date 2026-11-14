@@ -1,6 +1,6 @@
 import runtime from "../generated/runtime-data.js";
 import { overlay, registerBabele, refreshIndexes } from "./overlay.js";
-import { translateSheetLabels, translateMechPreview, translateMechLoadout } from "./ui.js";
+import { translateSheetLabels, translateMechPreview, translateMechLoadout, translateStabilizeDialog } from "./ui.js";
 import { observeRollHuds } from "./roll-hud.js";
 
 const ID = "lancer-ru-content";
@@ -44,6 +44,10 @@ Hooks.on("babele.ready", async () => {
     console.error("LANCER RU: failed to load translated indexes", error);
     ui.notifications.error("LANCER RU: не удалось загрузить перевод списка справочников. Подробности в консоли.");
   }
+});
+
+Hooks.on("renderDialog", (app, html) => {
+  if (russianLancer()) translateStabilizeDialog(app.element?.[0] ?? html[0] ?? html);
 });
 
 // Foundry 13 ends each sheet's render hook chain at ActorSheet or ItemSheet.

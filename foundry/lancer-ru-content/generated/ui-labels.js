@@ -115,5 +115,19 @@ export default {
     "Armor Piercing (AP)": "Бронебойное (AP)",
     "Overkill": "Сверхурон",
     "Reliable": "Надёжное"
+  },
+  "stabilizeDialog": {
+    "STABILIZE": "СТАБИЛИЗАЦИЯ",
+    "Please select your two Stabilize actions": "Выберите два действия стабилизации",
+    "OPTION 1": "ДЕЙСТВИЕ 1",
+    "OPTION 2": "ДЕЙСТВИЕ 2",
+    "Cool Mech": "Остудить меха",
+    "Restore HP": "Восстановить ОЗ",
+    "Reload": "Перезарядка",
+    "Clear Burn": "Снять огонь",
+    "Clear Own Condition": "Снять своё состояние",
+    "Clear Ally Condition": "Снять состояние союзника",
+    "Submit": "Применить",
+    "Cancel": "Отмена"
   }
 };

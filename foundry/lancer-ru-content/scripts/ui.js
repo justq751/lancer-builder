@@ -5,12 +5,12 @@ export function translateLabel(text, labels = LABELS) {
     typeof labels[label] === "string" ? before + labels[label] + after : original);
 }
 
-export function translateSheetLabels(root) {
+export function translateSheetLabels(root, labels = LABELS) {
   const walker = root.ownerDocument.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   while (walker.nextNode()) {
     const node = walker.currentNode;
     if (node.parentElement.closest("input, textarea, [contenteditable], script, style")) continue;
-    node.textContent = translateLabel(node.textContent);
+    node.textContent = translateLabel(node.textContent, labels);
   }
 }
 
@@ -24,4 +24,11 @@ export function translateMechLoadout(root) {
   for (const label of root.querySelectorAll(".loadout-category > span:first-of-type, .mount-type-ctx-root > span, .mount .mech_weapon.slot.drop-settable > span.major")) {
     label.textContent = translateLabel(label.textContent, LABELS.mechLoadout);
   }
+}
+
+export function translateStabilizeDialog(root) {
+  if (!root.querySelector(".stabilize-wrapper")) return;
+  translateSheetLabels(root, LABELS.stabilizeDialog);
+  const title = root.querySelector(".window-title");
+  if (title) title.textContent = title.textContent.replace(/^STABILIZE - /, `${LABELS.stabilizeDialog.STABILIZE} - `);
 }

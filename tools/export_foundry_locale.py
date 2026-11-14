@@ -261,6 +261,16 @@ def build_ui():
                            "Overkill": "Overkill", "Reliable": "Reliable"}.items():
         damage[target] = translated("enums", "tag_words", source, uppercase=False)
     labels["damageHud"] = damage
+    labels["stabilizeDialog"] = {
+        "STABILIZE": translated("actions", "act_stabilize", "name"),
+        "Please select your two Stabilize actions": "Выберите два действия стабилизации",
+        "OPTION 1": "ДЕЙСТВИЕ 1", "OPTION 2": "ДЕЙСТВИЕ 2",
+        "Cool Mech": "Остудить меха", "Restore HP": "Восстановить ОЗ",
+        "Reload": translated("actions", "act_reload", "name", uppercase=False),
+        "Clear Burn": "Снять " + translated("enums", "damage_types", "Burn").lower(),
+        "Clear Own Condition": "Снять своё состояние", "Clear Ally Condition": "Снять состояние союзника",
+        "Submit": "Применить", "Cancel": hud["Cancel"],
+    }
     return lang, labels
 
 
