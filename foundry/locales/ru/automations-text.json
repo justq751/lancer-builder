@@ -1,0 +1,1288 @@
+{
+  "(Weapon)": {
+    "ru": "(оружие)",
+    "where": [
+      "scripts/tah/hud-categories.js:3775"
+    ]
+  },
+  "(missing macro)": {
+    "ru": "(макрос не найден)",
+    "where": [
+      "scripts/tah/hud-categories.js:2926"
+    ]
+  },
+  "/(.+) is permanent/": {
+    "ru": "$1: постоянный эффект",
+    "example": "Burn is permanent",
+    "where": [
+      "scripts/tah/status-panel.js:51"
+    ]
+  },
+  "/(.+) · Core Passive/": {
+    "ru": "$1 · пассивная CORE",
+    "example": "Hunter · Core Passive",
+    "where": [
+      "scripts/tah/hud-categories.js:2442"
+    ]
+  },
+  "/(.+) · Trait/": {
+    "ru": "$1 · особенность",
+    "example": "Guardian · Trait",
+    "where": [
+      "scripts/tah/hud-categories.js:2519"
+    ]
+  },
+  "/Barrage with: (.+) and a second mount\\./": {
+    "ru": "Залп: $1 и второе крепление.",
+    "example": "Barrage with: Main Mount and a second mount.",
+    "where": [
+      "scripts/tah/hud-categories.js:3469"
+    ]
+  },
+  "/Base Stats \\(Tier (\\d+)\\)/": {
+    "ru": "Базовые характеристики (ранг $1)",
+    "example": "Base Stats (Tier 2)",
+    "where": [
+      "scripts/tah/hud-categories.js:2137"
+    ]
+  },
+  "/Deployable · (.+) \\(Core\\)/": {
+    "ru": "Развёртываемое · $1 (CORE)",
+    "example": "Deployable · Turret (Core)",
+    "where": [
+      "scripts/tah/hud-categories.js:2562"
+    ]
+  },
+  "/Deployable · (.+) \\(Trait\\)/": {
+    "ru": "Развёртываемое · $1 (особенность)",
+    "example": "Deployable · Turret (Trait)",
+    "where": [
+      "scripts/tah/hud-categories.js:2494"
+    ]
+  },
+  "/Max Reach \\((.+)\\)/": {
+    "ru": "Макс. досягаемость ($1)",
+    "example": "Max Reach (12)",
+    "where": [
+      "scripts/tah/hud-categories.js:1286"
+    ]
+  },
+  "/Movement \\((.+)\\)/": {
+    "ru": "Перемещение ($1)",
+    "example": "Movement (4/8)",
+    "where": [
+      "scripts/tah/hud-categories.js:1294"
+    ]
+  },
+  "/Roll 1d20 \\+ (\\d+) \\((.+)\\)\\./": {
+    "ru": "Бросьте 1d20 + $1 ($2).",
+    "example": "Roll 1d20 + 2 (Hull).",
+    "where": [
+      "scripts/tah/hud-categories.js:968"
+    ]
+  },
+  "/Sensors \\((.+)\\)/": {
+    "ru": "Сенсоры ($1)",
+    "example": "Sensors (10)",
+    "where": [
+      "scripts/tah/hud-categories.js:1278"
+    ]
+  },
+  "/Threat \\((.+)\\)/": {
+    "ru": "Угроза ($1)",
+    "example": "Threat (3)",
+    "where": [
+      "scripts/tah/hud-categories.js:1270"
+    ]
+  },
+  "/Which token should (.+) be linked to\\?/": {
+    "ru": "К какому токену привязать $1?",
+    "example": "Which token should Drone be linked to?",
+    "where": [
+      "scripts/tah/hud-categories.js:1177"
+    ]
+  },
+  "A character may squeeze as a free action, treating themselves as one Size smaller for the purposes of movement. While squeezing, the character is additionally treated as Prone. The character may stop squeezing as a free action while in a space able to accommodate their normal Size.": {
+    "ru": "Персонаж может протиснуться свободным действием: при перемещении он считается на один Размер меньше. Пока он протискивается, он также считается Опрокинутым. Перестать протискиваться можно свободным действием там, где помещается его обычный Размер.",
+    "where": [
+      "scripts/tah/hud-categories.js:938"
+    ]
+  },
+  "A hostile character starts any movement (including BOOST and other actions) inside one of your weapons' THREAT.": {
+    "ru": "Враждебный персонаж начинает любое перемещение (включая Рывок и другие действия) в зоне Угрозы одного из ваших оружий.",
+    "where": [
+      "scripts/tah/hud-categories.js:901"
+    ]
+  },
+  "ADD MACRO": {
+    "ru": "ДОБАВИТЬ МАКРОС",
+    "where": [
+      "scripts/tah/hud-categories.js:2971"
+    ]
+  },
+  "Act.": {
+    "ru": "Акт.",
+    "where": [
+      "scripts/tah/hud-categories.js:2129"
+    ]
+  },
+  "Aid": {
+    "ru": "Помощь",
+    "where": [
+      "scripts/activations/reactions-registry.js:962",
+      "scripts/activations/reactions-registry.js:986",
+      "scripts/fx/actionFX.js:2046",
+      "scripts/tah/hud-categories.js:850",
+      "scripts/tah/hud-categories.js:850"
+    ]
+  },
+  "Aided": {
+    "ru": "Поддержан",
+    "where": [
+      "scripts/activations/reactions-registry.js:978",
+      "scripts/activations/reactions-registry.js:985",
+      "scripts/activations/reactions-registry.js:1043",
+      "scripts/activations/reactions-registry.js:1049",
+      "scripts/fx/statusFX.js:1205"
+    ]
+  },
+  "Already SHUT DOWN.": {
+    "ru": "Уже Отключён.",
+    "where": [
+      "scripts/tah/hud-categories.js:853"
+    ]
+  },
+  "Ammo": {
+    "ru": "Боезапас",
+    "where": [
+      "scripts/tah/hud-categories.js:1413",
+      "scripts/tah/hud-categories.js:1503",
+      "scripts/tah/hud-categories.js:2841"
+    ]
+  },
+  "As a pilot on foot, make a contested skill check, adding bonuses from triggers as normal. This can be used to reveal characters within RANGE 5. Once a HIDDEN character has been found using SEARCH, they immediately lose HIDDEN and can be located again by any character.": {
+    "ru": "Пеший пилот совершает состязательную проверку навыка, добавляя бонусы навыков как обычно. Так можно обнаружить персонажей в пределах Дальности 5. Найденный Поиском Скрытый персонаж сразу теряет статус «Скрыт», и его снова может обнаружить любой персонаж.",
+    "where": [
+      "scripts/tah/hud-categories.js:566"
+    ]
+  },
+  "As a protocol or quick action, start to handle an adjacent object or willing character by lifting or dragging them. Mechs can drag characters or objects up to twice their SIZE but are SLOWED while doing so. They can also lift characters or objects of equal or lesser SIZE overhead but are IMMOBILIZED while doing so.": {
+    "ru": "Протоколом или быстрым действием начните нести соседний объект или согласного персонажа, поднимая или волоча его. Мехи могут волочить персонажей и объекты до двойного своего Размера, но при этом Замедлены. Они также могут поднять над головой персонажа или объект того же или меньшего Размера, но при этом Обездвижены.",
+    "where": [
+      "scripts/tah/hud-categories.js:854"
+    ]
+  },
+  "Attach extra actions, deployables, or resource bars to the actor.": {
+    "ru": "Добавить актёру дополнительные действия, развёртываемые объекты или полосы ресурсов.",
+    "where": [
+      "scripts/tah/hud-categories.js:1366"
+    ]
+  },
+  "Base": {
+    "ru": "База",
+    "where": [
+      "scripts/tah/status-panel.js:902"
+    ]
+  },
+  "Base Stats": {
+    "ru": "Базовые характеристики",
+    "where": [
+      "scripts/tah/hud-categories.js:1540"
+    ]
+  },
+  "Base Stats (no armor)": {
+    "ru": "Базовые характеристики (без брони)",
+    "where": [
+      "scripts/tah/hud-categories.js:1733"
+    ]
+  },
+  "Basic Attack": {
+    "ru": "Базовая атака",
+    "where": [
+      "scripts/tah/hud-categories.js:56",
+      "scripts/tah/hud-categories.js:546"
+    ]
+  },
+  "Basic Tech": {
+    "ru": "Базовое тех-действие",
+    "where": [
+      "scripts/tah/hud-categories.js:57",
+      "scripts/tah/hud-categories.js:547",
+      "scripts/tah/hud-categories.js:547",
+      "scripts/tah/hud-categories.js:812",
+      "scripts/tah/hud-categories.js:812"
+    ]
+  },
+  "Blinded": {
+    "ru": "Ослеплён",
+    "where": [
+      "scripts/fx/statusFX.js:1220",
+      "scripts/setup/status-effects.js:200",
+      "startups/itemActivations.js:3169"
+    ]
+  },
+  "Blocked:": {
+    "ru": "Заблокировано:",
+    "where": [
+      "scripts/tah/hud-categories.js:322"
+    ]
+  },
+  "Bond": {
+    "ru": "Связь",
+    "where": [
+      "scripts/tah/hud-categories.js:1881"
+    ]
+  },
+  "Boot Up requires the SHUT DOWN status.": {
+    "ru": "Для Перезапуска нужен статус «Отключён».",
+    "where": [
+      "scripts/tah/hud-categories.js:874"
+    ]
+  },
+  "Bulwark": {
+    "ru": "Оплот",
+    "where": [
+      "scripts/setup/status-effects.js:73",
+      "scripts/setup/status-effects.js:272"
+    ]
+  },
+  "Cascading": {
+    "ru": "Каскад",
+    "where": [
+      "scripts/Battelog/recap.js:979",
+      "scripts/fx/statusFX.js:1191",
+      "scripts/setup/status-effects.js:112"
+    ]
+  },
+  "Choose a character or object within SENSORS and line of sight, then ask the GM for one of: its full statistics and loadout, one piece of hidden information, or generic public information. Only current at the time of the SCAN.": {
+    "ru": "Выберите персонажа или объект в пределах Сенсоров и линии видимости и спросите ведущего об одном: полные характеристики и снаряжение, один скрытый факт или общая открытая информация. Сведения верны только на момент Сканирования.",
+    "where": [
+      "scripts/tah/hud-categories.js:813",
+      "scripts/tah/hud-categories.js:813"
+    ]
+  },
+  "Choose a character within SENSORS and line of sight. They gain the LOCK ON condition. Any character making an attack against a character with LOCK ON may choose to gain +1 Accuracy on that attack and then clear the LOCK ON condition after that attack resolves.": {
+    "ru": "Выберите персонажа в пределах Сенсоров и линии видимости. Он получает состояние «Захват цели». Любой персонаж, атакующий цель с Захватом цели, может получить +1 Точность на эту атаку, после чего Захват цели снимается.",
+    "where": [
+      "scripts/tah/hud-categories.js:814",
+      "scripts/tah/hud-categories.js:814"
+    ]
+  },
+  "Choose a character within SENSORS. They receive +2 Accuracy on the next skill check or save they make between now and the end of their next turn. Characters can only benefit from one BOLSTER at a time.": {
+    "ru": "Выберите персонажа в пределах Сенсоров. Он получает +2 Точность на следующую проверку навыка или спасбросок до конца своего следующего хода. Одновременно на персонажа действует только одно Усиление.",
+    "where": [
+      "scripts/tah/hud-categories.js:815",
+      "scripts/tah/hud-categories.js:815"
+    ]
+  },
+  "Choose a character within your SENSORS that you suspect is HIDDEN and make a contested SYSTEMS check against their AGILITY. Once a HIDDEN character has been found using SEARCH, they immediately lose HIDDEN and can be located again by any character.": {
+    "ru": "Выберите персонажа в пределах Сенсоров, которого вы подозреваете в том, что он Скрыт, и совершите состязательную проверку Систем против его Ловкости. Найденный Поиском Скрытый персонаж сразу теряет статус «Скрыт», и его снова может обнаружить любой персонаж.",
+    "where": [
+      "scripts/tah/hud-categories.js:852"
+    ]
+  },
+  "Clear All Effects": {
+    "ru": "Снять все эффекты",
+    "where": [
+      "scripts/tah/status-panel.js:562"
+    ]
+  },
+  "Clear this token's recorded movement history.": {
+    "ru": "Очистить записанную историю перемещений токена.",
+    "where": [
+      "scripts/tah/hud-categories.js:1228"
+    ]
+  },
+  "Climber": {
+    "ru": "Скалолаз",
+    "where": [
+      "scripts/setup/status-effects.js:205",
+      "startups/itemActivations.js:5532"
+    ]
+  },
+  "Clocks & Burdens": {
+    "ru": "Часы и бремя",
+    "where": [
+      "scripts/tah/hud-categories.js:49"
+    ]
+  },
+  "Consume": {
+    "ru": "Израсходовать",
+    "where": [
+      "scripts/tah/status-panel.js:904"
+    ]
+  },
+  "Core Bonus": {
+    "ru": "CORE-бонус",
+    "where": [
+      "scripts/tah/hud-categories.js:2534"
+    ]
+  },
+  "Core Power": {
+    "ru": "CORE-способность",
+    "where": [
+      "scripts/tah/hud-categories.js:2356",
+      "scripts/tah/item-helpers.js:764",
+      "scripts/tah/stats-bar.js:126",
+      "scripts/tools/actor-actions.js:31",
+      "scripts/tools/scan.js:156"
+    ]
+  },
+  "Core Power Active": {
+    "ru": "CORE-способность активна",
+    "where": [
+      "scripts/fx/statusFX.js:1223",
+      "scripts/setup/status-effects.js:243"
+    ]
+  },
+  "Core System": {
+    "ru": "CORE-система",
+    "where": [
+      "scripts/tah/hud-categories.js:1558"
+    ]
+  },
+  "Datalinked": {
+    "ru": "Связан данными",
+    "where": [
+      "scripts/setup/status-effects.js:252"
+    ]
+  },
+  "Dazed": {
+    "ru": "Дезориентирован",
+    "where": [
+      "scripts/alt-struct/structure.js:1217",
+      "scripts/fx/statusFX.js:1200",
+      "scripts/setup/status-effects.js:259"
+    ]
+  },
+  "Deal 2 heat. Target becomes IMPAIRED and SLOWED until the end of their next turn.": {
+    "ru": "Нанесите 2 Тепла. Цель становится Ослабленной и Замедленной до конца своего следующего хода.",
+    "where": [
+      "scripts/tah/hud-categories.js:3480"
+    ]
+  },
+  "Deal 2 heat. Target becomes IMPAIRED until the end of their next turn.": {
+    "ru": "Нанесите 2 Тепла. Цель становится Ослабленной до конца своего следующего хода.",
+    "where": [
+      "scripts/tah/hud-categories.js:3479"
+    ]
+  },
+  "Default system activation.": {
+    "ru": "Обычная активация системы.",
+    "where": [
+      "scripts/tah/hud-categories.js:1449"
+    ]
+  },
+  "Delete bonus": {
+    "ru": "Удалить бонус",
+    "where": [
+      "scripts/tah/status-panel.js:665"
+    ]
+  },
+  "Deploy Item": {
+    "ru": "Развернуть предмет",
+    "where": [
+      "scripts/tah/hud-categories.js:612"
+    ]
+  },
+  "Destroyed": {
+    "ru": "Уничтожен",
+    "where": [
+      "scripts/setup/status-effects.js:167",
+      "scripts/tah/hud-popups.js:220"
+    ]
+  },
+  "Drop a macro here to add it.": {
+    "ru": "Перетащите сюда макрос, чтобы добавить его.",
+    "where": [
+      "scripts/tah/hud-categories.js:2971"
+    ]
+  },
+  "Drop to ground level and take falling damage.": {
+    "ru": "Упасть на уровень земли и получить урон от падения.",
+    "where": [
+      "scripts/tah/hud-categories.js:1227"
+    ]
+  },
+  "EJECT as a quick action, flying 6 spaces in the direction of your choice; however, this is a single-use system for emergency use only – it leaves your mech IMPAIRED. Your mech remains IMPAIRED and you cannot EJECT again until your next FULL REPAIR.": {
+    "ru": "Катапультируйтесь быстрым действием, отлетев на 6 клеток в выбранном направлении. Это одноразовая аварийная система: она оставляет вашего меха Ослабленным. Мех остаётся Ослабленным, и вы не можете снова катапультироваться до следующего Полного ремонта.",
+    "where": [
+      "scripts/tah/hud-categories.js:857"
+    ]
+  },
+  "EXTRA DEPLOYABLE": {
+    "ru": "ДОП. РАЗВЁРТЫВАЕМОЕ",
+    "where": [
+      "scripts/tah/hud-categories.js:634"
+    ]
+  },
+  "Eng": {
+    "ru": "Инж",
+    "where": [
+      "scripts/tah/hud-categories.js:2136",
+      "scripts/tools/scan.js:518"
+    ]
+  },
+  "Extra Deployable": {
+    "ru": "Доп. развёртываемое",
+    "where": [
+      "scripts/tah/hud-categories.js:651"
+    ]
+  },
+  "Fall": {
+    "ru": "Падение",
+    "where": [
+      "scripts/activations/reactions-registry.js:1141",
+      "scripts/fx/actionFX.js:2044",
+      "scripts/tah/hud-categories.js:1227",
+      "scripts/tools/movement-tools.js:171",
+      "scripts/tools/movement-tools.js:171"
+    ]
+  },
+  "Falling": {
+    "ru": "Падает",
+    "where": [
+      "scripts/fx/statusFX.js:1199",
+      "scripts/setup/status-effects.js:190",
+      "scripts/tools/movement-tools.js:143",
+      "scripts/tools/movement-tools.js:162",
+      "scripts/tools/movement-tools.js:184"
+    ]
+  },
+  "Flying": {
+    "ru": "Летит",
+    "where": [
+      "scripts/activations/reactions-registry.js:737",
+      "scripts/activations/reactions-registry.js:751",
+      "scripts/activations/reactions-registry.js:773",
+      "scripts/activations/reactions-registry.js:775",
+      "scripts/fx/statusFX.js:1221"
+    ]
+  },
+  "Fragment Signal · Quick Tech": {
+    "ru": "Фрагментация сигнала · Быстрое тех-действие",
+    "where": [
+      "scripts/tah/hud-categories.js:3777"
+    ]
+  },
+  "Frame Traits": {
+    "ru": "Особенности шасси",
+    "where": [
+      "scripts/tah/hud-categories.js:2478"
+    ]
+  },
+  "Grappled": {
+    "ru": "Схвачен",
+    "where": [
+      "scripts/setup/status-effects.js:181"
+    ]
+  },
+  "Grappling": {
+    "ru": "Держит захват",
+    "where": [
+      "scripts/combat/grapple.js:162",
+      "scripts/setup/status-effects.js:172"
+    ]
+  },
+  "Guardian": {
+    "ru": "Страж",
+    "where": [
+      "scripts/setup/status-effects.js:63",
+      "scripts/setup/status-effects.js:272"
+    ]
+  },
+  "Handle": {
+    "ru": "Нести",
+    "where": [
+      "scripts/activations/reactions-registry.js:203",
+      "scripts/fx/actionFX.js:2042",
+      "scripts/fx/actionFX.js:2264",
+      "scripts/tah/hud-categories.js:854",
+      "scripts/tah/hud-categories.js:854"
+    ]
+  },
+  "Hard Cover": {
+    "ru": "Жёсткое укрытие",
+    "where": [
+      "scripts/bonuses/bonus-flow-step.js:493",
+      "scripts/bonuses/bonus-flow-step.js:494",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:510",
+      "scripts/interactive/deployables.js:157"
+    ]
+  },
+  "Hide / Reveal Token": {
+    "ru": "Скрыть / показать токен",
+    "where": [
+      "scripts/tah/hud-categories.js:1220"
+    ]
+  },
+  "Hide Token": {
+    "ru": "Скрыть токен",
+    "where": [
+      "scripts/tah/hud-categories.js:1220"
+    ]
+  },
+  "Hover": {
+    "ru": "Парит",
+    "where": [
+      "scripts/fx/statusFX.js:1222",
+      "scripts/fx/statusFX.js:1222",
+      "scripts/fx/statusFX.js:1498",
+      "scripts/fx/statusFX.js:1500",
+      "scripts/fx/statusFX.js:1501"
+    ]
+  },
+  "Immovable": {
+    "ru": "Несдвигаем",
+    "where": [
+      "scripts/activations/reactions-registry.js:1225",
+      "scripts/interactive/cards.js:870",
+      "scripts/setup/status-effects.js:157"
+    ]
+  },
+  "Infection": {
+    "ru": "Заражение",
+    "where": [
+      "scripts/bonuses/effectManager.js:178",
+      "scripts/bonuses/effectManager.js:202",
+      "scripts/bonuses/infection.js:101",
+      "scripts/bonuses/infection.js:133",
+      "scripts/bonuses/infection.js:135"
+    ]
+  },
+  "Interact": {
+    "ru": "Взаимодействие",
+    "where": [
+      "scripts/fx/actionFX.js:2042",
+      "scripts/fx/actionFX.js:2266",
+      "scripts/tah/hud-categories.js:567",
+      "scripts/tah/hud-categories.js:567",
+      "scripts/tah/hud-categories.js:855"
+    ]
+  },
+  "Invade · Quick Tech": {
+    "ru": "Вторжение · Быстрое тех-действие",
+    "where": [
+      "scripts/tah/hud-categories.js:3777"
+    ]
+  },
+  "Invert": {
+    "ru": "Инвертировать",
+    "where": [
+      "scripts/tah/hud-categories.js:2971"
+    ]
+  },
+  "Invert SVG (white → black)": {
+    "ru": "Инвертировать SVG (белый → чёрный)",
+    "where": [
+      "scripts/tah/hud-categories.js:2971"
+    ]
+  },
+  "Lancer Automations API not found or outdated.": {
+    "ru": "API Lancer Automations не найден или устарел.",
+    "where": [
+      "scripts/tah/hud-categories.js:45"
+    ]
+  },
+  "Link Unlink Actor": {
+    "ru": "Привязать/отвязать актёра",
+    "where": [
+      "scripts/tah/hud-categories.js:616"
+    ]
+  },
+  "Locked by:": {
+    "ru": "Заблокировано:",
+    "where": [
+      "scripts/tah/hud-categories.js:3524"
+    ]
+  },
+  "Macro": {
+    "ru": "Макрос",
+    "where": [
+      "scripts/tah/hud-categories.js:3101",
+      "scripts/tah/hud-categories.js:3123"
+    ]
+  },
+  "Macro missing": {
+    "ru": "Макрос не найден",
+    "where": [
+      "scripts/tah/hud-categories.js:3123"
+    ]
+  },
+  "Make a melee or ranged attack with a pilot weapon.": {
+    "ru": "Совершите атаку ближнего или дальнего боя оружием пилота.",
+    "where": [
+      "scripts/tah/hud-categories.js:725"
+    ]
+  },
+  "Make a tech attack against a target. On success, deal 2 heat and choose one of the available Invade options.": {
+    "ru": "Совершите тех-атаку по цели. При успехе нанесите 2 Тепла и выберите один из доступных вариантов Вторжения.",
+    "where": [
+      "scripts/tah/hud-categories.js:816"
+    ]
+  },
+  "Manipulate an object in some way, such as pushing a button, knocking it over, or ripping out wires. You may only Interact 1/turn. If no hostile characters are adjacent to the object, you automatically succeed. Otherwise, make a contested skill check.": {
+    "ru": "Сделайте что-то с объектом: нажмите кнопку, опрокиньте его, вырвите провода. Взаимодействовать можно 1 раз за ход. Если рядом с объектом нет врагов, вы преуспеваете автоматически, иначе совершите состязательную проверку навыка.",
+    "where": [
+      "scripts/tah/hud-categories.js:567",
+      "scripts/tah/hud-categories.js:855"
+    ]
+  },
+  "Master": {
+    "ru": "Мастер",
+    "where": [
+      "scripts/tah/hud-categories.js:1949"
+    ]
+  },
+  "Measure": {
+    "ru": "Измерить",
+    "where": [
+      "scripts/tah/hud-categories.js:1330"
+    ]
+  },
+  "Mech": {
+    "ru": "Мех",
+    "where": [
+      "scripts/tah/hud-categories.js:1567",
+      "scripts/tah/hud-categories.js:1623",
+      "scripts/tah/hud-categories.js:1776",
+      "scripts/tools/pilot-reserves.js:82"
+    ]
+  },
+  "Move Cap": {
+    "ru": "Предел перемещения",
+    "where": [
+      "scripts/tah/hud-categories.js:1234"
+    ]
+  },
+  "Move at least 1 space, up to your SPEED, on top of your standard move. Some talents and systems only work on a BOOST, not a standard move.": {
+    "ru": "Переместитесь как минимум на 1 клетку и не дальше своей Скорости, помимо стандартного перемещения. Некоторые таланты и системы работают только при Рывке, а не при стандартном перемещении.",
+    "where": [
+      "scripts/tools/constants.js:11"
+    ]
+  },
+  "Move the token back along its last recorded move.": {
+    "ru": "Вернуть токен назад по последнему записанному перемещению.",
+    "where": [
+      "scripts/tah/hud-categories.js:1229"
+    ]
+  },
+  "Move the token back to where its history started.": {
+    "ru": "Вернуть токен туда, где началась его история.",
+    "where": [
+      "scripts/tah/hud-categories.js:1230"
+    ]
+  },
+  "Move tokens to picked destinations as forced movement.": {
+    "ru": "Переместить токены в выбранные точки как невольное перемещение.",
+    "where": [
+      "scripts/tah/hud-categories.js:1225"
+    ]
+  },
+  "NO ARMOR": {
+    "ru": "БЕЗ БРОНИ",
+    "where": [
+      "scripts/tah/hud-categories.js:1760"
+    ]
+  },
+  "No Armor": {
+    "ru": "Без брони",
+    "where": [
+      "scripts/tah/hud-categories.js:1764"
+    ]
+  },
+  "No bonuses": {
+    "ru": "Нет бонусов",
+    "where": [
+      "scripts/tah/status-panel.js:655",
+      "scripts/tah/status-panel.js:728"
+    ]
+  },
+  "No custom statuses": {
+    "ru": "Нет своих состояний",
+    "where": [
+      "scripts/tah/status-panel.js:639"
+    ]
+  },
+  "No macros available.": {
+    "ru": "Нет доступных макросов.",
+    "where": [
+      "scripts/tah/hud-categories.js:2970"
+    ]
+  },
+  "Obscure the position of your mech, becoming HIDDEN and unable to be identified, precisely located, or be targeted directly by attacks or hostile actions.": {
+    "ru": "Скройте положение своего меха: он становится Скрытым, его нельзя опознать, точно определить его местоположение или выбрать целью атак и враждебных действий.",
+    "where": [
+      "scripts/tah/hud-categories.js:851"
+    ]
+  },
+  "Obscure your position, becoming HIDDEN and unable to be identified, precisely located, or targeted directly by attacks or hostile actions.": {
+    "ru": "Скройте своё положение: вы становитесь Скрытым, вас нельзя опознать, точно определить ваше местоположение или выбрать целью атак и враждебных действий.",
+    "where": [
+      "scripts/tah/hud-categories.js:565"
+    ]
+  },
+  "Once per turn, you can OVERCHARGE your mech, allowing you to make any quick action as a free action, even actions you have already taken this turn. The first time you OVERCHARGE, take 1 heat. The second time, take 1d3 heat. The third time, take 1d6 heat. Each time after, take 1d6+4 heat. A FULL REPAIR resets this counter.": {
+    "ru": "Раз в ход вы можете уйти в Форсаж и совершить любое быстрое действие как свободное, даже уже совершённое в этот ход. При первом Форсаже получите 1 Тепло, при втором — 1d3, при третьем — 1d6, а далее каждый раз — 1d6+4. Полный ремонт сбрасывает счётчик.",
+    "where": [
+      "scripts/tah/hud-categories.js:387"
+    ]
+  },
+  "Open Sheet": {
+    "ru": "Открыть лист",
+    "where": [
+      "scripts/tah/hud-categories.js:3116"
+    ]
+  },
+  "Open the rest dialog: spend repairs, clear heat and conditions.": {
+    "ru": "Открыть окно отдыха: потратить ремонты, сбросить тепло и состояния.",
+    "where": [
+      "scripts/tah/hud-categories.js:50"
+    ]
+  },
+  "Organization": {
+    "ru": "Организация",
+    "where": [
+      "scripts/tah/hud-categories.js:1623"
+    ]
+  },
+  "Other Skill": {
+    "ru": "Другой навык",
+    "where": [
+      "scripts/tah/hud-categories.js:973",
+      "scripts/tah/hud-categories.js:977",
+      "scripts/tah/hud-categories.js:982"
+    ]
+  },
+  "Overheated": {
+    "ru": "Перегрет",
+    "where": [
+      "scripts/fx/statusFX.js:1208",
+      "scripts/setup/status-effects.js:265"
+    ]
+  },
+  "Passive": {
+    "ru": "Пассивно",
+    "where": [
+      "scripts/tah/hud-categories.js:2440",
+      "scripts/tah/hud-categories.js:2441",
+      "scripts/tah/hud-categories.js:2479",
+      "scripts/tah/hud-categories.js:2531"
+    ]
+  },
+  "Phasing": {
+    "ru": "Фазирован",
+    "where": [
+      "scripts/fx/statusFX.js:1207",
+      "scripts/setup/status-effects.js:83",
+      "scripts/setup/status-effects.js:272"
+    ]
+  },
+  "Pick from the list. Customize the icon and name before adding.": {
+    "ru": "Выберите из списка. Перед добавлением можно изменить значок и название.",
+    "where": [
+      "scripts/tah/hud-categories.js:2971"
+    ]
+  },
+  "Pick up a weapon you previously threw, returning it to your loadout.": {
+    "ru": "Подобрать ранее брошенное оружие и вернуть его в снаряжение.",
+    "where": [
+      "scripts/tah/hud-categories.js:732"
+    ]
+  },
+  "Pickup Weapon": {
+    "ru": "Подобрать оружие",
+    "where": [
+      "scripts/tah/hud-categories.js:732"
+    ]
+  },
+  "Pilot Armor": {
+    "ru": "Броня пилота",
+    "where": [
+      "scripts/tah/hud-categories.js:1764"
+    ]
+  },
+  "Pilot Gear": {
+    "ru": "Снаряжение пилота",
+    "where": [
+      "scripts/tah/hud-categories.js:2059"
+    ]
+  },
+  "Place each token at its knockback destination.": {
+    "ru": "Поставить каждый токен в точку отбрасывания.",
+    "where": [
+      "scripts/tah/hud-categories.js:1225"
+    ]
+  },
+  "Power": {
+    "ru": "Способность",
+    "where": [
+      "scripts/tah/hud-categories.js:1949"
+    ]
+  },
+  "Prepare any other Quick Action and specify a valid trigger in the form \"When X then Y\". Until the start of your next turn, when it is triggered, you can take this action as a Reaction. While holding a Prepared Action, you may not move or perform any other actions or Reactions.": {
+    "ru": "Подготовьте любое другое быстрое действие и задайте условие вида «Когда X, то Y». До начала вашего следующего хода, когда условие выполнится, вы можете совершить это действие реакцией. Пока подготовленное действие удерживается, вы не можете перемещаться и совершать другие действия и реакции.",
+    "where": [
+      "scripts/tah/hud-categories.js:568",
+      "scripts/tah/hud-categories.js:856"
+    ]
+  },
+  "Project": {
+    "ru": "Проект",
+    "where": [
+      "scripts/tah/hud-categories.js:1623",
+      "scripts/tools/pilot-reserves.js:197",
+      "scripts/tools/pilot-reserves.js:197"
+    ]
+  },
+  "Protocol/Quick": {
+    "ru": "Протокол/Быстрое",
+    "where": [
+      "scripts/tah/hud-categories.js:567",
+      "scripts/tah/hud-categories.js:854",
+      "scripts/tah/hud-categories.js:855"
+    ]
+  },
+  "Raises your movement cap by your SPEED. Drag to move.": {
+    "ru": "Повышает предел перемещения на вашу Скорость. Перетащите токен, чтобы переместиться.",
+    "where": [
+      "scripts/tools/constants.js:11"
+    ]
+  },
+  "Reach": {
+    "ru": "Досягаемость",
+    "where": [
+      "scripts/tah/hud-categories.js:3335"
+    ]
+  },
+  "Reach:": {
+    "ru": "Досягаемость:",
+    "where": [
+      "scripts/tah/hud-categories.js:3329"
+    ]
+  },
+  "Reactor": {
+    "ru": "Реактор",
+    "where": [
+      "scripts/tah/hud-categories.js:2131"
+    ]
+  },
+  "Reactor Explosion": {
+    "ru": "Взрыв реактора",
+    "where": [
+      "scripts/tah/hud-categories.js:1208"
+    ]
+  },
+  "Reactor Meltdown": {
+    "ru": "Расплавление реактора",
+    "where": [
+      "scripts/activations/reactions-registry.js:1454",
+      "scripts/alt-struct/index.js:119",
+      "scripts/alt-struct/index.js:140",
+      "scripts/fx/actionFX.js:2044",
+      "scripts/fx/statusFX.js:1209"
+    ]
+  },
+  "Recall": {
+    "ru": "Отозвать",
+    "where": [
+      "scripts/tah/hud-categories.js:516"
+    ]
+  },
+  "Recall Item": {
+    "ru": "Отозвать предмет",
+    "where": [
+      "scripts/tah/hud-categories.js:613"
+    ]
+  },
+  "Reload Weapon": {
+    "ru": "Перезарядить оружие",
+    "where": [
+      "scripts/tah/hud-categories.js:1215"
+    ]
+  },
+  "Repairs": {
+    "ru": "Ремонты",
+    "where": [
+      "scripts/tah/hud-categories.js:1539",
+      "scripts/tah/hud-categories.js:1589",
+      "scripts/tah/stats-bar.js:158"
+    ]
+  },
+  "Reserves": {
+    "ru": "Резервы",
+    "where": [
+      "scripts/tah/hud-categories.js:1680"
+    ]
+  },
+  "Reset History": {
+    "ru": "Сбросить историю",
+    "where": [
+      "scripts/tah/hud-categories.js:1228"
+    ]
+  },
+  "Resist All": {
+    "ru": "Сопротивление всему",
+    "where": [
+      "scripts/fx/statusFX.js:1206",
+      "scripts/main.js:1838",
+      "scripts/setup/status-effects.js:144",
+      "startups/itemActivations.js:4511",
+      "startups/itemActivations.js:5340"
+    ]
+  },
+  "Resource": {
+    "ru": "Ресурс",
+    "where": [
+      "scripts/tah/hud-categories.js:1623",
+      "scripts/tools/pilot-reserves.js:20"
+    ]
+  },
+  "Rest": {
+    "ru": "Отдых",
+    "where": [
+      "scripts/tah/hud-categories.js:50"
+    ]
+  },
+  "Resurrect": {
+    "ru": "Вернуть в строй",
+    "where": [
+      "scripts/tah/hud-categories.js:1211",
+      "scripts/tools/wreck.js:729"
+    ]
+  },
+  "Reveal Token": {
+    "ru": "Показать токен",
+    "where": [
+      "scripts/tah/hud-categories.js:1220"
+    ]
+  },
+  "Revert All Movements": {
+    "ru": "Отменить все перемещения",
+    "where": [
+      "scripts/tah/hud-categories.js:1230"
+    ]
+  },
+  "Revert Last Movement": {
+    "ru": "Отменить последнее перемещение",
+    "where": [
+      "scripts/tah/hud-categories.js:1229"
+    ]
+  },
+  "SKILL TRIGGER": {
+    "ru": "НАВЫК",
+    "where": [
+      "scripts/tah/hud-categories.js:978",
+      "scripts/tah/hud-categories.js:990"
+    ]
+  },
+  "Search...": {
+    "ru": "Поиск...",
+    "where": [
+      "scripts/tah/hud-categories.js:2971"
+    ]
+  },
+  "Soft Cover": {
+    "ru": "Мягкое укрытие",
+    "where": [
+      "scripts/bonuses/bonus-flow-step.js:493",
+      "scripts/bonuses/bonus-flow-step.js:494",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:509",
+      "startups/itemActivations.js:1722"
+    ]
+  },
+  "Squeeze": {
+    "ru": "Протиснуться",
+    "where": [
+      "scripts/activations/reactions-registry.js:1866",
+      "scripts/fx/actionFX.js:2144",
+      "scripts/fx/actionFX.js:2147",
+      "scripts/tah/hud-categories.js:938",
+      "scripts/tah/hud-categories.js:938"
+    ]
+  },
+  "Stand up instead of taking your standard move. Removes Prone and grants +Speed movement.": {
+    "ru": "Встаньте вместо стандартного перемещения. Снимает «Опрокинут» и даёт перемещение, равное Скорости.",
+    "where": [
+      "scripts/tah/hud-categories.js:858"
+    ]
+  },
+  "Standing Up": {
+    "ru": "Встать",
+    "where": [
+      "scripts/activations/reactions-registry.js:225",
+      "scripts/activations/reactions-registry.js:1630",
+      "scripts/fx/actionFX.js:2043",
+      "scripts/tah/hud-categories.js:858",
+      "scripts/tah/hud-categories.js:858"
+    ]
+  },
+  "Standing Up requires the PRONE status.": {
+    "ru": "Чтобы встать, нужен статус «Опрокинут».",
+    "where": [
+      "scripts/tah/hud-categories.js:858"
+    ]
+  },
+  "Struct": {
+    "ru": "Структ",
+    "where": [
+      "scripts/tah/hud-categories.js:2130"
+    ]
+  },
+  "Suicide": {
+    "ru": "Самоубийство",
+    "where": [
+      "scripts/tah/hud-categories.js:1207"
+    ]
+  },
+  "Surefoot": {
+    "ru": "Твёрдая поступь",
+    "where": [
+      "scripts/setup/status-effects.js:220"
+    ]
+  },
+  "Switch off": {
+    "ru": "Выключить",
+    "where": [
+      "scripts/tah/status-panel.js:786"
+    ]
+  },
+  "Switch on": {
+    "ru": "Включить",
+    "where": [
+      "scripts/tah/status-panel.js:786"
+    ]
+  },
+  "Tactical": {
+    "ru": "Тактический",
+    "where": [
+      "scripts/tah/hud-categories.js:1623",
+      "scripts/tools/pilot-reserves.js:82"
+    ]
+  },
+  "Teleport": {
+    "ru": "Телепорт",
+    "where": [
+      "scripts/fx/actionFX.js:2044",
+      "scripts/movement/movement-actions.js:119",
+      "scripts/tah/hud-categories.js:1226",
+      "scripts/tah/hud-categories.js:1226"
+    ]
+  },
+  "Teleport to a destination within your speed range. Costs speed in movement.": {
+    "ru": "Телепортироваться в точку в пределах вашей Скорости. Стоит перемещения, равного расстоянию.",
+    "where": [
+      "scripts/tah/hud-categories.js:1226"
+    ]
+  },
+  "Terrain Immunity": {
+    "ru": "Иммунитет к местности",
+    "where": [
+      "scripts/combat/terrain-utils.js:238",
+      "scripts/setup/status-effects.js:215"
+    ]
+  },
+  "The pilot already has a token on this scene.": {
+    "ru": "У пилота уже есть токен на этой сцене.",
+    "where": [
+      "scripts/tah/hud-categories.js:857",
+      "scripts/tah/hud-categories.js:876"
+    ]
+  },
+  "The pilot wears no armor.": {
+    "ru": "На пилоте нет брони.",
+    "where": [
+      "scripts/tah/hud-categories.js:1748"
+    ]
+  },
+  "Throttled": {
+    "ru": "Подавлен",
+    "where": [
+      "scripts/fx/statusFX.js:1217",
+      "scripts/setup/status-effects.js:195"
+    ]
+  },
+  "Throw Weapon": {
+    "ru": "Метнуть оружие",
+    "where": [
+      "scripts/tah/hud-categories.js:731"
+    ]
+  },
+  "Throw an equipped THROWN weapon, dropping it as a token on the map. Retrieve it with Pickup Weapon.": {
+    "ru": "Метнуть экипированное Метательное оружие: оно остаётся на карте токеном. Подберите его действием «Подобрать оружие».",
+    "where": [
+      "scripts/tah/hud-categories.js:731"
+    ]
+  },
+  "To JOCKEY, you must be adjacent to a mech. As a full action, make a contested skill check using GRIT. The mech contests with HULL. On a success, climb onto the mech, sharing its space. Choose one: DISTRACT (mech is IMPAIRED and SLOWED), SHRED (deal 2 heat), or DAMAGE (deal 4 kinetic damage).": {
+    "ru": "Чтобы Оседлать меха, нужно стоять рядом с ним. Полным действием совершите состязательную проверку навыка с GRIT, мех противопоставляет Корпус. При успехе заберитесь на меха и займите его клетку. Выберите одно: Отвлечь (мех Ослаблен и Замедлен), Раскурочить (нанесите 2 Тепла) или Повредить (нанесите 4 кинетического урона).",
+    "where": [
+      "scripts/tah/hud-categories.js:574"
+    ]
+  },
+  "To STABILIZE, choose ONE of these two items: • Cool your mech (clearing all heat and ending the EXPOSED status); • Spend ONE Repair to heal your mech to max HP. Additionally, choose ONE the following four items: • Reload all LOADING weapons on your mech; • Clear any burn on your mech; • Clear ONE condition from yourself NOT caused by your own systems/talents (etc); • Clear ONE condition from an ADJACENT ally NOT caused by their own systems/talents (etc).": {
+    "ru": "При Стабилизации выберите ОДНО из двух: • Остудить меха (сбросить всё Тепло и снять «Открыт»); • Потратить ОДИН ремонт, чтобы восстановить меху все ОЗ. Кроме того, выберите ОДНО из четырёх: • Перезарядить всё Перезаряжаемое оружие меха; • Снять с меха весь Огонь; • Снять с себя ОДНО состояние, НЕ вызванное вашими системами, талантами и т. п.; • Снять ОДНО состояние с СОСЕДНЕГО союзника, НЕ вызванное его системами, талантами и т. п.",
+    "where": [
+      "scripts/tah/hud-categories.js:879"
+    ]
+  },
+  "Tool": {
+    "ru": "Инструмент",
+    "where": [
+      "scripts/tah/hud-categories.js:546",
+      "scripts/tah/hud-categories.js:547",
+      "scripts/tah/hud-categories.js:548",
+      "scripts/tah/hud-categories.js:731",
+      "scripts/tah/hud-categories.js:732"
+    ]
+  },
+  "Tool: apply arbitrary damage to your target(s).": {
+    "ru": "Инструмент: нанести целям произвольный урон.",
+    "where": [
+      "scripts/tah/hud-categories.js:58"
+    ]
+  },
+  "Tool: roll a bare TECH ATTACK against one target's E-DEFENSE. No effect applied.": {
+    "ru": "Инструмент: бросок тех-атаки против Э-защиты одной цели без каких-либо эффектов.",
+    "where": [
+      "scripts/tah/hud-categories.js:57"
+    ]
+  },
+  "Tool: roll a bare attack against one target.": {
+    "ru": "Инструмент: бросок атаки против одной цели без эффектов.",
+    "where": [
+      "scripts/tah/hud-categories.js:56"
+    ]
+  },
+  "Trait": {
+    "ru": "Особенность",
+    "where": [
+      "scripts/interactive/combat.js:1095",
+      "scripts/tah/hud-categories.js:2199",
+      "scripts/tools/scan.js:491",
+      "scripts/tools/scan.js:494"
+    ]
+  },
+  "Traits": {
+    "ru": "Особенности",
+    "where": [
+      "scripts/tah/hud-categories.js:2207"
+    ]
+  },
+  "Trigger OVERWATCH, immediately using that weapon to SKIRMISH against that character as a reaction, before they move.": {
+    "ru": "Сработайте Дозором: реакцией сразу совершите этим оружием Стычку против этого персонажа, прежде чем он переместится.",
+    "where": [
+      "scripts/tah/hud-categories.js:901"
+    ]
+  },
+  "Trigger:": {
+    "ru": "Триггер:",
+    "where": [
+      "scripts/tah/hud-categories.js:2272",
+      "scripts/tools/scan.js:193"
+    ]
+  },
+  "UNLOCK POWER": {
+    "ru": "ОТКРЫТЬ СПОСОБНОСТЬ",
+    "where": [
+      "scripts/tah/hud-categories.js:2008"
+    ]
+  },
+  "Until the end of your current turn, you ignore engagement and your movement does not provoke reactions.": {
+    "ru": "До конца текущего хода вы игнорируете связывание боем, а ваше перемещение не провоцирует реакции.",
+    "where": [
+      "scripts/activations/reactions-registry.js:1436",
+      "scripts/tah/hud-categories.js:572",
+      "scripts/tah/hud-categories.js:875"
+    ]
+  },
+  "Veteran": {
+    "ru": "Ветеран",
+    "where": [
+      "scripts/tah/hud-categories.js:1949"
+    ]
+  },
+  "Weapon Mod": {
+    "ru": "Модификация оружия",
+    "where": [
+      "scripts/tah/hud-categories.js:3269"
+    ]
+  },
+  "When you BARRAGE, you attack with two weapon MOUNTS, or with one SUPERHEAVY weapon. To BARRAGE, choose your mounts (or one SUPERHEAVY) and either one target or different targets within range, then make an attack with the primary weapon on each mount. • You may also attack with an AUXILIARY weapon on each mount that was fired, so long as it has not yet been fired this action. These AUXILIARY weapons do not deal bonus damage. • SUPERHEAVY weapons can only be fired as part of a BARRAGE.": {
+    "ru": "При Залпе вы атакуете с двух оружейных креплений или одним Сверхтяжёлым оружием. Выберите крепления (или одно Сверхтяжёлое оружие) и одну или разные цели в пределах дальности, затем атакуйте основным оружием каждого крепления. • Вы также можете атаковать Вспомогательным оружием каждого задействованного крепления, если оно ещё не стреляло в этом действии. Такое Вспомогательное оружие не наносит бонусного урона. • Сверхтяжёлое оружие можно использовать только в Залпе.",
+    "where": [
+      "scripts/tah/hud-categories.js:719"
+    ]
+  },
+  "When you DISMOUNT, you climb off of a mech. You can DISMOUNT as a full action. When you DISMOUNT, you are placed in an adjacent space – if there are no free spaces, you cannot DISMOUNT. Additionally, you can also DISMOUNT willing allied mechs or vehicles you have MOUNTED.": {
+    "ru": "При Высадке вы покидаете меха. Высадка — полное действие. Вы оказываетесь на соседней клетке; если свободных клеток нет, высадиться нельзя. Так же можно сойти с согласных союзных мехов или транспорта, на которые вы сели.",
+    "where": [
+      "scripts/tah/hud-categories.js:876"
+    ]
+  },
+  "When you GRAPPLE, you grab hold of a target to overpower them. To GRAPPLE, choose an adjacent character and make a melee attack. On a hit: • both characters become ENGAGED; • neither can BOOST or take reactions while grappled; • the smaller becomes IMMOBILIZED and is dragged when the larger moves. If same SIZE, contested HULL check at start of turn decides who is larger. A GRAPPLE ends when adjacency breaks, the attacker ends it as a free action, or the defender wins a contested HULL check as a quick action.": {
+    "ru": "При Захвате вы хватаете цель, чтобы одолеть её. Выберите соседнего персонажа и совершите атаку ближнего боя. При попадании: • оба персонажа Связаны боем; • в захвате никто не может совершать Рывок и реакции; • меньший становится Обездвиженным и тащится за большим при его перемещении. При равном Размере больший определяется состязательной проверкой Корпуса в начале хода. Захват заканчивается, если персонажи перестают быть соседними, если атакующий прекращает его свободным действием или если защищающийся выигрывает состязательную проверку Корпуса быстрым действием.",
+    "where": [
+      "scripts/tah/hud-categories.js:721"
+    ]
+  },
+  "When you RAM, you make a melee attack with the aim of knocking a target down or back. To RAM, make a melee attack against an adjacent character the same SIZE or smaller than you. On a success, your target is knocked PRONE and you may also choose to knock them back by one space, directly away from you.": {
+    "ru": "Тараном вы совершаете атаку ближнего боя, чтобы сбить цель с ног или отбросить. Атакуйте соседнего персонажа того же или меньшего Размера. При успехе цель Опрокинута, и вы также можете отбросить её на одну клетку прямо от себя.",
+    "where": [
+      "scripts/tah/hud-categories.js:720"
+    ]
+  },
+  "When you SELF DESTRUCT, you overload your reactor in a final, catastrophic play. As a quick action, initiate a reactor meltdown. The mech explodes at the end of your next turn, or at the end of one of your turns within the following two rounds (your choice): • the mech is annihilated, killing anyone inside; • a BURST 2 explosion deals 4d6 explosive damage; • characters caught who succeed on an AGILITY save take half damage.": {
+    "ru": "При Самоуничтожении вы в последнем отчаянном ходе перегружаете реактор. Быстрым действием запустите расплавление реактора. Мех взрывается в конце вашего следующего хода или в конце одного из ваших ходов в следующие два раунда (на ваш выбор): • мех уничтожен, все внутри погибают; • взрыв Вспышка 2 наносит 4d6 взрывного урона; • задетые персонажи, преуспевшие в спасброске Ловкости, получают половину урона.",
+    "where": [
+      "scripts/tah/hud-categories.js:861"
+    ]
+  },
+  "When you SKIRMISH, you attack with a single weapon MOUNT. To SKIRMISH, choose a mount and a valid target within RANGE (or THREAT), then make an attack with the primary weapon on that mount. • You may also attack with an AUXILIARY weapon on the same mount. That weapon does not deal bonus damage. • SUPERHEAVY weapons are too cumbersome to use in a SKIRMISH, and can only be fired as part of a BARRAGE.": {
+    "ru": "При Стычке вы атакуете с одного оружейного крепления. Выберите крепление и допустимую цель в пределах Дальности (или Угрозы), затем атакуйте основным оружием этого крепления. • Вы также можете атаковать Вспомогательным оружием того же крепления. Оно не наносит бонусного урона. • Сверхтяжёлое оружие слишком громоздко для Стычки, его можно использовать только в Залпе.",
+    "where": [
+      "scripts/tah/hud-categories.js:718"
+    ]
+  },
+  "When you make an IMPROVISED ATTACK, you attack with a rifle butt, fist, or another improvised melee weapon. You can use anything from the butt of a weapon to a slab of concrete or a length of hull plating — the flavor of the attack is up to you! To make an IMPROVISED ATTACK, make a melee attack against an adjacent target. On a success, they take 1d6 kinetic damage.": {
+    "ru": "Импровизированной атакой вы бьёте прикладом, кулаком или другим подручным оружием ближнего боя: годится что угодно, от приклада до бетонной плиты или куска обшивки, — как это выглядит, решать вам! Совершите атаку ближнего боя по соседней цели. При успехе она получает 1d6 кинетического урона.",
+    "where": [
+      "scripts/tah/hud-categories.js:722"
+    ]
+  },
+  "XP": {
+    "ru": "Опыт",
+    "where": [
+      "scripts/tah/hud-categories.js:1898",
+      "scripts/tah/statbar/extras.js:221"
+    ]
+  },
+  "You assist a mech so it can Stabilize more easily. Choose an adjacent character. On their next turn, they may Stabilize as a quick action. They can choose to take this action even if they normally would not be able to take actions (for example, by being affected by the Stunned condition).": {
+    "ru": "Вы помогаете меху стабилизироваться. Выберите соседнего персонажа. В свой следующий ход он может совершить Стабилизацию быстрым действием, даже если обычно не может действовать (например, будучи Оглушённым).",
+    "where": [
+      "scripts/tah/hud-categories.js:850"
+    ]
+  },
+  "You can BOOT UP a mech that you are piloting as a full action, clearing SHUT DOWN and restoring your mech to a powered state.": {
+    "ru": "Полным действием вы можете Перезапустить меха, которым управляете: статус «Отключён» снимается, и мех снова под питанием.",
+    "where": [
+      "scripts/tah/hud-categories.js:874"
+    ]
+  },
+  "You can MOUNT as a full action. You must be adjacent your mech to MOUNT. Additionally, you can also MOUNT willing allied mechs or vehicles. When you do so, move into the same space and then move with them.": {
+    "ru": "Посадка — полное действие; для неё нужно стоять рядом со своим мехом. Так же можно сесть на согласных союзных мехов или транспорт: вы входите в их клетку и далее перемещаетесь вместе с ними.",
+    "where": [
+      "scripts/tah/hud-categories.js:573"
+    ]
+  },
+  "You count as having RESISTANCE to all damage, burn, and heat from the triggering attack, and until the end of your next turn, all other attacks against you are made at +1 difficulty. Due to the stress of bracing, you cannot take reactions until the end of your next turn and on that turn, you can only take one quick action – you cannot OVERCHARGE, move normally, take full actions, or take free actions.": {
+    "ru": "Вы считаетесь имеющим Сопротивление ко всему урону, Огню и Теплу от вызвавшей реакцию атаки, а до конца вашего следующего хода все остальные атаки по вам совершаются с +1 Сложностью. Из-за нагрузки Стойки вы не можете совершать реакции до конца следующего хода, а в этот ход можете совершить только одно быстрое действие — без Форсажа, обычного перемещения, полных и свободных действий.",
+    "where": [
+      "scripts/activations/reactions-registry.js:512",
+      "scripts/activations/reactions-registry.js:579",
+      "scripts/tah/hud-categories.js:898"
+    ]
+  }
+}

@@ -7,7 +7,7 @@ import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = fileURLToPath(new URL("..", import.meta.url));
-const DIRS = ["data", "locales", "foundry/lancer-ru-content"];
+const DIRS = ["data", "locales", "foundry/lancer-ru-content", "foundry/locales", "foundry/upstream"];
 
 function* jsonFiles(dir) {
   for (const entry of readdirSync(dir, { withFileTypes: true })) {

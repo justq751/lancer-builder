@@ -187,6 +187,19 @@ Intangible — **Неосязаем**.
 Jammed — **Заклинен**, Lock On — **Захват цели**, Shredded — **Изрешечён**,
 Slowed — **Замедлен**, Stunned — **Оглушён**.
 
+Состояния модуля Lancer Automations (Foundry; `foundry/locales/ru/automations-text.json`,
+решено 2026-11-16): Aided — **Поддержан**, Blinded — **Ослеплён**, Bulwark — **Оплот**,
+Cascading — **Каскад**, Climber — **Скалолаз**, Core Power Active — **CORE-способность
+активна**, Datalinked — **Связан данными**, Dazed — **Дезориентирован**,
+Destroyed — **Уничтожен**, Falling — **Падает**, Flying — **Летит**,
+Grappled — **Схвачен**, Grappling — **Держит захват**, Guardian — **Страж**,
+Hover — **Парит**, Immovable — **Несдвигаем**, Infection — **Заражение**,
+Overheated — **Перегрет**, Phasing — **Фазирован**, Reactor Meltdown — **Расплавление
+реактора**, Resist All — **Сопротивление всему**, Surefoot — **Твёрдая поступь**,
+Terrain Immunity — **Иммунитет к местности**, Throttled — **Подавлен**;
+Dead Rings: Staggered — **Ошеломлён**, Stripped — **Оголён**, Vulnerable — **Уязвим**.
+Core Power — **CORE-способность**.
+
 Рядом: Accuracy / Difficulty — **Точность / Сложность** («+1 Точность»),
 Resistance — **Сопротивление**, Immunity — **Иммунитет**,
 line of sight — **линия видимости**, cover — **укрытие** (hard / soft —

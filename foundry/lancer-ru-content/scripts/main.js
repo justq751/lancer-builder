@@ -3,17 +3,26 @@ import labels from "../generated/ui-labels.js";
 import { overlay, registerBabele, refreshIndexes } from "./overlay.js";
 import { translateSheetLabels, translateMechPreview, translateMechLoadout, translateStabilizeDialog, translateOverheatChat, translateStructureChat } from "./ui.js";
 import { observeRollHuds } from "./roll-hud.js";
+import { observeAutomations, translateFormatData } from "./automations.js";
 
 const ID = "lancer-ru-content";
 const russianLancer = () => game.system.id === "lancer" && game.i18n.lang === "ru";
+const russianAutomations = () => russianLancer() && game.modules?.get("lancer-automations")?.active;
 
 Hooks.once("i18nInit", () => {
   // Apply after language files so ru-ru's load order cannot replace the builder term.
   if (russianLancer()) game.i18n.translations.lancer.statusIconsNames.exposed = labels.statusIconsNames.exposed;
+  // Some LA.* strings get raw data values such as a mount type ("{type} Mount").
+  if (russianAutomations()) {
+    libWrapper.register(ID, "game.i18n.format", function (wrapped, key, data) {
+      return wrapped(key, translateFormatData(key, data));
+    }, "WRAPPER");
+  }
 });
 
 Hooks.once("ready", () => {
   if (russianLancer()) observeRollHuds(document);
+  if (russianAutomations()) observeAutomations(document);
 });
 
 Hooks.once("babele.init", babele => {
