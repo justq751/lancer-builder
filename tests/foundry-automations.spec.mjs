@@ -9,7 +9,8 @@ async function boot(page, { lang = "ru", automations = true } = {}) {
       <div class="la-hud-row" data-la-key="Boost" title="Boost"><span>  Boost </span></div>
       <input id="name" value="Boost"><select><option id="labelled" value="Boost">Boost</option><option id="bare">Hide</option></select>
       <span class="la-unknown">Something homebrew</span>
-    </section>`);
+    </section>
+    <div class="la-downtime"><select id="activity"><option id="activity-bare">Get Focused</option></select></div>`);
   await page.evaluate(async ({ lang, automations }) => {
     const hooks = {};
     window.Hooks = { on() {}, once: (name, handler) => { (hooks[name] ??= []).push(handler); } };
@@ -36,6 +37,9 @@ test("automations display text is translated in scope; logic attributes and inpu
   await expect(page.locator("#labelled")).toHaveText("Рывок");
   await expect(page.locator("#labelled")).toHaveAttribute("value", "Boost");
   await expect(page.locator("#bare")).toHaveText("Hide");
+  // The downtime dialog submits .value, so its bare options keep English there and show Russian.
+  await expect(page.locator("#activity-bare")).toHaveText("Сосредоточиться");
+  expect(await page.locator("#activity").evaluate(select => select.value)).toBe("Get Focused");
   await expect(page.locator(".la-unknown")).toHaveText("Something homebrew");
   await expect(page.locator("#outside")).toHaveText("Boost");
   await expect(page.locator("#outside")).toHaveAttribute("title", "Boost");

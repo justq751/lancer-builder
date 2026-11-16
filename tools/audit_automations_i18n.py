@@ -145,8 +145,14 @@ def literals_in(source):
             continue
         body = raw[1:-1]
         if raw[0] == "`":
+            # Strings inside ${…} (option labels, nested templates) are literals of their own.
+            for inner in re.finditer(r"\$\{((?:[^{}]|\{[^{}]*\})*)\}", raw):
+                offset = line - 1 + raw.count("\n", 0, inner.start())
+                for inner_line, part in literals_in(inner.group(1)):
+                    yield offset + inner_line, part
             body = re.sub(r"\$\{(?:[^{}]|\{[^{}]*\})*\}", "{…}", body)
         body = re.sub(r"\\[nrt]", " ", body.replace("\\'", "'").replace('\\"', '"'))
+        body = re.sub(r"\\u([0-9a-fA-F]{4})", lambda m: chr(int(m.group(1), 16)), body)
         if "<" in body and re.search(r"<\w", body):
             # Each piece between tags becomes its own DOM text node (laFormatDetailHtml splits on <br>).
             parts = re.split(r"<[^>]*>", body) + [value for _, value in HTML_ATTR.findall(body)]
@@ -196,7 +202,10 @@ def coverage(lang, text_dict, literals, table):
         total, ok = by_space.get(space, (0, 0))
         by_space[space] = (total + 1, ok + done)
     patterns = text_patterns(text_dict)
-    covered = lambda text: text in text_dict or term_for(text, table) or any(p.fullmatch(text) for p, _ in patterns)
+    # A literal with {…} counts as covered when a pattern matches it with sample values filled in.
+    samples = lambda text: {text, text.replace("{…}", "1"), text.replace("{…}", "Kai")}
+    covered = lambda text: text in text_dict or term_for(text, table) or any(
+        p.fullmatch(sample) for p, _ in patterns for sample in samples(text))
     open_literals = [text for text in literals if not covered(text)]
     vanished = [key for key in text_dict if not key.startswith("/") and key not in literals]
     return {"keys": keys, "manual": manual, "auto": auto, "stale": stale, "by_space": by_space,

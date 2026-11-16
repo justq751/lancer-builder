@@ -3,7 +3,9 @@ import FORMAT from "../generated/automations-format.js";
 
 // lancer-automations keeps English in code for logic (effect names, action names, data-la-key);
 // only what is already on screen is replaced, and only on an exact match with its English source.
-const SCOPE = '.lancer-dialog-base, .lancer-automations-dialog, [class*="la-"], [class*="battelog"], .chat-message, #tooltip, .locked-tooltip, #token-hud';
+// #notifications: toasts with text hardcoded in automations; the last selector is the downtime
+// report that automations files as a journal page.
+const SCOPE = '.lancer-dialog-base, .lancer-automations-dialog, [class*="la-"], [class*="battelog"], .chat-message, #tooltip, .locked-tooltip, #token-hud, #notifications, .no-equipment-dialog, .journal-page-content:has(.lancer-border-primary)';
 const SKIP = "input, textarea, [contenteditable], script, style, code, pre, .CodeMirror, .cm-editor";
 const ATTRS = ["title", "data-tooltip", "aria-label", "placeholder"];
 const PATTERNS = TEXT.patterns.map(([source, ru]) => [new RegExp(`^(?:${source})$`), ru]);
@@ -14,7 +16,12 @@ export function translateString(value, text = TEXT, patterns = PATTERNS) {
   const key = core.replace(/\s+/g, " ");
   if (Object.hasOwn(text.exact, key)) return before + text.exact[key] + after;
   for (const [pattern, ru] of patterns) {
-    if (pattern.test(key)) return before + key.replace(pattern, ru) + after;
+    const match = pattern.exec(key);
+    // Captured values are translated too, so "Get Focused : Success" can reuse both exact entries.
+    if (match) return before + ru.replace(/\$(\d)/g, (_, i) => {
+      const group = match[i] ?? "";
+      return group === key ? group : translateString(group, text, patterns);
+    }) + after;
   }
   return value;
 }
@@ -32,7 +39,11 @@ function translateTextNode(node) {
   const parent = node.parentElement;
   if (parent?.closest(SKIP)) return;
   // An <option> without value submits its text, so only labelled options are safe to translate.
-  if (parent?.matches("option:not([value])")) return;
+  // The downtime dialog reads only .value, so there the English text is pinned as the value first.
+  if (parent?.matches("option:not([value])")) {
+    if (!parent.closest(".la-downtime")) return;
+    parent.setAttribute("value", parent.value);
+  }
   const value = translateString(node.nodeValue);
   if (value !== node.nodeValue) node.nodeValue = value;
 }

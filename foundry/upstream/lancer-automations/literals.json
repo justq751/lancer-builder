@@ -128,8 +128,14 @@
   "(+{…} startup script{…})": [
     "scripts/activations/reaction-export-import.js:682"
   ],
+  "(CLOSED)": [
+    "scripts/tools/downtime.js:728"
+  ],
   "(Master)": [
     "scripts/activations/reaction-editor.js:1432"
+  ],
+  "(OPEN)": [
+    "scripts/tools/downtime.js:687"
   ],
   "(Veteran)": [
     "scripts/activations/reaction-editor.js:1432"
@@ -152,6 +158,9 @@
   "(\\d+)\\s*\\/\\s*turn\\b": [
     "scripts/combat/per-frequency-tags.js:55"
   ],
+  "(active)": [
+    "scripts/Battelog/telemetry-debug.js:64"
+  ],
   "(already present)": [
     "scripts/activations/reaction-export-import.js:555"
   ],
@@ -171,8 +180,14 @@
   "(data, userId, opts)": [
     "scripts/setup/codemirror-hints.js:26"
   ],
+  "(default)": [
+    "scripts/activations/reaction-editor.js:1544"
+  ],
   "(elev {…})": [
     "scripts/interactive/cards.js:1001"
+  ],
+  "(empty)": [
+    "scripts/activations/reaction-editor.js:1545"
   ],
   "(for a total of {…})": [
     "scripts/tools/movement-tools.js:156"
@@ -183,6 +198,7 @@
   "(item)": [
     "scripts/bonuses/effectManager.js:1075",
     "scripts/bonuses/effectManager.js:1172",
+    "scripts/interactive/extras-dialog.js:251",
     "scripts/main.js:1650"
   ],
   "(label)": [
@@ -203,6 +219,9 @@
   "(newValue, reason, allowConfirm, userIdControl, preConfirm, postChoice, opts)": [
     "scripts/setup/codemirror-hints.js:45",
     "scripts/setup/codemirror-hints.js:46"
+  ],
+  "(no items found)": [
+    "scripts/tah/statbar/token-config-tab.js:308"
   ],
   "(no trigger)": [
     "scripts/activations/reaction-config.js:722"
@@ -244,6 +263,10 @@
   "(scene)": [
     "scripts/activations/reactions-engine.js:555"
   ],
+  "(self)": [
+    "scripts/bonuses/duration-widget.js:30",
+    "scripts/bonuses/effectManager.js:129"
+  ],
   "(string | EffectData)[]": [
     "scripts/setup/codemirror-hints.js:209"
   ],
@@ -264,6 +287,10 @@
   ],
   "({…} target{…})": [
     "scripts/interactive/cards.js:652"
+  ],
+  "**ALERT:": [
+    "scripts/tools/downtime.js:701",
+    "scripts/tools/downtime.js:742"
   ],
   "**removeEffectsByName**": [
     "scripts/bonuses/flagged-effects.js:490"
@@ -334,6 +361,9 @@
   "-{…}px": [
     "scripts/Battelog/recap.js:867",
     "scripts/setup/settingsMenus.js:447"
+  ],
+  "/ {…} TURNS": [
+    "scripts/Battelog/recap.js:104"
   ],
   "0 0 auto": [
     "scripts/tah/narrative-roster.js:244"
@@ -408,7 +438,7 @@
   "14px \"Material Design Icons\"": [
     "scripts/movement/tactical-distance.js:235"
   ],
-  "1\\u00d7 Size 2 Hard Cover": [
+  "1× Size 2 Hard Cover": [
     "startups/itemActivations.js:5857"
   ],
   "2 TURNS": [
@@ -420,7 +450,7 @@
   "3 TURNS": [
     "scripts/tools/misc-tools.js:1168"
   ],
-  "3\\u00d7 Size 1 Hard Cover": [
+  "3× Size 1 Hard Cover": [
     "startups/itemActivations.js:5844"
   ],
   "4 Heat at the Witch's turn start. Someone adjacent can Stabilize to end it instead of cooling.": [
@@ -532,13 +562,20 @@
   "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789": [
     "scripts/tools/downtime.js:7"
   ],
+  "ACC": [
+    "scripts/tools/scan.js:214"
+  ],
   "ACCURACY": [
     "scripts/Battelog/recap.js:1514",
     "scripts/Battelog/recap.js:1691"
   ],
+  "ACTION INFO": [
+    "scripts/activations/reactions-ui.js:394"
+  ],
   "ACTIONS": [
     "scripts/Battelog/recap.js:1398",
-    "scripts/Battelog/recap.js:1654"
+    "scripts/Battelog/recap.js:1654",
+    "scripts/interactive/detail-renderers.js:210"
   ],
   "ACTIVATE": [
     "scripts/activations/reactions-ui.js:364"
@@ -547,10 +584,14 @@
     "scripts/activations/flow-steps.js:1181"
   ],
   "ACTIVE": [
+    "scripts/interactive/detail-renderers.js:681",
     "scripts/tah/hud-popups.js:76"
   ],
   "ADD MACRO": [
     "scripts/tah/hud-categories.js:2971"
+  ],
+  "ADDS": [
+    "scripts/interactive/detail-renderers.js:653"
   ],
   "AGI": [
     "scripts/activations/flow-steps.js:810",
@@ -559,6 +600,7 @@
     "scripts/activations/targeting-ui.js:63",
     "scripts/interactive/cards.js:397",
     "scripts/interactive/tools/haseContest.js:14",
+    "scripts/tah/hud-categories.js:1737",
     "scripts/uplink/live-rolls.js:21",
     "startups/itemActivations.js:503",
     "startups/itemActivations.js:6043",
@@ -594,7 +636,8 @@
   ],
   "AP": [
     "scripts/bonuses/bonus-roll-hud.js:385",
-    "scripts/interactive/extras-dialog.js:41"
+    "scripts/interactive/extras-dialog.js:41",
+    "scripts/uplink/mirror-card.js:256"
   ],
   "API reference": [
     "scripts/activations/reaction-config.js:989"
@@ -623,6 +666,12 @@
     "scripts/Battelog/recap.js:1457",
     "scripts/Battelog/recap.js:1654"
   ],
+  "ATTACHED BONUSES": [
+    "scripts/interactive/detail-renderers.js:347"
+  ],
+  "ATTACHED STATUSES": [
+    "scripts/interactive/detail-renderers.js:291"
+  ],
   "AUX PISTOL": [
     "scripts/Battelog/combat-telemetry-mock.js:13",
     "scripts/Battelog/combat-telemetry-mock.js:637"
@@ -650,7 +699,8 @@
   ],
   "Accuracy": [
     "scripts/bonuses/effect-manager-template.js:590",
-    "scripts/interactive/detail-renderers.js:458"
+    "scripts/interactive/detail-renderers.js:458",
+    "scripts/uplink/mirror-card.js:142"
   ],
   "Accuracy/Difficulty Modifier": [
     "scripts/tools/downtime.js:466"
@@ -672,9 +722,15 @@
     "scripts/tah/hud-categories.js:2129"
   ],
   "Action": [
+    "scripts/activations/reaction-editor.js:1462",
+    "scripts/activations/reaction-editor.js:1482",
+    "scripts/activations/reaction-editor.js:1525",
     "scripts/tah/log-panel.js:61",
     "scripts/tools/actor-actions.js:58",
     "scripts/tools/misc-tools.js:1437"
+  ],
+  "Action Combat": [
+    "scripts/interactive/extras-dialog.js:261"
   ],
   "Action Extra": [
     "scripts/bonuses/effect-manager-template.js:404"
@@ -709,6 +765,9 @@
     "scripts/tah/hud-categories.js:2412",
     "scripts/tah/hud-categories.js:2426"
   ],
+  "Activate (start turn)": [
+    "scripts/tah/combat-bar.js:112"
+  ],
   "Activation": [
     "scripts/activations/reaction-manager.js:76",
     "scripts/tah/hud-categories.js:1435",
@@ -731,6 +790,9 @@
   ],
   "Active Effect Changes": [
     "scripts/bonuses/effect-manager-template.js:396"
+  ],
+  "Active profile": [
+    "scripts/interactive/detail-renderers.js:756"
   ],
   "Actor": [
     "scripts/activations/reaction-config.js:122",
@@ -798,9 +860,13 @@
     "scripts/tah/statbar/extras.js:818",
     "scripts/tah/statbar/token-config-tab.js:300",
     "scripts/tah/tokenStatBar.js:479",
+    "scripts/tools/misc-tools.js:319",
     "scripts/tools/template-actors.js:93",
     "scripts/tools/template-actors.js:96",
     "scripts/tools/weapon-bonus-utils.js:46"
+  ],
+  "Actor portrait": [
+    "scripts/tools/wreck.js:1121"
   ],
   "Actor | Actor[] | { actor, extraData }[]": [
     "scripts/setup/codemirror-hints.js:298"
@@ -821,6 +887,7 @@
   "Add": [
     "scripts/bonuses/genericBonuses.js:463",
     "scripts/bonuses/genericBonuses.js:468",
+    "scripts/interactive/detail-renderers.js:601",
     "scripts/interactive/extras-dialog.js:248",
     "scripts/interactive/extras-dialog.js:248",
     "scripts/setup/tour.js:387"
@@ -882,6 +949,7 @@
     "scripts/interactive/extras-dialog.js:248"
   ],
   "Add to combat": [
+    "scripts/tah/hud.js:813",
     "scripts/tah/hud.js:827"
   ],
   "Added by automation.": [
@@ -905,6 +973,7 @@
   "Agility": [
     "scripts/activations/reactions-registry.js:266",
     "scripts/tah/hud-categories.js:2134",
+    "scripts/tah/stats-bar.js:135",
     "scripts/tools/v3-condition.js:46"
   ],
   "Agility Check": [
@@ -937,6 +1006,7 @@
     "scripts/bonuses/effectManager.js:1570",
     "scripts/bonuses/genericBonuses.js:445",
     "scripts/interactive/detail-renderers.js:586",
+    "scripts/tah/statbar/token-config-tab.js:555",
     "scripts/tools/v3-data.js:94"
   ],
   "All Damage": [
@@ -956,6 +1026,10 @@
   ],
   "All characters in a Blast 1 area in Sensors must pass a Hull save or be knocked Prone. Objects and terrain in the area take 10 AP Kinetic damage.": [
     "startups/itemActivations.js:5798"
+  ],
+  "All data indexed and analyzed by UAD ARGUS class NHP": [
+    "scripts/tools/downtime.js:689",
+    "scripts/tools/downtime.js:730"
   ],
   "All of your possessions.": [
     "scripts/tools/downtime.js:121"
@@ -987,6 +1061,9 @@
   "Alt-Enter": [
     "scripts/setup/codemirror-hints.js:1184"
   ],
+  "Always": [
+    "scripts/tah/statbar/token-config-tab.js:604"
+  ],
   "Always show name": [
     "scripts/tah/tokenStatHint.js:1877"
   ],
@@ -1000,6 +1077,9 @@
   ],
   "AmmoField[]": [
     "scripts/setup/codemirror-hints.js:563"
+  ],
+  "An attacker": [
+    "startups/itemActivations.js:5321"
   ],
   "And it is my": [
     "scripts/seasonal/annual.js:159"
@@ -1038,6 +1118,9 @@
   ],
   "Apply your skills": [
     "scripts/tools/downtime.js:466"
+  ],
+  "Apply-to Condition": [
+    "scripts/bonuses/effect-manager-template.js:877"
   ],
   "Apply:": [
     "scripts/bonuses/effect-manager-template.js:173"
@@ -1096,6 +1179,8 @@
     "scripts/tah/hud-categories.js:1538",
     "scripts/tah/hud-categories.js:1729",
     "scripts/tah/hud-categories.js:2122",
+    "scripts/tah/stats-bar.js:190",
+    "scripts/tah/stats-bar.js:190",
     "scripts/tools/scan.js:536",
     "scripts/tools/scan.js:551",
     "scripts/tools/v3-condition.js:46"
@@ -1138,7 +1223,8 @@
     "scripts/bonuses/effect-manager-template.js:590",
     "scripts/bonuses/effect-manager-template.js:590",
     "scripts/bonuses/genericBonuses.js:463",
-    "scripts/bonuses/genericBonuses.js:468"
+    "scripts/bonuses/genericBonuses.js:468",
+    "scripts/interactive/detail-renderers.js:601"
   ],
   "At the end of your turn, if you are airborne without Flying or have Flying but haven't moved at least 1 space, you begin falling.": [
     "scripts/activations/reactions-registry.js:1146"
@@ -1185,6 +1271,9 @@
   "August": [
     "scripts/seasonal/annual.js:33"
   ],
+  "Aura (movement +1)": [
+    "scripts/tools/wreck.js:960"
+  ],
   "Auto": [
     "scripts/interactive/extra-config-dialog.js:30"
   ],
@@ -1192,6 +1281,7 @@
     "scripts/interactive/extra-config-dialog.js:55"
   ],
   "Auto elevation": [
+    "scripts/interactive/cards.js:268",
     "scripts/interactive/cards.js:308",
     "scripts/interactive/cards.js:436"
   ],
@@ -1245,6 +1335,9 @@
   "Award MVP": [
     "scripts/Battelog/gm-card.js:35"
   ],
+  "Awards disabled · manual MVP only": [
+    "scripts/Battelog/gm-card.js:50"
+  ],
   "BARELY ALIVE": [
     "scripts/Battelog/awards.js:230"
   ],
@@ -1275,6 +1368,9 @@
   "BOLSTER": [
     "scripts/Battelog/combat-telemetry-mock.js:19"
   ],
+  "BONUSES": [
+    "scripts/interactive/detail-renderers.js:629"
+  ],
   "BOOST": [
     "scripts/Battelog/combat-telemetry-mock.js:22"
   ],
@@ -1295,7 +1391,8 @@
   ],
   "BURN": [
     "scripts/Battelog/awards.js:313",
-    "scripts/Battelog/awards.js:319"
+    "scripts/Battelog/awards.js:319",
+    "scripts/Battelog/awards.js:323"
   ],
   "Back": [
     "scripts/activations/workshop-browser.js:1020"
@@ -1320,7 +1417,11 @@
     "scripts/tah/hud-categories.js:3469"
   ],
   "Base": [
-    "scripts/tah/status-panel.js:902"
+    "scripts/tah/status-panel.js:902",
+    "scripts/uplink/mirror-card.js:152"
+  ],
+  "Base Damage": [
+    "scripts/uplink/mirror-card.js:223"
   ],
   "Base Stats": [
     "scripts/tah/hud-categories.js:1540"
@@ -1472,6 +1573,9 @@
     "scripts/tah/status-wheel.js:163",
     "scripts/tah/status-wheel.js:176"
   ],
+  "Bonus Damage": [
+    "scripts/uplink/mirror-card.js:224"
+  ],
   "Bonus Roll Type:": [
     "scripts/bonuses/effect-manager-template.js:590"
   ],
@@ -1482,7 +1586,8 @@
     "scripts/setup/codemirror-hints.js:558"
   ],
   "Bonuses": [
-    "scripts/bonuses/effect-manager-manage.js:239"
+    "scripts/bonuses/effect-manager-manage.js:239",
+    "scripts/main.js:1685"
   ],
   "Boon XP from another PC.": [
     "scripts/tah/bond-panel.js:80"
@@ -1786,12 +1891,19 @@
     "startups/itemActivations.js:1621"
   ],
   "Card": [
-    "scripts/interactive/cards.js:112"
+    "scripts/interactive/cards.js:112",
+    "scripts/interactive/cards.js:119"
   ],
   "Cascading": [
     "scripts/Battelog/recap.js:979",
     "scripts/fx/statusFX.js:1191",
     "scripts/setup/status-effects.js:112"
+  ],
+  "Cast Your Vote": [
+    "scripts/interactive/cards.js:343"
+  ],
+  "Cast range shown with line of sight": [
+    "scripts/interactive/cards.js:447"
   ],
   "Causality Fragment": [
     "scripts/tools/pilot-reserves.js:14"
@@ -1953,6 +2065,9 @@
   "Clear Prone, grant standard-move speed": [
     "scripts/activations/reactions-registry.js:1632"
   ],
+  "Clear linked item": [
+    "scripts/tah/statbar/token-config-tab.js:85"
+  ],
   "Clear this token's recorded movement history.": [
     "scripts/tah/hud-categories.js:1228"
   ],
@@ -2019,6 +2134,9 @@
   "CodeMirror-linenumbers": [
     "scripts/setup/codemirror-hints.js:1160"
   ],
+  "Collapse": [
+    "scripts/tah/statbar/token-config-tab.js:28"
+  ],
   "Collapse Plating": [
     "startups/itemActivations.js:2982"
   ],
@@ -2063,6 +2181,10 @@
     "scripts/tools/pilot-reserves.js:84",
     "scripts/tools/pilot-reserves.js:191"
   ],
+  "Condition": [
+    "scripts/activations/stabilize-flow.js:222",
+    "scripts/bonuses/effect-manager-template.js:876"
+  ],
   "Conditional": [
     "scripts/bonuses/status-tooltip.js:343"
   ],
@@ -2089,11 +2211,15 @@
     "scripts/activations/reactions-registry.js:454",
     "scripts/combat/actor-change-hooks.js:128",
     "scripts/combat/actor-change-hooks.js:243",
+    "scripts/interactive/cards.js:499",
     "scripts/interactive/combat.js:226",
     "scripts/interactive/network.js:530",
     "scripts/main.js:2220",
     "scripts/main.js:2265",
     "scripts/movement/token-move-hooks.js:249"
+  ],
+  "Confirm Vote": [
+    "scripts/interactive/cards.js:500"
   ],
   "Console-dump the reactor, trigger and payload.": [
     "scripts/setup/codemirror-hints.js:27"
@@ -2129,7 +2255,8 @@
     "scripts/tools/rest.js:342"
   ],
   "Consumes": [
-    "scripts/interactive/extra-config.js:322"
+    "scripts/interactive/extra-config.js:322",
+    "scripts/interactive/extra-config.js:378"
   ],
   "Consuming charge for group {…}: {…} remaining": [
     "scripts/bonuses/flagged-effects.js:1467"
@@ -2145,6 +2272,12 @@
   ],
   "Consumption depleted for {…}, removing effect": [
     "scripts/bonuses/flagged-effects.js:1473"
+  ],
+  "Contender A": [
+    "scripts/interactive/cards.js:363"
+  ],
+  "Contender B": [
+    "scripts/interactive/cards.js:365"
   ],
   "Contest": [
     "scripts/setup/tour.js:877",
@@ -2204,6 +2337,7 @@
   "Core Power": [
     "scripts/tah/hud-categories.js:2356",
     "scripts/tah/item-helpers.js:764",
+    "scripts/tah/stats-bar.js:126",
     "scripts/tah/stats-bar.js:126",
     "scripts/tools/actor-actions.js:31",
     "scripts/tools/scan.js:156"
@@ -2271,6 +2405,9 @@
   "Crushing Hit - Cannot take reactions, can only take one quick action": [
     "scripts/alt-struct/structure.js:1218"
   ],
+  "Ctrl+wheel: rotate": [
+    "scripts/interactive/cards.js:278"
+  ],
   "Ctrl-/": [
     "scripts/setup/codemirror-hints.js:1168"
   ],
@@ -2287,6 +2424,7 @@
     "scripts/activations/reactions-registry.js:291"
   ],
   "Custom": [
+    "scripts/bonuses/effect-manager-template.js:257",
     "scripts/bonuses/effectManager.js:782",
     "scripts/tah/hud-categories.js:2815",
     "scripts/tah/statbar/extras.js:301",
@@ -2312,6 +2450,13 @@
   "Custom Token Stat Bars are disabled. Enable them in module settings to render these on tokens. Data is still saved.": [
     "scripts/interactive/extras-dialog.js:92"
   ],
+  "Custom image": [
+    "scripts/tools/wreck.js:1122"
+  ],
+  "DAMAGE": [
+    "scripts/interactive/detail-renderers.js:487",
+    "scripts/interactive/detail-renderers.js:808"
+  ],
   "DAMAGE INFLICTED": [
     "scripts/Battelog/recap.js:2251"
   ],
@@ -2332,6 +2477,7 @@
     "scripts/Battelog/recap.js:1654"
   ],
   "DEFEAT": [
+    "scripts/Battelog/gm-card.js:45",
     "scripts/Battelog/intro-terminal.js:267",
     "scripts/Battelog/intro-terminal.js:376",
     "scripts/Battelog/recap.js:905"
@@ -2352,8 +2498,17 @@
     "scripts/interactive/detail-renderers.js:228",
     "scripts/tah/hud-categories.js:634"
   ],
+  "DESCRIPTION": [
+    "scripts/tah/hud-categories.js:1020"
+  ],
   "DESTROYED · ENGAGED": [
     "scripts/Battelog/recap.js:2251"
+  ],
+  "DETAIL": [
+    "scripts/tah/hud-categories.js:1021"
+  ],
+  "DIFF": [
+    "scripts/tools/scan.js:214"
   ],
   "DISABLED": [
     "scripts/interactive/combat.js:771",
@@ -2480,6 +2635,21 @@
   "Default": [
     "scripts/interactive/canvas-palette.js:67"
   ],
+  "Default (silhouette + scan)": [
+    "scripts/tools/wreck.js:1025"
+  ],
+  "Default (use category setting)": [
+    "scripts/tools/wreck.js:946",
+    "scripts/tools/wreck.js:957"
+  ],
+  "Default (use core setting)": [
+    "scripts/tools/wreck.js:1084"
+  ],
+  "Default (use global setting)": [
+    "scripts/tools/wreck.js:1043",
+    "scripts/tools/wreck.js:1106",
+    "scripts/tools/wreck.js:1119"
+  ],
   "Default (world setting)": [
     "scripts/vision/visionFromEdge.js:768"
   ],
@@ -2556,11 +2726,18 @@
     "scripts/interactive/cards.js:379"
   ],
   "Destroy": [
+    "scripts/tah/hud-popups.js:279",
     "scripts/tah/hud-popups.js:286"
   ],
   "Destroyed": [
     "scripts/setup/status-effects.js:167",
     "scripts/tah/hud-popups.js:220"
+  ],
+  "Destroyed Systems": [
+    "scripts/Battelog/recap.js:969"
+  ],
+  "Destroyed Weapons": [
+    "scripts/Battelog/recap.js:968"
   ],
   "Details": [
     "scripts/tools/pilot-reserves.js:84",
@@ -2584,7 +2761,8 @@
   ],
   "Difficulty": [
     "scripts/bonuses/effect-manager-template.js:590",
-    "scripts/interactive/detail-renderers.js:460"
+    "scripts/interactive/detail-renderers.js:460",
+    "scripts/uplink/mirror-card.js:143"
   ],
   "Digit": [
     "scripts/setup/settings-rows.js:65"
@@ -2609,6 +2787,7 @@
     "scripts/alt-struct/structure.js:1193"
   ],
   "Disable": [
+    "scripts/tah/hud-popups.js:248",
     "scripts/tah/hud-popups.js:255"
   ],
   "Disable ALL auto-consume": [
@@ -2658,6 +2837,9 @@
   "Dispersal Shield ({…} charges)": [
     "startups/itemActivations.js:4516"
   ],
+  "Display Stress": [
+    "scripts/tah/statbar/token-config-tab.js:608"
+  ],
   "Display as discrete pips using the max value as the segment count.": [
     "scripts/tah/statbar/token-config-tab.js:42"
   ],
@@ -2683,7 +2865,8 @@
     "startups/itemActivations.js:5486"
   ],
   "Does NOT consume": [
-    "scripts/interactive/extra-config.js:322"
+    "scripts/interactive/extra-config.js:322",
+    "scripts/interactive/extra-config.js:378"
   ],
   "Downtime": [
     "scripts/setup/tour.js:882",
@@ -2765,6 +2948,8 @@
   ],
   "E-Defense": [
     "scripts/bonuses/genericBonuses.js:395",
+    "scripts/tah/stats-bar.js:192",
+    "scripts/tah/stats-bar.js:192",
     "scripts/tools/v3-condition.js:46"
   ],
   "EFFECT": [
@@ -2772,6 +2957,10 @@
     "scripts/interactive/combat.js:1055",
     "scripts/interactive/combat.js:1176",
     "scripts/interactive/combat.js:1292",
+    "scripts/interactive/detail-renderers.js:512",
+    "scripts/interactive/detail-renderers.js:656",
+    "scripts/interactive/detail-renderers.js:715",
+    "scripts/interactive/detail-renderers.js:824",
     "scripts/interactive/network.js:54",
     "scripts/tah/hud-popups.js:55",
     "scripts/tah/hud-popups.js:72",
@@ -2799,6 +2988,7 @@
   "ENG": [
     "scripts/interactive/cards.js:397",
     "scripts/interactive/tools/haseContest.js:16",
+    "scripts/tah/hud-categories.js:1739",
     "scripts/uplink/live-rolls.js:21"
   ],
   "ENGAGEMENT INCONCLUSIVE : PARTIAL OBJECTIVES": [
@@ -2840,6 +3030,9 @@
   "EXOTIC": [
     "scripts/tools/scan.js:188",
     "scripts/tools/scan.js:204"
+  ],
+  "EXTRA ACTIONS": [
+    "scripts/interactive/detail-renderers.js:385"
   ],
   "EXTRA CONFIG": [
     "scripts/interactive/extra-config-dialog.js:140"
@@ -2924,13 +3117,20 @@
   "Empty = plain HASE check (≥ 10).": [
     "scripts/interactive/cards.js:397"
   ],
+  "Empty pack.": [
+    "scripts/activations/workshop-browser.js:1094"
+  ],
   "Enable": [
+    "scripts/tah/hud-popups.js:248",
     "scripts/tah/hud-popups.js:255"
   ],
   "Encounter · Contact Log": [
     "scripts/Battelog/recap.js:2251"
   ],
   "End": [
+    "scripts/bonuses/status-tooltip.js:98",
+    "scripts/bonuses/status-tooltip.js:104",
+    "scripts/bonuses/status-tooltip.js:111",
     "scripts/setup/settings-listeners.js:8"
   ],
   "End Grapple": [
@@ -3001,6 +3201,7 @@
   ],
   "Engineering": [
     "scripts/activations/reactions-registry.js:268",
+    "scripts/tah/stats-bar.js:136",
     "scripts/tools/v3-condition.js:46"
   ],
   "Engineering Check": [
@@ -3074,6 +3275,9 @@
     "scripts/bonuses/roll-card-rows.js:120",
     "scripts/bonuses/roll-card-rows.js:208"
   ],
+  "Evaluate": [
+    "scripts/bonuses/effect-manager-template.js:162"
+  ],
   "Evaluate Function": [
     "scripts/activations/reaction-editor.js:1222",
     "scripts/activations/reaction-editor.js:1614"
@@ -3083,6 +3287,8 @@
     "scripts/tah/hud-categories.js:1538",
     "scripts/tah/hud-categories.js:1731",
     "scripts/tah/hud-categories.js:2124",
+    "scripts/tah/stats-bar.js:191",
+    "scripts/tah/stats-bar.js:191",
     "scripts/tools/scan.js:537",
     "scripts/tools/v3-condition.js:46"
   ],
@@ -3094,6 +3300,9 @@
   ],
   "Execute Ram Attack": [
     "scripts/activations/reactions-registry.js:1088"
+  ],
+  "Expand": [
+    "scripts/tah/statbar/token-config-tab.js:28"
   ],
   "Explodes at the end of your next turn": [
     "scripts/tools/misc-tools.js:1168"
@@ -3120,6 +3329,9 @@
   "Exposed": [
     "scripts/fx/statusFX.js:1198"
   ],
+  "External Settings": [
+    "scripts/activations/reaction-export-import.js:204"
+  ],
   "Extra": [
     "scripts/interactive/extras-dialog.js:920",
     "scripts/tah/hud-categories.js:2776",
@@ -3129,21 +3341,29 @@
     "scripts/interactive/combat.js:1228"
   ],
   "Extra Actions": [
-    "scripts/interactive/extras-dialog.js:248"
+    "scripts/interactive/extras-dialog.js:248",
+    "scripts/main.js:1687"
   ],
   "Extra Bars": [
     "scripts/interactive/extras-dialog.js:248",
     "scripts/tah/statbar/token-config-tab.js:564"
+  ],
+  "Extra Config": [
+    "scripts/main.js:1690"
   ],
   "Extra Deployable": [
     "scripts/tah/hud-categories.js:651"
   ],
   "Extra Deployables": [
     "scripts/interactive/deployables.js:839",
-    "scripts/interactive/deployables.js:860"
+    "scripts/interactive/deployables.js:860",
+    "scripts/main.js:1688"
   ],
   "Extra Deployment Actors": [
     "scripts/interactive/extras-dialog.js:248"
+  ],
+  "Extra Resources": [
+    "scripts/main.js:1689"
   ],
   "Extra uses each turn.": [
     "scripts/bonuses/effect-manager-template.js:590"
@@ -3152,7 +3372,11 @@
     "scripts/bonuses/effect-manager-template.js:300",
     "scripts/bonuses/effect-manager-template.js:590"
   ],
+  "FAIL": [
+    "scripts/tools/misc-tools.js:671"
+  ],
   "FAILURE": [
+    "scripts/Battelog/gm-card.js:45",
     "scripts/Battelog/intro-terminal.js:465",
     "scripts/Battelog/recap.js:906"
   ],
@@ -3225,6 +3449,9 @@
   ],
   "Failed to preload {…}:": [
     "scripts/tools/wreck.js:446"
+  ],
+  "Failed.": [
+    "startups/itemActivations.js:5451"
   ],
   "Failure": [
     "scripts/tools/downtime.js:145",
@@ -3484,6 +3711,8 @@
     "scripts/activations/reactions-ui.js:152",
     "scripts/activations/reactions-ui.js:303",
     "scripts/activations/reactions-ui.js:316",
+    "scripts/activations/reactions-ui.js:413",
+    "scripts/activations/reactions-ui.js:414",
     "scripts/tah/hud-categories.js:2246",
     "startups/itemActivations.js:4253",
     "startups/itemActivations.js:4276",
@@ -3621,6 +3850,12 @@
     "scripts/tools/downtime.js:610",
     "scripts/tools/downtime.js:854"
   ],
+  "GM Only": [
+    "scripts/interactive/deployables.js:1018"
+  ],
+  "GM must create": [
+    "scripts/interactive/deployables.js:1020"
+  ],
   "GMS": [
     "scripts/Battelog/combat-telemetry-derive.js:172"
   ],
@@ -3706,8 +3941,15 @@
   "General (LaSossis)": [
     "startups/personalStuff.js:68"
   ],
+  "General Activations": [
+    "scripts/activations/reaction-export-import.js:201",
+    "scripts/activations/reaction-export-import.js:566"
+  ],
   "General activations": [
     "scripts/activations/workshop-browser.js:1073"
+  ],
+  "Generate": [
+    "scripts/interactive/deployables.js:1018"
   ],
   "Generate Scan": [
     "scripts/setup/tour.js:879",
@@ -3746,7 +3988,8 @@
     "scripts/alt-struct/base-rules.js:83"
   ],
   "Global Bonuses": [
-    "scripts/bonuses/bonus-roll-hud.js:532"
+    "scripts/bonuses/bonus-roll-hud.js:532",
+    "scripts/uplink/mirror-card.js:245"
   ],
   "Glossary": [
     "scripts/setup/tour.js:855"
@@ -3833,14 +4076,20 @@
     "scripts/setup/status-effects.js:172"
   ],
   "Grit": [
+    "scripts/tah/hud-categories.js:1740",
+    "scripts/tah/stats-bar.js:194",
     "scripts/tools/v3-condition.js:46",
-    "scripts/uplink/live-rolls.js:71"
+    "scripts/uplink/live-rolls.js:71",
+    "scripts/uplink/mirror-card.js:152"
   ],
   "Grit Check": [
     "scripts/bonuses/effect-manager-template.js:590"
   ],
   "Ground Impact": [
     "scripts/activations/reactions-registry.js:1209"
+  ],
+  "Group of 2+ identical units with the highest combined damage, Nemesis excluded.": [
+    "scripts/Battelog/recap.js:1987"
   ],
   "Guardian": [
     "scripts/setup/status-effects.js:63",
@@ -3894,6 +4143,9 @@
   ],
   "HEAVY FRAME": [
     "startups/itemActivations.js:2758"
+  ],
+  "HELD": [
+    "scripts/Battelog/recap.js:1464"
   ],
   "HIDE": [
     "scripts/Battelog/combat-telemetry-mock.js:20"
@@ -3960,6 +4212,7 @@
     "scripts/interactive/tools/forceCheck.js:41",
     "scripts/interactive/tools/forceCheck.js:185",
     "scripts/interactive/tools/haseContest.js:13",
+    "scripts/tah/hud-categories.js:1736",
     "scripts/uplink/live-rolls.js:21",
     "startups/itemActivations.js:2805",
     "startups/itemActivations.js:2951",
@@ -4126,6 +4379,9 @@
     "scripts/bonuses/effect-manager-template.js:590",
     "scripts/uplink/mirror-card.js:9"
   ],
+  "Hit avoided!": [
+    "startups/itemActivations.js:5451"
+  ],
   "Hit by the Thermal Lance": [
     "startups/itemActivations.js:1803"
   ],
@@ -4152,6 +4408,7 @@
   "Hull": [
     "scripts/activations/reactions-registry.js:265",
     "scripts/tah/hud-categories.js:2133",
+    "scripts/tah/stats-bar.js:135",
     "scripts/tools/scan.js:515",
     "scripts/tools/v3-condition.js:46"
   ],
@@ -4220,6 +4477,7 @@
   "INFECTION": [
     "scripts/Battelog/awards.js:313",
     "scripts/Battelog/awards.js:320",
+    "scripts/Battelog/awards.js:323",
     "scripts/Battelog/combat-telemetry-derive.js:318",
     "scripts/Battelog/combat-telemetry-derive.js:320",
     "scripts/Battelog/combat-telemetry-derive.js:322",
@@ -4271,7 +4529,8 @@
   "INVADE": [
     "scripts/Battelog/action-capture.js:109",
     "scripts/Battelog/combat-telemetry-mock.js:18",
-    "scripts/Battelog/combat-telemetry-mock.js:213"
+    "scripts/Battelog/combat-telemetry-mock.js:213",
+    "scripts/interactive/combat.js:1243"
   ],
   "ISOLATED · click again to reset": [
     "scripts/Battelog/recap.js:2439"
@@ -4312,6 +4571,9 @@
   ],
   "Ignore (Delete Effect)": [
     "scripts/main.js:2266"
+  ],
+  "Ignore (not detected)": [
+    "scripts/tools/wreck.js:1028"
   ],
   "Ignore Elevation": [
     "scripts/movement/movement-actions.js:123"
@@ -4415,6 +4677,9 @@
     "scripts/bonuses/effectManager.js:158",
     "scripts/bonuses/status-tooltip.js:117"
   ],
+  "Indeterminate": [
+    "scripts/tools/downtime.js:743"
+  ],
   "Industrial": [
     "scripts/tools/pilot-reserves.js:4"
   ],
@@ -4441,6 +4706,12 @@
   ],
   "Influence (+2)": [
     "scripts/tools/pilot-reserves.js:84"
+  ],
+  "Info": [
+    "scripts/tools/downtime.js:706",
+    "scripts/tools/downtime.js:706",
+    "scripts/tools/downtime.js:747",
+    "scripts/tools/downtime.js:747"
   ],
   "Initiate Self-Destruct Sequence": [
     "scripts/tools/misc-tools.js:1168"
@@ -4658,6 +4929,10 @@
     "scripts/tools/pilot-reserves.js:208",
     "scripts/tools/rest.js:453"
   ],
+  "Item Activations": [
+    "scripts/activations/reaction-export-import.js:200",
+    "scripts/activations/reaction-export-import.js:565"
+  ],
   "Item ID:": [
     "scripts/bonuses/effect-manager-template.js:102",
     "scripts/bonuses/effect-manager-template.js:404",
@@ -4712,7 +4987,8 @@
   ],
   "KIA": [
     "scripts/Battelog/combat-telemetry-derive.js:1431",
-    "scripts/Battelog/combat-telemetry-derive.js:1433"
+    "scripts/Battelog/combat-telemetry-derive.js:1433",
+    "scripts/Battelog/recap.js:1323"
   ],
   "KILLED": [
     "scripts/Battelog/recap.js:2044"
@@ -4734,6 +5010,9 @@
   ],
   "Key": [
     "scripts/setup/settings-rows.js:67"
+  ],
+  "Keybindings": [
+    "scripts/activations/reaction-export-import.js:205"
   ],
   "Kinetic": [
     "scripts/activations/reactions-registry.js:2178",
@@ -4902,6 +5181,9 @@
     "scripts/Battelog/intro-terminal.js:275",
     "scripts/seasonal/annual.js:340"
   ],
+  "LOS": [
+    "scripts/vision/lancerDetectionModes.js:197"
+  ],
   "LOSS": [
     "scripts/tools/misc-tools.js:577"
   ],
@@ -4929,6 +5211,9 @@
   ],
   "Lancer Automations API not found or outdated.": [
     "scripts/tah/hud-categories.js:45"
+  ],
+  "Lancer Automations Settings": [
+    "scripts/activations/reaction-export-import.js:203"
   ],
   "Lancer Automations is managing this token's bars.": [
     "scripts/tah/statbar/token-config-tab.js:564"
@@ -4973,6 +5258,9 @@
   "Lightning Reflexes": [
     "startups/itemActivations.js:5429"
   ],
+  "Like": [
+    "scripts/activations/workshop-browser.js:625"
+  ],
   "Limit:": [
     "scripts/bonuses/effect-manager-template.js:404"
   ],
@@ -4997,7 +5285,9 @@
   ],
   "Line of sight": [
     "scripts/activations/targeting-ui.js:175",
-    "scripts/interactive/cards.js:256"
+    "scripts/interactive/cards.js:256",
+    "scripts/interactive/cards.js:313",
+    "scripts/interactive/cards.js:447"
   ],
   "Line: Tilt End Down": [
     "scripts/interactive/keybindings.js:10"
@@ -5018,6 +5308,9 @@
     "scripts/setup/tour.js:880",
     "scripts/tah/hud-categories.js:1184"
   ],
+  "Link to pilot": [
+    "scripts/tah/hud.js:799"
+  ],
   "Linked": [
     "scripts/tah/narrative-roster.js:110"
   ],
@@ -5025,6 +5318,7 @@
     "scripts/tools/wreck.js:1363"
   ],
   "Linked Item": [
+    "scripts/tah/statbar/token-config-tab.js:85",
     "scripts/tah/statbar/token-config-tab.js:308"
   ],
   "Linked: typing one mirrors the other. Click to unlink.": [
@@ -5097,6 +5391,9 @@
     "startups/itemActivations.js:1761",
     "startups/itemActivations.js:1775"
   ],
+  "MANUAL ROLL MODE:": [
+    "scripts/tools/downtime.js:709"
+  ],
   "MAX": [
     "templates/downtime-item.hbs:32"
   ],
@@ -5148,7 +5445,8 @@
     "scripts/vision/vision-disable-on-select.js:52"
   ],
   "MOUNT": [
-    "scripts/Battelog/combat-telemetry-mock.js:22"
+    "scripts/Battelog/combat-telemetry-mock.js:22",
+    "scripts/interactive/combat.js:856"
   ],
   "MOVE": [
     "scripts/interactive/tools/moveToken.js:44",
@@ -5173,7 +5471,8 @@
     "scripts/Battelog/combat-telemetry-derive.js:1418",
     "scripts/Battelog/recap.js:80",
     "scripts/Battelog/recap.js:83",
-    "scripts/Battelog/recap.js:85"
+    "scripts/Battelog/recap.js:85",
+    "scripts/Battelog/recap.js:1323"
   ],
   "Macro": [
     "scripts/tah/hud-categories.js:3101",
@@ -5427,8 +5726,11 @@
   "Mount": [
     "scripts/activations/reactions-registry.js:2017",
     "scripts/fx/actionFX.js:2045",
+    "scripts/interactive/combat.js:855",
     "scripts/tah/hud-categories.js:573",
     "scripts/tah/hud-categories.js:573",
+    "scripts/tools/attack-actions.js:375",
+    "scripts/tools/attack-actions.js:376",
     "scripts/tools/attack-actions.js:392",
     "scripts/tools/scan.js:431"
   ],
@@ -5523,6 +5825,9 @@
   "NARRATIVE HUD ROSTER": [
     "scripts/tah/narrative-roster.js:110"
   ],
+  "NEMESIS": [
+    "scripts/Battelog/recap.js:1985"
+  ],
   "NET ASSET REPORT": [
     "scripts/tools/downtime.js:726"
   ],
@@ -5538,6 +5843,9 @@
   ],
   "NO ARMOR": [
     "scripts/tah/hud-categories.js:1760"
+  ],
+  "NO LOS": [
+    "scripts/vision/lancerDetectionModes.js:197"
   ],
   "NO PILOT": [
     "scripts/Battelog/recap.js:1249"
@@ -5744,7 +6052,8 @@
     "scripts/bonuses/effect-manager-template.js:590"
   ],
   "No": [
-    "scripts/activations/reactions-registry.js:1203"
+    "scripts/activations/reactions-registry.js:1203",
+    "scripts/tools/wreck.js:1108"
   ],
   "No Armor": [
     "scripts/tah/hud-categories.js:1764"
@@ -5771,6 +6080,9 @@
   "No List.md provided.": [
     "scripts/activations/workshop-browser.js:1042"
   ],
+  "No NPC found.": [
+    "scripts/tah/narrative-roster.js:137"
+  ],
   "No Pilot Evaluation": [
     "scripts/tools/downtime.js:809"
   ],
@@ -5781,7 +6093,8 @@
     "startups/itemActivations.js:2261"
   ],
   "No Reduce": [
-    "scripts/bonuses/bonus-roll-hud.js:385"
+    "scripts/bonuses/bonus-roll-hud.js:385",
+    "scripts/uplink/mirror-card.js:256"
   ],
   "No Scan Data": [
     "scripts/Battelog/recap.js:1978"
@@ -5811,6 +6124,9 @@
   ],
   "No collision": [
     "startups/itemActivations.js:6167"
+  ],
+  "No contacts match this filter.": [
+    "scripts/Battelog/recap.js:2281"
   ],
   "No contributors found.": [
     "scripts/activations/workshop-browser.js:812"
@@ -5855,6 +6171,9 @@
   "No effects found.": [
     "scripts/bonuses/effect-manager-manage.js:149"
   ],
+  "No events yet.": [
+    "scripts/Battelog/telemetry-debug.js:118"
+  ],
   "No extra bars linked here.": [
     "scripts/interactive/extras-dialog.js:91"
   ],
@@ -5888,6 +6207,9 @@
   ],
   "No ownership set.": [
     "scripts/tools/scan.js:288"
+  ],
+  "No pilot found.": [
+    "scripts/tah/narrative-roster.js:134"
   ],
   "No presets saved.": [
     "scripts/bonuses/effectManager.js:794"
@@ -5940,7 +6262,8 @@
   "None": [
     "scripts/Battelog/recap.js:1210",
     "scripts/bonuses/effect-manager-template.js:404",
-    "scripts/interactive/extras-dialog.js:36"
+    "scripts/interactive/extras-dialog.js:36",
+    "scripts/tah/statbar/token-config-tab.js:558"
   ],
   "Not Invis.": [
     "scripts/bonuses/bonus-flow-step.js:493"
@@ -5964,8 +6287,14 @@
   "Not conflicts, but worth a look:": [
     "scripts/setup/checkCompatibility.js:467"
   ],
+  "Not listed in List.md": [
+    "scripts/activations/workshop-browser.js:1027"
+  ],
   "Note:": [
     "scripts/bonuses/effect-manager-template.js:300"
+  ],
+  "Nothing": [
+    "scripts/tools/wreck.js:958"
   ],
   "Nothing linked": [
     "scripts/tah/narrative-roster.js:80"
@@ -6006,6 +6335,8 @@
     "scripts/tah/hud-popups.js:55"
   ],
   "ON HIT": [
+    "scripts/interactive/detail-renderers.js:509",
+    "scripts/interactive/detail-renderers.js:811",
     "scripts/tah/hud-popups.js:55"
   ],
   "ON MISS": [
@@ -6036,6 +6367,10 @@
   "OVERRIDE": [
     "scripts/movement/elevation.js:517",
     "scripts/movement/elevation.js:524"
+  ],
+  "OVERRIDE ENABLED": [
+    "scripts/tools/downtime.js:701",
+    "scripts/tools/downtime.js:742"
   ],
   "OVERWATCH": [
     "scripts/Battelog/combat-telemetry-mock.js:21"
@@ -6076,12 +6411,17 @@
     "scripts/seasonal/annual.js:33"
   ],
   "Off": [
+    "scripts/tools/wreck.js:1045",
+    "scripts/tools/wreck.js:1086",
+    "scripts/tools/wreck.js:1123",
     "scripts/vision/visionFromEdge.js:768"
   ],
   "Off keeps the facing you set by hand when dragging or nudging the token.": [
     "scripts/tools/wreck.js:1074"
   ],
   "On": [
+    "scripts/tools/wreck.js:1044",
+    "scripts/tools/wreck.js:1085",
     "scripts/vision/visionFromEdge.js:768"
   ],
   "On Wreck": [
@@ -6095,6 +6435,9 @@
   ],
   "On hit: establish grapple": [
     "scripts/combat/grapple.js:387"
+  ],
+  "On hover": [
+    "scripts/tah/statbar/token-config-tab.js:603"
   ],
   "On hover also shows them when selected, targeted or while Alt is held.": [
     "scripts/tah/statbar/token-config-tab.js:564"
@@ -6244,6 +6587,14 @@
     "scripts/tools/misc-tools.js:1081",
     "scripts/uplink/mirror-card.js:229"
   ],
+  "Override Note:": [
+    "scripts/tools/downtime.js:710",
+    "scripts/tools/downtime.js:711",
+    "scripts/tools/downtime.js:712",
+    "scripts/tools/downtime.js:750",
+    "scripts/tools/downtime.js:751",
+    "scripts/tools/downtime.js:752"
+  ],
   "Override Value": [
     "scripts/bonuses/effect-manager-template.js:590",
     "scripts/bonuses/effect-manager-template.js:590"
@@ -6256,6 +6607,7 @@
     "scripts/fx/statusFX.js:1190",
     "scripts/setup/status-effects.js:96",
     "scripts/tah/statbar/token-hud-inputs.js:46",
+    "scripts/tah/stats-bar.js:77",
     "scripts/tools/v3-condition.js:46"
   ],
   "Overwatch": [
@@ -6300,14 +6652,26 @@
   "Owner: {…} players ({…}{…})": [
     "scripts/tools/scan.js:303"
   ],
+  "Owners + scanned": [
+    "scripts/tah/statbar/token-config-tab.js:557"
+  ],
+  "Owners only": [
+    "scripts/tah/statbar/token-config-tab.js:556"
+  ],
   "PARTIAL": [
+    "scripts/Battelog/gm-card.js:44",
+    "scripts/Battelog/gm-card.js:44",
     "scripts/Battelog/intro-terminal.js:465",
     "scripts/Battelog/recap.js:906"
   ],
   "PARTY": [
     "scripts/carousel/carousel-view.js:16"
   ],
+  "PASS": [
+    "scripts/tools/misc-tools.js:671"
+  ],
   "PASSIVE": [
+    "scripts/interactive/detail-renderers.js:689",
     "scripts/tah/hud-popups.js:76"
   ],
   "PER ROUND": [
@@ -6385,6 +6749,9 @@
     "startups/itemActivations.js:5839",
     "startups/itemActivations.js:5851",
     "startups/itemActivations.js:5865"
+  ],
+  "PROFILES": [
+    "scripts/interactive/detail-renderers.js:766"
   ],
   "PROTOCOL": [
     "scripts/Battelog/combat-telemetry-mock.js:22",
@@ -6511,6 +6878,9 @@
   "Physical Dice Result (1d20 + modifiers):": [
     "scripts/tools/downtime.js:466"
   ],
+  "Physical dice result entered by player (": [
+    "scripts/tools/downtime.js:709"
+  ],
   "Pick All (AND)": [
     "scripts/interactive/combat.js:252"
   ],
@@ -6539,6 +6909,9 @@
     "scripts/interactive/cards.js:397",
     "scripts/interactive/tools/forceCheck.js:147"
   ],
+  "Pick an item from the actor": [
+    "scripts/tah/statbar/token-config-tab.js:85"
+  ],
   "Pick from the list. Customize the icon and name before adding.": [
     "scripts/tah/hud-categories.js:2971"
   ],
@@ -6562,7 +6935,9 @@
     "scripts/tah/hud-categories.js:732"
   ],
   "Pilot": [
-    "scripts/setup/tour.js:832"
+    "scripts/setup/tour.js:832",
+    "scripts/tah/statbar/token-config-tab.js:302",
+    "scripts/tools/rest.js:199"
   ],
   "Pilot Armor": [
     "scripts/tah/hud-categories.js:1764"
@@ -6640,6 +7015,9 @@
   ],
   "Placement range (blank = unlimited)": [
     "scripts/interactive/cards.js:308"
+  ],
+  "Placement range shown and checked with line of sight": [
+    "scripts/interactive/cards.js:313"
   ],
   "Places a deployable. The range ring is only the default suggestion, nothing stops you dropping it outside. Change a deployable's range or count with Add Extra / Extra Config on the item.": [
     "scripts/setup/tour.js:876"
@@ -7008,6 +7386,10 @@
   "RAM": [
     "scripts/Battelog/combat-telemetry-mock.js:20"
   ],
+  "RANGE": [
+    "scripts/interactive/detail-renderers.js:505",
+    "scripts/interactive/detail-renderers.js:799"
+  ],
   "REACTOR EXPLOSION": [
     "scripts/tools/misc-tools.js:1287"
   ],
@@ -7043,6 +7425,10 @@
   ],
   "REROLL?": [
     "scripts/activations/reroll.js:326"
+  ],
+  "RESOURCES": [
+    "scripts/interactive/detail-renderers.js:693",
+    "scripts/tah/hud-categories.js:2647"
   ],
   "RESTOCK DRONE": [
     "startups/itemActivations.js:759"
@@ -7187,6 +7573,8 @@
     "scripts/activations/reactions-ui.js:303",
     "scripts/activations/reactions-ui.js:315",
     "scripts/activations/reactions-ui.js:316",
+    "scripts/activations/reactions-ui.js:409",
+    "scripts/activations/reactions-ui.js:410",
     "scripts/Battelog/action-capture.js:9",
     "scripts/Battelog/combat-telemetry-derive.js:256",
     "scripts/Battelog/combat-telemetry-derive.js:261",
@@ -7377,7 +7765,11 @@
   "Remove area": [
     "scripts/interactive/cards.js:652"
   ],
+  "Remove combat": [
+    "scripts/interactive/extras-dialog.js:231"
+  ],
   "Remove from combat": [
+    "scripts/tah/hud.js:813",
     "scripts/tah/hud.js:827"
   ],
   "Remove from roster": [
@@ -7388,7 +7780,9 @@
   ],
   "Repair": [
     "scripts/activations/stabilize-flow.js:115",
+    "scripts/activations/stabilize-flow.js:139",
     "scripts/activations/stabilize-flow.js:147",
+    "scripts/tah/hud-popups.js:279",
     "scripts/tah/hud-popups.js:286"
   ],
   "Repair Cap": [
@@ -7456,6 +7850,9 @@
   "Reserves & Bonuses": [
     "scripts/tools/pilot-reserves.js:84"
   ],
+  "Reset": [
+    "scripts/interactive/extras-dialog.js:169"
+  ],
   "Reset Actions": [
     "scripts/tah/combat-bar.js:184"
   ],
@@ -7484,6 +7881,8 @@
   ],
   "Resistance": [
     "scripts/bonuses/effect-manager-template.js:404",
+    "scripts/bonuses/genericBonuses.js:480",
+    "scripts/interactive/detail-renderers.js:616",
     "startups/itemActivations.js:3463"
   ],
   "Resistance and vulnerability are now their own bonus types. Replace { type: \"immunity\", subtype: \"resistance\" } with": [
@@ -7582,6 +7981,12 @@
   ],
   "Right-click a row for weapon details": [
     "scripts/interactive/combat.js:858"
+  ],
+  "Right-click in TAH Resources opens this item's sheet.": [
+    "scripts/tah/statbar/token-config-tab.js:85"
+  ],
+  "Right-click to restore": [
+    "scripts/tah/combat-bar.js:112"
   ],
   "Ring of Fire": [
     "startups/itemActivations.js:935"
@@ -7821,6 +8226,7 @@
     "scripts/Battelog/recap.js:1531"
   ],
   "SUCCESS": [
+    "scripts/Battelog/gm-card.js:43",
     "scripts/Battelog/intro-terminal.js:465",
     "scripts/Battelog/recap.js:906"
   ],
@@ -7838,6 +8244,7 @@
     "scripts/activations/reactions-registry.js:1995",
     "scripts/interactive/cards.js:397",
     "scripts/interactive/tools/haseContest.js:15",
+    "scripts/tah/hud-categories.js:1738",
     "scripts/uplink/live-rolls.js:21",
     "startups/itemActivations.js:2219",
     "startups/itemActivations.js:3164",
@@ -7878,6 +8285,8 @@
     "scripts/activations/statroll-target-button.js:67",
     "scripts/tah/hud-categories.js:1539",
     "scripts/tah/hud-categories.js:2128",
+    "scripts/tah/stats-bar.js:197",
+    "scripts/tah/stats-bar.js:197",
     "scripts/tools/scan.js:543"
   ],
   "Save Preset": [
@@ -8136,6 +8545,8 @@
     "scripts/activations/targeting-ui.js:104",
     "scripts/tah/hud-categories.js:1539",
     "scripts/tah/hud-categories.js:2127",
+    "scripts/tah/stats-bar.js:198",
+    "scripts/tah/stats-bar.js:198",
     "scripts/tools/scan.js:541",
     "scripts/tools/v3-condition.js:46"
   ],
@@ -8148,7 +8559,8 @@
   "Set": [
     "scripts/bonuses/effect-manager-widgets.js:17",
     "scripts/bonuses/genericBonuses.js:463",
-    "scripts/bonuses/genericBonuses.js:468"
+    "scripts/bonuses/genericBonuses.js:468",
+    "scripts/interactive/detail-renderers.js:601"
   ],
   "Sets up entrances. Drop tokens with Alt so they start hidden, select them, run Reinforcement, and pick the turn each one appears. It can preview an optional token to swap in.": [
     "scripts/setup/tour.js:881"
@@ -8223,6 +8635,9 @@
     "scripts/bonuses/effect-manager-template.js:400",
     "scripts/bonuses/effect-manager-template.js:590"
   ],
+  "Show the bond stress bar (and input) on this pilot's token.": [
+    "scripts/tah/statbar/token-config-tab.js:608"
+  ],
   "Shred": [
     "scripts/activations/reactions-registry.js:2166"
   ],
@@ -8255,8 +8670,14 @@
     "scripts/bonuses/flagged-effects.js:2133",
     "scripts/tah/statbar/render.js:910"
   ],
+  "Simple Object (rotating outline)": [
+    "scripts/tools/wreck.js:1026"
+  ],
   "Simulated Structure Hit": [
     "scripts/alt-struct/index.js:107"
+  ],
+  "Single NPC that dealt the most damage across the fight.": [
+    "scripts/Battelog/recap.js:1985"
   ],
   "Size": [
     "scripts/activations/targeting-ui.js:743",
@@ -8292,6 +8713,9 @@
     "scripts/activations/reactions-registry.js:778",
     "scripts/interactive/network.js:552",
     "startups/itemActivations.js:6569"
+  ],
+  "Skip (do nothing)": [
+    "scripts/tools/wreck.js:949"
   ],
   "Skip THT terrain elevation tracking for this token. Q/E offsets still work.": [
     "scripts/tools/wreck.js:1074"
@@ -8475,6 +8899,11 @@
   "Standing Up requires the PRONE status.": [
     "scripts/tah/hud-categories.js:858"
   ],
+  "Start": [
+    "scripts/bonuses/status-tooltip.js:98",
+    "scripts/bonuses/status-tooltip.js:104",
+    "scripts/bonuses/status-tooltip.js:111"
+  ],
   "Start of Round": [
     "scripts/bonuses/duration-widget.js:15",
     "scripts/bonuses/effectManager.js:156"
@@ -8488,6 +8917,11 @@
   ],
   "Started in Threat Range": [
     "scripts/combat/overwatch.js:208"
+  ],
+  "Startup Scripts": [
+    "scripts/activations/reaction-export-import.js:202",
+    "scripts/activations/reaction-export-import.js:453",
+    "scripts/activations/reaction-export-import.js:567"
   ],
   "Startup scripts": [
     "scripts/activations/workshop-browser.js:1074"
@@ -8525,6 +8959,9 @@
   "Statuses": [
     "scripts/setup/tour.js:856",
     "scripts/tah/status-panel.js:803"
+  ],
+  "Statuses / Effects": [
+    "scripts/main.js:1686"
   ],
   "Stay": [
     "startups/itemActivations.js:2449"
@@ -8661,11 +9098,21 @@
   "Surefoot": [
     "scripts/setup/status-effects.js:220"
   ],
+  "Swap pilot (right-click to edit the roster)": [
+    "scripts/tah/hud.js:799"
+  ],
   "Switch off": [
+    "scripts/bonuses/effect-manager-manage.js:271",
+    "scripts/tah/status-panel.js:664",
     "scripts/tah/status-panel.js:786"
   ],
   "Switch on": [
+    "scripts/bonuses/effect-manager-manage.js:271",
+    "scripts/tah/status-panel.js:664",
     "scripts/tah/status-panel.js:786"
+  ],
+  "Switch to this profile": [
+    "scripts/interactive/detail-renderers.js:756"
   ],
   "Switched off. Right-click to turn it back on.": [
     "scripts/bonuses/status-tooltip.js:339"
@@ -8703,6 +9150,7 @@
     "scripts/tah/hud-categories.js:2335",
     "scripts/tah/hud-categories.js:2342",
     "scripts/tah/hud-categories.js:2550",
+    "scripts/tah/stats-bar.js:136",
     "scripts/tools/v3-condition.js:46"
   ],
   "Systems Check": [
@@ -8773,9 +9221,15 @@
   "THROW ALLY": [
     "startups/itemActivations.js:6128"
   ],
+  "THT Difficult Terrain": [
+    "scripts/tools/wreck.js:959"
+  ],
   "TOP ACT": [
     "scripts/Battelog/recap.js:1531",
     "scripts/Battelog/recap.js:1702"
+  ],
+  "TOP THREAT": [
+    "scripts/Battelog/recap.js:1987"
   ],
   "TP": [
     "startups/itemActivations.js:6253",
@@ -8788,7 +9242,9 @@
     "scripts/seasonal/annual.js:286"
   ],
   "TRIGGER": [
-    "scripts/interactive/detail-renderers.js:251"
+    "scripts/activations/reactions-ui.js:383",
+    "scripts/interactive/detail-renderers.js:251",
+    "scripts/interactive/detail-renderers.js:814"
   ],
   "TRUE GRIT": [
     "startups/itemActivations.js:4935"
@@ -8920,6 +9376,8 @@
     "scripts/activations/flow-steps.js:56",
     "scripts/activations/flow-steps.js:58",
     "scripts/bonuses/genericBonuses.js:395",
+    "scripts/tah/stats-bar.js:196",
+    "scripts/tah/stats-bar.js:196",
     "scripts/uplink/mirror-card.js:11"
   ],
   "Tech Attack Roll": [
@@ -9158,7 +9616,8 @@
     "scripts/setup/tour.js:880"
   ],
   "Tile": [
-    "scripts/tools/wreck.js:578"
+    "scripts/tools/wreck.js:578",
+    "scripts/tools/wreck.js:948"
   ],
   "Tile Wreck Image/Effect Scale": [
     "scripts/tools/wreck.js:941"
@@ -9200,6 +9659,7 @@
     "scripts/Battelog/damage-capture.js:39",
     "scripts/combat/reinforcement.js:88",
     "scripts/combat/terrain-utils.js:241",
+    "scripts/interactive/cards.js:1006",
     "scripts/interactive/tools/placeToken.js:90",
     "scripts/interactive/tools/placeToken.js:104",
     "scripts/interactive/tools/placeToken.js:117",
@@ -9238,8 +9698,12 @@
     "scripts/tools/wreck.js:712",
     "scripts/tools/wreck.js:759",
     "scripts/tools/wreck.js:763",
+    "scripts/tools/wreck.js:947",
     "scripts/vision/lancerDetectionModes.js:941",
     "startups/itemActivations.js:5498"
+  ],
+  "Token art": [
+    "scripts/tools/wreck.js:1120"
   ],
   "Token that caused the involuntary move, null if none.": [
     "scripts/setup/codemirror-hints.js:30"
@@ -9426,12 +9890,14 @@
   ],
   "UNIDENTIFIED": [
     "scripts/Battelog/recap.js:1932",
+    "scripts/Battelog/recap.js:2072",
     "scripts/seasonal/annual.js:35",
     "scripts/seasonal/annual.js:164",
     "scripts/seasonal/annual.js:170"
   ],
   "UNKNOWN": [
     "scripts/Battelog/recap.js:1833",
+    "scripts/Battelog/recap.js:1946",
     "scripts/tah/tokenStatHint.js:147",
     "scripts/tah/tokenStatHint.js:361",
     "scripts/tah/tokenStatHint.js:1885",
@@ -9451,6 +9917,10 @@
   "UNLINKED": [
     "scripts/tah/hud.js:779",
     "scripts/tah/hud.js:779"
+  ],
+  "UNLISTED": [
+    "scripts/tools/downtime.js:691",
+    "scripts/tools/downtime.js:732"
   ],
   "UNLOADED": [
     "scripts/interactive/combat.js:622",
@@ -9474,6 +9944,9 @@
   "UPDATE AVAILABLE": [
     "scripts/setup/news.js:424"
   ],
+  "USED": [
+    "scripts/Battelog/recap.js:1464"
+  ],
   "Uncharged": [
     "scripts/interactive/deployables.js:781"
   ],
@@ -9493,6 +9966,7 @@
     "scripts/activations/reactions-ui.js:272",
     "scripts/bonuses/genericBonuses.js:526",
     "scripts/interactive/item-activation.js:71",
+    "scripts/uplink/mirror-card.js:110",
     "scripts/uplink/snapshots.js:59"
   ],
   "Unknown Action": [
@@ -9511,6 +9985,9 @@
   ],
   "Unknown Vulnerability": [
     "scripts/bonuses/genericBonuses.js:2467"
+  ],
+  "Unlike": [
+    "scripts/activations/workshop-browser.js:625"
   ],
   "Unlimited": [
     "scripts/activations/reaction-editor.js:231",
@@ -9588,6 +10065,10 @@
   "Use its Armor": [
     "startups/itemActivations.js:3694"
   ],
+  "Use world default": [
+    "scripts/tah/statbar/token-config-tab.js:554",
+    "scripts/tah/statbar/token-config-tab.js:602"
+  ],
   "Use {…} (deducts {…} charge{…})": [
     "scripts/setup/lancer-modif.js:579",
     "scripts/setup/lancer-modif.js:678"
@@ -9602,6 +10083,7 @@
     "scripts/tah/statbar/token-config-tab.js:564"
   ],
   "Uses": [
+    "scripts/tah/item-helpers.js:853",
     "scripts/tah/item-helpers.js:887"
   ],
   "Uses (Limited)": [
@@ -9622,6 +10104,7 @@
   "VICTORY": [
     "scripts/Battelog/combat-telemetry-derive.js:29",
     "scripts/Battelog/gm-card.js:16",
+    "scripts/Battelog/gm-card.js:43",
     "scripts/Battelog/intro-terminal.js:265",
     "scripts/Battelog/intro-terminal.js:267",
     "scripts/Battelog/intro-terminal.js:376",
@@ -9680,6 +10163,9 @@
   "Visibility: who sees this bar": [
     "scripts/tah/statbar/token-config-tab.js:38"
   ],
+  "Visible (no overlay)": [
+    "scripts/tools/wreck.js:1027"
+  ],
   "Visible to all connected pilots.": [
     "scripts/Battelog/gm-card.js:35"
   ],
@@ -9690,7 +10176,9 @@
     "scripts/tah/hud-categories.js:46"
   ],
   "Vulnerability": [
-    "scripts/bonuses/effect-manager-template.js:404"
+    "scripts/bonuses/effect-manager-template.js:404",
+    "scripts/bonuses/genericBonuses.js:480",
+    "scripts/interactive/detail-renderers.js:616"
   ],
   "Vulnerable": [
     "scripts/bonuses/damage-calc-bridge.js:193",
@@ -9704,6 +10192,12 @@
     "scripts/activations/reactions-engine.js:630",
     "scripts/activations/reactions-engine.js:745",
     "scripts/interactive/network.js:111"
+  ],
+  "WALLS CHANGED": [
+    "scripts/vision/visionFromEdge.js:125"
+  ],
+  "WEAPON": [
+    "scripts/interactive/combat.js:856"
   ],
   "WHAT'S NEW": [
     "scripts/setup/news.js:414"
@@ -9769,6 +10263,7 @@
     "scripts/interactive/canvas-palette.js:70",
     "scripts/interactive/combat.js:44",
     "scripts/interactive/combat.js:674",
+    "scripts/interactive/combat.js:855",
     "scripts/interactive/deployables.js:253",
     "scripts/setup/lancer-modif.js:99",
     "scripts/setup/lancer-modif.js:100",
@@ -9906,6 +10401,9 @@
   ],
   "Yeah, they're gonna come through for me. Though it's not gratis - after this, they're gonna call in a favor from me, I just know it. But fair is fair.": [
     "scripts/tools/downtime.js:204"
+  ],
+  "Yes": [
+    "scripts/tools/wreck.js:1107"
   ],
   "You are hit by an attack and damage has been rolled.": [
     "scripts/activations/reactions-registry.js:578"
@@ -10065,9 +10563,6 @@
   ],
   "Zone of Deadly Approach aura, created disabled on every mech/npc/pilot token": [
     "startups/personalStuff.js:69"
-  ],
-  "\\u25BC": [
-    "scripts/activations/reaction-editor.js:1077"
   ],
   "]+\\.mjs)[\"": [
     "scripts/setup/lancer-modif.js:1245"
@@ -10230,6 +10725,7 @@
     "scripts/bonuses/effectManager.js:1316"
   ],
   "bonus-applyToCondition": [
+    "scripts/bonuses/effect-manager-template.js:877",
     "scripts/bonuses/effectManager.js:675",
     "scripts/bonuses/effectManager.js:683"
   ],
@@ -10668,6 +11164,9 @@
   "font-size:{…}px": [
     "scripts/fx/actionFX.js:1031"
   ],
+  "for classification by UAD Predictive Model NHPs.": [
+    "scripts/tools/downtime.js:764"
+  ],
   "for free movement.": [
     "scripts/movement/move-tracking.js:963"
   ],
@@ -10760,7 +11259,9 @@
     "startups/itemActivations.js:3129"
   ],
   "invert(1)": [
+    "scripts/interactive/cards.js:900",
     "scripts/interactive/combat.js:478",
+    "scripts/interactive/detail-renderers.js:25",
     "scripts/interactive/extras-dialog.js:29",
     "scripts/tah/hud-categories.js:2903",
     "scripts/tah/item-helpers.js:242",
@@ -10967,6 +11468,9 @@
   "lock on": [
     "scripts/tools/v3-condition.js:3"
   ],
+  "manual pick, auto-selected if left blank": [
+    "scripts/Battelog/gm-card.js:50"
+  ],
   "mech | pilot | npc | deployable": [
     "scripts/setup/codemirror-hints.js:410"
   ],
@@ -11126,7 +11630,11 @@
     "scripts/interactive/extra-config.js:338",
     "scripts/interactive/extra-config.js:377"
   ],
+  "on attack": [
+    "scripts/interactive/extra-config-dialog.js:55"
+  ],
   "on hit": [
+    "scripts/interactive/extra-config-dialog.js:55",
     "scripts/interactive/extra-config.js:315"
   ],
   "onInit Code": [
@@ -11159,6 +11667,9 @@
   ],
   "overrides Invisible": [
     "scripts/bonuses/bonus-flow-step.js:508"
+  ],
+  "own turn": [
+    "scripts/bonuses/status-tooltip.js:98"
   ],
   "pick up weapon": [
     "scripts/tah/hover.js:81"
@@ -11260,6 +11771,7 @@
     "startups/itemActivations.js:4886"
   ],
   "rgba(0,0,0,0.2)": [
+    "scripts/alt-struct/structure.js:646",
     "scripts/interactive/combat.js:483"
   ],
   "rgba(183,28,28,0.08)": [
@@ -11269,9 +11781,13 @@
     "scripts/tah/item-helpers.js:360"
   ],
   "rgba(255,100,0,0.05)": [
+    "scripts/alt-struct/structure.js:646",
     "scripts/alt-struct/structure.js:743",
     "scripts/interactive/combat.js:565",
     "scripts/interactive/combat.js:1311"
+  ],
+  "rgba(255,100,0,0.15)": [
+    "scripts/interactive/cards.js:799"
   ],
   "rgba(255,100,0,0.25)": [
     "scripts/interactive/canvas-helpers.js:628"
@@ -11280,6 +11796,7 @@
     "scripts/interactive/canvas-helpers.js:624"
   ],
   "rgba(255,255,255,0.03)": [
+    "scripts/alt-struct/structure.js:646",
     "scripts/alt-struct/structure.js:741",
     "scripts/interactive/combat.js:483",
     "scripts/interactive/combat.js:551",
@@ -11445,6 +11962,15 @@
   ],
   "text tspan": [
     "scripts/fx/actionFX.js:947"
+  ],
+  "the ally": [
+    "startups/itemActivations.js:4886"
+  ],
+  "the attacker": [
+    "startups/itemActivations.js:1422",
+    "startups/itemActivations.js:1460",
+    "startups/itemActivations.js:1540",
+    "startups/itemActivations.js:1606"
   ],
   "throw weapon": [
     "scripts/tah/hud-popups.js:18"
@@ -11922,7 +12448,8 @@
     "scripts/Battelog/awards.js:451"
   ],
   "{…} PTS": [
-    "scripts/Battelog/combat-telemetry-derive.js:1420"
+    "scripts/Battelog/combat-telemetry-derive.js:1420",
+    "scripts/Battelog/gm-card.js:31"
   ],
   "{…} REACTIONS": [
     "scripts/Battelog/awards.js:294"
@@ -12024,6 +12551,14 @@
   "{…} is permanent": [
     "scripts/tah/status-panel.js:51"
   ],
+  "{…} is-off": [
+    "scripts/tah/hud-categories.js:2618",
+    "scripts/tah/item-helpers.js:143"
+  ],
+  "{…} is-ready": [
+    "scripts/tah/hud-categories.js:2618",
+    "scripts/tah/item-helpers.js:143"
+  ],
   "{…} left": [
     "scripts/bonuses/genericBonuses.js:1994"
   ],
@@ -12102,6 +12637,9 @@
   ],
   "{…}${steps ?": [
     "scripts/setup/tour.js:1657"
+  ],
+  "{…}-evaluate": [
+    "scripts/bonuses/effect-manager-template.js:162"
   ],
   "{…}-trigger": [
     "scripts/bonuses/effect-manager-widgets.js:462"
@@ -12301,6 +12839,12 @@
   ],
   "· MVP · KILLED": [
     "scripts/Battelog/recap.js:1621"
+  ],
+  "· not met": [
+    "scripts/bonuses/status-tooltip.js:335"
+  ],
+  "· {…} TURNS": [
+    "scripts/Battelog/recap.js:2440"
   ],
   "× Close": [
     "scripts/activations/reactions-ui.js:364"

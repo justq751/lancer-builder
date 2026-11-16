@@ -18,6 +18,12 @@ test("patterns carry their captured values", () => {
   assert.equal(translateString("Regain all HP", text, patterns), "Regain all HP");
 });
 
+test("captured values are translated when they are known text themselves", () => {
+  const withGroups = [[/^(?:(.+) : (Boost|Success))$/, "$1: $2"]];
+  assert.equal(translateString("End of Turn : Boost", text, withGroups), "Конец хода: Рывок");
+  assert.equal(translateString("Kai : Success", text, withGroups), "Kai: Success");
+});
+
 test("mount type parameter is translated only for listed keys and known values", () => {
   const data = { type: "Flex" };
   assert.equal(translateFormatData("LA.tokenHud.label.mount", data).type, FORMAT["LA.tokenHud.label.mount"].type.Flex);
