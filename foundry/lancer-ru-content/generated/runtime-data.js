@@ -939,5 +939,127 @@ export default {
         "ru": "Эта особенность НИП относится к категории ТЕХ-ДЕЙСТВИЕ."
       }
     }
+  },
+  "statusNames": {
+    "flying": {
+      "en": [
+        "Flying"
+      ],
+      "ru": "Летит"
+    },
+    "cover_soft": {
+      "en": [
+        "Soft Cover"
+      ],
+      "ru": "Мягкое укрытие"
+    },
+    "cover_hard": {
+      "en": [
+        "Hard Cover"
+      ],
+      "ru": "Жёсткое укрытие"
+    },
+    "dangerzone": {
+      "en": [
+        "Danger Zone"
+      ],
+      "ru": "Опасная зона"
+    },
+    "downandout": {
+      "en": [
+        "Down and Out"
+      ],
+      "ru": "Повержен"
+    },
+    "engaged": {
+      "en": [
+        "Engaged"
+      ],
+      "ru": "Связан боем"
+    },
+    "exposed": {
+      "en": [
+        "Exposed"
+      ],
+      "ru": "Открыт"
+    },
+    "hidden": {
+      "en": [
+        "Hidden"
+      ],
+      "ru": "Скрыт"
+    },
+    "invisible": {
+      "en": [
+        "Invisible"
+      ],
+      "ru": "Невидим"
+    },
+    "prone": {
+      "en": [
+        "Prone"
+      ],
+      "ru": "Опрокинут"
+    },
+    "shutdown": {
+      "en": [
+        "Shut Down"
+      ],
+      "ru": "Отключён"
+    },
+    "shut-down": {
+      "en": [
+        "Shut Down"
+      ],
+      "ru": "Отключён"
+    },
+    "immobilized": {
+      "en": [
+        "Immobilized"
+      ],
+      "ru": "Обездвижен"
+    },
+    "impaired": {
+      "en": [
+        "Impaired"
+      ],
+      "ru": "Ослаблен"
+    },
+    "jammed": {
+      "en": [
+        "Jammed"
+      ],
+      "ru": "Заклинен"
+    },
+    "lockon": {
+      "en": [
+        "Lock On"
+      ],
+      "ru": "Захват цели"
+    },
+    "shredded": {
+      "en": [
+        "Shredded"
+      ],
+      "ru": "Изрешечён"
+    },
+    "slow": {
+      "en": [
+        "Slowed"
+      ],
+      "ru": "Замедлен"
+    },
+    "stunned": {
+      "en": [
+        "Stunned"
+      ],
+      "ru": "Оглушён"
+    },
+    "intangible": {
+      "en": [
+        "Intangible"
+      ],
+      "ru": "Неосязаем"
+    }
   }
 };

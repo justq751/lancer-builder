@@ -5,7 +5,7 @@ import FORMAT from "../generated/automations-format.js";
 // only what is already on screen is replaced, and only on an exact match with its English source.
 // #notifications: toasts with text hardcoded in automations; the last selector is the downtime
 // report that automations files as a journal page.
-const SCOPE = '.lancer-dialog-base, .lancer-automations-dialog, [class*="la-"], [class*="battelog"], .chat-message, #tooltip, .locked-tooltip, #token-hud, #notifications, .no-equipment-dialog, .journal-page-content:has(.lancer-border-primary)';
+const SCOPE = '.lancer .effect-name, .lancer-dialog-base, .lancer-automations-dialog, [class*="la-"], [class*="battelog"], .chat-message, #tooltip, .locked-tooltip, #token-hud, #notifications, .no-equipment-dialog, .journal-page-content:has(.lancer-border-primary)';
 const SKIP = "input, textarea, [contenteditable], script, style, code, pre, .CodeMirror, .cm-editor";
 const ATTRS = ["title", "data-tooltip", "aria-label", "placeholder"];
 const PATTERNS = TEXT.patterns.map(([source, ru]) => [new RegExp(`^(?:${source})$`), ru]);

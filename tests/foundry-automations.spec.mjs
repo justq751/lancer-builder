@@ -5,6 +5,7 @@ async function boot(page, { lang = "ru", automations = true } = {}) {
   await page.goto("/foundry/lancer-ru-content/module.json");
   await page.setContent(`
     <div id="outside" title="Boost">Boost</div>
+    <section class="lancer actor"><span class="effect-name">Invisible</span></section>
     <section class="la-hud-panel">
       <div class="la-hud-row" data-la-key="Boost" title="Boost"><span>  Boost </span></div>
       <input id="name" value="Boost"><select><option id="labelled" value="Boost">Boost</option><option id="bare">Hide</option></select>
@@ -17,6 +18,7 @@ async function boot(page, { lang = "ru", automations = true } = {}) {
     window.game = { system: { id: "lancer" }, i18n: { lang, translations: { lancer: { statusIconsNames: {} } },
       format: (key, data) => `${data.type} Mount` },
       modules: new Map([["lancer-automations", { active: automations }]]) };
+    window.CONFIG = { statusEffects: [] };
     window.libWrapper = { register: (_id, target, fn) => {
       if (target !== "game.i18n.format") throw new Error(target);
       const original = game.i18n.format;
@@ -43,6 +45,7 @@ test("automations display text is translated in scope; logic attributes and inpu
   await expect(page.locator(".la-unknown")).toHaveText("Something homebrew");
   await expect(page.locator("#outside")).toHaveText("Boost");
   await expect(page.locator("#outside")).toHaveAttribute("title", "Boost");
+  await expect(page.locator(".effect-name")).toHaveText("Невидим");
 });
 
 test("text added or changed after load is translated too", async ({ page }) => {

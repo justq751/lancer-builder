@@ -9,6 +9,29 @@ const ID = "lancer-ru-content";
 const russianLancer = () => game.system.id === "lancer" && game.i18n.lang === "ru";
 const russianAutomations = () => russianLancer() && game.modules?.get("lancer-automations")?.active;
 
+function statusName(name, ids) {
+  for (const id of ids) {
+    const pair = runtime.statusNames[id];
+    if (!pair) continue;
+    const key = `lancer.statusIconsNames.${id}`;
+    if (pair.en.includes(name) || name === pair.ru || name === key || name === game.i18n.localize(key)) return pair.en[0];
+  }
+  return name;
+}
+
+function preserveStatusNames() {
+  if (!russianAutomations()) return;
+  // LANCER rebuilds this list from Babele-translated items on compendium/world changes.
+  for (const status of CONFIG.statusEffects) status.name = statusName(status.name, [status.id]);
+}
+
+Hooks.on("lancer.statusesReady", preserveStatusNames);
+Hooks.on("preCreateActiveEffect", effect => {
+  if (!russianAutomations()) return;
+  const name = statusName(effect.name, effect.statuses);
+  if (name !== effect.name) effect.updateSource({ name });
+});
+
 Hooks.once("i18nInit", () => {
   // Apply after language files so ru-ru's load order cannot replace the builder term.
   if (russianLancer()) game.i18n.translations.lancer.statusIconsNames.exposed = labels.statusIconsNames.exposed;
@@ -22,7 +45,10 @@ Hooks.once("i18nInit", () => {
 
 Hooks.once("ready", () => {
   if (russianLancer()) observeRollHuds(document);
-  if (russianAutomations()) observeAutomations(document);
+  if (russianAutomations()) {
+    preserveStatusNames();
+    observeAutomations(document);
+  }
 });
 
 Hooks.once("babele.init", babele => {

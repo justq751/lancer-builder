@@ -399,7 +399,11 @@ def build():
                          "Existing world and embedded Items are not migrated."]}
     aliases = read_json(MODULE / "aliases.json")
     packs = {name: {"entries": {}} for name in ["world.mech-items", "world.pilot-items", "world.status-items"]}
-    runtime = {"tags": {}}
+    status_text = automations.read(automations.TEXT_FILE)
+    runtime = {"tags": {}, "statusNames": {
+        lid: {"en": [name], "ru": status_text[name]["ru"]}
+        for lid, name in {"flying": "Flying", "cover_soft": "Soft Cover", "cover_hard": "Hard Cover"}.items()
+    }}
     unused = []
 
     def translated_paths(node, path):
@@ -433,6 +437,9 @@ def build():
                 continue
             path = f"{category}/{lid}"
             name = pair(entry.get("name"), source.get("name"), f"{path}/name", report)
+            if category == "statuses":
+                runtime["statusNames"][target_lid] = name
+                runtime["statusNames"][lid] = name
             if category == "tags":
                 runtime["tags"][target_lid] = fields(entry, source, ["name", "description"], path, report)
                 report["entries"][category] += 1
