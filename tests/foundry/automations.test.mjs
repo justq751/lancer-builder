@@ -26,3 +26,10 @@ test("mount type parameter is translated only for listed keys and known values",
   assert.deepEqual(translateFormatData("LA.other", { type: "Flex" }), { type: "Flex" });
   assert.equal(translateFormatData("LA.tokenHud.label.mount", undefined), undefined);
 });
+
+test("format parameters can drop English plural endings and rewrite data fragments by pattern", () => {
+  const formats = { "LA.x": { plural: { s: "", "": "" }, failed: { "/ \\((\\d+) failed\\)/": " (ошибок: $1)" } } };
+  assert.deepEqual(translateFormatData("LA.x", { count: 2, plural: "s", failed: " (3 failed)" }, formats),
+    { count: 2, plural: "", failed: " (ошибок: 3)" });
+  assert.deepEqual(translateFormatData("LA.x", { failed: " (many failed)", plural: 1 }, formats), { failed: " (many failed)", plural: 1 });
+});

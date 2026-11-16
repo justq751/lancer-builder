@@ -367,7 +367,16 @@ def build_automations():
             text["exact"][en] = entry["ru"]
     formats = {}
     enums = read_json(ROOT / "locales" / "ru" / "enums.json")
+    keys = automations.read(automations.LANG_FILE)
     for key, params in automations.read(automations.FORMAT_FILE).items():
+        if key not in keys:
+            raise ValueError(f"automations-format/{key}: no such LA key")
+        for param, source in params.items():
+            if "{" + param + "}" not in keys[key]["en"]:
+                raise ValueError(f"automations-format/{key}: no {{{param}}} in English")
+            for word in (source if isinstance(source, dict) else {}):
+                if word.startswith("/") and len(word) > 2:
+                    re.compile(word[1:-1])
         formats[key] = {}
         for param, source in params.items():
             words = {en: pair["ru"] for en, pair in enums[source].items() if pair["ru"].strip()} if isinstance(source, str) else source

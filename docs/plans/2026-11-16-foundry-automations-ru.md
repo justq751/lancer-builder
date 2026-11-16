@@ -1,6 +1,6 @@
 # План: русский перевод Lancer Automations через lancer-ru-content
 
-Статус: в работе. Сделаны инструменты (этап 2), состояния (этап 3, кроме проверки в Foundry) и HUD (этап 4). Этапы 0–1 и ручная приёмка требуют Foundry.
+Статус: в работе. Сделаны этапы 2–5: все ключи `LA.*` переведены (3303 вручную, 122 из терминов сайта, 5 совпадают с английским). Этап 6 начат: переведены действия HUD, `reactions-registry.js`, длительности, Effect Manager, `interactive/cards.js`; открыто около 2400 литералов (с шумом). Этапы 0–1 и ручная приёмка требуют Foundry.
 
 ## Цель и рамки
 
@@ -150,18 +150,18 @@
 
 ### Этап 5. Остальной интерфейс на ключах
 
-- [ ] `notify`, `altStruct`, `reaction*`, `effectManager`, `measure`, `scanUi`, `downtime`, `deployables`, `battleLog`, `award`, `telemetry`.
-- [ ] `settings`, `settingsMenus`, `keybindings`, `compat`, `configUi`.
-- [ ] `tour`, `onboarding`, `onboardingUi`.
+- [x] `notify`, `altStruct`, `reaction*`, `effectManager`, `measure`, `scanUi`, `downtime`, `deployables`, `battleLog`, `award`, `telemetry` и остальные мелкие пространства.
+- [x] `settings`, `settingsMenus`, `keybindings`, `compat`, `configUi`.
+- [x] `tour`, `onboarding`, `onboardingUi`.
 
 ### Этап 6. Текст, зашитый в код
 
 Порядок — по заметности в игре:
 
 - [ ] `startups/itemActivations.js`: окна и сообщения автоматизаций предметов. Имена предметов — из локалей проекта.
-- [ ] `reactions-registry.js`: отображаемые названия реакций и их сообщения в чате и окнах.
-- [ ] Effect Manager и длительности. Сначала проверить, сохраняются ли «End of Turn» и подобные в эффектах мира. Если да, переводить только отображение.
-- [ ] `interactive/cards.js`, `extras-dialog.js`, `tools/wreck.js`, `alt-struct/*.js`, `combat/grapple.js`, `tah/statbar/token-config-tab.js`, `tah/status-panel.js`.
+- [x] `reactions-registry.js`: отображаемые названия реакций и их сообщения в чате и окнах.
+- [x] Effect Manager и длительности. «End of Turn» и подобные — только подписи `<option>`, в данных хранится `value` (`end`, `start`…). Опции без `value` не переводятся: их текст и есть значение.
+- [ ] `interactive/cards.js` (сделан), `extras-dialog.js`, `tools/wreck.js`, `alt-struct/*.js`, `combat/grapple.js`, `tah/statbar/token-config-tab.js`, `tah/status-panel.js`.
 - [ ] `tools/downtime.js` — действия простоя, тексты по книге.
 - [ ] `Battelog/recap.js`.
 - [ ] Сообщения чата, которые automations создаёт с зашитым текстом: перевод при отрисовке (`renderChatMessageHTML`). Сохранённый HTML сообщений не переписывается.

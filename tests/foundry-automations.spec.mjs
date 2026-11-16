@@ -7,7 +7,7 @@ async function boot(page, { lang = "ru", automations = true } = {}) {
     <div id="outside" title="Boost">Boost</div>
     <section class="la-hud-panel">
       <div class="la-hud-row" data-la-key="Boost" title="Boost"><span>  Boost </span></div>
-      <input id="name" value="Boost"><select><option value="Boost">Boost</option></select>
+      <input id="name" value="Boost"><select><option id="labelled" value="Boost">Boost</option><option id="bare">Hide</option></select>
       <span class="la-unknown">Something homebrew</span>
     </section>`);
   await page.evaluate(async ({ lang, automations }) => {
@@ -33,7 +33,9 @@ test("automations display text is translated in scope; logic attributes and inpu
   await expect(row).toHaveAttribute("title", "Рывок");
   await expect(row).toHaveAttribute("data-la-key", "Boost");
   await expect(page.locator("#name")).toHaveValue("Boost");
-  await expect(page.locator("option")).toHaveText("Boost");
+  await expect(page.locator("#labelled")).toHaveText("Рывок");
+  await expect(page.locator("#labelled")).toHaveAttribute("value", "Boost");
+  await expect(page.locator("#bare")).toHaveText("Hide");
   await expect(page.locator(".la-unknown")).toHaveText("Something homebrew");
   await expect(page.locator("#outside")).toHaveText("Boost");
   await expect(page.locator("#outside")).toHaveAttribute("title", "Boost");

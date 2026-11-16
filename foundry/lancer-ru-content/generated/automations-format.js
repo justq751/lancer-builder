@@ -12,5 +12,151 @@ export default {
       "Ship-class": "Корабельное",
       "Integrated": "Интегрированное"
     }
+  },
+  "LA.notify.meltdownInitiated": {
+    "plural": {
+      "s": "",
+      "": ""
+    }
+  },
+  "LA.notify.scanRequestSent": {
+    "plural": {
+      "s": "",
+      "": ""
+    }
+  },
+  "LA.notify.scanRequestSentNoDot": {
+    "plural": {
+      "s": "",
+      "": ""
+    }
+  },
+  "LA.notify.journalRequestSent": {
+    "plural": {
+      "s": "",
+      "": ""
+    }
+  },
+  "LA.notify.importedWorkshopEntries": {
+    "suffix": {
+      "y": "",
+      "ies": ""
+    }
+  },
+  "LA.notify.importedEntriesFrom": {
+    "suffix": {
+      "y": "",
+      "ies": ""
+    }
+  },
+  "LA.notify.syncedPortraits": {
+    "imagePlural": {
+      "s": "",
+      "": ""
+    },
+    "namePlural": {
+      "s": "",
+      "": ""
+    }
+  },
+  "LA.notify.appliedToDoc": {
+    "kind": {
+      " (item)": " (предмет)",
+      " (prototype)": " (прототип)"
+    }
+  },
+  "LA.notify.noMountsOrWeapons": {
+    "kind": {
+      "mounts": "креплений",
+      "weapons": "оружия"
+    }
+  },
+  "LA.notify.appliedFixes": {
+    "hint": {
+      " Reload recommended.": " Рекомендуется перезагрузить страницу."
+    }
+  },
+  "LA.notify.reinjectedAutoBars": {
+    "failed": {
+      "/ \\((\\d+) failed\\)/": " (ошибок: $1)"
+    }
+  },
+  "LA.notify.tokenHasFallen": {
+    "total": {
+      "/ \\(for a total of (\\d+)\\)/": " (всего $1 кл.)"
+    }
+  },
+  "LA.notify.importedPack": {
+    "extra": {
+      "/ \\(\\+(\\d+) startup scripts?\\)/": " (+$1 стартовых скриптов)"
+    }
+  },
+  "LA.altStruct.meltdownCountdownBody": {
+    "plural": {
+      "s": "",
+      "": ""
+    }
+  },
+  "LA.choiceCard.selectUpToKind": {
+    "kind": {
+      "mount(s)": "креплений",
+      "weapon(s)": "оружия"
+    }
+  },
+  "LA.main.immunityPrompt": {
+    "status": {
+      "aided": "Поддержан",
+      "blinded": "Ослеплён",
+      "bolster": "Усиление",
+      "brace": "Стойка",
+      "bulwark": "Оплот",
+      "burn": "Огонь",
+      "cascading": "Каскад",
+      "climber": "Скалолаз",
+      "core_power_active": "CORE-способность активна",
+      "dangerzone": "Опасная зона",
+      "datalinked": "Связан данными",
+      "dazed": "Дезориентирован",
+      "destroyed": "Уничтожен",
+      "disengage": "Отход",
+      "downandout": "Повержен",
+      "engaged": "Связан боем",
+      "exposed": "Открыт",
+      "falling": "Падает",
+      "flying": "Летит",
+      "grappled": "Схвачен",
+      "grappling": "Держит захват",
+      "guardian": "Страж",
+      "hidden": "Скрыт",
+      "hover": "Парит",
+      "immobilized": "Обездвижен",
+      "immovable": "Несдвигаем",
+      "impaired": "Ослаблен",
+      "infection": "Заражение",
+      "intangible": "Неосязаем",
+      "invisible": "Невидим",
+      "jammed": "Заклинен",
+      "lockon": "Захват цели",
+      "overheated": "Перегрет",
+      "overshield": "Овершилд",
+      "phasing": "Фазирован",
+      "prone": "Опрокинут",
+      "reactor_meltdown": "Расплавление реактора",
+      "resistance_all": "Сопротивление всему",
+      "shredded": "Изрешечён",
+      "shutdown": "Отключён",
+      "slow": "Замедлен",
+      "stunned": "Оглушён",
+      "surefoot": "Твёрдая поступь",
+      "terrain_immunity": "Иммунитет к местности",
+      "throttled": "Подавлен"
+    }
+  },
+  "LA.reinforcement.npcsArrived": {
+    "plural": {
+      "S": "",
+      "s": "",
+      "": ""
+    }
   }
 };

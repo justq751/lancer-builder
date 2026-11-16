@@ -4,7 +4,7 @@ import FORMAT from "../generated/automations-format.js";
 // lancer-automations keeps English in code for logic (effect names, action names, data-la-key);
 // only what is already on screen is replaced, and only on an exact match with its English source.
 const SCOPE = '.lancer-dialog-base, .lancer-automations-dialog, [class*="la-"], [class*="battelog"], .chat-message, #tooltip, .locked-tooltip, #token-hud';
-const SKIP = "input, textarea, select, [contenteditable], script, style, code, pre, .CodeMirror, .cm-editor";
+const SKIP = "input, textarea, [contenteditable], script, style, code, pre, .CodeMirror, .cm-editor";
 const ATTRS = ["title", "data-tooltip", "aria-label", "placeholder"];
 const PATTERNS = TEXT.patterns.map(([source, ru]) => [new RegExp(`^(?:${source})$`), ru]);
 
@@ -29,7 +29,10 @@ function translateAttributes(element) {
 }
 
 function translateTextNode(node) {
-  if (node.parentElement?.closest(SKIP)) return;
+  const parent = node.parentElement;
+  if (parent?.closest(SKIP)) return;
+  // An <option> without value submits its text, so only labelled options are safe to translate.
+  if (parent?.matches("option:not([value])")) return;
   const value = translateString(node.nodeValue);
   if (value !== node.nodeValue) node.nodeValue = value;
 }
@@ -70,7 +73,20 @@ export function translateFormatData(key, data, formats = FORMAT) {
   if (!params || !data) return data;
   const out = { ...data };
   for (const [param, words] of Object.entries(params)) {
-    if (typeof out[param] === "string" && Object.hasOwn(words, out[param])) out[param] = words[out[param]];
+    const value = out[param];
+    if (typeof value !== "string") continue;
+    if (Object.hasOwn(words, value)) {
+      out[param] = words[value];
+      continue;
+    }
+    // "/regex/" keys translate English fragments built from data, e.g. " (3 failed)".
+    for (const [source, ru] of Object.entries(words)) {
+      const pattern = source.length > 2 && source.startsWith("/") && source.endsWith("/") && new RegExp(`^(?:${source.slice(1, -1)})$`);
+      if (pattern && pattern.test(value)) {
+        out[param] = value.replace(pattern, ru);
+        break;
+      }
+    }
   }
   return out;
 }

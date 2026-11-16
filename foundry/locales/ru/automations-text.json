@@ -5,10 +5,86 @@
       "scripts/tah/hud-categories.js:3775"
     ]
   },
+  "(item)": {
+    "ru": "(предмет)",
+    "where": [
+      "scripts/bonuses/effectManager.js:1075",
+      "scripts/bonuses/effectManager.js:1172",
+      "scripts/main.js:1650"
+    ]
+  },
   "(missing macro)": {
     "ru": "(макрос не найден)",
     "where": [
       "scripts/tah/hud-categories.js:2926"
+    ]
+  },
+  "(prototype)": {
+    "ru": "(прототип)",
+    "where": [
+      "scripts/bonuses/effectManager.js:1075",
+      "scripts/bonuses/effectManager.js:1172",
+      "scripts/main.js:1650"
+    ]
+  },
+  "-2 Heat": {
+    "ru": "−2 Тепла",
+    "where": [
+      "scripts/activations/reactions-registry.js:2166"
+    ]
+  },
+  "-4 Kinetic": {
+    "ru": "−4 кинетического",
+    "where": [
+      "scripts/activations/reactions-registry.js:2174"
+    ]
+  },
+  "-IMPAIR + SLOW": {
+    "ru": "−ОСЛАБЛЕН + ЗАМЕДЛЕН",
+    "where": [
+      "scripts/activations/reactions-registry.js:2154"
+    ]
+  },
+  "/(.+) - Jockey \\(Damage\\)/": {
+    "ru": "$1 — Оседлать (Повредить)",
+    "example": "Kai - Jockey (Damage)",
+    "where": [
+      "scripts/activations/reactions-registry.js:2178"
+    ]
+  },
+  "/(.+) - Jockey \\(Shred\\)/": {
+    "ru": "$1 — Оседлать (Раскурочить)",
+    "example": "Kai - Jockey (Shred)",
+    "where": [
+      "scripts/activations/reactions-registry.js:2170"
+    ]
+  },
+  "/(.+) - Overcharge Heat/": {
+    "ru": "$1 — Тепло Форсажа",
+    "example": "Kai - Overcharge Heat",
+    "where": [
+      "scripts/activations/reactions-registry.js:2244"
+    ]
+  },
+  "/(.+) \\(item\\)/": {
+    "ru": "$1 (предмет)",
+    "example": "Rifle (item)",
+    "where": [
+      "scripts/bonuses/effectManager.js:121"
+    ]
+  },
+  "/(.+) \\(prototype\\)/": {
+    "ru": "$1 (прототип)",
+    "example": "Drone (prototype)",
+    "where": [
+      "scripts/bonuses/effectManager.js:124"
+    ]
+  },
+  "/(.+) is mounted/": {
+    "ru": "$1: пилот в мехе",
+    "example": "Everest is mounted",
+    "where": [
+      "scripts/activations/reactions-registry.js:2072"
     ]
   },
   "/(.+) is permanent/": {
@@ -32,6 +108,43 @@
       "scripts/tah/hud-categories.js:2519"
     ]
   },
+  "/(\\d+) \\/ (\\d+) voted/": {
+    "ru": "Проголосовало: $1 / $2",
+    "example": "2 / 4 voted",
+    "where": [
+      "scripts/interactive/cards.js:1066"
+    ]
+  },
+  "/(\\d+) active bonus(es)? — see Manage tab\\./": {
+    "ru": "Активных бонусов: $1 — см. вкладку «Управление».",
+    "example": "2 active bonuses — see Manage tab.",
+    "where": [
+      "scripts/bonuses/effectManager.js:1201"
+    ]
+  },
+  "/(\\d+) active/": {
+    "ru": "Активно: $1",
+    "example": "3 active",
+    "where": [
+      "scripts/bonuses/effectManager.js:1201"
+    ]
+  },
+  "/(\\d+) tokens/": {
+    "ru": "Токенов: $1",
+    "example": "3 tokens",
+    "where": [
+      "scripts/bonuses/effect-manager-targets.js:22",
+      "scripts/bonuses/effect-manager-targets.js:47",
+      "scripts/bonuses/effectManager.js:133"
+    ]
+  },
+  "/AGILITY Save \\((.+) while Flying\\)/": {
+    "ru": "Спасбросок Ловкости ($1 в полёте)",
+    "example": "AGILITY Save (Mech while Flying)",
+    "where": [
+      "scripts/activations/reactions-registry.js:773"
+    ]
+  },
   "/Barrage with: (.+) and a second mount\\./": {
     "ru": "Залп: $1 и второе крепление.",
     "example": "Barrage with: Main Mount and a second mount.",
@@ -46,6 +159,20 @@
       "scripts/tah/hud-categories.js:2137"
     ]
   },
+  "/Choose a skill for (.+):/": {
+    "ru": "Выберите навык для $1:",
+    "example": "Choose a skill for Kai:",
+    "where": [
+      "scripts/activations/reactions-registry.js:292"
+    ]
+  },
+  "/Choose a target within Sensors \\((.+)\\)/": {
+    "ru": "Выберите цель в пределах Сенсоров ($1)",
+    "example": "Choose a target within Sensors (10)",
+    "where": [
+      "scripts/activations/reactions-registry.js:804"
+    ]
+  },
   "/Deployable · (.+) \\(Core\\)/": {
     "ru": "Развёртываемое · $1 (CORE)",
     "example": "Deployable · Turret (Core)",
@@ -58,6 +185,13 @@
     "example": "Deployable · Turret (Trait)",
     "where": [
       "scripts/tah/hud-categories.js:2494"
+    ]
+  },
+  "/Elevation \\(use (.+) \\/ (.+) keys\\)/": {
+    "ru": "Высота (клавиши $1 / $2)",
+    "example": "Elevation (use Q / E keys)",
+    "where": [
+      "scripts/interactive/cards.js:836"
     ]
   },
   "/Max Reach \\((.+)\\)/": {
@@ -88,6 +222,13 @@
       "scripts/tah/hud-categories.js:1278"
     ]
   },
+  "/Stopped by Engagement \\((.+)\\)/": {
+    "ru": "Остановлен связыванием боем ($1)",
+    "example": "Stopped by Engagement (Drone)",
+    "where": [
+      "scripts/activations/reactions-registry.js:1427"
+    ]
+  },
   "/Threat \\((.+)\\)/": {
     "ru": "Угроза ($1)",
     "example": "Threat (3)",
@@ -95,11 +236,42 @@
       "scripts/tah/hud-categories.js:1270"
     ]
   },
+  "/Veterancy \\((.+)\\)/": {
+    "ru": "Ветеран ($1)",
+    "example": "Veterancy (Hull)",
+    "where": [
+      "scripts/activations/reactions-registry.js:279"
+    ]
+  },
   "/Which token should (.+) be linked to\\?/": {
     "ru": "К какому токену привязать $1?",
     "example": "Which token should Drone be linked to?",
     "where": [
       "scripts/tah/hud-categories.js:1177"
+    ]
+  },
+  "/\\((\\d+) target(s?)\\)/": {
+    "ru": "(целей: $1)",
+    "example": "(2 targets)",
+    "where": [
+      "scripts/interactive/cards.js:652"
+    ]
+  },
+  "/\\(elev (.+)\\)/": {
+    "ru": "(высота $1)",
+    "example": "(elev 2)",
+    "where": [
+      "scripts/interactive/cards.js:1001"
+    ]
+  },
+  "1/Round": {
+    "ru": "1/раунд",
+    "where": [
+      "scripts/activations/reaction-editor.js:233",
+      "scripts/activations/reaction-editor.js:233",
+      "scripts/activations/reaction-editor.js:589",
+      "scripts/activations/reaction-editor.js:598",
+      "scripts/activations/reaction-editor.js:652"
     ]
   },
   "A character may squeeze as a free action, treating themselves as one Size smaller for the purposes of movement. While squeezing, the character is additionally treated as Prone. The character may stop squeezing as a free action while in a space able to accommodate their normal Size.": {
@@ -114,16 +286,145 @@
       "scripts/tah/hud-categories.js:901"
     ]
   },
+  "A hostile character starts any movement inside one of your weapons' THREAT": {
+    "ru": "Враждебный персонаж начинает любое перемещение в зоне Угрозы одного из ваших оружий",
+    "where": [
+      "scripts/activations/reactions-registry.js:357"
+    ]
+  },
+  "A pilot ejects from their mech as a quick action.": {
+    "ru": "Пилот катапультируется из меха быстрым действием.",
+    "where": [
+      "scripts/activations/reactions-registry.js:1520"
+    ]
+  },
   "ADD MACRO": {
     "ru": "ДОБАВИТЬ МАКРОС",
     "where": [
       "scripts/tah/hud-categories.js:2971"
     ]
   },
+  "AGI": {
+    "ru": "ЛОВ",
+    "where": [
+      "scripts/activations/flow-steps.js:810",
+      "scripts/activations/reactions-registry.js:773",
+      "scripts/activations/reactions-registry.js:1997",
+      "scripts/activations/targeting-ui.js:63",
+      "scripts/interactive/cards.js:397"
+    ]
+  },
+  "ALL": {
+    "ru": "ВСЕ",
+    "where": [
+      "scripts/activations/reactions-registry.js:1751",
+      "scripts/setup/tmac-presets.js:64"
+    ]
+  },
+  "Above:": {
+    "ru": "Выше:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Accuracy": {
+    "ru": "Точность",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/interactive/detail-renderers.js:458"
+    ]
+  },
   "Act.": {
     "ru": "Акт.",
     "where": [
       "scripts/tah/hud-categories.js:2129"
+    ]
+  },
+  "Action Extra": {
+    "ru": "Доп. действие",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Action:": {
+    "ru": "Действие:",
+    "where": [
+      "scripts/activations/reaction-editor.js:622",
+      "scripts/activations/reaction-editor.js:624",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Active Effect Changes": {
+    "ru": "Изменения Active Effect",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:396"
+    ]
+  },
+  "Actor": {
+    "ru": "Актёр",
+    "where": [
+      "scripts/activations/reaction-config.js:122",
+      "scripts/activations/reaction-editor.js:1383",
+      "scripts/activations/reaction-editor.js:1863",
+      "scripts/activations/reactions-engine.js:1796",
+      "scripts/Battelog/battelog-utils.js:95"
+    ]
+  },
+  "Add Bonus": {
+    "ru": "Добавить бонус",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Add Damage Entry": {
+    "ru": "Добавить урон",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Add New Bonus": {
+    "ru": "Новый бонус",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Add Value": {
+    "ru": "Прибавить значение",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Add bonuses while Braced": {
+    "ru": "Бонусы, пока действует Стойка",
+    "where": [
+      "scripts/activations/reactions-registry.js:638"
+    ]
+  },
+  "Added to each Standard Move or Boost.": {
+    "ru": "Добавляется к каждому стандартному перемещению или Рывку.",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Advanced": {
+    "ru": "Дополнительно",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Agility": {
+    "ru": "Ловкость",
+    "where": [
+      "scripts/activations/reactions-registry.js:266",
+      "scripts/tah/hud-categories.js:2134",
+      "scripts/tools/v3-condition.js:46"
+    ]
+  },
+  "Agility Check": {
+    "ru": "Проверка Ловкости",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   },
   "Aid": {
@@ -146,6 +447,43 @@
       "scripts/fx/statusFX.js:1205"
     ]
   },
+  "All": {
+    "ru": "Все",
+    "where": [
+      "scripts/bonuses/effectManager.js:194",
+      "scripts/bonuses/effectManager.js:1570",
+      "scripts/bonuses/genericBonuses.js:445",
+      "scripts/interactive/detail-renderers.js:586",
+      "scripts/tools/v3-data.js:94"
+    ]
+  },
+  "All Damage": {
+    "ru": "Весь урон",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "All Flows": {
+    "ru": "Все потоки",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "All Types": {
+    "ru": "Все типы",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-widgets.js:155",
+      "scripts/bonuses/effectManager.js:1623",
+      "scripts/tools/item-browser.js:97"
+    ]
+  },
+  "Ally adjacent": {
+    "ru": "Союзник рядом",
+    "where": [
+      "scripts/activations/reactions-registry.js:242"
+    ]
+  },
   "Already SHUT DOWN.": {
     "ru": "Уже Отключён.",
     "where": [
@@ -160,6 +498,110 @@
       "scripts/tah/hud-categories.js:2841"
     ]
   },
+  "Any": {
+    "ru": "Любой",
+    "where": [
+      "scripts/bonuses/duration-widget.js:32",
+      "scripts/bonuses/effectManager.js:137"
+    ]
+  },
+  "Applies to:": {
+    "ru": "Применяется к:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Apply": {
+    "ru": "Применить",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:300",
+      "scripts/setup/scene-dim-from-image.js:162"
+    ]
+  },
+  "Apply Brace Status": {
+    "ru": "Наложить Стойку",
+    "where": [
+      "scripts/activations/reactions-registry.js:577"
+    ]
+  },
+  "Apply Disengage Status": {
+    "ru": "Наложить Отход",
+    "where": [
+      "scripts/activations/reactions-registry.js:1434"
+    ]
+  },
+  "Apply Hidden Effect": {
+    "ru": "Наложить «Скрыт»",
+    "where": [
+      "scripts/activations/reactions-registry.js:1648"
+    ]
+  },
+  "Apply Knockback and Prone": {
+    "ru": "Отбросить и Опрокинуть",
+    "where": [
+      "scripts/activations/reactions-registry.js:1118"
+    ]
+  },
+  "Apply Lock On Status": {
+    "ru": "Наложить Захват цели",
+    "where": [
+      "scripts/activations/reactions-registry.js:786"
+    ]
+  },
+  "Apply Shutdown Effects": {
+    "ru": "Применить эффекты Отключения",
+    "where": [
+      "scripts/activations/reactions-registry.js:1586"
+    ]
+  },
+  "Apply:": {
+    "ru": "Применить:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:173"
+    ]
+  },
+  "Area center out of range": {
+    "ru": "Центр области вне дальности",
+    "where": [
+      "scripts/interactive/cards.js:647"
+    ]
+  },
+  "Area spreads cell-to-cell from its origin; terrain taller than the area blocks the spread": {
+    "ru": "Область расходится от точки начала по клеткам; местность выше области останавливает распространение",
+    "where": [
+      "scripts/interactive/cards.js:261"
+    ]
+  },
+  "Arm Mines at end of any turn (one-time per token)": {
+    "ru": "Взводить мины в конце любого хода (один раз на токен)",
+    "where": [
+      "scripts/activations/reactions-registry.js:1694"
+    ]
+  },
+  "Armed": {
+    "ru": "Взведена",
+    "where": [
+      "scripts/activations/reactions-registry.js:1715",
+      "scripts/activations/reactions-registry.js:1789",
+      "scripts/activations/reactions-registry.js:1822"
+    ]
+  },
+  "Armor Piercing": {
+    "ru": "Бронебойное",
+    "where": [
+      "scripts/bonuses/bonus-roll-hud.js:384",
+      "scripts/bonuses/effectManager.js:78",
+      "scripts/bonuses/genericBonuses.js:511",
+      "scripts/tools/misc-tools.js:1081",
+      "startups/itemActivations.js:2009"
+    ]
+  },
+  "Armor Piercing (AP)": {
+    "ru": "Бронебойное (AP)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "As a pilot on foot, make a contested skill check, adding bonuses from triggers as normal. This can be used to reveal characters within RANGE 5. Once a HIDDEN character has been found using SEARCH, they immediately lose HIDDEN and can be located again by any character.": {
     "ru": "Пеший пилот совершает состязательную проверку навыка, добавляя бонусы навыков как обычно. Так можно обнаружить персонажей в пределах Дальности 5. Найденный Поиском Скрытый персонаж сразу теряет статус «Скрыт», и его снова может обнаружить любой персонаж.",
     "where": [
@@ -172,10 +614,45 @@
       "scripts/tah/hud-categories.js:854"
     ]
   },
+  "At least": {
+    "ru": "Не меньше",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:463",
+      "scripts/bonuses/genericBonuses.js:468"
+    ]
+  },
+  "At the end of your turn, if you are airborne without Flying or have Flying but haven't moved at least 1 space, you begin falling.": {
+    "ru": "Если в конце вашего хода вы в воздухе без полёта или летите, но не переместились хотя бы на 1 клетку, вы начинаете падать.",
+    "where": [
+      "scripts/activations/reactions-registry.js:1146"
+    ]
+  },
   "Attach extra actions, deployables, or resource bars to the actor.": {
     "ru": "Добавить актёру дополнительные действия, развёртываемые объекты или полосы ресурсов.",
     "where": [
       "scripts/tah/hud-categories.js:1366"
+    ]
+  },
+  "Attack Roll": {
+    "ru": "Бросок атаки",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Auto elevation": {
+    "ru": "Автовысота",
+    "where": [
+      "scripts/interactive/cards.js:308",
+      "scripts/interactive/cards.js:436"
+    ]
+  },
+  "Auto-consume on:": {
+    "ru": "Авторасход при:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
     ]
   },
   "Base": {
@@ -196,6 +673,12 @@
       "scripts/tah/hud-categories.js:1733"
     ]
   },
+  "Base the zone's elevation on the terrain under it": {
+    "ru": "Высота зоны по местности под ней",
+    "where": [
+      "scripts/interactive/cards.js:436"
+    ]
+  },
   "Basic Attack": {
     "ru": "Базовая атака",
     "where": [
@@ -211,6 +694,12 @@
       "scripts/tah/hud-categories.js:547",
       "scripts/tah/hud-categories.js:812",
       "scripts/tah/hud-categories.js:812"
+    ]
+  },
+  "Below:": {
+    "ru": "Ниже:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
     ]
   },
   "Blinded": {
@@ -233,10 +722,38 @@
       "scripts/tah/hud-categories.js:1881"
     ]
   },
+  "Bonus": {
+    "ru": "Бонус",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:173",
+      "scripts/bonuses/effectManager.js:782",
+      "scripts/interactive/detail-renderers.js:332",
+      "scripts/interactive/extras-dialog.js:248",
+      "scripts/tah/hud-categories.js:1623"
+    ]
+  },
+  "Bonus Roll Type:": {
+    "ru": "Тип броска бонуса:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Bonus Type:": {
+    "ru": "Тип бонуса:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
   "Boot Up requires the SHUT DOWN status.": {
     "ru": "Для Перезапуска нужен статус «Отключён».",
     "where": [
       "scripts/tah/hud-categories.js:874"
+    ]
+  },
+  "Browse Files": {
+    "ru": "Выбрать файл",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
     ]
   },
   "Bulwark": {
@@ -246,12 +763,87 @@
       "scripts/setup/status-effects.js:272"
     ]
   },
+  "COMP": {
+    "ru": "СОСТ",
+    "where": [
+      "scripts/interactive/cards.js:948"
+    ]
+  },
+  "Cancel": {
+    "ru": "Отмена",
+    "where": [
+      "scripts/activations/flow-steps.js:665",
+      "scripts/interactive/cards.js:492"
+    ]
+  },
+  "Cancel involuntary movement on IMMOVABLE tokens": {
+    "ru": "Отменять невольное перемещение Несдвигаемых токенов",
+    "where": [
+      "scripts/activations/reactions-registry.js:1227"
+    ]
+  },
+  "Cannot be Reduced": {
+    "ru": "Не снижается",
+    "where": [
+      "scripts/bonuses/bonus-roll-hud.js:384",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:513"
+    ]
+  },
+  "Card": {
+    "ru": "Карточка",
+    "where": [
+      "scripts/interactive/cards.js:112"
+    ]
+  },
   "Cascading": {
     "ru": "Каскад",
     "where": [
       "scripts/Battelog/recap.js:979",
       "scripts/fx/statusFX.js:1191",
       "scripts/setup/status-effects.js:112"
+    ]
+  },
+  "Change All Ranges": {
+    "ru": "Изменить все дальности",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Check for Airborne Falling": {
+    "ru": "Проверка падения в воздухе",
+    "where": [
+      "scripts/activations/reactions-registry.js:1145"
+    ]
+  },
+  "Check type:": {
+    "ru": "Тип проверки:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Check:": {
+    "ru": "Проверка:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102"
+    ]
+  },
+  "Checks (All)": {
+    "ru": "Проверки (все)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Choose": {
+    "ru": "Выбрать",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Choose One": {
+    "ru": "Выберите одно",
+    "where": [
+      "scripts/interactive/cards.js:329"
     ]
   },
   "Choose a character or object within SENSORS and line of sight, then ask the GM for one of: its full statistics and loadout, one piece of hidden information, or generic public information. Only current at the time of the SCAN.": {
@@ -281,10 +873,35 @@
       "scripts/tah/hud-categories.js:852"
     ]
   },
+  "Choose which item this bonus applies to.": {
+    "ru": "Выберите, к какому предмету применяется бонус.",
+    "where": [
+      "scripts/bonuses/effectManager.js:1396"
+    ]
+  },
+  "Clear": {
+    "ru": "Очистить",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:28",
+      "scripts/interactive/cards.js:397"
+    ]
+  },
+  "Clear All Bonuses": {
+    "ru": "Снять все бонусы",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Clear All Effects": {
     "ru": "Снять все эффекты",
     "where": [
       "scripts/tah/status-panel.js:562"
+    ]
+  },
+  "Clear Prone, grant standard-move speed": {
+    "ru": "Снять «Опрокинут», дать стандартное перемещение",
+    "where": [
+      "scripts/activations/reactions-registry.js:1632"
     ]
   },
   "Clear this token's recorded movement history.": {
@@ -306,10 +923,77 @@
       "scripts/tah/hud-categories.js:49"
     ]
   },
+  "Close": {
+    "ru": "Закрыть",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Complete All": {
+    "ru": "Выполнить все",
+    "where": [
+      "scripts/interactive/cards.js:329"
+    ]
+  },
+  "Confirm": {
+    "ru": "Подтвердить",
+    "where": [
+      "scripts/activations/reactions-registry.js:454",
+      "scripts/combat/actor-change-hooks.js:128",
+      "scripts/combat/actor-change-hooks.js:243",
+      "scripts/interactive/combat.js:226",
+      "scripts/interactive/network.js:530"
+    ]
+  },
+  "Constant (no icon, always active)": {
+    "ru": "Постоянный (без значка, всегда активен)",
+    "where": [
+      "scripts/bonuses/effectManager.js:176",
+      "scripts/bonuses/effectManager.js:258"
+    ]
+  },
   "Consume": {
     "ru": "Израсходовать",
     "where": [
       "scripts/tah/status-panel.js:904"
+    ]
+  },
+  "Consume Bolster for Accuracy": {
+    "ru": "Израсходовать Усиление ради Точности",
+    "where": [
+      "scripts/activations/reactions-registry.js:930"
+    ]
+  },
+  "Consume Brace resistance once it has halved a damage roll": {
+    "ru": "Израсходовать сопротивление Стойки после того, как оно уменьшило вдвое бросок урона",
+    "where": [
+      "scripts/activations/reactions-registry.js:685"
+    ]
+  },
+  "Consume as:": {
+    "ru": "Расходовать как:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Consume on action:": {
+    "ru": "Расходовать при действии:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Consume on usage": {
+    "ru": "Расходовать при использовании",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Consumption": {
+    "ru": "Расход",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:300"
     ]
   },
   "Core Bonus": {
@@ -341,6 +1025,77 @@
       "scripts/tah/hud-categories.js:1558"
     ]
   },
+  "Count": {
+    "ru": "Количество",
+    "where": [
+      "scripts/interactive/cards.js:308"
+    ]
+  },
+  "Count:": {
+    "ru": "Количество:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/interactive/cards.js:225",
+      "scripts/interactive/cards.js:227"
+    ]
+  },
+  "Critical Hit": {
+    "ru": "Критическое попадание",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Currently": {
+    "ru": "Сейчас",
+    "where": [
+      "scripts/activations/reactions-registry.js:291"
+    ]
+  },
+  "Custom": {
+    "ru": "Своё",
+    "where": [
+      "scripts/bonuses/effectManager.js:782",
+      "scripts/tah/hud-categories.js:2815",
+      "scripts/tah/statbar/extras.js:301",
+      "scripts/tools/downtime.js:244"
+    ]
+  },
+  "Custom Paint Job - scratched the paint.": {
+    "ru": "Индивидуальная покраска — поцарапана краска.",
+    "where": [
+      "scripts/activations/reactions-registry.js:101"
+    ]
+  },
+  "DISARM": {
+    "ru": "ОБЕЗВРЕДИТЬ",
+    "where": [
+      "scripts/activations/reactions-registry.js:1814"
+    ]
+  },
+  "Damage": {
+    "ru": "Урон",
+    "where": [
+      "scripts/activations/flow-steps-extra.js:166",
+      "scripts/activations/reactions-registry.js:2174",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/interactive/extras-dialog.js:36"
+    ]
+  },
+  "Damage Roll": {
+    "ru": "Бросок урона",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/fx/actionFX.js:2187",
+      "scripts/tools/misc-tools.js:687"
+    ]
+  },
+  "Damage Roll Type:": {
+    "ru": "Тип броска урона:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Datalinked": {
     "ru": "Связан данными",
     "where": [
@@ -367,10 +1122,24 @@
       "scripts/tah/hud-categories.js:3479"
     ]
   },
+  "Decrement": {
+    "ru": "Уменьшить",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Default system activation.": {
     "ru": "Обычная активация системы.",
     "where": [
       "scripts/tah/hud-categories.js:1449"
+    ]
+  },
+  "Delete": {
+    "ru": "Удалить",
+    "where": [
+      "scripts/bonuses/effectManager.js:786",
+      "scripts/tah/statbar/token-config-tab.js:42"
     ]
   },
   "Delete bonus": {
@@ -379,10 +1148,32 @@
       "scripts/tah/status-panel.js:665"
     ]
   },
+  "Delete selected preset": {
+    "ru": "Удалить выбранный пресет",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:45"
+    ]
+  },
   "Deploy Item": {
     "ru": "Развернуть предмет",
     "where": [
       "scripts/tah/hud-categories.js:612"
+    ]
+  },
+  "Deployables": {
+    "ru": "Развёртываемое",
+    "where": [
+      "scripts/interactive/cards.js:336",
+      "scripts/setup/tour.js:829",
+      "scripts/tah/hover.js:130",
+      "scripts/tah/hover.js:205",
+      "scripts/tah/hud-categories.js:656"
+    ]
+  },
+  "Destination": {
+    "ru": "Точка назначения",
+    "where": [
+      "scripts/interactive/cards.js:379"
     ]
   },
   "Destroyed": {
@@ -390,6 +1181,32 @@
     "where": [
       "scripts/setup/status-effects.js:167",
       "scripts/tah/hud-popups.js:220"
+    ]
+  },
+  "Detonate": {
+    "ru": "Взорвать",
+    "where": [
+      "scripts/activations/reactions-registry.js:1793",
+      "scripts/activations/reactions-registry.js:1805"
+    ]
+  },
+  "Detonates": {
+    "ru": "Взрывается",
+    "where": [
+      "scripts/activations/reactions-registry.js:1792"
+    ]
+  },
+  "Difficulty": {
+    "ru": "Сложность",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/interactive/detail-renderers.js:460"
+    ]
+  },
+  "Disarm": {
+    "ru": "Обезвредить",
+    "where": [
+      "scripts/activations/reactions-registry.js:1816"
     ]
   },
   "Drop a macro here to add it.": {
@@ -404,16 +1221,127 @@
       "scripts/tah/hud-categories.js:1227"
     ]
   },
+  "Duration": {
+    "ru": "Длительность",
+    "where": [
+      "scripts/bonuses/duration-widget.js:37",
+      "scripts/bonuses/effect-manager-template.js:300",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Duration origin token": {
+    "ru": "Токен — источник длительности",
+    "where": [
+      "scripts/bonuses/duration-widget.js:37"
+    ]
+  },
+  "Duration:": {
+    "ru": "Длительность:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
   "EJECT as a quick action, flying 6 spaces in the direction of your choice; however, this is a single-use system for emergency use only – it leaves your mech IMPAIRED. Your mech remains IMPAIRED and you cannot EJECT again until your next FULL REPAIR.": {
     "ru": "Катапультируйтесь быстрым действием, отлетев на 6 клеток в выбранном направлении. Это одноразовая аварийная система: она оставляет вашего меха Ослабленным. Мех остаётся Ослабленным, и вы не можете снова катапультироваться до следующего Полного ремонта.",
     "where": [
       "scripts/tah/hud-categories.js:857"
     ]
   },
+  "ENG": {
+    "ru": "ИНЖ",
+    "where": [
+      "scripts/interactive/cards.js:397",
+      "scripts/interactive/tools/haseContest.js:16",
+      "scripts/uplink/live-rolls.js:21"
+    ]
+  },
+  "ENTER": {
+    "ru": "ВХОД",
+    "where": [
+      "scripts/activations/reactions-registry.js:1765",
+      "scripts/movement/terrain-trigger-waypoints.js:20",
+      "startups/itemActivations.js:711"
+    ]
+  },
   "EXTRA DEPLOYABLE": {
     "ru": "ДОП. РАЗВЁРТЫВАЕМОЕ",
     "where": [
       "scripts/tah/hud-categories.js:634"
+    ]
+  },
+  "Each Target": {
+    "ru": "Каждая цель",
+    "where": [
+      "scripts/bonuses/effectManager.js:137"
+    ]
+  },
+  "Effect": {
+    "ru": "Эффект",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:173",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Effect Manager": {
+    "ru": "Менеджер эффектов",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:173",
+      "scripts/tah/hud-categories.js:45",
+      "scripts/tah/status-panel.js:554"
+    ]
+  },
+  "Eject pilot from mech": {
+    "ru": "Катапультировать пилота из меха",
+    "where": [
+      "scripts/activations/reactions-registry.js:1518"
+    ]
+  },
+  "Elevation": {
+    "ru": "Высота",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Elevation aware": {
+    "ru": "С учётом высоты",
+    "where": [
+      "scripts/interactive/cards.js:261",
+      "scripts/interactive/cards.js:436"
+    ]
+  },
+  "Empty": {
+    "ru": "Пусто",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:28",
+      "scripts/bonuses/effect-manager-widgets.js:24",
+      "scripts/tah/hud.js:1546"
+    ]
+  },
+  "Empty = plain HASE check (≥ 10).": {
+    "ru": "Пусто — обычная проверка HASE (≥ 10).",
+    "where": [
+      "scripts/interactive/cards.js:397"
+    ]
+  },
+  "End of Encounter": {
+    "ru": "Конец стычки",
+    "where": [
+      "scripts/bonuses/duration-widget.js:16",
+      "scripts/bonuses/effectManager.js:157"
+    ]
+  },
+  "End of Round": {
+    "ru": "Конец раунда",
+    "where": [
+      "scripts/bonuses/duration-widget.js:14",
+      "scripts/bonuses/effectManager.js:155"
+    ]
+  },
+  "End of Turn": {
+    "ru": "Конец хода",
+    "where": [
+      "scripts/bonuses/duration-widget.js:12",
+      "scripts/bonuses/effectManager.js:144"
     ]
   },
   "Eng": {
@@ -423,10 +1351,78 @@
       "scripts/tools/scan.js:518"
     ]
   },
+  "Engagement": {
+    "ru": "Связывание боем",
+    "where": [
+      "scripts/activations/reactions-registry.js:1247",
+      "scripts/setup/checkCompatibility.js:19"
+    ]
+  },
+  "Engagement Interrupt Movement": {
+    "ru": "Связывание боем прерывает перемещение",
+    "where": [
+      "scripts/activations/reactions-registry.js:1279",
+      "scripts/setup/settings-onboarding.js:528"
+    ]
+  },
+  "Engineering": {
+    "ru": "Инженерия",
+    "where": [
+      "scripts/activations/reactions-registry.js:268",
+      "scripts/tools/v3-condition.js:46"
+    ]
+  },
+  "Engineering Check": {
+    "ru": "Проверка Инженерии",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Escape": {
+    "ru": "Escape",
+    "where": [
+      "scripts/Battelog/recap.js:442",
+      "scripts/interactive/canvas-helpers.js:652",
+      "scripts/interactive/cards.js:1077",
+      "scripts/interactive/network.js:363",
+      "scripts/interactive/network.js:474"
+    ]
+  },
+  "Execute Ram Attack": {
+    "ru": "Атака Тараном",
+    "where": [
+      "scripts/activations/reactions-registry.js:1088"
+    ]
+  },
   "Extra Deployable": {
     "ru": "Доп. развёртываемое",
     "where": [
       "scripts/tah/hud-categories.js:651"
+    ]
+  },
+  "Extra uses each turn.": {
+    "ru": "Дополнительные использования каждый ход.",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Extract Code": {
+    "ru": "Извлечь код",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:300",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "FALLING?": {
+    "ru": "ПАДАЕТ?",
+    "where": [
+      "scripts/activations/reactions-registry.js:1183"
+    ]
+  },
+  "FORCE CHECK": {
+    "ru": "НАВЯЗАТЬ ПРОВЕРКУ",
+    "where": [
+      "scripts/interactive/cards.js:397"
     ]
   },
   "Fall": {
@@ -449,6 +1445,41 @@
       "scripts/tools/movement-tools.js:184"
     ]
   },
+  "Filters": {
+    "ru": "Фильтры",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Find Item": {
+    "ru": "Найти предмет",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/tools/item-browser.js:97"
+    ]
+  },
+  "Fire": {
+    "ru": "Огонь!",
+    "where": [
+      "scripts/activations/reactions-registry.js:432",
+      "startups/itemActivations.js:661"
+    ]
+  },
+  "Flat": {
+    "ru": "Модификатор",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/uplink/mirror-card.js:151"
+    ]
+  },
+  "Flight": {
+    "ru": "Полёт",
+    "where": [
+      "scripts/activations/reactions-registry.js:705"
+    ]
+  },
   "Flying": {
     "ru": "Летит",
     "where": [
@@ -457,6 +1488,45 @@
       "scripts/activations/reactions-registry.js:773",
       "scripts/activations/reactions-registry.js:775",
       "scripts/fx/statusFX.js:1221"
+    ]
+  },
+  "Flying grants immunity to Prone. Immobilized or Stunned removes Flying. Structure or Stress requires an AGILITY save or begin falling.": {
+    "ru": "Полёт даёт иммунитет к «Опрокинут». «Обездвижен» или «Оглушён» прекращают полёт. Структурный урон или перегрев требуют спасброска Ловкости, иначе начинается падение.",
+    "where": [
+      "scripts/activations/reactions-registry.js:710"
+    ]
+  },
+  "Force Crit": {
+    "ru": "Принудительный крит",
+    "where": [
+      "scripts/bonuses/bonus-roll-hud.js:384",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:514"
+    ]
+  },
+  "Force Hit": {
+    "ru": "Принудительное попадание",
+    "where": [
+      "scripts/bonuses/bonus-roll-hud.js:384",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:515"
+    ]
+  },
+  "Force Miss": {
+    "ru": "Принудительный промах",
+    "where": [
+      "scripts/bonuses/bonus-roll-hud.js:384",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:516"
+    ]
+  },
+  "Fragment Signal (NPC)": {
+    "ru": "Фрагментация сигнала (NPC)",
+    "where": [
+      "scripts/activations/reactions-registry.js:2228",
+      "scripts/fx/actionFX.js:2044",
+      "scripts/interactive/combat.js:1209",
+      "scripts/tah/hud-categories.js:3482"
     ]
   },
   "Fragment Signal · Quick Tech": {
@@ -469,6 +1539,32 @@
     "ru": "Особенности шасси",
     "where": [
       "scripts/tah/hud-categories.js:2478"
+    ]
+  },
+  "Full Action": {
+    "ru": "Полное действие",
+    "where": [
+      "scripts/activations/reaction-editor.js:227",
+      "scripts/activations/reaction-editor.js:227",
+      "scripts/activations/reaction-editor.js:570",
+      "scripts/activations/reaction-editor.js:631",
+      "scripts/activations/reactions-registry.js:1437"
+    ]
+  },
+  "General": {
+    "ru": "Общая",
+    "where": [
+      "scripts/activations/reaction-config.js:474",
+      "scripts/activations/reaction-config.js:476",
+      "scripts/activations/reactions-registry.js:353",
+      "scripts/activations/reactions-registry.js:508",
+      "scripts/activations/reactions-registry.js:706"
+    ]
+  },
+  "Grant Bolster to Ally": {
+    "ru": "Дать Усиление союзнику",
+    "where": [
+      "scripts/activations/reactions-registry.js:858"
     ]
   },
   "Grappled": {
@@ -484,11 +1580,41 @@
       "scripts/setup/status-effects.js:172"
     ]
   },
+  "Grit Check": {
+    "ru": "Проверка GRIT",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Ground Impact": {
+    "ru": "Удар о землю",
+    "where": [
+      "scripts/activations/reactions-registry.js:1209"
+    ]
+  },
   "Guardian": {
     "ru": "Страж",
     "where": [
       "scripts/setup/status-effects.js:63",
       "scripts/setup/status-effects.js:272"
+    ]
+  },
+  "HULL": {
+    "ru": "КОРПУС",
+    "where": [
+      "scripts/activations/flow-steps.js:810",
+      "scripts/activations/flow-steps.js:817",
+      "scripts/activations/flow-steps.js:817",
+      "scripts/activations/reactions-registry.js:2134",
+      "scripts/activations/targeting-ui.js:63"
+    ]
+  },
+  "Half Damage": {
+    "ru": "Половина урона",
+    "where": [
+      "scripts/bonuses/bonus-roll-hud.js:384",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:512"
     ]
   },
   "Handle": {
@@ -511,6 +1637,12 @@
       "scripts/interactive/deployables.js:157"
     ]
   },
+  "Heat (Self)": {
+    "ru": "Тепло (на себя)",
+    "where": [
+      "scripts/bonuses/effectManager.js:81"
+    ]
+  },
   "Hide / Reveal Token": {
     "ru": "Скрыть / показать токен",
     "where": [
@@ -523,6 +1655,21 @@
       "scripts/tah/hud-categories.js:1220"
     ]
   },
+  "Highest": {
+    "ru": "Наибольший",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Hit": {
+    "ru": "Попадание",
+    "where": [
+      "scripts/bonuses/bonus-roll-hud.js:385",
+      "scripts/bonuses/bonus-roll-hud.js:386",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/uplink/mirror-card.js:9"
+    ]
+  },
   "Hover": {
     "ru": "Парит",
     "where": [
@@ -533,12 +1680,96 @@
       "scripts/fx/statusFX.js:1501"
     ]
   },
+  "Hull": {
+    "ru": "Корпус",
+    "where": [
+      "scripts/activations/reactions-registry.js:265",
+      "scripts/tah/hud-categories.js:2133",
+      "scripts/tools/scan.js:515",
+      "scripts/tools/v3-condition.js:46"
+    ]
+  },
+  "Hull Check": {
+    "ru": "Проверка Корпуса",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "IMMOVABLE characters cannot be moved.": {
+    "ru": "Несдвигаемых персонажей нельзя переместить.",
+    "where": [
+      "scripts/activations/reactions-registry.js:1230"
+    ]
+  },
+  "Icon:": {
+    "ru": "Значок:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Ignore": {
+    "ru": "Игнорировать",
+    "where": [
+      "scripts/activations/flow-steps.js:665",
+      "scripts/activations/reactions-registry.js:754",
+      "scripts/combat/actor-change-hooks.js:135",
+      "scripts/combat/actor-change-hooks.js:250",
+      "scripts/movement/move-tracking.js:794"
+    ]
+  },
+  "Ignore filter": {
+    "ru": "Игнорировать фильтр",
+    "where": [
+      "scripts/interactive/cards.js:638"
+    ]
+  },
   "Immovable": {
     "ru": "Несдвигаем",
     "where": [
       "scripts/activations/reactions-registry.js:1225",
       "scripts/interactive/cards.js:870",
       "scripts/setup/status-effects.js:157"
+    ]
+  },
+  "Immunity": {
+    "ru": "Иммунитет",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Immunity Subtype:": {
+    "ru": "Подтип иммунитета:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Impair/Slow on Tech Hit": {
+    "ru": "Ослабить/Замедлить при тех-попадании",
+    "where": [
+      "scripts/activations/reactions-registry.js:1056"
+    ]
+  },
+  "Increases your movement cap by your SPEED": {
+    "ru": "Повышает предел перемещения на вашу Скорость",
+    "where": [
+      "scripts/activations/reactions-registry.js:2194"
+    ]
+  },
+  "Increment": {
+    "ru": "Увеличить",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Indefinite": {
+    "ru": "Бессрочно",
+    "where": [
+      "scripts/bonuses/duration-widget.js:17",
+      "scripts/bonuses/effect-manager-manage.js:158",
+      "scripts/bonuses/effect-manager-manage.js:160",
+      "scripts/bonuses/effectManager.js:158",
+      "scripts/bonuses/status-tooltip.js:117"
     ]
   },
   "Infection": {
@@ -579,10 +1810,88 @@
       "scripts/tah/hud-categories.js:2971"
     ]
   },
+  "Invisible (50% miss)": {
+    "ru": "Невидим (промах 50 %)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:506"
+    ]
+  },
+  "Item": {
+    "ru": "Предмет",
+    "where": [
+      "scripts/activations/reaction-config.js:79",
+      "scripts/activations/reaction-editor.js:44",
+      "scripts/activations/reaction-editor.js:58",
+      "scripts/activations/reaction-editor.js:507",
+      "scripts/activations/reaction-editor.js:520"
+    ]
+  },
+  "Item ID:": {
+    "ru": "ID предмета:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Item:": {
+    "ru": "Предмет:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Items (LID):": {
+    "ru": "Предметы (LID):",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Keeps the engaged status updated as characters move and appear.": {
+    "ru": "Обновляет статус «Связан боем», когда персонажи перемещаются и появляются.",
+    "where": [
+      "scripts/activations/reactions-registry.js:1252"
+    ]
+  },
+  "LIMITED HANDLING": {
+    "ru": "ОГРАНИЧЕННАЯ ПОДВИЖНОСТЬ",
+    "where": [
+      "scripts/activations/reactions-registry.js:231"
+    ]
+  },
   "Lancer Automations API not found or outdated.": {
     "ru": "API Lancer Automations не найден или устарел.",
     "where": [
       "scripts/tah/hud-categories.js:45"
+    ]
+  },
+  "Let pass": {
+    "ru": "Пропустить",
+    "where": [
+      "scripts/activations/reactions-registry.js:436",
+      "scripts/activations/reactions-registry.js:1833",
+      "startups/itemActivations.js:310",
+      "startups/itemActivations.js:396"
+    ]
+  },
+  "Limit:": {
+    "ru": "Лимит:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Limited Handling: no adjacent ally to clear Prone.": {
+    "ru": "Ограниченная подвижность: рядом нет союзника, чтобы снять «Опрокинут».",
+    "where": [
+      "scripts/activations/reactions-registry.js:230"
+    ]
+  },
+  "Line of sight": {
+    "ru": "Линия видимости",
+    "where": [
+      "scripts/activations/targeting-ui.js:175",
+      "scripts/interactive/cards.js:256"
     ]
   },
   "Link Unlink Actor": {
@@ -591,10 +1900,28 @@
       "scripts/tah/hud-categories.js:616"
     ]
   },
+  "Load in its tab": {
+    "ru": "Загрузить во вкладке",
+    "where": [
+      "scripts/bonuses/effectManager.js:786"
+    ]
+  },
+  "Loading...": {
+    "ru": "Загрузка...",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
   "Locked by:": {
     "ru": "Заблокировано:",
     "where": [
       "scripts/tah/hud-categories.js:3524"
+    ]
+  },
+  "Lowest": {
+    "ru": "Наименьший",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   },
   "Macro": {
@@ -622,6 +1949,12 @@
       "scripts/tah/hud-categories.js:816"
     ]
   },
+  "Manage": {
+    "ru": "Управление",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:173"
+    ]
+  },
   "Manipulate an object in some way, such as pushing a button, knocking it over, or ripping out wires. You may only Interact 1/turn. If no hostile characters are adjacent to the object, you automatically succeed. Otherwise, make a contested skill check.": {
     "ru": "Сделайте что-то с объектом: нажмите кнопку, опрокиньте его, вырвите провода. Взаимодействовать можно 1 раз за ход. Если рядом с объектом нет врагов, вы преуспеваете автоматически, иначе совершите состязательную проверку навыка.",
     "where": [
@@ -629,10 +1962,22 @@
       "scripts/tah/hud-categories.js:855"
     ]
   },
+  "Manual / dismount.": {
+    "ru": "Вручную / высадка.",
+    "where": [
+      "scripts/activations/reactions-registry.js:2020"
+    ]
+  },
   "Master": {
     "ru": "Мастер",
     "where": [
       "scripts/tah/hud-categories.js:1949"
+    ]
+  },
+  "Max tokens (blank = unlimited)": {
+    "ru": "Макс. токенов (пусто — без ограничения)",
+    "where": [
+      "scripts/interactive/cards.js:308"
     ]
   },
   "Measure": {
@@ -648,6 +1993,101 @@
       "scripts/tah/hud-categories.js:1623",
       "scripts/tah/hud-categories.js:1776",
       "scripts/tools/pilot-reserves.js:82"
+    ]
+  },
+  "Melee Attacks": {
+    "ru": "Атаки ближнего боя",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Melee Damage": {
+    "ru": "Урон ближнего боя",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Meltdown status": {
+    "ru": "Состояние расплавления",
+    "where": [
+      "scripts/activations/reactions-registry.js:1458"
+    ]
+  },
+  "Min distance:": {
+    "ru": "Мин. расстояние:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Mine": {
+    "ru": "Мина",
+    "where": [
+      "scripts/activations/reactions-registry.js:1680",
+      "scripts/activations/reactions-registry.js:1703",
+      "scripts/activations/reactions-registry.js:1742",
+      "scripts/fx/actionFX.js:2078",
+      "scripts/fx/actionFX.js:2117"
+    ]
+  },
+  "Mine Armed": {
+    "ru": "Мина взведена",
+    "where": [
+      "scripts/activations/reactions-registry.js:1719"
+    ]
+  },
+  "Mine Arming": {
+    "ru": "Взведение мины",
+    "where": [
+      "scripts/activations/reactions-registry.js:1692"
+    ]
+  },
+  "Mine Stealth": {
+    "ru": "Скрытность мины",
+    "where": [
+      "scripts/activations/reactions-registry.js:1668",
+      "scripts/activations/reactions-registry.js:1687"
+    ]
+  },
+  "Mine Zone": {
+    "ru": "Зона мины",
+    "where": [
+      "scripts/activations/reactions-registry.js:1726"
+    ]
+  },
+  "Mine trigger zone aura with ENTER macro (Detonate / Disarm / Let pass)": {
+    "ru": "Аура зоны срабатывания мины с макросом входа (Взорвать / Обезвредить / Пропустить)",
+    "where": [
+      "scripts/activations/reactions-registry.js:1728"
+    ]
+  },
+  "Mines start Hidden": {
+    "ru": "Мины появляются Скрытыми",
+    "where": [
+      "scripts/activations/reactions-registry.js:1670"
+    ]
+  },
+  "Miss": {
+    "ru": "Промах",
+    "where": [
+      "scripts/bonuses/bonus-roll-hud.js:385",
+      "scripts/bonuses/bonus-roll-hud.js:386",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/uplink/mirror-card.js:9"
+    ]
+  },
+  "Mode:": {
+    "ru": "Режим:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Mount:": {
+    "ru": "Крепление:",
+    "where": [
+      "scripts/activations/reactions-registry.js:2038"
     ]
   },
   "Move Cap": {
@@ -680,16 +2120,85 @@
       "scripts/tah/hud-categories.js:1225"
     ]
   },
+  "Movement": {
+    "ru": "Перемещение",
+    "where": [
+      "scripts/activations/reactions-registry.js:1635",
+      "scripts/tah/hud-categories.js:858",
+      "scripts/tah/hud-categories.js:1225",
+      "scripts/tah/hud-categories.js:1226",
+      "scripts/tah/hud-categories.js:1227"
+    ]
+  },
+  "Movement Extra": {
+    "ru": "Доп. перемещение",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
   "NO ARMOR": {
     "ru": "БЕЗ БРОНИ",
     "where": [
       "scripts/tah/hud-categories.js:1760"
     ]
   },
+  "Name:": {
+    "ru": "Имя:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Nexus Attacks": {
+    "ru": "Атаки нексусов",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Nexus Damage": {
+    "ru": "Урон нексусов",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "No": {
+    "ru": "Нет",
+    "where": [
+      "scripts/activations/reactions-registry.js:1203"
+    ]
+  },
   "No Armor": {
     "ru": "Без брони",
     "where": [
       "scripts/tah/hud-categories.js:1764"
+    ]
+  },
+  "No Cover": {
+    "ru": "Без укрытия",
+    "where": [
+      "scripts/bonuses/bonus-flow-step.js:492",
+      "scripts/bonuses/bonus-flow-step.js:493",
+      "scripts/bonuses/bonus-flow-step.js:494",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:508"
+    ]
+  },
+  "No active bonuses": {
+    "ru": "Нет активных бонусов",
+    "where": [
+      "scripts/bonuses/effectManager.js:1203"
+    ]
+  },
+  "No ally": {
+    "ru": "Нет союзника",
+    "where": [
+      "scripts/activations/reactions-registry.js:244"
+    ]
+  },
+  "No areas placed": {
+    "ru": "Области не размещены",
+    "where": [
+      "scripts/interactive/cards.js:261",
+      "scripts/interactive/cards.js:616"
     ]
   },
   "No bonuses": {
@@ -705,10 +2214,90 @@
       "scripts/tah/status-panel.js:639"
     ]
   },
+  "No deployables available": {
+    "ru": "Нет доступных развёртываемых объектов",
+    "where": [
+      "scripts/interactive/cards.js:932"
+    ]
+  },
+  "No destination selected": {
+    "ru": "Точка назначения не выбрана",
+    "where": [
+      "scripts/interactive/cards.js:379",
+      "scripts/interactive/cards.js:997"
+    ]
+  },
   "No macros available.": {
     "ru": "Нет доступных макросов.",
     "where": [
       "scripts/tah/hud-categories.js:2970"
+    ]
+  },
+  "No presets saved.": {
+    "ru": "Сохранённых пресетов нет.",
+    "where": [
+      "scripts/bonuses/effectManager.js:794"
+    ]
+  },
+  "No target selected": {
+    "ru": "Цель не выбрана",
+    "where": [
+      "scripts/bonuses/effectManager.js:1192"
+    ]
+  },
+  "No targets": {
+    "ru": "Нет целей",
+    "where": [
+      "scripts/interactive/cards.js:397",
+      "scripts/interactive/tools/forceCheck.js:160"
+    ]
+  },
+  "No targets selected": {
+    "ru": "Цели не выбраны",
+    "where": [
+      "scripts/interactive/cards.js:287",
+      "scripts/interactive/cards.js:701"
+    ]
+  },
+  "No tokens caught": {
+    "ru": "Токены не задеты",
+    "where": [
+      "scripts/interactive/cards.js:644"
+    ]
+  },
+  "No tokens placed": {
+    "ru": "Токены не размещены",
+    "where": [
+      "scripts/interactive/cards.js:308",
+      "scripts/interactive/cards.js:817"
+    ]
+  },
+  "No zones placed": {
+    "ru": "Зоны не размещены",
+    "where": [
+      "scripts/interactive/cards.js:436",
+      "scripts/interactive/cards.js:465",
+      "scripts/interactive/cards.js:755"
+    ]
+  },
+  "None": {
+    "ru": "Нет",
+    "where": [
+      "scripts/Battelog/recap.js:1210",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/interactive/extras-dialog.js:36"
+    ]
+  },
+  "Not Invisible (ignore 50% miss)": {
+    "ru": "Не невидим (без промаха 50 %)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Note:": {
+    "ru": "Заметка:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:300"
     ]
   },
   "Obscure the position of your mech, becoming HIDDEN and unable to be identified, precisely located, or be targeted directly by attacks or hostile actions.": {
@@ -721,6 +2310,12 @@
     "ru": "Скройте своё положение: вы становитесь Скрытым, вас нельзя опознать, точно определить ваше местоположение или выбрать целью атак и враждебных действий.",
     "where": [
       "scripts/tah/hud-categories.js:565"
+    ]
+  },
+  "Obstacle (Phasing)": {
+    "ru": "Препятствие (Фазирован)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   },
   "Once per turn, you can OVERCHARGE your mech, allowing you to make any quick action as a free action, even actions you have already taken this turn. The first time you OVERCHARGE, take 1 heat. The second time, take 1d3 heat. The third time, take 1d6 heat. Each time after, take 1d6+4 heat. A FULL REPAIR resets this counter.": {
@@ -747,6 +2342,29 @@
       "scripts/tah/hud-categories.js:1623"
     ]
   },
+  "Origin Token": {
+    "ru": "Токен-источник",
+    "where": [
+      "scripts/interactive/cards.js:489"
+    ]
+  },
+  "Origin:": {
+    "ru": "Источник:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Other": {
+    "ru": "Прочее",
+    "where": [
+      "scripts/activations/flow-steps.js:943",
+      "scripts/activations/flow-steps.js:1146",
+      "scripts/activations/reaction-config.js:458",
+      "scripts/activations/reaction-editor.js:229",
+      "scripts/activations/reaction-editor.js:229"
+    ]
+  },
   "Other Skill": {
     "ru": "Другой навык",
     "where": [
@@ -755,11 +2373,41 @@
       "scripts/tah/hud-categories.js:982"
     ]
   },
+  "Overcharge (NPC)": {
+    "ru": "Форсаж (NPC)",
+    "where": [
+      "scripts/activations/reactions-registry.js:127",
+      "scripts/activations/reactions-registry.js:2230",
+      "scripts/combat/action-limits.js:13",
+      "scripts/combat/action-limits.js:14",
+      "scripts/combat/action-limits.js:15"
+    ]
+  },
+  "Overheat Roll": {
+    "ru": "Бросок перегрева",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Overheated": {
     "ru": "Перегрет",
     "where": [
       "scripts/fx/statusFX.js:1208",
       "scripts/setup/status-effects.js:265"
+    ]
+  },
+  "Override Value": {
+    "ru": "Заменить значение",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Overwatch v2": {
+    "ru": "Дозор v2",
+    "where": [
+      "scripts/activations/reactions-registry.js:386",
+      "scripts/activations/reactions-registry.js:475"
     ]
   },
   "Passive": {
@@ -771,6 +2419,19 @@
       "scripts/tah/hud-categories.js:2531"
     ]
   },
+  "Permanent": {
+    "ru": "Постоянно",
+    "where": [
+      "scripts/bonuses/duration-widget.js:18",
+      "scripts/bonuses/status-tooltip.js:116"
+    ]
+  },
+  "Permanent (kept through Full Repair)": {
+    "ru": "Постоянный (сохраняется после Полного ремонта)",
+    "where": [
+      "scripts/bonuses/effectManager.js:159"
+    ]
+  },
   "Phasing": {
     "ru": "Фазирован",
     "where": [
@@ -779,10 +2440,49 @@
       "scripts/setup/status-effects.js:272"
     ]
   },
+  "Pick Status": {
+    "ru": "Выбрать состояние",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Pick Token": {
+    "ru": "Выбрать токен",
+    "where": [
+      "scripts/bonuses/duration-widget.js:37",
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:300",
+      "scripts/bonuses/effect-manager-template.js:382",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Pick Token (Shift-click to add)": {
+    "ru": "Выбрать токен (Shift+клик — добавить)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:173",
+      "scripts/bonuses/effect-manager-template.js:341",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Pick actor (optional)": {
+    "ru": "Выбрать актёра (необязательно)",
+    "where": [
+      "scripts/interactive/cards.js:397",
+      "scripts/interactive/tools/forceCheck.js:147"
+    ]
+  },
   "Pick from the list. Customize the icon and name before adding.": {
     "ru": "Выберите из списка. Перед добавлением можно изменить значок и название.",
     "where": [
       "scripts/tah/hud-categories.js:2971"
+    ]
+  },
+  "Pick token": {
+    "ru": "Выбрать токен",
+    "where": [
+      "scripts/interactive/cards.js:349",
+      "scripts/interactive/tools/haseContest.js:210"
     ]
   },
   "Pick up a weapon you previously threw, returning it to your loadout.": {
@@ -809,10 +2509,54 @@
       "scripts/tah/hud-categories.js:2059"
     ]
   },
+  "Pilot mounts mech.": {
+    "ru": "Пилот садится в меха.",
+    "where": [
+      "scripts/activations/reactions-registry.js:2021"
+    ]
+  },
+  "Place Zone": {
+    "ru": "Разместить зону",
+    "where": [
+      "scripts/interactive/cards.js:436",
+      "scripts/interactive/cards.js:465"
+    ]
+  },
   "Place each token at its knockback destination.": {
     "ru": "Поставить каждый токен в точку отбрасывания.",
     "where": [
       "scripts/tah/hud-categories.js:1225"
+    ]
+  },
+  "Place pilot adjacent to mech": {
+    "ru": "Разместить пилота рядом с мехом",
+    "where": [
+      "scripts/activations/reactions-registry.js:1903"
+    ]
+  },
+  "Placed Areas": {
+    "ru": "Размещённые области",
+    "where": [
+      "scripts/interactive/cards.js:261"
+    ]
+  },
+  "Placed Zones": {
+    "ru": "Размещённые зоны",
+    "where": [
+      "scripts/interactive/cards.js:436",
+      "scripts/interactive/cards.js:465"
+    ]
+  },
+  "Placement range (blank = unlimited)": {
+    "ru": "Дальность размещения (пусто — без ограничения)",
+    "where": [
+      "scripts/interactive/cards.js:308"
+    ]
+  },
+  "Placing outside range is allowed; out-of-range spots only show a soft warning.": {
+    "ru": "Размещать вне дальности можно; такие точки лишь помечаются предупреждением.",
+    "where": [
+      "scripts/interactive/cards.js:308"
     ]
   },
   "Power": {
@@ -828,12 +2572,48 @@
       "scripts/tah/hud-categories.js:856"
     ]
   },
+  "Preset name:": {
+    "ru": "Имя пресета:",
+    "where": [
+      "scripts/bonuses/effectManager.js:705"
+    ]
+  },
+  "Preset:": {
+    "ru": "Пресет:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:45"
+    ]
+  },
+  "Presets": {
+    "ru": "Пресеты",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
   "Project": {
     "ru": "Проект",
     "where": [
       "scripts/tah/hud-categories.js:1623",
       "scripts/tools/pilot-reserves.js:197",
       "scripts/tools/pilot-reserves.js:197"
+    ]
+  },
+  "Prone Immunity / Falling Check": {
+    "ru": "Иммунитет к «Опрокинут» / проверка падения",
+    "where": [
+      "scripts/activations/reactions-registry.js:707"
+    ]
+  },
+  "Propagation": {
+    "ru": "Распространение",
+    "where": [
+      "scripts/interactive/cards.js:261"
+    ]
+  },
+  "Protects flying characters from incompatible statuses and triggers saves on structure/stress.": {
+    "ru": "Защищает летящих персонажей от несовместимых состояний и вызывает спасброски при структурном уроне и перегреве.",
+    "where": [
+      "scripts/activations/reactions-registry.js:709"
     ]
   },
   "Protocol/Quick": {
@@ -844,10 +2624,71 @@
       "scripts/tah/hud-categories.js:855"
     ]
   },
+  "Provoke (Engagement & Reactions)": {
+    "ru": "Провоцирование (связывание боем и реакции)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Q/E to adjust": {
+    "ru": "Q/E — изменить",
+    "where": [
+      "scripts/interactive/cards.js:650"
+    ]
+  },
+  "ROLL": {
+    "ru": "БРОСОК",
+    "where": [
+      "scripts/interactive/cards.js:388",
+      "scripts/interactive/tools/rollCard.js:24"
+    ]
+  },
+  "RUN CONTEST": {
+    "ru": "ПРОВЕСТИ СОСТЯЗАНИЕ",
+    "where": [
+      "scripts/interactive/cards.js:361"
+    ]
+  },
   "Raises your movement cap by your SPEED. Drag to move.": {
     "ru": "Повышает предел перемещения на вашу Скорость. Перетащите токен, чтобы переместиться.",
     "where": [
       "scripts/tools/constants.js:11"
+    ]
+  },
+  "Ram by": {
+    "ru": "Таран от",
+    "where": [
+      "scripts/activations/reactions-registry.js:1135"
+    ]
+  },
+  "Range Type:": {
+    "ru": "Тип дальности:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Range shown with line of sight": {
+    "ru": "Дальность с учётом линии видимости",
+    "where": [
+      "scripts/interactive/cards.js:256"
+    ]
+  },
+  "Range:": {
+    "ru": "Дальность:",
+    "where": [
+      "scripts/interactive/cards.js:223"
+    ]
+  },
+  "Ranged Attacks": {
+    "ru": "Атаки дальнего боя",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Ranged Damage": {
+    "ru": "Урон дальнего боя",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   },
   "Reach": {
@@ -860,6 +2701,12 @@
     "ru": "Досягаемость:",
     "where": [
       "scripts/tah/hud-categories.js:3329"
+    ]
+  },
+  "Reaction Skirmish": {
+    "ru": "Стычка реакцией",
+    "where": [
+      "scripts/activations/reactions-registry.js:355"
     ]
   },
   "Reactor": {
@@ -896,10 +2743,22 @@
       "scripts/tah/hud-categories.js:613"
     ]
   },
+  "Related Token": {
+    "ru": "Связанный токен",
+    "where": [
+      "scripts/interactive/cards.js:491"
+    ]
+  },
   "Reload Weapon": {
     "ru": "Перезарядить оружие",
     "where": [
       "scripts/tah/hud-categories.js:1215"
+    ]
+  },
+  "Remove Shutdown Effects": {
+    "ru": "Снять эффекты Отключения",
+    "where": [
+      "scripts/activations/reactions-registry.js:1612"
     ]
   },
   "Repairs": {
@@ -970,6 +2829,51 @@
       "scripts/tah/hud-categories.js:1229"
     ]
   },
+  "Roll (Acc/Diff)": {
+    "ru": "Бросок (Точн./Слож.)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Roll Type:": {
+    "ru": "Тип броска:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Roll Types (empty = all):": {
+    "ru": "Типы бросков (пусто — все):",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Rounds, counting the current one": {
+    "ru": "Раунды, включая текущий",
+    "where": [
+      "scripts/bonuses/duration-widget.js:63",
+      "scripts/bonuses/effectManager.js:422",
+      "scripts/bonuses/effectManager.js:1252"
+    ]
+  },
+  "Rounds:": {
+    "ru": "Раунды:",
+    "where": [
+      "scripts/bonuses/effectManager.js:421",
+      "scripts/bonuses/effectManager.js:1251"
+    ]
+  },
+  "SEARCH - SYSTEMS vs AGILITY": {
+    "ru": "ПОИСК — СИСТЕМЫ против ЛОВКОСТИ",
+    "where": [
+      "scripts/activations/reactions-registry.js:1992"
+    ]
+  },
+  "SEARCH - Skill Check": {
+    "ru": "ПОИСК — проверка навыка",
+    "where": [
+      "scripts/activations/reactions-registry.js:1992"
+    ]
+  },
   "SKILL TRIGGER": {
     "ru": "НАВЫК",
     "where": [
@@ -977,10 +2881,144 @@
       "scripts/tah/hud-categories.js:990"
     ]
   },
+  "SYS": {
+    "ru": "СИС",
+    "where": [
+      "scripts/activations/reactions-registry.js:1813",
+      "scripts/activations/reactions-registry.js:1995",
+      "scripts/interactive/cards.js:397",
+      "scripts/interactive/tools/haseContest.js:15",
+      "scripts/uplink/live-rolls.js:21"
+    ]
+  },
+  "Same as Target": {
+    "ru": "Как у цели",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Save Preset": {
+    "ru": "Сохранить пресет",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:300",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Save Status (add Name + Icon + Description to the Saved list)": {
+    "ru": "Сохранить состояние (добавить имя, значок и описание в список сохранённых)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:357"
+    ]
+  },
+  "Save vs": {
+    "ru": "Спасбросок против",
+    "where": [
+      "scripts/interactive/cards.js:397"
+    ]
+  },
+  "Scope:": {
+    "ru": "Область действия:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Search...": {
     "ru": "Поиск...",
     "where": [
       "scripts/tah/hud-categories.js:2971"
+    ]
+  },
+  "Select Actor": {
+    "ru": "Выбрать актёра",
+    "where": [
+      "scripts/interactive/cards.js:305"
+    ]
+  },
+  "Select Damage Types:": {
+    "ru": "Выберите типы урона:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Select Item on Token": {
+    "ru": "Выбрать предмет на токене",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Select Status Effects:": {
+    "ru": "Выберите эффекты состояний:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Select Tokens": {
+    "ru": "Выбрать токены",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Selected Targets": {
+    "ru": "Выбранные цели",
+    "where": [
+      "scripts/interactive/cards.js:287"
+    ]
+  },
+  "Send each roll to the token's owner": {
+    "ru": "Отправить каждый бросок владельцу токена",
+    "where": [
+      "scripts/interactive/cards.js:361",
+      "scripts/interactive/cards.js:397"
+    ]
+  },
+  "Show the api call for this form, to use in automation code": {
+    "ru": "Показать вызов API для этой формы, чтобы использовать в коде автоматизации",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:300",
+      "scripts/bonuses/effect-manager-template.js:400",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Shut Down": {
+    "ru": "Отключение",
+    "where": [
+      "scripts/activations/reactions-registry.js:1584",
+      "scripts/fx/actionFX.js:2043",
+      "scripts/fx/statusFX.js:1215",
+      "scripts/tah/hud-categories.js:853",
+      "scripts/tah/hud-categories.js:853"
+    ]
+  },
+  "Size:": {
+    "ru": "Размер:",
+    "where": [
+      "scripts/interactive/cards.js:232"
+    ]
+  },
+  "Skill": {
+    "ru": "Навык",
+    "where": [
+      "scripts/interactive/cards.js:397",
+      "scripts/tools/downtime.js:358",
+      "scripts/uplink/live-rolls.js:69"
+    ]
+  },
+  "Skill / Check / Save Roll": {
+    "ru": "Бросок навыка / проверки / спасброска",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Skip": {
+    "ru": "Пропустить",
+    "where": [
+      "scripts/activations/reactions-registry.js:70",
+      "scripts/activations/reactions-registry.js:778",
+      "scripts/interactive/network.js:552",
+      "startups/itemActivations.js:6569"
     ]
   },
   "Soft Cover": {
@@ -991,6 +3029,26 @@
       "scripts/bonuses/effect-manager-template.js:590",
       "scripts/bonuses/genericBonuses.js:509",
       "startups/itemActivations.js:1722"
+    ]
+  },
+  "Source": {
+    "ru": "Источник",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Source or target": {
+    "ru": "Источник или цель",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Spaces:": {
+    "ru": "Клетки:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   },
   "Squeeze": {
@@ -1009,6 +3067,20 @@
       "scripts/tah/hud-categories.js:858"
     ]
   },
+  "Standard": {
+    "ru": "Стандартный",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:173",
+      "scripts/bonuses/effectManager.js:782"
+    ]
+  },
+  "Standard Move": {
+    "ru": "Стандартное перемещение",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/genericBonuses.js:475"
+    ]
+  },
   "Standing Up": {
     "ru": "Встать",
     "where": [
@@ -1025,10 +3097,75 @@
       "scripts/tah/hud-categories.js:858"
     ]
   },
+  "Start of Round": {
+    "ru": "Начало раунда",
+    "where": [
+      "scripts/bonuses/duration-widget.js:15",
+      "scripts/bonuses/effectManager.js:156"
+    ]
+  },
+  "Start of Turn": {
+    "ru": "Начало хода",
+    "where": [
+      "scripts/bonuses/duration-widget.js:13",
+      "scripts/bonuses/effectManager.js:150"
+    ]
+  },
+  "Stat": {
+    "ru": "Характеристика",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/tah/statbar/animations.js:765"
+    ]
+  },
+  "Stat:": {
+    "ru": "Характеристика:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Status:": {
+    "ru": "Состояние:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Stop Movement on Engagement": {
+    "ru": "Останавливать перемещение при связывании боем",
+    "where": [
+      "scripts/activations/reactions-registry.js:1282"
+    ]
+  },
+  "Stress Roll": {
+    "ru": "Бросок перегрева",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Struct": {
     "ru": "Структ",
     "where": [
       "scripts/tah/hud-categories.js:2130"
+    ]
+  },
+  "Structure Roll": {
+    "ru": "Бросок структуры",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Structure damage": {
+    "ru": "Структурный урон",
+    "where": [
+      "scripts/activations/reactions-registry.js:762"
+    ]
+  },
+  "Subtype:": {
+    "ru": "Подтип:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   },
   "Suicide": {
@@ -1055,11 +3192,115 @@
       "scripts/tah/status-panel.js:786"
     ]
   },
+  "Systems": {
+    "ru": "Системы",
+    "where": [
+      "scripts/activations/reactions-registry.js:267",
+      "scripts/setup/tour.js:831",
+      "scripts/tah/hud-categories.js:1391",
+      "scripts/tah/hud-categories.js:1440",
+      "scripts/tah/hud-categories.js:1460"
+    ]
+  },
+  "Systems Check": {
+    "ru": "Проверка Систем",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Tactical": {
     "ru": "Тактический",
     "where": [
       "scripts/tah/hud-categories.js:1623",
       "scripts/tools/pilot-reserves.js:82"
+    ]
+  },
+  "Tag": {
+    "ru": "Тег",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Tag:": {
+    "ru": "Тег:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Target": {
+    "ru": "Цель",
+    "where": [
+      "scripts/activations/targeting-ui.js:550",
+      "scripts/activations/targeting-ui.js:743",
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/interactive/actor-items.js:65"
+    ]
+  },
+  "Target Modifier": {
+    "ru": "Модификатор цели",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Target Modifier:": {
+    "ru": "Модификатор цели:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Target is larger than you": {
+    "ru": "Цель больше вас",
+    "where": [
+      "scripts/activations/reactions-registry.js:1102"
+    ]
+  },
+  "Target:": {
+    "ru": "Цель:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:173"
+    ]
+  },
+  "Targets": {
+    "ru": "Цели",
+    "where": [
+      "scripts/interactive/cards.js:397"
+    ]
+  },
+  "Targets of equal or greater size stop the character's movement.": {
+    "ru": "Цели того же или большего Размера останавливают перемещение персонажа.",
+    "where": [
+      "scripts/activations/reactions-registry.js:1285"
+    ]
+  },
+  "Targetter:": {
+    "ru": "Атакующий:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Tech (Item Type)": {
+    "ru": "Тех (тип предмета)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Tech Attack Roll": {
+    "ru": "Бросок тех-атаки",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Tech Attacks": {
+    "ru": "Тех-атаки",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
+  "Tech Damage": {
+    "ru": "Тех-урон",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   },
   "Teleport": {
@@ -1077,6 +3318,12 @@
       "scripts/tah/hud-categories.js:1226"
     ]
   },
+  "Terrain": {
+    "ru": "Местность",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Terrain Immunity": {
     "ru": "Иммунитет к местности",
     "where": [
@@ -1089,6 +3336,12 @@
     "where": [
       "scripts/tah/hud-categories.js:857",
       "scripts/tah/hud-categories.js:876"
+    ]
+  },
+  "The pilot is placed within range of the mech. The mech becomes IMPAIRED.": {
+    "ru": "Пилот размещается в пределах дальности от меха. Мех становится Ослабленным.",
+    "where": [
+      "scripts/activations/reactions-registry.js:1521"
     ]
   },
   "The pilot wears no armor.": {
@@ -1116,6 +3369,12 @@
       "scripts/tah/hud-categories.js:731"
     ]
   },
+  "Tier Check (NPC)": {
+    "ru": "Проверка ранга (NPC)",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "To JOCKEY, you must be adjacent to a mech. As a full action, make a contested skill check using GRIT. The mech contests with HULL. On a success, climb onto the mech, sharing its space. Choose one: DISTRACT (mech is IMPAIRED and SLOWED), SHRED (deal 2 heat), or DAMAGE (deal 4 kinetic damage).": {
     "ru": "Чтобы Оседлать меха, нужно стоять рядом с ним. Полным действием совершите состязательную проверку навыка с GRIT, мех противопоставляет Корпус. При успехе заберитесь на меха и займите его клетку. Выберите одно: Отвлечь (мех Ослаблен и Замедлен), Раскурочить (нанесите 2 Тепла) или Повредить (нанесите 4 кинетического урона).",
     "where": [
@@ -1126,6 +3385,44 @@
     "ru": "При Стабилизации выберите ОДНО из двух: • Остудить меха (сбросить всё Тепло и снять «Открыт»); • Потратить ОДИН ремонт, чтобы восстановить меху все ОЗ. Кроме того, выберите ОДНО из четырёх: • Перезарядить всё Перезаряжаемое оружие меха; • Снять с меха весь Огонь; • Снять с себя ОДНО состояние, НЕ вызванное вашими системами, талантами и т. п.; • Снять ОДНО состояние с СОСЕДНЕГО союзника, НЕ вызванное его системами, талантами и т. п.",
     "where": [
       "scripts/tah/hud-categories.js:879"
+    ]
+  },
+  "Toggle Squeeze/Prone": {
+    "ru": "Переключить «Протиснуться»/«Опрокинут»",
+    "where": [
+      "scripts/activations/reactions-registry.js:1868"
+    ]
+  },
+  "Token:": {
+    "ru": "Токен:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Tokens outside the zone's elevation band are not counted as inside it": {
+    "ru": "Токены вне диапазона высоты зоны не считаются внутри неё",
+    "where": [
+      "scripts/interactive/cards.js:436"
+    ]
+  },
+  "Tokens to Move": {
+    "ru": "Токены для перемещения",
+    "where": [
+      "scripts/interactive/cards.js:298",
+      "scripts/interactive/cards.js:376"
+    ]
+  },
+  "Tokens to Place": {
+    "ru": "Токены для размещения",
+    "where": [
+      "scripts/interactive/cards.js:308"
+    ]
+  },
+  "Tokens:": {
+    "ru": "Токены:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   },
   "Tool": {
@@ -1171,10 +3468,28 @@
       "scripts/tah/hud-categories.js:2207"
     ]
   },
+  "Treads or Hover": {
+    "ru": "Гусеницы или парение",
+    "where": [
+      "scripts/activations/reactions-registry.js:162"
+    ]
+  },
+  "Trigger OVERWATCH, immediately using that weapon to SKIRMISH against that character as a reaction, before they move": {
+    "ru": "Сработайте Дозором: реакцией сразу совершите этим оружием Стычку против этого персонажа, прежде чем он переместится",
+    "where": [
+      "scripts/activations/reactions-registry.js:358"
+    ]
+  },
   "Trigger OVERWATCH, immediately using that weapon to SKIRMISH against that character as a reaction, before they move.": {
     "ru": "Сработайте Дозором: реакцией сразу совершите этим оружием Стычку против этого персонажа, прежде чем он переместится.",
     "where": [
       "scripts/tah/hud-categories.js:901"
+    ]
+  },
+  "Trigger explosion": {
+    "ru": "Вызвать взрыв",
+    "where": [
+      "scripts/activations/reactions-registry.js:1487"
     ]
   },
   "Trigger:": {
@@ -1182,6 +3497,36 @@
     "where": [
       "scripts/tah/hud-categories.js:2272",
       "scripts/tools/scan.js:193"
+    ]
+  },
+  "Turns. 0 = next matching trigger": {
+    "ru": "Ходы. 0 — до следующего подходящего триггера",
+    "where": [
+      "scripts/bonuses/duration-widget.js:37",
+      "scripts/bonuses/duration-widget.js:63"
+    ]
+  },
+  "Turns:": {
+    "ru": "Ходы:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:300",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effectManager.js:421",
+      "scripts/bonuses/effectManager.js:1251"
+    ]
+  },
+  "Type": {
+    "ru": "Тип",
+    "where": [
+      "scripts/activations/workshop-browser.js:810",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/tools/pilot-reserves.js:84"
+    ]
+  },
+  "Type:": {
+    "ru": "Тип:",
+    "where": [
+      "scripts/interactive/cards.js:231"
     ]
   },
   "UNLOCK POWER": {
@@ -1198,16 +3543,84 @@
       "scripts/tah/hud-categories.js:875"
     ]
   },
+  "Until:": {
+    "ru": "До:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:300"
+    ]
+  },
+  "Update Engagement Status": {
+    "ru": "Обновлять связывание боем",
+    "where": [
+      "scripts/activations/reactions-registry.js:1249"
+    ]
+  },
+  "Use": {
+    "ru": "Использовать",
+    "where": [
+      "scripts/activations/reactions-registry.js:66",
+      "scripts/interactive/cards.js:308",
+      "scripts/interactive/network.js:552",
+      "startups/itemActivations.js:1422",
+      "startups/itemActivations.js:1762"
+    ]
+  },
+  "Uses:": {
+    "ru": "Использования:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "VS": {
+    "ru": "ПРОТИВ",
+    "where": [
+      "scripts/interactive/cards.js:361"
+    ]
+  },
+  "Value:": {
+    "ru": "Значение:",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Veteran": {
     "ru": "Ветеран",
     "where": [
       "scripts/tah/hud-categories.js:1949"
     ]
   },
+  "Vulnerability": {
+    "ru": "Уязвимость",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:404"
+    ]
+  },
+  "Weapon Attacks": {
+    "ru": "Атаки оружием",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:590"
+    ]
+  },
   "Weapon Mod": {
     "ru": "Модификация оружия",
     "where": [
       "scripts/tah/hud-categories.js:3269"
+    ]
+  },
+  "When a character moves": {
+    "ru": "Когда персонаж перемещается",
+    "where": [
+      "scripts/activations/reactions-registry.js:1251",
+      "scripts/activations/reactions-registry.js:1284"
+    ]
+  },
+  "When a character would be moved involuntarily": {
+    "ru": "Когда персонажа должны невольно переместить",
+    "where": [
+      "scripts/activations/reactions-registry.js:1229"
     ]
   },
   "When you BARRAGE, you attack with two weapon MOUNTS, or with one SUPERHEAVY weapon. To BARRAGE, choose your mounts (or one SUPERHEAVY) and either one target or different targets within range, then make an attack with the primary weapon on each mount. • You may also attack with an AUXILIARY weapon on each mount that was fired, so long as it has not yet been fired this action. These AUXILIARY weapons do not deal bonus damage. • SUPERHEAVY weapons can only be fired as part of a BARRAGE.": {
@@ -1259,6 +3672,18 @@
       "scripts/tah/statbar/extras.js:221"
     ]
   },
+  "You are hit by an attack and damage has been rolled.": {
+    "ru": "По вам попадает атака, урон уже брошен.",
+    "where": [
+      "scripts/activations/reactions-registry.js:578"
+    ]
+  },
+  "You are hit by an attack and damage is about to be rolled.": {
+    "ru": "По вам попадает атака, урон вот-вот будет брошен.",
+    "where": [
+      "scripts/activations/reactions-registry.js:511"
+    ]
+  },
   "You assist a mech so it can Stabilize more easily. Choose an adjacent character. On their next turn, they may Stabilize as a quick action. They can choose to take this action even if they normally would not be able to take actions (for example, by being affected by the Stunned condition).": {
     "ru": "Вы помогаете меху стабилизироваться. Выберите соседнего персонажа. В свой следующий ход он может совершить Стабилизацию быстрым действием, даже если обычно не может действовать (например, будучи Оглушённым).",
     "where": [
@@ -1283,6 +3708,41 @@
       "scripts/activations/reactions-registry.js:512",
       "scripts/activations/reactions-registry.js:579",
       "scripts/tah/hud-categories.js:898"
+    ]
+  },
+  "You fall, taking AP kinetic damage based on the distance fallen (3 damage per 3 spaces, max 9).": {
+    "ru": "Вы падаете и получаете бронебойный (AP) кинетический урон по высоте падения (3 урона за 3 клетки, максимум 9).",
+    "where": [
+      "scripts/activations/reactions-registry.js:1147"
+    ]
+  },
+  "You use the Boost action": {
+    "ru": "Вы совершаете Рывок",
+    "where": [
+      "scripts/activations/reactions-registry.js:2193"
+    ]
+  },
+  "triggers Overwatch against": {
+    "ru": "вызывает Дозор против",
+    "where": [
+      "scripts/activations/reactions-registry.js:466"
+    ]
+  },
+  "— Load —": {
+    "ru": "— Загрузить —",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:45",
+      "scripts/bonuses/effectManager.js:692"
+    ]
+  },
+  "— Select —": {
+    "ru": "— Выбрать —",
+    "where": [
+      "scripts/bonuses/effect-manager-template.js:102",
+      "scripts/bonuses/effect-manager-template.js:404",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590",
+      "scripts/bonuses/effect-manager-template.js:590"
     ]
   }
 }
