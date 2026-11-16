@@ -35,3 +35,6 @@ npm-debug.log*
 test-results/
 playwright-report/
 foundry/releases/
+
+# Local copies of third-party Foundry modules (audit source only; see docs/plans/2026-11-16-foundry-automations-ru.md)
+foundry/module-merge/
